@@ -5,7 +5,7 @@
     "dist": "yarn run build-storybook",
     "start": "yarn run storybook",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook -o .storybook-out"
+    "build-storybook": "build-storybook -c .storybook -o dist"
   },
   "repository": {
     "type": "git",
