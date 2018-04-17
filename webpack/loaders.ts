@@ -1,38 +1,10 @@
 import * as path from 'path';
-import { Rule } from 'webpack';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 import * as autoprefixer from 'autoprefixer';
 
-import { isTesting, isProduction } from './util';
-
-const tsx: Rule = {
+const tsx = {
   test: /\.tsx?$/,
   use: 'awesome-typescript-loader',
   exclude: /node_modules/,
-};
-
-const html: Rule = {
-  test: /\.html$/,
-  loader: 'html-loader',
-  exclude: /node_modules/,
-  options: {
-    attrs: ['img:src', 'img:ng-src', 'img:md-svg-src', 'md-icon:md-svg-src'],
-    interpolate: 'require',
-  },
-};
-
-const json: Rule = {
-  test: /\.json$/,
-  loader: 'json-loader',
-};
-
-const webmanifest: Rule = {
-  test: /\.webmanifest$/,
-  include: /realtime\//,
-  use: [
-    'file-loader?name=[name]/manifest.json',
-    'webmanifest-loader',
-  ],
 };
 
 const staticFilesLoader = {
@@ -46,39 +18,7 @@ const staticFilesLoader = {
   },
 };
 
-const istanbulInstrumenter: Rule = {
-  test: /^(.(?!\.test))*\.tsx?$/,
-  loader: 'istanbul-instrumenter-loader',
-  query: {
-    embedSource: true,
-  },
-};
-
-const css: Rule = {
-  test: /\.css$/,
-  loader: ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [
-      {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-        },
-      },
-      {
-        loader: 'postcss-loader',
-        options: {
-          plugins: () => {
-            return isProduction() ? [autoprefixer] : [];
-          },
-          sourceMap: true,
-        },
-      },
-    ],
-  }),
-};
-
-const scss: Rule = {
+const scss = {
   test: /\.scss$/,
   use: [
     {
@@ -110,60 +50,8 @@ const scss: Rule = {
   ],
 };
 
-const js: Rule = {
-  test: /\.js$/,
-  use: [
-    'ng-annotate-loader',
-    {
-      loader: 'babel-loader',
-      query: {
-        cacheDirectory: true,
-      },
-    },
-  ],
-  exclude: /node_modules/,
-};
-
-const less: Rule = {
-  test: /\.less$/,
-  use: isTesting() ?
-    'null' : ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            plugins: () => {
-              return (isProduction() ? [autoprefixer] : []);
-            },
-            sourceMap: true,
-          },
-        },
-        {
-          loader: 'less-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-      ],
-    }),
-};
-
 export default {
-  css,
-  html,
-  istanbulInstrumenter,
-  js,
-  json,
-  less,
   staticFilesLoader,
   scss,
   tsx,
-  webmanifest,
 };
