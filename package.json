@@ -14,15 +14,8 @@
   "dependencies": {
     "adm-dtp": "^1.2.0",
     "babel-plugin-lodash": "^3.2.11",
-    "body-parser": "^1.18.2",
-    "bootstrap": "4.0.0-alpha.6",
-    "google-maps": "^3.2.1",
     "intl-locales-supported": "^1.0.0",
-    "jalali-date": "0.1.5",
-    "jquery": "^3.1.1",
-    "lodash": "^4.17.4",
-    "react-circular-progressbar": "^0.1.5",
-    "tls": "0.0.1"
+    "react-circular-progressbar": "^0.1.5"
   },
   "devDependencies": {
     "@storybook/addon-viewport": "^3.4.1",
@@ -32,6 +25,7 @@
     "@types/react-dom": "^0.14.23",
     "@types/webpack": "^2.2.14",
     "@types/webpack-env": "^1.13.0",
+    "autoprefixer": "^6.0.3",
     "awesome-typescript-loader": "^3.1.2",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
@@ -56,6 +50,8 @@
     "intl": "^1.2.5",
     "isparta-loader": "^2.0.0",
     "istanbul-instrumenter-loader": "^2.0.0",
+    "less": "^2.6.1",
+    "less-loader": "^4.0.3",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^4.5.3",
     "null-loader": "^0.1.1",
@@ -76,6 +72,7 @@
     "url-loader": "^0.5.8",
     "webmanifest-loader": "^0.1.0",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "webpack-parallel-uglify-plugin": "^0.4.1"
   }
 }

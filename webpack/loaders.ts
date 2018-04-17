@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { Rule } from 'webpack';
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 import * as autoprefixer from 'autoprefixer';
@@ -34,34 +35,16 @@ const webmanifest: Rule = {
   ],
 };
 
-const realtimeStaticFilesLoader = (name: string): Rule => {
-  let output = name.replace('_app', '');
-  if (output === name) {
-    output = `assets/${output}`;
-  }
-
-  return {
-    include: new RegExp(`realtime/${name}`),
-    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
-    loader: 'url-loader',
-    options: {
-      context: `./realtime/${name}`,
-      name: `${output}/[path][name].__cache__.[hash].[ext]`,
-      limit: 3000,
-    },
-  };
+const staticFilesLoader = {
+  include: path.resolve('./src'),
+  test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
+  loader: 'url-loader',
+  options: {
+    context: './src',
+    name: `assets/[path][name].__cache__.[hash].[ext]`,
+    limit: 3000,
+  },
 };
-
-const realtimeStaticFiles: Rule[] = [
-  realtimeStaticFilesLoader('area_manager_app'),
-  realtimeStaticFilesLoader('driver_app'),
-  realtimeStaticFilesLoader('courier_management_app'),
-  realtimeStaticFilesLoader('overview_app'),
-  realtimeStaticFilesLoader('trip_watching_app'),
-  realtimeStaticFilesLoader('restaurant_app'),
-  realtimeStaticFilesLoader('common'),
-  realtimeStaticFilesLoader('recruitment_app'),
-];
 
 const istanbulInstrumenter: Rule = {
   test: /^(.(?!\.test))*\.tsx?$/,
@@ -70,11 +53,6 @@ const istanbulInstrumenter: Rule = {
     embedSource: true,
   },
 };
-
-const postcssPlugins = [
-  require('./postcss/strict-height.js'),
-  require('./postcss/strict-width.js'),
-];
 
 const css: Rule = {
   test: /\.css$/,
@@ -91,8 +69,7 @@ const css: Rule = {
         loader: 'postcss-loader',
         options: {
           plugins: () => {
-            return isProduction() ?
-              [autoprefixer, ...postcssPlugins] : [...postcssPlugins];
+            return isProduction() ? [autoprefixer] : [];
           },
           sourceMap: true,
         },
@@ -120,7 +97,7 @@ const scss: Rule = {
       loader: 'postcss-loader',
       options: {
         plugins: () => {
-          return [autoprefixer, ...postcssPlugins];
+          return [autoprefixer];
         },
         sourceMap: true,
       },
@@ -185,8 +162,7 @@ export default {
   js,
   json,
   less,
-  realtimeStaticFilesLoader,
-  realtimeStaticFiles,
+  staticFilesLoader,
   scss,
   tsx,
   webmanifest,
