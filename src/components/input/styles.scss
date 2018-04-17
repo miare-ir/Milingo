@@ -1,0 +1,109 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+.field-container {
+  direction: rtl;
+  margin-bottom: 16px;
+
+  *:not(.material-icons) {
+    font-family: 'IranSans';
+    transition: $transitionInward;
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $inputTitleColor;
+    margin-bottom: 8px;
+    line-height: 24px;
+  }
+
+  .input-container {
+    position: relative;
+    display: block;
+
+    input {
+      height: 48px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid $inputBorderColor;
+      font-size: 16px;
+      padding: 12px;
+      line-height: 24px;
+
+      &[type=number]::-webkit-inner-spin-button,
+      &[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+
+      &:not([disabled]), &:not(:disabled) {
+        &:hover {
+          border-color: $inputHoverBorderColor;
+          transition: $transitionOutward;
+        }
+
+        &:focus, &:active, &:target {
+          transition: $transitionOutward;
+          outline: none;
+          border-color: $inputFocusBorderColor;
+          box-shadow: 0 0 0 4px $inputFocusShadowColor;
+        }
+      }
+
+      &[disabled], &:disabled {
+        background-color: #ECEDEF;
+        color: #4A4A4A;
+      }
+    }
+
+    pre {
+      color: #4A4A4A;
+      background-color: #ECEDEF;
+      border-radius: 4px 0 0 4px;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      padding: 12px;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .clear {
+      transform: rotate(45deg);
+      position: absolute;
+      top: 12px;
+      left: 8px;
+      color: $disabledColor;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
+  &.error {
+    input {
+      border-color: $inputError !important;
+
+      &:focus, &:active, &:target {
+        box-shadow: 0 0 0 4px $inputErrorShadowColor !important;
+      }
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    color: $inputError;
+    font-size: 14px;
+    display: block;
+  }
+}
+
+::placeholder {
+  color: $inputPlaceholderColor;
+  opacity: 1; // Firefox
+}
+
+:-ms-input-placeholder {
+  color: $inputPlaceholderColor;
+}

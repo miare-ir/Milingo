@@ -1,0 +1,22 @@
+$inputBorderColor:                $disabledColor;
+$inputBackgroundColor:            #FFFFFF;
+$inputCheckedBorderColor:         $primary2;
+$inputPlaceholderColor:           #8897A8;
+$inputIconColor:                  #FFFFFF;
+$inputLabelColor:                 #000000;
+$inputTitleColor:                 #4A4A4A;
+
+$inputHoverBorderColor:           $primary2;
+
+$inputFocusBorderColor:           $primary2;
+$inputFocusShadowColor:           rgba(74, 145, 226, 0.5); // #4A90E2 Alpha:  50%
+$inputFocusShadowLighterColor:    rgba(74, 145, 226, 0.4); // #4A90E2 Alpha:  40%
+
+$inputDisabledBorderColor:        rgba(136, 151, 168, 0.5); // #8897A8 Alpha: 50%
+$inputDisabledBackgroundColor:    rgba(255, 255, 255, 0.5); // #FFFFFF Alpha: 50%
+$inputDisabledCheckedBorderColor: rgba(136, 151, 168, 0.5); // #8897A8 Alpha: 50%
+$inputDisabledIconColor:          #FFFFFF;
+$inputDisabledLabelColor:         rgba(0, 0, 0, 0.5); // #000000 Alpha:       50%
+
+$inputError:                      #D73948;
+$inputErrorShadowColor:           rgba(215, 57, 73, 0.4); // #D73948 Alpha:   40%

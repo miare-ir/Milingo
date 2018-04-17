@@ -1,0 +1,19 @@
+@import '../../assets/styles/_base.scss';
+
+.notification {
+  font-family: 'IranSans';
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  height: 48px;
+  width: 100%;
+  background-color: $primary3;
+  color: $primary1;
+
+  &.alarm {
+    background-color: $warning2;
+    color: $warning1;
+  }
+}

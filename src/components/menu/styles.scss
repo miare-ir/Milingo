@@ -1,0 +1,239 @@
+@import '../../assets/styles/_base.scss';
+
+.menu-header {
+  background-color: #212230;
+  padding: 48px 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  * {
+    font-family: 'IranSans';
+  }
+
+  &-image img {
+    width: 96px;
+    height: 96px;
+  }
+
+  &-title {
+    color: $disabledColor;
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  &-action {
+    margin: 0 24px 24px;
+    margin-bottom: 24px;
+  }
+}
+
+.menu-link {
+  background-color: #212230;
+  box-sizing: border-box;
+  height: 48px;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  transition: $transitionInward;
+
+  * {
+    font-family: 'IranSansNumeral', 'IranSans';
+  }
+
+  &-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: $disabledColor;
+  }
+
+  &-notification-count {
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    background-color: $primary1;
+  }
+
+  &:hover {
+    background-color: #2C2D40;
+    transition: $transitionOutward;
+  }
+
+  &.selected {
+    background-color: $primary1;
+
+    .menu-link-title {
+      color: white;
+    }
+
+    .menu-link-notification-count {
+      background-color: white;
+      color: $primary1;
+    }
+  }
+}
+
+.menu-avatar {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  border-radius: 50%;
+
+  &-inner {
+    background-color: #212230;
+    border-radius: 50%;
+    width: 58px;
+    height: 58px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-hover {
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background-color: transparent;
+    border-radius: 50%;
+    z-index: 2;
+    transition: $transitionInward;
+  }
+
+  &-image {
+    color: white;
+    font-size: 14px;
+    font-family: 'IranSans';
+    z-index: 3;
+  }
+
+  &.large .menu-avatar-image {
+    font-size: 32px;
+  }
+
+  &-label {
+    background-color: $primary1;
+    border-radius: 100px;
+    color: white;
+    font-size: 10px;
+    font-family: 'IranSans';
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 20px;
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% + 6px);
+    margin-left: -50%;
+    z-index: 3;
+  }
+
+  .CircularProgressbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 64px;
+    height: 64px;
+    z-index: 0;
+  }
+
+  .CircularProgressbar-trail {
+    stroke: #3D3F53;
+    transition: stroke 0.5s ease 0s;
+  }
+
+  .CircularProgressbar-path {
+    stroke: $primary2;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease 0s;
+  }
+
+  &:hover {
+    .menu-avatar-hover {
+      background-color: $primary2;
+      transition: $transitionOutward;
+    }
+  }
+
+  &.selected {
+    .menu-avatar-hover {
+      background-color: $primary1;
+      transition: $transitionOutward;
+    }
+  }
+}
+
+.menu-status {
+  background-color: #2C2D40;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $disabledColor;
+  font-size: 14px;
+  font-family: 'IranSans';
+  font-weight: 500;
+}
+
+.menu-item {
+  display: flex;
+  direction: rtl;
+  flex-direction: row;
+  background-color: #212230;
+  padding: 20px 24px;
+  height: 104px;
+  align-items: center;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'IranSansNumeral', 'IranSans';
+
+  &:not(.has-avatar) {
+    height: 80px;
+  }
+
+  &-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &-description {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &-time {
+    color: $disabledColor;
+    font-size: 16px;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .avatar-container {
+    margin-left: 12px;
+  }
+
+  .avatar-container, .time-container {
+    flex: 0 0 auto;
+  }
+
+  .data-container {
+    flex: 1 0 auto;
+  }
+}

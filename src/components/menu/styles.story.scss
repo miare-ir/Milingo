@@ -1,0 +1,22 @@
+.menu-story {
+  .menu-avatar-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 20px;
+
+    .menu-avatar {
+      margin: 20px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .menu-item-container {
+    .menu-item {
+      margin-bottom: 20px;
+    }
+  }
+}

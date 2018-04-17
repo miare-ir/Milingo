@@ -1,0 +1,15 @@
+$transitionStandard: all 0.2s cubic-bezier(0.5, 0, 0.1, 1);
+$transitionInward: all 0.2s cubic-bezier(0, 0, 0.25, 1);
+$transitionOutward: all 0.2s cubic-bezier(0.25, 0, 1, 1);
+
+$transitionAlertStandard: all 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+$transitionAlertInward: all 0.25s cubic-bezier(0, 0, 0.25, 1);
+$transitionAlertOutward: all 0.25s cubic-bezier(0.25, 0, 1, 1);
+
+$transitionDialogStandard: all 0.3s cubic-bezier(0.5, 0, 0.1, 1);
+$transitionDialogInward: all 0.3s cubic-bezier(0, 0, 0.25, 1);
+$transitionDialogOutward: all 0.3s cubic-bezier(0.25, 0, 1, 1);
+
+$transitionPageStandard: all 0.5s cubic-bezier(0.5, 0, 0.1, 1);
+$transitionPageInward: all 0.5s cubic-bezier(0, 0, 0.25, 1);
+$transitionPageOutward: all 0.5s cubic-bezier(0.25, 0, 1, 1);

@@ -1,0 +1,26 @@
+### vim ###
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+*.xml
+.idea
+
+*.log
+tags
+
+node_modules
+dist
+
+.agignore
+
+.vscode
+.happypack
+.cache-uglify
+.DS_Store
+
+coverage/
+.env

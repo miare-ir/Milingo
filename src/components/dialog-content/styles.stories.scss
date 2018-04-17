@@ -1,0 +1,18 @@
+body {
+  background-color: #efefef;
+}
+
+.story-container.dialog-story {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .dialog-content-wrapper {
+    width: 400px;
+  }
+
+  button {
+    margin-right: 0;
+  }
+}
