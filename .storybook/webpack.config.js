@@ -46,12 +46,12 @@ const loaders = {
 };
 
 module.exports = (baseConfig, env, config) => {
-  config.module.rules.push(loaders.scss);
-  config.module.rules.push(loaders.staticFilesLoader);
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     loader: require.resolve("awesome-typescript-loader")
   });
+  config.module.rules.push(loaders.scss);
+  config.module.rules.push(loaders.staticFilesLoader);
   config.resolve.extensions.push('.scss', '.ts', '.tsx');
 
   return config;

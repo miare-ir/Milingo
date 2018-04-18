@@ -1,32 +1,26 @@
 {
   "compilerOptions": {
-    "alwaysStrict": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "importHelpers": true,
-    "jsx": "react",
-    "lib": ["dom", "es2017", "es6", "dom.iterable", "scripthost"],
+    "outDir": "build/lib",
     "module": "commonjs",
+    "target": "es5",
+    "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "sourceMap": true,
+    "allowJs": false,
+    "jsx": "react",
     "moduleResolution": "node",
-    "noImplicitThis": true,
-    "noEmitHelpers": true,
+    "rootDirs": ["src"],
+    "baseUrl": "src",
+    "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
     "noImplicitAny": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "removeComments": false,
-    "target": "es5"
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
   },
-  "include": [
-    "src/**/*.tsx",
-    "src/**/*.ts",
-    "src/typings/imports.d.ts",
-    "webpack.config.ts",
-    "webpack/**/*.ts",
-    "node_modules/@types/**/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
 }
