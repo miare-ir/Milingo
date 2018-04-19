@@ -13,7 +13,7 @@ export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   large?: boolean;
 }
 
-class Button extends React.Component<ButtonProps, void> {
+class Button extends React.Component<ButtonProps, {}> {
   render (): JSX.Element {
     const {
       primary,

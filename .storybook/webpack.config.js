@@ -1,18 +1,7 @@
-const autoprefixer = require('autoprefixer');
-const path = require('path');
+const path = require("path");
 
-const loaders = {
-  staticFilesLoader: {
-    include: path.resolve('./src'),
-    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
-    loader: 'url-loader',
-    options: {
-      context: './src',
-      name: `assets/[path][name].__cache__.[hash].[ext]`,
-      limit: 3000,
-    },
-  },
-  scss: {
+module.exports = (baseConfig, env, defaultConfig) => {
+  defaultConfig.module.rules.push({
     test: /\.scss$/,
     use: [
       {
@@ -30,29 +19,30 @@ const loaders = {
       {
         loader: 'postcss-loader',
         options: {
-          plugins: () => {
-            return [autoprefixer];
-          },
+          plugins: [require('autoprefixer')],
           sourceMap: true,
         },
       },
       {
         loader: 'sass-loader', options: {
-          includePaths: ['./node_modules', './node_modules/grommet/node_modules'],
+          includePaths: ['./node_modules'],
         },
       },
     ],
-  },
-};
-
-module.exports = (baseConfig, env, config) => {
-  config.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    loader: require.resolve("awesome-typescript-loader")
   });
-  config.module.rules.push(loaders.scss);
-  config.module.rules.push(loaders.staticFilesLoader);
-  config.resolve.extensions.push('.scss', '.ts', '.tsx');
 
-  return config;
+  defaultConfig.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    exclude: /node_modules/,
+    loader: "awesome-typescript-loader"
+  });
+  defaultConfig.resolve.extensions.push(".ts", ".tsx");
+
+  defaultConfig.module.rules.push({
+    include: path.resolve(__dirname, "../src"),
+    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
+    loader: 'url-loader'
+  });
+
+  return defaultConfig;
 };

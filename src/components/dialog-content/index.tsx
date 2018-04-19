@@ -10,7 +10,7 @@ export interface DialogContentProps {
   className?: string;
 }
 
-class DialogContent extends React.Component<DialogContentProps, void> {
+class DialogContent extends React.Component<DialogContentProps, {}> {
   render() {
     return (
       <div
