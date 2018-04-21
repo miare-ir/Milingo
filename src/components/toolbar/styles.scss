@@ -1,10 +1,14 @@
+@import '../../assets/styles/_base.scss';
+
 .toolbar {
   height: 88px;
   padding: 18px 24px 12px;
+  direction: rtl;
   display: flex;
   flex-direction: row;
   align-items: center;
   box-shadow: 0 2px 4px black;
+  background-color: white;
 
   &-avatar {
     margin-left: 12px;
@@ -13,6 +17,7 @@
   &-info {
     display: flex;
     flex-direction: column;
+    font-family: 'IranSans';
 
     .toolbar-title {
       margin-bottom: 4px;
@@ -45,6 +50,7 @@
         font-size: 14px;
         font-weight: 500;
         color: $primary1;
+        font-family: 'IranSans';
       }
 
       &:last-child {
