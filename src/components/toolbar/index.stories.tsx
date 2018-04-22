@@ -6,7 +6,9 @@ import Toolbar from '.';
 
 storiesOf('Toolbar', module)
   .addDecorator(story => (
-    <div className="story-container">
+    <div
+      className="story-container toolbar-story-container"
+      style={{ width: '720px' }}>
       {story()}
     </div>
   ))

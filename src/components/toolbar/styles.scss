@@ -1,6 +1,7 @@
 @import '../../assets/styles/_base.scss';
 
 .toolbar {
+  box-sizing: border-box;
   height: 88px;
   padding: 18px 24px 12px;
   direction: rtl;
@@ -20,18 +21,24 @@
     font-family: 'IranSans';
 
     .toolbar-title {
-      margin-bottom: 4px;
+      margin: 0 0 4px;
       font-weight: 500;
       font-size: 16px;
     }
 
     .toolbar-description {
+      margin: 0;
       font-weight: 400;
       font-size: 14px;
     }
   }
 
   &-items {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 1;
+    justify-content: end;
+
     .toolbar-item {
       margin-right: 16px;
       padding: 2px;
@@ -39,6 +46,8 @@
       height: 64px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
 
       &-icon {
         font-size: 32px;
@@ -51,6 +60,7 @@
         font-weight: 500;
         color: $primary1;
         font-family: 'IranSans';
+        margin: 0;
       }
 
       &:last-child {
