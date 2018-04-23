@@ -1,0 +1,66 @@
+@import '../../assets/styles/_base.scss';
+
+.list {
+  padding: 0;
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+    font-family: 'IranSansNumeral', 'IranSans';
+    font-size: 14px;
+    padding: 0 24px 8px;
+
+    &:first-of-type {
+      padding-top: 16px;
+    }
+  }
+
+  &-section {
+    &.large {
+      li {
+        font-size: 18px;
+        margin: 0 24px;
+        padding: 20px 0;
+        border-bottom: 1px solid #ECEDEF;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    &.seperator {
+      border-top: 2px solid #ECEDEF;
+    }
+  }
+
+  &-title, &-footer {
+    background-color: #ECEDEF;
+    color: black;
+    font-family: 'IranSansNumeral', 'IranSans';
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    padding: 0 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    direction: rtl;
+  }
+
+  &-footer {
+    font-size: 18px;
+    height: 72px;
+    border-radius: 0 0 2px 2px;
+    justify-content: space-between;
+  }
+}
