@@ -1,0 +1,58 @@
+@import '../../assets/styles/_base.scss';
+
+.timeline {
+  direction: rtl;
+  font-size: '14px';
+  font-weight: 400;
+
+  &-entry {
+    &-title-container {
+      display: flex;
+      flex-direction: row;
+      height: 28px;
+    }
+
+    &-time {
+      font-family: 'IranSansNumeral', 'IranSans';
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4A4A4A;
+      background-color: #ECEDEF;
+      border-radius: 100px;
+      min-width: 28px;
+      max-width: 47px;
+      height: 28px;
+      padding: 0 8px;
+      margin-left: 8px;
+      box-sizing: border-box;
+
+      &-container {
+        display: flex;
+        justify-content: center;
+        flex: 0 0 56px;
+      }
+    }
+
+    &-title {
+      font-family: 'IranSansNumeral', 'IranSans';
+      font-weight: 400;
+      margin: 0;
+    }
+
+    &-content {
+      margin-right: 23px;
+      padding: 8px 28px 16px 0;
+      border-right: 2px solid #ECEDEF;
+
+      &.empty {
+        padding-top: 0;
+      }
+
+      &.no-border {
+        border-right: none;
+      }
+    }
+  }
+}
