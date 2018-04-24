@@ -39,6 +39,5 @@ module.exports = (baseConfig, env, defaultConfig) => {
   defaultConfig.module.rules = loaders.concat(defaultConfig.module.rules)
   defaultConfig.resolve.extensions.push('.ts', '.tsx');
 
-console.log(defaultConfig.module.rules)
   return defaultConfig;
 };
