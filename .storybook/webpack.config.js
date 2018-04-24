@@ -1,8 +1,6 @@
 const path = require('path');
 
 module.exports = (baseConfig, env, defaultConfig) => {
-  defaultConfig.output.publicPath = 'http://localhost:9001/';
-
   const loaders = [{
     test: /\.scss$/,
     use: [
