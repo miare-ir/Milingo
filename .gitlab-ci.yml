@@ -1,0 +1,25 @@
+image: node:8.9.1-alpine
+
+stages:
+  - build
+
+cache:
+  untracked: true
+  key: "$CI_PROJECT_ID"
+  paths:
+    - node_modules/
+    - .yarn
+
+build:
+  stage: build
+  before_script:
+    - apk --update add git
+  script:
+  - yarn 
+  - yarn dist
+  artifacts:
+    name: "staging_${CI_COMMIT_SHA:0:7}"
+    expire_in: 1 week
+    paths:
+    - dist/
+
