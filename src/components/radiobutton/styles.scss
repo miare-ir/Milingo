@@ -1,0 +1,119 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+.radio-container {
+  .radio-btn {
+    margin-bottom: 16px;
+    font-family: 'IranSans';
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    height: 24px;
+    margin-bottom: 16px;
+
+    * {
+      transition: $transitionInward;
+    }
+
+    input[type=radio] {
+      display: none;
+    }
+
+    .radio {
+      border-radius: 50%;
+      border: 1px solid $inputBorderColor;
+      box-sizing: border-box;
+      background-color: $inputBackgroundColor;
+      display: inline-block;
+      margin-left: 8px;
+      height: 24px;
+      width: 24px;
+      position: relative;
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        font-size: 18px;
+        box-sizing: border-box;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+      }
+    }
+
+    label {
+      color: $inputLabelColor;
+      font-size: 14px;
+      line-height: 24px;
+      cursor: pointer;
+    }
+
+    &:not(.checked) {
+      .radio {
+        .icon {
+          display: none;
+        }
+      }
+    }
+
+    &:not(.disabled) {
+      &.checked {
+        .radio {
+          border-color: $inputCheckedBorderColor;
+
+          .icon {
+            background-color: $primary2;
+          }
+        }
+      }
+
+      &:hover {
+        * {
+          transition: $transitionOutward;
+        }
+
+        &:not(.checked) .radio {
+          border-color: $inputHoverBorderColor;
+        }
+      }
+
+      &:focus, &:active, &:target {
+        outline: none;
+
+        .radio {
+          border-color: $inputFocusBorderColor;
+          box-shadow: 0 0 0 4px $inputFocusShadowColor;
+        }
+      }
+    }
+
+    &.disabled {
+      .radio {
+        border-color: $inputDisabledBorderColor;
+        background-color: $inputDisabledBackgroundColor;
+      }
+
+      &.checked {
+        .icon {
+          background-color: $inputDisabledCheckedBorderColor;
+          color: $inputDisabledIconColor;
+        }
+      }
+
+      label {
+        color: $inputDisabledLabelColor;
+      }
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+}
