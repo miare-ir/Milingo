@@ -1,0 +1,80 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+.textarea-container {
+  direction: rtl;
+  margin-bottom: 16px;
+
+  *:not(.material-icons) {
+    font-family: 'IranSans';
+    transition: $transitionInward;
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $inputTitleColor;
+    margin-bottom: 8px;
+    line-height: 24px;
+  }
+
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: relative;
+    display: block;
+    border: 1px solid $inputBorderColor;
+    font-size: 16px;
+    padding: 12px;
+    line-height: 24px;
+    resize: none;
+
+    &:not([disabled]), &:not(:disabled) {
+      &:hover {
+        border-color: $inputHoverBorderColor;
+        transition: $transitionOutward;
+      }
+
+      &:focus, &:active, &:target {
+        transition: $transitionOutward;
+        outline: none;
+        border-color: $inputFocusBorderColor;
+        box-shadow: 0 0 0 4px $inputFocusShadowColor;
+      }
+    }
+
+    &[disabled], &:disabled {
+      background-color: #ECEDEF;
+      color: #4A4A4A;
+    }
+  }
+
+
+  &.error {
+    textarea {
+      border-color: $inputError !important;
+
+      &:focus, &:active, &:target {
+        box-shadow: 0 0 0 4px $inputErrorShadowColor !important;
+      }
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    color: $inputError;
+    font-size: 14px;
+    display: block;
+  }
+}
+
+::placeholder {
+  color: $inputPlaceholderColor;
+  opacity: 1; // Firefox
+}
+
+:-ms-input-placeholder {
+  color: $inputPlaceholderColor;
+}
