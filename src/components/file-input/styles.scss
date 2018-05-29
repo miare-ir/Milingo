@@ -1,0 +1,114 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+$FileNameSpanBackgroundColor: #ecedef;
+
+.file-container {
+  direction: rtl;
+  margin-bottom: 16px;
+
+  *:not(.material-icons) {
+    font-family: 'IranSans';
+    transition: $transitionInward;
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $inputTitleColor;
+    margin-bottom: 8px;
+    line-height: 24px;
+  }
+
+  .file-div {
+    display: flex;
+    justify-content: flex-end;
+    .file-name {
+      height: 48px;
+      width: 100%;
+      min-width: 136px;
+      max-width: 240px;
+
+      box-sizing: border-box;
+
+      border-radius: 4px;
+      background-color: $FileNameSpanBackgroundColor;
+      font-size: 16px;
+      padding: 12px 48px 12px 8px;
+      direction: ltr;
+      color: $primary1;
+      text-align: left;
+      overflow:hidden !important;
+      text-overflow: ellipsis;
+
+      display: block;
+      position: relative;
+
+      .clear {
+        position: absolute;
+        top: 12px;
+        right: 8px;
+        color: $primary1;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    }
+
+    label{
+      flex-shrink: 0;
+      cursor: pointer;
+      box-sizing: border-box;
+      border-radius: 4px;
+      font-family: 'IranSans';
+      font-size: 16px;
+      font-weight: 400;
+      height: 48px;
+      padding: 12px 24px;
+      cursor: pointer;
+      transition: $transitionInward;
+      background-color: $primary1;
+      border: 1px solid $primary1;
+      color: #FFFFFF;
+      margin-right: 16px;
+
+      &:not(.disabled):not([disabled]):not(:disabled):hover {
+        background-color: $primary2;
+        border-color: $primary2;
+      }
+
+      &.disabled, &[disabled], &:disabled {
+        background-color: $disabledColor;
+        border-color: $disabledColor;
+        color: #FFFFFF;
+      }
+      input{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+        position: absolute;
+        display: none;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+
+  &.error {
+    input {
+      border-color: $inputError !important;
+
+      &:focus, &:active, &:target {
+        box-shadow: 0 0 0 4px $inputErrorShadowColor !important;
+      }
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    color: $inputError;
+    font-size: 14px;
+    display: block;
+  }
+}
