@@ -15,7 +15,7 @@ export interface InputState {
   value: any;
 }
 
-class Input extends React.Component<InputProps, InputState> {
+class Textarea extends React.Component<InputProps, InputState> {
   constructor(props) {
     super(props);
 
@@ -93,4 +93,4 @@ class Input extends React.Component<InputProps, InputState> {
   }
 }
 
-export default Input;
+export default Textarea;
