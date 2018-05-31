@@ -99,15 +99,20 @@ class File extends React.Component<FileProps, FileState> {
     });
 
     const mappedFile = this.state.files.map( (file, index)=>(
-      <div className="file-name" key={file.name + file.size}>
-        <span>
-          { file.name }
-        </span>
-        <i
-          className="material-icons clear"
-          onClick={ () => this.clear(index) }>
-          close
-        </i>
+      <div className="file-name-container">
+        <div className="file-name" key={file.name + file.size}>
+          <span>
+            { file.name }
+          </span>
+          <i
+            className="material-icons clear"
+            onClick={ () => this.clear(index) }>
+            close
+          </i>
+        </div>
+        {hasError && (
+            <span className="error">حجم فایل شما بیشتر از حد مجاز است</span>
+          )}
       </div>
     ))
 
@@ -124,9 +129,6 @@ class File extends React.Component<FileProps, FileState> {
           </Button>
 
         </div>
-        {hasError && (
-          <span className="error">{errorMessage}</span>
-        )}
       </div>
     );
   }

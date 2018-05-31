@@ -15,36 +15,38 @@ $FileNameSpanBackgroundColor: #ecedef;
   .file-div {
     display: flex;
     justify-content: flex-end;
-
-    .file-name {
-      height: 48px;
-      width: 100%;
-      min-width: 136px;
-      max-width: 240px;
-
-      box-sizing: border-box;
+    .file-name-container{
       margin-bottom: 16px;
-      border-radius: 4px;
-      background-color: $FileNameSpanBackgroundColor;
-      font-size: 16px;
-      padding: 12px 48px 12px 8px;
-      direction: ltr;
-      color: $primary1;
-      text-align: left;
-      overflow:hidden !important;
-      text-overflow: ellipsis;
-      white-space: nowrap;
 
-      display: block;
-      position: relative;
+      .file-name {
+        height: 48px;
+        width: 100%;
+        min-width: 136px;
+        max-width: 240px;
 
-      .clear {
-        position: absolute;
-        top: 12px;
-        right: 8px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background-color: $FileNameSpanBackgroundColor;
+        font-size: 16px;
+        padding: 12px 48px 12px 8px;
+        direction: ltr;
         color: $primary1;
-        font-size: 24px;
-        cursor: pointer;
+        text-align: left;
+        overflow:hidden !important;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        display: block;
+        position: relative;
+
+        .clear {
+          position: absolute;
+          top: 12px;
+          right: 8px;
+          color: $primary1;
+          font-size: 24px;
+          cursor: pointer;
+        }
       }
     }
 
@@ -65,8 +67,13 @@ $FileNameSpanBackgroundColor: #ecedef;
   }
 
   &.error {
-    input {
-      border-color: $inputError !important;
+    .file-name {
+      background-color: $warning2 !important;
+      color: $warning1 !important;
+    }
+
+    .clear{
+      color: $warning1 !important;
     }
   }
 
