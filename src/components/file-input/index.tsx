@@ -4,56 +4,69 @@ import Button from '../button'
 
 import './styles.scss';
 
-export interface InputProps extends React.HTMLProps<HTMLInputElement> {
+export interface FileProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
   errorMessage?: string;
   forceDisplayError?: boolean;
-  validate?: (value: boolean | string | number) => boolean;
+  validate?: (value: any) => boolean;
   pre?: string;
   title?: string;
+  files: any;
 }
 
-export interface InputState {
+export interface FileState {
   touched: boolean;
-  value: any;
+  files: any;
 }
 
-class File extends React.Component<InputProps, InputState> {
+class File extends React.Component<FileProps, FileState> {
+
   constructor(props) {
     super(props);
 
     this.state = {
       touched: false,
-      value: props.value || '',
+      files: props.files || [],
     };
   }
 
-  componentWillReceiveProps(nextProps: InputProps) {
+  componentWillReceiveProps(nextProps: FileProps) {
     if (
-      nextProps.value !== this.props.value &&
-      nextProps.value !== this.state.value
+      nextProps.files !== this.props.files &&
+      nextProps.files !== this.state.files
     ) {
-      this.setState({ value: nextProps.value });
+      this.setState({ files: nextProps.files });
     }
   }
 
   handleInput = e => {
-    if (e.target.value !== this.state.value) {
-      if (!this.state.touched) {
-        this.setState({ touched: true, value: e.target.value });
+    if (e.target.files[0]) {
+      let newFilesArray = [ ...this.state.files];
+
+      if(this.props.multiple){
+        for(let file of e.target.files ){
+          newFilesArray.push( file );
+        }
       } else {
-        this.setState({ value: e.target.value });
+        newFilesArray = [ e.target.files[0] ];
+      }
+
+      if (!this.state.touched) {
+        this.setState({ touched: true, files: newFilesArray });
+      } else {
+        this.setState({ files: newFilesArray });
       }
     }
 
-    if (this.props.onInput) {
-      this.props.onInput(e);
+    if (this.props.onChange) {
+      this.props.onChange(e);
     }
   }
 
-  clear = () => {
-    const valueType = typeof this.state.value;
-    this.setState({ value: valueType === null });
+  clear = (index) => {
+    const filesArray = [ ...this.state.files];
+    filesArray.splice(index, 1)
+    this.setState({ files: filesArray });
   }
 
   render() {
@@ -77,32 +90,36 @@ class File extends React.Component<InputProps, InputState> {
     const hasError = (
       errorMessage &&
       (forceDisplayError || this.state.touched) &&
-      !validate(this.state.value)
+      !validate(this.state.files)
     );
 
     const className = classNames('file-container', {
       error: hasError,
+      multiple: this.props.multiple
     });
+
+    const mappedFile = this.state.files.map( (file, index)=>(
+      <div className="file-name" key={file.name + file.size}>
+        <span>
+          { file.name }
+        </span>
+        <i
+          className="material-icons clear"
+          onClick={ () => this.clear(index) }>
+          close
+        </i>
+      </div>
+    ))
 
     return (
       <div className={className}>
         <div className="file-div">
-          <div className="file-name">
-            <span>
-              slamsdgsfgasfgsdfgsfdgsdfgsdfgsdfgsffgasfgsdfgsef
-            </span>
-            <i
-              className="material-icons clear"
-              onClick={this.clear}>
-              close
-            </i>
-          </div>
+          { this.state.files.length > 0 && mappedFile}
           <Button primary>
             افزودن فایل
             <input
               type='file'
-              value={this.state.value}
-              onInput={this.handleInput}
+              onChange={this.handleInput}
               {...props} />
           </Button>
 

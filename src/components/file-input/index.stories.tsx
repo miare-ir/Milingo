@@ -10,6 +10,8 @@ storiesOf('File input', module)
   ))
   .addWithJSX('Normal', () => (
     <div style={{ width: '450px', maxWidth: '100%', backgroundColor:'#ffffff', padding:'40px' }}>
-      <File/>
+      <File files={[]}/>
+
+      <File multiple files={[]}/>
     </div>
   ));
