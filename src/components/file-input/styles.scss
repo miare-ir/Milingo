@@ -24,6 +24,7 @@ $FileNameSpanBackgroundColor: #ecedef;
   .file-div {
     display: flex;
     justify-content: flex-end;
+
     .file-name {
       height: 48px;
       width: 100%;
@@ -55,42 +56,17 @@ $FileNameSpanBackgroundColor: #ecedef;
       }
     }
 
-    label{
+    button{
+      position: relative;
       flex-shrink: 0;
-      cursor: pointer;
-      box-sizing: border-box;
-      border-radius: 4px;
-      font-family: 'IranSans';
-      font-size: 16px;
-      font-weight: 400;
-      height: 48px;
-      padding: 12px 24px;
-      cursor: pointer;
-      transition: $transitionInward;
-      background-color: $primary1;
-      border: 1px solid $primary1;
-      color: #FFFFFF;
-      margin-right: 16px;
-
-      &:not(.disabled):not([disabled]):not(:disabled):hover {
-        background-color: $primary2;
-        border-color: $primary2;
-      }
-
-      &.disabled, &[disabled], &:disabled {
-        background-color: $disabledColor;
-        border-color: $disabledColor;
-        color: #FFFFFF;
-      }
       input{
         width: 100%;
         height: 100%;
         overflow: hidden;
-        z-index: -1;
         position: absolute;
-        display: none;
         top: 0px;
         right: 0px;
+        opacity: 0;
       }
     }
   }

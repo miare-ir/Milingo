@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import Button from '../button'
 
 import './styles.scss';
 
@@ -96,14 +97,15 @@ class File extends React.Component<InputProps, InputState> {
               close
             </i>
           </div>
-          <label>
+          <Button primary>
             افزودن فایل
             <input
               type='file'
               value={this.state.value}
               onInput={this.handleInput}
               {...props} />
-          </label>
+          </Button>
+
         </div>
         {hasError && (
           <span className="error">{errorMessage}</span>
