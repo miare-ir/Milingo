@@ -7,7 +7,9 @@ export interface RadioProps extends React.HTMLProps<HTMLInputElement> {}
 
 class Radio extends React.Component<RadioProps> {
 
+  private radioButton: HTMLInputElement;
   handleChange = (e) => {
+    console.log('changed')
     e.preventDefault();
     e.stopPropagation();
 
@@ -25,27 +27,29 @@ class Radio extends React.Component<RadioProps> {
       ...props,
     }: RadioProps = this.props;
 
-    const checkClassName = classNames('radio-btn', {
+    const checkClassName = classNames('radio-btn', this.props.className, {
       checked: this.props.checked,
       disabled: this.props.disabled,
     });
 
     return (
-      <div className="radio-container">
-        <div className={checkClassName}>
-          <input
-            type="radio"
-            name={name}
-            checked={props.checked}
-            onChange={this.handleChange}
-            disabled={this.props.disabled}
-            />
-          <span className="radio">
-            <span className="icon"></span>
-          </span>
-          {children && (
-            <label htmlFor={props.id}>{children}</label>
-          )}
+      <div className={checkClassName}>
+        <input
+          type="radio"
+          name={name}
+          checked={props.checked}
+          onChange={this.handleChange}
+          disabled={this.props.disabled}
+          ref={node => (this.radioButton = node)}
+          />
+        <span className="radio">
+          <span className="icon"></span>
+        </span>
+        <div
+          className="children-div"
+          onClick={() => this.radioButton.click()
+        }>
+          {children}
         </div>
       </div>
     );
