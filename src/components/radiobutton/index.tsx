@@ -9,7 +9,6 @@ class Radio extends React.Component<RadioProps> {
 
   private radioButton: HTMLInputElement;
   handleChange = (e) => {
-    console.log('changed')
     e.preventDefault();
     e.stopPropagation();
 
