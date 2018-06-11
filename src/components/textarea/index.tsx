@@ -8,6 +8,7 @@ export interface InputProps extends React.HTMLProps<HTMLTextAreaElement> {
   forceDisplayError?: boolean;
   validate?: (value: boolean | string | number) => boolean;
   title?: string;
+  className?: string;
 }
 
 export interface InputState {
@@ -70,7 +71,7 @@ class Textarea extends React.Component<InputProps, InputState> {
       !validate(this.state.value)
     );
 
-    const className = classNames('textarea-container', {
+    const className = classNames('textarea-container', this.props.className, {
       error: hasError,
     });
 
