@@ -99,8 +99,8 @@ class File extends React.Component<FileProps, FileState> {
     });
 
     const mappedFile = this.state.files.map( (file, index)=>(
-      <div className="file-name-container">
-        <div className="file-name" key={file.name + file.size}>
+      <div className="file-name-container" key={file.name + file.size}>
+        <div className="file-name">
           <span>
             { file.name }
           </span>
