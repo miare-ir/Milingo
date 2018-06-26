@@ -2,6 +2,7 @@
   "linterOptions": {
     "typeCheck": true
   },
+  "extends": ["tslint-config-prettier", "tslint-plugin-prettier"],
   "rules": {
     "arrow-return-shorthand": true,
     "ban-types": {
