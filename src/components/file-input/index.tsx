@@ -8,14 +8,27 @@ export interface FileDictionary {
   [key: string]: File | number;
 }
 
+export interface States {
+  tryAgain?: boolean;
+  message?: string;
+  index?: number;
+  loading?: boolean;
+  progress?: number;
+}
+
+export interface StatesDictionary {
+  [key: number]: States;
+}
+
 export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
-  errorMessage?: string;
-  forceDisplayError?: boolean;
-  validate?: (value: any) => boolean;
-  pre?: string;
-  title?: string;
   files?: FileDictionary;
+  forceDisplayError?: boolean;
+  onChangeFiles?: (value: any) => void;
+  pre?: string;
+  states?: StatesDictionary;
+  title?: string;
+  validate?: (value: any) => boolean;
 }
 
 export interface FileInputState {
@@ -39,9 +52,8 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
 
   handleInput = e => {
     this.setState({ touched: true, files: e.target.files });
-
-    if (this.props.onChange) {
-      this.props.onChange(e);
+    if (this.props.onChangeFiles) {
+      this.props.onChangeFiles(e.target.files);
     }
   }
 
@@ -51,61 +63,82 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       delete files[index];
       files.length = Object.keys(files).length;
     }
+    if (this.props.onChangeFiles) {
+      this.props.onChangeFiles(files);
+    }
     this.setState({ files });
   }
 
-  private renderFiles = (hasError, file, index) => {
+  private renderFiles = (state: States, file, index: string) => {
     if (index === 'length') {
       return null;
     }
 
-    return (
-      <div className="file-name-container" key={file.name + file.size}>
-        <div className="file-name">
-          <span>
-            {file.name}
-          </span>
-          <i
-            className="material-icons clear"
-            onClick={() => this.clear(index)}>
-            close
-          </i>
-        </div>
-        {hasError && (
-          <span className="error">حجم فایل شما بیشتر از حد مجاز است</span>
-        )}
-      </div>
-    );
-  }
-
-  render() {
-    if (this.props.errorMessage && !this.props.validate) {
+    if (state && state.message && !this.props.validate) {
       throw new TypeError(
         'Please provide either both errorMessage and ' +
         'validate or non of them.',
       );
     }
 
+    const hasError = (
+      (this.props.forceDisplayError || this.state.touched) &&
+      this.props.validate &&
+      !this.props.validate(this.state.files)
+    );
+
+    const className = classNames('file-name-container', {
+      'error-state': hasError,
+      'try-again-state': state && state.tryAgain,
+    });
+    return (
+      <div className={className} key={file.name + file.size}>
+        <div className="file-name">
+          <div className="file-name-text">
+            <p>
+              {file.name}
+            </p>
+            <i
+              className="material-icons clear"
+              onClick={() => this.clear(index)}>
+              close
+            </i>
+          </div>
+          { state && state.tryAgain &&
+            <div className="try-again">
+              تلاش مجدد
+            </div>
+          }
+          {(state && state.progress)?
+            (<div className="loading-container">
+              <div className="loading" style={{'width': `${state.progress}%`}} />
+            </div>):(null)
+          }
+        </div>
+        {hasError && state && state.message && (
+          <span className="error">
+            {state.message}
+          </span>
+        )}
+      </div>
+    );
+  }
+
+  render() {
     const {
-      errorMessage,
       forceDisplayError,
       validate,
       displayClear,
       title,
       pre,
-      ...props,
+      disabled,
+      states,
+      ...props
     } = this.props;
 
     const { files } = this.state;
 
-    const hasError = (
-      errorMessage &&
-      (forceDisplayError || this.state.touched) &&
-      !validate(this.state.files)
-    );
-
     const className = classNames('file-container', {
-      error: hasError,
       multiple: this.props.multiple,
     });
 
@@ -114,12 +147,13 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
         <div className="file-div">
           {files && files.length > 0 && (
             Object.keys(files).map(key => {
-              return this.renderFiles(hasError, files[key], key);
+              return this.renderFiles(states && states[key], files[key], key);
             })
           )}
-          <Button primary>
+          <Button disabled={disabled} primary>
             {'افزودن فایل'}
             <input
+              disabled={disabled}
               type="file"
               onChange={this.handleInput}
               {...props} />

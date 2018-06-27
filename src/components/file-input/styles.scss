@@ -17,35 +17,85 @@ $FileNameSpanBackgroundColor: #ecedef;
     justify-content: flex-end;
     .file-name-container{
       margin-bottom: 16px;
-
+      position: relative;
+      min-width: 136px;
+      max-width: 240px;
       .file-name {
         height: 48px;
-        width: 100%;
-        min-width: 136px;
-        max-width: 240px;
-
         box-sizing: border-box;
         border-radius: 4px;
         background-color: $FileNameSpanBackgroundColor;
         font-size: 16px;
-        padding: 12px 48px 12px 8px;
         direction: ltr;
         color: $primary1;
-        text-align: left;
-        overflow:hidden !important;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        display: flex;
 
-        display: block;
-        position: relative;
-
-        .clear {
-          position: absolute;
-          top: 12px;
-          right: 8px;
-          color: $primary1;
-          font-size: 24px;
+        .file-name-text{
+          width: 100%;
+          text-align: left;
+          padding: 12px 48px 12px 8px;
+          position: relative;
+          p{
+            margin: 0px;
+            min-width: 136px;
+            max-width: 184px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+          .clear {
+            position: absolute;
+            top: 12px;
+            right: 8px;
+            color: $primary1;
+            font-size: 24px;
+            cursor: pointer;
+          }
+        }
+        .try-again{
+          border-radius: 0 4px 4px 0;
+          text-align: center;
+          min-width: 80px;
+          padding: 12px 8px;
+          font-size: 14px;
+          color: #ffffff;
+          background-color: $primary1;
           cursor: pointer;
+        }
+        .loading-container{
+          width: 100%;
+          overflow: hidden;
+          background-color: $loadingbarBackground;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          border-radius: 0px 0px 4px 4px;
+          .loading{
+            background-color: $primary2;
+            text-align: left;
+            height: 4px;
+            border-radius: 0px 0px 0px 4px;
+          }
+        }
+      }
+      &.error-state {
+        .file-name {
+          background-color: $warning2 !important;
+          color: $warning1 !important;
+        }
+
+        .clear{
+          color: $warning1 !important;
+        }
+      }
+      &.try-again-state{
+        .file-name{
+          .file-name-text{
+            p{
+              max-width: 88px !important;
+              min-width: 88px !important;
+            }
+          }
         }
       }
     }
@@ -66,22 +116,13 @@ $FileNameSpanBackgroundColor: #ecedef;
     }
   }
 
-  &.error {
-    .file-name {
-      background-color: $warning2 !important;
-      color: $warning1 !important;
-    }
-
-    .clear{
-      color: $warning1 !important;
-    }
-  }
-
   .error {
     margin-top: 4px;
     color: $inputError;
     font-size: 14px;
     display: block;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 
   &.multiple{
