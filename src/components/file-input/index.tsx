@@ -25,6 +25,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   files?: FileDictionary;
   forceDisplayError?: boolean;
   onChangeFiles?: (value: any) => void;
+  onTryAgain?: (files: FileDictionary)=> void;
   pre?: string;
   states?: StatesDictionary;
   title?: string;
@@ -105,7 +106,10 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
             </i>
           </div>
           { state && state.tryAgain &&
-            <div className="try-again">
+            <div
+              onClick={()=>this.props.onTryAgain(this.state.files)}
+              className="try-again"
+            >
               تلاش مجدد
             </div>
           }
