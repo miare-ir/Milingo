@@ -1,8 +1,8 @@
-import * as React from 'react';
-import * as classNames from 'classnames';
-import Button from '../button';
+import * as React from "react";
+import * as classNames from "classnames";
+import Button from "../button";
 
-import './styles.scss';
+import "./styles.scss";
 
 export interface FileDictionary {
   [key: string]: File | number;
@@ -25,7 +25,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   files?: FileDictionary;
   forceDisplayError?: boolean;
   onChangeFiles?: (value: any) => void;
-  onTryAgain?: (files: FileDictionary)=> void;
+  onTryAgain?: (files: FileDictionary) => void;
   pre?: string;
   states?: StatesDictionary;
   title?: string;
@@ -43,7 +43,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
 
     this.state = {
       touched: false,
-      files: props.files || null,
+      files: props.files || null
     };
   }
 
@@ -56,7 +56,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     if (this.props.onChangeFiles) {
       this.props.onChangeFiles(e.target.files);
     }
-  }
+  };
 
   clear = index => {
     const files = { ...this.state.files };
@@ -68,65 +68,65 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       this.props.onChangeFiles(files);
     }
     this.setState({ files });
-  }
+  };
 
   private renderFiles = (state: States, file, index: string) => {
-    if (index === 'length') {
+    if (index === "length") {
       return null;
     }
 
     if (state && state.message && !this.props.validate) {
       throw new TypeError(
-        'Please provide either both errorMessage and ' +
-        'validate or non of them.',
+        "Please provide either both errorMessage and " +
+          "validate or non of them."
       );
     }
 
-    const hasError = (
+    const hasError =
       (this.props.forceDisplayError || this.state.touched) &&
       this.props.validate &&
-      !this.props.validate(this.state.files)
-    );
+      !this.props.validate(this.state.files);
 
-    const className = classNames('file-name-container', {
-      'error-state': hasError,
-      'try-again-state': state && state.tryAgain,
+    const className = classNames("file-name-container", {
+      "error-state": hasError,
+      "try-again-state": state && state.tryAgain
     });
     return (
       <div className={className} key={file.name + file.size}>
         <div className="file-name">
           <div className="file-name-text">
-            <p>
-              {file.name}
-            </p>
+            <p>{file.name}</p>
             <i
               className="material-icons clear"
-              onClick={() => this.clear(index)}>
+              onClick={() => this.clear(index)}
+            >
               close
             </i>
           </div>
-          { state && state.tryAgain &&
-            <div
-              onClick={()=>this.props.onTryAgain(this.state.files)}
-              className="try-again"
-            >
-              تلاش مجدد
+          {state &&
+            state.tryAgain && (
+              <div
+                onClick={() => this.props.onTryAgain(this.state.files)}
+                className="try-again"
+              >
+                تلاش مجدد
+              </div>
+            )}
+          {state && state.progress ? (
+            <div className="loading-container">
+              <div
+                className="loading"
+                style={{ width: `${state.progress}%` }}
+              />
             </div>
-          }
-          {(state && state.progress)?
-            (<div className="loading-container">
-              <div className="loading" style={{'width': `${state.progress}%`}} />
-            </div>):(null)
-          }
+          ) : null}
         </div>
-        {hasError && state && state.message && (
-          <span className="error">
-            {state.message}
-          </span>
-        )}
+        {hasError &&
+          state &&
+          state.message && <span className="error">{state.message}</span>}
       </div>
     );
-  }
+  };
 
   render() {
     const {
@@ -142,25 +142,26 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
 
     const { files } = this.state;
 
-    const className = classNames('file-container', {
-      multiple: this.props.multiple,
+    const className = classNames("file-container", {
+      multiple: this.props.multiple
     });
 
     return (
       <div className={className}>
         <div className="file-div">
-          {files && files.length > 0 && (
+          {files &&
+            files.length > 0 &&
             Object.keys(files).map(key => {
               return this.renderFiles(states && states[key], files[key], key);
-            })
-          )}
+            })}
           <Button disabled={disabled} primary>
-            {'افزودن فایل'}
+            افزودن فایل
             <input
               disabled={disabled}
               type="file"
               onChange={this.handleInput}
-              {...props} />
+              {...props}
+            />
           </Button>
         </div>
       </div>
