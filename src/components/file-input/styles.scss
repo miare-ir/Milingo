@@ -1,5 +1,5 @@
-@import '../../assets/styles/_base.scss';
-@import '../../assets/styles/_input-variables.scss';
+@import "../../assets/styles/_base.scss";
+@import "../../assets/styles/_input-variables.scss";
 
 $FileNameSpanBackgroundColor: #ecedef;
 
@@ -8,14 +8,14 @@ $FileNameSpanBackgroundColor: #ecedef;
   margin-bottom: 16px;
 
   *:not(.material-icons) {
-    font-family: 'IranSans';
+    font-family: "IranSans";
     transition: $transitionInward;
   }
 
   .file-div {
     display: flex;
     justify-content: flex-end;
-    .file-name-container{
+    .file-name-container {
       margin-bottom: 16px;
       position: relative;
       min-width: 136px;
@@ -30,12 +30,12 @@ $FileNameSpanBackgroundColor: #ecedef;
         color: $primary1;
         display: flex;
 
-        .file-name-text{
+        .file-name-text {
           width: 100%;
           text-align: left;
           padding: 12px 48px 12px 8px;
           position: relative;
-          p{
+          p {
             margin: 0px;
             min-width: 136px;
             max-width: 184px;
@@ -52,7 +52,7 @@ $FileNameSpanBackgroundColor: #ecedef;
             cursor: pointer;
           }
         }
-        .try-again{
+        .try-again {
           border-radius: 0 4px 4px 0;
           text-align: center;
           min-width: 80px;
@@ -62,7 +62,7 @@ $FileNameSpanBackgroundColor: #ecedef;
           background-color: $primary1;
           cursor: pointer;
         }
-        .loading-container{
+        .loading-container {
           width: 100%;
           overflow: hidden;
           background-color: $loadingBarBackground;
@@ -70,7 +70,7 @@ $FileNameSpanBackgroundColor: #ecedef;
           bottom: 0px;
           left: 0px;
           border-radius: 0px 0px 4px 4px;
-          .loading{
+          .loading {
             background-color: $primary2;
             text-align: left;
             height: 4px;
@@ -84,14 +84,14 @@ $FileNameSpanBackgroundColor: #ecedef;
           color: $warning1 !important;
         }
 
-        .clear{
+        .clear {
           color: $warning1 !important;
         }
       }
-      &.try-again-state{
-        .file-name{
-          .file-name-text{
-            p{
+      &.try-again-state {
+        .file-name {
+          .file-name-text {
+            p {
               max-width: 88px !important;
               min-width: 88px !important;
             }
@@ -100,11 +100,11 @@ $FileNameSpanBackgroundColor: #ecedef;
       }
     }
 
-    button{
+    button {
       position: relative;
       flex-shrink: 0;
       margin-bottom: 16px;
-      input{
+      input {
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -125,8 +125,8 @@ $FileNameSpanBackgroundColor: #ecedef;
     overflow-wrap: break-word;
   }
 
-  &.multiple{
-    .file-div{
+  &.multiple {
+    .file-div {
       flex-direction: column-reverse;
       align-items: flex-end;
     }
