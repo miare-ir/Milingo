@@ -20,6 +20,7 @@ $FileNameSpanBackgroundColor: #ecedef;
       position: relative;
       flex-shrink: 0;
       margin-bottom: 16px;
+
       input {
         width: 100%;
         height: 100%;
@@ -37,6 +38,7 @@ $FileNameSpanBackgroundColor: #ecedef;
     position: relative;
     min-width: 136px;
     max-width: 240px;
+
     &.error-state {
       .file-name {
         background-color: $warning2 !important;
@@ -47,6 +49,7 @@ $FileNameSpanBackgroundColor: #ecedef;
         color: $warning1 !important;
       }
     }
+
     &.try-again-state {
       .file-name-text {
         p {
@@ -67,11 +70,13 @@ $FileNameSpanBackgroundColor: #ecedef;
     color: $primary1;
     display: flex;
   }
+
   .file-name-text {
     width: 100%;
     text-align: left;
     padding: 12px 48px 12px 8px;
     position: relative;
+
     p {
       margin: 0px;
       min-width: 136px;
@@ -80,6 +85,7 @@ $FileNameSpanBackgroundColor: #ecedef;
       white-space: nowrap;
       overflow: hidden;
     }
+
     .clear {
       position: absolute;
       top: 12px;
@@ -89,6 +95,7 @@ $FileNameSpanBackgroundColor: #ecedef;
       cursor: pointer;
     }
   }
+
   .try-again {
     border-radius: 0 4px 4px 0;
     text-align: center;
@@ -99,6 +106,7 @@ $FileNameSpanBackgroundColor: #ecedef;
     background-color: $primary1;
     cursor: pointer;
   }
+
   .loading-container {
     width: 100%;
     overflow: hidden;
@@ -107,6 +115,7 @@ $FileNameSpanBackgroundColor: #ecedef;
     bottom: 0px;
     left: 0px;
     border-radius: 0px 0px 4px 4px;
+
     .loading {
       background-color: $primary2;
       text-align: left;
