@@ -16,7 +16,23 @@
     font-weight: 500;
     margin: 0; 
   }
-  
 }
 
+.form-group-container {
+  margin-top: calculateRem(16);
+  width: 100%;
+  justify-content: space-between;
+}
 
+.single-row {
+  display: flex;
+
+  >:first-child {
+    margin-right: 16px;
+    flex-grow: 1;
+  }
+  >:last-child {
+    margin-left: 16px;
+    flex-grow: 1;
+  }
+}
