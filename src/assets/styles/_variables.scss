@@ -9,3 +9,6 @@ $warning2:      #FFD0D6;
 $mobileWidth:   480px;
 $tabletWidth:   768px;
 $monitorWidth:  1024px;
+
+// map of font-size to line-height in px
+$sizeLineHeightMap : (10: 16, 12: 20, 14: 24, 16:24, 18: 32, 20: 32 );
