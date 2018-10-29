@@ -1,0 +1,22 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+.form-container {
+  text-align: right;
+
+  .form-title{
+    @include font-size(16);
+    font-family: IranSans;
+    font-weight: 400;
+    margin: 0;
+  }
+  .form-description{
+    @include font-size(14);
+    font-family: IranSans;
+    font-weight: 500;
+    margin: 0; 
+  }
+  
+}
+
+
