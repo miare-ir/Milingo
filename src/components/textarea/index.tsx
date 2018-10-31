@@ -47,13 +47,13 @@ class Textarea extends React.Component<InputProps, InputState> {
     if (this.props.onInput) {
       this.props.onInput(e);
     }
-  }
+  };
 
   render() {
     if (this.props.errorMessage && !this.props.validate) {
       throw new TypeError(
         'Please provide either both errorMessage and ' +
-        'validate or non of them.',
+          'validate or non of them.',
       );
     }
 
@@ -62,14 +62,13 @@ class Textarea extends React.Component<InputProps, InputState> {
       forceDisplayError,
       validate,
       title,
-      ...props,
+      ...props
     } = this.props;
 
-    const hasError = (
+    const hasError =
       errorMessage &&
       (forceDisplayError || this.state.touched) &&
-      !validate(this.state.value)
-    );
+      !validate(this.state.value);
 
     const className = classNames('textarea-container', this.props.className, {
       error: hasError,
@@ -77,18 +76,15 @@ class Textarea extends React.Component<InputProps, InputState> {
 
     return (
       <div className={className}>
-        {title && (
-          <label htmlFor={props.id || ''}>{title}</label>
-        )}
+        {title && <label htmlFor={props.id || ''}>{title}</label>}
         <textarea
           cols={this.props.cols}
           rows={this.props.rows}
           value={this.state.value}
           onChange={this.handleInput}
-          {...props} />
-        {hasError && (
-          <span className="error">{errorMessage}</span>
-        )}
+          {...props}
+        />
+        {hasError && <span className="error">{errorMessage}</span>}
       </div>
     );
   }

@@ -35,21 +35,17 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
       if (toggle) {
         this.setState({ checked: !this.state.checked });
       } else {
-        this.setState({ checked: e.target.checked});
+        this.setState({ checked: e.target.checked });
       }
 
       if (this.props.onChange) {
         this.props.onChange(e);
       }
     }
-  }
+  };
 
-  render () {
-    const {
-      children,
-      disabled,
-      ...props,
-    }: CheckboxProps = this.props;
+  render() {
+    const { children, disabled, ...props }: CheckboxProps = this.props;
 
     const checkClassName = classNames('checkbox', {
       checked: this.state.checked,
@@ -58,25 +54,27 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
 
     return (
       <div className="checkbox-container">
-        <button className={checkClassName} {...props} onClick={e => {
-          this.handleChange(e, true);
+        <button
+          className={checkClassName}
+          {...props}
+          onClick={e => {
+            this.handleChange(e, true);
 
-          if (this.props.onClick) {
-            this.props.onClick(e);
-          }
-        }}>
+            if (this.props.onClick) {
+              this.props.onClick(e);
+            }
+          }}>
           <input
             type="checkbox"
             checked={this.state.checked}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+          />
           <span className="check">
             <span className="icon material-icons">check</span>
           </span>
-          {children && (
-            <label htmlFor={props.id}>{children}</label>
-          )}
+          {children && <label htmlFor={props.id}>{children}</label>}
         </button>
-        </div>
+      </div>
     );
   }
 }

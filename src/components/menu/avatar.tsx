@@ -16,27 +16,24 @@ const MenuAvatar: React.SFC<MenuAvatarProps> = ({
   selected,
   label,
   largeText,
-  ...props,
+  ...props
 }: MenuAvatarProps) => (
-  <div className={
-    classNames('menu-avatar', {
+  <div
+    className={classNames('menu-avatar', {
       'not-started': percentage === 0,
       selected: selected,
       large: largeText,
-    })
-  } {...props}>
+    })}
+    {...props}>
     <CircularProgressbar
       percentage={percentage || 0}
       textForPercentage={() => ''}
-      strokeWidth={5} />
+      strokeWidth={5}
+    />
     <div className="menu-avatar-inner">
-      <div className="menu-avatar-hover"></div>
-      {avatar && (
-        <div className="menu-avatar-image">{avatar}</div>
-      )}
-      {label && (
-        <div className="menu-avatar-label">{label}</div>
-      )}
+      <div className="menu-avatar-hover" />
+      {avatar && <div className="menu-avatar-image">{avatar}</div>}
+      {label && <div className="menu-avatar-label">{label}</div>}
     </div>
   </div>
 );

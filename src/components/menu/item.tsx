@@ -15,12 +15,14 @@ const MenuItem: React.SFC<MenuItemProps> = ({
   selected,
   title,
   time,
-  ...props,
+  ...props
 }: MenuItemProps) => (
-  <div className={classNames('menu-item', {
-    selected: selected,
-    'has-avatar': !!avatar,
-  })} {...props}>
+  <div
+    className={classNames('menu-item', {
+      selected: selected,
+      'has-avatar': !!avatar,
+    })}
+    {...props}>
     {avatar && (
       <div className="column avatar-container">
         <div className="menu-item-avatar">{avatar}</div>

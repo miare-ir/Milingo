@@ -8,32 +8,44 @@ import ListFooter from './footer';
 
 const SimpleArrayOfLiElements = () => (
   <>
-    <li style={{
-      direction: 'rtl',
-    }}>
+    <li
+      style={{
+        direction: 'rtl',
+      }}>
       <span>مبلغ غذا</span>
-      <span style={{
-        color: '#258613',
-        direction: 'ltr',
-      }}>+ ۲۰٫۰۰۰</span>
+      <span
+        style={{
+          color: '#258613',
+          direction: 'ltr',
+        }}>
+        + ۲۰٫۰۰۰
+      </span>
     </li>
-    <li style={{
-      direction: 'rtl',
-    }}>
+    <li
+      style={{
+        direction: 'rtl',
+      }}>
       <span>حمل و نقل</span>
-      <span style={{
-        color: '#d73948',
-        direction: 'ltr',
-      }}>- ۳۰٫۰۰۰</span>
+      <span
+        style={{
+          color: '#d73948',
+          direction: 'ltr',
+        }}>
+        - ۳۰٫۰۰۰
+      </span>
     </li>
-    <li style={{
-      direction: 'rtl',
-    }}>
+    <li
+      style={{
+        direction: 'rtl',
+      }}>
       <span>کارمزد پرداخت</span>
-      <span style={{
-        color: '#d73948',
-        direction: 'ltr',
-      }}>- ۱۰٫۰۰۰</span>
+      <span
+        style={{
+          color: '#d73948',
+          direction: 'ltr',
+        }}>
+        - ۱۰٫۰۰۰
+      </span>
     </li>
   </>
 );
@@ -65,10 +77,13 @@ storiesOf('List', module)
       </ListSection>
       <ListFooter>
         <span>مجموع پرداخت</span>
-        <span style={{
-          color: '#d73948',
-          direction: 'ltr',
-        }}>- ۱۰٫۰۰۰</span>
+        <span
+          style={{
+            color: '#d73948',
+            direction: 'ltr',
+          }}>
+          - ۱۰٫۰۰۰
+        </span>
       </ListFooter>
     </List>
   ));

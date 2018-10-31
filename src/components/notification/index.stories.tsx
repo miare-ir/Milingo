@@ -5,11 +5,7 @@ import Notification from '.';
 import './styles.stories.scss';
 
 storiesOf('Notifications', module)
-  .addDecorator(story => (
-    <div className="story-container">
-      {story()}
-    </div>
-  ))
+  .addDecorator(story => <div className="story-container">{story()}</div>)
   .addWithJSX('All', () => (
     <div>
       <div className="notification-container">

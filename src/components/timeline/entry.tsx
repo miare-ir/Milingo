@@ -14,7 +14,7 @@ const TimelineEntry: React.SFC<TimelineEntryProps> = ({
   title,
   noBorder,
   children,
-  ...props,
+  ...props
 }: TimelineEntryProps) => (
   <div className="timeline-entry" {...props}>
     <div className="timeline-entry-title-container">
@@ -23,10 +23,11 @@ const TimelineEntry: React.SFC<TimelineEntryProps> = ({
       </div>
       <h4 className="timeline-entry-title">{title}</h4>
     </div>
-    <div className={classNames('timeline-entry-content', {
-      empty: !children,
-      'no-border': noBorder,
-    })}>
+    <div
+      className={classNames('timeline-entry-content', {
+        empty: !children,
+        'no-border': noBorder,
+      })}>
       {children}
     </div>
   </div>

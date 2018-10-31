@@ -7,13 +7,13 @@ export interface ListTitleProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const ListTitle: React.SFC<ListTitleProps> = ({
-    title,
-    children,
-    ...props,
-  }: ListTitleProps) => (
-    <div className="list-title" {...props}>
-      {!!title ? title : children}
-    </div>
-  );
+  title,
+  children,
+  ...props
+}: ListTitleProps) => (
+  <div className="list-title" {...props}>
+    {!!title ? title : children}
+  </div>
+);
 
 export default ListTitle;

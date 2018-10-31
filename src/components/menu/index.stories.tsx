@@ -16,9 +16,7 @@ storiesOf('Menu', module)
       {story()}
     </div>
   ))
-  .addWithJSX('Header with title', () => (
-    <MenuHeader title="عنوان" />
-  ))
+  .addWithJSX('Header with title', () => <MenuHeader title="عنوان" />)
   .addWithJSX('Header with title and button', () => (
     <MenuHeader title="عنوان" action={<Button primary>عنوان دکمه</Button>} />
   ))
@@ -26,16 +24,17 @@ storiesOf('Menu', module)
     <MenuHeader
       title="عنوان"
       image={
-        <img src={
-          'data:image/png;base64,' +
-          'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+' +
-          'PPvPwAF+QL7zC2IewAAAABJRU5ErkJggg=='
-        } />
-      } />
+        <img
+          src={
+            'data:image/png;base64,' +
+            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+' +
+            'PPvPwAF+QL7zC2IewAAAABJRU5ErkJggg=='
+          }
+        />
+      }
+    />
   ))
-  .addWithJSX('Link Without notifications', () => (
-    <MenuLink title="عنوان" />
-  ))
+  .addWithJSX('Link Without notifications', () => <MenuLink title="عنوان" />)
   .addWithJSX('Link with notifications', () => (
     <MenuLink title="عنوان" notificationCount={7} />
   ))
@@ -114,15 +113,14 @@ storiesOf('Menu', module)
       <MenuItem
         avatar={<MenuAvatar avatar="M10" />}
         title="M10"
-        description="کدر صفوی" />
+        description="کدر صفوی"
+      />
       <MenuItem
         avatar={<MenuAvatar avatar="M10" />}
         title="M10"
         description="کدر صفوی"
-        time="۱۵:۳۰" />
-      <MenuItem
-        title="M10"
-        description="کدر صفوی"
-        time="۱۵:۳۰" />
+        time="۱۵:۳۰"
+      />
+      <MenuItem title="M10" description="کدر صفوی" time="۱۵:۳۰" />
     </div>
   ));
