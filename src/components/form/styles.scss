@@ -22,6 +22,13 @@
   margin-top: calculateRem(16);
   width: 100%;
   justify-content: space-between;
+
+  .form-group-title {
+    @include font-size(14);
+    font-weight: 500;
+    font-family: IranSans;
+    margin: 0 0 8px 0;
+  }
 }
 
 .single-row {
