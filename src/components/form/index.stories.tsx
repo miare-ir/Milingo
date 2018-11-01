@@ -26,11 +26,11 @@ storiesOf('Form', module)
           <Textarea title="عنوان" placeholder="متن" rows={4} />
         </FormGroup>
         <FormGroup title="عنوان">
-          <Radio checked> رفت وبرگشت</Radio>
-          <Radio> رفت وبرگشت</Radio>
+          <Radio checked>رفت وبرگشت</Radio>
+          <Radio>رفت وبرگشت</Radio>
         </FormGroup>
-        <Button> انصراف</Button>
-        <Button primary> ارسال</Button>
+        <Button>انصراف</Button>
+        <Button primary>ارسال</Button>
       </Form>
     </div>
   ))
@@ -52,16 +52,16 @@ storiesOf('Form', module)
         </FormGroup>
         <FormGroup singleRow>
           <FormGroup title="عنوان">
-            <Radio checked> رفت وبرگشت</Radio>
-            <Radio> رفت وبرگشت</Radio>
+            <Radio checked>رفت وبرگشت</Radio>
+            <Radio>رفت وبرگشت</Radio>
           </FormGroup>
           <FormGroup title="عنوان">
-            <Checkbox checked> رفت وبرگشت</Checkbox>
-            <Checkbox> رفت وبرگشت</Checkbox>
+            <Checkbox checked>رفت وبرگشت</Checkbox>
+            <Checkbox>رفت وبرگشت</Checkbox>
           </FormGroup>
         </FormGroup>
-        <Button> انصراف</Button>
-        <Button primary> ارسال</Button>
+        <Button>انصراف</Button>
+        <Button primary>ارسال</Button>
       </Form>
     </div>
   ));
