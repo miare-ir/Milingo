@@ -1,0 +1,26 @@
+@import '../../assets/styles/_base.scss';
+
+.counter-button-wrapper {
+    color: #000;
+
+    >:first-child {
+        border-radius: 20px 20px 0 0;
+    }
+    >:nth-child(2) {
+        border-radius: 0 0 20px 20px;
+    }
+    &:hover {
+        color: #1E6DC8;
+    }
+    .button-wrapper {
+        width: calculateRem(24);
+        height: calculateRem(24);
+        background-color: #F2F3F5;
+        padding: calculateRem(8);
+
+        &:hover {
+            background-color: #1E6DC8;
+            color: #ffffff;
+        }
+    }
+}
