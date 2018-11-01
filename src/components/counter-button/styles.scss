@@ -17,6 +17,7 @@
         height: calculateRem(24);
         background-color: #F2F3F5;
         padding: calculateRem(8);
+        user-select: none;
 
         &:hover {
             background-color: #1E6DC8;
