@@ -18,7 +18,7 @@ const SimpleArrayOfLiElements = () => (
           color: '#258613',
           direction: 'ltr',
         }}>
-        + ۲۰٫۰۰۰
+        + ۲۰,۰۰۰
       </span>
     </li>
     <li
@@ -31,7 +31,7 @@ const SimpleArrayOfLiElements = () => (
           color: '#d73948',
           direction: 'ltr',
         }}>
-        - ۳۰٫۰۰۰
+        - ۳۰,۰۰۰
       </span>
     </li>
     <li
@@ -44,7 +44,7 @@ const SimpleArrayOfLiElements = () => (
           color: '#d73948',
           direction: 'ltr',
         }}>
-        - ۱۰٫۰۰۰
+        - ۱۰,۰۰۰
       </span>
     </li>
   </>
@@ -82,7 +82,7 @@ storiesOf('List', module)
             color: '#d73948',
             direction: 'ltr',
           }}>
-          - ۱۰٫۰۰۰
+          - ۱۰,۰۰۰
         </span>
       </ListFooter>
     </List>
