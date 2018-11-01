@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface FormProps {
+export interface FormProps extends React.HTMLProps<HTMLFormElement> {
   className?: string;
   children?: React.ReactNode;
   title?: string;
