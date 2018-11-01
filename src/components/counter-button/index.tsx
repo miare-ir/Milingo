@@ -5,8 +5,8 @@ import './styles.scss';
 
 export interface CounterButtonProps extends React.HTMLProps<HTMLButtonElement> {
   className?: string;
-  onIncrease?: () => {};
-  onDecrease?: () => {};
+  onIncrease?: () => void;
+  onDecrease?: () => void;
   onCountUpdate?: (newCount: number) => {};
   acceptNegative?: boolean;
 }
