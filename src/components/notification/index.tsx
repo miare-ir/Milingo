@@ -8,15 +8,14 @@ export interface NotificationProps {
   warning?: boolean;
 }
 
-const Notification: React.SFC<NotificationProps> =
-  (props: NotificationProps) => {
-    const className = classNames('notification', {
-      alarm: props.warning === true,
-    });
+const Notification: React.SFC<NotificationProps> = (
+  props: NotificationProps,
+) => {
+  const className = classNames('notification', {
+    alarm: props.warning === true,
+  });
 
-    return (
-      <div className={className}>{props.message}</div>
-    );
-  };
+  return <div className={className}>{props.message}</div>;
+};
 
 export default Notification;

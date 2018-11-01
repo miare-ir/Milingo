@@ -14,7 +14,7 @@ export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
 }
 
 class Button extends React.Component<ButtonProps, {}> {
-  render (): JSX.Element {
+  render(): JSX.Element {
     const {
       primary,
       ghost,
@@ -23,7 +23,7 @@ class Button extends React.Component<ButtonProps, {}> {
       small,
       regular,
       large,
-      ...props,
+      ...props
     }: ButtonProps & React.HTMLProps<HTMLButtonElement> = this.props;
 
     const className: string = classNames(props.className || '', {
@@ -36,9 +36,7 @@ class Button extends React.Component<ButtonProps, {}> {
       large,
     });
 
-    return (
-      <button {...props} className={className} />
-    );
+    return <button {...props} className={className} />;
   }
 }
 

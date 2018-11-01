@@ -7,13 +7,19 @@
 }
 
 @mixin onTablet {
-  @media only screen and (max-width: $tabletWidth) {
+  @media only screen and (max-width: #{$desktopWidth - 1px}) {
     @content;
   }
 }
 
-@mixin onMonitor {
-  @media only screen and (max-width: $monitorWidth) {
+@mixin onDesktop {
+  @media only screen and (min-width: $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin onHdDesktop {
+  @media only screen and (min-width: $hdDesktopWidth) {
     @content;
   }
 }

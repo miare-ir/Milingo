@@ -2,10 +2,11 @@
 @import '../../assets/styles/_input-variables.scss';
 
 .checkbox-container {
+  direction: rtl;
+  
   .checkbox {
     margin-bottom: 16px;
     font-family: 'IranSans';
-    direction: rtl;
     display: flex;
     align-items: center;
     cursor: pointer;

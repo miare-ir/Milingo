@@ -21,9 +21,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
         {this.props.children && (
           <div className="dialog-content">{this.props.children}</div>
         )}
-        <div className="dialog-actions">
-          {this.props.actions}
-        </div>
+        <div className="dialog-actions">{this.props.actions}</div>
       </div>
     );
   }

@@ -48,18 +48,18 @@ class Input extends React.Component<InputProps, InputState> {
     if (this.props.onInput) {
       this.props.onInput(e);
     }
-  }
+  };
 
   clear = () => {
     const valueType = typeof this.state.value;
     this.setState({ value: valueType === 'boolean' ? false : '' });
-  }
+  };
 
   render() {
     if (this.props.errorMessage && !this.props.validate) {
       throw new TypeError(
         'Please provide either both errorMessage and ' +
-        'validate or non of them.',
+          'validate or non of them.',
       );
     }
 
@@ -70,14 +70,13 @@ class Input extends React.Component<InputProps, InputState> {
       displayClear,
       title,
       pre,
-      ...props,
+      ...props
     } = this.props;
 
-    const hasError = (
+    const hasError =
       errorMessage &&
       (forceDisplayError || this.state.touched) &&
-      !validate(this.state.value)
-    );
+      !validate(this.state.value);
 
     const className = classNames('field-container', {
       error: hasError,
@@ -85,29 +84,24 @@ class Input extends React.Component<InputProps, InputState> {
 
     return (
       <div className={className}>
-        {title && (
-          <label htmlFor={this.props.id || ''}>{title}</label>
-        )}
+        {title && <label htmlFor={this.props.id || ''}>{title}</label>}
         <div className="input-container">
           <input
             type={this.props.type || 'text'}
             value={this.state.value}
             onInput={this.handleInput}
-            {...props} />
-          {pre && (
-            <pre>{pre}</pre>
-          )}
-          {!pre && !!this.state.value && displayClear && (
-            <i
-              className="material-icons clear"
-              onClick={this.clear}>
-              add_circle
-            </i>
-          )}
+            {...props}
+          />
+          {pre && <pre>{pre}</pre>}
+          {!pre &&
+            !!this.state.value &&
+            displayClear && (
+              <i className="material-icons clear" onClick={this.clear}>
+                add_circle
+              </i>
+            )}
         </div>
-        {hasError && (
-          <span className="error">{errorMessage}</span>
-        )}
+        {hasError && <span className="error">{errorMessage}</span>}
       </div>
     );
   }
