@@ -130,20 +130,19 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
   }
 
   render() {
-    const from = this.props.from;
+    const { className, component, currencyType, from } = this.props;
     const value: string = this.applyFormats();
     let convertedValue: string =
       from === 'arabic'
         ? this.arabicToPersian(value)
         : this.englishToPersian(value);
 
-    if (this.props.currencyType) {
-      convertedValue = `${convertedValue} ${this.props.currencyType}`;
+    if (currencyType) {
+      convertedValue = `${convertedValue} ${currencyType}`;
     }
 
-    const { className } = this.props;
     return React.createElement(
-      this.props.component || 'span',
+      component || 'span',
       { className },
       convertedValue,
     );
