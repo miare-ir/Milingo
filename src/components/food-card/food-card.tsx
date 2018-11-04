@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import PersianNumber from '../persian-number';
 import './styles.scss';
 
 export interface FoodGroupProps {
@@ -18,7 +19,13 @@ class FormGroup extends React.Component<FoodGroupProps, {}> {
     return (
       <div className={componentClassName}>
         <p className="food-title">{children}</p>
-        <span className="price">{price}</span>
+        <PersianNumber
+          value={price}
+          component="label"
+          currencyType="ریال"
+          className="price"
+          includesPrice
+        />
         {hasTopping && <label className="topping-dot" />}
       </div>
     );

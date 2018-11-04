@@ -7,6 +7,7 @@ export interface PersianNumberProps {
   includesPrice?: boolean;
   includesTime?: boolean;
   component?: string;
+  currencyType?: string;
 }
 
 class PersianNumber extends React.Component<PersianNumberProps, {}> {
@@ -131,10 +132,14 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
   render() {
     const from = this.props.from;
     const value: string = this.applyFormats();
-    const convertedValue: string =
+    let convertedValue: string =
       from === 'arabic'
         ? this.arabicToPersian(value)
         : this.englishToPersian(value);
+
+    if (this.props.currencyType) {
+      convertedValue = `${convertedValue} ${this.props.currencyType}`;
+    }
 
     const { className } = this.props;
     return React.createElement(
