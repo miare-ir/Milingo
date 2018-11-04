@@ -1,0 +1,43 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+.food-card-container {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 16px 8px -12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  height: calculateRem(96);
+  justify-content: space-between;
+  margin: 16px 8px 0 8px;
+  max-width: 240px;
+  min-width: 148px;
+  padding: calculateRem(12);
+  position: relative;
+  font-family: IRANSans;
+
+  .food-title {
+    margin: 0;
+    @include font-size(14);
+    color: #000000;
+    text-align: center;
+  }
+  .price {
+    color: #4A4A4A;
+    @include font-size(14);
+  }
+  .topping-dot {
+    width: calculateRem(8);
+    height: calculateRem(8);
+    border-radius: 50%;
+    background-color: #4A90E2;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+  }
+}
