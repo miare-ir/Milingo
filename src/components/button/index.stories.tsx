@@ -5,16 +5,10 @@ import Button from '.';
 import './styles.stories.scss';
 
 storiesOf('Button', module)
-  .addDecorator(story => (
-    <div className="story-container">
-      {story()}
-    </div>
-  ))
+  .addDecorator(story => <div className="story-container">{story()}</div>)
   .addWithJSX('Primary', () => (
     <div>
-      <Button primary>
-        سلام دنیا
-      </Button>
+      <Button primary>سلام دنیا</Button>
       <Button primary disabled>
         سلام دنیا
       </Button>
@@ -22,19 +16,13 @@ storiesOf('Button', module)
   ))
   .addWithJSX('Ghost', () => (
     <div>
-      <Button ghost>
-        سلام دنیا
-      </Button>
+      <Button ghost>سلام دنیا</Button>
       <Button ghost disabled>
         سلام دنیا
       </Button>
     </div>
   ))
-  .addWithJSX('Link', () => (
-    <Button link>
-      سلام دنیا
-    </Button>
-  ))
+  .addWithJSX('Link', () => <Button link>سلام دنیا</Button>)
   .addWithJSX('Tiny', () => (
     <div>
       <Button primary tiny>

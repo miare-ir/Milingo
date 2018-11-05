@@ -8,9 +8,7 @@ import './styles.stories.scss';
 
 storiesOf('Timeline', module)
   .addDecorator(story => (
-    <div className="story-container timeline-story-container">
-      {story()}
-    </div>
+    <div className="story-container timeline-story-container">{story()}</div>
   ))
   .addWithJSX('With single entry', () => (
     <Timeline>
@@ -21,12 +19,14 @@ storiesOf('Timeline', module)
     <Timeline>
       <TimelineEntry time="14:30" title="درخواست کوریر دادید." />
       <TimelineEntry noBorder title="کوریر در حال حرکت به سمت شماست">
-        <div style={{
-          backgroundColor: '#eee',
-          width: '400px',
-          height: '300px',
-          borderRadius: '5px',
-        }} />
+        <div
+          style={{
+            backgroundColor: '#eee',
+            width: '400px',
+            height: '300px',
+            borderRadius: '5px',
+          }}
+        />
       </TimelineEntry>
     </Timeline>
   ))
@@ -36,12 +36,14 @@ storiesOf('Timeline', module)
       <TimelineEntry time="14:35" title="کوریر رسید." />
       <TimelineEntry time="14:40" title="کوریر از رستوران راه افتاد." />
       <TimelineEntry noBorder title="کوریر در حال حرکت به سمت شماست">
-        <div style={{
-          backgroundColor: '#eee',
-          width: '400px',
-          height: '300px',
-          borderRadius: '5px',
-        }} />
+        <div
+          style={{
+            backgroundColor: '#eee',
+            width: '400px',
+            height: '300px',
+            borderRadius: '5px',
+          }}
+        />
       </TimelineEntry>
     </Timeline>
   ));

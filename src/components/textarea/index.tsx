@@ -3,13 +3,12 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface InputProps extends React.HTMLProps<HTMLInputElement> {
-  displayClear?: boolean;
+export interface InputProps extends React.HTMLProps<HTMLTextAreaElement> {
   errorMessage?: string;
   forceDisplayError?: boolean;
   validate?: (value: boolean | string | number) => boolean;
-  pre?: string;
   title?: string;
+  className?: string;
 }
 
 export interface InputState {
@@ -17,7 +16,7 @@ export interface InputState {
   value: any;
 }
 
-class Input extends React.Component<InputProps, InputState> {
+class Textarea extends React.Component<InputProps, InputState> {
   constructor(props) {
     super(props);
 
@@ -50,11 +49,6 @@ class Input extends React.Component<InputProps, InputState> {
     }
   };
 
-  clear = () => {
-    const valueType = typeof this.state.value;
-    this.setState({ value: valueType === 'boolean' ? false : '' });
-  };
-
   render() {
     if (this.props.errorMessage && !this.props.validate) {
       throw new TypeError(
@@ -67,9 +61,7 @@ class Input extends React.Component<InputProps, InputState> {
       errorMessage,
       forceDisplayError,
       validate,
-      displayClear,
       title,
-      pre,
       ...props
     } = this.props;
 
@@ -78,33 +70,24 @@ class Input extends React.Component<InputProps, InputState> {
       (forceDisplayError || this.state.touched) &&
       !validate(this.state.value);
 
-    const className = classNames('field-container', {
+    const className = classNames('textarea-container', this.props.className, {
       error: hasError,
     });
 
     return (
       <div className={className}>
-        {title && <label htmlFor={this.props.id || ''}>{title}</label>}
-        <div className="input-container">
-          <input
-            type={this.props.type || 'text'}
-            value={this.state.value}
-            onInput={this.handleInput}
-            {...props}
-          />
-          {pre && <pre>{pre}</pre>}
-          {!pre &&
-            !!this.state.value &&
-            displayClear && (
-              <i className="material-icons clear" onClick={this.clear}>
-                add_circle
-              </i>
-            )}
-        </div>
+        {title && <label htmlFor={props.id || ''}>{title}</label>}
+        <textarea
+          cols={this.props.cols}
+          rows={this.props.rows}
+          value={this.state.value}
+          onChange={this.handleInput}
+          {...props}
+        />
         {hasError && <span className="error">{errorMessage}</span>}
       </div>
     );
   }
 }
 
-export default Input;
+export default Textarea;

@@ -1,0 +1,45 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+.form-container {
+  text-align: right;
+
+  .form-title{
+    @include font-size(16);
+    font-family: IranSans;
+    font-weight: 400;
+    margin: 0;
+  }
+  .form-description{
+    @include font-size(14);
+    font-family: IranSans;
+    font-weight: 500;
+    margin: 0; 
+  }
+}
+
+.form-group-container {
+  margin-top: calculateRem(16);
+  width: 100%;
+  justify-content: space-between;
+
+  .form-group-title {
+    @include font-size(14);
+    font-weight: 500;
+    font-family: IranSans;
+    margin: 0 0 8px 0;
+  }
+}
+
+.single-row {
+  display: flex;
+
+  >:first-child {
+    margin-right: 16px;
+    flex-grow: 1;
+  }
+  >:last-child {
+    margin-left: 16px;
+    flex-grow: 1;
+  }
+}

@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import Checkbox from '.';
+import Radio from '.';
 
-storiesOf('Checkbox', module)
+storiesOf('Radio', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
   .addWithJSX('Normal', () => (
     <div>
-      <Checkbox>سلام دنیا</Checkbox>
-      <Checkbox disabled>سلام دنیا</Checkbox>
+      <Radio>سلام دنیا</Radio>
+      <Radio disabled>سلام دنیا</Radio>
     </div>
   ))
   .addWithJSX('Checked', () => (
     <div>
-      <Checkbox checked>سلام دنیا</Checkbox>
-      <Checkbox checked disabled>
+      <Radio checked>سلام دنیا</Radio>
+      <Radio checked disabled>
         سلام دنیا
-      </Checkbox>
+      </Radio>
     </div>
   ));
