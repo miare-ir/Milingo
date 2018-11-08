@@ -10,13 +10,23 @@
   border-radius: 4px;
   direction: rtl;
 
+  &:not(.secondary) {
+    padding: 24px;
+  }
+
   .dialog {
+    &-header {
+      width: 100%;
+    }
+
     &-title {
       width: 100%;
       font-size: 16px;
       font-weight: 500;
       margin: 0;
+      text-align: center;
     }
+
 
     &-content {
       display: flex;
@@ -27,6 +37,7 @@
 
       p {
         margin: 0;
+        text-align: center;
       }
     }
 
@@ -39,6 +50,36 @@
       button {
         &:not(:first-child) {
           margin-top: 12px;
+        }
+      }
+    }
+  }
+}
+
+.primary {
+  .dialog {
+    &-title {
+      text-align: right;
+    }
+
+    &-content {
+      margin: 24px 0 32px 0;
+
+      p {
+        text-align: right;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin-top: 16px;
+      direction: ltr;
+      
+      button {
+        &:not(:first-child) {
+          margin-top: 0;
         }
       }
     }
