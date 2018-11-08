@@ -29,12 +29,14 @@
     max-height: calculateRem(72);
     overflow: hidden;
   }
+
   .price {
     color: #4A4A4A;
     direction: rtl;
     @include font-size(14);
     text-align: center;
   }
+  
   .topping-dot {
     width: calculateRem(8);
     height: calculateRem(8);

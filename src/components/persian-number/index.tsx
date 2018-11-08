@@ -81,6 +81,8 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
 
   static formatPrice(text): string {
     text = text + '';
+    let result: string = text;
+
     const prices = (text.match(/[0-9]+/g) || []).map((price: string) => {
       price = price.trim();
       const leftPad = 3 - ((price.length + 1) % 3);
@@ -97,7 +99,7 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
 
       return [price.trim(), tmp.join('٫').trim()];
     });
-    let result: string = text;
+
     prices.forEach(([original, formatted], i) => {
       if (original !== '0') {
         result = result.replace(original, formatted + '0');
