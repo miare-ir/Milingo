@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as classNames from "classnames";
-import Button from "../button";
+import * as React from 'react';
+import * as classNames from 'classnames';
+import Button from '../button';
 
-import "./styles.scss";
+import './styles.scss';
 
 export interface FileDictionary {
   [key: string]: File | number;
@@ -30,6 +30,8 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   states?: StatesDictionary;
   title?: string;
   validate?: (value: any) => boolean;
+  children?: string;
+  tryAgainText?: string'
 }
 
 export interface FileInputState {
@@ -43,7 +45,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
 
     this.state = {
       touched: false,
-      files: props.files || null
+      files: props.files || null,
     };
   }
 
@@ -71,14 +73,14 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
   };
 
   private renderFiles = (state: States, file, index: string) => {
-    if (index === "length") {
+    if (index === 'length') {
       return null;
     }
 
     if (state && state.message && !this.props.validate) {
       throw new TypeError(
-        "Please provide either both errorMessage and " +
-          "validate or non of them."
+        'Please provide either both errorMessage and ' +
+          'validate or non of them.',
       );
     }
 
@@ -87,9 +89,9 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       this.props.validate &&
       !this.props.validate(this.state.files);
 
-    const className = classNames("file-name-container", {
-      "error-state": hasError,
-      "try-again-state": state && state.tryAgain
+    const className = classNames('file-name-container', {
+      'error-state': hasError,
+      'try-again-state': state && state.tryAgain,
     });
     return (
       <div className={className} key={file.name + file.size}>
@@ -98,8 +100,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
             <p>{file.name}</p>
             <i
               className="material-icons clear"
-              onClick={() => this.clear(index)}
-            >
+              onClick={() => this.clear(index)}>
               close
             </i>
           </div>
@@ -107,9 +108,8 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
             state.tryAgain && (
               <div
                 onClick={() => this.props.onTryAgain(this.state.files)}
-                className="try-again"
-              >
-                تلاش مجدد
+                className="try-again">
+                { this.props.tryAgainText ? this.props.tryAgainText : 'تلاش مجدد'}
               </div>
             )}
           {state && state.progress ? (
@@ -137,13 +137,14 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       pre,
       disabled,
       states,
+      children,
       ...props
     } = this.props;
 
     const { files } = this.state;
 
-    const className = classNames("file-container", {
-      multiple: this.props.multiple
+    const className = classNames('file-container', {
+      multiple: this.props.multiple,
     });
 
     return (
@@ -155,7 +156,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
               return this.renderFiles(states && states[key], files[key], key);
             })}
           <Button disabled={disabled} primary>
-            افزودن فایل
+            {children ? children : 'افزودن فایل'}
             <input
               disabled={disabled}
               type="file"
