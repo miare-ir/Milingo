@@ -1,71 +1,75 @@
-const path = require("path");
+const path = require('path');
+console.log(path.resolve(__dirname, 'src/index.ts'));
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/index.ts"),
+  entry: path.resolve(__dirname, 'src/index.ts'),
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "index.js",
-    library: "Milingo",
-    libraryTarget: "commonjs"
+    path: path.resolve(__dirname, './dist'),
+    filename: 'index.js',
+    library: 'Milingo',
+    libraryTarget: 'commonjs',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          presets: ["@babel/preset-env", "@babel/react"]
-        }
+          presets: ['@babel/preset-env', '@babel/react'],
+        },
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader"
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader"
+            loader: 'css-loader',
           },
           {
-            loader: "resolve-url-loader",
+            loader: 'resolve-url-loader',
             options: {
-              debug: false
-            }
+              debug: false,
+            },
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
-              plugins: [require("autoprefixer")],
-              sourceMap: true
-            }
+              plugins: [require('autoprefixer')],
+              sourceMap: true,
+            },
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
-              includePaths: ["./node_modules"]
-            }
-          }
-        ]
+              includePaths: ['./node_modules'],
+            },
+          },
+        ],
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: "awesome-typescript-loader"
+        loader: 'awesome-typescript-loader',
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|woff|woff2|ttf|eot)$/,
         use: [
           {
-            loader: "file-loader",
-            options: {}
-          }
-        ]
-      }
-    ]
-  }
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
+    ],
+  },
 };
