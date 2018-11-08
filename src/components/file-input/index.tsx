@@ -31,7 +31,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   title?: string;
   validate?: (value: any) => boolean;
   children?: string;
-  tryAgainText?: string'
+  tryAgainText?: string;
 }
 
 export interface FileInputState {
@@ -109,7 +109,9 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
               <div
                 onClick={() => this.props.onTryAgain(this.state.files)}
                 className="try-again">
-                { this.props.tryAgainText ? this.props.tryAgainText : 'تلاش مجدد'}
+                {this.props.tryAgainText
+                  ? this.props.tryAgainText
+                  : 'تلاش مجدد'}
               </div>
             )}
           {state && state.progress ? (
