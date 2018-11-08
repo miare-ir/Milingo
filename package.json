@@ -1,7 +1,16 @@
 {
   "name": "miare-dls",
   "description": "Miare Design Language",
+  "main": "dist/index.js",
+  "author": "Miare <dev@mia.re> (https://mia.re)",
+  "version": "0.0.1",
+  "keywords": [
+    "design-library",
+    "react"
+  ],
+  "license": "MIT",
   "scripts": {
+    "build": "ENV=production webpack --mode=production",
     "dist": "yarn run build-storybook",
     "start": "yarn run storybook",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -13,37 +22,43 @@
   },
   "devDependencies": {
     "@storybook/addon-viewport": "^3.4.2",
-    "@storybook/react": "^4.0.0-alpha.3",
+    "@storybook/react": "^4.0.2",
     "@types/node": "^9.6.5",
     "@types/react": "^16.3.11",
     "@types/react-dom": "^16.0.5",
     "autoprefixer": "^8.3.0",
     "awesome-typescript-loader": "^5.0.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.11",
+    "file-loader": "^2.0.0",
     "node-sass": "^4.8.3",
+    "path": "^0.12.7",
     "postcss-loader": "^2.1.4",
+    "prettier": "^1.14.3",
+    "prettier-stylelint": "^0.4.2",
     "react": "^16.3.2",
-    "react-circular-progressbar": "^0.8.0",
     "react-dom": "^16.3.2",
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.0.1",
     "storybook-addon-jsx": "^5.3.0",
     "style-loader": "^0.20.3",
     "ts-loader": "^4.2.0",
+    "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.15.0",
+    "tslint-plugin-prettier": "^2.0.0",
     "typescript": "^2.8.1",
     "url-loader": "^1.0.1",
-    "prettier": "^1.14.3",
-    "prettier-stylelint": "^0.4.2",
-    "tslint": "^5.11.0",
-    "tslint-plugin-prettier": "^2.0.0"
+    "webpack": "^4.25.0",
+    "webpack-cli": "^3.1.2"
   },
   "peerDependencies": {
     "classnames": "^2.2.5",
     "react": "^16.3.2",
-    "react-circular-progressbar": "^0.8.0",
     "react-dom": "^16.3.2"
+  },
+  "dependencies": {
+    "babel-loader": "7",
+    "react-circular-progressbar": "^1.0.0"
   }
 }
