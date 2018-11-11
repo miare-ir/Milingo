@@ -5,15 +5,16 @@ import './styles.scss';
 
 export interface TabNavProps {
   className?: string;
+  children: JSX.Element[];
 }
 
 export interface TabNavState {}
 
 class TabNav extends React.Component<TabNavProps, TabNavState> {
   render() {
-    const { className } = this.props;
+    const { className, children } = this.props;
     const componentClassName = classNames('tab-nav-wrapper', className);
-    return <div className={componentClassName} />;
+    return <div className={componentClassName}> {children}</div>;
   }
 }
 

@@ -1,1 +1,47 @@
 @import '../../assets/styles/_base.scss';
+
+.tab-nav-wrapper {
+  width: 100%;
+  height: 56px;
+  border-bottom: 1px solid $primary1;
+  box-sizing: border-box;
+  display: flex;
+  direction: rtl;
+  justify-content: space-around;
+
+  .tab-nav-item {
+    padding: 16px;
+    position: relative;
+    flex-grow: 1;
+    text-align: center;
+
+    label {
+      color: #000000;
+      font-family: IRANSans;
+      @include font-size(16);
+      font-weight: 500;
+
+      &:hover {
+        color: $primary2;
+        transition: $transitionOutward;
+      }
+    }
+  }
+
+  .active {
+    label{
+      color: $primary1;
+    }
+
+    &:after {
+      content: '';
+      height: 6px;
+      width: calc(100% - 16px);
+      background-color: $primary1;
+      position: absolute;
+      bottom: 0;
+      left: 8px;
+      border-radius: 6px 6px 0 0;
+    }
+  }
+}
