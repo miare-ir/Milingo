@@ -14,6 +14,14 @@ storiesOf('Button', module)
       </Button>
     </div>
   ))
+  .addWithJSX('Danger', () => (
+    <div>
+      <Button danger>سلام دنیا</Button>
+      <Button danger disabled>
+        سلام دنیا
+      </Button>
+    </div>
+  ))
   .addWithJSX('Ghost', () => (
     <div>
       <Button ghost>سلام دنیا</Button>
@@ -26,6 +34,9 @@ storiesOf('Button', module)
   .addWithJSX('Tiny', () => (
     <div>
       <Button primary tiny>
+        سلام دنیا
+      </Button>
+      <Button danger tiny>
         سلام دنیا
       </Button>
       <Button ghost tiny>
@@ -41,6 +52,9 @@ storiesOf('Button', module)
       <Button primary small>
         سلام دنیا
       </Button>
+      <Button danger small>
+        سلام دنیا
+      </Button>
       <Button ghost small>
         سلام دنیا
       </Button>
@@ -54,6 +68,9 @@ storiesOf('Button', module)
       <Button primary regular>
         سلام دنیا
       </Button>
+      <Button danger regular>
+        سلام دنیا
+      </Button>
       <Button ghost regular>
         سلام دنیا
       </Button>
@@ -65,6 +82,9 @@ storiesOf('Button', module)
   .addWithJSX('Large', () => (
     <div>
       <Button primary large>
+        سلام دنیا
+      </Button>
+      <Button danger large>
         سلام دنیا
       </Button>
       <Button ghost large>
