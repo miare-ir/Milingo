@@ -5,7 +5,7 @@ import './styles.scss';
 
 export interface TabNavProps {
   className?: string;
-  children: JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
 }
 
 export interface TabNavState {}

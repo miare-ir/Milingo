@@ -3,8 +3,10 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface TabContentItemProps {
-  className: string;
+export interface TabContentItemProps extends React.HTMLProps<HTMLDivElement> {
+  className?: string;
+  children?: JSX.Element[] | JSX.Element | string;
+  tabId: number | string;
 }
 
 export interface TabContentItemState {}
@@ -14,9 +16,13 @@ class TabContentItem extends React.Component<
   TabContentItemState
 > {
   render() {
-    const { className } = this.props;
+    const { className, children, ...props } = this.props;
     const componentClassName = classNames(className);
-    return <div className={componentClassName} />;
+    return (
+      <div className={componentClassName} {...props}>
+        {children}
+      </div>
+    );
   }
 }
 

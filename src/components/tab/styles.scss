@@ -8,6 +8,7 @@
   display: flex;
   direction: rtl;
   justify-content: space-around;
+  transition: $transitionOutward;
 
   .tab-nav-item {
     padding: 16px;
@@ -20,6 +21,7 @@
       font-family: IRANSans;
       @include font-size(16);
       font-weight: 500;
+      user-select: none;
 
       &:hover {
         color: $primary2;
@@ -44,4 +46,9 @@
       border-radius: 6px 6px 0 0;
     }
   }
+}
+
+.tab-content-wrapper {
+  width: 100%;
+  direction: rtl;
 }
