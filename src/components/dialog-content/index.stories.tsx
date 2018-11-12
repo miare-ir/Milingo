@@ -10,8 +10,24 @@ storiesOf('Dialog Content', module)
   .addDecorator(story => (
     <div className="story-container dialog-story">{story()}</div>
   ))
-  .addWithJSX('With content', () => (
+  .addWithJSX('Primary with content', () => (
     <DialogContent
+      primary
+      title="عنوان"
+      actions={[
+        <Button key="primary" small primary>
+          ثبت
+        </Button>,
+        <Button key="secondary" small>
+          انصراف
+        </Button>,
+      ]}>
+      <p>توضیحات</p>
+    </DialogContent>
+  ))
+  .addWithJSX('Secondary with content', () => (
+    <DialogContent
+      secondary
       title="عنوان"
       actions={[
         <Button key="primary" primary>
@@ -22,8 +38,9 @@ storiesOf('Dialog Content', module)
       <p>توضیحات</p>
     </DialogContent>
   ))
-  .addWithJSX('Without content', () => (
+  .addWithJSX('Secondary without content', () => (
     <DialogContent
+      secondary
       title="عنوان"
       actions={[
         <Button key="primary" primary>
