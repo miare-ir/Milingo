@@ -26,6 +26,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
       );
     }
   }
+
   render() {
     const componentClassNames = classNames(
       'dialog-content-wrapper',
