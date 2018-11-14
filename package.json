@@ -3,7 +3,7 @@
   "description": "Miare Design Language(Milingo)",
   "main": "./dist/index.js",
   "author": "Miare <dev@mia.re> (https://mia.re)",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "design-library",
     "react"
