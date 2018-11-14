@@ -16,6 +16,10 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -c .storybook -o dist"
   },
+  "files": [
+    "./dist/index.js",
+    "./build/lib/index.d.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/miare-ir/Milingo"

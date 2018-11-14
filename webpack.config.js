@@ -6,7 +6,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: 'index.js',
     library: 'Milingo',
-    libraryTarget: 'commonjs',
+    libraryTarget: 'umd',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
