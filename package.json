@@ -3,7 +3,7 @@
   "description": "Miare Design Language(Milingo)",
   "main": "./dist/index.js",
   "author": "Miare <dev@mia.re> (https://mia.re)",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "design-library",
     "react"
@@ -16,10 +16,6 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -c .storybook -o dist"
   },
-  "files": [
-    "./dist/index.js",
-    "./build/lib/index.d.ts"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/miare-ir/Milingo"
