@@ -1,5 +1,4 @@
 const path = require('path');
-console.log(path.resolve(__dirname, 'src/index.ts'));
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.ts'),
