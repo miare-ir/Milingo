@@ -1,7 +1,7 @@
 {
   "name": "milingo",
   "description": "Miare Design Language(Milingo)",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "author": "Miare <dev@mia.re> (https://mia.re)",
   "version": "0.0.2",
   "keywords": [
