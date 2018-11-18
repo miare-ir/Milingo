@@ -2,11 +2,13 @@ import * as React from 'react';
 import './styles.scss';
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
     displayClear?: boolean;
+    onClear?: () => void;
     errorMessage?: string;
     forceDisplayError?: boolean;
     validate?: (value: boolean | string | number) => boolean;
     pre?: string;
     title?: string;
+    ltr?: boolean;
 }
 export interface InputState {
     touched: boolean;
