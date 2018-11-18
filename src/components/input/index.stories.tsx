@@ -14,6 +14,7 @@ storiesOf('Input', module)
         placeholder="متن"
         errorMessage="مقدار وارد شده صحیح نیست"
         validate={value => !!value}
+        displayClear
       />
       <Input title="عنوان" placeholder="متن" type="number" pre="ریال" />
       <Input

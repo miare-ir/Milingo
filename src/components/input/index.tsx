@@ -5,6 +5,7 @@ import './styles.scss';
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
+  onClear?: () => void;
   errorMessage?: string;
   forceDisplayError?: boolean;
   validate?: (value: boolean | string | number) => boolean;
@@ -52,7 +53,15 @@ class Input extends React.Component<InputProps, InputState> {
 
   clear = () => {
     const valueType = typeof this.state.value;
-    this.setState({ value: valueType === 'boolean' ? false : '' });
+
+    this.setState({
+      value: valueType === 'boolean' ? false : '',
+      touched: false,
+    });
+
+    if (this.props.onClear) {
+      this.props.onClear();
+    }
   };
 
   render() {
