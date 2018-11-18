@@ -19,10 +19,18 @@ storiesOf('Input', module)
       <Input title="عنوان" placeholder="متن" type="number" pre="ریال" />
       <Input
         title="عنوان"
-        placeholder="متن"
+        placeholder="متن با دکمه‌ی ریست"
         errorMessage="مقدار وارد شده صحیح نیست"
         validate={value => !!value}
         displayClear
+      />
+      <Input
+        title="عنوان"
+        placeholder="متن چپ به راست"
+        errorMessage="مقدار وارد شده صحیح نیست"
+        validate={value => !!value}
+        displayClear
+        ltr
       />
       <Input
         title="عنوان"

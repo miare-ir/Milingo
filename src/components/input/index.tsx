@@ -11,6 +11,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   validate?: (value: boolean | string | number) => boolean;
   pre?: string;
   title?: string;
+  ltr?: boolean;
 }
 
 export interface InputState {
@@ -79,6 +80,7 @@ class Input extends React.Component<InputProps, InputState> {
       displayClear,
       title,
       pre,
+      ltr,
       ...props
     } = this.props;
 
@@ -89,6 +91,7 @@ class Input extends React.Component<InputProps, InputState> {
 
     const className = classNames('field-container', {
       error: hasError,
+      ltr,
     });
 
     return (
