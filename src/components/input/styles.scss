@@ -90,6 +90,18 @@
     }
   }
 
+  &.ltr {
+    input {
+      direction: ltr !important;
+    }
+
+    .clear {
+      right: 8px !important;
+      left: unset;
+      text-align: left;
+    }
+  }
+
   .error {
     margin-top: 4px;
     color: $inputError;

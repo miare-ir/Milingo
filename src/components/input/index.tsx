@@ -5,11 +5,13 @@ import './styles.scss';
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
+  onClear?: () => void;
   errorMessage?: string;
   forceDisplayError?: boolean;
   validate?: (value: boolean | string | number) => boolean;
   pre?: string;
   title?: string;
+  ltr?: boolean;
 }
 
 export interface InputState {
@@ -52,7 +54,15 @@ class Input extends React.Component<InputProps, InputState> {
 
   clear = () => {
     const valueType = typeof this.state.value;
-    this.setState({ value: valueType === 'boolean' ? false : '' });
+
+    this.setState({
+      value: valueType === 'boolean' ? false : '',
+      touched: false,
+    });
+
+    if (this.props.onClear) {
+      this.props.onClear();
+    }
   };
 
   render() {
@@ -70,6 +80,7 @@ class Input extends React.Component<InputProps, InputState> {
       displayClear,
       title,
       pre,
+      ltr,
       ...props
     } = this.props;
 
@@ -80,6 +91,7 @@ class Input extends React.Component<InputProps, InputState> {
 
     const className = classNames('field-container', {
       error: hasError,
+      ltr,
     });
 
     return (
