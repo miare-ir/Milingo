@@ -81,6 +81,7 @@ class Input extends React.Component<InputProps, InputState> {
       title,
       pre,
       ltr,
+      onClear,
       ...props
     } = this.props;
 
