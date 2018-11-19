@@ -2,7 +2,7 @@ import * as React from 'react';
 import './styles.scss';
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
     displayClear?: boolean;
-    onClear?: () => void;
+    onValueClear?: () => void;
     errorMessage?: string;
     forceDisplayError?: boolean;
     validate?: (value: boolean | string | number) => boolean;
