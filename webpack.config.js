@@ -61,13 +61,11 @@ module.exports = {
         loader: 'awesome-typescript-loader',
       },
       {
-        test: /\.(png|jpg|gif|svg|woff|woff2|ttf|eot)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {},
-          },
-        ],
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 3000,
+        },
       },
     ],
   },
