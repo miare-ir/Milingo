@@ -7,13 +7,14 @@
   .form-title{
     @include font-size(16);
     font-family: IranSans;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0;
   }
+  
   .form-description{
     @include font-size(14);
     font-family: IranSans;
-    font-weight: 500;
+    font-weight: normal;
     margin: 0; 
   }
 }
