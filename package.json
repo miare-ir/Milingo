@@ -2,20 +2,20 @@
   "name": "milingo",
   "description": "Miare Design Language(Milingo)",
   "main": "./dist/index.js",
-  "types": "./build/lib/index.d.ts",
+  "types": "./types/index.d.ts",
   "author": "Miare <dev@mia.re> (https://mia.re)",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "keywords": [
     "design-library",
     "react"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist build && ENV=production webpack --mode=production",
-    "dist": "yarn run build-storybook",
+    "build": "rimraf dist types && ENV=production webpack --mode=production",
+    "dist": "yarn run build-storybook && yarn run build",
     "start": "yarn run storybook",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook -o dist"
+    "build-storybook": "rimraf storybook && build-storybook -c .storybook -o storybook"
   },
   "repository": {
     "type": "git",

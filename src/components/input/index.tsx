@@ -12,6 +12,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   pre?: string;
   title?: string;
   ltr?: boolean;
+  extraTitle?: JSX.Element | string;
 }
 
 export interface InputState {
@@ -82,6 +83,7 @@ class Input extends React.Component<InputProps, InputState> {
       pre,
       ltr,
       onClear,
+      extraTitle,
       ...props
     } = this.props;
 
@@ -97,7 +99,10 @@ class Input extends React.Component<InputProps, InputState> {
 
     return (
       <div className={className}>
-        {title && <label htmlFor={this.props.id || ''}>{title}</label>}
+        <div className="title">
+          {title && <label htmlFor={this.props.id || ''}>{title}</label>}
+          {extraTitle}
+        </div>
         <div className="input-container">
           <input
             type={this.props.type || 'text'}

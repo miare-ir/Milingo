@@ -20,6 +20,7 @@ $FileNameSpanBackgroundColor: #ecedef;
       position: relative;
       flex-shrink: 0;
       margin-bottom: 16px;
+      margin-right: 16px;
 
       input {
         width: 100%;
@@ -38,6 +39,7 @@ $FileNameSpanBackgroundColor: #ecedef;
     position: relative;
     min-width: 136px;
     max-width: 240px;
+    width: 100%;
 
     &.error-state {
       .file-name {
@@ -79,8 +81,9 @@ $FileNameSpanBackgroundColor: #ecedef;
 
     p {
       margin: 0px;
-      min-width: 136px;
+      min-width: 80px;
       max-width: 184px;
+      width: calc(100% - 56px);
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;

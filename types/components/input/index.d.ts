@@ -9,6 +9,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
     pre?: string;
     title?: string;
     ltr?: boolean;
+    extraTitle?: JSX.Element | string;
 }
 export interface InputState {
     touched: boolean;
