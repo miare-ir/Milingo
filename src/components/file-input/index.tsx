@@ -55,6 +55,11 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
 
   handleInput = e => {
     this.setState({ touched: true, files: e.target.files });
+
+    if (this.props.onChange) {
+      this.props.onChange(e);
+    }
+
     if (this.props.onChangeFiles) {
       this.props.onChangeFiles(e.target.files);
     }
