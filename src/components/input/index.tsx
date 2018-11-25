@@ -83,6 +83,7 @@ class Input extends React.Component<InputProps, InputState> {
       pre,
       ltr,
       onClear,
+      className,
       extraTitle,
       ...props
     } = this.props;
@@ -92,13 +93,13 @@ class Input extends React.Component<InputProps, InputState> {
       (forceDisplayError || this.state.touched) &&
       !validate(this.state.value);
 
-    const className = classNames('field-container', {
+    const componentClassName = classNames('field-container', className, {
       error: hasError,
       ltr,
     });
 
     return (
-      <div className={className}>
+      <div className={componentClassName}>
         <div className="title">
           {title && <label htmlFor={this.props.id || ''}>{title}</label>}
           {extraTitle}

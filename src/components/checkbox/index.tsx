@@ -45,9 +45,14 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
   };
 
   render() {
-    const { children, disabled, ...props }: CheckboxProps = this.props;
+    const {
+      children,
+      disabled,
+      className,
+      ...props
+    }: CheckboxProps = this.props;
 
-    const checkClassName = classNames('checkbox', {
+    const checkClassName = classNames('checkbox', className, {
       checked: this.state.checked,
       disabled: this.props.disabled,
     });

@@ -145,17 +145,18 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       disabled,
       states,
       children,
+      className,
       ...props
     } = this.props;
 
     const { files } = this.state;
 
-    const className = classNames('file-container', {
+    const componentClassName = classNames('file-container', className, {
       multiple: this.props.multiple,
     });
 
     return (
-      <div className={className}>
+      <div className={componentClassName}>
         <div className="file-div">
           {files &&
             files.length > 0 &&
