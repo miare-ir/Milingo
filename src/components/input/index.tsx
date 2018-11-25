@@ -101,8 +101,11 @@ class Input extends React.Component<InputProps, InputState> {
     return (
       <div className={componentClassName}>
         <div className="title">
-          {title && <label htmlFor={this.props.id || ''}>{title}</label>}
-          {extraTitle}
+          {extraTitle ? (
+            extraTitle
+          ) : title ? (
+            <label htmlFor={this.props.id || ''}>{title}</label>
+          ) : null}
         </div>
         <div className="input-container">
           <input
