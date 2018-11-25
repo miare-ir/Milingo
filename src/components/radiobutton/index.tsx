@@ -17,9 +17,15 @@ class Radio extends React.Component<RadioProps> {
   };
 
   render() {
-    const { children, disabled, name, ...props }: RadioProps = this.props;
+    const {
+      children,
+      className,
+      disabled,
+      name,
+      ...props
+    }: RadioProps = this.props;
 
-    const checkClassName = classNames('radio-btn', this.props.className, {
+    const checkClassName = classNames('radio-btn', className, {
       checked: this.props.checked,
       disabled: this.props.disabled,
     });

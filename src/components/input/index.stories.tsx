@@ -7,7 +7,7 @@ storiesOf('Input', module)
   .addWithJSX('Normal', () => (
     <div style={{ width: '350px', maxWidth: '100%' }}>
       <Input />
-      <Input title="عنوان" />
+      <Input title="عنوان" extraTitle={<label>عنوان اضافی</label>} />
       <Input title="عنوان" placeholder="متن" />
       <Input
         title="عنوان"

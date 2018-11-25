@@ -14,7 +14,7 @@ This uses `webpack` to build:
 
 ```
 yarn install
-yarn build
+yarn dist
 ```
 
 ### Storybook

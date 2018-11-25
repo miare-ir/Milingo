@@ -28,24 +28,30 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
   }
 
   render() {
+    const {
+      className,
+      title,
+      primary,
+      secondary,
+      actions,
+      children,
+    } = this.props;
     const componentClassNames = classNames(
       'dialog-content-wrapper',
-      this.props.className,
+      className,
       {
-        primary: this.props.primary,
-        secondary: this.props.secondary,
+        primary: primary,
+        secondary: secondary,
       },
     );
 
     return (
       <div className={componentClassNames}>
         <div className="dialog-header">
-          <h2 className="dialog-title">{this.props.title}</h2>
+          <h2 className="dialog-title">{title}</h2>
         </div>
-        {this.props.children && (
-          <div className="dialog-content">{this.props.children}</div>
-        )}
-        <div className="dialog-actions">{this.props.actions}</div>
+        {children && <div className="dialog-content">{children}</div>}
+        <div className="dialog-actions">{actions}</div>
       </div>
     );
   }
