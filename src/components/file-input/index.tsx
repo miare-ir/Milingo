@@ -56,10 +56,6 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
   handleInput = e => {
     this.setState({ touched: true, files: e.target.files });
 
-    if (this.props.onChange) {
-      this.props.onChange(e);
-    }
-
     if (this.props.onChangeFiles) {
       this.props.onChangeFiles(e.target.files);
     }
@@ -71,9 +67,11 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       delete files[index];
       files.length = Object.keys(files).length;
     }
+
     if (this.props.onChangeFiles) {
       this.props.onChangeFiles(files);
     }
+
     this.setState({ files });
   };
 
@@ -146,6 +144,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       states,
       children,
       className,
+      onChangeFiles,
       ...props
     } = this.props;
 
