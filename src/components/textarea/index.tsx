@@ -44,8 +44,8 @@ class Textarea extends React.Component<InputProps, InputState> {
       }
     }
 
-    if (this.props.onInput) {
-      this.props.onInput(e);
+    if (this.props.onChange) {
+      this.props.onChange(e);
     }
   };
 
