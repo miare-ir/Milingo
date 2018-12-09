@@ -1,7 +1,4 @@
-import * as React from 'react';
-import './styles.scss';
-export interface ListProps extends React.HTMLProps<HTMLUListElement> {
-    large?: boolean;
-}
-declare const List: React.SFC<ListProps>;
-export default List;
+export { default as List } from './list';
+export { default as ListSection } from './section';
+export { default as ListTitle } from './title';
+export { default as ListFooter } from './footer';
