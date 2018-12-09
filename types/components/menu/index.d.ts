@@ -1,5 +1,5 @@
-export { default as Avatar } from './avatar';
-export { default as Header } from './header';
-export { default as Item } from './item';
-export { default as Link } from './link';
-export { default as Status } from './status';
+export { default as MenuAvatar } from './avatar';
+export { default as MenuHeader } from './header';
+export { default as MenuItem } from './item';
+export { default as MenuLink } from './link';
+export { default as MenuStatus } from './status';
