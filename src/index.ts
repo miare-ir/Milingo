@@ -7,7 +7,13 @@ import { FoodGroup, FoodGroupList } from './components/food-group';
 import { Form, FormGroup } from './components/form';
 import Input from './components/input';
 import { List } from './components/list';
-import { Avatar, Header, Item, Link, Status } from './components/menu';
+import {
+  MenuAvatar,
+  MenuHeader,
+  MenuItem,
+  MenuLink,
+  MenuStatus,
+} from './components/menu';
 import Navbar, { NavbarItem } from './components/navbar';
 import Notification from './components/notification';
 import Radio from './components/radiobutton';
@@ -34,9 +40,9 @@ export {
   Textarea,
   Timeline,
   Toolbar,
-  Avatar,
-  Header,
-  Item,
-  Link,
-  Status,
+  MenuAvatar,
+  MenuHeader,
+  MenuItem,
+  MenuLink,
+  MenuStatus,
 };
