@@ -23,4 +23,15 @@ storiesOf('Dropdown', module)
       }}>
       <Dropdown options={options} />
     </div>
+  ))
+  .addWithJSX('With 5 rows', () => (
+    <div
+      style={{
+        width: '350px',
+        maxWidth: '100%',
+        backgroundColor: '#ffffff',
+        padding: '40px',
+      }}>
+      <Dropdown options={options} showedItem={5} />
+    </div>
   ));

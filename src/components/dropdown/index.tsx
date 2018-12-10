@@ -19,6 +19,7 @@ interface DropdownProps {
   onFocus?: (arg: boolean) => void;
   value?: Option;
   placeholder?: string;
+  showedItem?: number;
 }
 
 interface DropdownState {
@@ -157,22 +158,25 @@ class Dropdown extends React.Component<DropdownProps, DropdownState> {
   }
 
   render() {
-    const { className } = this.props;
+    const { className, showedItem } = this.props;
 
     const placeHolderValue =
       typeof this.state.selected === 'string'
         ? this.state.selected
         : this.state.selected.label;
 
-    const dropdownClass = classNames('dropdown-root', {
-      [className]: !!className,
+    const dropdownClass = classNames('dropdown-root', className, {
       'is-open': this.state.isOpen,
     });
     const controlClass = classNames('dropdown-control', {
       'dropdown-disabled': this.props.disabled,
     });
     const menu = this.state.isOpen ? (
-      <div className="dropdown-menu">{this.buildMenu()}</div>
+      <div
+        className="dropdown-menu"
+        style={showedItem && { maxHeight: 40 * showedItem + 16 }}>
+        {this.buildMenu()}
+      </div>
     ) : null;
 
     return (
