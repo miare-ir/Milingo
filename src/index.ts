@@ -21,6 +21,12 @@ import Textarea from './components/textarea';
 import Timeline from './components/timeline';
 import Toolbar from './components/toolbar';
 import Tag from './components/tag';
+import {
+  TabNav,
+  TabNavItem,
+  TabContent,
+  TabContentItem,
+} from './components/tab';
 
 export {
   Button,
@@ -47,4 +53,8 @@ export {
   MenuLink,
   MenuStatus,
   Tag,
+  TabNav,
+  TabNavItem,
+  TabContent,
+  TabContentItem,
 };
