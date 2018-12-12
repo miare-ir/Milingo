@@ -16,7 +16,7 @@ const actions: Action[] = [
 
 storiesOf('Action Table', module)
   .addDecorator(story => <div style={{ direction: 'rtl' }}>{story()}</div>)
-  .addWithJSX('Desktop', () => (
+  .addWithJSX('All', () => (
     <div
       style={{
         width: '80%',
