@@ -1,0 +1,98 @@
+@import "../../assets/styles/_base.scss";
+
+.select-root {
+    position: relative;
+    font-family: IRANSans;
+  
+    .select-control {
+        width: 100%;
+        height: 48px;
+        min-width: 80px;
+        @include font-size(14);
+        position: relative;
+        overflow: hidden;
+        background-color: white;
+        box-sizing: border-box;
+        color: #000;
+        outline: none;
+        text-align: right;
+        transition: all 200ms ease;
+        display: flex;
+        direction: rtl;
+    }
+
+    .select-placeholder {
+        padding: 12px;
+        border: 1px solid #d0d0d0;
+        flex-grow: 1;
+        height: 22px;
+        @include font-size(14);
+        text-align: right;
+        min-width: 44px;
+        border-left: none;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .select-arrow {
+        display: block;
+        width: 48px;
+        height: 48px;
+        background-color: $primary1;
+        background-image: url('./arrow.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .select-menu {
+        padding: 8px 0;
+        background-color: white;
+        border: 1px solid #d0d0d0;
+        border-radius: 2px;
+        box-shadow: 0 4px 8px 0 rgba(74,74,74,0.25);
+        box-sizing: border-box;
+        margin-top: 2px;
+        margin-bottom: 5px;
+        max-height: 108px;
+        overflow-y: auto;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 1000;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .select-option {
+        box-sizing: border-box;
+        color: rgba(51, 51, 51, 0.8);
+        cursor: pointer;
+        @include font-size(14);
+        display: block;
+        padding: 8px 16px;
+        text-align: right;
+    }
+
+    .select-option:last-child {
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+
+    .select-option:hover {
+        color: $primary1;
+        background-color: $primary3;
+        box-shadow: inset 0 -1px 0 0 #ecedef;
+    }
+
+    .select-option.is-selected {
+        background-color: #ecedef;
+        box-shadow: inset 0 -1px 0 0 #ecedef;
+    }
+
+    .select-noresults {
+        box-sizing: border-box;
+        color: #ccc;
+        cursor: default;
+        display: block;
+        padding: 8px 10px;
+    }
+}
