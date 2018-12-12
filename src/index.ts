@@ -20,6 +20,12 @@ import Radio from './components/radiobutton';
 import Textarea from './components/textarea';
 import Timeline from './components/timeline';
 import Toolbar from './components/toolbar';
+import {
+  TabNav,
+  TabNavItem,
+  TabContent,
+  TabContentItem,
+} from './components/tab';
 
 export {
   Button,
@@ -45,4 +51,8 @@ export {
   MenuItem,
   MenuLink,
   MenuStatus,
+  TabNav,
+  TabNavItem,
+  TabContent,
+  TabContentItem,
 };
