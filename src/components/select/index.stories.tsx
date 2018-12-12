@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Dropdown, { Option } from '.';
+import Select, { Option } from '.';
 
 const options: Option[] = [
   { value: '1', label: 'گزینه ۱' },
@@ -11,7 +11,7 @@ const options: Option[] = [
   { value: '5', label: 'گزینه ۵' },
 ];
 
-storiesOf('Dropdown', module)
+storiesOf('Select', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
   .addWithJSX('Normal', () => (
     <div
@@ -21,7 +21,7 @@ storiesOf('Dropdown', module)
         backgroundColor: '#ffffff',
         padding: '40px',
       }}>
-      <Dropdown options={options} />
+      <Select options={options} />
     </div>
   ))
   .addWithJSX('With 5 rows', () => (
@@ -32,6 +32,6 @@ storiesOf('Dropdown', module)
         backgroundColor: '#ffffff',
         padding: '40px',
       }}>
-      <Dropdown options={options} showedItem={5} />
+      <Select options={options} showedItem={5} />
     </div>
   ));

@@ -10,7 +10,7 @@ export interface Option {
   className?: string;
 }
 
-interface DropdownProps {
+interface SelectProps {
   options: (Option | string)[];
   baseClassName?: string;
   className?: string;
@@ -22,7 +22,7 @@ interface DropdownProps {
   showedItem?: number;
 }
 
-interface DropdownState {
+interface SelectState {
   selected: Option;
   isOpen: boolean;
   mounted: boolean;
@@ -30,7 +30,7 @@ interface DropdownState {
 
 const DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 
-class Dropdown extends React.Component<DropdownProps, DropdownState> {
+class Select extends React.Component<SelectProps, SelectState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,7 +112,7 @@ class Dropdown extends React.Component<DropdownProps, DropdownState> {
   }
 
   renderOption(option) {
-    const optionClass = classNames('dropdown-option', {
+    const optionClass = classNames('select-option', {
       [option.className]: !!option.className,
       'is-selected': option.value === this.state.selected.value,
     });
@@ -143,7 +143,7 @@ class Dropdown extends React.Component<DropdownProps, DropdownState> {
     return ops.length ? (
       ops
     ) : (
-      <div className={`dropdown-noresults`}>گزینه پیدا نشد!</div>
+      <div className={`select-noresults`}>گزینه پیدا نشد!</div>
     );
   }
 
@@ -165,28 +165,28 @@ class Dropdown extends React.Component<DropdownProps, DropdownState> {
         ? this.state.selected
         : this.state.selected.label;
 
-    const dropdownClass = classNames('dropdown-root', className, {
+    const selectClass = classNames('select-root', className, {
       'is-open': this.state.isOpen,
     });
-    const controlClass = classNames('dropdown-control', {
-      'dropdown-disabled': this.props.disabled,
+    const controlClass = classNames('select-control', {
+      'select-disabled': this.props.disabled,
     });
     const menu = this.state.isOpen ? (
       <div
-        className="dropdown-menu"
+        className="select-menu"
         style={showedItem && { maxHeight: 40 * showedItem + 16 }}>
         {this.buildMenu()}
       </div>
     ) : null;
 
     return (
-      <div className={dropdownClass}>
+      <div className={selectClass}>
         <div
           className={controlClass}
           onMouseDown={this.handleMouseDown.bind(this)}
           onTouchEnd={this.handleMouseDown.bind(this)}>
-          <div className="dropdown-placeholder">{placeHolderValue}</div>
-          <div className="dropdown-arrow" />
+          <div className="select-placeholder">{placeHolderValue}</div>
+          <div className="select-arrow" />
         </div>
         {menu}
       </div>
@@ -194,4 +194,4 @@ class Dropdown extends React.Component<DropdownProps, DropdownState> {
   }
 }
 
-export default Dropdown;
+export default Select;

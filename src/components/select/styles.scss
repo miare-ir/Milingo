@@ -1,10 +1,10 @@
 @import "../../assets/styles/_base.scss";
 
-.dropdown-root {
+.select-root {
     position: relative;
     font-family: IRANSans;
   
-    .dropdown-control {
+    .select-control {
         width: 100%;
         height: 48px;
         min-width: 80px;
@@ -21,7 +21,7 @@
         direction: rtl;
     }
 
-    .dropdown-placeholder {
+    .select-placeholder {
         padding: 12px;
         border: 1px solid #d0d0d0;
         flex-grow: 1;
@@ -33,7 +33,7 @@
         border-radius: 0 4px 4px 0;
     }
 
-    .dropdown-arrow {
+    .select-arrow {
         display: block;
         width: 48px;
         height: 48px;
@@ -44,7 +44,7 @@
         border-radius: 4px 0 0 4px;
     }
 
-    .dropdown-menu {
+    .select-menu {
         padding: 8px 0;
         background-color: white;
         border: 1px solid #d0d0d0;
@@ -62,7 +62,7 @@
         -webkit-overflow-scrolling: touch;
     }
 
-    .dropdown-option {
+    .select-option {
         box-sizing: border-box;
         color: rgba(51, 51, 51, 0.8);
         cursor: pointer;
@@ -72,23 +72,23 @@
         text-align: right;
     }
 
-    .dropdown-option:last-child {
+    .select-option:last-child {
         border-bottom-right-radius: 2px;
         border-bottom-left-radius: 2px;
     }
 
-    .dropdown-option:hover {
+    .select-option:hover {
         color: $primary1;
         background-color: $primary3;
         box-shadow: inset 0 -1px 0 0 #ecedef;
     }
 
-    .dropdown-option.is-selected {
+    .select-option.is-selected {
         background-color: #ecedef;
         box-shadow: inset 0 -1px 0 0 #ecedef;
     }
 
-    .dropdown-noresults {
+    .select-noresults {
         box-sizing: border-box;
         color: #ccc;
         cursor: default;
