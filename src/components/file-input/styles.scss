@@ -1,0 +1,144 @@
+@import "../../assets/styles/_base.scss";
+@import "../../assets/styles/_input-variables.scss";
+
+$FileNameSpanBackgroundColor: #ecedef;
+
+.file-container {
+  direction: rtl;
+
+  *:not(.material-icons) {
+    font-family: "IranSans";
+    transition: $transitionInward;
+  }
+
+  .file-div {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: 16px;
+      margin-right: 16px;
+
+      input {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        opacity: 0;
+      }
+    }
+  }
+
+  .file-name-container {
+    margin-bottom: 16px;
+    position: relative;
+    min-width: 136px;
+    max-width: 240px;
+    width: 100%;
+
+    &.error-state {
+      .file-name {
+        background-color: $warning2 !important;
+        color: $warning1 !important;
+      }
+
+      .clear {
+        color: $warning1 !important;
+      }
+    }
+
+    &.try-again-state {
+      .file-name-text {
+        p {
+          max-width: 88px !important;
+          min-width: 88px !important;
+        }
+      }
+    }
+  }
+
+  .file-name {
+    height: 48px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: $FileNameSpanBackgroundColor;
+    font-size: 16px;
+    direction: ltr;
+    color: $primary1;
+    display: flex;
+  }
+
+  .file-name-text {
+    width: 100%;
+    text-align: left;
+    padding: 12px 8px;
+    position: relative;
+
+    p {
+      margin: 0px;
+      min-width: 80px;
+      max-width: 184px;
+      width: calc(100% - 56px);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .clear {
+      position: absolute;
+      top: 12px;
+      right: 8px;
+      color: $primary1;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
+  .try-again {
+    border-radius: 0 4px 4px 0;
+    text-align: center;
+    min-width: 80px;
+    padding: 12px 8px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: $primary1;
+    cursor: pointer;
+  }
+
+  .loading-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: $loadingBarBackground;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 0px 0px 4px 4px;
+
+    .loading {
+      background-color: $primary2;
+      text-align: left;
+      height: 4px;
+      border-radius: 0px 0px 0px 4px;
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    color: $inputError;
+    font-size: 14px;
+    display: block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  &.multiple {
+    .file-div {
+      flex-direction: column-reverse;
+      align-items: flex-end;
+    }
+  }
+}

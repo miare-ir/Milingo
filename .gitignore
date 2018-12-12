@@ -13,8 +13,6 @@ Session.vim
 tags
 
 node_modules
-dist
-build
 
 .agignore
 
@@ -22,6 +20,7 @@ build
 .happypack
 .cache-uglify
 .DS_Store
+.cache
 
 coverage/
 .env

@@ -5,11 +5,14 @@ import './styles.scss';
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
+  onClear?: () => void;
   errorMessage?: string;
   forceDisplayError?: boolean;
   validate?: (value: boolean | string | number) => boolean;
   pre?: string;
   title?: string;
+  ltr?: boolean;
+  extraTitle?: JSX.Element | string;
 }
 
 export interface InputState {
@@ -52,7 +55,15 @@ class Input extends React.Component<InputProps, InputState> {
 
   clear = () => {
     const valueType = typeof this.state.value;
-    this.setState({ value: valueType === 'boolean' ? false : '' });
+
+    this.setState({
+      value: valueType === 'boolean' ? false : '',
+      touched: false,
+    });
+
+    if (this.props.onClear) {
+      this.props.onClear();
+    }
   };
 
   render() {
@@ -70,6 +81,10 @@ class Input extends React.Component<InputProps, InputState> {
       displayClear,
       title,
       pre,
+      ltr,
+      onClear,
+      className,
+      extraTitle,
       ...props
     } = this.props;
 
@@ -78,13 +93,20 @@ class Input extends React.Component<InputProps, InputState> {
       (forceDisplayError || this.state.touched) &&
       !validate(this.state.value);
 
-    const className = classNames('field-container', {
+    const componentClassName = classNames('field-container', className, {
       error: hasError,
+      ltr,
     });
 
     return (
-      <div className={className}>
-        {title && <label htmlFor={this.props.id || ''}>{title}</label>}
+      <div className={componentClassName}>
+        <div className="title">
+          {extraTitle ? (
+            extraTitle
+          ) : title ? (
+            <label htmlFor={this.props.id || ''}>{title}</label>
+          ) : null}
+        </div>
         <div className="input-container">
           <input
             type={this.props.type || 'text'}

@@ -1,5 +1,4 @@
 const path = require('path');
-console.log(path.resolve(__dirname, 'src/index.ts'));
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.ts'),
@@ -7,7 +6,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: 'index.js',
     library: 'Milingo',
-    libraryTarget: 'commonjs',
+    libraryTarget: 'umd',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -62,13 +61,11 @@ module.exports = {
         loader: 'awesome-typescript-loader',
       },
       {
-        test: /\.(png|jpg|gif|svg|woff|woff2|ttf|eot)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {},
-          },
-        ],
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 3000,
+        },
       },
     ],
   },

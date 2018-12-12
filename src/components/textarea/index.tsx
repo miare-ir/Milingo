@@ -44,8 +44,8 @@ class Textarea extends React.Component<InputProps, InputState> {
       }
     }
 
-    if (this.props.onInput) {
-      this.props.onInput(e);
+    if (this.props.onChange) {
+      this.props.onChange(e);
     }
   };
 
@@ -62,6 +62,7 @@ class Textarea extends React.Component<InputProps, InputState> {
       forceDisplayError,
       validate,
       title,
+      className,
       ...props
     } = this.props;
 
@@ -70,12 +71,12 @@ class Textarea extends React.Component<InputProps, InputState> {
       (forceDisplayError || this.state.touched) &&
       !validate(this.state.value);
 
-    const className = classNames('textarea-container', this.props.className, {
+    const componentClassName = classNames('textarea-container', className, {
       error: hasError,
     });
 
     return (
-      <div className={className}>
+      <div className={componentClassName}>
         {title && <label htmlFor={props.id || ''}>{title}</label>}
         <textarea
           cols={this.props.cols}

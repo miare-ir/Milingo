@@ -4,9 +4,7 @@ import { storiesOf } from '@storybook/react';
 import CounterButton from '.';
 
 storiesOf('Counter Button', module)
-  .addDecorator(story => (
-    <div className="story-container dialog-story">{story()}</div>
-  ))
+  .addDecorator(story => <div className="story-container">{story()}</div>)
   .addWithJSX('All', () => (
     <div
       style={{

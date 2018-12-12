@@ -19,9 +19,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  color: #000000;
 
   &:hover {
     background-color: #EAF2FC;
+    color: #000000;
   }
 }
 
