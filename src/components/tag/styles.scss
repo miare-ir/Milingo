@@ -1,0 +1,19 @@
+@import '../../assets/styles/_base.scss';
+
+.tag-wrapper {
+  padding: 0 8px;
+  background-color: $disabledColor;
+  color: #ffffff;
+  font-family: IranSans;
+  @include font-size(12);
+  border-radius: 12px;
+}
+
+.primary {
+  background-color: $primary1;
+}
+
+.warning {
+  background-color: $warning3;
+  color: #000000;
+}
