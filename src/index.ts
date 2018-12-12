@@ -20,6 +20,7 @@ import Radio from './components/radiobutton';
 import Textarea from './components/textarea';
 import Timeline from './components/timeline';
 import Toolbar from './components/toolbar';
+import { ActionTable, ActionTableRow } from './components/action-table';
 import Select from './components/select';
 import Tag from './components/tag';
 import {
@@ -53,6 +54,8 @@ export {
   MenuItem,
   MenuLink,
   MenuStatus,
+  ActionTable,
+  ActionTableRow,
   Select,
   Tag,
   TabNav,
