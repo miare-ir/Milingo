@@ -1,0 +1,107 @@
+@import '../../assets/styles/_base.scss';
+
+.action-table {
+  display: flex;
+  flex-direction: column;
+  font-family: IranSans;
+  width: 100%;
+
+  .title {
+    @include font-size(14);
+    box-shadow: inset 0 -2px 0 0 #ECEDEF;
+    padding: 16px 0;
+  }
+}
+
+.action-table-row {
+  padding: 12px 0;
+  box-shadow: inset 0 -1px 0 0 #ECEDEF;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    .button-action-wrapper {
+      display: block;
+    }
+  }
+
+  .title-wrapper {
+    display: inline;
+    padding: 4px 0;
+  }
+
+  .row-title {    
+    @include font-size(14);
+    margin-right: 16px;
+    float: left;
+  }
+
+  .icon {
+    float: right;
+    margin-right: 8px;
+  }
+
+  .button-action-wrapper {
+    display: none;
+    transition: $transitionInward;
+    
+    @include onTablet {
+      display: block !important;
+    }
+
+    button {
+      &:not(:first-child){
+        margin-right: 16px;
+      }
+    }
+  }
+
+  .menu-action {
+    display: none;
+    padding: 0;
+    height: 32px;
+    position: relative;
+  }
+
+  .menu-action-list {
+    min-width: 120px;
+    position: absolute;
+    margin-top: 4px;
+    background-color: #ffffff;
+    z-index: 1000;
+    border: 1px solid #D0D0D0;
+    border-radius: 4px;
+    padding: 8px 0;
+    left: 0;
+    top: 100%;
+  }
+
+  .menu-action-item {
+    padding: 8px 16px;
+    @include font-size(14);
+    color: $primary1;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary3;
+    }
+  }
+
+  .danger {
+    color: $warning1;
+
+    &:hover {
+      background-color: $warning2;
+    }
+  }
+
+  @include onMobile {
+    .button-action {
+      display: none;
+    }
+
+    .menu-action {
+      display: block !important;
+    }
+  }
+}
