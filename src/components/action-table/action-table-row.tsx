@@ -17,6 +17,7 @@ export interface ActionTableRowProps extends React.HTMLProps<HTMLDivElement> {
   actions?: Action[];
   id: string;
   icon?: string;
+  disable?: boolean;
   onAction?: (name: string, id: string) => void;
 }
 
@@ -65,18 +66,19 @@ class ActionTableRow extends React.Component<
   renderButtonActions() {
     return (
       <div className="button-action-wrapper">
-        {this.props.actions.map(action => (
-          <Button
-            key={action.name}
-            tiny
-            {...action.extraProps}
-            onClick={() =>
-              this.props.onAction &&
-              this.props.onAction(action.name, this.props.id)
-            }>
-            {action.title}
-          </Button>
-        ))}
+        {this.props.actions &&
+          this.props.actions.map(action => (
+            <Button
+              key={action.name}
+              tiny
+              {...action.extraProps}
+              onClick={() =>
+                this.props.onAction &&
+                this.props.onAction(action.name, this.props.id)
+              }>
+              {action.title}
+            </Button>
+          ))}
       </div>
     );
   }
@@ -89,16 +91,17 @@ class ActionTableRow extends React.Component<
         </Button>
         {this.state.isOpen && (
           <div className="menu-action-list">
-            {this.props.actions.map(action => (
-              <div
-                className={classNames('menu-action-item', action.className)}
-                onClick={() =>
-                  this.props.onAction &&
-                  this.props.onAction(action.name, this.props.id)
-                }>
-                {action.title}
-              </div>
-            ))}
+            {this.props.actions &&
+              this.props.actions.map(action => (
+                <div
+                  className={classNames('menu-action-item', action.className)}
+                  onClick={() =>
+                    this.props.onAction &&
+                    this.props.onAction(action.name, this.props.id)
+                  }>
+                  {action.title}
+                </div>
+              ))}
           </div>
         )}
       </div>
@@ -106,8 +109,10 @@ class ActionTableRow extends React.Component<
   }
 
   render() {
-    const { className, title, icon } = this.props;
-    const componentClassName = classNames('action-table-row', className);
+    const { className, title, icon, disable } = this.props;
+    const componentClassName = classNames('action-table-row', className, {
+      disable,
+    });
 
     return (
       <div className={componentClassName}>
@@ -115,8 +120,12 @@ class ActionTableRow extends React.Component<
           {icon && <span className="icon material-icons">{icon}</span>}
           <div className="row-title">{title}</div>
         </div>
-        <div className="button-action">{this.renderButtonActions()}</div>
-        <div className="menu-action">{this.renderMenuActions()}</div>
+        {!disable && (
+          <div>
+            <div className="button-action">{this.renderButtonActions()}</div>
+            <div className="menu-action">{this.renderMenuActions()}</div>
+          </div>
+        )}
       </div>
     );
   }

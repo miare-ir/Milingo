@@ -26,7 +26,7 @@ storiesOf('Action Table', module)
       <ActionTable title="سلام دنیا">
         <ActionTableRow id="1" title="چیزبرگر" actions={actions} />
         <ActionTableRow id="2" title="برگر" actions={actions} />
-        <ActionTableRow id="3" title="دوبل برگر" actions={actions} />
+        <ActionTableRow id="3" title="دوبل برگر" actions={actions} disable />
       </ActionTable>
     </div>
   ))

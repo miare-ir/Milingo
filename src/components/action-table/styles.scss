@@ -14,7 +14,7 @@
 }
 
 .action-table-row {
-  padding: 12px 0;
+  padding: 8px 0;
   box-shadow: inset 0 -1px 0 0 #ECEDEF;
   display: flex;
   justify-content: space-between;
@@ -104,4 +104,8 @@
       display: block !important;
     }
   }
+}
+
+.action-table .disable {
+  background-color: #ECEDEF;
 }
