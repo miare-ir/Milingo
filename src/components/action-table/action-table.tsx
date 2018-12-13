@@ -9,9 +9,11 @@ export interface ActionTableProps extends React.HTMLProps<HTMLDivElement> {
 
 const ActionTabel: React.SFC<ActionTableProps> = (props: ActionTableProps) => (
   <div className={classNames('action-table', props.className)}>
-    <div className="title">
-      <span>{props.title}</span>
-    </div>
+    {props.title && (
+      <div className="title">
+        <span>{props.title}</span>
+      </div>
+    )}
     <div className="rows">{props.children}</div>
   </div>
 );
