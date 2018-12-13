@@ -2,7 +2,7 @@
 
 .navbar {
   width: 100px;
-  height: 100vh;
+  height: calc(100vh - 16px);
   padding-top: 16px;
   background-color: #191924;
   display: flex;

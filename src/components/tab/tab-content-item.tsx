@@ -16,7 +16,7 @@ class TabContentItem extends React.Component<
   TabContentItemState
 > {
   render() {
-    const { className, children, ...props } = this.props;
+    const { className, children, tabId, ...props } = this.props;
     const componentClassName = classNames(className);
     return (
       <div className={componentClassName} {...props}>
