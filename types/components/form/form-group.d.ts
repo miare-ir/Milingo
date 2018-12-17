@@ -4,7 +4,7 @@ export interface FormGroupProps {
     className?: string;
     children?: React.ReactNode;
     singleRow?: boolean;
-    title?: string;
+    title?: string | JSX.Element;
 }
 declare class FormGroup extends React.Component<FormGroupProps, {}> {
     render(): JSX.Element;
