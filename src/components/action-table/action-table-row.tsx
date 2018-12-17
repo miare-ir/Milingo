@@ -54,12 +54,12 @@ class ActionTableRow extends React.Component<
   }
 
   handleDocumentClick(event) {
-    if (this.state.mounted) {
-      if (!ReactDOM.findDOMNode(this).contains(event.target)) {
-        if (this.state.isOpen) {
-          this.setState({ isOpen: false });
-        }
-      }
+    if (
+      this.state.mounted &&
+      this.state.isOpen &&
+      !ReactDOM.findDOMNode(this).contains(event.target)
+    ) {
+      this.setState({ isOpen: false });
     }
   }
 
