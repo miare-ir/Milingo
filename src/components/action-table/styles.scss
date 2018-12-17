@@ -18,6 +18,8 @@
   box-shadow: inset 0 -1px 0 0 #ECEDEF;
   display: flex;
   justify-content: space-between;
+  height: 48px;
+  box-sizing: border-box;
 
   &:hover {
     .button-action-wrapper {
