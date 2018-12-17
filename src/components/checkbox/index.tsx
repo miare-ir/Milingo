@@ -3,13 +3,15 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface CheckboxProps extends React.HTMLProps<HTMLButtonElement> {}
+export interface CheckboxProps extends React.HTMLProps<HTMLInputElement> {}
 
 export interface CheckboxState {
   checked: boolean;
 }
 
 class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
+  private checkboxElement: HTMLElement;
+
   constructor(props) {
     super(props);
 
@@ -27,16 +29,12 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     }
   }
 
-  handleChange = (e, toggle: boolean = false) => {
+  handleChange = e => {
     e.preventDefault();
     e.stopPropagation();
 
     if (!this.props.disabled) {
-      if (toggle) {
-        this.setState({ checked: !this.state.checked });
-      } else {
-        this.setState({ checked: e.target.checked });
-      }
+      this.setState({ checked: e.target.checked });
 
       if (this.props.onChange) {
         this.props.onChange(e);
@@ -49,6 +47,8 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
       children,
       disabled,
       className,
+      onChange,
+      checked,
       ...props
     }: CheckboxProps = this.props;
 
@@ -61,18 +61,16 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
       <div className="checkbox-container">
         <button
           className={checkClassName}
-          {...props}
           onClick={e => {
-            this.handleChange(e, true);
-
-            if (this.props.onClick) {
-              this.props.onClick(e);
-            }
+            this.checkboxElement.click();
           }}>
           <input
             type="checkbox"
             checked={this.state.checked}
+            value={!!this.state.checked + ''}
             onChange={this.handleChange}
+            ref={input => (this.checkboxElement = input)}
+            {...props}
           />
           <span className="check">
             <span className="icon material-icons">check</span>

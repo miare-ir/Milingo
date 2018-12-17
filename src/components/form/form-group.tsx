@@ -7,7 +7,7 @@ export interface FormGroupProps {
   className?: string;
   children?: React.ReactNode;
   singleRow?: boolean;
-  title?: string;
+  title?: string | JSX.Element;
 }
 
 class FormGroup extends React.Component<FormGroupProps, {}> {
@@ -19,7 +19,7 @@ class FormGroup extends React.Component<FormGroupProps, {}> {
 
     return (
       <div className={componentClassName}>
-        {title && <h4 className="form-group-title">{title}</h4>}
+        {title && <div className="form-group-title">{title}</div>}
         {children}
       </div>
     );
