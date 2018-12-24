@@ -16,9 +16,10 @@ export interface ActionTableRowProps extends React.HTMLProps<HTMLDivElement> {
   title: string;
   actions?: Action[];
   id: string;
+  object?: any;
   icon?: string;
   disable?: boolean;
-  onAction?: (name: string, id: string) => void;
+  onAction?: (name: string, id: string, object?: any) => void;
 }
 
 export interface ActionTableRowStates {
@@ -74,7 +75,11 @@ class ActionTableRow extends React.Component<
               {...action.extraProps}
               onClick={() =>
                 this.props.onAction &&
-                this.props.onAction(action.name, this.props.id)
+                this.props.onAction(
+                  action.name,
+                  this.props.id,
+                  this.props.object,
+                )
               }>
               {action.title}
             </Button>
