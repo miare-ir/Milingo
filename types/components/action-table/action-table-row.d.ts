@@ -10,9 +10,10 @@ export interface ActionTableRowProps extends React.HTMLProps<HTMLDivElement> {
     title: string;
     actions?: Action[];
     id: string;
+    object?: any;
     icon?: string;
     disable?: boolean;
-    onAction?: (name: string, id: string) => void;
+    onAction?: (name: string, id: string, object?: any) => void;
 }
 export interface ActionTableRowStates {
     isOpen: boolean;
