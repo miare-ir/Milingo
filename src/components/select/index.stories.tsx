@@ -21,7 +21,7 @@ storiesOf('Select', module)
         backgroundColor: '#ffffff',
         padding: '40px',
       }}>
-      <Select options={options} />
+      <Select name="test1" options={options} />
     </div>
   ))
   .addWithJSX('With 5 rows', () => (
@@ -32,6 +32,6 @@ storiesOf('Select', module)
         backgroundColor: '#ffffff',
         padding: '40px',
       }}>
-      <Select options={options} showedItem={5} />
+      <Select name="test1" options={options} showedItem={5} />
     </div>
   ));

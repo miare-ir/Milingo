@@ -2151,9 +2151,9 @@ var ReactDOM = __webpack_require__(11);
 var classNames = __webpack_require__(1);
 __webpack_require__(62);
 var DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
-var Select = /** @class */ (function (_super) {
-    __extends(Select, _super);
-    function Select(props) {
+var SelectComponent = /** @class */ (function (_super) {
+    __extends(SelectComponent, _super);
+    function SelectComponent(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
             selected: props.value || {
@@ -2169,7 +2169,7 @@ var Select = /** @class */ (function (_super) {
         _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
-    Select.prototype.componentWillReceiveProps = function (newProps) {
+    SelectComponent.prototype.componentWillReceiveProps = function (newProps) {
         if (newProps.value && newProps.value !== this.state.selected) {
             this.setState({ selected: newProps.value });
         }
@@ -2184,16 +2184,16 @@ var Select = /** @class */ (function (_super) {
             });
         }
     };
-    Select.prototype.componentDidMount = function () {
+    SelectComponent.prototype.componentDidMount = function () {
         document.addEventListener('click', this.handleDocumentClick, false);
         document.addEventListener('touchend', this.handleDocumentClick, false);
     };
-    Select.prototype.componentWillUnmount = function () {
+    SelectComponent.prototype.componentWillUnmount = function () {
         this.setState({ mounted: false });
         document.removeEventListener('click', this.handleDocumentClick, false);
         document.removeEventListener('touchend', this.handleDocumentClick, false);
     };
-    Select.prototype.handleMouseDown = function (event) {
+    SelectComponent.prototype.handleMouseDown = function (event) {
         if (this.props.onFocus && typeof this.props.onFocus === 'function') {
             this.props.onFocus(this.state.isOpen);
         }
@@ -2208,7 +2208,7 @@ var Select = /** @class */ (function (_super) {
             });
         }
     };
-    Select.prototype.setValue = function (value, label) {
+    SelectComponent.prototype.setValue = function (value, label) {
         var newState = {
             selected: {
                 value: value,
@@ -2219,12 +2219,12 @@ var Select = /** @class */ (function (_super) {
         this.setState(newState);
         this.handleChange(newState);
     };
-    Select.prototype.handleChange = function (newState) {
+    SelectComponent.prototype.handleChange = function (newState) {
         if (newState.selected !== this.state.selected && this.props.onChange) {
             this.props.onChange(newState.selected);
         }
     };
-    Select.prototype.renderOption = function (option) {
+    SelectComponent.prototype.renderOption = function (option) {
         var _a;
         var optionClass = classNames('select-option', (_a = {},
             _a[option.className] = !!option.className,
@@ -2237,15 +2237,16 @@ var Select = /** @class */ (function (_super) {
         var label = option.label || option.value || option;
         return (React.createElement("div", { key: value, className: optionClass, onMouseDown: this.setValue.bind(this, value, label), onClick: this.setValue.bind(this, value, label) }, label));
     };
-    Select.prototype.buildMenu = function () {
+    SelectComponent.prototype.buildMenu = function () {
         var _this = this;
         var options = this.props.options;
-        var ops = options.map(function (option) {
-            return _this.renderOption(option);
-        });
-        return ops.length ? (ops) : (React.createElement("div", { className: "select-noresults" }, "\u06AF\u0632\u06CC\u0646\u0647 \u067E\u06CC\u062F\u0627 \u0646\u0634\u062F!"));
+        var ops = options &&
+            options.map(function (option) {
+                return _this.renderOption(option);
+            });
+        return ops && ops.length ? (ops) : (React.createElement("div", { className: "select-noresults" }, "\u06AF\u0632\u06CC\u0646\u0647 \u067E\u06CC\u062F\u0627 \u0646\u0634\u062F!"));
     };
-    Select.prototype.handleDocumentClick = function (event) {
+    SelectComponent.prototype.handleDocumentClick = function (event) {
         if (this.state.mounted) {
             if (!ReactDOM.findDOMNode(this).contains(event.target)) {
                 if (this.state.isOpen) {
@@ -2254,7 +2255,7 @@ var Select = /** @class */ (function (_super) {
             }
         }
     };
-    Select.prototype.render = function () {
+    SelectComponent.prototype.render = function () {
         var _a = this.props, className = _a.className, showedItem = _a.showedItem;
         var placeHolderValue = typeof this.state.selected === 'string'
             ? this.state.selected
@@ -2269,12 +2270,13 @@ var Select = /** @class */ (function (_super) {
         return (React.createElement("div", { className: selectClass },
             React.createElement("div", { className: controlClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
                 React.createElement("div", { className: "select-placeholder" }, placeHolderValue),
-                React.createElement("div", { className: "select-arrow" })),
+                React.createElement("div", { className: "select-arrow" }),
+                React.createElement("select", { name: this.props.name, value: this.state.selected.value, onChange: function () { }, hidden: true })),
             menu));
     };
-    return Select;
+    return SelectComponent;
 }(React.Component));
-exports.default = Select;
+exports.default = SelectComponent;
 
 
 /***/ }),

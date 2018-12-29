@@ -5,8 +5,9 @@ export interface Option {
     value: string;
     className?: string;
 }
-interface SelectProps {
-    options: (Option | string)[];
+export interface SelectProps {
+    name: string;
+    options: (Option)[];
     baseClassName?: string;
     className?: string;
     disabled?: boolean;
@@ -21,7 +22,7 @@ interface SelectState {
     isOpen: boolean;
     mounted: boolean;
 }
-declare class Select extends React.Component<SelectProps, SelectState> {
+declare class SelectComponent extends React.Component<SelectProps, SelectState> {
     constructor(props: any);
     componentWillReceiveProps(newProps: any): void;
     componentDidMount(): void;
@@ -34,4 +35,4 @@ declare class Select extends React.Component<SelectProps, SelectState> {
     handleDocumentClick(event: any): void;
     render(): JSX.Element;
 }
-export default Select;
+export default SelectComponent;

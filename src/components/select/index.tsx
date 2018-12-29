@@ -10,8 +10,9 @@ export interface Option {
   className?: string;
 }
 
-interface SelectProps {
-  options: (Option | string)[];
+export interface SelectProps {
+  name: string;
+  options: (Option)[];
   baseClassName?: string;
   className?: string;
   disabled?: boolean;
@@ -30,7 +31,7 @@ interface SelectState {
 
 const DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 
-class Select extends React.Component<SelectProps, SelectState> {
+class SelectComponent extends React.Component<SelectProps, SelectState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -136,11 +137,13 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   buildMenu() {
     let { options } = this.props;
-    let ops = options.map(option => {
-      return this.renderOption(option);
-    });
+    let ops =
+      options &&
+      options.map(option => {
+        return this.renderOption(option);
+      });
 
-    return ops.length ? (
+    return ops && ops.length ? (
       ops
     ) : (
       <div className={`select-noresults`}>گزینه پیدا نشد!</div>
@@ -187,6 +190,12 @@ class Select extends React.Component<SelectProps, SelectState> {
           onTouchEnd={this.handleMouseDown.bind(this)}>
           <div className="select-placeholder">{placeHolderValue}</div>
           <div className="select-arrow" />
+          <select
+            name={this.props.name}
+            value={this.state.selected.value}
+            onChange={() => {}}
+            hidden
+          />
         </div>
         {menu}
       </div>
@@ -194,4 +203,4 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 }
 
-export default Select;
+export default SelectComponent;
