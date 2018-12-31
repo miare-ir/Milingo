@@ -2170,8 +2170,11 @@ var SelectComponent = /** @class */ (function (_super) {
         return _this;
     }
     SelectComponent.prototype.componentWillReceiveProps = function (newProps) {
-        if (newProps.value && newProps.value !== this.state.selected) {
-            this.setState({ selected: newProps.value });
+        if (newProps.value && newProps.value.value !== this.state.selected.value) {
+            this.setState({
+                selected: { value: newProps.value.value, label: newProps.value.label },
+            });
+            this.selectElement.value = newProps.value.value;
         }
         else if (!newProps.value) {
             this.setState({
@@ -2187,6 +2190,7 @@ var SelectComponent = /** @class */ (function (_super) {
     SelectComponent.prototype.componentDidMount = function () {
         document.addEventListener('click', this.handleDocumentClick, false);
         document.addEventListener('touchend', this.handleDocumentClick, false);
+        this.selectElement.value = this.props.value && this.props.value.value;
     };
     SelectComponent.prototype.componentWillUnmount = function () {
         this.setState({ mounted: false });
@@ -2218,6 +2222,7 @@ var SelectComponent = /** @class */ (function (_super) {
         };
         this.setState(newState);
         this.handleChange(newState);
+        this.selectElement.value = value;
     };
     SelectComponent.prototype.handleChange = function (newState) {
         if (newState.selected !== this.state.selected && this.props.onChange) {
@@ -2236,6 +2241,9 @@ var SelectComponent = /** @class */ (function (_super) {
         }
         var label = option.label || option.value || option;
         return (React.createElement("div", { key: value, className: optionClass, onMouseDown: this.setValue.bind(this, value, label), onClick: this.setValue.bind(this, value, label) }, label));
+    };
+    SelectComponent.prototype.renderSelectsOption = function () {
+        return this.props.options.map(function (option) { return (React.createElement("option", { key: option.value, value: option.value }, option.label)); });
     };
     SelectComponent.prototype.buildMenu = function () {
         var _this = this;
@@ -2256,6 +2264,7 @@ var SelectComponent = /** @class */ (function (_super) {
         }
     };
     SelectComponent.prototype.render = function () {
+        var _this = this;
         var _a = this.props, className = _a.className, showedItem = _a.showedItem;
         var placeHolderValue = typeof this.state.selected === 'string'
             ? this.state.selected
@@ -2270,9 +2279,11 @@ var SelectComponent = /** @class */ (function (_super) {
         return (React.createElement("div", { className: selectClass },
             React.createElement("div", { className: controlClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
                 React.createElement("div", { className: "select-placeholder" }, placeHolderValue),
-                React.createElement("div", { className: "select-arrow" }),
-                React.createElement("select", { name: this.props.name, value: this.state.selected.value, onChange: function () { }, hidden: true })),
-            menu));
+                React.createElement("div", { className: "select-arrow" })),
+            menu,
+            React.createElement("select", { name: this.props.name, ref: function (select) { return (_this.selectElement = select); }, hidden: true },
+                React.createElement("option", { value: "null" }, "default"),
+                this.renderSelectsOption())));
     };
     return SelectComponent;
 }(React.Component));
