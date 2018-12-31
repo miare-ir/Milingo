@@ -23,7 +23,7 @@
 
     .select-placeholder {
         padding: 12px;
-        border: 1px solid #d0d0d0;
+        border: 1px solid #8897a8;
         flex-grow: 1;
         height: 22px;
         @include font-size(14);
@@ -31,6 +31,12 @@
         min-width: 44px;
         border-left: none;
         border-radius: 0 4px 4px 0;
+    }
+
+    &.is-open {
+        .select-placeholder {
+            border: 1px solid #d0d0d0;
+        }
     }
 
     .select-arrow {
