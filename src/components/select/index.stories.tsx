@@ -22,6 +22,12 @@ storiesOf('Select', module)
         padding: '40px',
       }}>
       <Select name="test1" options={options} />
+      <br />
+      <Select
+        name="test2"
+        value={{ value: '2', label: 'گزینه ۲' }}
+        options={options}
+      />
     </div>
   ))
   .addWithJSX('With 5 rows', () => (

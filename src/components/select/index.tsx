@@ -32,6 +32,8 @@ interface SelectState {
 const DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 
 class SelectComponent extends React.Component<SelectProps, SelectState> {
+  private selectElement: HTMLSelectElement;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -50,9 +52,12 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.value && newProps.value !== this.state.selected) {
-      this.setState({ selected: newProps.value });
+  componentWillReceiveProps(newProps: SelectProps) {
+    if (newProps.value && newProps.value.value !== this.state.selected.value) {
+      this.setState({
+        selected: { value: newProps.value.value, label: newProps.value.label },
+      });
+      this.selectElement.value = newProps.value.value;
     } else if (!newProps.value) {
       this.setState({
         selected: {
@@ -69,6 +74,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   componentDidMount() {
     document.addEventListener('click', this.handleDocumentClick, false);
     document.addEventListener('touchend', this.handleDocumentClick, false);
+    this.selectElement.value = this.props.value && this.props.value.value;
   }
 
   componentWillUnmount() {
@@ -102,8 +108,10 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
       },
       isOpen: false,
     };
+
     this.setState(newState);
     this.handleChange(newState);
+    this.selectElement.value = value;
   }
 
   handleChange(newState) {
@@ -133,6 +141,14 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
         {label}
       </div>
     );
+  }
+
+  renderSelectsOption() {
+    return this.props.options.map(option => (
+      <option key={option.value} value={option.value}>
+        {option.label}
+      </option>
+    ));
   }
 
   buildMenu() {
@@ -190,14 +206,15 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
           onTouchEnd={this.handleMouseDown.bind(this)}>
           <div className="select-placeholder">{placeHolderValue}</div>
           <div className="select-arrow" />
-          <select
-            name={this.props.name}
-            value={this.state.selected.value}
-            onChange={() => {}}
-            hidden
-          />
         </div>
         {menu}
+        <select
+          name={this.props.name}
+          ref={select => (this.selectElement = select)}
+          hidden>
+          <option value="null">default</option>
+          {this.renderSelectsOption()}
+        </select>
       </div>
     );
   }
