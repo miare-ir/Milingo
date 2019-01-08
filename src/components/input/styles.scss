@@ -108,6 +108,21 @@
     font-size: 14px;
     display: block;
   }
+
+  &.small {
+    input {
+      height: 40px;
+      padding: 8px 12px;
+    }
+
+    pre {
+      padding: 8px;
+    }
+
+    .clear {
+      top: 8px;
+    }
+  }
 }
 
 ::placeholder {

@@ -13,6 +13,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   title?: string;
   ltr?: boolean;
   extraTitle?: JSX.Element | string;
+  small?: boolean;
 }
 
 export interface InputState {
@@ -85,6 +86,7 @@ class Input extends React.Component<InputProps, InputState> {
       onClear,
       className,
       extraTitle,
+      small,
       ...props
     } = this.props;
 
@@ -95,6 +97,7 @@ class Input extends React.Component<InputProps, InputState> {
 
     const componentClassName = classNames('field-container', className, {
       error: hasError,
+      small,
       ltr,
     });
 
