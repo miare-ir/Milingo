@@ -23,14 +23,16 @@ interface SelectState {
     mounted: boolean;
 }
 declare class SelectComponent extends React.Component<SelectProps, SelectState> {
+    private selectElement;
     constructor(props: any);
-    componentWillReceiveProps(newProps: any): void;
+    componentWillReceiveProps(newProps: SelectProps): void;
     componentDidMount(): void;
     componentWillUnmount(): void;
     handleMouseDown(event: any): void;
     setValue(value: any, label: any): void;
     handleChange(newState: any): void;
     renderOption(option: any): JSX.Element;
+    renderSelectsOption(): JSX.Element[];
     buildMenu(): JSX.Element | JSX.Element[];
     handleDocumentClick(event: any): void;
     render(): JSX.Element;

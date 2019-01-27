@@ -1,4 +1,5 @@
 import Button from './components/button';
+import ButtonGroup from './components/button-group';
 import Checkbox from './components/checkbox';
 import CounterButton from './components/counter-button';
 import DialogContent from './components/dialog-content';
@@ -32,6 +33,7 @@ import {
 
 export {
   Button,
+  ButtonGroup,
   Checkbox,
   CounterButton,
   DialogContent,
