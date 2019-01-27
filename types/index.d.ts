@@ -1,4 +1,5 @@
 import Button from './components/button';
+import ButtonGroup from './components/button-group';
 import Checkbox from './components/checkbox';
 import CounterButton from './components/counter-button';
 import DialogContent from './components/dialog-content';
@@ -18,4 +19,4 @@ import { ActionTable, ActionTableRow } from './components/action-table';
 import Select from './components/select';
 import Tag from './components/tag';
 import { TabNav, TabNavItem, TabContent, TabContentItem } from './components/tab';
-export { Button, Checkbox, CounterButton, DialogContent, FileInput, FoodGroup, FoodGroupList, Form, FormGroup, Input, List, Navbar, NavbarItem, Notification, Radio, Textarea, Timeline, Toolbar, MenuAvatar, MenuHeader, MenuItem, MenuLink, MenuStatus, ActionTable, ActionTableRow, Select, Tag, TabNav, TabNavItem, TabContent, TabContentItem, };
+export { Button, ButtonGroup, Checkbox, CounterButton, DialogContent, FileInput, FoodGroup, FoodGroupList, Form, FormGroup, Input, List, Navbar, NavbarItem, Notification, Radio, Textarea, Timeline, Toolbar, MenuAvatar, MenuHeader, MenuItem, MenuLink, MenuStatus, ActionTable, ActionTableRow, Select, Tag, TabNav, TabNavItem, TabContent, TabContentItem, };
