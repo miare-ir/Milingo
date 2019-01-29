@@ -4,6 +4,7 @@ import Checkbox from './components/checkbox';
 import CounterButton from './components/counter-button';
 import DialogContent from './components/dialog-content';
 import FileInput from './components/file-input';
+import { FoodCard, FoodCardList } from './components/food-card';
 import { FoodGroup, FoodGroupList } from './components/food-group';
 import { Form, FormGroup } from './components/form';
 import Input from './components/input';
@@ -38,6 +39,8 @@ export {
   CounterButton,
   DialogContent,
   FileInput,
+  FoodCard,
+  FoodCardList,
   FoodGroup,
   FoodGroupList,
   Form,
