@@ -14,7 +14,7 @@ storiesOf('Food card', module)
         backgroundColor: '#f2f3f5',
         padding: '30px',
       }}>
-      <FoodCardList>
+      <FoodCardList title="پیتزا">
         <FoodCard price={15000}>پیتزا پپرونی</FoodCard>
         <FoodCard price={17500} hasTopping>
           پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا

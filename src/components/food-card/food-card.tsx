@@ -4,14 +4,14 @@ import * as classNames from 'classnames';
 import PersianNumber from '../persian-number';
 import './styles.scss';
 
-export interface FoodGroupProps {
+export interface FoodGroupProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
   hasTopping?: boolean;
-  price: number;
+  price: number | string;
 }
 
-class FormGroup extends React.Component<FoodGroupProps, {}> {
+class FoodCard extends React.Component<FoodGroupProps, {}> {
   render() {
     const { className, children, hasTopping, price } = this.props;
     const componentClassName = classNames('food-card-container', className);
@@ -32,4 +32,4 @@ class FormGroup extends React.Component<FoodGroupProps, {}> {
   }
 }
 
-export default FormGroup;
+export default FoodCard;

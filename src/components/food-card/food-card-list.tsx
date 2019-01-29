@@ -3,14 +3,15 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface FormProps {
+export interface FoodCardListProps extends React.HTMLProps<HTMLDivElement> {
+  title?: string;
   className?: string;
   children?: React.ReactNode;
 }
 
-class Form extends React.Component<FormProps, {}> {
+class FoodCardList extends React.Component<FoodCardListProps, {}> {
   render() {
-    const { className, children } = this.props;
+    const { className, children, title } = this.props;
     const componentClassName = classNames(
       'food-card-list-container',
       className,
@@ -18,10 +19,11 @@ class Form extends React.Component<FormProps, {}> {
 
     return (
       <div className={componentClassName}>
-        <div>{children}</div>
+        <div className="header">{title}</div>
+        <div className="card-list">{children}</div>
       </div>
     );
   }
 }
 
-export default Form;
+export default FoodCardList;
