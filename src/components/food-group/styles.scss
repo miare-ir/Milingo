@@ -37,11 +37,12 @@
   background-color: #F7F8FA;
   box-shadow: inset -1px 0 0 0 #ECEDEF, 0 -1px 0 0 rgba(221,221,221,0.5);
   padding: calculateRem(24);
-  min-width: 132px;
-  max-width: 192px;
-  width: calculateRem(132);
+  min-width: 180px;
+  max-width: 240px;
+  width: calculateRem(180);
   overflow-y: auto;
-  height: calc(100% - 48px);
+  height: 100%;
+  box-sizing: border-box;
 
   :last-child {
     margin-bottom: 0 !important;
