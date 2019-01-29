@@ -1,0 +1,63 @@
+@import '../../assets/styles/_base.scss';
+
+.tab-nav-wrapper {
+  width: 100%;
+  height: 56px;
+  border-bottom: 2px solid $primary1;
+  box-sizing: border-box;
+  display: flex;
+  direction: rtl;
+  justify-content: space-around;
+  transition: $transitionOutward;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .tab-nav-item {
+    padding: 16px;
+    position: relative;
+    flex-grow: 1;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;      
+    }
+
+    label {
+      min-width: 100%;
+      color: #000000;
+      font-family: IRANSans;
+      @include font-size(16);
+      font-weight: 500;
+      user-select: none;
+      white-space: nowrap;
+
+      &:hover {
+        cursor: pointer;      
+        color: $primary2;
+        transition: $transitionOutward;
+      }
+    }
+  }
+
+  .active {
+    label{
+      color: $primary1;
+    }
+
+    &:after {
+      content: '';
+      height: 6px;
+      width: calc(100% - 16px);
+      background-color: $primary1;
+      position: absolute;
+      bottom: 0;
+      left: 8px;
+      border-radius: 6px 6px 0 0;
+    }
+  }
+}
+
+.tab-content-wrapper {
+  width: 100%;
+  direction: rtl;
+}

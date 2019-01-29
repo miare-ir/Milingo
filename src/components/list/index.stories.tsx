@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import List from '.';
+import List from './list';
 import ListSection from './section';
 import ListTitle from './title';
 import ListFooter from './footer';

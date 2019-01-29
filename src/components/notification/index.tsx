@@ -6,12 +6,13 @@ import './styles.scss';
 export interface NotificationProps {
   message: string;
   warning?: boolean;
+  className?: string;
 }
 
 const Notification: React.SFC<NotificationProps> = (
   props: NotificationProps,
 ) => {
-  const className = classNames('notification', {
+  const className = classNames('notification', props.className, {
     alarm: props.warning === true,
   });
 

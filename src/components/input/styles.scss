@@ -90,11 +90,38 @@
     }
   }
 
+  &.ltr {
+    input {
+      direction: ltr !important;
+    }
+
+    .clear {
+      right: 8px !important;
+      left: unset;
+      text-align: left;
+    }
+  }
+
   .error {
     margin-top: 4px;
     color: $inputError;
     font-size: 14px;
     display: block;
+  }
+
+  &.small {
+    input {
+      height: 40px;
+      padding: 8px 12px;
+    }
+
+    pre {
+      padding: 8px;
+    }
+
+    .clear {
+      top: 8px;
+    }
   }
 }
 

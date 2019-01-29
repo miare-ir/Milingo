@@ -5,6 +5,7 @@ import './styles.scss';
 
 export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   primary?: boolean;
+  danger?: boolean;
   ghost?: boolean;
   link?: boolean;
   tiny?: boolean;
@@ -23,12 +24,14 @@ class Button extends React.Component<ButtonProps, {}> {
       small,
       regular,
       large,
+      danger,
       ...props
     }: ButtonProps & React.HTMLProps<HTMLButtonElement> = this.props;
 
     const className: string = classNames(props.className || '', {
       primary,
-      ghost: ghost || (!primary && !link),
+      danger,
+      ghost: (ghost || (!primary && !link)) && !danger,
       link,
       tiny,
       small,
