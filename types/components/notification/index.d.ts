@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './styles.scss';
-export interface NotificationProps {
+export interface NotificationProps extends React.HTMLProps<HTMLDivElement> {
     message: string;
     warning?: boolean;
     className?: string;

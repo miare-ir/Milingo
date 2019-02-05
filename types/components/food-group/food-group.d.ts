@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './styles.scss';
-export interface FoodGroupProps {
+export interface FoodGroupProps extends React.HTMLProps<HTMLDivElement> {
     className?: string;
     children?: React.ReactNode;
     onClick?: any;

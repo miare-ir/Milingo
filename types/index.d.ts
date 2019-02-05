@@ -20,4 +20,5 @@ import { ActionTable, ActionTableRow } from './components/action-table';
 import Select from './components/select';
 import Tag from './components/tag';
 import { TabNav, TabNavItem, TabContent, TabContentItem } from './components/tab';
-export { Button, ButtonGroup, Checkbox, CounterButton, DialogContent, FileInput, FoodCard, FoodCardList, FoodGroup, FoodGroupList, Form, FormGroup, Input, List, Navbar, NavbarItem, Notification, Radio, Textarea, Timeline, Toolbar, MenuAvatar, MenuHeader, MenuItem, MenuLink, MenuStatus, ActionTable, ActionTableRow, Select, Tag, TabNav, TabNavItem, TabContent, TabContentItem, };
+import PersianNumber from './components/persian-number';
+export { Button, ButtonGroup, Checkbox, CounterButton, DialogContent, FileInput, FoodCard, FoodCardList, FoodGroup, FoodGroupList, Form, FormGroup, Input, List, Navbar, NavbarItem, Notification, Radio, Textarea, Timeline, Toolbar, MenuAvatar, MenuHeader, MenuItem, MenuLink, MenuStatus, ActionTable, ActionTableRow, Select, Tag, TabNav, TabNavItem, TabContent, TabContentItem, PersianNumber, };
