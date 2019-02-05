@@ -13,11 +13,15 @@
         color: #1E6DC8;
     }
     .button-wrapper {
-        width: calculateRem(24);
-        height: calculateRem(24);
+        width: calculateRem(40);
+        height: calculateRem(40);
+        box-sizing: border-box;
         background-color: #F2F3F5;
-        padding: calculateRem(8);
         user-select: none;
+        
+        span {
+            margin: calculateRem(8);
+        }
 
         &:hover {
             background-color: #1E6DC8;
