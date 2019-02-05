@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface NotificationProps {
+export interface NotificationProps extends React.HTMLProps<HTMLDivElement> {
   message: string;
   warning?: boolean;
   className?: string;
@@ -12,11 +12,16 @@ export interface NotificationProps {
 const Notification: React.SFC<NotificationProps> = (
   props: NotificationProps,
 ) => {
-  const className = classNames('notification', props.className, {
-    alarm: props.warning === true,
+  const { message, className, warning, ...restOfProps } = props;
+  const componentClassName = classNames('notification', className, {
+    alarm: warning === true,
   });
 
-  return <div className={className}>{props.message}</div>;
+  return (
+    <div className={componentClassName} {...restOfProps}>
+      {message}
+    </div>
+  );
 };
 
 export default Notification;

@@ -18,10 +18,14 @@ class GroupButtonComponent extends React.Component<
   }
 
   render() {
-    const { className, children } = this.props;
+    const { className, children, ...props } = this.props;
     const buttonGroupClass = classNames('button-group-container', className);
 
-    return <div className={buttonGroupClass}>{children}</div>;
+    return (
+      <div className={buttonGroupClass} {...props}>
+        {children}
+      </div>
+    );
   }
 }
 

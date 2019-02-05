@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface CounterButtonProps extends React.HTMLProps<HTMLButtonElement> {
+export interface CounterButtonProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   onIncrease?: () => void;
   onDecrease?: () => void;
@@ -60,10 +60,10 @@ class CounterButton extends React.Component<
   }
 
   render() {
-    const { className } = this.props;
+    const { className, ...props } = this.props;
     const componentClassname = classNames('counter-button-wrapper', className);
     return (
-      <div className={componentClassname}>
+      <div className={componentClassname} {...props}>
         <div
           className="button-wrapper"
           onClick={this.handleIncrease.bind(this)}>

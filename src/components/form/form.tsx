@@ -12,15 +12,15 @@ export interface FormProps extends React.HTMLProps<HTMLFormElement> {
 
 class Form extends React.Component<FormProps, {}> {
   render() {
-    const { className, children, title, description } = this.props;
+    const { className, children, title, description, ...props } = this.props;
     const componentClassName = classNames('form-container', className);
 
     return (
-      <div className={componentClassName}>
+      <form className={componentClassName} {...props}>
         <h4 className="form-title">{title}</h4>
         <p className="form-description">{description}</p>
         {children}
-      </div>
+      </form>
     );
   }
 }

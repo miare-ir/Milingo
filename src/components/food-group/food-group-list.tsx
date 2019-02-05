@@ -3,18 +3,18 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface FormProps {
+export interface FormProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
 }
 
 class Form extends React.Component<FormProps, {}> {
   render() {
-    const { className, children } = this.props;
+    const { className, children, ...props } = this.props;
     const componentClassName = classNames('fdg-list-container', className);
 
     return (
-      <div className={componentClassName}>
+      <div className={componentClassName} {...props}>
         <div>{children}</div>
       </div>
     );
