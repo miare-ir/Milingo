@@ -31,6 +31,7 @@ import {
   TabContent,
   TabContentItem,
 } from './components/tab';
+import PersianNumber from './components/persian-number';
 
 export {
   Button,
@@ -67,4 +68,5 @@ export {
   TabNavItem,
   TabContent,
   TabContentItem,
+  PersianNumber,
 };
