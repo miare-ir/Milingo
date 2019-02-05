@@ -9,23 +9,41 @@ export interface FoodGroupProps extends React.HTMLProps<HTMLDivElement> {
   children?: React.ReactNode;
   hasTopping?: boolean;
   price: number | string;
+  isOutOfOrder?: boolean;
+  outOfOrderMessage?: string;
 }
 
 class FoodCard extends React.Component<FoodGroupProps, {}> {
   render() {
-    const { className, children, hasTopping, price } = this.props;
-    const componentClassName = classNames('food-card-container', className);
+    const {
+      className,
+      children,
+      hasTopping,
+      price,
+      isOutOfOrder,
+      outOfOrderMessage,
+      ...props
+    } = this.props;
+    const componentClassName = classNames('food-card-container', className, {
+      'out-of-order': isOutOfOrder,
+    });
 
     return (
-      <div className={componentClassName}>
+      <div className={componentClassName} {...props}>
         <p className="food-title">{children}</p>
-        <PersianNumber
-          value={price}
-          component="label"
-          currencyType="ریال"
-          className="price"
-          includesPrice
-        />
+        {isOutOfOrder ? (
+          <span className="out-of-order-message">
+            {outOfOrderMessage ? outOfOrderMessage : 'تمام شده'}
+          </span>
+        ) : (
+          <PersianNumber
+            value={price}
+            component="label"
+            currencyType="ریال"
+            className="price"
+            includesPrice
+          />
+        )}
         {hasTopping && <label className="topping-dot" />}
       </div>
     );

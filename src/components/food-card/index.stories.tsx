@@ -22,6 +22,9 @@ storiesOf('Food card', module)
           پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا
           مخلوط پیتزا مخلوط پیتزا مخلوط
         </FoodCard>
+        <FoodCard price={15000} isOutOfOrder>
+          پیتزا مارگاریتا
+        </FoodCard>
       </FoodCardList>
     </div>
   ));
