@@ -44,6 +44,10 @@
   box-sizing: border-box;
   flex-grow: 1;
 
+  &.out-of-order {
+    background-color: #ebedf0;
+  }
+
   .food-title {
     margin: 0;
     @include font-size(14);
@@ -55,6 +59,13 @@
 
   .price {
     color: #4A4A4A;
+    direction: rtl;
+    @include font-size(14);
+    text-align: center;
+  }
+
+  .out-of-order-message {
+    color: $danger1;
     direction: rtl;
     @include font-size(14);
     text-align: center;

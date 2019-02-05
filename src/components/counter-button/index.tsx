@@ -3,12 +3,13 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface CounterButtonProps extends React.HTMLProps<HTMLButtonElement> {
+export interface CounterButtonProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   onIncrease?: () => void;
   onDecrease?: () => void;
   onCountUpdate?: (newCount: number) => {};
   acceptNegative?: boolean;
+  startValue?: number;
 }
 
 export interface CounterButtonStates {
@@ -20,8 +21,14 @@ class CounterButton extends React.Component<
   CounterButtonStates
 > {
   state = {
-    count: 0,
+    count: 1,
   };
+
+  componentDidMount() {
+    if (this.props.startValue) {
+      this.setState({ count: this.props.startValue });
+    }
+  }
 
   updateCount(count) {
     this.setState({ count });
@@ -53,10 +60,10 @@ class CounterButton extends React.Component<
   }
 
   render() {
-    const { className } = this.props;
+    const { className, ...props } = this.props;
     const componentClassname = classNames('counter-button-wrapper', className);
     return (
-      <div className={componentClassname}>
+      <div className={componentClassname} {...props}>
         <div
           className="button-wrapper"
           onClick={this.handleIncrease.bind(this)}>

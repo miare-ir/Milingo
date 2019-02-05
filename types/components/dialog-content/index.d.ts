@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './styles.scss';
-export interface DialogContentProps {
+export interface DialogContentProps extends React.HTMLProps<HTMLDivElement> {
     children?: JSX.Element;
     actions?: JSX.Element[];
     title: string;

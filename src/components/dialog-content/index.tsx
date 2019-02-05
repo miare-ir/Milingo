@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface DialogContentProps {
+export interface DialogContentProps extends React.HTMLProps<HTMLDivElement> {
   children?: JSX.Element;
   actions?: JSX.Element[];
   title: string;
@@ -35,6 +35,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
       secondary,
       actions,
       children,
+      ...props
     } = this.props;
     const componentClassNames = classNames(
       'dialog-content-wrapper',
@@ -46,7 +47,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
     );
 
     return (
-      <div className={componentClassNames}>
+      <div className={componentClassNames} {...props}>
         <div className="dialog-header">
           <h2 className="dialog-title">{title}</h2>
         </div>
