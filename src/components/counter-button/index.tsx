@@ -60,8 +60,18 @@ class CounterButton extends React.Component<
   }
 
   render() {
-    const { className, ...props } = this.props;
+    const {
+      className,
+      onIncrease,
+      onDecrease,
+      onCountUpdate,
+      acceptNegative,
+      startValue,
+      ...props
+    } = this.props;
+
     const componentClassname = classNames('counter-button-wrapper', className);
+
     return (
       <div className={componentClassname} {...props}>
         <div

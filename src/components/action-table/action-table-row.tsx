@@ -114,7 +114,15 @@ class ActionTableRow extends React.Component<
   }
 
   render() {
-    const { className, title, icon, disable, ...props } = this.props;
+    const {
+      className,
+      title,
+      icon,
+      disable,
+      onAction,
+      object,
+      ...props
+    } = this.props;
     const componentClassName = classNames('action-table-row', className, {
       disable,
     });
