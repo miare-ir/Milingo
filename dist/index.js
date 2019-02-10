@@ -892,7 +892,7 @@ var CounterButton = /** @class */ (function (_super) {
         }
     };
     CounterButton.prototype.render = function () {
-        var _a = this.props, className = _a.className, props = __rest(_a, ["className"]);
+        var _a = this.props, className = _a.className, onIncrease = _a.onIncrease, onDecrease = _a.onDecrease, onCountUpdate = _a.onCountUpdate, acceptNegative = _a.acceptNegative, startValue = _a.startValue, props = __rest(_a, ["className", "onIncrease", "onDecrease", "onCountUpdate", "acceptNegative", "startValue"]);
         var componentClassname = classNames('counter-button-wrapper', className);
         return (React.createElement("div", __assign({ className: componentClassname }, props),
             React.createElement("div", { className: "button-wrapper", onClick: this.handleIncrease.bind(this) },
@@ -2430,7 +2430,7 @@ var ActionTableRow = /** @class */ (function (_super) {
                     } }, action.title)); })))));
     };
     ActionTableRow.prototype.render = function () {
-        var _a = this.props, className = _a.className, title = _a.title, icon = _a.icon, disable = _a.disable, props = __rest(_a, ["className", "title", "icon", "disable"]);
+        var _a = this.props, className = _a.className, title = _a.title, icon = _a.icon, disable = _a.disable, onAction = _a.onAction, object = _a.object, props = __rest(_a, ["className", "title", "icon", "disable", "onAction", "object"]);
         var componentClassName = classNames('action-table-row', className, {
             disable: disable,
         });
