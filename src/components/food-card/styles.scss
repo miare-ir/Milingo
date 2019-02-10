@@ -43,6 +43,8 @@
   font-family: IRANSans;
   box-sizing: border-box;
   flex-grow: 1;
+  user-select: none;
+  cursor: pointer;
 
   &.out-of-order {
     background-color: #ebedf0;

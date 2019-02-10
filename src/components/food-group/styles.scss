@@ -20,6 +20,8 @@
   overflow: hidden;
   white-space: nowrap;
   color: #000000;
+  cursor: pointer;
+  user-select: none;
 
   &:hover {
     background-color: #EAF2FC;
