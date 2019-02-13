@@ -2064,6 +2064,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -2082,24 +2093,26 @@ var Radio = /** @class */ (function (_super) {
     function Radio() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.handleChange = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (_this.props.onClick) {
+            if (_this.props.onChange) {
                 _this.props.onChange(e);
             }
         };
         return _this;
     }
+    Radio.prototype.componentDidMount = function () {
+        if (this.props.checked && this.radioButton) {
+            this.radioButton.click();
+        }
+    };
     Radio.prototype.render = function () {
         var _this = this;
-        var _a = this.props, children = _a.children, className = _a.className, disabled = _a.disabled, name = _a.name, props = __rest(_a, ["children", "className", "disabled", "name"]);
+        var _a = this.props, children = _a.children, className = _a.className, disabled = _a.disabled, name = _a.name, value = _a.value, onChange = _a.onChange, checked = _a.checked, props = __rest(_a, ["children", "className", "disabled", "name", "value", "onChange", "checked"]);
         var checkClassName = classNames('radio-btn', className, {
-            checked: this.props.checked,
             disabled: this.props.disabled,
         });
         return (React.createElement("div", { className: checkClassName },
-            React.createElement("input", { type: "radio", name: name, checked: props.checked, onChange: this.handleChange, disabled: this.props.disabled, ref: function (node) { return (_this.radioButton = node); } }),
-            React.createElement("span", { className: "radio" },
+            React.createElement("input", __assign({ type: "radio", name: name, id: "" + name + value, value: value, onChange: this.handleChange, ref: function (node) { return (_this.radioButton = node); } }, props)),
+            React.createElement("label", { htmlFor: "" + name + value, className: "radio" },
                 React.createElement("span", { className: "icon" })),
             React.createElement("div", { className: "children-div", onClick: function () { return _this.radioButton.click(); } }, children)));
     };
