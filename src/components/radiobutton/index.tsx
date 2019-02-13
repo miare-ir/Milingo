@@ -3,15 +3,21 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface RadioProps extends React.HTMLProps<HTMLInputElement> {}
+export interface RadioProps extends React.HTMLProps<HTMLInputElement> {
+  name: string;
+}
 
-class Radio extends React.Component<RadioProps> {
+class Radio extends React.Component<RadioProps, {}> {
   private radioButton: HTMLInputElement;
-  handleChange = e => {
-    e.preventDefault();
-    e.stopPropagation();
 
-    if (this.props.onClick) {
+  componentDidMount() {
+    if (this.props.checked && this.radioButton) {
+      this.radioButton.click();
+    }
+  }
+
+  handleChange = e => {
+    if (this.props.onChange) {
       this.props.onChange(e);
     }
   };
@@ -22,11 +28,13 @@ class Radio extends React.Component<RadioProps> {
       className,
       disabled,
       name,
+      value,
+      onChange,
+      checked,
       ...props
     }: RadioProps = this.props;
 
     const checkClassName = classNames('radio-btn', className, {
-      checked: this.props.checked,
       disabled: this.props.disabled,
     });
 
@@ -35,14 +43,15 @@ class Radio extends React.Component<RadioProps> {
         <input
           type="radio"
           name={name}
-          checked={props.checked}
+          id={`${name}${value}`}
+          value={value}
           onChange={this.handleChange}
-          disabled={this.props.disabled}
           ref={node => (this.radioButton = node)}
+          {...props}
         />
-        <span className="radio">
+        <label htmlFor={`${name}${value}`} className="radio">
           <span className="icon" />
-        </span>
+        </label>
         <div className="children-div" onClick={() => this.radioButton.click()}>
           {children}
         </div>

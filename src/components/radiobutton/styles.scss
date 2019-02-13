@@ -7,7 +7,6 @@
   direction: rtl;
   display: flex;
   align-items: center;
-  cursor: pointer;
   background: transparent;
   border: none;
   padding: 0;
@@ -29,11 +28,11 @@
     border: 1px solid $inputBorderColor;
     box-sizing: border-box;
     background-color: $inputBackgroundColor;
-    display: inline-block;
     margin-left: 8px;
     height: 24px;
     width: 24px;
     position: relative;
+    cursor: pointer;
 
     .icon {
       width: 18px;
@@ -54,22 +53,12 @@
     cursor: pointer;
   }
 
-  &:not(.checked) {
-    .radio {
-      .icon {
-        display: none;
-      }
-    }
-  }
-
   &:not(.disabled) {
-    &.checked {
-      .radio {
-        border-color: $inputCheckedBorderColor;
+    input[type="radio"]:checked + .radio {
+      border-color: $inputCheckedBorderColor;
 
-        .icon {
-          background-color: $primary2;
-        }
+      .icon {
+      background-color: $primary2;
       }
     }
 
@@ -78,7 +67,7 @@
         transition: $transitionOutward;
       }
 
-      &:not(.checked) .radio {
+      &:not(input[type="radio"]:checked) .radio {
         border-color: $inputHoverBorderColor;
       }
     }
@@ -94,15 +83,14 @@
   }
 
   &.disabled {
-    .radio {
+    input[type="radio"]:checked + .radio {
       border-color: $inputDisabledBorderColor;
       background-color: $inputDisabledBackgroundColor;
-    }
 
-    &.checked {
-      .icon {
+      .icon{
         background-color: $inputDisabledCheckedBorderColor;
         color: $inputDisabledIconColor;
+    
       }
     }
 
