@@ -20,35 +20,38 @@
 
   .input-container {
     position: relative;
-    display: block;
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid $inputBorderColor;
+    height: 48px;
+    box-sizing: border-box;
+    padding: 1px;   // for border radius margin
 
+    &:not(.disabled) {
+      &:hover {
+        border-color: $inputHoverBorderColor;
+        transition: $transitionOutward;
+      }
+
+      &.focused {
+        transition: $transitionOutward;
+        outline: none;
+        border-color: $inputFocusBorderColor;
+        box-shadow: 0 0 0 4px $inputFocusShadowColor;
+      }
+    }
+    
     input {
-      height: 48px;
       width: 100%;
-      box-sizing: border-box;
-      border-radius: 4px;
-      border: 1px solid $inputBorderColor;
       font-size: 16px;
+      border: none;
       padding: 12px;
       line-height: 24px;
+      outline: none;
 
       &[type=number]::-webkit-inner-spin-button,
       &[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
-      }
-
-      &:not([disabled]), &:not(:disabled) {
-        &:hover {
-          border-color: $inputHoverBorderColor;
-          transition: $transitionOutward;
-        }
-
-        &:focus, &:active, &:target {
-          transition: $transitionOutward;
-          outline: none;
-          border-color: $inputFocusBorderColor;
-          box-shadow: 0 0 0 4px $inputFocusShadowColor;
-        }
       }
 
       &[disabled], &:disabled {
@@ -61,9 +64,6 @@
       color: #4A4A4A;
       background-color: #ECEDEF;
       border-radius: 4px 0 0 4px;
-      position: absolute;
-      top: 1px;
-      left: 1px;
       padding: 12px;
       margin: 0;
       font-size: 14px;
@@ -81,10 +81,10 @@
   }
 
   &.error {
-    input {
+    .input-container {
       border-color: $inputError !important;
 
-      &:focus, &:active, &:target {
+      &.focused {
         box-shadow: 0 0 0 4px $inputErrorShadowColor !important;
       }
     }
@@ -110,11 +110,14 @@
   }
 
   &.small {
-    input {
+    .input-container {
       height: 40px;
-      padding: 8px 12px;
     }
 
+    input {
+      padding: 8px 12px;
+    }
+    
     pre {
       padding: 8px;
     }

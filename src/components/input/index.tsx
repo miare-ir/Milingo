@@ -19,6 +19,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
 export interface InputState {
   touched: boolean;
   value: any;
+  isFocused: boolean;
 }
 
 class Input extends React.Component<InputProps, InputState> {
@@ -27,6 +28,7 @@ class Input extends React.Component<InputProps, InputState> {
 
     this.state = {
       touched: false,
+      isFocused: false,
       value: props.value || '',
     };
   }
@@ -67,6 +69,22 @@ class Input extends React.Component<InputProps, InputState> {
     }
   };
 
+  handleFocus(e) {
+    this.setState({ isFocused: true });
+
+    if (this.props.onFocus) {
+      this.props.onFocus(e);
+    }
+  }
+
+  handleBlur(e) {
+    this.setState({ isFocused: false });
+
+    if (this.props.onBlur) {
+      this.props.onBlur(e);
+    }
+  }
+
   render() {
     if (this.props.errorMessage && !this.props.validate) {
       throw new TypeError(
@@ -101,6 +119,11 @@ class Input extends React.Component<InputProps, InputState> {
       ltr,
     });
 
+    const inputContainerClass = classNames('input-container', {
+      focused: this.state.isFocused,
+      disabled: this.props.disabled,
+    });
+
     return (
       <div className={componentClassName}>
         <div className="title">
@@ -110,11 +133,17 @@ class Input extends React.Component<InputProps, InputState> {
             <label htmlFor={this.props.id || ''}>{title}</label>
           ) : null}
         </div>
-        <div className="input-container">
+        <div className={inputContainerClass}>
           <input
             type={this.props.type || 'text'}
             value={this.state.value}
             onInput={this.handleInput}
+            onFocus={e => {
+              this.handleFocus(e);
+            }}
+            onBlur={e => {
+              this.handleBlur(e);
+            }}
             {...props}
           />
           {pre && <pre>{pre}</pre>}
