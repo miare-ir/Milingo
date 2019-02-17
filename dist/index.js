@@ -1548,7 +1548,7 @@ var Input = /** @class */ (function (_super) {
             throw new TypeError('Please provide either both errorMessage and ' +
                 'validate or non of them.');
         }
-        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "ltr", "onClear", "className", "extraTitle", "small"]);
+        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus"]);
         var hasError = errorMessage &&
             (forceDisplayError || this.state.touched) &&
             !validate(this.state.value);
