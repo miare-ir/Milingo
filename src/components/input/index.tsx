@@ -105,6 +105,8 @@ class Input extends React.Component<InputProps, InputState> {
       className,
       extraTitle,
       small,
+      onBlur,
+      onFocus,
       ...props
     } = this.props;
 
