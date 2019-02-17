@@ -34,6 +34,15 @@ storiesOf('Input', module)
       />
       <Input
         title="عنوان"
+        placeholder="متن چپ به راست"
+        errorMessage="مقدار وارد شده صحیح نیست"
+        validate={value => !!value}
+        pre="درصد"
+        displayClear
+        ltr
+      />
+      <Input
+        title="عنوان"
         placeholder="متن"
         type="number"
         pre="ریال"

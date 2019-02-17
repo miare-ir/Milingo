@@ -15,12 +15,15 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
 export interface InputState {
     touched: boolean;
     value: any;
+    isFocused: boolean;
 }
 declare class Input extends React.Component<InputProps, InputState> {
     constructor(props: any);
     componentWillReceiveProps(nextProps: InputProps): void;
     handleInput: (e: any) => void;
     clear: () => void;
+    handleFocus(e: any): void;
+    handleBlur(e: any): void;
     render(): JSX.Element;
 }
 export default Input;
