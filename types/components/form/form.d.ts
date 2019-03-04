@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './styles.scss';
-export interface FormProps extends React.HTMLProps<HTMLFormElement> {
+export interface FormProps extends React.HTMLProps<HTMLDivElement> {
     className?: string;
     children?: React.ReactNode;
     title?: string;

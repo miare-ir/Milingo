@@ -20,6 +20,6 @@ declare class PersianNumber extends React.Component<PersianNumberProps, {}> {
     private applyFormats;
     render(): React.ReactElement<{
         className: string;
-    }>;
+    }, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)>) | (new (props: any) => React.Component<any, any, any>)>;
 }
 export default PersianNumber;
