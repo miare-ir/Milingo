@@ -32,7 +32,7 @@ $buttonLinkHoverBackgroundColor:       $primary3;
 $buttonLinkHoverBorderColor:           $primary3;
 $buttonLinkHoverColor:                 $primary1;
 
-button {
+.milingo-btn-wrapper {
   box-sizing: border-box;
   border-radius: 4px;
   font-family: 'IranSans';

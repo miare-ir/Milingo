@@ -28,16 +28,20 @@ class Button extends React.Component<ButtonProps, {}> {
       ...props
     }: ButtonProps & React.HTMLProps<HTMLButtonElement> = this.props;
 
-    const className: string = classNames(props.className || '', {
-      primary,
-      danger,
-      ghost: (ghost || (!primary && !link)) && !danger,
-      link,
-      tiny,
-      small,
-      regular,
-      large,
-    });
+    const className: string = classNames(
+      'milingo-btn-wrapper',
+      props.className,
+      {
+        primary,
+        danger,
+        ghost: (ghost || (!primary && !link)) && !danger,
+        link,
+        tiny,
+        small,
+        regular,
+        large,
+      },
+    );
 
     return <button {...props} className={className} />;
   }
