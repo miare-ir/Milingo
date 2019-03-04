@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface FormProps extends React.HTMLProps<HTMLFormElement> {
+export interface FormProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
   title?: string;
@@ -16,11 +16,11 @@ class Form extends React.Component<FormProps, {}> {
     const componentClassName = classNames('form-container', className);
 
     return (
-      <form className={componentClassName} {...props}>
+      <div className={componentClassName} {...props}>
         <h4 className="form-title">{title}</h4>
         <p className="form-description">{description}</p>
         {children}
-      </form>
+      </div>
     );
   }
 }
