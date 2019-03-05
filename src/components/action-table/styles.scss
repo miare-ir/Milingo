@@ -28,18 +28,23 @@
   }
 
   .title-wrapper {
-    display: inline;
+    display: flex;
     padding: 4px 0;
+    min-width: 30%;
   }
 
   .row-title {    
     @include font-size(14);
     margin-right: 16px;
-    float: left;
+    flex-grow: 1;
+  }
+
+  .row-dsc {
+    flex-grow: 1;
+    text-align: right;
   }
 
   .icon {
-    float: right;
     margin-right: 8px;
   }
 

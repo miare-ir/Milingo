@@ -13,12 +13,14 @@ export interface Action {
 }
 
 export interface ActionTableRowProps extends React.HTMLProps<HTMLDivElement> {
-  title: string;
+  title?: string;
+  extraTitle?: JSX.Element;
   actions?: Action[];
   id: string;
   object?: any;
   icon?: string;
   disable?: boolean;
+  description?: string | JSX.Element;
   onAction?: (name: string, id: string, object?: any) => void;
 }
 
@@ -121,6 +123,8 @@ class ActionTableRow extends React.Component<
       disable,
       onAction,
       object,
+      extraTitle,
+      description,
       ...props
     } = this.props;
     const componentClassName = classNames('action-table-row', className, {
@@ -131,8 +135,11 @@ class ActionTableRow extends React.Component<
       <div className={componentClassName} {...props}>
         <div className="title-wrapper">
           {icon && <span className="icon material-icons">{icon}</span>}
-          <div className="row-title">{title}</div>
+          <div className="row-title">{extraTitle ? extraTitle : title}</div>
         </div>
+        {!disable && description && (
+          <span className="row-dsc">{description}</span>
+        )}
         {!disable && (
           <div>
             <div className="button-action">{this.renderButtonActions()}</div>
