@@ -7,12 +7,14 @@ export interface Action {
     extraProps?: object;
 }
 export interface ActionTableRowProps extends React.HTMLProps<HTMLDivElement> {
-    title: string;
+    title?: string;
+    extraTitle?: JSX.Element;
     actions?: Action[];
     id: string;
     object?: any;
     icon?: string;
     disable?: boolean;
+    description?: string | JSX.Element;
     onAction?: (name: string, id: string, object?: any) => void;
 }
 export interface ActionTableRowStates {

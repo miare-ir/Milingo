@@ -1515,12 +1515,12 @@ var FormGroup = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     FormGroup.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, singleRow = _a.singleRow, title = _a.title, props = __rest(_a, ["className", "children", "singleRow", "title"]);
+        var _a = this.props, className = _a.className, children = _a.children, singleRow = _a.singleRow, extraTitle = _a.extraTitle, title = _a.title, props = __rest(_a, ["className", "children", "singleRow", "extraTitle", "title"]);
         var componentClassName = classNames('form-group-container', className, {
             'single-row': singleRow,
         });
         return (React.createElement("div", __assign({ className: componentClassName }, props),
-            title && React.createElement("div", { className: "form-group-title" }, title),
+            extraTitle ? (extraTitle) : title ? (React.createElement("div", { className: "form-group-title" }, title)) : null,
             children));
     };
     return FormGroup;
@@ -2465,14 +2465,15 @@ var ActionTableRow = /** @class */ (function (_super) {
                     } }, action.title)); })))));
     };
     ActionTableRow.prototype.render = function () {
-        var _a = this.props, className = _a.className, title = _a.title, icon = _a.icon, disable = _a.disable, onAction = _a.onAction, object = _a.object, props = __rest(_a, ["className", "title", "icon", "disable", "onAction", "object"]);
+        var _a = this.props, className = _a.className, title = _a.title, icon = _a.icon, disable = _a.disable, onAction = _a.onAction, object = _a.object, extraTitle = _a.extraTitle, description = _a.description, props = __rest(_a, ["className", "title", "icon", "disable", "onAction", "object", "extraTitle", "description"]);
         var componentClassName = classNames('action-table-row', className, {
             disable: disable,
         });
         return (React.createElement("div", __assign({ className: componentClassName }, props),
             React.createElement("div", { className: "title-wrapper" },
                 icon && React.createElement("span", { className: "icon material-icons" }, icon),
-                React.createElement("div", { className: "row-title" }, title)),
+                React.createElement("div", { className: "row-title" }, extraTitle ? extraTitle : title)),
+            !disable && description && (React.createElement("span", { className: "row-dsc" }, description)),
             !disable && (React.createElement("div", null,
                 React.createElement("div", { className: "button-action" }, this.renderButtonActions()),
                 React.createElement("div", { className: "menu-action" }, this.renderMenuActions())))));

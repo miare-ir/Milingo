@@ -5,6 +5,7 @@ export interface FormGroupProps extends React.HTMLProps<HTMLDivElement> {
     children?: React.ReactNode;
     singleRow?: boolean;
     title?: string;
+    extraTitle?: JSX.Element | string;
 }
 declare class FormGroup extends React.Component<FormGroupProps, {}> {
     render(): JSX.Element;
