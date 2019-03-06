@@ -2121,14 +2121,9 @@ var Radio = /** @class */ (function (_super) {
         };
         return _this;
     }
-    Radio.prototype.componentDidMount = function () {
-        if (this.props.checked && this.radioButton) {
-            this.radioButton.click();
-        }
-    };
     Radio.prototype.render = function () {
         var _this = this;
-        var _a = this.props, children = _a.children, className = _a.className, disabled = _a.disabled, name = _a.name, value = _a.value, onChange = _a.onChange, checked = _a.checked, props = __rest(_a, ["children", "className", "disabled", "name", "value", "onChange", "checked"]);
+        var _a = this.props, children = _a.children, className = _a.className, disabled = _a.disabled, name = _a.name, value = _a.value, onChange = _a.onChange, props = __rest(_a, ["children", "className", "disabled", "name", "value", "onChange"]);
         var checkClassName = classNames('radio-btn', className, {
             disabled: this.props.disabled,
         });
