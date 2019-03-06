@@ -10,12 +10,6 @@ export interface RadioProps extends React.HTMLProps<HTMLInputElement> {
 class Radio extends React.Component<RadioProps, {}> {
   private radioButton: HTMLInputElement;
 
-  componentDidMount() {
-    if (this.props.checked && this.radioButton) {
-      this.radioButton.click();
-    }
-  }
-
   handleChange = e => {
     if (this.props.onChange) {
       this.props.onChange(e);
@@ -30,7 +24,6 @@ class Radio extends React.Component<RadioProps, {}> {
       name,
       value,
       onChange,
-      checked,
       ...props
     }: RadioProps = this.props;
 
