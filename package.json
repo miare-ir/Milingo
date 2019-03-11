@@ -16,7 +16,7 @@
     "start": "yarn run storybook",
     "release": "yarn run dist && npm publish",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "rimraf storybook && build-storybook -c .storybook -o storybook"
+    "build-storybook": "rimraf docs && build-storybook -c .storybook -o docs"
   },
   "repository": {
     "type": "git",
