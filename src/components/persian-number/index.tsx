@@ -8,6 +8,7 @@ export interface PersianNumberProps {
   includesTime?: boolean;
   component?: string;
   currencyType?: string;
+  applyZeroForPrice?: boolean;
 }
 
 class PersianNumber extends React.Component<PersianNumberProps, {}> {
@@ -79,13 +80,13 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
     return input;
   }
 
-  static formatPrice(text): string {
+  static formatPrice(text, applyZeroForPrice): string {
     text = text + '';
     let result: string = text;
 
     const prices = (text.match(/[0-9]+/g) || []).map((price: string) => {
       price = price.trim();
-      const leftPad = 3 - ((price.length + 1) % 3);
+      const leftPad = 3 - ((price.length + (applyZeroForPrice ? 1 : 0)) % 3);
       if (leftPad !== 3) {
         for (let i = 0; i < leftPad; i++) {
           price = ' ' + price;
@@ -101,7 +102,7 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
     });
 
     prices.forEach(([original, formatted], i) => {
-      if (original !== '0') {
+      if (original !== '0' && applyZeroForPrice) {
         result = result.replace(original, formatted + '0');
       } else {
         result = result.replace(original, formatted);
@@ -121,7 +122,10 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
 
   private applyFormats(): string {
     if (this.props.includesPrice) {
-      return PersianNumber.formatPrice(this.props.value);
+      return PersianNumber.formatPrice(
+        this.props.value,
+        this.props.applyZeroForPrice,
+      );
     }
 
     if (this.props.includesTime) {
