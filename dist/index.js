@@ -857,42 +857,20 @@ __webpack_require__(22);
 var CounterButton = /** @class */ (function (_super) {
     __extends(CounterButton, _super);
     function CounterButton() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.state = {
-            count: 1,
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    CounterButton.prototype.componentDidMount = function () {
-        if (this.props.startValue) {
-            this.setState({ count: this.props.startValue });
-        }
-    };
-    CounterButton.prototype.updateCount = function (count) {
-        this.setState({ count: count });
-        if (this.props.onCountUpdate) {
-            this.props.onCountUpdate(count);
-        }
-    };
     CounterButton.prototype.handleDecrease = function () {
-        if (!this.props.acceptNegative && this.state.count === 0) {
-            return;
-        }
-        var count = this.state.count - 1;
-        this.updateCount(count);
         if (this.props.onDecrease) {
             this.props.onDecrease();
         }
     };
     CounterButton.prototype.handleIncrease = function () {
-        var count = this.state.count + 1;
-        this.updateCount(count);
         if (this.props.onIncrease) {
             this.props.onIncrease();
         }
     };
     CounterButton.prototype.render = function () {
-        var _a = this.props, className = _a.className, onIncrease = _a.onIncrease, onDecrease = _a.onDecrease, onCountUpdate = _a.onCountUpdate, acceptNegative = _a.acceptNegative, startValue = _a.startValue, props = __rest(_a, ["className", "onIncrease", "onDecrease", "onCountUpdate", "acceptNegative", "startValue"]);
+        var _a = this.props, className = _a.className, onIncrease = _a.onIncrease, onDecrease = _a.onDecrease, props = __rest(_a, ["className", "onIncrease", "onDecrease"]);
         var componentClassname = classNames('counter-button-wrapper', className);
         return (React.createElement("div", __assign({ className: componentClassname }, props),
             React.createElement("div", { className: "button-wrapper", onClick: this.handleIncrease.bind(this) },
