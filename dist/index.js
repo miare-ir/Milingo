@@ -385,12 +385,12 @@ var PersianNumber = /** @class */ (function (_super) {
         }
         return input;
     };
-    PersianNumber.formatPrice = function (text) {
+    PersianNumber.formatPrice = function (text, applyZeroForPrice) {
         text = text + '';
         var result = text;
         var prices = (text.match(/[0-9]+/g) || []).map(function (price) {
             price = price.trim();
-            var leftPad = 3 - ((price.length + 1) % 3);
+            var leftPad = 3 - ((price.length + (applyZeroForPrice ? 1 : 0)) % 3);
             if (leftPad !== 3) {
                 for (var i = 0; i < leftPad; i++) {
                     price = ' ' + price;
@@ -404,7 +404,7 @@ var PersianNumber = /** @class */ (function (_super) {
         });
         prices.forEach(function (_a, i) {
             var original = _a[0], formatted = _a[1];
-            if (original !== '0') {
+            if (original !== '0' && applyZeroForPrice) {
                 result = result.replace(original, formatted + '0');
             }
             else {
@@ -421,7 +421,7 @@ var PersianNumber = /** @class */ (function (_super) {
     };
     PersianNumber.prototype.applyFormats = function () {
         if (this.props.includesPrice) {
-            return PersianNumber.formatPrice(this.props.value);
+            return PersianNumber.formatPrice(this.props.value, this.props.applyZeroForPrice);
         }
         if (this.props.includesTime) {
             return PersianNumber.formatTime(this.props.value);

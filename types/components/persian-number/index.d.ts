@@ -7,6 +7,7 @@ export interface PersianNumberProps {
     includesTime?: boolean;
     component?: string;
     currencyType?: string;
+    applyZeroForPrice?: boolean;
 }
 declare class PersianNumber extends React.Component<PersianNumberProps, {}> {
     static defaultProps: Partial<PersianNumberProps>;
@@ -15,7 +16,7 @@ declare class PersianNumber extends React.Component<PersianNumberProps, {}> {
     private static PERSIAN_NUMBERS;
     private arabicToPersian;
     private englishToPersian;
-    static formatPrice(text: any): string;
+    static formatPrice(text: any, applyZeroForPrice: any): string;
     static formatTime(text: string | number): string;
     private applyFormats;
     render(): React.ReactElement<{
