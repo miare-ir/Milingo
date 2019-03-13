@@ -7,68 +7,23 @@ export interface CounterButtonProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   onIncrease?: () => void;
   onDecrease?: () => void;
-  onCountUpdate?: (newCount: number) => {};
-  acceptNegative?: boolean;
-  startValue?: number;
 }
 
-export interface CounterButtonStates {
-  count: number;
-}
-
-class CounterButton extends React.Component<
-  CounterButtonProps,
-  CounterButtonStates
-> {
-  state = {
-    count: 1,
-  };
-
-  componentDidMount() {
-    if (this.props.startValue) {
-      this.setState({ count: this.props.startValue });
-    }
-  }
-
-  updateCount(count) {
-    this.setState({ count });
-    if (this.props.onCountUpdate) {
-      this.props.onCountUpdate(count);
-    }
-  }
-
+class CounterButton extends React.Component<CounterButtonProps, {}> {
   handleDecrease() {
-    if (!this.props.acceptNegative && this.state.count === 0) {
-      return;
-    }
-
-    const count = this.state.count - 1;
-    this.updateCount(count);
-
     if (this.props.onDecrease) {
       this.props.onDecrease();
     }
   }
 
   handleIncrease() {
-    const count = this.state.count + 1;
-    this.updateCount(count);
-
     if (this.props.onIncrease) {
       this.props.onIncrease();
     }
   }
 
   render() {
-    const {
-      className,
-      onIncrease,
-      onDecrease,
-      onCountUpdate,
-      acceptNegative,
-      startValue,
-      ...props
-    } = this.props;
+    const { className, onIncrease, onDecrease, ...props } = this.props;
 
     const componentClassname = classNames('counter-button-wrapper', className);
 

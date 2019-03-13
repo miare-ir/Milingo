@@ -21,6 +21,7 @@
         
         span {
             margin: calculateRem(8);
+            cursor: pointer;
         }
 
         &:hover {
