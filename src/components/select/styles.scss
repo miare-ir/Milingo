@@ -1,8 +1,16 @@
 @import "../../assets/styles/_base.scss";
+@import '../../assets/styles/_input-variables.scss';
 
 .select-root {
     position: relative;
     font-family: IRANSans;
+
+    &:focus {
+        outline: none;
+        transition: $transitionOutward;
+        box-shadow: 0 0 0 4px $inputFocusShadowColor;
+        border-radius: 4px;
+    }
   
     .select-control {
         width: 100%;

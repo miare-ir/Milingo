@@ -199,7 +199,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     ) : null;
 
     return (
-      <div className={selectClass}>
+      <div className={selectClass} tabIndex={0}>
         <div
           className={controlClass}
           onMouseDown={this.handleMouseDown.bind(this)}
