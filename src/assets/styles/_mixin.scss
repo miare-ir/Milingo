@@ -1,12 +1,12 @@
 @import 'variables';
 
-@function calculateRem($size) {
+@function calculatePixelToRem($size) {
     @return $size / 16 * 1rem;
 }
 
 @mixin font-size($size) {
-    font-size: calculateRem($size);
+    font-size: calculatePixelToRem($size);
     @if map-has-key($sizeLineHeightMap, $size) {
-        line-height: calculateRem(map-get($sizeLineHeightMap, $size));
+        line-height: calculatePixelToRem(map-get($sizeLineHeightMap, $size));
     }
 }
