@@ -20,7 +20,7 @@
 }
 
 .form-group-container {
-  margin-top: calculateRem(16);
+  margin-top: calculatePixelToRem(16);
   width: 100%;
   justify-content: space-between;
 

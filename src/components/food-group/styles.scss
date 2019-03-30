@@ -13,9 +13,9 @@
   box-shadow: 0 16px 8px -12px rgba(0,0,0,0.1);
   font-family: IranSans;
   text-align: right;
-  padding: calculateRem(12);
-  margin-bottom: calculateRem(16);
-  max-height: calculateRem(72);
+  padding: calculatePixelToRem(12);
+  margin-bottom: calculatePixelToRem(16);
+  max-height: calculatePixelToRem(72);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -38,10 +38,10 @@
   direction: rtl;
   background-color: #F7F8FA;
   box-shadow: inset -1px 0 0 0 #ECEDEF, 0 -1px 0 0 rgba(221,221,221,0.5);
-  padding: calculateRem(24);
+  padding: calculatePixelToRem(24);
   min-width: 180px;
   max-width: 240px;
-  width: calculateRem(180);
+  width: calculatePixelToRem(180);
   overflow-y: auto;
   height: 100%;
   box-sizing: border-box;
@@ -51,6 +51,6 @@
   }
 
   @include onHdDesktop {
-    width: calculateRem(192)
+    width: calculatePixelToRem(192)
   }
 }

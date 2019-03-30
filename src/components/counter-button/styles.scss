@@ -13,14 +13,14 @@
         color: #1E6DC8;
     }
     .button-wrapper {
-        width: calculateRem(40);
-        height: calculateRem(40);
+        width: calculatePixelToRem(40);
+        height: calculatePixelToRem(40);
         box-sizing: border-box;
         background-color: #F2F3F5;
         user-select: none;
         
         span {
-            margin: calculateRem(8);
+            margin: calculatePixelToRem(8);
             cursor: pointer;
         }
 
