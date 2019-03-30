@@ -952,10 +952,10 @@ var DialogContent = /** @class */ (function (_super) {
             secondary: secondary,
         });
         return (React.createElement("div", __assign({ className: componentClassNames }, props),
-            React.createElement("div", { className: "dialog-header" },
+            React.createElement("div", { className: "dialog-header", key: "title" },
                 React.createElement("h2", { className: "dialog-title" }, title)),
-            children && React.createElement("div", { className: "dialog-content" }, children),
-            React.createElement("div", { className: "dialog-actions" }, actions)));
+            children && (React.createElement("div", { className: "dialog-content", key: "content" }, children)),
+            React.createElement("div", { className: "dialog-actions", key: "footer" }, actions)));
     };
     return DialogContent;
 }(React.Component));
@@ -1026,7 +1026,9 @@ var FileInput = /** @class */ (function (_super) {
             var files = __assign({}, _this.state.files);
             if (index) {
                 delete files[index];
-                files.length = Object.keys(files).length;
+                Object.keys(files).length === 0
+                    ? (files = null)
+                    : (files.length = Object.keys(files).length);
             }
             if (_this.props.onChangeFiles) {
                 _this.props.onChangeFiles(files);
@@ -1053,15 +1055,10 @@ var FileInput = /** @class */ (function (_super) {
                     React.createElement("div", { className: "file-name-text" },
                         React.createElement("p", null, file.name),
                         React.createElement("i", { className: "material-icons clear", onClick: function () { return _this.clear(index); } }, "close")),
-                    state &&
-                        state.tryAgain && (React.createElement("div", { onClick: function () { return _this.props.onTryAgain(_this.state.files); }, className: "try-again" }, _this.props.tryAgainText
-                        ? _this.props.tryAgainText
-                        : 'تلاش مجدد')),
+                    state && state.tryAgain && (React.createElement("div", { onClick: function () { return _this.props.onTryAgain(_this.state.files); }, className: "try-again" }, _this.props.tryAgainText ? _this.props.tryAgainText : 'تلاش مجدد')),
                     state && state.progress ? (React.createElement("div", { className: "loading-container" },
                         React.createElement("div", { className: "loading", style: { width: state.progress + "%" } }))) : null),
-                hasError &&
-                    state &&
-                    state.message && React.createElement("span", { className: "error" }, state.message)));
+                hasError && state && state.message && (React.createElement("span", { className: "error" }, state.message))));
         };
         _this.state = {
             touched: false,
@@ -1088,7 +1085,7 @@ var FileInput = /** @class */ (function (_super) {
                     }),
                 React.createElement(button_1.default, { disabled: disabled, primary: true },
                     children ? children : 'افزودن فایل',
-                    React.createElement("input", __assign({ disabled: disabled, type: "file", onChange: this.handleInput }, props))))));
+                    React.createElement("input", __assign({ disabled: disabled, type: "file", onChange: this.handleInput, value: "" }, props))))));
     };
     return FileInput;
 }(React.Component));
@@ -1607,7 +1604,7 @@ var Input = /** @class */ (function (_super) {
             throw new TypeError('Please provide either both errorMessage and ' +
                 'validate or non of them.');
         }
-        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus"]);
+        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, disabled = _a.disabled, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus", "disabled"]);
         var hasError = errorMessage &&
             (forceDisplayError || this.state.touched) &&
             !validate(this.state.value);
@@ -1623,15 +1620,13 @@ var Input = /** @class */ (function (_super) {
         return (React.createElement("div", { className: componentClassName },
             React.createElement("div", { className: "title" }, extraTitle ? (extraTitle) : title ? (React.createElement("label", { htmlFor: this.props.id || '' }, title)) : null),
             React.createElement("div", { className: inputContainerClass },
-                React.createElement("input", __assign({ type: this.props.type || 'text', value: this.state.value, onInput: this.handleInput, onFocus: function (e) {
+                React.createElement("input", __assign({ type: this.props.type || 'text', value: this.state.value, onInput: this.handleInput, disabled: disabled, onFocus: function (e) {
                         _this.handleFocus(e);
                     }, onBlur: function (e) {
                         _this.handleBlur(e);
                     } }, props)),
                 pre && React.createElement("pre", null, pre),
-                !pre &&
-                    !!this.state.value &&
-                    displayClear && (React.createElement("i", { className: "material-icons clear", onClick: this.clear }, "add_circle"))),
+                !pre && !!this.state.value && displayClear && !disabled && (React.createElement("i", { className: "material-icons clear", onClick: this.clear }, "add_circle"))),
             hasError && React.createElement("span", { className: "error" }, errorMessage)));
     };
     return Input;
@@ -2918,7 +2913,7 @@ var SelectComponent = /** @class */ (function (_super) {
     };
     SelectComponent.prototype.render = function () {
         var _this = this;
-        var _a = this.props, className = _a.className, showedItem = _a.showedItem;
+        var _a = this.props, className = _a.className, showedItem = _a.showedItem, errorMessage = _a.errorMessage;
         var placeHolderValue = typeof this.state.selected === 'string'
             ? this.state.selected
             : this.state.selected.label;
@@ -2929,14 +2924,15 @@ var SelectComponent = /** @class */ (function (_super) {
             'select-disabled': this.props.disabled,
         });
         var menu = this.state.isOpen ? (React.createElement("div", { className: "select-menu", style: showedItem && { maxHeight: 40 * showedItem + 16 } }, this.buildMenu())) : null;
-        return (React.createElement("div", { className: selectClass },
+        return (React.createElement("div", { className: selectClass, tabIndex: 0 },
             React.createElement("div", { className: controlClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
                 React.createElement("div", { className: "select-placeholder" }, placeHolderValue),
                 React.createElement("div", { className: "select-arrow" })),
             menu,
             React.createElement("select", { name: this.props.name, ref: function (select) { return (_this.selectElement = select); }, hidden: true },
                 React.createElement("option", { value: "null" }, "default"),
-                this.renderSelectsOption())));
+                this.renderSelectsOption()),
+            errorMessage && React.createElement("span", { className: "error" }, errorMessage)));
     };
     return SelectComponent;
 }(React.Component));

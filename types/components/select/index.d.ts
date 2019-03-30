@@ -16,6 +16,7 @@ export interface SelectProps {
     value?: Option;
     placeholder?: string;
     showedItem?: number;
+    errorMessage?: string;
 }
 interface SelectState {
     selected: Option;
