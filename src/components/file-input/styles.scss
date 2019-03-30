@@ -50,15 +50,6 @@ $FileNameSpanBackgroundColor: #ecedef;
         color: $warning1 !important;
       }
     }
-
-    &.try-again-state {
-      .file-name-text {
-        p {
-          max-width: 88px !important;
-          min-width: 88px !important;
-        }
-      }
-    }
   }
 
   .file-name {
@@ -77,12 +68,13 @@ $FileNameSpanBackgroundColor: #ecedef;
     text-align: left;
     padding: 12px 8px;
     position: relative;
+    box-sizing: border-box;
 
     p {
       margin: 0px;
       min-width: 80px;
       max-width: 184px;
-      width: calc(100% - 56px);
+      width: calc(100% - 26px);
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;

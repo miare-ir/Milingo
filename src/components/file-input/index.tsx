@@ -62,10 +62,12 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
   };
 
   clear = index => {
-    const files = { ...this.state.files };
+    let files = { ...this.state.files };
     if (index) {
       delete files[index];
-      files.length = Object.keys(files).length;
+      Object.keys(files).length === 0
+        ? (files = null)
+        : (files.length = Object.keys(files).length);
     }
 
     if (this.props.onChangeFiles) {
@@ -107,16 +109,13 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
               close
             </i>
           </div>
-          {state &&
-            state.tryAgain && (
-              <div
-                onClick={() => this.props.onTryAgain(this.state.files)}
-                className="try-again">
-                {this.props.tryAgainText
-                  ? this.props.tryAgainText
-                  : 'تلاش مجدد'}
-              </div>
-            )}
+          {state && state.tryAgain && (
+            <div
+              onClick={() => this.props.onTryAgain(this.state.files)}
+              className="try-again">
+              {this.props.tryAgainText ? this.props.tryAgainText : 'تلاش مجدد'}
+            </div>
+          )}
           {state && state.progress ? (
             <div className="loading-container">
               <div
@@ -126,9 +125,9 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
             </div>
           ) : null}
         </div>
-        {hasError &&
-          state &&
-          state.message && <span className="error">{state.message}</span>}
+        {hasError && state && state.message && (
+          <span className="error">{state.message}</span>
+        )}
       </div>
     );
   };
@@ -168,6 +167,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
               disabled={disabled}
               type="file"
               onChange={this.handleInput}
+              value=""
               {...props}
             />
           </Button>

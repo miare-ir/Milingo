@@ -45,7 +45,7 @@
       width: 100%;
       font-size: 16px;
       border: none;
-      padding: 12px;
+      padding: 12px 12px 12px 40px;
       line-height: 24px;
       outline: none;
 
@@ -72,7 +72,7 @@
     .clear {
       transform: rotate(45deg);
       position: absolute;
-      top: 12px;
+      top: 11.5px;
       left: 8px;
       color: $disabledColor;
       font-size: 24px;
@@ -93,6 +93,7 @@
   &.ltr {
     input {
       direction: ltr !important;
+      padding: 12px 40px 12px 12px;
     }
 
     .clear {
