@@ -48,11 +48,17 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
 
     return (
       <div className={componentClassNames} {...props}>
-        <div className="dialog-header">
+        <div className="dialog-header" key="title">
           <h2 className="dialog-title">{title}</h2>
         </div>
-        {children && <div className="dialog-content">{children}</div>}
-        <div className="dialog-actions">{actions}</div>
+        {children && (
+          <div className="dialog-content" key="content">
+            {children}
+          </div>
+        )}
+        <div className="dialog-actions" key="footer">
+          {actions}
+        </div>
       </div>
     );
   }
