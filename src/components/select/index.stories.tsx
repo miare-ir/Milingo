@@ -21,7 +21,11 @@ storiesOf('Select', module)
         backgroundColor: '#ffffff',
         padding: '40px',
       }}>
-      <Select name="test1" options={options} />
+      <Select
+        name="test1"
+        options={options}
+        errorMessage=".انتخاب این مورد اجباری است"
+      />
       <br />
       <Select
         name="test2"

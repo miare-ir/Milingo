@@ -7,6 +7,15 @@ import Textarea from '../textarea';
 import Checkbox from '../checkbox';
 import Radio from '../radiobutton';
 import Button from '../button';
+import Select, { Option } from '../select';
+
+const options: Option[] = [
+  { value: '1', label: 'گزینه ۱' },
+  { value: '2', label: 'گزینه ۲' },
+  { value: '3', label: 'گزینه ۳' },
+  { value: '4', label: 'گزینه ۴' },
+  { value: '5', label: 'گزینه ۵' },
+];
 
 storiesOf('Form', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
@@ -24,6 +33,9 @@ storiesOf('Form', module)
         </FormGroup>
         <FormGroup>
           <Textarea title="عنوان" placeholder="متن" rows={4} />
+        </FormGroup>
+        <FormGroup title="انتخاب گزینه">
+          <Select name="test1" options={options} />
         </FormGroup>
         <FormGroup title="عنوان">
           <Radio name="test" checked>
