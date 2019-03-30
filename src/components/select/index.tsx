@@ -202,8 +202,10 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     ) : null;
 
     return (
-      <div className={selectClass} tabIndex={0}>
+      <div className={selectClass}>
+        {errorMessage && <span className="error">{errorMessage}</span>}
         <div
+          tabIndex={0}
           className={controlClass}
           onMouseDown={this.handleMouseDown.bind(this)}
           onTouchEnd={this.handleMouseDown.bind(this)}>
@@ -218,7 +220,6 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
           <option value="null">default</option>
           {this.renderSelectsOption()}
         </select>
-        {errorMessage && <span className="error">{errorMessage}</span>}
       </div>
     );
   }

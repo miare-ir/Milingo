@@ -4,13 +4,6 @@
 .select-root {
     position: relative;
     font-family: IRANSans;
-
-    &:focus {
-        outline: none;
-        transition: $transitionOutward;
-        box-shadow: 0 0 0 4px $inputFocusShadowColor;
-        border-radius: 4px;
-    }
   
     .select-control {
         width: 100%;
@@ -27,6 +20,13 @@
         transition: all 200ms ease;
         display: flex;
         direction: rtl;
+
+        &:focus {
+            outline: none;
+            transition: $transitionOutward;
+            box-shadow: 0 0 0 4px $inputFocusShadowColor;
+            border-radius: 4px;
+        }
     }
 
     .select-placeholder {
@@ -111,7 +111,7 @@
     }
 
     .error {
-        margin-top: 4px;
+        margin-bottom: 4px;
         color: $inputError;
         font-size: 14px;
         display: block;
