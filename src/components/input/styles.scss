@@ -45,7 +45,7 @@
       width: 100%;
       font-size: 16px;
       border: none;
-      padding: 12px;
+      padding: 12px 12px 12px 40px;
       line-height: 24px;
       outline: none;
 
@@ -93,6 +93,7 @@
   &.ltr {
     input {
       direction: ltr !important;
+      padding: 12px 40px 12px 12px;
     }
 
     .clear {
