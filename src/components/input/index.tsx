@@ -107,6 +107,7 @@ class Input extends React.Component<InputProps, InputState> {
       small,
       onBlur,
       onFocus,
+      disabled,
       ...props
     } = this.props;
 
@@ -140,6 +141,7 @@ class Input extends React.Component<InputProps, InputState> {
             type={this.props.type || 'text'}
             value={this.state.value}
             onInput={this.handleInput}
+            disabled={disabled}
             onFocus={e => {
               this.handleFocus(e);
             }}
@@ -149,13 +151,11 @@ class Input extends React.Component<InputProps, InputState> {
             {...props}
           />
           {pre && <pre>{pre}</pre>}
-          {!pre &&
-            !!this.state.value &&
-            displayClear && (
-              <i className="material-icons clear" onClick={this.clear}>
-                add_circle
-              </i>
-            )}
+          {!pre && !!this.state.value && displayClear && !disabled && (
+            <i className="material-icons clear" onClick={this.clear}>
+              add_circle
+            </i>
+          )}
         </div>
         {hasError && <span className="error">{errorMessage}</span>}
       </div>
