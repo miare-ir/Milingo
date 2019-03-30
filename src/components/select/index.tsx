@@ -21,6 +21,7 @@ export interface SelectProps {
   value?: Option;
   placeholder?: string;
   showedItem?: number;
+  errorMessage?: string;
 }
 
 interface SelectState {
@@ -177,7 +178,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   }
 
   render() {
-    const { className, showedItem } = this.props;
+    const { className, showedItem, errorMessage } = this.props;
 
     const placeHolderValue =
       typeof this.state.selected === 'string'
@@ -187,9 +188,11 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     const selectClass = classNames('select-root', className, {
       'is-open': this.state.isOpen,
     });
+
     const controlClass = classNames('select-control', {
       'select-disabled': this.props.disabled,
     });
+
     const menu = this.state.isOpen ? (
       <div
         className="select-menu"
@@ -215,6 +218,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
           <option value="null">default</option>
           {this.renderSelectsOption()}
         </select>
+        {errorMessage && <span className="error">{errorMessage}</span>}
       </div>
     );
   }
