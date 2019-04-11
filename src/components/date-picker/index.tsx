@@ -39,6 +39,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   public static defaultProps: Partial<DatePickerProps> = {
     className: '',
     dialogOpen: false,
+    onChangeDate: () => {},
   };
 
   constructor(props) {
