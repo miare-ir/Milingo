@@ -6,8 +6,22 @@ storiesOf('Date Picker', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
   .addWithJSX('All', () => (
     <div>
-      <div>
-        <DatePicker title="انتخاب تاریخ" onChangeDate={() => {}} />
-      </div>
+      <DatePicker
+        title="انتخاب تاریخ"
+        inputButtonSize="tiny"
+        onChangeDate={() => {}}
+      />
+      <br />
+      <DatePicker
+        title="انتخاب تاریخ"
+        inputButtonSize="small"
+        onChangeDate={() => {}}
+      />
+      <br />
+      <DatePicker
+        title="انتخاب تاریخ"
+        inputButtonSize="regular"
+        onChangeDate={() => {}}
+      />
     </div>
   ));

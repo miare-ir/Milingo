@@ -23,6 +23,7 @@ export interface DatePickerProps {
   openDialog?: () => void;
   closeDialog?: () => void;
   forceDatePickerOpen?: boolean;
+  inputButtonSize?: 'small' | 'tiny' | 'regular' | 'large';
   disabled?: boolean;
 }
 
@@ -224,7 +225,8 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
         <Button
           ghost
           className={`date-picker-input ${this.state.savedDate ? '' : 'empty'}`}
-          onClick={this.openDialog}>
+          onClick={this.openDialog}
+          {...{ [this.props.inputButtonSize]: true }}>
           <PersianNumber value={savedDate} className="clickable" />
           {this.state.savedDate && (
             <span
