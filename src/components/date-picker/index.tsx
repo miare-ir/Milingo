@@ -220,7 +220,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       : this.props.title || 'انتخاب تاریخ';
 
     return (
-      <div className="date-picker-container">
+      <div className={`date-picker-container ${this.props.className}`}>
         <Button
           ghost
           className={`date-picker-input ${this.state.savedDate ? '' : 'empty'}`}
