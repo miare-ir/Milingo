@@ -3,3 +3,7 @@
 @import 'responsive';
 @import 'transitions';
 @import 'mixin';
+
+.clickable {
+    cursor: pointer;
+}
