@@ -62,6 +62,9 @@
   },
   "dependencies": {
     "babel-loader": "7",
-    "react-circular-progressbar": "^1.0.0"
+    "moment": "^2.24.0",
+    "moment-jalaali": "^0.8.3",
+    "react-circular-progressbar": "^1.0.0",
+    "react-modal": "^3.8.1"
   }
 }

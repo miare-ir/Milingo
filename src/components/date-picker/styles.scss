@@ -1,0 +1,116 @@
+@import '../../assets/styles/_base.scss';
+
+.date-picker-container {
+  .date-picker-input {
+    display: flex;
+
+    .material-icons {
+      margin-left: 8px;
+      color: $warning1;
+    }
+  }
+}
+
+.milingo-date-picker-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,2,29,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .date-picker {
+    background-color: #fff;
+    padding: 0;
+    width: 332px;
+    font-family: IranSans;
+    direction: rtl;
+    user-select: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    .calendar {
+      height: calculatePixelToRem(340);
+      padding: 0 calculatePixelToRem(5);
+
+      &-month {
+        &:first-child {
+          border-bottom: 1px solid rgba(236, 237, 239, 0.6);
+          margin-bottom: calculatePixelToRem(5);
+        }
+
+        &:after {
+          content: '';
+          clear: both;
+          display: table;
+        }
+      }
+
+      &-actions {
+        padding: calculatePixelToRem(10);
+        display: flex;
+        justify-content: space-around;
+      }
+
+      &-info {
+        background-color: #212230;
+        padding: calculatePixelToRem(10);
+        color: #fff;
+
+        .year {
+          float: left;
+        }
+      }
+
+      &-weekday, &-day {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 0;
+        flex-basis: 36px;
+        height: calculatePixelToRem(36);
+        margin: calculatePixelToRem(5);
+      }
+
+      &-week {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+      }
+
+      &-day {
+        color: #696969;
+        transition: color 0.2s ease-in-out,
+        background-color 0.2s ease-in-out;
+        border-radius: 50%;
+
+        &.seem-disabled {
+          color: #b6b6b6;
+        }
+
+        &.selected {
+          background-color: #4a90e2;
+          border-radius: 50%;
+          color: #fff;
+        }
+
+        &.clickable {
+          cursor: pointer;
+
+          &:not(.seem-disabled):hover {
+            background-color: #4a90e2;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

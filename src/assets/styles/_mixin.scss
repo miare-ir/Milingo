@@ -1,7 +1,7 @@
 @import 'variables';
 
 @function calculatePixelToRem($size) {
-    @return $size / 16 * 1rem;
+    @return $size / 14 * 1rem;
 }
 
 @mixin font-size($size) {
