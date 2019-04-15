@@ -4,7 +4,7 @@
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "author": "Miare <dev@mia.re> (https://mia.re)",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "keywords": [
     "design-library",
     "react"
