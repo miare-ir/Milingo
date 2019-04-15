@@ -9,6 +9,8 @@
   background-color: white;
   border-radius: 4px;
   direction: rtl;
+  width: 448px;
+  box-sizing: border-box;
 
   &:not(.secondary) {
     padding: 0;
@@ -21,7 +23,7 @@
 
     &-title {
       width: 100%;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 500;
       margin: 0;
       text-align: center;
@@ -66,7 +68,7 @@
     &-content {
       box-sizing: border-box;
       padding: 0 24px 32px 24px;
-      
+
       p {
         text-align: right;
       }
@@ -81,7 +83,7 @@
       margin-top: 0;
       direction: ltr;
       box-shadow: inset 0 1px 0 0 #ECEDEF;
-      
+
       button {
         &:not(:first-child) {
           margin-top: 0;
