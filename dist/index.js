@@ -1601,13 +1601,13 @@ var Input = /** @class */ (function (_super) {
     Input.prototype.render = function () {
         var _this = this;
         if (this.props.errorMessage && !this.props.validate) {
-            throw new TypeError('Please provide either both errorMessage and ' +
+            console.warn('Please provide either both errorMessage and ' +
                 'validate or non of them.');
         }
         var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, disabled = _a.disabled, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus", "disabled"]);
         var hasError = errorMessage &&
-            (forceDisplayError || this.state.touched) &&
-            !validate(this.state.value);
+            (forceDisplayError ||
+                (this.state.touched && !validate(this.state.value)));
         var componentClassName = classNames('field-container', className, {
             error: hasError,
             small: small,
