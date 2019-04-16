@@ -4,19 +4,18 @@
 .form-container {
   text-align: right;
 
-  .form-title{
+  .form-title {
     @include font-size(16);
     font-family: IranSans;
     font-weight: 500;
     margin: 0;
   }
-  
-  .form-description{
+
+  .form-description {
     @include font-size(14);
     font-family: IranSans;
     font-weight: normal;
-    margin-bottom: calculatePixelToRem(16);
-    margin-top: 0; 
+    margin: 0;
   }
 }
 
@@ -31,6 +30,10 @@
     font-family: IranSans;
     margin: 0 0 8px 0;
   }
+
+  >:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .single-row {
@@ -40,6 +43,7 @@
     margin-right: 16px;
     flex-grow: 1;
   }
+
   >:last-child {
     margin-left: 16px;
     flex-grow: 1;

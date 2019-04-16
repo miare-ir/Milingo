@@ -1,43 +1,43 @@
 @import '../../assets/styles/_base.scss';
 
-$buttonPrimaryBackgroundColor:         $primary1;
-$buttonPrimaryBorderColor:             $primary1;
-$buttonPrimaryColor:                   #FFFFFF;
-$buttonPrimaryHoverBackgroundColor:    $primary2;
-$buttonPrimaryHoverBorderColor:        $primary2;
-$buttonPrimaryHoverColor:              #FFFFFF;
+$buttonPrimaryBackgroundColor: $primary1;
+$buttonPrimaryBorderColor: $primary1;
+$buttonPrimaryColor: #FFFFFF;
+$buttonPrimaryHoverBackgroundColor: $primary2;
+$buttonPrimaryHoverBorderColor: $primary2;
+$buttonPrimaryHoverColor: #FFFFFF;
 $buttonPrimaryDisabledBackgroundColor: $disabledColor;
-$buttonPrimaryDisabledBorderColor:     $disabledColor;
-$buttonPrimaryDisabledColor:           #FFFFFF;
+$buttonPrimaryDisabledBorderColor: $disabledColor;
+$buttonPrimaryDisabledColor: #FFFFFF;
 
-$buttonGhostBackgroundColor:           #FFFFFF;
-$buttonGhostBorderColor:               $primary1;
-$buttonGhostColor:                     $primary1;
-$buttonGhostHoverBackgroundColor:      $primary3;
-$buttonGhostHoverBorderColor:          $primary1;
-$buttonGhostHoverColor:                $primary1;
-$buttonGhostDisabledBackgroundColor:   #FFFFFF;
-$buttonGhostDisabledBorderColor:       #8897A8;
-$buttonGhostDisabledColor:             #8897A8;
+$buttonGhostBackgroundColor: #FFFFFF;
+$buttonGhostBorderColor: $primary1;
+$buttonGhostColor: $primary1;
+$buttonGhostHoverBackgroundColor: $primary3;
+$buttonGhostHoverBorderColor: $primary1;
+$buttonGhostHoverColor: $primary1;
+$buttonGhostDisabledBackgroundColor: #FFFFFF;
+$buttonGhostDisabledBorderColor: #8897A8;
+$buttonGhostDisabledColor: #8897A8;
 
-$buttonDangerBackgroundColor:          #FFFFFF;
-$buttonDangerBorderColor:              $danger1;
-$buttonDangerColor:                    $danger1;
-$buttonDangerHoverBackgroundColor:     $danger2;
+$buttonDangerBackgroundColor: #FFFFFF;
+$buttonDangerBorderColor: $danger1;
+$buttonDangerColor: $danger1;
+$buttonDangerHoverBackgroundColor: $danger2;
 
-$buttonLinkBackgroundColor:            #FFFFFF;
-$buttonLinkBorderColor:                #FFFFFF;
-$buttonLinkColor:                      $primary1;
-$buttonLinkHoverBackgroundColor:       $primary3;
-$buttonLinkHoverBorderColor:           $primary3;
-$buttonLinkHoverColor:                 $primary1;
+$buttonLinkBackgroundColor: #FFFFFF;
+$buttonLinkBorderColor: #FFFFFF;
+$buttonLinkColor: $primary1;
+$buttonLinkHoverBackgroundColor: $primary3;
+$buttonLinkHoverBorderColor: $primary3;
+$buttonLinkHoverColor: $primary1;
 
 .milingo-btn-wrapper {
   box-sizing: border-box;
   border-radius: 4px;
   font-family: 'IranSans';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   height: 48px;
   padding: 12px 24px;
   cursor: pointer;
@@ -47,7 +47,8 @@ $buttonLinkHoverColor:                 $primary1;
     transition: $transitionOutward;
   }
 
-  &.tiny, &.small {
+  &.tiny,
+  &.small {
     font-size: 14px;
   }
 
@@ -83,7 +84,9 @@ $buttonLinkHoverColor:                 $primary1;
       border-color: $buttonPrimaryHoverBorderColor;
     }
 
-    &.disabled, &[disabled], &:disabled {
+    &.disabled,
+    &[disabled],
+    &:disabled {
       background-color: $buttonPrimaryDisabledBackgroundColor;
       border-color: $buttonPrimaryDisabledBorderColor;
       color: $buttonPrimaryDisabledColor;
@@ -100,7 +103,9 @@ $buttonLinkHoverColor:                 $primary1;
       border-color: $buttonGhostHoverBorderColor;
     }
 
-    &.disabled, &[disabled], &:disabled {
+    &.disabled,
+    &[disabled],
+    &:disabled {
       background-color: $buttonGhostDisabledBackgroundColor;
       border-color: $buttonGhostDisabledBorderColor;
       color: $buttonGhostDisabledColor;
@@ -116,7 +121,9 @@ $buttonLinkHoverColor:                 $primary1;
       background-color: $buttonDangerHoverBackgroundColor;
     }
 
-    &.disabled, &[disabled], &:disabled {
+    &.disabled,
+    &[disabled],
+    &:disabled {
       background-color: $buttonGhostDisabledBackgroundColor;
       border-color: $buttonGhostDisabledBorderColor;
       color: $buttonGhostDisabledColor;
@@ -134,11 +141,14 @@ $buttonLinkHoverColor:                 $primary1;
     }
   }
 
-  &.disabled, &[disabled], &:disabled {
+  &.disabled,
+  &[disabled],
+  &:disabled {
     cursor: default;
   }
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     outline: none;
   }
 }
