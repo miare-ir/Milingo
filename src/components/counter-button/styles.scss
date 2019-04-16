@@ -22,6 +22,7 @@
         span {
             margin: calculatePixelToRem(8);
             cursor: pointer;
+            font-size: calculatePixelToRem(24);
         }
 
         &:hover {
