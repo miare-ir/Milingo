@@ -52,7 +52,6 @@ storiesOf('Input', module)
         title="عنوان"
         placeholder="متن"
         errorMessage="مقدار وارد شده صحیح نیست"
-        validate={value => !!value}
         forceDisplayError
       />
       <Input
@@ -61,7 +60,6 @@ storiesOf('Input', module)
         type="number"
         pre="ریال"
         errorMessage="مقدار وارد شده صحیح نیست"
-        validate={value => !!value}
         forceDisplayError
       />
     </div>

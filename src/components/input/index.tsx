@@ -87,7 +87,7 @@ class Input extends React.Component<InputProps, InputState> {
 
   render() {
     if (this.props.errorMessage && !this.props.validate) {
-      throw new TypeError(
+      console.warn(
         'Please provide either both errorMessage and ' +
           'validate or non of them.',
       );
@@ -113,8 +113,8 @@ class Input extends React.Component<InputProps, InputState> {
 
     const hasError =
       errorMessage &&
-      (forceDisplayError || this.state.touched) &&
-      !validate(this.state.value);
+      (forceDisplayError ||
+        (this.state.touched && !validate(this.state.value)));
 
     const componentClassName = classNames('field-container', className, {
       error: hasError,
