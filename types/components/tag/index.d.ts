@@ -171,7 +171,7 @@ declare class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         'aria-describedby'?: string;
         'aria-details'?: string;
         'aria-disabled'?: boolean | "false" | "true";
-        'aria-dropeffect'?: "none" | "copy" | "execute" | "link" | "move" | "popup";
+        'aria-dropeffect'?: "link" | "none" | "copy" | "execute" | "move" | "popup";
         'aria-errormessage'?: string;
         'aria-expanded'?: boolean | "false" | "true";
         'aria-flowto'?: string;
