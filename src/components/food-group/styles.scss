@@ -1,8 +1,8 @@
 @import '../../assets/styles/_base.scss';
 @import '../../assets/styles/_input-variables.scss';
 
-::-webkit-scrollbar { 
-  display: none; 
+::-webkit-scrollbar {
+  display: none;
 }
 
 .fdg-container {
@@ -10,7 +10,7 @@
   text-align: right;
   border-radius: 12px;
   background-color: #FFFFFF;
-  box-shadow: 0 16px 8px -12px rgba(0,0,0,0.1);
+  box-shadow: 0 16px 8px -12px rgba(0, 0, 0, 0.1);
   font-family: IranSans;
   text-align: right;
   padding: calculatePixelToRem(12);
@@ -29,16 +29,17 @@
   }
 }
 
-.selected { 
+.selected {
   background-color: #1E6DC8;
+  font-weight: 500;
   color: #FFFFFF;
 }
 
 .fdg-list-container {
   direction: rtl;
   background-color: #F7F8FA;
-  box-shadow: inset -1px 0 0 0 #ECEDEF, 0 -1px 0 0 rgba(221,221,221,0.5);
-  padding: calculatePixelToRem(24);
+  box-shadow: inset -1px 0 0 0 #ECEDEF, 0 -1px 0 0 rgba(221, 221, 221, 0.5);
+  padding: 24px;
   min-width: 180px;
   max-width: 240px;
   width: calculatePixelToRem(180);
