@@ -2,6 +2,8 @@
 
 .counter-button-wrapper {
     color: #000;
+    border-radius: 20px;
+    background-color: #F2F3F5;
 
     >:first-child {
         border-radius: 20px 20px 0 0;
@@ -10,15 +12,15 @@
         border-radius: 0 0 20px 20px;
     }
     &:hover {
+        background: #EAF2FC;
         color: #1E6DC8;
     }
     .button-wrapper {
         width: calculatePixelToRem(40);
         height: calculatePixelToRem(40);
         box-sizing: border-box;
-        background-color: #F2F3F5;
         user-select: none;
-        
+
         span {
             margin: calculatePixelToRem(8);
             cursor: pointer;
