@@ -3,7 +3,7 @@
 
 .checkbox-container {
   direction: rtl;
-  
+
   .checkbox {
     margin-bottom: 16px;
     font-family: 'IranSans';
@@ -86,7 +86,9 @@
         }
       }
 
-      &:focus, &:active, &:target {
+      &:focus,
+      &:active,
+      &:target {
         outline: none;
 
         .check {
@@ -97,6 +99,8 @@
     }
 
     &.disabled {
+      cursor: default !important;
+
       .check {
         border-color: $inputDisabledBorderColor;
         background-color: $inputDisabledBackgroundColor;
@@ -110,6 +114,7 @@
       }
 
       label {
+        cursor: default !important;
         color: $inputDisabledLabelColor;
       }
     }
