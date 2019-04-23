@@ -2891,6 +2891,9 @@ var SelectComponent = /** @class */ (function (_super) {
         return (React.createElement("div", { key: value, className: optionClass, onMouseDown: this.setValue.bind(this, value, label), onClick: this.setValue.bind(this, value, label) }, label));
     };
     SelectComponent.prototype.renderSelectsOption = function () {
+        if (!this.props.options) {
+            return null;
+        }
         return this.props.options.map(function (option) { return (React.createElement("option", { key: option.value, value: option.value }, option.label)); });
     };
     SelectComponent.prototype.buildMenu = function () {
