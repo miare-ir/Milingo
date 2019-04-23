@@ -145,6 +145,10 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   }
 
   renderSelectsOption() {
+    if (!this.props.options) {
+      return null;
+    }
+
     return this.props.options.map(option => (
       <option key={option.value} value={option.value}>
         {option.label}
