@@ -48,7 +48,7 @@ storiesOf('Form', module)
       </Form>
     </div>
   ))
-  .addWithJSX('Couple column', () => (
+  .addWithJSX('Double column', () => (
     <div
       style={{
         width: '550px',

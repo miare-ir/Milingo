@@ -45,7 +45,7 @@
 
   .row-title {
     @include font-size(14);
-    margin-right: 16px;
+    margin-right: 8px;
     flex-grow: 1;
 
     .tag-wrapper {
@@ -59,7 +59,7 @@
   }
 
   .icon {
-    margin-right: 8px;
+    margin: 0 8px;
   }
 
   .button-action-wrapper {
