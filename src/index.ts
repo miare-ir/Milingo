@@ -32,6 +32,7 @@ import {
   TabContentItem,
 } from './components/tab';
 import PersianNumber from './components/persian-number';
+import DatePicker from './components/date-picker';
 
 export {
   Button,
@@ -69,4 +70,5 @@ export {
   TabContent,
   TabContentItem,
   PersianNumber,
+  DatePicker,
 };
