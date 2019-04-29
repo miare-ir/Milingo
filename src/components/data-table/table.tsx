@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Moment } from 'moment';
 
-import DateLine from './date-line';
+import TagLine from './tag-line';
 
 interface DataTableProps {
-  date?: Moment;
+  tagline?: string | React.ReactNode;
   children?: React.ReactNode;
 }
 
@@ -12,7 +11,7 @@ class DataTable extends React.Component<DataTableProps, {}> {
   render() {
     return (
       <div>
-        {this.props.date && <DateLine date={this.props.date} />}
+        {this.props.tagline && <TagLine>{this.props.tagline}</TagLine>}
         <div className="data-table">
           <table>{this.props.children}</table>
         </div>
