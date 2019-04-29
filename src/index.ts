@@ -33,6 +33,7 @@ import {
 } from './components/tab';
 import PersianNumber from './components/persian-number';
 import DatePicker from './components/date-picker';
+import { Table, Th, Tr, Td } from './components/data-table';
 
 export {
   Button,
@@ -71,4 +72,8 @@ export {
   TabContentItem,
   PersianNumber,
   DatePicker,
+  Table,
+  Th,
+  Tr,
+  Td,
 };
