@@ -1,6 +1,5 @@
 @import '../../assets/styles/_base.scss';
-@import '../../assets/styles/_input-variables.scss';
-// Fix color
+
 .date-line {
   @include font-size(14);
   font-family: IRANSans;
@@ -11,7 +10,6 @@
 }
 
 .data-table {
-  // overflow-x: auto;
   font-family: IRANSans;
   font-size: 14px;
 
@@ -19,14 +17,12 @@
     border-collapse:collapse;
     text-align: right;
     width: 100%;
-    font-weight: normal;
-    // min-width: 400px;
   }
 
   tr {
-    font-weight: normal;
+    box-shadow: inset 0 1px 0 0 #ECEDEF;
+
     &:hover {
-      cursor: pointer;
       background-color: #EAF2FC;
     }
   }
@@ -36,13 +32,12 @@
     padding: 16px 24px;
     background-color: #FFFFFF;
     color: #4A4A4A;
-    box-shadow: inset 0 -2px 0 0 #ECEDEF;
+    box-shadow: inset 0 -1px 0 0 #ECEDEF;
   }
 
   td {
     font-weight: normal;
     padding: 16px 24px;
     color: #000000;
-    box-shadow: inset 0 -1px 0 0 #ECEDEF;
   }
 }
