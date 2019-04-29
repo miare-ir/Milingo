@@ -1,0 +1,43 @@
+@import '../../assets/styles/_base.scss';
+
+.date-line {
+  @include font-size(14);
+  font-family: IRANSans;
+  font-weight: 500;
+  color: #4A4A4A;
+  background: #ECEDEF;
+  padding: 12px 24px;
+}
+
+.data-table {
+  font-family: IRANSans;
+  font-size: 14px;
+
+  table {
+    border-collapse:collapse;
+    text-align: right;
+    width: 100%;
+  }
+
+  tr {
+    box-shadow: inset 0 1px 0 0 #ECEDEF;
+
+    &:hover {
+      background-color: #EAF2FC;
+    }
+  }
+
+  th {
+    font-weight: normal;
+    padding: 16px 24px;
+    background-color: #FFFFFF;
+    color: #4A4A4A;
+    box-shadow: inset 0 -1px 0 0 #ECEDEF;
+  }
+
+  td {
+    font-weight: normal;
+    padding: 16px 24px;
+    color: #000000;
+  }
+}
