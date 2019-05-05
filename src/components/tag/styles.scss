@@ -16,4 +16,12 @@
     background-color: $warning3;
     color: #000000;
   }
+
+  &.success {
+    background-color: $successDark;
+  }
+
+  &.alert {
+    background-color: $warning1;
+  }
 }

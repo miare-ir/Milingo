@@ -6,9 +6,19 @@ storiesOf('Tag', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
   .addWithJSX('Normal', () => (
     <div>
-      <Tag style={{ marginLeft: '15px' }} warning>
-        سلام دنیا
+      <Tag style={{ marginLeft: '16px' }}>
+      برچسب
       </Tag>
-      <Tag primary>سلام دنیا</Tag>
+      <Tag style={{ marginLeft: '16px' }} primary>
+      برچسب
+      </Tag>
+      <Tag style={{ marginLeft: '16px' }} success>
+      برچسب
+      </Tag>
+      <Tag style={{ marginLeft: '16px' }} warning>
+        برچسب
+      </Tag>    
+      <Tag alert>برچسب</Tag>
+      
     </div>
   ));
