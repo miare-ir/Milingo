@@ -225,6 +225,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       <div className={`date-picker-container ${this.props.className}`}>
         <Button
           ghost
+          disabled={this.props.disabled}
           className={`date-picker-input ${this.state.savedDate ? '' : 'empty'}`}
           onClick={this.openDialog}
           {...{ [this.props.inputButtonSize]: true }}>
