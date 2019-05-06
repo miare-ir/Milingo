@@ -154,12 +154,6 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     });
   }
 
-  deleteDate = e => {
-    e.stopPropagation();
-    this.setState({ savedDate: undefined });
-    this.props.onChangeDate(undefined);
-  };
-
   saveDate = date => {
     this.setState({ savedDate: date });
     this.props.onChangeDate(date);
@@ -225,17 +219,11 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       <div className={`date-picker-container ${this.props.className}`}>
         <Button
           ghost
+          disabled={this.props.disabled}
           className={`date-picker-input ${this.state.savedDate ? '' : 'empty'}`}
           onClick={this.openDialog}
           {...{ [this.props.inputButtonSize]: true }}>
           <PersianNumber value={savedDate} className="clickable" />
-          {this.state.savedDate && (
-            <span
-              className="material-icons clickable"
-              onClick={this.deleteDate}>
-              close
-            </span>
-          )}
         </Button>
         <ReactModal
           ariaHideApp={false}
