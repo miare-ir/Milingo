@@ -7,11 +7,7 @@ export interface TrProps extends React.HTMLProps<HTMLTableRowElement> {
 const Tr: React.SFC<TrProps> = (props: TrProps) => {
   const { children, ...restOfProps } = props;
 
-  return (
-    <tbody>
-      <tr {...restOfProps}>{children}</tr>
-    </tbody>
-  );
+  return <tr {...restOfProps}>{children}</tr>;
 };
 
 export default Tr;
