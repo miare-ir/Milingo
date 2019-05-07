@@ -19860,22 +19860,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(1);
 var classNames = __webpack_require__(2);
 __webpack_require__(204);
-var Checkbox = /** @class */ (function (_super) {
-    __extends(Checkbox, _super);
-    function Checkbox() {
+var Tag = /** @class */ (function (_super) {
+    __extends(Tag, _super);
+    function Tag() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Checkbox.prototype.render = function () {
-        var _a = this.props, children = _a.children, className = _a.className, primary = _a.primary, warning = _a.warning, props = __rest(_a, ["children", "className", "primary", "warning"]);
+    Tag.prototype.render = function () {
+        var _a = this.props, children = _a.children, className = _a.className, primary = _a.primary, warning = _a.warning, success = _a.success, alert = _a.alert, props = __rest(_a, ["children", "className", "primary", "warning", "success", "alert"]);
         var componentClassName = classNames('tag-wrapper', className, {
             primary: primary,
             warning: warning,
+            success: success,
+            alert: alert,
         });
         return React.createElement(this.props.component || 'span', __assign({ className: componentClassName }, props), children);
     };
-    return Checkbox;
+    return Tag;
 }(React.Component));
-exports.default = Checkbox;
+exports.default = Tag;
 
 
 /***/ }),
@@ -20222,11 +20224,6 @@ var DatePicker = /** @class */ (function (_super) {
             return (React.createElement("div", { onClick: isSelectable ? onClick : null, className: className, key: day.format('jYYYY-jMM-jD') },
                 React.createElement(persian_number_1.default, { value: day.format('jD') })));
         };
-        _this.deleteDate = function (e) {
-            e.stopPropagation();
-            _this.setState({ savedDate: undefined });
-            _this.props.onChangeDate(undefined);
-        };
         _this.saveDate = function (date) {
             _this.setState({ savedDate: date });
             _this.props.onChangeDate(date);
@@ -20323,9 +20320,8 @@ var DatePicker = /** @class */ (function (_super) {
                 : moment(this.state.savedDate).format('jYYYY/jMM/jDD')
             : this.props.title || 'انتخاب تاریخ';
         return (React.createElement("div", { className: "date-picker-container " + this.props.className },
-            React.createElement(button_1.default, __assign({ ghost: true, className: "date-picker-input " + (this.state.savedDate ? '' : 'empty'), onClick: this.openDialog }, (_a = {}, _a[this.props.inputButtonSize] = true, _a)),
-                React.createElement(persian_number_1.default, { value: savedDate, className: "clickable" }),
-                this.state.savedDate && (React.createElement("span", { className: "material-icons clickable", onClick: this.deleteDate }, "close"))),
+            React.createElement(button_1.default, __assign({ ghost: true, disabled: this.props.disabled, className: "date-picker-input " + (this.state.savedDate ? '' : 'empty'), onClick: this.openDialog }, (_a = {}, _a[this.props.inputButtonSize] = true, _a)),
+                React.createElement(persian_number_1.default, { value: savedDate, className: "clickable" })),
             React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.dialogOpen || this.state.dialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
                 React.createElement("div", { className: "calendar-info" },
                     React.createElement(persian_number_1.default, { className: "year", value: currentYear }),

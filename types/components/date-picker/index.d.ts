@@ -31,7 +31,6 @@ declare class DatePicker extends React.Component<DatePickerProps, DatePickerStat
     resetDate(): void;
     selectDate(date: any): void;
     changeMonth(fn: 'add' | 'subtract'): void;
-    deleteDate: (e: any) => void;
     saveDate: (date: any) => void;
     openDialog: () => void;
     closeDialog: () => void;

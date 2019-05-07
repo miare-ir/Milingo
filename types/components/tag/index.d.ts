@@ -1,14 +1,13 @@
 import * as React from 'react';
 import './styles.scss';
-export interface CheckboxProps extends React.HTMLProps<HTMLButtonElement> {
+export interface TagProps extends React.HTMLProps<HTMLButtonElement> {
     component?: string;
     primary?: boolean;
     warning?: boolean;
+    success?: boolean;
+    alert?: boolean;
 }
-export interface CheckboxState {
-    checked: boolean;
-}
-declare class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
+declare class Tag extends React.Component<TagProps, {}> {
     render(): React.DOMElement<{
         component?: string;
         accept?: string;
@@ -372,4 +371,4 @@ declare class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         className: any;
     }, HTMLButtonElement>;
 }
-export default Checkbox;
+export default Tag;
