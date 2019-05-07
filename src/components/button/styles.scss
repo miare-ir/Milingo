@@ -20,10 +20,11 @@ $buttonGhostDisabledBackgroundColor: #FFFFFF;
 $buttonGhostDisabledBorderColor: #8897A8;
 $buttonGhostDisabledColor: #8897A8;
 
-$buttonDangerBackgroundColor: #FFFFFF;
-$buttonDangerBorderColor: $danger1;
-$buttonDangerColor: $danger1;
-$buttonDangerHoverBackgroundColor: $danger2;
+$buttonDangerBackgroundColor: $warning1;
+$buttonDangerBorderColor: $warning1;
+$buttonDangerColor: #FFFFFF;
+$buttonDangerHoverBackgroundColor: $danger1;
+$buttonDangerHoverBorderColor: $danger1;
 
 $buttonLinkBackgroundColor: #FFFFFF;
 $buttonLinkBorderColor: #FFFFFF;
@@ -119,14 +120,15 @@ $buttonLinkHoverColor: $primary1;
 
     &:not(.disabled):not([disabled]):not(:disabled):hover {
       background-color: $buttonDangerHoverBackgroundColor;
+      border-color: $buttonDangerHoverBorderColor;
     }
 
     &.disabled,
     &[disabled],
     &:disabled {
-      background-color: $buttonGhostDisabledBackgroundColor;
-      border-color: $buttonGhostDisabledBorderColor;
-      color: $buttonGhostDisabledColor;
+      background-color: $buttonPrimaryDisabledBackgroundColor;
+      border-color: $buttonPrimaryDisabledBorderColor;
+      color: $buttonPrimaryDisabledColor;
     }
   }
 
