@@ -102,14 +102,6 @@
     }
   }
 
-  .danger {
-    color: $warning1;
-
-    &:hover {
-      background-color: $warning2;
-    }
-  }
-
   @include onMobile {
     .button-action {
       display: none;
