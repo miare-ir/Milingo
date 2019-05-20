@@ -23,8 +23,8 @@
     "url": "https://github.com/miare-ir/Milingo"
   },
   "devDependencies": {
-    "@storybook/addon-viewport": "^3.4.2",
-    "@storybook/react": "^4.0.2",
+    "@storybook/addon-viewport": "^3.4.12",
+    "@storybook/react": "^4.1.18",
     "@types/node": "^9.6.5",
     "@types/react": "^16.8.1",
     "@types/react-dom": "^16.0.11",
