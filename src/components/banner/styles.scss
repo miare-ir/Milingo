@@ -1,0 +1,56 @@
+@import '../../assets/styles/_base.scss';
+
+$warningBannerColor: #85660e;
+$warningBannerBackColor: #ffeebf;
+
+.banner-wrapper {
+  font-family: 'IranSans';
+  direction: rtl;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 4px;
+  min-width: 320px;
+  max-width: 720px;
+  width: fit-content;
+  display: flex;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+  }
+
+  .content {
+    flex: 1;
+    text-align: right;
+  }
+
+  .dismissal {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  &.error {
+    background-color: $warning2;
+    color: $warning1;
+  }
+
+  &.warning {
+    background-color: $warningBannerBackColor;
+    color: $warningBannerColor;
+  }
+
+  &.info {
+    background-color: $primary3;
+    color: $primary1;
+  }
+
+  &.success {
+    background-color: $success2;
+    color: $success1;
+  }
+}

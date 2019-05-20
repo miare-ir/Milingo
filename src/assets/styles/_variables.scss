@@ -1,24 +1,26 @@
-$primary1:      #1E6DC8;
-$primary2:      #4A90E2;
-$primary3:      #EAF2FC;
+$primary1: #1E6DC8;
+$primary2: #4A90E2;
+$primary3: #EAF2FC;
 $disabledColor: #8897A8;
 
-$warning1:      #BC0007;
-$warning2:      #FFD0D6;
-$warning3:      #FBBA00;
+$warning1: #BC0007;
+$warning2: #FFD0D6;
+$warning3: #FBBA00;
 $loadingBarBackground: #d0d0d0;
 
-$danger1:       #D73948;
-$danger2:       #FFD0D6;
+$danger1: #D73948;
+$danger2: #FFD0D6;
 
-$successDark:       #258613;
+$success1: #248212;
+$success2: #eefceb;
+$successDark: #258613;
 
-$mobileWidth:   480px;
-$tabletWidth:   768px;
-$monitorWidth:  1024px;
+$mobileWidth: 480px;
+$tabletWidth: 768px;
+$monitorWidth: 1024px;
 
-$desktopWidth:  1024px;
-$hdDesktopWidth:  1440px;
+$desktopWidth: 1024px;
+$hdDesktopWidth: 1440px;
 
 // map of font-size to line-height in px
-$sizeLineHeightMap : (10: 16, 12: 20, 14: 24, 16:24, 18: 32, 20: 32 );
+$sizeLineHeightMap : (10: 16, 12: 20, 14: 24, 16:24, 18: 32, 20: 32);
