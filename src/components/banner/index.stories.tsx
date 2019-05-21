@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Banner from '.';
+import Button from '../button';
 
 storiesOf('Banners', module)
   .addDecorator(story => (
@@ -47,12 +48,30 @@ storiesOf('Banners', module)
   ))
   .addWithJSX('Multiple line', () => (
     <div>
-      <Banner type="error">ایمیل وارد شده قبلا ثبت شده است.</Banner>
+      <Banner type="error">
+        ایمیل وارد شده قبلا ثبت شده است.ایمیل وارد شده قبلا ثبت شده است.ایمیل
+        وارد شده قبلا ثبت شده است.ایمیل وارد شده قبلا ثبت شده است.ایمیل وارد شده
+        قبلا ثبت شده است.
+      </Banner>
       <br />
-      <Banner type="error">تا ۲۳ روز دیگر منقضی می‌شود.</Banner>
+      <Banner type="error">
+        تا ۲۳ روز دیگر منقضی می‌شود.تا ۲۳ روز دیگر منقضی می‌شود.تا ۲۳ روز دیگر
+        منقضی می‌شود.تا ۲۳ روز دیگر منقضی می‌شود.تا ۲۳ روز دیگر منقضی می‌شود.
+      </Banner>
       <br />
-      <Banner type="error">از نام‌های کوتاه استفاده کنید.</Banner>
+      <Banner type="error">
+        از نام‌های کوتاه استفاده کنید.از نام‌های کوتاه استفاده کنید.از نام‌های
+        کوتاه استفاده کنید.از نام‌های کوتاه استفاده کنید.از نام‌های کوتاه
+        استفاده کنید.
+      </Banner>
       <br />
-      <Banner type="error"> درخواست ۴۱۳ با موفقیت انجام شد.</Banner>
+      <Banner type="error" onClose={() => {}}>
+        درخواست ۴۱۳ با موفقیت انجام شد.درخواست ۴۱۳ با موفقیت انجام شد.درخواست
+        ۴۱۳ با موفقیت انجام شد.درخواست ۴۱۳ با موفقیت انجام شد.
+        <br />
+        <Button danger small>
+          دکمه‌ی یک
+        </Button>
+      </Banner>
     </div>
   ));
