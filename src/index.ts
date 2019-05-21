@@ -21,6 +21,7 @@ import Notification from './components/notification';
 import Radio from './components/radiobutton';
 import Textarea from './components/textarea';
 import Timeline from './components/timeline';
+import Banner from './components/banner';
 import Toolbar from './components/toolbar';
 import { ActionTable, ActionTableRow } from './components/action-table';
 import Select from './components/select';
@@ -36,6 +37,7 @@ import DatePicker from './components/date-picker';
 import { Table, Th, Tr, Td } from './components/data-table';
 
 export {
+  Banner,
   Button,
   ButtonGroup,
   Checkbox,

@@ -34,6 +34,11 @@ $warningBannerBackColor: #ffeebf;
     cursor: pointer;
   }
 
+  &.full-width {
+    width: 100%;
+    max-width: unset;
+  }
+
   &.error {
     background-color: $warning2;
     color: $warning1;

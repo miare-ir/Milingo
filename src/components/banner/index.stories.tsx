@@ -8,7 +8,7 @@ storiesOf('Banners', module)
     <div
       className="story-container"
       style={{
-        width: '40%',
+        width: '50%',
         backgroundColor: '#ffffff',
         padding: '40px',
       }}>
@@ -17,20 +17,19 @@ storiesOf('Banners', module)
   ))
   .addWithJSX('With dismiss Icon', () => (
     <div>
-      <Banner onClose={() => {}} type="error">
+      <Banner fullWidth onClose={() => {}} type="error">
         ایمیل وارد شده قبلا ثبت شده است.
       </Banner>
       <br />
-      <Banner onClose={() => {}} type="warning">
+      <Banner fullWidth onClose={() => {}} type="warning">
         تا ۲۳ روز دیگر منقضی می‌شود.
       </Banner>
       <br />
-      <Banner onClose={() => {}} type="info">
+      <Banner fullWidth onClose={() => {}} type="info">
         از نام‌های کوتاه استفاده کنید.
       </Banner>
       <br />
-      <Banner onClose={() => {}} type="success">
-        {' '}
+      <Banner fullWidth onClose={() => {}} type="success">
         درخواست ۴۱۳ با موفقیت انجام شد.
       </Banner>
     </div>

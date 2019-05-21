@@ -22,6 +22,7 @@ export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   show?: boolean;
   type?: 'error' | 'warning' | 'info' | 'success';
+  fullWidth?: boolean;
   onClose?: () => void;
 }
 
@@ -37,6 +38,7 @@ const Banner: React.SFC<BannerProps> = ({
   type,
   children,
   onClose,
+  fullWidth,
   ...restOfProps
 }: BannerProps) => {
   if (!show) {
@@ -45,6 +47,7 @@ const Banner: React.SFC<BannerProps> = ({
 
   const componentClassName = classNames('banner-wrapper', className, {
     [type]: true,
+    'full-width': fullWidth,
   });
 
   return (
