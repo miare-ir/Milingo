@@ -133,7 +133,7 @@ declare class Tag extends React.Component<TagProps, {}> {
         style?: React.CSSProperties;
         tabIndex?: number;
         title?: string;
-        inputMode?: string;
+        inputMode?: "text" | "none" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";
         is?: string;
         radioGroup?: string;
         role?: string;
