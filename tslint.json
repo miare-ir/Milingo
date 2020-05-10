@@ -4,7 +4,7 @@
   },
   "extends": ["tslint-config-prettier", "tslint-plugin-prettier"],
   "rules": {
-    "prettier": true,
+    "prettier": [true, ".prettierrc"],
     "arrow-return-shorthand": true,
     "ban-types": {
       "options": [
