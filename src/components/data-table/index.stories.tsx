@@ -17,7 +17,7 @@ const extractDate = date => {
 
 storiesOf('Data Table', module)
   .addDecorator(story => <div style={{ direction: 'rtl' }}>{story()}</div>)
-  .addWithJSX('Default table with tagline', () => (
+  .add('Default table with tagline', () => (
     <div
       style={{
         width: '80%',
@@ -75,7 +75,7 @@ storiesOf('Data Table', module)
       </Table>
     </div>
   ))
-  .addWithJSX('Default table', () => (
+  .add('Default table', () => (
     <div
       style={{
         width: '80%',

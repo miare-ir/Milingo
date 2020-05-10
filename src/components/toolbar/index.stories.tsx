@@ -12,13 +12,13 @@ storiesOf('Toolbar', module)
       {story()}
     </div>
   ))
-  .addWithJSX('No actions and avatar', () => (
+  .add('No actions and avatar', () => (
     <Toolbar
       avatar={<Avatar percentage={50} title="M1" />}
       description="در حال پیدا کردن نزدیک‌ترین کوریر..."
     />
   ))
-  .addWithJSX('With title and actions', () => (
+  .add('With title and actions', () => (
     <Toolbar
       avatar={<Avatar percentage={50} />}
       title="شهریار فدایی M1"

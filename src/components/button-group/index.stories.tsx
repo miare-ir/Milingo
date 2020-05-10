@@ -43,7 +43,7 @@ class ButtonGroupSample extends React.Component<{}, { active: number }> {
 
 storiesOf('Button group', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Normal', () => (
+  .add('Normal', () => (
     <div
       style={{
         width: '450px',

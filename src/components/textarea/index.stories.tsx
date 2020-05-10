@@ -4,7 +4,7 @@ import Textarea from '.';
 
 storiesOf('Textarea', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Normal', () => (
+  .add('Normal', () => (
     <div style={{ width: '350px', maxWidth: '100%' }}>
       <Textarea rows={3} />
       <Textarea title="عنوان" rows={3} />
@@ -33,7 +33,7 @@ storiesOf('Textarea', module)
       />
     </div>
   ))
-  .addWithJSX('Disabled', () => (
+  .add('Disabled', () => (
     <div style={{ width: '350px', maxWidth: '100%' }}>
       <Textarea disabled />
       <Textarea disabled title="عنوان" />

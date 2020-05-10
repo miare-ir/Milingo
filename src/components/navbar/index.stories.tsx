@@ -39,5 +39,5 @@ storiesOf('Navbar', module)
   .addDecorator(story => (
     <div className="story-container navbar-story">{story()}</div>
   ))
-  .addWithJSX('Desktop', () => <NavbarSample />)
-  .addWithJSX('Mobile', () => <NavbarSample />);
+  .add('Desktop', () => <NavbarSample />)
+  .add('Mobile', () => <NavbarSample />);

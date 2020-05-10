@@ -16,11 +16,11 @@ storiesOf('Menu', module)
       {story()}
     </div>
   ))
-  .addWithJSX('Header with title', () => <MenuHeader title="عنوان" />)
-  .addWithJSX('Header with title and button', () => (
+  .add('Header with title', () => <MenuHeader title="عنوان" />)
+  .add('Header with title and button', () => (
     <MenuHeader title="عنوان" action={<Button primary>عنوان دکمه</Button>} />
   ))
-  .addWithJSX('Header with title and image', () => (
+  .add('Header with title and image', () => (
     <MenuHeader
       title="عنوان"
       image={
@@ -34,11 +34,11 @@ storiesOf('Menu', module)
       }
     />
   ))
-  .addWithJSX('Link Without notifications', () => <MenuLink title="عنوان" />)
-  .addWithJSX('Link with notifications', () => (
+  .add('Link Without notifications', () => <MenuLink title="عنوان" />)
+  .add('Link with notifications', () => (
     <MenuLink title="عنوان" notificationCount={7} />
   ))
-  .addWithJSX('Avatar with no image', () => (
+  .add('Avatar with no image', () => (
     <div className="menu-avatar-container">
       <div className="column">
         <MenuAvatar percentage={0} />
@@ -56,7 +56,7 @@ storiesOf('Menu', module)
       </div>
     </div>
   ))
-  .addWithJSX('Avatar with text as avatar', () => (
+  .add('Avatar with text as avatar', () => (
     <div className="menu-avatar-container">
       <div className="column">
         <MenuAvatar percentage={0} avatar="M10" />
@@ -74,7 +74,7 @@ storiesOf('Menu', module)
       </div>
     </div>
   ))
-  .addWithJSX('Avatar with label', () => (
+  .add('Avatar with label', () => (
     <div className="menu-avatar-container">
       <div className="column">
         <MenuAvatar percentage={0} avatar="M10" label="رایگان" />
@@ -92,7 +92,7 @@ storiesOf('Menu', module)
       </div>
     </div>
   ))
-  .addWithJSX('Avatar with large text', () => (
+  .add('Avatar with large text', () => (
     <div className="menu-avatar-container">
       <div className="column">
         <MenuAvatar largeText percentage={0} avatar="۳" />
@@ -103,12 +103,12 @@ storiesOf('Menu', module)
       </div>
     </div>
   ))
-  .addWithJSX('Status', () => (
+  .add('Status', () => (
     <div className="menu-status-container">
       <MenuStatus title="عنوان" />
     </div>
   ))
-  .addWithJSX('Item', () => (
+  .add('Item', () => (
     <div className="menu-item-container">
       <MenuItem
         avatar={<MenuAvatar avatar="M10" />}

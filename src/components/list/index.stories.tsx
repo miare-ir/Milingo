@@ -62,7 +62,7 @@ storiesOf('List', module)
       {story()}
     </div>
   ))
-  .addWithJSX('All', () => (
+  .add('All', () => (
     <List>
       <ListTitle title="فیش ۲۴" />
       <ListSection>

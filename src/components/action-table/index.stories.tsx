@@ -17,7 +17,7 @@ const actions: Action[] = [
 
 storiesOf('Action Table', module)
   .addDecorator(story => <div style={{ direction: 'rtl' }}>{story()}</div>)
-  .addWithJSX('With Title', () => (
+  .add('With Title', () => (
     <div
       style={{
         width: '80%',
@@ -53,7 +53,7 @@ storiesOf('Action Table', module)
       </ActionTable>
     </div>
   ))
-  .addWithJSX('Without Title', () => (
+  .add('Without Title', () => (
     <div
       style={{
         width: '80%',

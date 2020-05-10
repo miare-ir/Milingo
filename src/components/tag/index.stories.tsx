@@ -4,7 +4,7 @@ import Tag from '.';
 
 storiesOf('Tag', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Normal', () => (
+  .add('Normal', () => (
     <div>
       <Tag style={{ marginLeft: '16px' }}>
       برچسب

@@ -62,4 +62,4 @@ storiesOf('Tab', module)
       {story()}
     </div>
   ))
-  .addWithJSX('All', () => <TabSample />);
+  .add('All', () => <TabSample />);

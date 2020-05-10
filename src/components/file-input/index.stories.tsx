@@ -35,7 +35,7 @@ storiesOf('File input', module)
   .addDecorator(story => (
     <div className="button-story-container">{story()}</div>
   ))
-  .addWithJSX('Normal', () => (
+  .add('Normal', () => (
     <div
       style={{
         width: '450px',
@@ -62,7 +62,7 @@ storiesOf('File input', module)
       />
     </div>
   ))
-  .addWithJSX('Multiple', () => (
+  .add('Multiple', () => (
     <div
       style={{
         width: '450px',
