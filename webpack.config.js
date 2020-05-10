@@ -42,9 +42,7 @@ module.exports = {
           },
           {
             loader: 'resolve-url-loader',
-            options: {
-              debug: false,
-            },
+            options: {},
           },
           {
             loader: 'postcss-loader',
@@ -56,7 +54,12 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: ['./node_modules'],
+              sourceMap: true,
+              sassOptions: {
+                includePaths: [
+                  './node_modules',
+                ],
+              },
             },
           },
         ],
