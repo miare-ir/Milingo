@@ -83,4 +83,5 @@ module.exports = {
       },
     ],
   },
+  stats: "minimal"
 };

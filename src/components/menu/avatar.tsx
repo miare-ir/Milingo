@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import CircularProgressbar from 'react-circular-progressbar';
+import { CircularProgressbar } from 'react-circular-progressbar';
 
 export interface MenuAvatarProps extends React.HTMLProps<HTMLDivElement> {
   avatar?: string | JSX.Element;
@@ -25,11 +25,7 @@ const MenuAvatar: React.SFC<MenuAvatarProps> = ({
       large: largeText,
     })}
     {...props}>
-    <CircularProgressbar
-      percentage={percentage || 0}
-      textForPercentage={() => ''}
-      strokeWidth={5}
-    />
+    <CircularProgressbar value={percentage || 0} strokeWidth={5} />
     <div className="menu-avatar-inner">
       <div className="menu-avatar-hover" />
       {avatar && <div className="menu-avatar-image">{avatar}</div>}
