@@ -18,6 +18,11 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rimraf docs && build-storybook -c .storybook -o docs"
   },
+  "browserslist": [
+    "defaults",
+    "last 2 Chrome versions",
+    "last 2 iOS versions"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/miare-ir/Milingo"
