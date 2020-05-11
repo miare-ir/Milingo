@@ -55,7 +55,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     };
   }
 
-  componentWillReceiveProps(nextProps: DatePickerProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: DatePickerProps) {
     if (
       typeof nextProps.defaultValue === 'undefined' ||
       nextProps.defaultValue === ''

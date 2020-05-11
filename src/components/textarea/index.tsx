@@ -26,7 +26,7 @@ class Textarea extends React.Component<InputProps, InputState> {
     };
   }
 
-  componentWillReceiveProps(nextProps: InputProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: InputProps) {
     if (
       nextProps.value !== this.props.value &&
       nextProps.value !== this.state.value

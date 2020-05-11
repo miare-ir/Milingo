@@ -25,11 +25,11 @@ class TabContent extends React.Component<TabContentProps, TabContentState> {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.handleActiveTab(this.props);
   }
 
-  componentWillReceiveProps(nextProps: TabContentProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: TabContentProps) {
     if (nextProps.selectedtab !== this.props.selectedtab) {
       this.handleActiveTab(nextProps);
     }

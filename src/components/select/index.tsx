@@ -53,7 +53,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps(newProps: SelectProps) {
+  UNSAFE_componentWillReceiveProps(newProps: SelectProps) {
     if (newProps.value && newProps.value.value !== this.state.selected.value) {
       this.setState({
         selected: { value: newProps.value.value, label: newProps.value.label },
