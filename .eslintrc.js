@@ -1,4 +1,5 @@
 module.exports = {
+  // TODO add ordered imports https://github.com/benmosher/eslint-plugin-import
   "env": {
     "browser": true,
     "node": false
@@ -11,11 +12,14 @@ module.exports = {
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
+
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+
+    "plugin:react/recommended",
+
+    "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
   ],
   "parser": "@typescript-eslint/parser",
@@ -173,7 +177,13 @@ module.exports = {
           "/"
         ]
       }
-    ]
+    ],
+
+    // TODO remove the warn
+    "@typescript-eslint/explicit-function-return-type": ["warn", {"allowExpressions": true}],
+
+    // TODO turn on this rule
+    "@typescript-eslint/no-explicit-any": ["off"]
   },
   "settings": {
     "react": {
