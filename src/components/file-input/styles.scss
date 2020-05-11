@@ -26,8 +26,8 @@ $FileNameSpanBackgroundColor: #ecedef;
         height: 100%;
         overflow: hidden;
         position: absolute;
-        top: 0px;
-        right: 0px;
+        top: 0;
+        right: 0;
         opacity: 0;
       }
     }
@@ -71,7 +71,7 @@ $FileNameSpanBackgroundColor: #ecedef;
     box-sizing: border-box;
 
     p {
-      margin: 0px;
+      margin: 0;
       min-width: 80px;
       max-width: 184px;
       width: calc(100% - 26px);
@@ -96,7 +96,7 @@ $FileNameSpanBackgroundColor: #ecedef;
     min-width: 80px;
     padding: 12px 8px;
     font-size: 14px;
-    color: #ffffff;
+    color: #fff;
     background-color: $primary1;
     cursor: pointer;
   }
@@ -106,15 +106,15 @@ $FileNameSpanBackgroundColor: #ecedef;
     overflow: hidden;
     background-color: $loadingBarBackground;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    border-radius: 0px 0px 4px 4px;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 4px 4px;
 
     .loading {
       background-color: $primary2;
       text-align: left;
       height: 4px;
-      border-radius: 0px 0px 0px 4px;
+      border-radius: 0 0 0 4px;
     }
   }
 

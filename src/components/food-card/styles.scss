@@ -14,7 +14,9 @@
     // padding: 0 24px;
     box-sizing: border-box;
     font-family: IRANSans;
+
     @include font-size(16);
+
     font-weight: 500;
   }
 
@@ -28,7 +30,7 @@
 
 .food-card-container {
   align-items: center;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 16px;
   box-shadow: 0 16px 8px -12px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -60,24 +62,30 @@
 
   .food-title {
     margin: 0;
+
     @include font-size(14);
-    color: #000000;
+
+    color: #000;
     text-align: center;
     max-height: calculatePixelToRem(72);
     overflow: hidden;
   }
 
   .price {
-    color: #4A4A4A;
+    color: #4a4a4a;
     direction: rtl;
+
     @include font-size(14);
+
     text-align: center;
   }
 
   .out-of-order-message {
     color: $danger1;
     direction: rtl;
+
     @include font-size(14);
+
     text-align: center;
   }
 
@@ -85,7 +93,7 @@
     width: calculatePixelToRem(8);
     height: calculatePixelToRem(8);
     border-radius: 50%;
-    background-color: #4A90E2;
+    background-color: #4a90e2;
     position: absolute;
     bottom: 8px;
     left: 8px;
