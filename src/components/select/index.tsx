@@ -12,7 +12,7 @@ export interface Option {
 
 export interface SelectProps {
   name: string;
-  options: (Option)[];
+  options: Option[];
   baseClassName?: string;
   className?: string;
   disabled?: boolean;
@@ -131,7 +131,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     if (typeof value === 'undefined') {
       value = option.label || option;
     }
-    let label = option.label || option.value || option;
+    const label = option.label || option.value || option;
 
     return (
       <div
@@ -157,12 +157,8 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   }
 
   buildMenu() {
-    let { options } = this.props;
-    let ops =
-      options &&
-      options.map(option => {
-        return this.renderOption(option);
-      });
+    const { options } = this.props;
+    const ops = options && options.map(option => this.renderOption(option));
 
     return ops && ops.length ? (
       ops

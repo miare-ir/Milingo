@@ -158,9 +158,9 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
         <div className="file-div">
           {files &&
             files.length > 0 &&
-            Object.keys(files).map(key => {
-              return this.renderFiles(states && states[key], files[key], key);
-            })}
+            Object.keys(files).map(key =>
+              this.renderFiles(states && states[key], files[key], key),
+            )}
           <Button disabled={disabled} primary>
             {children ? children : 'افزودن فایل'}
             <input

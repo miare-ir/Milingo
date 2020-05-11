@@ -93,7 +93,7 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
         }
       }
 
-      let tmp: string[] = [];
+      const tmp: string[] = [];
       for (let i = 0, j = 3; j <= price.length + 1; i += 3, j += 3) {
         tmp.push(price.slice(i, j));
       }

@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface GroupButtonProps extends React.HTMLProps<HTMLDivElement> {}
+export type GroupButtonProps = React.HTMLProps<HTMLDivElement>;
 
 interface GroupButtonState {
   selected: string;

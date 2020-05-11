@@ -6,7 +6,7 @@ import Tag from '../tag';
 import { Table, Th, Tr, Td } from '.';
 import PersianNumber from '../persian-number';
 
-const JFORMAT: string = 'ddd jD jMMMM، jYYYY';
+const JFORMAT = 'ddd jD jMMMM، jYYYY';
 
 const extractDate = date => {
   if (date.isSame(moment(), 'day')) {

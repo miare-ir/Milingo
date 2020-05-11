@@ -17,7 +17,7 @@ class TabContent extends React.Component<TabContentProps, TabContentState> {
   state = { children: null };
 
   handleActiveTab(props: TabContentProps) {
-    for (let child of props.children as any) {
+    for (const child of props.children as any) {
       if (child.props.tabId === props.selectedtab) {
         this.setState({ children: child });
         break;

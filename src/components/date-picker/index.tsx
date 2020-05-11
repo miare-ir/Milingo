@@ -76,7 +76,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     const dates = [];
     const month = moment(`${yyyy}/${mm}/1`, 'jYYYY/jM/jD');
     const startOfNextMonth = moment(month).endOf('jMonth');
-    let date = moment(month);
+    const date = moment(month);
 
     for (let i = 6, j = 0; i !== date.day(); i === 6 ? (i = 0) : i++, j++) {
       const day = moment(date).subtract(date.day() - j + 1, 'days');

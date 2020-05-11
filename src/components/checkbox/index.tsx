@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface CheckboxProps extends React.HTMLProps<HTMLInputElement> {}
+export type CheckboxProps = React.HTMLProps<HTMLInputElement>;
 
 export interface CheckboxState {
   checked: boolean;
