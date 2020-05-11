@@ -49,7 +49,7 @@ class Textarea extends React.Component<InputProps, InputState> {
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     if (this.props.errorMessage && !this.props.validate) {
       throw new TypeError(
         'Please provide either both errorMessage and ' +

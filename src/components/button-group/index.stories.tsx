@@ -13,7 +13,7 @@ class ButtonGroupSample extends React.Component<{}, { active: number }> {
     this.setState({ active: stateID });
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <ButtonGroup name="test1">
         <Button

@@ -22,7 +22,7 @@ class CounterButton extends React.Component<CounterButtonProps, {}> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { className, onIncrease, onDecrease, ...props } = this.props;
 
     const componentClassname = classNames('counter-button-wrapper', className);

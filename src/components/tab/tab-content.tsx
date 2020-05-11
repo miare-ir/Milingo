@@ -35,7 +35,7 @@ class TabContent extends React.Component<TabContentProps, TabContentState> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { className, children, ...props } = this.props;
     const componentClassName = classNames('tab-content-wrapper', className);
     return (

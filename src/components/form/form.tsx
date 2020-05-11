@@ -11,7 +11,7 @@ export interface FormProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class Form extends React.Component<FormProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const { className, children, title, description, ...props } = this.props;
     const componentClassName = classNames('form-container', className);
 

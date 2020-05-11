@@ -16,7 +16,7 @@ class Radio extends React.Component<RadioProps, {}> {
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     const {
       children,
       className,

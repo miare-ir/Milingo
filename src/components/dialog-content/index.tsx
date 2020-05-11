@@ -27,7 +27,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       className,
       title,

@@ -66,7 +66,7 @@ class ActionTableRow extends React.Component<
     }
   }
 
-  renderButtonActions() {
+  renderButtonActions(): React.ReactNode {
     return (
       <div className="button-action-wrapper">
         {this.props.actions &&
@@ -90,7 +90,7 @@ class ActionTableRow extends React.Component<
     );
   }
 
-  renderMenuActions() {
+  renderMenuActions(): React.ReactNode {
     return (
       <div>
         <Button tiny ghost onClick={this.toggleIsOpen}>
@@ -115,7 +115,7 @@ class ActionTableRow extends React.Component<
     );
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       className,
       title,

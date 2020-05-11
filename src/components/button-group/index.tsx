@@ -17,7 +17,7 @@ class GroupButtonComponent extends React.Component<
     super(props);
   }
 
-  render() {
+  render(): React.ReactNode {
     const { className, children, ...props } = this.props;
     const buttonGroupClass = classNames('button-group-container', className);
 

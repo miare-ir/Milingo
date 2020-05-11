@@ -12,7 +12,7 @@ export interface TagProps extends React.HTMLProps<HTMLButtonElement> {
 }
 
 class Tag extends React.Component<TagProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const {
       children,
       className,

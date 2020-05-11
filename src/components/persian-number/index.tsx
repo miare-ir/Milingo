@@ -135,7 +135,7 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
     return this.props.value + '';
   }
 
-  render() {
+  render(): React.ReactNode {
     const { className, component, currencyType, from } = this.props;
     const value: string = this.applyFormats();
     let convertedValue: string =

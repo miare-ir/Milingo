@@ -85,7 +85,7 @@ class Input extends React.Component<InputProps, InputState> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.props.errorMessage && !this.props.validate) {
       console.warn(
         'Please provide either both errorMessage and ' +

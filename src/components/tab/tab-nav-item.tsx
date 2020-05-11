@@ -12,7 +12,7 @@ export interface TabNavItemProps extends React.HTMLProps<HTMLDivElement> {
 export interface TabNavItemState {}
 
 class TabNavItem extends React.Component<TabNavItemProps, TabNavItemState> {
-  render() {
+  render(): React.ReactNode {
     const { className, children, active, ...props } = this.props;
     const componentClassName = classNames('tab-nav-item', className, {
       active,

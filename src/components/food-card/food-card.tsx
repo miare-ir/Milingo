@@ -14,7 +14,7 @@ export interface FoodGroupProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class FoodCard extends React.Component<FoodGroupProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const {
       className,
       children,

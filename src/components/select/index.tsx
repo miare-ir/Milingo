@@ -144,7 +144,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     );
   }
 
-  renderSelectsOption() {
+  renderSelectsOption(): React.ReactNode {
     if (!this.props.options) {
       return null;
     }
@@ -177,7 +177,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { className, showedItem, errorMessage } = this.props;
 
     const placeHolderValue =

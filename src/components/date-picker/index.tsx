@@ -200,7 +200,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     const currentDate: string = this.state.currentDate.format('ddd jD jMMMM');
     const currentYear: string = this.state.currentDate.jYear();
     const year: number = this.state.year;

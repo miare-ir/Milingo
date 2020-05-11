@@ -132,7 +132,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     );
   };
 
-  render() {
+  render(): React.ReactNode {
     const {
       forceDisplayError,
       validate,

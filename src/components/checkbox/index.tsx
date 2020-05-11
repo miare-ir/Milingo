@@ -42,7 +42,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     const {
       children,
       disabled,

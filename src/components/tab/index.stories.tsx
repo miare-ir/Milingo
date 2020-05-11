@@ -12,7 +12,7 @@ class TabSample extends React.Component<{}, { active: number }> {
     this.setState({ active: tabID });
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <div>
         <TabNav>
