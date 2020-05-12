@@ -53,7 +53,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     this.setState({ files: nextProps.files });
   }
 
-  handleInput = e => {
+  handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ touched: true, files: e.target.files });
 
     if (this.props.onChangeFiles) {
@@ -61,13 +61,15 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     }
   };
 
-  clear = index => {
+  clear = (index: string): void => {
     let files = { ...this.state.files };
     if (index) {
       delete files[index];
-      Object.keys(files).length === 0
-        ? (files = null)
-        : (files.length = Object.keys(files).length);
+      if (Object.keys(files).length) {
+        files.length = Object.keys(files).length;
+      } else {
+        files = null;
+      }
     }
 
     if (this.props.onChangeFiles) {
@@ -77,7 +79,43 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     this.setState({ files });
   };
 
-  private renderFiles = (state: States, file, index: string) => {
+  render(): React.ReactNode {
+    const { disabled, states, children, className, ...props } = this.props;
+
+    const { files } = this.state;
+
+    const componentClassName = classNames('file-container', className, {
+      multiple: this.props.multiple,
+    });
+
+    return (
+      <div className={componentClassName}>
+        <div className="file-div">
+          {files &&
+            files.length > 0 &&
+            Object.keys(files).map(key =>
+              this.renderFiles(states && states[key], files[key], key),
+            )}
+          <Button disabled={disabled} primary>
+            {children ? children : 'افزودن فایل'}
+            <input
+              disabled={disabled}
+              type="file"
+              onChange={this.handleInput}
+              value=""
+              {...props}
+            />
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  private renderFiles = (
+    state: States,
+    file,
+    index: string,
+  ): React.ReactNode => {
     if (index === 'length') {
       return null;
     }
@@ -131,50 +169,6 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       </div>
     );
   };
-
-  render(): React.ReactNode {
-    const {
-      forceDisplayError,
-      validate,
-      displayClear,
-      title,
-      pre,
-      disabled,
-      states,
-      children,
-      className,
-      onChangeFiles,
-      ...props
-    } = this.props;
-
-    const { files } = this.state;
-
-    const componentClassName = classNames('file-container', className, {
-      multiple: this.props.multiple,
-    });
-
-    return (
-      <div className={componentClassName}>
-        <div className="file-div">
-          {files &&
-            files.length > 0 &&
-            Object.keys(files).map(key =>
-              this.renderFiles(states && states[key], files[key], key),
-            )}
-          <Button disabled={disabled} primary>
-            {children ? children : 'افزودن فایل'}
-            <input
-              disabled={disabled}
-              type="file"
-              onChange={this.handleInput}
-              value=""
-              {...props}
-            />
-          </Button>
-        </div>
-      </div>
-    );
-  }
 }
 
 export default FileInput;

@@ -33,6 +33,8 @@ class ActionTableRow extends React.Component<
   ActionTableRowProps,
   ActionTableRowStates
 > {
+  private node: HTMLElement;
+
   constructor(props) {
     super(props);
 
@@ -46,21 +48,37 @@ class ActionTableRow extends React.Component<
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.handleDocumentClick, false);
-    document.addEventListener('touchend', this.handleDocumentClick, false);
+    document.addEventListener(
+      'click',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
+    document.addEventListener(
+      'touchend',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
   }
 
   componentWillUnmount() {
     this.setState({ mounted: false });
-    document.removeEventListener('click', this.handleDocumentClick, false);
-    document.removeEventListener('touchend', this.handleDocumentClick, false);
+    document.removeEventListener(
+      'click',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
+    document.removeEventListener(
+      'touchend',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
   }
 
   handleDocumentClick(event) {
     if (
       this.state.mounted &&
       this.state.isOpen &&
-      !ReactDOM.findDOMNode(this).contains(event.target)
+      !this.node.contains(event.target)
     ) {
       this.setState({ isOpen: false });
     }
@@ -93,7 +111,7 @@ class ActionTableRow extends React.Component<
   renderMenuActions(): React.ReactNode {
     return (
       <div>
-        <Button tiny ghost onClick={this.toggleIsOpen}>
+        <Button tiny ghost onClick={this.toggleIsOpen.bind(this)}>
           <span className="material-icons">more_horiz</span>
         </Button>
         {this.state.isOpen && (
@@ -101,6 +119,7 @@ class ActionTableRow extends React.Component<
             {this.props.actions &&
               this.props.actions.map(action => (
                 <div
+                  key={action.name}
                   className={classNames('menu-action-item', action.className)}
                   onClick={() =>
                     this.props.onAction &&
@@ -132,7 +151,10 @@ class ActionTableRow extends React.Component<
     });
 
     return (
-      <div className={componentClassName} {...props}>
+      <div
+        className={componentClassName}
+        {...props}
+        ref={node => (this.node = node)}>
         <div className="title-wrapper">
           {icon && <span className="icon material-icons">{icon}</span>}
           <div className="row-title">{extraTitle ? extraTitle : title}</div>

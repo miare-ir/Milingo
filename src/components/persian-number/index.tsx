@@ -56,30 +56,6 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
     '۰',
   ];
 
-  private arabicToPersian(input: string | number): string {
-    input = input.toString();
-
-    for (let i = 0, j = PersianNumber.ARABIC_NUMBERS.length; i < j; i++) {
-      input = input.replace(
-        new RegExp(PersianNumber.ARABIC_NUMBERS[i], 'g'),
-        PersianNumber.PERSIAN_NUMBERS[i],
-      );
-    }
-    return input;
-  }
-
-  private englishToPersian(input: string | number): string {
-    input = input.toString();
-
-    for (let i = 0, j = PersianNumber.ENGLISH_NUMBERS.length; i < j; i++) {
-      input = input.replace(
-        new RegExp(PersianNumber.ENGLISH_NUMBERS[i], 'g'),
-        PersianNumber.PERSIAN_NUMBERS[i],
-      );
-    }
-    return input;
-  }
-
   static formatPrice(text, applyZeroForPrice): string {
     text = text + '';
     let result: string = text;
@@ -120,21 +96,6 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
     return `${text}`;
   }
 
-  private applyFormats(): string {
-    if (this.props.includesPrice) {
-      return PersianNumber.formatPrice(
-        this.props.value,
-        this.props.applyZeroForPrice,
-      );
-    }
-
-    if (this.props.includesTime) {
-      return PersianNumber.formatTime(this.props.value);
-    }
-
-    return this.props.value + '';
-  }
-
   render(): React.ReactNode {
     const { className, component, currencyType, from } = this.props;
     const value: string = this.applyFormats();
@@ -152,6 +113,45 @@ class PersianNumber extends React.Component<PersianNumberProps, {}> {
       { className },
       convertedValue,
     );
+  }
+
+  private arabicToPersian(input: string | number): string {
+    input = input.toString();
+
+    for (let i = 0, j = PersianNumber.ARABIC_NUMBERS.length; i < j; i++) {
+      input = input.replace(
+        new RegExp(PersianNumber.ARABIC_NUMBERS[i], 'g'),
+        PersianNumber.PERSIAN_NUMBERS[i],
+      );
+    }
+    return input;
+  }
+
+  private englishToPersian(input: string | number): string {
+    input = input.toString();
+
+    for (let i = 0, j = PersianNumber.ENGLISH_NUMBERS.length; i < j; i++) {
+      input = input.replace(
+        new RegExp(PersianNumber.ENGLISH_NUMBERS[i], 'g'),
+        PersianNumber.PERSIAN_NUMBERS[i],
+      );
+    }
+    return input;
+  }
+
+  private applyFormats(): string {
+    if (this.props.includesPrice) {
+      return PersianNumber.formatPrice(
+        this.props.value,
+        this.props.applyZeroForPrice,
+      );
+    }
+
+    if (this.props.includesTime) {
+      return PersianNumber.formatTime(this.props.value);
+    }
+
+    return this.props.value + '';
   }
 }
 

@@ -22,7 +22,7 @@ const Toolbal: React.SFC<ToolbarProps> = (props: ToolbarProps) => (
     {props.items && (
       <div className="toolbar-items">
         {props.items.map(({ icon, title, ...itemProps }) => (
-          <div className="toolbar-item" {...itemProps}>
+          <div className="toolbar-item" {...itemProps} key={title}>
             {typeof icon === 'string' ? (
               <i className="material-icons toolbar-item-icon">{icon}</i>
             ) : (

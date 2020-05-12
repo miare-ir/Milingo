@@ -5,10 +5,10 @@ import CloseSvg from './close-generator';
 
 import './styles.scss';
 
-const warningIcon = require('../../assets/icon/notification-warning.svg');
-const errorIcon = require('../../assets/icon/notification-error.svg');
-const infoIcon = require('../../assets/icon/notification-hint.svg');
-const successIcon = require('../../assets/icon/notification-success.svg');
+import warningIcon = require('../../assets/icon/notification-warning.svg');
+import errorIcon = require('../../assets/icon/notification-error.svg');
+import infoIcon = require('../../assets/icon/notification-hint.svg');
+import successIcon = require('../../assets/icon/notification-success.svg');
 
 const ICON_SELECTOR = {
   info: infoIcon,

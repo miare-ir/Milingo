@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 
 import './styles.scss';
@@ -34,6 +33,7 @@ const DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 
 class SelectComponent extends React.Component<SelectProps, SelectState> {
   private selectElement: HTMLSelectElement;
+  private node: HTMLElement;
 
   constructor(props) {
     super(props);
@@ -73,15 +73,31 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.handleDocumentClick, false);
-    document.addEventListener('touchend', this.handleDocumentClick, false);
+    document.addEventListener(
+      'click',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
+    document.addEventListener(
+      'touchend',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
     this.selectElement.value = this.props.value && this.props.value.value;
   }
 
   componentWillUnmount() {
     this.setState({ mounted: false });
-    document.removeEventListener('click', this.handleDocumentClick, false);
-    document.removeEventListener('touchend', this.handleDocumentClick, false);
+    document.removeEventListener(
+      'click',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
+    document.removeEventListener(
+      'touchend',
+      this.handleDocumentClick.bind(this),
+      false,
+    );
   }
 
   handleMouseDown(event) {
@@ -169,7 +185,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
 
   handleDocumentClick(event) {
     if (this.state.mounted) {
-      if (!ReactDOM.findDOMNode(this).contains(event.target)) {
+      if (!this.node.contains(event.target)) {
         if (this.state.isOpen) {
           this.setState({ isOpen: false });
         }
@@ -202,7 +218,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     ) : null;
 
     return (
-      <div className={selectClass}>
+      <div className={selectClass} ref={node => (this.node = node)}>
         {errorMessage && <span className="error">{errorMessage}</span>}
         <div
           tabIndex={0}

@@ -8,9 +8,7 @@ export interface TabNavProps {
   children: JSX.Element[] | JSX.Element;
 }
 
-export interface TabNavState {}
-
-class TabNav extends React.Component<TabNavProps, TabNavState> {
+class TabNav extends React.Component<TabNavProps, {}> {
   render(): React.ReactNode {
     const { className, children } = this.props;
     const componentClassName = classNames('tab-nav-wrapper', className);
