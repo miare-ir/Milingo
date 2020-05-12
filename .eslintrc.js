@@ -178,12 +178,7 @@ module.exports = {
         ]
       }
     ],
-
-    // TODO remove the warn
-    "@typescript-eslint/explicit-function-return-type": ["warn", {"allowExpressions": true}],
-
-    // TODO turn on this rule
-    "@typescript-eslint/no-explicit-any": ["off"]
+    "@typescript-eslint/explicit-function-return-type": ["error", {"allowExpressions": true}]
   },
   "settings": {
     "react": {
