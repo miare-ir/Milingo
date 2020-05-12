@@ -92,6 +92,7 @@
     "babel-loader": "8.1.0",
     "moment": "^2.24.0",
     "moment-jalaali": "^0.9.2",
+    "prop-types": "^15.7.2",
     "react-circular-progressbar": "^2.0.3",
     "react-modal": "^3.11.2"
   },

@@ -20,12 +20,12 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
   files?: File[];
   forceDisplayError?: boolean;
-  onChangeFiles?: (value: any) => void;
+  onChangeFiles?: (value: File[]) => void;
   onTryAgain?: (files: File[]) => void;
   pre?: string;
   states?: StatesDictionary;
   title?: string;
-  validate?: (value: any) => boolean;
+  validate?: (value: File[]) => boolean;
   children?: string;
   tryAgainText?: string;
 }
@@ -58,7 +58,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     });
 
     if (this.props.onChangeFiles) {
-      this.props.onChangeFiles(e.target.files);
+      this.props.onChangeFiles(this.state.files);
     }
   };
 

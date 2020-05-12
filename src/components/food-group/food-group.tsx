@@ -6,7 +6,7 @@ import './styles.scss';
 export interface FoodGroupProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
-  onClick?: any;
+  onClick?: React.MouseEventHandler;
   selected?: boolean;
 }
 

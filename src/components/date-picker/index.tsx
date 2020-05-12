@@ -14,8 +14,8 @@ moment.loadPersian({ dialect: 'persian-modern' });
 
 export interface DatePickerProps {
   title: string;
-  onChangeDate: (date: any) => void;
-  defaultValue: any;
+  onChangeDate: (date: moment.Moment) => void;
+  defaultValue: moment.Moment;
   className?: string;
   isSelectable?: (day: Moment) => boolean;
   displayFormat?: (day: Moment) => string;
@@ -30,9 +30,9 @@ export interface DatePickerProps {
 export interface DatePickerState {
   month: number;
   year: number;
-  currentDate: any;
+  currentDate: moment.Moment;
   dialogOpen: boolean;
-  savedDate: any;
+  savedDate: moment.Moment;
 }
 
 class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
