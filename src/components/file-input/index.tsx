@@ -80,7 +80,19 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
   };
 
   render(): React.ReactNode {
-    const { disabled, states, children, className, ...props } = this.props;
+    const {
+      forceDisplayError,
+      validate,
+      displayClear,
+      title,
+      pre,
+      disabled,
+      states,
+      children,
+      className,
+      onChangeFiles,
+      ...props
+    } = this.props;
 
     const { files } = this.state;
 

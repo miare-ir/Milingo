@@ -11,7 +11,7 @@ export interface TabContentItemProps extends React.HTMLProps<HTMLDivElement> {
 
 class TabContentItem extends React.Component<TabContentItemProps, {}> {
   render(): React.ReactNode {
-    const { className, children, ...props } = this.props;
+    const { className, children, tabId, ...props } = this.props;
     const componentClassName = classNames('tab-content-item', className);
     return (
       <div className={componentClassName} {...props}>
