@@ -8,7 +8,7 @@ import PersianNumber from '../persian-number';
 
 const JFORMAT = 'ddd jD jMMMM، jYYYY';
 
-const extractDate = date => {
+const extractDate = (date: moment.Moment): string => {
   if (date.isSame(moment(), 'day')) {
     return 'امروز، ' + date.format(JFORMAT);
   }

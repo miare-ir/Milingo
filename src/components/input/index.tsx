@@ -33,7 +33,7 @@ class Input extends React.Component<InputProps, InputState> {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: InputProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: InputProps): void {
     if (
       nextProps.value !== this.props.value &&
       nextProps.value !== this.state.value
@@ -42,7 +42,7 @@ class Input extends React.Component<InputProps, InputState> {
     }
   }
 
-  handleInput = e => {
+  handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.value !== this.state.value) {
       if (!this.state.touched) {
         this.setState({ touched: true, value: e.target.value });
@@ -56,7 +56,7 @@ class Input extends React.Component<InputProps, InputState> {
     }
   };
 
-  clear = () => {
+  clear = (): void => {
     const valueType = typeof this.state.value;
 
     this.setState({
@@ -69,7 +69,7 @@ class Input extends React.Component<InputProps, InputState> {
     }
   };
 
-  handleFocus(e) {
+  handleFocus(e): void {
     this.setState({ isFocused: true });
 
     if (this.props.onFocus) {
@@ -77,7 +77,7 @@ class Input extends React.Component<InputProps, InputState> {
     }
   }
 
-  handleBlur(e) {
+  handleBlur(e): void {
     this.setState({ isFocused: false });
 
     if (this.props.onBlur) {

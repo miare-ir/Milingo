@@ -49,7 +49,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: FileInputProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: FileInputProps): void {
     this.setState({ files: nextProps.files });
   }
 

@@ -16,7 +16,7 @@ export interface TabContentState {
 class TabContent extends React.Component<TabContentProps, TabContentState> {
   state = { children: null };
 
-  handleActiveTab(props: TabContentProps) {
+  handleActiveTab(props: TabContentProps): void {
     for (const child of props.children as any) {
       if (child.props.tabId === props.selectedtab) {
         this.setState({ children: child });
@@ -25,11 +25,11 @@ class TabContent extends React.Component<TabContentProps, TabContentState> {
     }
   }
 
-  UNSAFE_componentWillMount() {
+  UNSAFE_componentWillMount(): void {
     this.handleActiveTab(this.props);
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: TabContentProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: TabContentProps): void {
     if (nextProps.selectedtab !== this.props.selectedtab) {
       this.handleActiveTab(nextProps);
     }

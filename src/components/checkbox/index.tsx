@@ -20,7 +20,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: CheckboxProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: CheckboxProps): void {
     if (
       typeof nextProps.checked !== 'undefined' &&
       this.state.checked !== nextProps.checked
@@ -29,7 +29,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     }
   }
 
-  handleChange = e => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
     e.stopPropagation();
 

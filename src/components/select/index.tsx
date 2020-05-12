@@ -53,7 +53,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  UNSAFE_componentWillReceiveProps(newProps: SelectProps) {
+  UNSAFE_componentWillReceiveProps(newProps: SelectProps): void {
     if (newProps.value && newProps.value.value !== this.state.selected.value) {
       this.setState({
         selected: { value: newProps.value.value, label: newProps.value.label },
@@ -72,7 +72,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     document.addEventListener(
       'click',
       this.handleDocumentClick.bind(this),
@@ -86,7 +86,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     this.selectElement.value = this.props.value && this.props.value.value;
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.setState({ mounted: false });
     document.removeEventListener(
       'click',
@@ -100,7 +100,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     );
   }
 
-  handleMouseDown(event) {
+  handleMouseDown(event): void {
     if (this.props.onFocus && typeof this.props.onFocus === 'function') {
       this.props.onFocus(this.state.isOpen);
     }
@@ -117,7 +117,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     }
   }
 
-  setValue(value, label) {
+  setValue(value, label): void {
     const newState = {
       selected: {
         value,
@@ -131,13 +131,13 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     this.selectElement.value = value;
   }
 
-  handleChange(newState) {
+  handleChange(newState): void {
     if (newState.selected !== this.state.selected && this.props.onChange) {
       this.props.onChange(newState.selected);
     }
   }
 
-  renderOption(option) {
+  renderOption(option): React.ReactNode {
     const optionClass = classNames('select-option', {
       [option.className]: !!option.className,
       'is-selected': option.value === this.state.selected.value,
@@ -172,7 +172,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     ));
   }
 
-  buildMenu() {
+  buildMenu(): React.ReactNode {
     const { options } = this.props;
     const ops = options && options.map(option => this.renderOption(option));
 
@@ -183,7 +183,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
     );
   }
 
-  handleDocumentClick(event) {
+  handleDocumentClick(event): void {
     if (this.state.mounted) {
       if (!this.node.contains(event.target)) {
         if (this.state.isOpen) {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 
 import Button from '../button';
@@ -43,11 +42,11 @@ class ActionTableRow extends React.Component<
     this.state = { isOpen: false, mounted: true };
   }
 
-  toggleIsOpen() {
+  toggleIsOpen(): void {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     document.addEventListener(
       'click',
       this.handleDocumentClick.bind(this),
@@ -60,7 +59,7 @@ class ActionTableRow extends React.Component<
     );
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.setState({ mounted: false });
     document.removeEventListener(
       'click',
@@ -74,7 +73,7 @@ class ActionTableRow extends React.Component<
     );
   }
 
-  handleDocumentClick(event) {
+  handleDocumentClick(event): void {
     if (
       this.state.mounted &&
       this.state.isOpen &&

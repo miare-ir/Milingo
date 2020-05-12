@@ -10,7 +10,7 @@ export interface RadioProps extends React.HTMLProps<HTMLInputElement> {
 class Radio extends React.Component<RadioProps, {}> {
   private radioButton: HTMLInputElement;
 
-  handleChange = e => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (this.props.onChange) {
       this.props.onChange(e);
     }

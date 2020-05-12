@@ -18,7 +18,6 @@ const ICON_SELECTOR = {
 };
 
 export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
-  warning?: boolean;
   className?: string;
   show?: boolean;
   type?: 'error' | 'warning' | 'info' | 'success';
@@ -34,7 +33,6 @@ const defaultProps: Partial<BannerProps> = {
 const Banner: React.SFC<BannerProps> = ({
   className,
   show,
-  warning,
   type,
   children,
   onClose,

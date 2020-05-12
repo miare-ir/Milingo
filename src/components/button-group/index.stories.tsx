@@ -9,7 +9,7 @@ class ButtonGroupSample extends React.Component<{}, { active: number }> {
     active: 1,
   };
 
-  toggle(stateID: number) {
+  toggle(stateID: number): void {
     this.setState({ active: stateID });
   }
 

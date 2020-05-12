@@ -8,7 +8,7 @@ class TabSample extends React.Component<{}, { active: number }> {
     active: 1,
   };
 
-  toggle(tabID: number) {
+  toggle(tabID: number): void {
     this.setState({ active: tabID });
   }
 

@@ -26,7 +26,7 @@ class Textarea extends React.Component<InputProps, InputState> {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: InputProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: InputProps): void {
     if (
       nextProps.value !== this.props.value &&
       nextProps.value !== this.state.value
@@ -35,7 +35,7 @@ class Textarea extends React.Component<InputProps, InputState> {
     }
   }
 
-  handleInput = e => {
+  handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     if (e.target.value !== this.state.value) {
       if (!this.state.touched) {
         this.setState({ touched: true, value: e.target.value });

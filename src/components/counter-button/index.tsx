@@ -10,13 +10,13 @@ export interface CounterButtonProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class CounterButton extends React.Component<CounterButtonProps, {}> {
-  handleDecrease() {
+  handleDecrease(): void {
     if (this.props.onDecrease) {
       this.props.onDecrease();
     }
   }
 
-  handleIncrease() {
+  handleIncrease(): void {
     if (this.props.onIncrease) {
       this.props.onIncrease();
     }
