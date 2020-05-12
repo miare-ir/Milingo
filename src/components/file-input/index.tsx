@@ -4,10 +4,6 @@ import Button from '../button';
 
 import './styles.scss';
 
-export interface FileDictionary {
-  [key: string]: File | number;
-}
-
 export interface States {
   tryAgain?: boolean;
   message?: string;
@@ -22,10 +18,10 @@ export interface StatesDictionary {
 
 export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
-  files?: FileDictionary;
+  files?: File[];
   forceDisplayError?: boolean;
   onChangeFiles?: (value: any) => void;
-  onTryAgain?: (files: FileDictionary) => void;
+  onTryAgain?: (files: File[]) => void;
   pre?: string;
   states?: StatesDictionary;
   title?: string;
@@ -36,7 +32,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
 
 export interface FileInputState {
   touched: boolean;
-  files: FileDictionary;
+  files: File[];
 }
 
 class FileInput extends React.Component<FileInputProps, FileInputState> {
@@ -54,29 +50,26 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
   }
 
   handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ touched: true, files: e.target.files });
+    const newFiles = Array.from(e.target.files);
+
+    this.setState({
+      touched: true,
+      files: this.props.multiple ? this.state.files.concat(newFiles) : newFiles,
+    });
 
     if (this.props.onChangeFiles) {
       this.props.onChangeFiles(e.target.files);
     }
   };
 
-  clear = (index: string): void => {
-    let files = { ...this.state.files };
-    if (index) {
-      delete files[index];
-      if (Object.keys(files).length) {
-        files.length = Object.keys(files).length;
-      } else {
-        files = null;
-      }
-    }
+  clear = (index: number): void => {
+    this.setState({
+      files: this.state.files.filter((_, filterIndex) => index !== filterIndex),
+    });
 
     if (this.props.onChangeFiles) {
-      this.props.onChangeFiles(files);
+      this.props.onChangeFiles(this.state.files);
     }
-
-    this.setState({ files });
   };
 
   render(): React.ReactNode {
@@ -105,8 +98,8 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
         <div className="file-div">
           {files &&
             files.length > 0 &&
-            Object.keys(files).map(key =>
-              this.renderFiles(states && states[key], files[key], key),
+            files.map((file, index) =>
+              this.renderFiles(states && states[index], file, index),
             )}
           <Button disabled={disabled} primary>
             {children ? children : 'افزودن فایل'}
@@ -126,12 +119,8 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
   private renderFiles = (
     state: States,
     file,
-    index: string,
+    index: number,
   ): React.ReactNode => {
-    if (index === 'length') {
-      return null;
-    }
-
     if (state && state.message && !this.props.validate) {
       throw new TypeError(
         'Please provide either both errorMessage and ' +
