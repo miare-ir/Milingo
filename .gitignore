@@ -25,3 +25,4 @@ node_modules
 coverage/
 .env
 .ignore
+storybook-static
