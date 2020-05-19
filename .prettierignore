@@ -2,7 +2,11 @@
 *.png
 *.scss
 *.json
+*.html
+*.yml
+*.md
+**/dist/**
+**/docs/**
 /src/**/*.webmanifest
-/src/**/*.html
 /src/**/assets/imgs/**/*
 /src/**/assets/fonts/**/*
