@@ -7,7 +7,6 @@ module.exports = {
   "ignorePatterns": ["node_modules", "types"],
   "plugins": [
     "@typescript-eslint",
-    "prettier",
     "jsdoc"
   ],
   "extends": [
@@ -20,7 +19,6 @@ module.exports = {
     "plugin:react/recommended",
 
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -29,7 +27,6 @@ module.exports = {
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": "error",
     "@typescript-eslint/ban-types": [
       "error",
       {
@@ -55,7 +52,6 @@ module.exports = {
         }
       }
     ],
-    "@typescript-eslint/class-name-casing": "error",
     "@typescript-eslint/dot-notation": "error",
     "@typescript-eslint/member-delimiter-style": [
       "off",
@@ -71,15 +67,11 @@ module.exports = {
       }
     ],
     "@typescript-eslint/member-ordering": "error",
-    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-unused-expressions": "error",
-    "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/quotes": "off",
     "@typescript-eslint/semi": [
       "off",
       null
     ],
-    "@typescript-eslint/type-annotation-spacing": "off",
     "arrow-body-style": "error",
     "arrow-parens": [
       "off",
@@ -89,8 +81,12 @@ module.exports = {
       "error",
       "1tbs"
     ],
-    "camelcase": "error",
-    "comma-dangle": "off",
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/naming-convention": "error",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/no-misused-promises": "off", // Turned off only because of rule's poor performance
+    "@typescript-eslint/no-unused-vars": ["error", {"ignoreRestSiblings": true, "args": "none"}],
     "curly": "error",
     "eol-last": "error",
     "eqeqeq": [
@@ -112,10 +108,6 @@ module.exports = {
     "jsdoc/check-alignment": "error",
     "jsdoc/check-indentation": "error",
     "jsdoc/newline-after-description": "error",
-    "linebreak-style": "off",
-    "max-len": "off",
-    "new-parens": "off",
-    "newline-per-chained-call": "off",
     "no-bitwise": "error",
     "no-caller": "error",
     "no-console": [
@@ -143,28 +135,17 @@ module.exports = {
         ]
       }
     ],
-    "no-debugger": "error",
     "no-empty": "off",
+    "@typescript-eslint/no-empty-function": ["error", {"allow": ["arrowFunctions"]}],
     "no-eval": "error",
-    "no-extra-semi": "off",
-    "no-fallthrough": "error",
-    "no-irregular-whitespace": "off",
-    "no-multiple-empty-lines": "off",
     "no-new-wrappers": "error",
-    "no-redeclare": "error",
     "no-shadow": [
       "error",
       {
         "hoist": "all"
       }
     ],
-    "no-trailing-spaces": "off",
-    "no-underscore-dangle": "error",
-    "no-unused-labels": "error",
-    "no-var": "error",
-    "quote-props": "off",
     "radix": "error",
-    "space-before-function-paren": "off",
     "space-in-parens": [
       "off",
       "never"
@@ -178,8 +159,28 @@ module.exports = {
         ]
       }
     ],
-    "@typescript-eslint/explicit-function-return-type": ["error", {"allowExpressions": true}]
+    "@typescript-eslint/explicit-function-return-type": ["warn", {"allowExpressions": true}]
   },
+  "overrides": [
+    {
+      "files": ["*.stories.tsx"],
+      "rules": {
+        "jsx-a11y/anchor-is-valid": "off",
+        "jsx-a11y/alt-text": "off"
+      }
+    }, {
+      "files": ["*fixtures*"],
+      "rules": {
+        "camelcase": "off"
+      }
+    }, {
+      "files": ["*spec*", "*test*"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
   "settings": {
     "react": {
       "version":  "detect"
