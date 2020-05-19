@@ -1,9 +1,10 @@
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Maire/Milingo)
+
 # Miare Design Language (Milingo)
 
 The Miare Design Language is a React component library with associated assets and styles available to use, as well as any other project you may choose to use this library with.
 
 ### Install Dependencies
- 
  ```
  yarn install
  ```
