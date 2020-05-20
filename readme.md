@@ -1,4 +1,4 @@
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Maire/Milingo)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Miare/Milingo)
 
 # Miare Design Language (Milingo)
 
