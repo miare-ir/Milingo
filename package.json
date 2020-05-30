@@ -37,6 +37,9 @@
       "stylelint ./src/**/*.scss --config stylelint.config.js"
     ]
   },
+  "engines": {
+    "node": ">=8.9"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@percy/storybook": "^3.3.0",

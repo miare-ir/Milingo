@@ -1,3 +1,10 @@
+[![license](https://img.shields.io/npm/l/milingo.svg)](https://www.npmjs.com/package/milingo)
+[![npm](https://badge.fury.io/js/milingo.svg)](https://badge.fury.io/js/milingo)
+[![npm downloads](https://img.shields.io/npm/dt/milingo.svg)](https://www.npmjs.com/package/milingo)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/milingo)
+![node](https://img.shields.io/node/v/milingo.svg)
+![types](https://img.shields.io/npm/types/milingo.svg)
+![last commit](https://img.shields.io/github/last-commit/miare-ir/milingo.svg)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Miare/Milingo)
 
 # Miare Design Language (Milingo)
@@ -5,6 +12,7 @@
 The Miare Design Language is a React component library with associated assets and styles available to use, as well as any other project you may choose to use this library with.
 
 ### Install Dependencies
+
  ```
  yarn install
  ```
