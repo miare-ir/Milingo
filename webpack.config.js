@@ -73,8 +73,21 @@ module.exports = {
         options: {
           transpileOnly: true
         }
-      },
-      {
+      }, {
+        test: /\.(ts|tsx)$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              cache: true,
+              fix: true,
+              formatter: 'codeframe',
+              ignore: false
+            }
+          }
+        ]
+      }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
         loader: 'url-loader',
         options: {
