@@ -6,7 +6,7 @@ import './styles.stories.scss';
 
 storiesOf('Button', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Primary', () => (
+  .add('Primary', () => (
     <div>
       <Button primary>سلام دنیا</Button>
       <Button primary disabled>
@@ -14,7 +14,7 @@ storiesOf('Button', module)
       </Button>
     </div>
   ))
-  .addWithJSX('Danger', () => (
+  .add('Danger', () => (
     <div>
       <Button danger>سلام دنیا</Button>
       <Button danger disabled>
@@ -22,7 +22,7 @@ storiesOf('Button', module)
       </Button>
     </div>
   ))
-  .addWithJSX('Ghost', () => (
+  .add('Ghost', () => (
     <div>
       <Button ghost>سلام دنیا</Button>
       <Button ghost disabled>
@@ -30,8 +30,8 @@ storiesOf('Button', module)
       </Button>
     </div>
   ))
-  .addWithJSX('Link', () => <Button link>سلام دنیا</Button>)
-  .addWithJSX('Tiny', () => (
+  .add('Link', () => <Button link>سلام دنیا</Button>)
+  .add('Tiny', () => (
     <div>
       <Button primary tiny>
         سلام دنیا
@@ -47,7 +47,7 @@ storiesOf('Button', module)
       </Button>
     </div>
   ))
-  .addWithJSX('Small', () => (
+  .add('Small', () => (
     <div>
       <Button primary small>
         سلام دنیا
@@ -63,7 +63,7 @@ storiesOf('Button', module)
       </Button>
     </div>
   ))
-  .addWithJSX('Regular', () => (
+  .add('Regular', () => (
     <div>
       <Button primary regular>
         سلام دنیا
@@ -79,7 +79,7 @@ storiesOf('Button', module)
       </Button>
     </div>
   ))
-  .addWithJSX('Large', () => (
+  .add('Large', () => (
     <div>
       <Button primary large>
         سلام دنیا

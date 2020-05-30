@@ -13,6 +13,8 @@ Session.vim
 tags
 
 node_modules
+dist
+docs
 
 .agignore
 
@@ -24,3 +26,4 @@ node_modules
 
 coverage/
 .env
+.ignore

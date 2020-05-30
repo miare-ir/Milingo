@@ -40,7 +40,7 @@
         box-shadow: 0 0 0 4px $inputFocusShadowColor;
       }
     }
-    
+
     input {
       width: 100%;
       font-size: 16px;
@@ -49,20 +49,20 @@
       line-height: 24px;
       outline: none;
 
-      &[type=number]::-webkit-inner-spin-button,
-      &[type=number]::-webkit-outer-spin-button {
+      &[type="number"]::-webkit-inner-spin-button,
+      &[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
       }
 
       &[disabled], &:disabled {
-        background-color: #ECEDEF;
-        color: #4A4A4A;
+        background-color: #ecedef;
+        color: #4a4a4a;
       }
     }
 
     pre {
-      color: #4A4A4A;
-      background-color: #ECEDEF;
+      color: #4a4a4a;
+      background-color: #ecedef;
       border-radius: 4px 0 0 4px;
       padding: 12px;
       margin: 0;
@@ -118,7 +118,7 @@
     input {
       padding: 8px 12px;
     }
-    
+
     pre {
       padding: 8px;
     }

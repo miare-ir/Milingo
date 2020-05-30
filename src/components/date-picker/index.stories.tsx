@@ -4,7 +4,7 @@ import DatePicker from '.';
 
 storiesOf('Date Picker', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('All', () => (
+  .add('All', () => (
     <div>
       <DatePicker
         title="انتخاب تاریخ"

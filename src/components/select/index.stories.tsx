@@ -13,7 +13,7 @@ const options: Option[] = [
 
 storiesOf('Select', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Normal', () => (
+  .add('Normal', () => (
     <div
       style={{
         width: '350px',
@@ -34,7 +34,7 @@ storiesOf('Select', module)
       />
     </div>
   ))
-  .addWithJSX('With 5 rows', () => (
+  .add('With 5 rows', () => (
     <div
       style={{
         width: '350px',

@@ -6,7 +6,7 @@ import './styles.stories.scss';
 
 storiesOf('Notifications', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('All', () => (
+  .add('All', () => (
     <div>
       <div className="notification-container">
         <Notification message="سلام دنیا" />

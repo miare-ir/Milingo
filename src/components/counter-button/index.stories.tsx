@@ -5,7 +5,7 @@ import CounterButton from '.';
 
 storiesOf('Counter Button', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('All', () => (
+  .add('All', () => (
     <div
       style={{
         width: '40px',

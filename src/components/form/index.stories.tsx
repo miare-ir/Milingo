@@ -19,7 +19,7 @@ const options: Option[] = [
 
 storiesOf('Form', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Single column', () => (
+  .add('Single column', () => (
     <div
       style={{
         width: '400px',
@@ -48,7 +48,7 @@ storiesOf('Form', module)
       </Form>
     </div>
   ))
-  .addWithJSX('Double column', () => (
+  .add('Double column', () => (
     <div
       style={{
         width: '550px',

@@ -10,12 +10,12 @@ storiesOf('Timeline', module)
   .addDecorator(story => (
     <div className="story-container timeline-story-container">{story()}</div>
   ))
-  .addWithJSX('With single entry', () => (
+  .add('With single entry', () => (
     <Timeline>
       <TimelineEntry noBorder time="14:30" title="درخواست کوریر دادید." />
     </Timeline>
   ))
-  .addWithJSX('With two entries', () => (
+  .add('With two entries', () => (
     <Timeline>
       <TimelineEntry time="14:30" title="درخواست کوریر دادید." />
       <TimelineEntry noBorder title="کوریر در حال حرکت به سمت شماست">
@@ -30,7 +30,7 @@ storiesOf('Timeline', module)
       </TimelineEntry>
     </Timeline>
   ))
-  .addWithJSX('With several entries', () => (
+  .add('With several entries', () => (
     <Timeline>
       <TimelineEntry time="14:30" title="درخواست کوریر دادید." />
       <TimelineEntry time="14:35" title="کوریر رسید." />

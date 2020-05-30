@@ -4,7 +4,7 @@ import Input from '.';
 
 storiesOf('Input', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Normal', () => (
+  .add('Normal', () => (
     <div style={{ width: '350px', maxWidth: '100%' }}>
       <Input />
       <Input title="عنوان" extraTitle={<label>عنوان اضافی</label>} />
@@ -64,7 +64,7 @@ storiesOf('Input', module)
       />
     </div>
   ))
-  .addWithJSX('Small', () => (
+  .add('Small', () => (
     <div style={{ width: '350px', maxWidth: '100%' }}>
       <Input small />
       <Input small title="عنوان" extraTitle={<label>عنوان اضافی</label>} />
@@ -123,7 +123,7 @@ storiesOf('Input', module)
       />
     </div>
   ))
-  .addWithJSX('Disabled', () => (
+  .add('Disabled', () => (
     <div style={{ width: '350px', maxWidth: '100%' }}>
       <Input disabled />
       <Input disabled title="عنوان" />
