@@ -13,7 +13,7 @@ export interface DialogContentProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class DialogContent extends React.Component<DialogContentProps, {}> {
-  componentWillMount() {
+  UNSAFE_componentWillMount(): void {
     if (this.props.primary && this.props.secondary) {
       throw new Error(
         "Dialog content component can't receive primary and secondary props at same time ",
@@ -27,7 +27,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       className,
       title,

@@ -22,17 +22,14 @@
     cursor: pointer;
 
     &:hover, &:focus {
-      color: #BFCFE1;
+      color: #bfcfe1;
+      background-color: #2c2d40;
+      transition: $transitionOutward;
     }
 
     &.selected {
       background-color: #191924;
       color: $primary2;
-      transition: $transitionOutward;
-    }
-
-    &:hover, &:focus {
-      background-color: #2C2D40;
       transition: $transitionOutward;
     }
 

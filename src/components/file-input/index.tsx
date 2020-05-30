@@ -4,10 +4,6 @@ import Button from '../button';
 
 import './styles.scss';
 
-export interface FileDictionary {
-  [key: string]: File | number;
-}
-
 export interface States {
   tryAgain?: boolean;
   message?: string;
@@ -22,21 +18,21 @@ export interface StatesDictionary {
 
 export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   displayClear?: boolean;
-  files?: FileDictionary;
+  files?: File[];
   forceDisplayError?: boolean;
-  onChangeFiles?: (value: any) => void;
-  onTryAgain?: (files: FileDictionary) => void;
+  onChangeFiles?: (value: File[]) => void;
+  onTryAgain?: (files: File[]) => void;
   pre?: string;
   states?: StatesDictionary;
   title?: string;
-  validate?: (value: any) => boolean;
+  validate?: (value: File[]) => boolean;
   children?: string;
   tryAgainText?: string;
 }
 
 export interface FileInputState {
   touched: boolean;
-  files: FileDictionary;
+  files: File[];
 }
 
 class FileInput extends React.Component<FileInputProps, FileInputState> {
@@ -49,39 +45,82 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     };
   }
 
-  componentWillReceiveProps(nextProps: FileInputProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: FileInputProps): void {
     this.setState({ files: nextProps.files });
   }
 
-  handleInput = e => {
-    this.setState({ touched: true, files: e.target.files });
+  handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const newFiles = Array.from(e.target.files);
+
+    this.setState({
+      touched: true,
+      files: this.props.multiple ? this.state.files.concat(newFiles) : newFiles,
+    });
 
     if (this.props.onChangeFiles) {
-      this.props.onChangeFiles(e.target.files);
+      this.props.onChangeFiles(this.state.files);
     }
   };
 
-  clear = index => {
-    let files = { ...this.state.files };
-    if (index) {
-      delete files[index];
-      Object.keys(files).length === 0
-        ? (files = null)
-        : (files.length = Object.keys(files).length);
-    }
+  clear = (index: number): void => {
+    this.setState({
+      files: this.state.files.filter((_, filterIndex) => index !== filterIndex),
+    });
 
     if (this.props.onChangeFiles) {
-      this.props.onChangeFiles(files);
+      this.props.onChangeFiles(this.state.files);
     }
-
-    this.setState({ files });
   };
 
-  private renderFiles = (state: States, file, index: string) => {
-    if (index === 'length') {
-      return null;
-    }
+  render(): React.ReactNode {
+    const {
+      forceDisplayError,
+      validate,
+      displayClear,
+      title,
+      pre,
+      disabled,
+      states,
+      children,
+      className,
+      onChangeFiles,
+      ...props
+    } = this.props;
 
+    const { files } = this.state;
+
+    const componentClassName = classNames('file-container', className, {
+      multiple: this.props.multiple,
+    });
+
+    return (
+      <div className={componentClassName}>
+        <div className="file-div">
+          {files &&
+            files.length > 0 &&
+            files.map((file, index) =>
+              this.renderFiles(states && states[index], file, index),
+            )}
+          <Button disabled={disabled} primary>
+            {children ? children : 'افزودن فایل'}
+            <input
+              disabled={disabled}
+              type="file"
+              onChange={this.handleInput}
+              value=""
+              {...props}
+            />
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  private renderFiles = (
+    state: States,
+    file,
+    index: number,
+  ): React.ReactNode => {
     if (state && state.message && !this.props.validate) {
       throw new TypeError(
         'Please provide either both errorMessage and ' +
@@ -131,50 +170,6 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       </div>
     );
   };
-
-  render() {
-    const {
-      forceDisplayError,
-      validate,
-      displayClear,
-      title,
-      pre,
-      disabled,
-      states,
-      children,
-      className,
-      onChangeFiles,
-      ...props
-    } = this.props;
-
-    const { files } = this.state;
-
-    const componentClassName = classNames('file-container', className, {
-      multiple: this.props.multiple,
-    });
-
-    return (
-      <div className={componentClassName}>
-        <div className="file-div">
-          {files &&
-            files.length > 0 &&
-            Object.keys(files).map(key => {
-              return this.renderFiles(states && states[key], files[key], key);
-            })}
-          <Button disabled={disabled} primary>
-            {children ? children : 'افزودن فایل'}
-            <input
-              disabled={disabled}
-              type="file"
-              onChange={this.handleInput}
-              value=""
-              {...props}
-            />
-          </Button>
-        </div>
-      </div>
-    );
-  }
 }
 
 export default FileInput;

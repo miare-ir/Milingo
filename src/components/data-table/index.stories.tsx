@@ -1,19 +1,9 @@
 import * as React from 'react';
-import * as moment from 'moment-jalaali';
 import { storiesOf } from '@storybook/react';
 
 import Tag from '../tag';
 import { Table, Th, Tr, Td } from '.';
 import PersianNumber from '../persian-number';
-
-const JFORMAT: string = 'ddd jD jMMMM، jYYYY';
-
-const extractDate = date => {
-  if (date.isSame(moment(), 'day')) {
-    return 'امروز، ' + date.format(JFORMAT);
-  }
-  return date.format(JFORMAT);
-};
 
 storiesOf('Data Table', module)
   .addDecorator(story => <div style={{ direction: 'rtl' }}>{story()}</div>)
@@ -24,7 +14,7 @@ storiesOf('Data Table', module)
         backgroundColor: '#ffffff',
         padding: '10px',
       }}>
-      <Table tagline={<PersianNumber value={extractDate(moment())} />}>
+      <Table tagline={<PersianNumber value={'سه‌شنبه 30 اردیبهشت، 1399'} />}>
         <Tr>
           <Th>فیش</Th>
           <Th>زمان ثبت اولیه</Th>

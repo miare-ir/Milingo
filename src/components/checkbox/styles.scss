@@ -5,7 +5,7 @@
   direction: rtl;
 
   .checkbox {
-    margin-bottom: 16px;
+    margin: 0 0 16px 0;
     font-family: 'IranSans';
     display: flex;
     align-items: center;
@@ -13,16 +13,14 @@
     background: transparent;
     border: none;
     padding: 0;
-    margin: 0;
     outline: none;
     height: 24px;
-    margin-bottom: 16px;
 
     * {
       transition: $transitionInward;
     }
 
-    input[type=checkbox] {
+    input[type="checkbox"] {
       display: none;
     }
 
