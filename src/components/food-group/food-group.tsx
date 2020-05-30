@@ -6,12 +6,12 @@ import './styles.scss';
 export interface FoodGroupProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
-  onClick?: any;
+  onClick?: React.MouseEventHandler;
   selected?: boolean;
 }
 
 class FormGroup extends React.Component<FoodGroupProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const { className, children, selected, ...props } = this.props;
     const componentClassName = classNames('fdg-container', className, {
       selected,

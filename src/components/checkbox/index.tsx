@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface CheckboxProps extends React.HTMLProps<HTMLInputElement> {}
+export type CheckboxProps = React.HTMLProps<HTMLInputElement>;
 
 export interface CheckboxState {
   checked: boolean;
@@ -20,7 +20,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     };
   }
 
-  componentWillReceiveProps(nextProps: CheckboxProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: CheckboxProps): void {
     if (
       typeof nextProps.checked !== 'undefined' &&
       this.state.checked !== nextProps.checked
@@ -29,7 +29,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     }
   }
 
-  handleChange = e => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -42,7 +42,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     const {
       children,
       disabled,

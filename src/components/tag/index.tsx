@@ -11,8 +11,8 @@ export interface TagProps extends React.HTMLProps<HTMLButtonElement> {
   alert?: boolean;
 }
 
-class Tag extends React.Component <TagProps, {}> {
-  render() {
+class Tag extends React.Component<TagProps, {}> {
+  render(): React.ReactNode {
     const {
       children,
       className,

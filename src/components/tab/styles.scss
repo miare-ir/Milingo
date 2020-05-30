@@ -24,9 +24,11 @@
 
     label {
       min-width: 100%;
-      color: #000000;
+      color: #000;
       font-family: IRANSans;
+
       @include font-size(16);
+
       font-weight: 500;
       user-select: none;
       white-space: nowrap;

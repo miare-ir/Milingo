@@ -28,7 +28,7 @@
         font-size: 18px;
         margin: 0 24px;
         padding: 20px 0;
-        border-bottom: 1px solid #ECEDEF;
+        border-bottom: 1px solid #ecedef;
 
         &:last-child {
           border-bottom: none;
@@ -37,12 +37,12 @@
     }
 
     &.seperator {
-      border-top: 2px solid #ECEDEF;
+      border-top: 2px solid #ecedef;
     }
   }
 
   &-title, &-footer {
-    background-color: #ECEDEF;
+    background-color: #ecedef;
     color: black;
     font-family: 'IranSansNumeral', 'IranSans';
     font-size: 14px;

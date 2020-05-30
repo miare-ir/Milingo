@@ -5,10 +5,10 @@ import CloseSvg from './close-generator';
 
 import './styles.scss';
 
-const warningIcon = require('../../assets/icon/notification-warning.svg');
-const errorIcon = require('../../assets/icon/notification-error.svg');
-const infoIcon = require('../../assets/icon/notification-hint.svg');
-const successIcon = require('../../assets/icon/notification-success.svg');
+import warningIcon from '../../assets/icon/notification-warning.svg';
+import errorIcon from '../../assets/icon/notification-error.svg';
+import infoIcon from '../../assets/icon/notification-hint.svg';
+import successIcon from '../../assets/icon/notification-success.svg';
 
 const ICON_SELECTOR = {
   info: infoIcon,
@@ -18,7 +18,6 @@ const ICON_SELECTOR = {
 };
 
 export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
-  warning?: boolean;
   className?: string;
   show?: boolean;
   type?: 'error' | 'warning' | 'info' | 'success';
@@ -34,7 +33,6 @@ const defaultProps: Partial<BannerProps> = {
 const Banner: React.SFC<BannerProps> = ({
   className,
   show,
-  warning,
   type,
   children,
   onClose,

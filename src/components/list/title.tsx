@@ -12,7 +12,7 @@ const ListTitle: React.SFC<ListTitleProps> = ({
   ...props
 }: ListTitleProps) => (
   <div className="list-title" {...props}>
-    {!!title ? title : children}
+    {title ? title : children}
   </div>
 );
 

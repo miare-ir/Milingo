@@ -8,7 +8,7 @@ interface DataTableProps extends React.HTMLProps<HTMLTableElement> {
 }
 
 class DataTable extends React.Component<DataTableProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const { tagline, children, ...restOfProps } = this.props;
 
     return (
