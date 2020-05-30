@@ -6,19 +6,16 @@ storiesOf('Tag', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
   .add('Normal', () => (
     <div>
-      <Tag style={{ marginLeft: '16px' }}>
-      برچسب
-      </Tag>
+      <Tag style={{ marginLeft: '16px' }}>برچسب</Tag>
       <Tag style={{ marginLeft: '16px' }} primary>
-      برچسب
+        برچسب
       </Tag>
       <Tag style={{ marginLeft: '16px' }} success>
-      برچسب
+        برچسب
       </Tag>
       <Tag style={{ marginLeft: '16px' }} warning>
         برچسب
-      </Tag>    
+      </Tag>
       <Tag alert>برچسب</Tag>
-      
     </div>
   ));

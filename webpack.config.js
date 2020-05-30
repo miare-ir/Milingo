@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.ts'),
@@ -17,6 +18,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
+    new ForkTsCheckerWebpackPlugin()
   ],
   optimization: {
     minimizer: [new OptimizeCSSAssetsPlugin({})],
@@ -67,9 +69,25 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'awesome-typescript-loader',
-      },
-      {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
+      }, {
+        test: /\.(ts|tsx)$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              cache: true,
+              fix: true,
+              formatter: 'codeframe',
+              ignore: false
+            }
+          }
+        ]
+      }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
         loader: 'url-loader',
         options: {
@@ -78,4 +96,5 @@ module.exports = {
       },
     ],
   },
+  stats: "minimal"
 };

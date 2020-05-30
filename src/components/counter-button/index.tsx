@@ -10,19 +10,19 @@ export interface CounterButtonProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class CounterButton extends React.Component<CounterButtonProps, {}> {
-  handleDecrease() {
+  handleDecrease(): void {
     if (this.props.onDecrease) {
       this.props.onDecrease();
     }
   }
 
-  handleIncrease() {
+  handleIncrease(): void {
     if (this.props.onIncrease) {
       this.props.onIncrease();
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { className, onIncrease, onDecrease, ...props } = this.props;
 
     const componentClassname = classNames('counter-button-wrapper', className);

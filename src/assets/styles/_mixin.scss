@@ -6,6 +6,7 @@
 
 @mixin font-size($size) {
     font-size: calculatePixelToRem($size);
+
     @if map-has-key($sizeLineHeightMap, $size) {
         line-height: calculatePixelToRem(map-get($sizeLineHeightMap, $size));
     }

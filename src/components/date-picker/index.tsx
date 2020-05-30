@@ -14,8 +14,8 @@ moment.loadPersian({ dialect: 'persian-modern' });
 
 export interface DatePickerProps {
   title: string;
-  onChangeDate: (date: any) => void;
-  defaultValue: any;
+  onChangeDate: (date: moment.Moment) => void;
+  defaultValue: moment.Moment;
   className?: string;
   isSelectable?: (day: Moment) => boolean;
   displayFormat?: (day: Moment) => string;
@@ -30,9 +30,9 @@ export interface DatePickerProps {
 export interface DatePickerState {
   month: number;
   year: number;
-  currentDate: any;
+  currentDate: moment.Moment;
   dialogOpen: boolean;
-  savedDate: any;
+  savedDate: moment.Moment;
 }
 
 class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
@@ -55,7 +55,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     };
   }
 
-  componentWillReceiveProps(nextProps: DatePickerProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: DatePickerProps): void {
     if (
       typeof nextProps.defaultValue === 'undefined' ||
       nextProps.defaultValue === ''
@@ -72,11 +72,11 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     }
   }
 
-  generateMonth = (mm, yyyy) => {
+  generateMonth = (mm, yyyy): React.ReactNode => {
     const dates = [];
     const month = moment(`${yyyy}/${mm}/1`, 'jYYYY/jM/jD');
     const startOfNextMonth = moment(month).endOf('jMonth');
-    let date = moment(month);
+    const date = moment(month);
 
     for (let i = 6, j = 0; i !== date.day(); i === 6 ? (i = 0) : i++, j++) {
       const day = moment(date).subtract(date.day() - j + 1, 'days');
@@ -103,7 +103,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     return <div className="calendar-month">{weeks}</div>;
   };
 
-  generateDay = (day?: Moment, month?: 'next' | 'prev') => {
+  generateDay = (day?: Moment, month?: 'next' | 'prev'): React.ReactNode => {
     const isSelectable: boolean = !this.props.isSelectable
       ? day.isBefore(moment())
       : this.props.isSelectable(moment(day));
@@ -130,7 +130,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     );
   };
 
-  resetDate() {
+  resetDate(): void {
     const date = moment();
     this.setState({
       year: date.jYear(),
@@ -139,12 +139,12 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     });
   }
 
-  selectDate(date) {
+  selectDate(date): void {
     this.setState({ currentDate: moment(date, 'jYYYY/jM/jD') });
     this.saveDate(moment(date, 'jYYYY/jM/jD'));
   }
 
-  changeMonth(fn: 'add' | 'subtract') {
+  changeMonth(fn: 'add' | 'subtract'): void {
     const date = `${this.state.year}/${this.state.month}/1`;
     const parsedDate = moment(date, 'jYYYY/jM/jD')[fn](1, 'jMonth');
 
@@ -154,13 +154,13 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     });
   }
 
-  saveDate = date => {
+  saveDate = (date): void => {
     this.setState({ savedDate: date });
     this.props.onChangeDate(date);
     this.closeDialog();
   };
 
-  openDialog = () => {
+  openDialog = (): void => {
     if (this.props.disabled) {
       return;
     }
@@ -192,7 +192,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     }
   };
 
-  closeDialog = () => {
+  closeDialog = (): void => {
     if (this.props.closeDialog) {
       this.props.closeDialog();
     } else {
@@ -200,7 +200,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     const currentDate: string = this.state.currentDate.format('ddd jD jMMMM');
     const currentYear: string = this.state.currentDate.jYear();
     const year: number = this.state.year;

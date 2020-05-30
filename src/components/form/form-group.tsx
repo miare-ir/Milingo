@@ -12,7 +12,7 @@ export interface FormGroupProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class FormGroup extends React.Component<FormGroupProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const {
       className,
       children,

@@ -13,6 +13,8 @@ Session.vim
 tags
 
 node_modules
+dist
+docs
 
 .agignore
 

@@ -8,7 +8,7 @@ class NavbarSample extends React.Component<{}, { selected: number }> {
     selected: 0,
   };
 
-  render() {
+  render(): React.ReactNode {
     return (
       <Navbar>
         <NavbarItem

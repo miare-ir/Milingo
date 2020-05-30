@@ -8,8 +8,8 @@
 
   .title {
     @include font-size(14);
-    box-shadow: inset 0 -2px 0 0 #ECEDEF;
-    padding: 16px 0;
+
+    box-shadow: inset 0 -2px 0 0 #ecedef;
     padding: 16px 0;
     font-weight: 500;
   }
@@ -17,7 +17,7 @@
 
 .action-table-row {
   padding: 12px 0;
-  box-shadow: inset 0 -1px 0 0 #ECEDEF;
+  box-shadow: inset 0 -1px 0 0 #ecedef;
   display: flex;
   justify-content: space-between;
   min-height: 56px;
@@ -39,6 +39,7 @@
 
   .row-title {
     @include font-size(14);
+
     margin-right: 8px;
     flex-grow: 1;
 
@@ -82,9 +83,9 @@
     min-width: 120px;
     position: absolute;
     margin-top: 4px;
-    background-color: #ffffff;
+    background-color: #fff;
     z-index: 1000;
-    border: 1px solid #D0D0D0;
+    border: 1px solid #d0d0d0;
     border-radius: 4px;
     padding: 8px 0;
     left: 0;
@@ -93,7 +94,9 @@
 
   .menu-action-item {
     padding: 8px 16px;
+
     @include font-size(14);
+
     color: $primary1;
     cursor: pointer;
 
@@ -114,6 +117,6 @@
 }
 
 .action-table .disable {
-  background-color: #ECEDEF;
+  background-color: #ecedef;
   color: #4a4a4a
 }

@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
+export interface ButtonProps extends React.ComponentProps<'button'> {
   primary?: boolean;
   danger?: boolean;
   ghost?: boolean;
