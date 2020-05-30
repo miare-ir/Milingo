@@ -15,7 +15,7 @@ storiesOf('Banners', module)
       {story()}
     </div>
   ))
-  .addWithJSX('With dismiss Icon', () => (
+  .add('With dismiss Icon', () => (
     <div>
       <Banner fullWidth onClose={() => {}} type="error">
         ایمیل وارد شده قبلا ثبت شده است.
@@ -34,7 +34,7 @@ storiesOf('Banners', module)
       </Banner>
     </div>
   ))
-  .addWithJSX('Without dismiss Icon', () => (
+  .add('Without dismiss Icon', () => (
     <div>
       <Banner type="error">ایمیل وارد شده قبلا ثبت شده است.</Banner>
       <br />
@@ -45,7 +45,7 @@ storiesOf('Banners', module)
       <Banner type="success"> درخواست ۴۱۳ با موفقیت انجام شد.</Banner>
     </div>
   ))
-  .addWithJSX('Multiple line', () => (
+  .add('Multiple line', () => (
     <div>
       <Banner type="error">
         ایمیل وارد شده قبلا ثبت شده است.ایمیل وارد شده قبلا ثبت شده است.ایمیل

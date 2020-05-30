@@ -6,7 +6,7 @@ import ListSection from './section';
 import ListTitle from './title';
 import ListFooter from './footer';
 
-const SimpleArrayOfLiElements = () => (
+const SimpleArrayOfLiElements = (): React.ReactNode => (
   <>
     <li
       style={{
@@ -62,18 +62,14 @@ storiesOf('List', module)
       {story()}
     </div>
   ))
-  .addWithJSX('All', () => (
+  .add('All', () => (
     <List>
       <ListTitle title="فیش ۲۴" />
-      <ListSection>
-        <SimpleArrayOfLiElements />
-      </ListSection>
+      <ListSection>{SimpleArrayOfLiElements()}</ListSection>
       <ListTitle title="فیش ۲۵" />
-      <ListSection>
-        <SimpleArrayOfLiElements />
-      </ListSection>
+      <ListSection>{SimpleArrayOfLiElements()}</ListSection>
       <ListSection large seperator>
-        <SimpleArrayOfLiElements />
+        {SimpleArrayOfLiElements()}
       </ListSection>
       <ListFooter>
         <span>مجموع پرداخت</span>

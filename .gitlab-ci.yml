@@ -1,4 +1,4 @@
-image: node:8.9.1-alpine
+image: node:13.8-alpine
 
 stages:
   - build
@@ -15,11 +15,10 @@ build:
   before_script:
     - apk --update add git
   script:
-  - yarn 
+  - yarn
   - yarn dist
   artifacts:
     name: "staging_${CI_COMMIT_SHA:0:7}"
     expire_in: 1 week
     paths:
     - dist/
-

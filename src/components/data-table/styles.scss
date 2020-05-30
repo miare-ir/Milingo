@@ -2,10 +2,11 @@
 
 .date-line {
   @include font-size(14);
+
   font-family: IRANSans;
   font-weight: 500;
-  color: #4A4A4A;
-  background: #ECEDEF;
+  color: #4a4a4a;
+  background: #ecedef;
   padding: 12px 24px;
 }
 
@@ -20,24 +21,24 @@
   }
 
   tr {
-    box-shadow: inset 0 1px 0 0 #ECEDEF;
+    box-shadow: inset 0 1px 0 0 #ecedef;
 
     &:hover {
-      background-color: #EAF2FC;
+      background-color: #eaf2fc;
     }
   }
 
   th {
     font-weight: normal;
     padding: 16px 24px;
-    background-color: #FFFFFF;
-    color: #4A4A4A;
-    box-shadow: inset 0 -1px 0 0 #ECEDEF;
+    background-color: #fff;
+    color: #4a4a4a;
+    box-shadow: inset 0 -1px 0 0 #ecedef;
   }
 
   td {
     font-weight: normal;
     padding: 16px 24px;
-    color: #000000;
+    color: #000;
   }
 }

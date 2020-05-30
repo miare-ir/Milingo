@@ -46,11 +46,10 @@
     }
 
     &[disabled], &:disabled {
-      background-color: #ECEDEF;
-      color: #4A4A4A;
+      background-color: #ecedef;
+      color: #4a4a4a;
     }
   }
-
 
   &.error {
     textarea {

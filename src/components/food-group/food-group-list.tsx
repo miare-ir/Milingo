@@ -9,7 +9,7 @@ export interface FormProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class Form extends React.Component<FormProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const { className, children, ...props } = this.props;
     const componentClassName = classNames('fdg-list-container', className);
 

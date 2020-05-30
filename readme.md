@@ -5,6 +5,7 @@
 ![node](https://img.shields.io/node/v/milingo.svg)
 ![types](https://img.shields.io/npm/types/milingo.svg)
 ![last commit](https://img.shields.io/github/last-commit/miare-ir/milingo.svg)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Miare/Milingo)
 
 # Miare Design Language (Milingo)
 

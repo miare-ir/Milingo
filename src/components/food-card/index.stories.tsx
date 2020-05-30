@@ -5,7 +5,7 @@ import { FoodCard, FoodCardList } from '.';
 
 storiesOf('Food card', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('All', () => (
+  .add('All', () => (
     <div
       style={{
         width: '600px',

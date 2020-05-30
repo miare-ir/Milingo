@@ -4,7 +4,7 @@ import Radio from '.';
 
 storiesOf('Radio', module)
   .addDecorator(story => <div className="story-container">{story()}</div>)
-  .addWithJSX('Normal', () => (
+  .add('Normal', () => (
     <div>
       <Radio name="customName">سلام دنیا</Radio>
       <Radio name="customName" disabled>
@@ -12,7 +12,7 @@ storiesOf('Radio', module)
       </Radio>
     </div>
   ))
-  .addWithJSX('Checked', () => (
+  .add('Checked', () => (
     <div>
       <Radio name="test" value="1">
         سلام دنیا

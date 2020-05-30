@@ -8,7 +8,7 @@ class NavbarSample extends React.Component<{}, { selected: number }> {
     selected: 0,
   };
 
-  render() {
+  render(): React.ReactNode {
     return (
       <Navbar>
         <NavbarItem
@@ -39,5 +39,5 @@ storiesOf('Navbar', module)
   .addDecorator(story => (
     <div className="story-container navbar-story">{story()}</div>
   ))
-  .addWithJSX('Desktop', () => <NavbarSample />)
-  .addWithJSX('Mobile', () => <NavbarSample />);
+  .add('Desktop', () => <NavbarSample />)
+  .add('Mobile', () => <NavbarSample />);
