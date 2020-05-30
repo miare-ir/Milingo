@@ -6,8 +6,8 @@ export interface TagLineProps {
   children?: string | React.ReactNode;
 }
 
-const TagLine: React.SFC<TagLineProps> = (props: TagLineProps) => {
-  return <div className="date-line">{props.children}</div>;
-};
+const TagLine: React.SFC<TagLineProps> = (props: TagLineProps) => (
+  <div className="date-line">{props.children}</div>
+);
 
 export default TagLine;

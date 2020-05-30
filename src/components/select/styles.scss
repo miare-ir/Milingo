@@ -9,7 +9,9 @@
         width: 100%;
         height: 48px;
         min-width: 80px;
+
         @include font-size(14);
+
         position: relative;
         overflow: hidden;
         background-color: white;
@@ -34,7 +36,9 @@
         border: 1px solid #8897a8;
         flex-grow: 1;
         height: 22px;
+
         @include font-size(14);
+
         text-align: right;
         min-width: 44px;
         border-left: none;
@@ -80,7 +84,9 @@
         box-sizing: border-box;
         color: rgba(51, 51, 51, 0.8);
         cursor: pointer;
+
         @include font-size(14);
+
         display: block;
         padding: 8px 16px;
         text-align: right;

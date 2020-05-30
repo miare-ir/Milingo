@@ -2,14 +2,13 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import FileInput from '.';
 
-const testFilesDictionary = { 0: new File([''], 'filename.jpg'), length: 1 };
+const testFiles = [new File([''], 'filename.jpg')];
 
-const testMultipleFilesDictionary = {
-  0: new File([''], 'filename1.jpg'),
-  1: new File([''], 'filename2.jpg'),
-  2: new File([''], 'filename3.jpg'),
-  length: 3,
-};
+const testMultipleFiles = [
+  new File([''], 'filename1.jpg'),
+  new File([''], 'filename2.jpg'),
+  new File([''], 'filename3.jpg'),
+];
 
 const loadingTestState = {
   0: {
@@ -45,19 +44,19 @@ storiesOf('File input', module)
       }}>
       <FileInput />
       <FileInput disabled />
-      <FileInput files={testFilesDictionary} />
-      <FileInput files={testFilesDictionary} disabled />
-      <FileInput states={loadingTestState} files={testFilesDictionary} />
+      <FileInput files={testFiles} />
+      <FileInput files={testFiles} disabled />
+      <FileInput states={loadingTestState} files={testFiles} />
       <FileInput
         validate={() => false}
         states={errorTestState}
-        files={testFilesDictionary}
+        files={testFiles}
         forceDisplayError
       />
       <FileInput
         validate={() => false}
         states={tryTestState}
-        files={testFilesDictionary}
+        files={testFiles}
         forceDisplayError
       />
     </div>
@@ -70,6 +69,6 @@ storiesOf('File input', module)
         backgroundColor: '#ffffff',
         padding: '40px',
       }}>
-      <FileInput multiple files={testMultipleFilesDictionary} />
+      <FileInput multiple files={testMultipleFiles} />
     </div>
   ));

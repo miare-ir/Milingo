@@ -1,8 +1,15 @@
+.prettierrc
 *.svg
 *.png
 *.scss
+*.js
 *.json
+*.html
+*.yml
+*.md
+**/dist/**
+**/docs/**
+**/types/**
 /src/**/*.webmanifest
-/src/**/*.html
 /src/**/assets/imgs/**/*
 /src/**/assets/fonts/**/*

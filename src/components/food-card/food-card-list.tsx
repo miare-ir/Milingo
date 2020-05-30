@@ -10,7 +10,7 @@ export interface FoodCardListProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 class FoodCardList extends React.Component<FoodCardListProps, {}> {
-  render() {
+  render(): React.ReactNode {
     const { className, children, title, ...props } = this.props;
     const componentClassName = classNames(
       'food-card-list-container',

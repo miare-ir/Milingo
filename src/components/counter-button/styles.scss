@@ -3,18 +3,21 @@
 .counter-button-wrapper {
     color: #000;
     border-radius: 20px;
-    background-color: #F2F3F5;
+    background-color: #f2f3f5;
 
-    >:first-child {
+    > :first-child {
         border-radius: 20px 20px 0 0;
     }
-    >:nth-child(2) {
+
+    > :nth-child(2) {
         border-radius: 0 0 20px 20px;
     }
+
     &:hover {
-        background: #EAF2FC;
-        color: #1E6DC8;
+        background: #eaf2fc;
+        color: #1e6dc8;
     }
+
     .button-wrapper {
         width: calculatePixelToRem(40);
         height: calculatePixelToRem(40);
@@ -28,8 +31,8 @@
         }
 
         &:hover {
-            background-color: #1E6DC8;
-            color: #ffffff;
+            background-color: #1e6dc8;
+            color: #fff;
         }
     }
 }

@@ -6,14 +6,15 @@ import './styles.scss';
 export interface InputProps extends React.HTMLProps<HTMLTextAreaElement> {
   errorMessage?: string;
   forceDisplayError?: boolean;
-  validate?: (value: boolean | string | number) => boolean;
+  validate?: (value: string) => boolean;
   title?: string;
   className?: string;
+  value?: string;
 }
 
 export interface InputState {
   touched: boolean;
-  value: any;
+  value: string;
 }
 
 class Textarea extends React.Component<InputProps, InputState> {
@@ -26,7 +27,7 @@ class Textarea extends React.Component<InputProps, InputState> {
     };
   }
 
-  componentWillReceiveProps(nextProps: InputProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: InputProps): void {
     if (
       nextProps.value !== this.props.value &&
       nextProps.value !== this.state.value
@@ -35,7 +36,7 @@ class Textarea extends React.Component<InputProps, InputState> {
     }
   }
 
-  handleInput = e => {
+  handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     if (e.target.value !== this.state.value) {
       if (!this.state.touched) {
         this.setState({ touched: true, value: e.target.value });
@@ -49,7 +50,7 @@ class Textarea extends React.Component<InputProps, InputState> {
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     if (this.props.errorMessage && !this.props.validate) {
       throw new TypeError(
         'Please provide either both errorMessage and ' +
