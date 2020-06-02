@@ -26,6 +26,7 @@ build:
 
 test:
   stage: test
+  when: manual
   script:
     - yarn run snapshot
   before_script:
