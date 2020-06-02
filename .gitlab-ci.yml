@@ -1,4 +1,4 @@
-image: tbaltrushaitis/ubuntu-nodejs:v13.8.0
+image: tbaltrushaitis/ubuntu-nodejs
 
 stages:
   - build
