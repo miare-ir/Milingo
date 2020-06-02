@@ -15,11 +15,11 @@ build:
   before_script:
     - apk --update add git
   script:
+  - yarn
   - ls /builds/miare/design-language/node_modules/puppeteer/.local-chromium/linux-686378/chrome-linux/chrome
   - /builds/miare/design-language/node_modules/puppeteer/.local-chromium/linux-686378/chrome-linux/chrome --version
   - ldd /builds/miare/design-language/node_modules/puppeteer/.local-chromium/linux-686378/chrome-linux/chrome
   - /builds/miare/design-language/node_modules/puppeteer/.local-chromium/linux-686378/chrome-linux/chrome --headless
-  - yarn
   - yarn dist
   artifacts:
     name: "staging_${CI_COMMIT_SHA:0:7}"
