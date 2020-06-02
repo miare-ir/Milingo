@@ -15,7 +15,7 @@
     "url": "https://github.com/miare-ir/Milingo"
   },
   "scripts": {
-    "build": "rimraf dist types && ENV=production webpack --mode=production",
+    "build": "rimraf dist types && ENV=production webpack --mode=production && yarn run snapshot",
     "dist": "yarn run build-storybook && yarn run build",
     "start": "yarn run storybook",
     "release": "yarn run dist && npm publish",
