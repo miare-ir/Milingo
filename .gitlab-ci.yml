@@ -1,4 +1,4 @@
-image: node:13.8-alpine
+image: tbaltrushaitis/ubuntu-nodejs:v13.8.0
 
 stages:
   - build
