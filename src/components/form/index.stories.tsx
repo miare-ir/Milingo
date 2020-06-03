@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { Form, FormGroup } from '.';
 import Input from '../input';
@@ -17,67 +16,79 @@ const options: Option[] = [
   { value: '5', label: 'گزینه ۵' },
 ];
 
-storiesOf('Form', module)
-  .addDecorator(story => <div className="story-container">{story()}</div>)
-  .add('Single column', () => (
-    <div
-      style={{
-        width: '400px',
-        maxWidth: '100%',
-        backgroundColor: '#ffffff',
-        padding: '30px',
-      }}>
-      <Form title="عنوان فرم" description="توضیحات فرم">
-        <FormGroup>
-          <Input title="عنوان" />
-        </FormGroup>
-        <FormGroup>
-          <Textarea title="عنوان" placeholder="متن" rows={4} />
-        </FormGroup>
-        <FormGroup title="انتخاب گزینه">
-          <Select name="test1" options={options} />
-        </FormGroup>
+export default {
+  title: 'Form',
+  decorators: [story => <div className="story-container">{story()}</div>],
+};
+
+export const SingleColumn = () => (
+  <div
+    style={{
+      width: '400px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '30px',
+    }}>
+    <Form title="عنوان فرم" description="توضیحات فرم">
+      <FormGroup>
+        <Input title="عنوان" />
+      </FormGroup>
+      <FormGroup>
+        <Textarea title="عنوان" placeholder="متن" rows={4} />
+      </FormGroup>
+      <FormGroup title="انتخاب گزینه">
+        <Select name="test1" options={options} />
+      </FormGroup>
+      <FormGroup title="عنوان">
+        <Radio name="test" checked>
+          رفت وبرگشت
+        </Radio>
+        <Radio name="test">رفت وبرگشت</Radio>
+      </FormGroup>
+      <Button>انصراف</Button>
+      <Button primary>ارسال</Button>
+    </Form>
+  </div>
+);
+
+SingleColumn.story = {
+  name: 'Single column',
+};
+
+export const DoubleColumn = () => (
+  <div
+    style={{
+      width: '550px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '30px',
+    }}>
+    <Form title="عنوان فرم" description="توضیحات فرم">
+      <FormGroup singleRow>
+        <Input title="عنوان" />
+        <Input title="عنوان" />
+      </FormGroup>
+      <FormGroup>
+        <Textarea title="عنوان" placeholder="متن" rows={4} />
+      </FormGroup>
+      <FormGroup singleRow>
         <FormGroup title="عنوان">
           <Radio name="test" checked>
             رفت وبرگشت
           </Radio>
           <Radio name="test">رفت وبرگشت</Radio>
         </FormGroup>
-        <Button>انصراف</Button>
-        <Button primary>ارسال</Button>
-      </Form>
-    </div>
-  ))
-  .add('Double column', () => (
-    <div
-      style={{
-        width: '550px',
-        maxWidth: '100%',
-        backgroundColor: '#ffffff',
-        padding: '30px',
-      }}>
-      <Form title="عنوان فرم" description="توضیحات فرم">
-        <FormGroup singleRow>
-          <Input title="عنوان" />
-          <Input title="عنوان" />
+        <FormGroup title="عنوان">
+          <Checkbox checked>رفت وبرگشت</Checkbox>
+          <Checkbox>رفت وبرگشت</Checkbox>
         </FormGroup>
-        <FormGroup>
-          <Textarea title="عنوان" placeholder="متن" rows={4} />
-        </FormGroup>
-        <FormGroup singleRow>
-          <FormGroup title="عنوان">
-            <Radio name="test" checked>
-              رفت وبرگشت
-            </Radio>
-            <Radio name="test">رفت وبرگشت</Radio>
-          </FormGroup>
-          <FormGroup title="عنوان">
-            <Checkbox checked>رفت وبرگشت</Checkbox>
-            <Checkbox>رفت وبرگشت</Checkbox>
-          </FormGroup>
-        </FormGroup>
-        <Button>انصراف</Button>
-        <Button primary>ارسال</Button>
-      </Form>
-    </div>
-  ));
+      </FormGroup>
+      <Button>انصراف</Button>
+      <Button primary>ارسال</Button>
+    </Form>
+  </div>
+);
+
+DoubleColumn.story = {
+  name: 'Double column',
+};

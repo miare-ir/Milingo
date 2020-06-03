@@ -1,41 +1,55 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import Avatar from '../menu/avatar';
 import Toolbar from '.';
 
-storiesOf('Toolbar', module)
-  .addDecorator(story => (
-    <div
-      className="story-container toolbar-story-container"
-      style={{ width: '720px' }}>
-      {story()}
-    </div>
-  ))
-  .add('No actions and avatar', () => (
-    <Toolbar
-      avatar={<Avatar percentage={50} title="M1" />}
-      description="در حال پیدا کردن نزدیک‌ترین کوریر..."
-    />
-  ))
-  .add('With title and actions', () => (
-    <Toolbar
-      avatar={<Avatar percentage={50} />}
-      title="شهریار فدایی M1"
-      description="در حال حرکت به سمت شما..."
-      items={[
-        {
-          title: 'لغو',
-          icon: 'close',
-        },
-        {
-          title: 'تماس',
-          icon: 'phone',
-        },
-        {
-          title: 'ردیابی',
-          icon: 'my_location',
-        },
-      ]}
-    />
-  ));
+export default {
+  title: 'Toolbar',
+
+  decorators: [
+    story => (
+      <div
+        className="story-container toolbar-story-container"
+        style={{ width: '720px' }}>
+        {story()}
+      </div>
+    ),
+  ],
+};
+
+export const NoActionsAndAvatar = () => (
+  <Toolbar
+    avatar={<Avatar percentage={50} title="M1" />}
+    description="در حال پیدا کردن نزدیک‌ترین کوریر..."
+  />
+);
+
+NoActionsAndAvatar.story = {
+  name: 'No actions and avatar',
+};
+
+export const WithTitleAndActions = () => (
+  <Toolbar
+    avatar={<Avatar percentage={50} />}
+    title="شهریار فدایی M1"
+    description="در حال حرکت به سمت شما..."
+    items={[
+      {
+        title: 'لغو',
+        icon: 'close',
+      },
+      {
+        title: 'تماس',
+        icon: 'phone',
+      },
+      {
+        title: 'ردیابی',
+        icon: 'my_location',
+      },
+    ]}
+  />
+);
+
+WithTitleAndActions.story = {
+  name: 'With title and actions',
+};

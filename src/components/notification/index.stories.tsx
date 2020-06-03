@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import Notification from '.';
 
 import './styles.stories.scss';
 
-storiesOf('Notifications', module)
-  .addDecorator(story => <div className="story-container">{story()}</div>)
-  .add('All', () => (
-    <div>
-      <div className="notification-container">
-        <Notification message="سلام دنیا" />
-      </div>
-      <div className="notification-container">
-        <Notification warning message="سلام دنیا" />
-      </div>
+export default {
+  title: 'Notifications',
+  decorators: [story => <div className="story-container">{story()}</div>],
+};
+
+export const All = () => (
+  <div>
+    <div className="notification-container">
+      <Notification message="سلام دنیا" />
     </div>
-  ));
+    <div className="notification-container">
+      <Notification warning message="سلام دنیا" />
+    </div>
+  </div>
+);

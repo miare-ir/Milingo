@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import ButtonGroup from '.';
 import Button from '../button';
@@ -41,16 +40,19 @@ class ButtonGroupSample extends React.Component<{}, { active: number }> {
   }
 }
 
-storiesOf('Button group', module)
-  .addDecorator(story => <div className="story-container">{story()}</div>)
-  .add('Normal', () => (
-    <div
-      style={{
-        width: '450px',
-        maxWidth: '100%',
-        backgroundColor: '#ffffff',
-        padding: '40px',
-      }}>
-      <ButtonGroupSample />
-    </div>
-  ));
+export default {
+  title: 'Button group',
+  decorators: [story => <div className="story-container">{story()}</div>],
+};
+
+export const Normal = () => (
+  <div
+    style={{
+      width: '450px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '40px',
+    }}>
+    <ButtonGroupSample />
+  </div>
+);

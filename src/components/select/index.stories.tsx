@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import Select, { Option } from '.';
 
@@ -11,37 +10,45 @@ const options: Option[] = [
   { value: '5', label: 'گزینه ۵' },
 ];
 
-storiesOf('Select', module)
-  .addDecorator(story => <div className="story-container">{story()}</div>)
-  .add('Normal', () => (
-    <div
-      style={{
-        width: '350px',
-        maxWidth: '100%',
-        backgroundColor: '#ffffff',
-        padding: '40px',
-      }}>
-      <Select
-        name="test1"
-        options={options}
-        errorMessage=".انتخاب این مورد اجباری است"
-      />
-      <br />
-      <Select
-        name="test2"
-        value={{ value: '2', label: 'گزینه ۲' }}
-        options={options}
-      />
-    </div>
-  ))
-  .add('With 5 rows', () => (
-    <div
-      style={{
-        width: '350px',
-        maxWidth: '100%',
-        backgroundColor: '#ffffff',
-        padding: '40px',
-      }}>
-      <Select name="test1" options={options} showedItem={5} />
-    </div>
-  ));
+export default {
+  title: 'Select',
+  decorators: [story => <div className="story-container">{story()}</div>],
+};
+
+export const Normal = () => (
+  <div
+    style={{
+      width: '350px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '40px',
+    }}>
+    <Select
+      name="test1"
+      options={options}
+      errorMessage=".انتخاب این مورد اجباری است"
+    />
+    <br />
+    <Select
+      name="test2"
+      value={{ value: '2', label: 'گزینه ۲' }}
+      options={options}
+    />
+  </div>
+);
+
+export const With5Rows = () => (
+  <div
+    style={{
+      width: '350px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '40px',
+    }}>
+    <Select name="test1" options={options} showedItem={5} />
+  </div>
+);
+
+With5Rows.story = {
+  name: 'With 5 rows',
+};
