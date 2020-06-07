@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import FileInput from '.';
 
 const testFiles = [new File([''], 'filename.jpg')];
@@ -30,45 +29,50 @@ const tryTestState = {
   },
 };
 
-storiesOf('File input', module)
-  .addDecorator(story => (
-    <div className="button-story-container">{story()}</div>
-  ))
-  .add('Normal', () => (
-    <div
-      style={{
-        width: '450px',
-        maxWidth: '100%',
-        backgroundColor: '#ffffff',
-        padding: '40px',
-      }}>
-      <FileInput />
-      <FileInput disabled />
-      <FileInput files={testFiles} />
-      <FileInput files={testFiles} disabled />
-      <FileInput states={loadingTestState} files={testFiles} />
-      <FileInput
-        validate={() => false}
-        states={errorTestState}
-        files={testFiles}
-        forceDisplayError
-      />
-      <FileInput
-        validate={() => false}
-        states={tryTestState}
-        files={testFiles}
-        forceDisplayError
-      />
-    </div>
-  ))
-  .add('Multiple', () => (
-    <div
-      style={{
-        width: '450px',
-        maxWidth: '100%',
-        backgroundColor: '#ffffff',
-        padding: '40px',
-      }}>
-      <FileInput multiple files={testMultipleFiles} />
-    </div>
-  ));
+export default {
+  title: 'File input',
+
+  decorators: [
+    story => <div className="button-story-container">{story()}</div>,
+  ],
+};
+
+export const Normal = () => (
+  <div
+    style={{
+      width: '450px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '40px',
+    }}>
+    <FileInput />
+    <FileInput disabled />
+    <FileInput files={testFiles} />
+    <FileInput files={testFiles} disabled />
+    <FileInput states={loadingTestState} files={testFiles} />
+    <FileInput
+      validate={() => false}
+      states={errorTestState}
+      files={testFiles}
+      forceDisplayError
+    />
+    <FileInput
+      validate={() => false}
+      states={tryTestState}
+      files={testFiles}
+      forceDisplayError
+    />
+  </div>
+);
+
+export const Multiple = () => (
+  <div
+    style={{
+      width: '450px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '40px',
+    }}>
+    <FileInput multiple files={testMultipleFiles} />
+  </div>
+);

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import List from './list';
 import ListSection from './section';
@@ -50,36 +49,42 @@ const SimpleArrayOfLiElements = (): React.ReactNode => (
   </>
 );
 
-storiesOf('List', module)
-  .addDecorator(story => (
-    <div
-      className="story-container list-story-container"
-      style={{
-        width: '400px',
-        backgroundColor: 'white',
-        padding: '50px',
-      }}>
-      {story()}
-    </div>
-  ))
-  .add('All', () => (
-    <List>
-      <ListTitle title="فیش ۲۴" />
-      <ListSection>{SimpleArrayOfLiElements()}</ListSection>
-      <ListTitle title="فیش ۲۵" />
-      <ListSection>{SimpleArrayOfLiElements()}</ListSection>
-      <ListSection large seperator>
-        {SimpleArrayOfLiElements()}
-      </ListSection>
-      <ListFooter>
-        <span>مجموع پرداخت</span>
-        <span
-          style={{
-            color: '#d73948',
-            direction: 'ltr',
-          }}>
-          - ۱۰,۰۰۰
-        </span>
-      </ListFooter>
-    </List>
-  ));
+export default {
+  title: 'List',
+
+  decorators: [
+    story => (
+      <div
+        className="story-container list-story-container"
+        style={{
+          width: '400px',
+          backgroundColor: 'white',
+          padding: '50px',
+        }}>
+        {story()}
+      </div>
+    ),
+  ],
+};
+
+export const All = () => (
+  <List>
+    <ListTitle title="فیش ۲۴" />
+    <ListSection>{SimpleArrayOfLiElements()}</ListSection>
+    <ListTitle title="فیش ۲۵" />
+    <ListSection>{SimpleArrayOfLiElements()}</ListSection>
+    <ListSection large seperator>
+      {SimpleArrayOfLiElements()}
+    </ListSection>
+    <ListFooter>
+      <span>مجموع پرداخت</span>
+      <span
+        style={{
+          color: '#d73948',
+          direction: 'ltr',
+        }}>
+        - ۱۰,۰۰۰
+      </span>
+    </ListFooter>
+  </List>
+);

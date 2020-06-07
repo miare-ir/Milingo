@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 // import { withViewport } from '@storybook/addon-viewport';
 import Navbar, { NavbarItem } from '.';
 
@@ -34,10 +33,13 @@ class NavbarSample extends React.Component<{}, { selected: number }> {
   }
 }
 
-storiesOf('Navbar', module)
-  // .addDecorator(withViewport('iphone6'))
-  .addDecorator(story => (
-    <div className="story-container navbar-story">{story()}</div>
-  ))
-  .add('Desktop', () => <NavbarSample />)
-  .add('Mobile', () => <NavbarSample />);
+export default {
+  title: 'Navbar',
+
+  decorators: [
+    story => <div className="story-container navbar-story">{story()}</div>,
+  ],
+};
+
+export const Desktop = () => <NavbarSample />;
+export const Mobile = () => <NavbarSample />;

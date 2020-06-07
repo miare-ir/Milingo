@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { TabNav, TabNavItem, TabContent, TabContentItem } from '.';
 
@@ -54,12 +53,18 @@ class TabSample extends React.Component<{}, { active: number }> {
   }
 }
 
-storiesOf('Tab', module)
-  .addDecorator(story => (
-    <div
-      className="story-container tab-story"
-      style={{ width: '80%', height: '500px', backgroundColor: 'white' }}>
-      {story()}
-    </div>
-  ))
-  .add('All', () => <TabSample />);
+export default {
+  title: 'Tab',
+
+  decorators: [
+    story => (
+      <div
+        className="story-container tab-story"
+        style={{ width: '80%', height: '500px', backgroundColor: 'white' }}>
+        {story()}
+      </div>
+    ),
+  ],
+};
+
+export const All = () => <TabSample />;

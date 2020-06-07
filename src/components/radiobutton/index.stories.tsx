@@ -1,30 +1,33 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import Radio from '.';
 
-storiesOf('Radio', module)
-  .addDecorator(story => <div className="story-container">{story()}</div>)
-  .add('Normal', () => (
-    <div>
-      <Radio name="customName">سلام دنیا</Radio>
-      <Radio name="customName" disabled>
-        سلام دنیا
-      </Radio>
-    </div>
-  ))
-  .add('Checked', () => (
-    <div>
-      <Radio name="test" value="1">
-        سلام دنیا
-      </Radio>
-      <Radio name="test" value="2" checked>
-        سلام دنیا
-      </Radio>
-      <Radio name="test" value="3">
-        سلام دنیا
-      </Radio>
-      <Radio name="customName" checked disabled>
-        سلام دنیا
-      </Radio>
-    </div>
-  ));
+export default {
+  title: 'Radio',
+  decorators: [story => <div className="story-container">{story()}</div>],
+};
+
+export const Normal = () => (
+  <div>
+    <Radio name="customName">سلام دنیا</Radio>
+    <Radio name="customName" disabled>
+      سلام دنیا
+    </Radio>
+  </div>
+);
+
+export const Checked = () => (
+  <div>
+    <Radio name="test" value="1">
+      سلام دنیا
+    </Radio>
+    <Radio name="test" value="2" checked>
+      سلام دنیا
+    </Radio>
+    <Radio name="test" value="3">
+      سلام دنیا
+    </Radio>
+    <Radio name="customName" checked disabled>
+      سلام دنیا
+    </Radio>
+  </div>
+);
