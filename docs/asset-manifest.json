@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "./0.styles.css",
+    "main.js": "./main.b693e8ddefce6cb1df74.bundle.js",
+    "main.css.map": "./0.styles.css.map",
+    "main.js.map": "./main.b693e8ddefce6cb1df74.bundle.js.map",
+    "runtime~main.js": "./runtime~main.b693e8ddefce6cb1df74.bundle.js",
+    "runtime~main.js.map": "./runtime~main.b693e8ddefce6cb1df74.bundle.js.map",
+    "vendors~main.js": "./vendors~main.b693e8ddefce6cb1df74.bundle.js",
+    "vendors~main.js.map": "./vendors~main.b693e8ddefce6cb1df74.bundle.js.map",
+    "iframe.html": "./iframe.html",
+    "precache-manifest.3cfea532ff709851c48142d33bc853db.js": "./precache-manifest.3cfea532ff709851c48142d33bc853db.js",
+    "service-worker.js": "./service-worker.js",
+    "static/media/styles.scss": "./static/media/iransans-regular.7e5c1289.woff",
+    "static/media/notification-error.svg": "./static/media/notification-error.4843525f.svg",
+    "static/media/notification-hint.svg": "./static/media/notification-hint.da1566f9.svg",
+    "static/media/notification-success.svg": "./static/media/notification-success.3f9f471c.svg",
+    "static/media/notification-warning.svg": "./static/media/notification-warning.fa3fd3bf.svg",
+    "vendors~main.b693e8ddefce6cb1df74.bundle.js.LICENSE.txt": "./vendors~main.b693e8ddefce6cb1df74.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.b693e8ddefce6cb1df74.bundle.js",
+    "vendors~main.b693e8ddefce6cb1df74.bundle.js",
+    "static/css/main.a1b471d3.chunk.css",
+    "0.styles.css",
+    "main.b693e8ddefce6cb1df74.bundle.js"
+  ]
+}
