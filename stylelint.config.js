@@ -1,7 +1,7 @@
 module.exports = {
   plugins: ['stylelint-scss'],
   extends: ['stylelint-config-recommended-scss', 'stylelint-config-standard'],
-  ignoreFiles: './src/**/*.tsx',
+  ignoreFiles: ['./src/**/*.tsx', './dist/**', './docs/**'],
   rules: {
     'at-rule-no-unknown': [
       true,

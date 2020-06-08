@@ -4,7 +4,7 @@ module.exports = {
     "browser": true,
     "node": false
   },
-  "ignorePatterns": ["node_modules", "types", "dist", "docs"],
+  "ignorePatterns": ["node_modules", "types", "dist", "docs", "stylelint.config.js"],
   "plugins": [
     "@typescript-eslint",
     "jsdoc"
