@@ -4,7 +4,7 @@ module.exports = {
     "browser": true,
     "node": false
   },
-  "ignorePatterns": ["node_modules", "types"],
+  "ignorePatterns": ["node_modules", "types", "dist", "docs", "stylelint.config.js"],
   "plugins": [
     "@typescript-eslint",
     "jsdoc"
@@ -86,7 +86,10 @@ module.exports = {
     "@typescript-eslint/naming-convention": "error",
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-misused-promises": "off", // Turned off only because of rule's poor performance
-    "@typescript-eslint/no-unused-vars": ["error", {"ignoreRestSiblings": true, "args": "none"}],
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "ignoreRestSiblings": true,
+      "args": "none"
+    }],
     "curly": "error",
     "eol-last": "error",
     "eqeqeq": [
@@ -136,7 +139,9 @@ module.exports = {
       }
     ],
     "no-empty": "off",
-    "@typescript-eslint/no-empty-function": ["error", {"allow": ["arrowFunctions"]}],
+    "@typescript-eslint/no-empty-function": ["error", {
+      "allow": ["arrowFunctions"]
+    }],
     "no-eval": "error",
     "no-new-wrappers": "error",
     "no-shadow": [
@@ -159,31 +164,31 @@ module.exports = {
         ]
       }
     ],
-    "@typescript-eslint/explicit-function-return-type": ["warn", {"allowExpressions": true}]
+    "@typescript-eslint/explicit-function-return-type": ["warn", {
+      "allowExpressions": true
+    }]
   },
-  "overrides": [
-    {
-      "files": ["*.stories.tsx"],
-      "rules": {
-        "jsx-a11y/anchor-is-valid": "off",
-        "jsx-a11y/alt-text": "off"
-      }
-    }, {
-      "files": ["*fixtures*"],
-      "rules": {
-        "camelcase": "off"
-      }
-    }, {
-      "files": ["*spec*", "*test*"],
-      "rules": {
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-var-requires": "off"
-      }
+  "overrides": [{
+    "files": ["*.stories.tsx"],
+    "rules": {
+      "jsx-a11y/anchor-is-valid": "off",
+      "jsx-a11y/alt-text": "off"
     }
-  ],
+  }, {
+    "files": ["*fixtures*"],
+    "rules": {
+      "camelcase": "off"
+    }
+  }, {
+    "files": ["*spec*", "*test*"],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-var-requires": "off"
+    }
+  }],
   "settings": {
     "react": {
-      "version":  "detect"
+      "version": "detect"
     }
   }
 };
