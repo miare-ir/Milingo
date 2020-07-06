@@ -32,7 +32,7 @@ class Radio extends React.Component<RadioProps, {}> {
     });
 
     return (
-      <div className={checkClassName}>
+      <div className={checkClassName} onClick={() => this.radioButton.click()}>
         <input
           type="radio"
           name={name}
@@ -45,9 +45,7 @@ class Radio extends React.Component<RadioProps, {}> {
         <label htmlFor={`${name}${value}`} className="radio">
           <span className="icon" />
         </label>
-        <div className="children-div" onClick={() => this.radioButton.click()}>
-          {children}
-        </div>
+        <div className="children-div">{children}</div>
       </div>
     );
   }
