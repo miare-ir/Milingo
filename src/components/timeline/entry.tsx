@@ -7,24 +7,31 @@ export interface TimelineEntryProps extends React.HTMLProps<HTMLDivElement> {
   time?: string;
   title: string;
   noBorder?: boolean;
+  clickable?: boolean;
 }
 
 const TimelineEntry: React.SFC<TimelineEntryProps> = ({
   time,
   title,
   noBorder,
+  clickable,
   children,
   ...props
 }: TimelineEntryProps) => (
-  <div className="timeline-entry" {...props}>
-    <div className="timeline-entry-title-container">
-      <div className="timeline-entry-time-container">
-        <div className="timeline-entry-time">{time}</div>
+  <div
+    className={classNames('timeline', {
+      clickable: clickable,
+      clicked: !!time && clickable,
+    })}
+    {...props}>
+    <div className="entry-title-container">
+      <div className="entry-time-container">
+        <div className="entry-time">{time}</div>
       </div>
-      <h4 className="timeline-entry-title">{title}</h4>
+      <h4 className="entry-title">{title}</h4>
     </div>
     <div
-      className={classNames('timeline-entry-content', {
+      className={classNames('entry-content', {
         empty: !children,
         'no-border': noBorder,
       })}>
