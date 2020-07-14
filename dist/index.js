@@ -17697,10 +17697,10 @@ var Checkbox = /** @class */ (function (_super) {
             checked: this.state.checked,
             disabled: this.props.disabled,
         });
-        return (React.createElement("div", { className: "checkbox-container" },
-            React.createElement("button", { className: checkClassName, onClick: function (e) {
-                    _this.checkboxElement.click();
-                } },
+        return (React.createElement("div", { className: "checkbox-container", onClick: function (e) {
+                _this.checkboxElement.click();
+            } },
+            React.createElement("button", { className: checkClassName },
                 React.createElement("input", __assign({ type: "checkbox", checked: this.state.checked, value: !!this.state.checked + '', onChange: this.handleChange, ref: function (input) { return (_this.checkboxElement = input); } }, props)),
                 React.createElement("span", { className: "check" },
                     React.createElement("span", { className: "icon material-icons" }, "check")),
@@ -19353,11 +19353,11 @@ var Radio = /** @class */ (function (_super) {
         var checkClassName = classNames('radio-btn', className, {
             disabled: this.props.disabled,
         });
-        return (React.createElement("div", { className: checkClassName },
+        return (React.createElement("div", { className: checkClassName, onClick: function () { return _this.radioButton.click(); } },
             React.createElement("input", __assign({ type: "radio", name: name, id: "" + name + value, value: value, onChange: this.handleChange, ref: function (node) { return (_this.radioButton = node); } }, props)),
             React.createElement("label", { htmlFor: "" + name + value, className: "radio" },
                 React.createElement("span", { className: "icon" })),
-            React.createElement("div", { className: "children-div", onClick: function () { return _this.radioButton.click(); } }, children)));
+            React.createElement("div", { className: "children-div" }, children)));
     };
     return Radio;
 }(React.Component));
