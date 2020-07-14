@@ -58,12 +58,12 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     });
 
     return (
-      <div className="checkbox-container">
-        <button
-          className={checkClassName}
-          onClick={e => {
-            this.checkboxElement.click();
-          }}>
+      <div
+        className="checkbox-container"
+        onClick={e => {
+          this.checkboxElement.click();
+        }}>
+        <button className={checkClassName}>
           <input
             type="checkbox"
             checked={this.state.checked}
