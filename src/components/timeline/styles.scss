@@ -5,16 +5,43 @@
   font-size: '14px';
   font-weight: 400;
 
-  &-entry {
+  &.clickable {
+    .entry {
+      &-time {
+        border: 2px #1e6dc8 solid
+      }
+
+      &-title {
+        color: #1e6dc8 ;
+      }
+    }
+  }
+
+  &.clicked {
+    .entry {
+      &-time {
+        color: #fff;
+        background-color: #1e6dc8;
+      }
+
+      &-title {
+        color: #1e6dc8 ;
+      }
+    }
+  }
+
+  .entry {
     &-title-container {
       display: flex;
       flex-direction: row;
+      align-items: center;
       height: 28px;
     }
 
     &-time {
       font-family: 'IranSansNumeral', 'IranSans';
       font-size: 14px;
+      font-weight: 500;
       display: flex;
       justify-content: center;
       align-items: center;
