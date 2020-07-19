@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import Timeline from './index';
-import TimelineEntry from './entry';
+import { Timeline, TimelineEntry } from './index';
 
 import './styles.stories.scss';
 
@@ -15,7 +14,7 @@ export default {
   ],
 };
 
-export const WithSingleEntry = () => (
+export const WithSingleEntry = (): React.ReactNode => (
   <Timeline>
     <TimelineEntry noBorder time="14:30" title="درخواست کوریر دادید." />
   </Timeline>
@@ -25,7 +24,7 @@ WithSingleEntry.story = {
   name: 'With single entry',
 };
 
-export const WithTwoEntries = () => (
+export const WithTwoEntries = (): React.ReactNode => (
   <Timeline>
     <TimelineEntry time="14:30" title="درخواست کوریر دادید." />
     <TimelineEntry noBorder title="کوریر در حال حرکت به سمت شماست">
@@ -45,7 +44,7 @@ WithTwoEntries.story = {
   name: 'With two entries',
 };
 
-export const WithSeveralEntries = () => (
+export const WithSeveralEntries = (): React.ReactNode => (
   <Timeline>
     <TimelineEntry time="14:30" title="درخواست کوریر دادید." />
     <TimelineEntry time="14:35" title="کوریر رسید." />

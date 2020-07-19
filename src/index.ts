@@ -20,7 +20,7 @@ import Navbar, { NavbarItem } from './components/navbar';
 import Notification from './components/notification';
 import Radio from './components/radiobutton';
 import Textarea from './components/textarea';
-import Timeline from './components/timeline';
+import { Timeline, TimelineEntry } from './components/timeline';
 import Banner from './components/banner';
 import Toolbar from './components/toolbar';
 import { ActionTable, ActionTableRow } from './components/action-table';
@@ -58,6 +58,7 @@ export {
   Radio,
   Textarea,
   Timeline,
+  TimelineEntry,
   Toolbar,
   MenuAvatar,
   MenuHeader,

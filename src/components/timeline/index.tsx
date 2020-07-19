@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import TimelineEntry from './entry';
+
 import './styles.scss';
 
 export interface TimelineProps {
@@ -10,4 +12,4 @@ const Timeline: React.SFC<TimelineProps> = (props: TimelineProps) => (
   <div className="timeline">{props.children}</div>
 );
 
-export default Timeline;
+export { Timeline, TimelineEntry };
