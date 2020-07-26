@@ -1,0 +1,70 @@
+@import "../../assets/styles/_variables.scss";
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+
+  &-container {
+    &-small .spinner:before {
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      margin-left: -10px;
+    }
+
+    &-medium .spinner:before {
+      width: 26px;
+      height: 26px;
+      margin-top: -13px;
+      margin-left: -13px;
+    }
+
+    &-large .spinner:before {
+      width: 32px;
+      height: 32px;
+      margin-top: -16px;
+      margin-left: -16px;
+    }
+
+    &-x-large .spinner:before {
+      width: 42px;
+      height: 42px;
+      margin-top: -21px;
+      margin-left: -21px;
+    }
+  }
+
+  &:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border-top: 2px solid $whiteColor;
+    border-right: 2px solid transparent;
+    animation: spinner 0.6s linear infinite;
+  }
+
+  &.spinner-primary:before {
+    border-top-color: $primary2;
+  }
+
+  &.spinner-danger:before {
+    border-top-color: $danger1;
+  }
+
+  &.spinner-disabled:before {
+    border-top-color: $disabledColor;
+  }
+}

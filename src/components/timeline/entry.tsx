@@ -1,34 +1,37 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import Loader from '../loader';
 import './styles.scss';
 
 export interface TimelineEntryProps extends React.HTMLProps<HTMLDivElement> {
   time?: string;
-  title: string;
+  description: string | JSX.Element;
+  loading?: boolean;
   noBorder?: boolean;
   clickable?: boolean;
 }
 
 const TimelineEntry: React.SFC<TimelineEntryProps> = ({
   time,
-  title,
+  description,
   noBorder,
   clickable,
   children,
+  loading,
   ...props
 }: TimelineEntryProps) => (
   <div
     className={classNames('timeline', {
       clickable: clickable,
-      clicked: !!time && clickable,
+      clicked: !!time && clickable && !loading,
     })}
     {...props}>
     <div className="entry-title-container">
       <div className="entry-time-container">
-        <div className="entry-time">{time}</div>
+        <div className="entry-time">{loading ? <Loader disabled /> : time}</div>
       </div>
-      <h4 className="entry-title">{title}</h4>
+      <h4 className="entry-title">{description}</h4>
     </div>
     <div
       className={classNames('entry-content', {
