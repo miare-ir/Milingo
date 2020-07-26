@@ -1,9 +1,13 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import Loader from '../loader';
+
 import './styles.scss';
 
-export type CheckboxProps = React.HTMLProps<HTMLInputElement>;
+export interface CheckboxProps extends React.HTMLProps<HTMLInputElement> {
+  loading?: boolean;
+}
 
 export interface CheckboxState {
   checked: boolean;
@@ -49,6 +53,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
       className,
       onChange,
       checked,
+      loading,
       ...props
     }: CheckboxProps = this.props;
 
@@ -73,7 +78,11 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
             {...props}
           />
           <span className="check">
-            <span className="icon material-icons">check</span>
+            {this.props.loading ? (
+              <Loader disabled />
+            ) : (
+              <span className="icon material-icons">check</span>
+            )}
           </span>
           {children && <label htmlFor={props.id}>{children}</label>}
         </button>
