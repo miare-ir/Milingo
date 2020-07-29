@@ -27,13 +27,14 @@ class Textarea extends React.Component<InputProps, InputState> {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: InputProps): void {
-    if (
-      nextProps.value !== this.props.value &&
-      nextProps.value !== this.state.value
-    ) {
-      this.setState({ value: nextProps.value });
+  static getDerivedStateFromProps(
+    nextProps: InputProps,
+    prevState: InputState,
+  ): {} {
+    if (nextProps.value !== prevState.value) {
+      return { value: nextProps.value };
     }
+    return null;
   }
 
   handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {

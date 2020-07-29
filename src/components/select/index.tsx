@@ -185,7 +185,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
 
   handleDocumentClick(event): void {
     if (this.state.mounted) {
-      if (!this.node.contains(event.target)) {
+      if (!this.node?.contains(event.target)) {
         if (this.state.isOpen) {
           this.setState({ isOpen: false });
         }
