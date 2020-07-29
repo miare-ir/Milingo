@@ -16,7 +16,7 @@ export default {
 
 export const WithSingleEntry = (): React.ReactNode => (
   <Timeline>
-    <TimelineEntry noBorder time="14:30" title="درخواست کوریر دادید." />
+    <TimelineEntry noBorder time="14:30" description="درخواست کوریر دادید." />
   </Timeline>
 );
 
@@ -26,8 +26,8 @@ WithSingleEntry.story = {
 
 export const WithTwoEntries = (): React.ReactNode => (
   <Timeline>
-    <TimelineEntry time="14:30" title="درخواست کوریر دادید." />
-    <TimelineEntry noBorder title="کوریر در حال حرکت به سمت شماست">
+    <TimelineEntry time="14:30" description="درخواست کوریر دادید." />
+    <TimelineEntry noBorder description="کوریر در حال حرکت به سمت شماست">
       <div
         style={{
           backgroundColor: '#eee',
@@ -46,10 +46,14 @@ WithTwoEntries.story = {
 
 export const WithSeveralEntries = (): React.ReactNode => (
   <Timeline>
-    <TimelineEntry time="14:30" title="درخواست کوریر دادید." />
-    <TimelineEntry time="14:35" title="کوریر رسید." />
-    <TimelineEntry time="14:40" title="کوریر از رستوران راه افتاد." />
-    <TimelineEntry noBorder title="کوریر در حال حرکت به سمت شماست">
+    <TimelineEntry time="14:30" description="درخواست کوریر دادید." />
+    <TimelineEntry clickable time="14:35" description="کوریر رسید." />
+    <TimelineEntry
+      loading
+      time="14:40"
+      description="کوریر از رستوران راه افتاد."
+    />
+    <TimelineEntry noBorder description="کوریر در حال حرکت به سمت شماست">
       <div
         style={{
           backgroundColor: '#eee',
