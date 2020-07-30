@@ -33,6 +33,7 @@ export interface DatePickerState {
   currentDate: moment.Moment;
   dialogOpen: boolean;
   savedDate: moment.Moment;
+  forceDatePickerOpen?: boolean;
 }
 
 class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
@@ -55,19 +56,34 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: DatePickerProps): void {
+  static getDerivedStateFromProps(
+    nextProps: DatePickerProps,
+    prevState: DatePickerState,
+  ): {} {
     if (
       typeof nextProps.defaultValue === 'undefined' ||
       nextProps.defaultValue === ''
     ) {
-      this.setState({ savedDate: undefined });
+      return { savedDate: undefined };
     } else if (
-      !moment(nextProps.defaultValue).isSame(this.state.savedDate, 'day')
+      !moment(nextProps.defaultValue).isSame(prevState.savedDate, 'day')
     ) {
-      this.saveDate(moment(nextProps.defaultValue));
+      return { savedDate: nextProps.defaultValue };
     }
 
     if (nextProps.forceDatePickerOpen) {
+      return { forceDatePickerOpen: nextProps.forceDatePickerOpen };
+    }
+
+    return null;
+  }
+
+  componentDidUpdate(prevProps: DatePickerProps): void {
+    if (!moment(prevProps.defaultValue).isSame(this.state.savedDate, 'day')) {
+      this.saveDate(moment(this.state.savedDate));
+    }
+
+    if (this.state.forceDatePickerOpen) {
       this.openDialog();
     }
   }
