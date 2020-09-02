@@ -4,8 +4,9 @@ import * as classNames from 'classnames';
 import './styles.scss';
 
 export interface DialogContentProps extends React.HTMLProps<HTMLDivElement> {
+  onClose?: () => void;
   children?: JSX.Element;
-  actions?: JSX.Element[];
+  actions?: JSX.Element | JSX.Element[];
   title: string;
   className?: string;
   primary?: boolean;
@@ -35,6 +36,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
       secondary,
       actions,
       children,
+      onClose,
       ...props
     } = this.props;
     const componentClassNames = classNames(
@@ -49,7 +51,13 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
     return (
       <div className={componentClassNames} {...props}>
         <div className="dialog-header" key="title">
-          <h2 className="dialog-title">{title}</h2>
+          <h2 className="dialog-title">
+            <span onClick={onClose} className="material-icons">
+              close
+            </span>
+            <span>{title}</span>
+            <span> </span>
+          </h2>
         </div>
         {children && (
           <div className="dialog-content" key="content">
