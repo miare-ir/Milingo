@@ -27,6 +27,10 @@
       font-weight: 500;
       margin: 0;
       text-align: center;
+
+      .material-icons {
+        display: none;
+      }
     }
 
     &-content {
@@ -34,6 +38,7 @@
       flex-direction: column;
       width: 100%;
       font-size: 14px;
+      overflow-y: scroll;
 
       p {
         margin: 0;
@@ -54,6 +59,11 @@
       }
     }
   }
+
+  @include onMobile {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .primary {
@@ -62,6 +72,22 @@
       text-align: right;
       padding: 24px;
       box-sizing: border-box;
+
+      .material-icons {
+        display: none;
+      }
+
+      @include onMobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 1px 4px 0 #dddd;
+
+        .material-icons {
+          display: inline;
+          color: #4a90e2
+        }
+      }
     }
 
     &-content {
@@ -70,6 +96,11 @@
 
       p {
         text-align: right;
+      }
+
+      @include onMobile {
+        padding: 16px;
+        height: 100%;
       }
     }
 
