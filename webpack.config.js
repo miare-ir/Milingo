@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -19,6 +20,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ForkTsCheckerWebpackPlugin()
   ],
   optimization: {
