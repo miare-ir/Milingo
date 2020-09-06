@@ -31,8 +31,10 @@
   ],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier --write .",
-      "eslint ./src --ext .js,.jsx,.ts,.tsx --fix --quiet"
+      "prettier --write ."
+    ],
+    "*.{ts,tsx}": [
+      "eslint ./src --ext .ts,.tsx --fix --quiet"
     ],
     "*.{css,scss}": [
       "stylelint ./src/**/*.scss --config stylelint.config.js"
