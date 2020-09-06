@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "rimraf dist types && ENV=production webpack --mode=production",
+    "build:analyze": "rimraf dist types && ENV=production BUNDLE_ANALYZE=TRUE webpack --mode=production",
     "dist": "yarn run build-storybook && yarn run build",
     "start": "yarn run storybook",
     "release": "yarn run dist && npm publish",
@@ -87,6 +88,7 @@
     "typescript": "^3.8.3",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {

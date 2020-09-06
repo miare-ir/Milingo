@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.ts'),
@@ -98,3 +99,7 @@ module.exports = {
   },
   stats: "minimal"
 };
+
+if (process.env.BUNDLE_ANALYZE === 'TRUE') {
+  module.exports.plugins.push(new BundleAnalyzerPlugin.BundleAnalyzerPlugin());
+}
