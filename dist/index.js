@@ -17892,14 +17892,17 @@ var DialogContent = /** @class */ (function (_super) {
         }
     };
     DialogContent.prototype.render = function () {
-        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children"]);
+        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, onClose = _a.onClose, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children", "onClose"]);
         var componentClassNames = classNames('dialog-content-wrapper', className, {
             primary: primary,
             secondary: secondary,
         });
         return (React.createElement("div", __assign({ className: componentClassNames }, props),
             React.createElement("div", { className: "dialog-header", key: "title" },
-                React.createElement("h2", { className: "dialog-title" }, title)),
+                React.createElement("h2", { className: "dialog-title" },
+                    React.createElement("span", { onClick: onClose, className: "material-icons" }, "close"),
+                    React.createElement("span", null, title),
+                    React.createElement("span", null, " "))),
             children && (React.createElement("div", { className: "dialog-content", key: "content" }, children)),
             React.createElement("div", { className: "dialog-actions", key: "footer" }, actions)));
     };
