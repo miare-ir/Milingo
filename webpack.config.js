@@ -99,6 +99,13 @@ module.exports = {
       },
     ],
   },
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom',
+    'react-modal': 'react-modal',
+    'moment': 'moment',
+    'moment-jalaali': 'moment-jalaali'
+  },
   stats: "minimal"
 };
 
