@@ -5,6 +5,10 @@
   direction: rtl;
   margin-bottom: 16px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   *:not(.material-icons) {
     font-family: 'IranSans';
     transition: $transitionInward;
