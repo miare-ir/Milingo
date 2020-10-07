@@ -1,7 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.ts'),
@@ -18,6 +20,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ForkTsCheckerWebpackPlugin()
   ],
   optimization: {
@@ -96,5 +99,16 @@ module.exports = {
       },
     ],
   },
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom',
+    'react-modal': 'react-modal',
+    'moment': 'moment',
+    'moment-jalaali': 'moment-jalaali'
+  },
   stats: "minimal"
 };
+
+if (process.env.BUNDLE_ANALYZE === 'TRUE') {
+  module.exports.plugins.push(new BundleAnalyzerPlugin.BundleAnalyzerPlugin());
+}

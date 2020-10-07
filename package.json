@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "rimraf dist types && ENV=production webpack --mode=production",
+    "build:analyze": "rimraf dist types && ENV=production BUNDLE_ANALYZE=TRUE webpack --mode=production",
     "dist": "yarn run build-storybook && yarn run build",
     "start": "yarn run storybook",
     "release": "yarn run dist && npm publish",
@@ -30,8 +31,10 @@
   ],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier --write .",
-      "eslint ./src --ext .js,.jsx,.ts,.tsx --fix --quiet"
+      "prettier --write ."
+    ],
+    "*.{ts,tsx}": [
+      "eslint ./src --ext .ts,.tsx --fix --quiet"
     ],
     "*.{css,scss}": [
       "stylelint ./src/**/*.scss --config stylelint.config.js"
@@ -64,6 +67,8 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
     "mini-css-extract-plugin": "^0.9.0",
+    "moment": "^2.24.0",
+    "moment-jalaali": "^0.9.2",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "path": "^0.12.7",
@@ -72,6 +77,7 @@
     "prettier-stylelint": "^0.4.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-scripts": "^3.4.1",
     "resolve-url-loader": "^3.1.1",
     "rimraf": "^3.0.2",
@@ -87,20 +93,21 @@
     "typescript": "^3.8.3",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
     "classnames": "^2.2.5",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-modal": "^3.11.2",
+    "moment": "^2.24.0",
+    "moment-jalaali": "^0.9.2"
   },
   "dependencies": {
     "babel-loader": "8.1.0",
-    "moment": "^2.24.0",
-    "moment-jalaali": "^0.9.2",
     "prop-types": "^15.7.2",
-    "react-circular-progressbar": "^2.0.3",
-    "react-modal": "^3.11.2"
+    "react-circular-progressbar": "^2.0.3"
   },
   "husky": {
     "hooks": {
