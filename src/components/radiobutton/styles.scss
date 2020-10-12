@@ -12,7 +12,7 @@
   border: none;
   padding: 0;
   outline: none;
-  height: 24px;
+  min-height: 24px;
 
   * {
     transition: $transitionInward;
@@ -22,26 +22,30 @@
     display: none;
   }
 
-  .radio {
-    border-radius: 50%;
-    border: 1px solid $inputBorderColor;
-    box-sizing: border-box;
-    background-color: $inputBackgroundColor;
-    margin-left: 8px;
-    height: 24px;
-    width: 24px;
-    position: relative;
-    cursor: pointer;
+  .radio-icon {
+    display: flex;
 
-    .icon {
-      width: 18px;
-      height: 18px;
+    .radio {
       border-radius: 50%;
-      font-size: 18px;
+      border: 1px solid $inputBorderColor;
       box-sizing: border-box;
-      position: absolute;
-      top: 2px;
-      left: 2px;
+      background-color: $inputBackgroundColor;
+      margin-left: 8px;
+      height: 24px;
+      width: 24px;
+      position: relative;
+      cursor: pointer;
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        font-size: 18px;
+        box-sizing: border-box;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+      }
     }
   }
 
