@@ -33,18 +33,20 @@ class Radio extends React.Component<RadioProps, {}> {
 
     return (
       <div className={checkClassName} onClick={() => this.radioButton.click()}>
-        <input
-          type="radio"
-          name={name}
-          id={`${name}${value}`}
-          value={value}
-          onChange={this.handleChange}
-          ref={node => (this.radioButton = node)}
-          {...props}
-        />
-        <label htmlFor={`${name}${value}`} className="radio">
-          <span className="icon" />
-        </label>
+        <div className="radio-icon">
+          <input
+            type="radio"
+            name={name}
+            id={`${name}${value}`}
+            value={value}
+            onChange={this.handleChange}
+            ref={node => (this.radioButton = node)}
+            {...props}
+          />
+          <label htmlFor={`${name}${value}`} className="radio">
+            <span className="icon" />
+          </label>
+        </div>
         <div className="children-div">{children}</div>
       </div>
     );
