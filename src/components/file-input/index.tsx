@@ -45,14 +45,10 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     };
   }
 
-  static getDerivedStateFromProps(
-    nextProps: FileInputProps,
-    prevState: FileInputState,
-  ): {} {
-    if (nextProps.files !== prevState.files) {
-      return { files: nextProps.files };
+  componentDidUpdate(prevProps: FileInputProps): void {
+    if (prevProps.files !== this.props.files) {
+      this.setState({ files: prevProps.files });
     }
-    return null;
   }
 
   handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -64,17 +60,25 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     });
 
     if (this.props.onChangeFiles) {
-      this.props.onChangeFiles(this.state.files);
+      this.props.onChangeFiles(
+        this.props.multiple ? this.state.files.concat(newFiles) : newFiles,
+      );
     }
   };
 
   clear = (index: number): void => {
+    if (this.props.disabled) {
+      return;
+    }
+
     this.setState({
       files: this.state.files.filter((_, filterIndex) => index !== filterIndex),
     });
 
     if (this.props.onChangeFiles) {
-      this.props.onChangeFiles(this.state.files);
+      this.props.onChangeFiles(
+        this.state.files.filter((_, filterIndex) => index !== filterIndex),
+      );
     }
   };
 
@@ -148,11 +152,13 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
         <div className="file-name">
           <div className="file-name-text">
             <p>{file.name}</p>
-            <i
-              className="material-icons clear"
-              onClick={() => this.clear(index)}>
-              close
-            </i>
+            {this.props.displayClear && (
+              <i
+                className="material-icons clear"
+                onClick={() => this.clear(index)}>
+                close
+              </i>
+            )}
           </div>
           {state && state.tryAgain && (
             <div

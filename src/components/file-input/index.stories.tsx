@@ -49,7 +49,7 @@ export const Normal = () => (
     <FileInput disabled />
     <FileInput files={testFiles} />
     <FileInput files={testFiles} disabled />
-    <FileInput states={loadingTestState} files={testFiles} />
+    <FileInput states={loadingTestState} files={testFiles} displayClear />
     <FileInput
       validate={() => false}
       states={errorTestState}

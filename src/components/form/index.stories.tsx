@@ -62,9 +62,11 @@ export const DoubleColumn = () => (
       maxWidth: '100%',
       backgroundColor: '#ffffff',
       padding: '30px',
+      direction: 'rtl',
     }}>
     <Form title="عنوان فرم" description="توضیحات فرم">
       <FormGroup singleRow>
+        <Input title="عنوان" />
         <Input title="عنوان" />
         <Input title="عنوان" />
       </FormGroup>

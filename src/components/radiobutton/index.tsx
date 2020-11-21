@@ -11,6 +11,10 @@ class Radio extends React.Component<RadioProps, {}> {
   private radioButton: HTMLInputElement;
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (this.props.disabled) {
+      return;
+    }
+
     if (this.props.onChange) {
       this.props.onChange(e);
     }

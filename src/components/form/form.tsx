@@ -16,11 +16,13 @@ class Form extends React.Component<FormProps, {}> {
     const componentClassName = classNames('form-container', className);
 
     return (
-      <div className={componentClassName} {...props}>
-        <h4 className="form-title">{title}</h4>
-        <p className="form-description">{description}</p>
-        {children}
-      </div>
+      <form>
+        <div className={componentClassName} {...props}>
+          <h4 className="form-title">{title}</h4>
+          <p className="form-description">{description}</p>
+          {children}
+        </div>
+      </form>
     );
   }
 }
