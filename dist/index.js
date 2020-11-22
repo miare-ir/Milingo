@@ -915,15 +915,18 @@ var FileInput = /** @class */ (function (_super) {
                 files: _this.props.multiple ? _this.state.files.concat(newFiles) : newFiles,
             });
             if (_this.props.onChangeFiles) {
-                _this.props.onChangeFiles(_this.state.files);
+                _this.props.onChangeFiles(_this.props.multiple ? _this.state.files.concat(newFiles) : newFiles);
             }
         };
         _this.clear = function (index) {
+            if (_this.props.disabled) {
+                return;
+            }
             _this.setState({
                 files: _this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }),
             });
             if (_this.props.onChangeFiles) {
-                _this.props.onChangeFiles(_this.state.files);
+                _this.props.onChangeFiles(_this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }));
             }
         };
         _this.renderFiles = function (state, file, index) {
@@ -942,7 +945,7 @@ var FileInput = /** @class */ (function (_super) {
                 React.createElement("div", { className: "file-name" },
                     React.createElement("div", { className: "file-name-text" },
                         React.createElement("p", null, file.name),
-                        React.createElement("i", { className: "material-icons clear", onClick: function () { return _this.clear(index); } }, "close")),
+                        _this.props.displayClear && (React.createElement("i", { className: "material-icons clear", onClick: function () { return _this.clear(index); } }, "close"))),
                     state && state.tryAgain && (React.createElement("div", { onClick: function () { return _this.props.onTryAgain(_this.state.files); }, className: "try-again" }, _this.props.tryAgainText ? _this.props.tryAgainText : 'تلاش مجدد')),
                     state && state.progress ? (React.createElement("div", { className: "loading-container" },
                         React.createElement("div", { className: "loading", style: { width: state.progress + "%" } }))) : null),
@@ -954,11 +957,10 @@ var FileInput = /** @class */ (function (_super) {
         };
         return _this;
     }
-    FileInput.getDerivedStateFromProps = function (nextProps, prevState) {
-        if (nextProps.files !== prevState.files) {
-            return { files: nextProps.files };
+    FileInput.prototype.componentDidUpdate = function (prevProps) {
+        if (prevProps.files !== this.props.files) {
+            this.setState({ files: prevProps.files });
         }
-        return null;
     };
     FileInput.prototype.render = function () {
         var _this = this;
@@ -1332,10 +1334,11 @@ var Form = /** @class */ (function (_super) {
     Form.prototype.render = function () {
         var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, props = __rest(_a, ["className", "children", "title", "description"]);
         var componentClassName = classNames('form-container', className);
-        return (React.createElement("div", __assign({ className: componentClassName }, props),
-            React.createElement("h4", { className: "form-title" }, title),
-            React.createElement("p", { className: "form-description" }, description),
-            children));
+        return (React.createElement("form", null,
+            React.createElement("div", __assign({ className: componentClassName }, props),
+                React.createElement("h4", { className: "form-title" }, title),
+                React.createElement("p", { className: "form-description" }, description),
+                children)));
     };
     return Form;
 }(React.Component));
@@ -2324,6 +2327,9 @@ var Radio = /** @class */ (function (_super) {
     function Radio() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.handleChange = function (e) {
+            if (_this.props.disabled) {
+                return;
+            }
             if (_this.props.onChange) {
                 _this.props.onChange(e);
             }

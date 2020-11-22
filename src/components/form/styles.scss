@@ -43,12 +43,12 @@
   display: flex;
 
   > :first-child {
-    margin-right: 16px;
+    margin-left: 16px;
     flex-grow: 1;
   }
 
   > :last-child {
-    margin-left: 16px;
+    margin-right: 16px;
     flex-grow: 1;
   }
 }

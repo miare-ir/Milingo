@@ -4,7 +4,7 @@
 .select-root {
     position: relative;
     font-family: IRANSans;
-  
+
     .select-control {
         width: 100%;
         height: 48px;
@@ -31,11 +31,21 @@
         }
     }
 
+    .select-disabled {
+      .select-arrow {
+        background-color: $disabledColor;
+      }
+
+      .select-placeholder {
+        background-color: #ecedef;
+        color: #4a4a4a;
+      }
+    }
+
     .select-placeholder {
         padding: 12px;
         border: 1px solid #8897a8;
         flex-grow: 1;
-        height: 22px;
 
         @include font-size(14);
 
