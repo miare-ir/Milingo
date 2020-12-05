@@ -31,6 +31,20 @@
   url(../fonts/material_icons/MaterialIcons-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'IranSansNumeral';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/iran_sans/IRANSansOnlyNumeral.woff);
+}
+
+@font-face {
+  font-family: 'IranSansNumeral';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/iran_sans/IRANSansOnlyNumral_Medium.woff);
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;

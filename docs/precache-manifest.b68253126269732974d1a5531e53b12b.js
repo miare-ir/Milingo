@@ -1,21 +1,29 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3d9be22b10472fda4a12",
+    "revision": "4fb59ccbc6855cdf2677",
     "url": "0.styles.css"
   },
   {
-    "revision": "67f766879164375b7327dc59c6e2e42c",
+    "revision": "f9acea9aa11562cb6b7b539cc7a7f294",
     "url": "iframe.html"
   },
   {
-    "url": "main.1ba735e446df5263f1cd.bundle.js"
+    "url": "main.bcf345d89e57a9a60e90.bundle.js"
   },
   {
-    "url": "runtime~main.1ba735e446df5263f1cd.bundle.js"
+    "url": "runtime~main.bcf345d89e57a9a60e90.bundle.js"
   },
   {
-    "revision": "3d9be22b10472fda4a12",
-    "url": "static/css/main.6cebcf40.chunk.css"
+    "revision": "4fb59ccbc6855cdf2677",
+    "url": "static/css/main.e05e2fc3.chunk.css"
+  },
+  {
+    "revision": "63ce8b9656ad060fc7ddeb0a0f72fa16",
+    "url": "static/media/IRANSansOnlyNumeral.63ce8b96.woff"
+  },
+  {
+    "revision": "a0624a7c900e8f3a1a71b8921cceb6be",
+    "url": "static/media/IRANSansOnlyNumral_Medium.a0624a7c.woff"
   },
   {
     "revision": "012cf6a10129e2275d79d6adac7f3b02",
@@ -66,9 +74,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/notification-warning.fa3fd3bf.svg"
   },
   {
-    "url": "vendors~main.1ba735e446df5263f1cd.bundle.js"
+    "url": "vendors~main.bcf345d89e57a9a60e90.bundle.js"
   },
   {
-    "url": "vendors~main.1ba735e446df5263f1cd.bundle.js.LICENSE.txt"
+    "url": "vendors~main.bcf345d89e57a9a60e90.bundle.js.LICENSE.txt"
   }
 ]);
