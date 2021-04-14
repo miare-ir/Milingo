@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-// import PersianNumber from '../utils/persian-number';
 import './styles.scss';
 
 export interface CollectionCardProps extends React.HTMLProps<HTMLDivElement> {
@@ -40,13 +39,6 @@ class CollectionCard extends React.Component<CollectionCardProps, {}> {
           </span>
         ) : (
           <div className="price">{footer}</div>
-          // <PersianNumber
-          //   value={price}
-          //   component="label"
-          //   // currencyType="ریال"
-          //   className="price"
-          //   includesPrice
-          // />
         )}
         {hasSubset && <label className="subset-dot" />}
       </div>
