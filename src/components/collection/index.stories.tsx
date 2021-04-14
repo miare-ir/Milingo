@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { FoodCard, FoodCardList } from '.';
+import { CollectionCard, Collection } from '.';
 
 export default {
-  title: 'Food card',
+  title: 'Collection',
   decorators: [story => <div className="story-container">{story()}</div>],
 };
 
@@ -15,18 +15,19 @@ export const All = () => (
       maxWidth: '100%',
       backgroundColor: '#f2f3f5',
       padding: '30px',
+      direction: 'rtl',
     }}>
-    <FoodCardList title="پیتزا">
-      <FoodCard price={15000}>پیتزا پپرونی</FoodCard>
-      <FoodCard price={17500} hasTopping>
+    <Collection title="پیتزا">
+      <CollectionCard footer={'۳۴۰۰ ریال'}>پیتزا پپرونی</CollectionCard>
+      <CollectionCard footer={'۱۵۰۰ ریال'} hasSubset>
         پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط
         پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط
         پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط پیتزا مخلوط
         پیتزا مخلوط
-      </FoodCard>
-      <FoodCard price={15000} isOutOfOrder>
+      </CollectionCard>
+      <CollectionCard footer={'۱۵۰۰ ریال'} disabled>
         پیتزا مارگاریتا
-      </FoodCard>
-    </FoodCardList>
+      </CollectionCard>
+    </Collection>
   </div>
 );
