@@ -4,8 +4,8 @@ import Checkbox from './components/checkbox';
 import CounterButton from './components/counter-button';
 import DialogContent from './components/dialog-content';
 import FileInput from './components/file-input';
-import { FoodCard, FoodCardList } from './components/food-card';
-import { FoodGroup, FoodGroupList } from './components/food-group';
+import { Collection, CollectionCard } from './components/collection';
+import { Tab, TabColumn } from './components/tab-column';
 import { Form, FormGroup } from './components/form';
 import Input from './components/input';
 import { List } from './components/list';
@@ -41,13 +41,11 @@ export {
   Button,
   ButtonGroup,
   Checkbox,
+  Collection,
+  CollectionCard,
   CounterButton,
   DialogContent,
   FileInput,
-  FoodCard,
-  FoodCardList,
-  FoodGroup,
-  FoodGroupList,
   Form,
   FormGroup,
   Input,
@@ -68,6 +66,8 @@ export {
   ActionTable,
   ActionTableRow,
   Select,
+  Tab,
+  TabColumn,
   Tag,
   TabNav,
   TabNavItem,

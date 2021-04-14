@@ -13,7 +13,7 @@ export interface FoodGroupProps extends React.HTMLProps<HTMLDivElement> {
 class FormGroup extends React.Component<FoodGroupProps, {}> {
   render(): React.ReactNode {
     const { className, children, selected, ...props } = this.props;
-    const componentClassName = classNames('fdg-container', className, {
+    const componentClassName = classNames('tab-container', className, {
       selected,
     });
 

@@ -1,0 +1,62 @@
+@import '../../assets/styles/_base.scss';
+@import '../../assets/styles/_input-variables.scss';
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-column-container {
+  direction: rtl;
+  background-color: #f7f8fa;
+  box-shadow: inset -1px 0 0 0 #ecedef, 0 -1px 0 0 rgba(221, 221, 221, 0.5);
+  width: calculatePixelToRem(180);
+  max-width: 240px;
+  overflow-y: auto;
+  padding: 24px;
+  height: 100%;
+  box-sizing: border-box;
+
+  &.full-width {
+    width: auto;
+    min-width: unset;
+    max-width: unset;
+  }
+
+  :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .tab-container {
+    @include font-size(14);
+
+    text-align: right;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 16px 8px -12px rgba(0, 0, 0, 0.1);
+    font-family: IranSans;
+    padding: calculatePixelToRem(12);
+    margin-bottom: calculatePixelToRem(16);
+    max-height: calculatePixelToRem(72);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #000;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: #eaf2fc;
+      color: #000;
+    }
+  }
+
+  .selected {
+    background-color: #1e6dc8;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  @include onHdDesktop {
+    width: calculatePixelToRem(192);
+  }
+}
