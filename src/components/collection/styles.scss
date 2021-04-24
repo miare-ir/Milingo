@@ -9,8 +9,6 @@
   width: 100%;
 
   .header {
-    @include font-size(16);
-
     text-align: right;
     width: 100%;
     box-sizing: border-box;
@@ -62,8 +60,6 @@
     }
 
     .card-title {
-      @include font-size(14);
-
       margin: 0;
       line-height: 24px;
       text-align: center;
@@ -72,16 +68,12 @@
     }
 
     .price {
-      @include font-size(14);
-
       color: #4a4a4a;
       direction: rtl;
       text-align: center;
     }
 
     .disabled-message {
-      @include font-size(14);
-
       color: red;
       direction: rtl;
       text-align: center;

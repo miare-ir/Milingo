@@ -16,19 +16,11 @@
   height: 100%;
   box-sizing: border-box;
 
-  &.full-width {
-    width: auto;
-    min-width: unset;
-    max-width: unset;
-  }
-
   :last-child {
     margin-bottom: 0 !important;
   }
 
   .tab-container {
-    @include font-size(14);
-
     text-align: right;
     border-radius: 12px;
     background-color: #fff;
