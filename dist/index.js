@@ -244,6 +244,70 @@ exports.default = Button;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(19);
+var Loader = function (_a) {
+    var primary = _a.primary, danger = _a.danger, disabled = _a.disabled;
+    var className = classNames('spinner', {
+        'spinner-primary': primary,
+        'spinner-danger': danger,
+        'spinner-disabled': disabled,
+    });
+    return React.createElement("span", { className: className });
+};
+exports.default = Loader;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -378,70 +442,6 @@ exports.default = PersianNumber;
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(19);
-var Loader = function (_a) {
-    var primary = _a.primary, danger = _a.danger, disabled = _a.disabled;
-    var className = classNames('spinner', {
-        'spinner-primary': primary,
-        'spinner-danger': danger,
-        'spinner-disabled': disabled,
-    });
-    return React.createElement("span", { className: className });
-};
-exports.default = Loader;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -460,12 +460,12 @@ var dialog_content_1 = __webpack_require__(23);
 exports.DialogContent = dialog_content_1.default;
 var file_input_1 = __webpack_require__(25);
 exports.FileInput = file_input_1.default;
-var food_card_1 = __webpack_require__(27);
-exports.FoodCard = food_card_1.FoodCard;
-exports.FoodCardList = food_card_1.FoodCardList;
-var food_group_1 = __webpack_require__(30);
-exports.FoodGroup = food_group_1.FoodGroup;
-exports.FoodGroupList = food_group_1.FoodGroupList;
+var collection_1 = __webpack_require__(27);
+exports.Collection = collection_1.Collection;
+exports.CollectionCard = collection_1.CollectionCard;
+var tab_column_1 = __webpack_require__(30);
+exports.Tab = tab_column_1.Tab;
+exports.TabColumn = tab_column_1.TabColumn;
 var form_1 = __webpack_require__(33);
 exports.Form = form_1.Form;
 exports.FormGroup = form_1.FormGroup;
@@ -507,7 +507,7 @@ exports.TabNav = tab_1.TabNav;
 exports.TabNavItem = tab_1.TabNavItem;
 exports.TabContent = tab_1.TabContent;
 exports.TabContentItem = tab_1.TabContentItem;
-var persian_number_1 = __webpack_require__(5);
+var persian_number_1 = __webpack_require__(13);
 exports.PersianNumber = persian_number_1.default;
 var date_picker_1 = __webpack_require__(84);
 exports.DatePicker = date_picker_1.default;
@@ -634,7 +634,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var loader_1 = __webpack_require__(6);
+var loader_1 = __webpack_require__(5);
 __webpack_require__(20);
 var Checkbox = /** @class */ (function (_super) {
     __extends(Checkbox, _super);
@@ -998,10 +998,10 @@ exports.default = FileInput;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var food_card_list_1 = __webpack_require__(28);
-exports.FoodCardList = food_card_list_1.default;
-var food_card_1 = __webpack_require__(29);
-exports.FoodCard = food_card_1.default;
+var collection_1 = __webpack_require__(28);
+exports.Collection = collection_1.default;
+var collection_card_1 = __webpack_require__(29);
+exports.CollectionCard = collection_card_1.default;
 
 
 /***/ }),
@@ -1048,22 +1048,22 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(7);
-var FoodCardList = /** @class */ (function (_super) {
-    __extends(FoodCardList, _super);
-    function FoodCardList() {
+__webpack_require__(6);
+var Collection = /** @class */ (function (_super) {
+    __extends(Collection, _super);
+    function Collection() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    FoodCardList.prototype.render = function () {
+    Collection.prototype.render = function () {
         var _a = this.props, className = _a.className, children = _a.children, title = _a.title, props = __rest(_a, ["className", "children", "title"]);
-        var componentClassName = classNames('food-card-list-container', className);
+        var componentClassName = classNames('collection-container', className);
         return (React.createElement("div", __assign({ className: componentClassName }, props),
             React.createElement("div", { className: "header" }, title),
-            React.createElement("div", { className: "card-list" }, children)));
+            React.createElement("div", { className: "collection" }, children)));
     };
-    return FoodCardList;
+    return Collection;
 }(React.Component));
-exports.default = FoodCardList;
+exports.default = Collection;
 
 
 /***/ }),
@@ -1110,26 +1110,26 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var persian_number_1 = __webpack_require__(5);
-__webpack_require__(7);
-var FoodCard = /** @class */ (function (_super) {
-    __extends(FoodCard, _super);
-    function FoodCard() {
+__webpack_require__(6);
+var CollectionCard = /** @class */ (function (_super) {
+    __extends(CollectionCard, _super);
+    function CollectionCard() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    FoodCard.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, hasTopping = _a.hasTopping, price = _a.price, isOutOfOrder = _a.isOutOfOrder, outOfOrderMessage = _a.outOfOrderMessage, props = __rest(_a, ["className", "children", "hasTopping", "price", "isOutOfOrder", "outOfOrderMessage"]);
-        var componentClassName = classNames('food-card-container', className, {
-            'out-of-order': isOutOfOrder,
+    CollectionCard.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, hasSubset = _a.hasSubset, footer = _a.footer, disabled = _a.disabled, selected = _a.selected, disabledMessage = _a.disabledMessage, props = __rest(_a, ["className", "children", "hasSubset", "footer", "disabled", "selected", "disabledMessage"]);
+        var componentClassName = classNames('card-container', className, {
+            disabled: disabled,
+            selected: selected,
         });
         return (React.createElement("div", __assign({ className: componentClassName }, props),
-            React.createElement("p", { className: "food-title" }, children),
-            isOutOfOrder ? (React.createElement("span", { className: "out-of-order-message" }, outOfOrderMessage ? outOfOrderMessage : 'تمام شده')) : (React.createElement(persian_number_1.default, { value: price, component: "label", currencyType: "\u0631\u06CC\u0627\u0644", className: "price", includesPrice: true })),
-            hasTopping && React.createElement("label", { className: "topping-dot" })));
+            React.createElement("p", { className: "card-title" }, children),
+            disabled ? (React.createElement("span", { className: "disabled-message" }, disabledMessage ? disabledMessage : 'تمام شده')) : (React.createElement("div", { className: "price" }, footer)),
+            hasSubset && React.createElement("label", { className: "subset-dot" })));
     };
-    return FoodCard;
+    return CollectionCard;
 }(React.Component));
-exports.default = FoodCard;
+exports.default = CollectionCard;
 
 
 /***/ }),
@@ -1139,10 +1139,10 @@ exports.default = FoodCard;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var food_group_list_1 = __webpack_require__(31);
-exports.FoodGroupList = food_group_list_1.default;
-var food_group_1 = __webpack_require__(32);
-exports.FoodGroup = food_group_1.default;
+var tab_column_1 = __webpack_require__(31);
+exports.TabColumn = tab_column_1.default;
+var tab_1 = __webpack_require__(32);
+exports.Tab = tab_1.default;
 
 
 /***/ }),
@@ -1189,15 +1189,17 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(8);
+__webpack_require__(7);
 var Form = /** @class */ (function (_super) {
     __extends(Form, _super);
     function Form() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Form.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, props = __rest(_a, ["className", "children"]);
-        var componentClassName = classNames('fdg-list-container', className);
+        var _a = this.props, className = _a.className, children = _a.children, fullWidth = _a.fullWidth, props = __rest(_a, ["className", "children", "fullWidth"]);
+        var componentClassName = classNames('tab-column-container', className, {
+            'full-width': fullWidth,
+        });
         return (React.createElement("div", __assign({ className: componentClassName }, props),
             React.createElement("div", null, children)));
     };
@@ -1250,7 +1252,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(8);
+__webpack_require__(7);
 var FormGroup = /** @class */ (function (_super) {
     __extends(FormGroup, _super);
     function FormGroup() {
@@ -1258,7 +1260,7 @@ var FormGroup = /** @class */ (function (_super) {
     }
     FormGroup.prototype.render = function () {
         var _a = this.props, className = _a.className, children = _a.children, selected = _a.selected, props = __rest(_a, ["className", "children", "selected"]);
-        var componentClassName = classNames('fdg-container', className, {
+        var componentClassName = classNames('tab-container', className, {
             selected: selected,
         });
         return (React.createElement("div", __assign({ className: componentClassName }, props), children));
@@ -1325,7 +1327,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(9);
+__webpack_require__(8);
 var Form = /** @class */ (function (_super) {
     __extends(Form, _super);
     function Form() {
@@ -1389,7 +1391,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(9);
+__webpack_require__(8);
 var FormGroup = /** @class */ (function (_super) {
     __extends(FormGroup, _super);
     function FormGroup() {
@@ -2088,7 +2090,7 @@ function removeUndefinedValues(obj) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(10);
+__webpack_require__(9);
 var MenuHeader = function (props) { return (React.createElement("div", { className: "menu-header" },
     !!props.image && React.createElement("div", { className: "menu-header-image" }, props.image),
     React.createElement("div", { className: "menu-header-title" }, props.title),
@@ -2153,7 +2155,7 @@ exports.default = MenuItem;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(10);
+__webpack_require__(9);
 var MenuLink = function (props) { return (React.createElement("div", { className: classNames('menu-link', { selected: props.selected }) },
     React.createElement("div", { className: "menu-link-title" }, props.title),
     props.notificationCount && (React.createElement("div", { className: "menu-link-notification-count" }, props.notificationCount)))); };
@@ -2181,7 +2183,7 @@ exports.default = MenuStatus;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(11);
+__webpack_require__(10);
 var Navbar = function (props) { return (React.createElement("div", { className: "navbar" }, props.children)); };
 exports.default = Navbar;
 var navbar_item_1 = __webpack_require__(54);
@@ -2219,7 +2221,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(11);
+__webpack_require__(10);
 var NavbarItem = function (_a) {
     var icon = _a.icon, text = _a.text, selected = _a.selected, props = __rest(_a, ["icon", "text", "selected"]);
     return (React.createElement("div", __assign({ className: classNames('navbar-item', { selected: selected }) }, props),
@@ -2472,7 +2474,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var entry_1 = __webpack_require__(62);
 exports.TimelineEntry = entry_1.default;
-__webpack_require__(12);
+__webpack_require__(11);
 var Timeline = function (props) { return (React.createElement("div", { className: "timeline" }, props.children)); };
 exports.Timeline = Timeline;
 
@@ -2508,8 +2510,8 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var loader_1 = __webpack_require__(6);
-__webpack_require__(12);
+var loader_1 = __webpack_require__(5);
+__webpack_require__(11);
 var TimelineEntry = function (_a) {
     var time = _a.time, description = _a.description, noBorder = _a.noBorder, clickable = _a.clickable, children = _a.children, loading = _a.loading, props = __rest(_a, ["time", "description", "noBorder", "clickable", "children", "loading"]);
     return (React.createElement("div", __assign({ className: classNames('timeline', {
@@ -2754,7 +2756,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(13);
+__webpack_require__(12);
 var ActionTabel = function (props) {
     var title = props.title, restOfProps = __rest(props, ["title"]);
     return (React.createElement("div", __assign({}, restOfProps, { className: classNames('action-table', props.className) }),
@@ -2810,7 +2812,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
 var button_1 = __webpack_require__(2);
-__webpack_require__(13);
+__webpack_require__(12);
 var ActionTableRow = /** @class */ (function (_super) {
     __extends(ActionTableRow, _super);
     function ActionTableRow(props) {
@@ -3415,7 +3417,7 @@ var moment = __webpack_require__(85);
 var classNames = __webpack_require__(1);
 var ReactModal = __webpack_require__(86);
 var button_1 = __webpack_require__(2);
-var persian_number_1 = __webpack_require__(5);
+var persian_number_1 = __webpack_require__(13);
 var flex_1 = __webpack_require__(87);
 __webpack_require__(89);
 moment.loadPersian({ dialect: 'persian-modern' });

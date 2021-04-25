@@ -3,27 +3,24 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface FoodCardListProps extends React.HTMLProps<HTMLDivElement> {
+export interface CollectionProps extends React.HTMLProps<HTMLDivElement> {
   title?: string;
   className?: string;
   children?: React.ReactNode;
 }
 
-class FoodCardList extends React.Component<FoodCardListProps, {}> {
+class Collection extends React.Component<CollectionProps, {}> {
   render(): React.ReactNode {
     const { className, children, title, ...props } = this.props;
-    const componentClassName = classNames(
-      'food-card-list-container',
-      className,
-    );
+    const componentClassName = classNames('collection-container', className);
 
     return (
       <div className={componentClassName} {...props}>
         <div className="header">{title}</div>
-        <div className="card-list">{children}</div>
+        <div className="collection">{children}</div>
       </div>
     );
   }
 }
 
-export default FoodCardList;
+export default Collection;
