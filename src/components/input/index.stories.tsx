@@ -64,6 +64,14 @@ export const Normal = () => (
       errorMessage="مقدار وارد شده صحیح نیست"
       forceDisplayError
     />
+    <Input
+      title="عنوان"
+      placeholder="شماره تلفن"
+      type="tel"
+      errorMessage="شماره تلفن وارد شده صحیح نیست"
+      validate={value => !!value}
+      displayClear
+    />
   </div>
 );
 
@@ -124,6 +132,15 @@ export const Small = () => (
       forceDisplayError
       small
     />
+    <Input
+      title="عنوان"
+      placeholder="شماره تلفن"
+      type="tel"
+      errorMessage="شماره تلفن وارد شده صحیح نیست"
+      validate={value => !!value}
+      displayClear
+      small
+    />
   </div>
 );
 
@@ -133,5 +150,6 @@ export const Disabled = () => (
     <Input disabled title="عنوان" />
     <Input disabled title="عنوان" placeholder="متن" />
     <Input disabled title="عنوان" placeholder="متن" pre="ریال" type="number" />
+    <Input disabled title="عنوان" placeholder="شماره تلفن" type="tel" />
   </div>
 );

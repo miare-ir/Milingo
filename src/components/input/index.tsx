@@ -24,9 +24,11 @@ export interface InputState {
   type: string;
 }
 
+const validInputTypes: string[] = ['text', 'number', 'tel'];
+
 class Input extends React.Component<InputProps, InputState> {
   static propTypes = {
-    type: PropTypes.oneOf(['text', 'number']),
+    type: PropTypes.oneOf(validInputTypes),
   };
 
   constructor(props) {
@@ -99,7 +101,7 @@ class Input extends React.Component<InputProps, InputState> {
       );
     }
 
-    if (this.state.type !== 'text' && this.state.type !== 'number') {
+    if (!validInputTypes.includes(this.state.type)) {
       return '';
     }
 
