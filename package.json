@@ -22,7 +22,7 @@
     "release": "yarn run dist && npm publish",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rimraf docs && build-storybook -c .storybook -o docs",
-    "snapshot": "yarn run build-storybook && percy-storybook --widths=320,1280 --build_dir=docs"
+    "snapshot": "yarn run build-storybook && percy storybook ./docs"
   },
   "browserslist": [
     "defaults",
@@ -45,7 +45,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@percy/storybook": "^3.3.1",
+    "@percy/cli": "^1.0.0-beta.58",
+    "@percy/storybook": "^4.0.0-beta.2",
     "@storybook/addon-viewport": "^6.3.2",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.3.2",
