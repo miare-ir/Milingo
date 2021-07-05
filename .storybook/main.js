@@ -21,7 +21,9 @@ module.exports = {
     }
   },
   addons: [
-    '@storybook/preset-create-react-app'
+    'storybook-addon-jsx/register',
+    '@storybook/preset-create-react-app',
+    '@storybook/addon-viewport/register'
   ],
   stories: ['../src/components/**/*.stories.tsx']
 };
