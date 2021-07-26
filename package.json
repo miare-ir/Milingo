@@ -4,7 +4,7 @@
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "author": "Miare <tech@miare.ir> (https://mia.re)",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "keywords": [
     "design-library",
     "react"
@@ -22,7 +22,7 @@
     "release": "yarn run dist && npm publish",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rimraf docs && build-storybook -c .storybook -o docs",
-    "snapshot": "yarn run build-storybook && percy-storybook --widths=320,1280 --build_dir=docs"
+    "snapshot": "yarn run build-storybook && percy storybook ./docs"
   },
   "browserslist": [
     "defaults",
@@ -45,10 +45,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@percy/storybook": "^3.3.0",
-    "@storybook/addon-viewport": "^5.3.18",
-    "@storybook/preset-create-react-app": "^2.1.1",
-    "@storybook/react": "^5.3.18",
+    "@percy/storybook": "^3.3.1",
+    "@storybook/addon-viewport": "^6.3.2",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.3.2",
     "@types/node": "^13.13.5",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
@@ -82,7 +82,7 @@
     "resolve-url-loader": "^3.1.1",
     "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
-    "storybook-addon-jsx": "^7.2.3",
+    "storybook-addon-jsx": "^7.3.12",
     "style-loader": "^1.2.1",
     "stylelint": "^13.3.3",
     "stylelint-config-recommended-scss": "^4.2.0",

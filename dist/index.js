@@ -1457,6 +1457,7 @@ var React = __webpack_require__(0);
 var PropTypes = __webpack_require__(37);
 var classNames = __webpack_require__(1);
 __webpack_require__(40);
+var validInputTypes = ['text', 'number', 'tel'];
 var Input = /** @class */ (function (_super) {
     __extends(Input, _super);
     function Input(props) {
@@ -1515,7 +1516,7 @@ var Input = /** @class */ (function (_super) {
             console.warn('Please provide either both errorMessage and ' +
                 'validate or non of them.');
         }
-        if (this.state.type !== 'text' && this.state.type !== 'number') {
+        if (!validInputTypes.includes(this.state.type)) {
             return '';
         }
         var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, disabled = _a.disabled, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus", "disabled"]);
@@ -1544,7 +1545,7 @@ var Input = /** @class */ (function (_super) {
             hasError && React.createElement("span", { className: "error" }, errorMessage)));
     };
     Input.propTypes = {
-        type: PropTypes.oneOf(['text', 'number']),
+        type: PropTypes.oneOf(validInputTypes),
     };
     return Input;
 }(React.Component));
