@@ -9,7 +9,7 @@ export default {
   decorators: [story => <div className="story-container">{story()}</div>],
 };
 
-export const Medium = (): JSX.Element => {
+export const All = (): JSX.Element => {
   const [showMediumModal, setShowMediumModal] = useState<boolean>(false);
 
   return (
