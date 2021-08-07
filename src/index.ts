@@ -24,6 +24,7 @@ import { Timeline, TimelineEntry } from './components/timeline';
 import Banner from './components/banner';
 import Toolbar from './components/toolbar';
 import { ActionTable, ActionTableRow } from './components/action-table';
+import { Column, Row } from './components/flex';
 import Select from './components/select';
 import Tag from './components/tag';
 import {
@@ -79,4 +80,6 @@ export {
   Th,
   Tr,
   Td,
+  Column,
+  Row,
 };
