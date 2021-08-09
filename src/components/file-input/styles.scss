@@ -18,8 +18,7 @@ $FileNameSpanBackgroundColor: #ecedef;
     button {
       position: relative;
       flex-shrink: 0;
-      margin-bottom: 16px;
-      margin-right: 16px;
+      margin: 16px 16px 16px 0;
 
       input {
         width: 100%;
@@ -34,7 +33,7 @@ $FileNameSpanBackgroundColor: #ecedef;
   }
 
   .file-name-container {
-    margin-bottom: 16px;
+    margin: 16px 0;
     position: relative;
     min-width: 136px;
     max-width: 240px;
