@@ -2,7 +2,7 @@
 
 .timeline {
   direction: rtl;
-  font-size: '14px';
+  font-size: 14px;
   font-weight: 400;
 
   &.clickable {
@@ -66,6 +66,7 @@
       font-family: 'IranSansNumeral', 'IranSans';
       font-weight: 400;
       margin: 0;
+      line-height: 1.35;
     }
 
     &-content {
