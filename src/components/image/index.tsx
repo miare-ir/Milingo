@@ -10,53 +10,59 @@ export interface ImageProps {
   src: string;
   alt?: string;
   className?: string;
-  styles?: React.CSSProperties;
   id?: string;
 }
+
+const observerOptions = {
+  threshold: 0.01,
+  rootMargin: '75%',
+};
 
 const Image = ({ src, alt, ...rest }: ImageProps): JSX.Element => {
   const [imageSrc, setImageSrc] = useState<string>(placeHolder);
   const [imageRef, setImageRef] = useState<HTMLImageElement | null>();
+  let observer;
+  let didCancel = false;
 
   const onLoad = (event): void => event.target.classList.add('image-loaded');
 
   const onError = (event): void =>
     event.target.classList.add('image-has-error');
 
-  useEffect(() => {
-    let observer;
-    let didCancel = false;
+  const hasImage = (): boolean => imageRef && imageSrc !== src;
 
-    if (imageRef && imageSrc !== src) {
+  const unobserve = (): void => {
+    if (observer && observer.unobserve) {
+      observer.unobserve(imageRef);
+    }
+  };
+
+  const observeImage = (): void => {
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (
+          !didCancel &&
+          (entry.intersectionRatio > 0 || entry.isIntersecting)
+        ) {
+          setImageSrc(src);
+          unobserve();
+        }
+      });
+    }, observerOptions);
+    observer.observe(imageRef);
+  };
+
+  useEffect(() => {
+    if (hasImage()) {
       if (IntersectionObserver) {
-        observer = new IntersectionObserver(
-          entries => {
-            entries.forEach(entry => {
-              if (
-                !didCancel &&
-                (entry.intersectionRatio > 0 || entry.isIntersecting)
-              ) {
-                setImageSrc(src);
-                observer.unobserve(imageRef);
-              }
-            });
-          },
-          {
-            threshold: 0.01,
-            rootMargin: '75%',
-          },
-        );
-        observer.observe(imageRef);
+        observeImage();
       } else {
         setImageSrc(src);
       }
     }
     return () => {
       didCancel = true;
-
-      if (observer && observer.unobserve) {
-        observer.unobserve(imageRef);
-      }
+      unobserve();
     };
   }, [src, imageSrc, imageRef]);
 
