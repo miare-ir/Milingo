@@ -15,6 +15,16 @@
   transition: all 300ms ease-in-out;
   pointer-events: none;
 
+  &.isOpen {
+    opacity: 1;
+    pointer-events: visible;
+    display: flex;
+
+    .modal-content {
+      transform: translateY(0);
+    }
+  }
+
   .modal-content {
     background: white;
     overflow: auto;
@@ -22,6 +32,7 @@
     border-radius: 4px;
     display: flex;
     justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     z-index: 1500;
     margin: auto;
@@ -32,21 +43,8 @@
       align-items: start;
     }
 
-    &.center {
-      align-items: center;
-    }
-
     &.end {
       align-items: end;
-    }
-  }
-
-  &.show {
-    opacity: 1;
-    pointer-events: visible;
-
-    .modal-content {
-      transform: translateY(0);
     }
   }
 }

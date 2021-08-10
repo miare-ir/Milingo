@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Modal from '.';
 import Button from '../button';
-import { useState } from 'react';
 import DialogContent from '../dialog-content';
 
 export default {
@@ -18,7 +18,7 @@ export const All = (): JSX.Element => {
         نشان دادن مدال
       </Button>
 
-      <Modal onClose={() => setShowMediumModal(false)} show={showMediumModal}>
+      <Modal onClose={() => setShowMediumModal(false)} isOpen={showMediumModal}>
         <DialogContent
           primary
           title="عنوان"

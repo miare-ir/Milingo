@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 
 import './styles.scss';
-import { useEffect } from 'react';
 
 export interface ModalProps {
   onClose: () => void;
-  show: boolean;
-  align?: 'start' | 'center' | 'end';
+  isOpen: boolean;
+  align?: 'start' | 'end';
   children: JSX.Element;
 }
 
@@ -30,11 +30,10 @@ const Modal = (props: ModalProps): JSX.Element => {
 
   return (
     <div
-      className={`milingo-modal--overlay ${props.show ? 'show' : ''}`}
-      onClick={props.onClose}
-      style={props.show ? { display: 'flex' } : {}}>
+      className={`milingo-modal--overlay ${props.isOpen ? 'isOpen' : ''}`}
+      onClick={props.onClose}>
       <div
-        className={`modal-content ${props.align || 'center'}`}
+        className={`modal-content ${props.align}`}
         onClick={event => event.stopPropagation()}>
         {props.children}
       </div>
