@@ -20,9 +20,9 @@ const observerOptions = {
 
 const Image = ({ src, alt, ...rest }: ImageProps): JSX.Element => {
   const [imageSrc, setImageSrc] = useState<string>(placeHolder);
+  const [didCancel, setDidCancel] = useState<boolean>(false);
   const [imageRef, setImageRef] = useState<HTMLImageElement | null>();
   let observer;
-  let didCancel = false;
 
   const onLoad = (event): void => event.target.classList.add('image-loaded');
 
@@ -61,7 +61,7 @@ const Image = ({ src, alt, ...rest }: ImageProps): JSX.Element => {
       }
     }
     return () => {
-      didCancel = true;
+      setDidCancel(true);
       unobserve();
     };
   }, [src, imageSrc, imageRef]);
