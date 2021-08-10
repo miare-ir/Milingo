@@ -12,6 +12,7 @@ export interface ButtonProps extends React.ComponentProps<'button'> {
   small?: boolean;
   regular?: boolean;
   large?: boolean;
+  shouldRender?: boolean;
 }
 
 class Button extends React.Component<ButtonProps, {}> {
@@ -25,8 +26,13 @@ class Button extends React.Component<ButtonProps, {}> {
       regular,
       large,
       danger,
+      shouldRender,
       ...props
     }: ButtonProps & React.HTMLProps<HTMLButtonElement> = this.props;
+
+    if (shouldRender === false) {
+      return null;
+    }
 
     const className: string = classNames(
       'milingo-btn-wrapper',

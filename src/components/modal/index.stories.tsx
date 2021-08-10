@@ -40,12 +40,6 @@ export const All = (): JSX.Element => {
           <p>توضیحات</p>
         </DialogContent>
       </Modal>
-
-      {/* <div style={{marginTop:"2rem"}}> */}
-      {/*  <Button danger onClick={() => setShowLargeModal(true)}>نشان دادن مدال بزرگ</Button>*/}
-
-      {/*  <Modal onClose={() => setShowLargeModal(false)} show={showLargeModal} />*/}
-      {/* </div> */}
     </div>
   );
 };
