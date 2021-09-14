@@ -4,7 +4,7 @@
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "author": "Miare <tech@miare.ir> (https://mia.re)",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "keywords": [
     "design-library",
     "react"
@@ -98,11 +98,11 @@
   },
   "peerDependencies": {
     "classnames": "^2.2.5",
+    "moment": "^2.24.0",
+    "moment-jalaali": "^0.9.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-modal": "^3.11.2",
-    "moment": "^2.24.0",
-    "moment-jalaali": "^0.9.2"
+    "react-modal": "^3.11.2"
   },
   "dependencies": {
     "babel-loader": "8.1.0",
