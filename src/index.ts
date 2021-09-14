@@ -36,6 +36,8 @@ import PersianNumber from './components/persian-number';
 import DatePicker from './components/date-picker';
 import { Table, Th, Tr, Td } from './components/data-table';
 import { Column, Row } from './components/flex';
+import Image from './components/image';
+import Modal from './components/modal';
 
 export {
   Banner,
@@ -82,4 +84,6 @@ export {
   Td,
   Column,
   Row,
+  Image,
+  Modal,
 };

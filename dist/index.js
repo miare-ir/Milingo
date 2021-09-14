@@ -572,6 +572,10 @@ exports.Td = data_table_1.Td;
 var flex_1 = __webpack_require__(14);
 exports.Column = flex_1.Column;
 exports.Row = flex_1.Row;
+var image_1 = __webpack_require__(97);
+exports.Image = image_1.default;
+var modal_1 = __webpack_require__(99);
+exports.Modal = modal_1.default;
 
 
 /***/ }),
@@ -3898,6 +3902,130 @@ var Td = function (props) {
 };
 exports.default = Td;
 
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var react_1 = __webpack_require__(0);
+__webpack_require__(98);
+var placeHolder = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
+var observerOptions = {
+    threshold: 0.01,
+    rootMargin: '75%',
+};
+var Image = function (_a) {
+    var src = _a.src, alt = _a.alt, rest = __rest(_a, ["src", "alt"]);
+    var _b = react_1.useState(placeHolder), imageSrc = _b[0], setImageSrc = _b[1];
+    var _c = react_1.useState(false), didCancel = _c[0], setDidCancel = _c[1];
+    var _d = react_1.useState(), imageRef = _d[0], setImageRef = _d[1];
+    var observer;
+    var onLoad = function (event) { return event.target.classList.add('image-loaded'); };
+    var onError = function (event) {
+        return event.target.classList.add('image-has-error');
+    };
+    var hasImage = function () { return imageRef && imageSrc !== src; };
+    var unobserve = function () {
+        if (observer && observer.unobserve) {
+            observer.unobserve(imageRef);
+        }
+    };
+    var observeImage = function () {
+        observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!didCancel &&
+                    (entry.intersectionRatio > 0 || entry.isIntersecting)) {
+                    setImageSrc(src);
+                    unobserve();
+                }
+            });
+        }, observerOptions);
+        observer.observe(imageRef);
+    };
+    react_1.useEffect(function () {
+        if (hasImage()) {
+            if (IntersectionObserver) {
+                observeImage();
+            }
+            else {
+                setImageSrc(src);
+            }
+        }
+        return function () {
+            setDidCancel(true);
+            unobserve();
+        };
+    }, [src, imageSrc, imageRef]);
+    return (React.createElement("img", __assign({ ref: setImageRef, src: imageSrc, alt: alt, onLoad: onLoad, onError: onError }, rest)));
+};
+exports.default = Image;
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var react_1 = __webpack_require__(0);
+__webpack_require__(100);
+var Modal = function (props) {
+    var closeOnEscapeKeyDown = function (event) {
+        if ((event.charCode || event.keyCode) === 27) {
+            props.onClose();
+        }
+    };
+    react_1.useEffect(function () {
+        document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+        return function cleanup() {
+            document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+        };
+    }, []);
+    return (React.createElement("div", { className: "milingo-modal--overlay " + (props.isOpen ? 'isOpen' : ''), onClick: props.onClose },
+        React.createElement("div", { className: "modal-content " + props.align, onClick: function (event) { return event.stopPropagation(); } }, props.children)));
+};
+exports.default = Modal;
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ })
 /******/ ]);
