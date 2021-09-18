@@ -11,6 +11,7 @@ export interface ImageProps {
   alt?: string;
   className?: string;
   id?: string;
+  rest?: unknown;
 }
 
 const observerOptions = {
