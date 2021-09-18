@@ -8,6 +8,7 @@ export interface MenuAvatarProps extends React.HTMLProps<HTMLDivElement> {
   selected?: boolean;
   label?: string;
   largeText?: boolean;
+  type?: 'warning';
 }
 
 const MenuAvatar: React.SFC<MenuAvatarProps> = ({
@@ -16,6 +17,7 @@ const MenuAvatar: React.SFC<MenuAvatarProps> = ({
   selected,
   label,
   largeText,
+  type,
   ...props
 }: MenuAvatarProps) => (
   <div
@@ -23,13 +25,14 @@ const MenuAvatar: React.SFC<MenuAvatarProps> = ({
       'not-started': percentage === 0,
       selected: selected,
       large: largeText,
+      warning: type === 'warning',
     })}
     {...props}>
     <CircularProgressbar value={percentage || 0} strokeWidth={5} />
-    <div className="menu-avatar-inner">
-      <div className="menu-avatar-hover" />
-      {avatar && <div className="menu-avatar-image">{avatar}</div>}
-      {label && <div className="menu-avatar-label">{label}</div>}
+    <div className="inner">
+      <div className="hover" />
+      {avatar && <div className="image">{avatar}</div>}
+      {label && <div className="label">{label}</div>}
     </div>
   </div>
 );

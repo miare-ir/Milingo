@@ -79,50 +79,68 @@
   }
 }
 
+.warning {
+  &.menu-avatar {
+    .inner {
+      background-color: #fbba00;
+      color: #2c2d40;
+    }
+
+    &:hover {
+      .hover {
+        background-color: inherit;
+      }
+    }
+
+    .image {
+      color: #2c2d40;
+      font-weight: bold;
+    }
+  }
+}
+
 .menu-avatar {
   width: 64px;
   height: 64px;
   position: relative;
   border-radius: 50%;
 
-  &-inner {
+  .inner {
     background-color: #212230;
     border-radius: 50%;
-    width: 58px;
-    height: 58px;
+    width: 54px;
+    height: 54px;
     position: absolute;
-    top: 3px;
-    left: 3px;
+    top: 5px;
+    right: 5px;
     z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  &-hover {
-    width: 52px;
-    height: 52px;
+  .hover {
+    width: 54px;
+    height: 54px;
     position: absolute;
-    top: 3px;
-    left: 3px;
     background-color: transparent;
     border-radius: 50%;
     z-index: 2;
     transition: $transitionInward;
   }
 
-  &-image {
+  .image {
     color: white;
     font-size: 14px;
     font-family: 'IranSans';
     z-index: 3;
   }
 
-  &.large .menu-avatar-image {
+  &.large .image {
     font-size: 32px;
   }
 
-  &-label {
+  .label {
     background-color: $primary1;
     border-radius: 100px;
     color: white;
@@ -151,7 +169,6 @@
   }
 
   .CircularProgressbar-trail {
-    stroke: #3d3f53;
     transition: stroke 0.5s ease 0s;
   }
 
@@ -162,14 +179,14 @@
   }
 
   &:hover {
-    .menu-avatar-hover {
+    .hover {
       background-color: $primary2;
       transition: $transitionOutward;
     }
   }
 
   &.selected {
-    .menu-avatar-hover {
+    .hover {
       background-color: $primary1;
       transition: $transitionOutward;
     }
