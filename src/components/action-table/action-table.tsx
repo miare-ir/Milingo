@@ -7,7 +7,7 @@ export interface ActionTableProps extends React.HTMLProps<HTMLDivElement> {
   title?: string;
 }
 
-const ActionTabel: React.SFC<ActionTableProps> = (props: ActionTableProps) => {
+const ActionTable: React.FC<ActionTableProps> = (props: ActionTableProps) => {
   const { title, ...restOfProps } = props;
 
   return (
@@ -24,4 +24,4 @@ const ActionTabel: React.SFC<ActionTableProps> = (props: ActionTableProps) => {
   );
 };
 
-export default ActionTabel;
+export default ActionTable;

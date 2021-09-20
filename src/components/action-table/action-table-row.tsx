@@ -161,7 +161,7 @@ class ActionTableRow extends React.Component<
         {!disable && description && (
           <span className="row-dsc">{description}</span>
         )}
-        {!disable && (
+        {!disable && this.props.actions && (
           <div>
             <div className="button-action">{this.renderButtonActions()}</div>
             <div className="menu-action">{this.renderMenuActions()}</div>
