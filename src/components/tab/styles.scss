@@ -19,13 +19,13 @@
     text-align: center;
 
     &:hover {
-      cursor: pointer;      
+      cursor: pointer;
     }
 
     label {
       min-width: 100%;
       color: #000;
-      font-family: IRANSans;
+      font-family: "IranSansNumeral", "IranSans";
 
       @include font-size(16);
 
@@ -34,7 +34,7 @@
       white-space: nowrap;
 
       &:hover {
-        cursor: pointer;      
+        cursor: pointer;
         color: $primary2;
         transition: $transitionOutward;
       }
