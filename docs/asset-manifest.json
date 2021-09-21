@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "./0.styles.css",
-    "main.js": "./main.d71d64ca.iframe.bundle.js",
+    "main.js": "./main.67df9797.iframe.bundle.js",
     "main.css.map": "./0.styles.css.map",
     "runtime~main.js": "./runtime~main.248e4f1a.iframe.bundle.js",
     "vendors~main.js": "./vendors~main.73914731.iframe.bundle.js",
     "vendors~main.js.map": "./vendors~main.73914731.iframe.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "precache-manifest.4b68967e31a5c8f5a3661b873cb1d7a3.js": "./precache-manifest.4b68967e31a5c8f5a3661b873cb1d7a3.js",
+    "precache-manifest.46327e8f85702e21643b2984f9a723f5.js": "./precache-manifest.46327e8f85702e21643b2984f9a723f5.js",
     "service-worker.js": "./service-worker.js",
     "static/media/styles.scss": "./static/media/iransans-regular.7e5c1289.woff",
     "static/media/notification-error.svg": "./static/media/notification-error.4843525f.svg",
@@ -21,6 +21,6 @@
     "vendors~main.73914731.iframe.bundle.js",
     "static/css/main.d95d5c0d.chunk.css",
     "0.styles.css",
-    "main.d71d64ca.iframe.bundle.js"
+    "main.67df9797.iframe.bundle.js"
   ]
 }

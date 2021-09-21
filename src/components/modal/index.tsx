@@ -4,9 +4,10 @@ import { useEffect } from 'react';
 import './styles.scss';
 
 export interface ModalProps {
-  onClose: () => void;
+  onClose?: () => void;
   isOpen: boolean;
   align?: 'start' | 'end';
+  className?: string;
   children: JSX.Element;
 }
 
@@ -25,19 +26,29 @@ const Modal = (props: ModalProps): JSX.Element => {
   };
 
   useEffect(() => {
-    document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+    if (props.onClose) {
+      document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+    }
 
     return function cleanup() {
-      document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+      if (props.onClose) {
+        document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+      }
     };
   }, []);
+
+  const handleClose = (): void => {
+    if (props.onClose) {
+      props.onClose();
+    }
+  };
 
   return (
     <div
       className={`milingo-modal--overlay ${props.isOpen ? 'isOpen' : ''}`}
-      onClick={props.onClose}>
+      onClick={handleClose}>
       <div
-        className={`modal-content ${props.align}`}
+        className={`modal modal-content ${props.align} ${props.className}`}
         onClick={event => event.stopPropagation()}>
         {props.children}
       </div>

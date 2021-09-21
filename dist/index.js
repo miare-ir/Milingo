@@ -3920,13 +3920,22 @@ var Modal = function (props) {
         }
     };
     react_1.useEffect(function () {
-        document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+        if (props.onClose) {
+            document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+        }
         return function cleanup() {
-            document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+            if (props.onClose) {
+                document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+            }
         };
     }, []);
-    return (React.createElement("div", { className: "milingo-modal--overlay " + (props.isOpen ? 'isOpen' : ''), onClick: props.onClose },
-        React.createElement("div", { className: "modal-content " + props.align, onClick: function (event) { return event.stopPropagation(); } }, props.children)));
+    var handleClose = function () {
+        if (props.onClose) {
+            props.onClose();
+        }
+    };
+    return (React.createElement("div", { className: "milingo-modal--overlay " + (props.isOpen ? 'isOpen' : ''), onClick: handleClose },
+        React.createElement("div", { className: "modal modal-content " + props.align + " " + props.className, onClick: function (event) { return event.stopPropagation(); } }, props.children)));
 };
 exports.default = Modal;
 

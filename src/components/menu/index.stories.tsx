@@ -84,6 +84,13 @@ export const AvatarWithNoImage = () => (
       <MenuAvatar selected percentage={75} />
       <MenuAvatar selected percentage={100} />
     </div>
+    <div className="column">
+      <MenuAvatar percentage={0} type="warning" />
+      <MenuAvatar percentage={25} type="warning" />
+      <MenuAvatar percentage={50} type="warning" />
+      <MenuAvatar percentage={75} type="warning" />
+      <MenuAvatar percentage={100} type="warning" />
+    </div>
   </div>
 );
 
@@ -107,6 +114,13 @@ export const AvatarWithTextAsAvatar = () => (
       <MenuAvatar selected percentage={75} avatar="M10" />
       <MenuAvatar selected percentage={100} avatar="M10" />
     </div>
+    <div className="column">
+      <MenuAvatar percentage={0} avatar="M10" type="warning" />
+      <MenuAvatar percentage={25} avatar="M10" type="warning" />
+      <MenuAvatar percentage={50} avatar="M10" type="warning" />
+      <MenuAvatar percentage={75} avatar="M10" type="warning" />
+      <MenuAvatar percentage={100} avatar="M10" type="warning" />
+    </div>
   </div>
 );
 
@@ -129,6 +143,13 @@ export const AvatarWithLabel = () => (
       <MenuAvatar selected percentage={50} avatar="M10" label="رایگان" />
       <MenuAvatar selected percentage={75} avatar="M10" label="رایگان" />
       <MenuAvatar selected percentage={100} avatar="M10" label="رایگان" />
+    </div>
+    <div className="column">
+      <MenuAvatar percentage={0} avatar="M10" label="رایگان" type="warning" />
+      <MenuAvatar percentage={25} avatar="M10" label="رایگان" type="warning" />
+      <MenuAvatar percentage={50} avatar="M10" label="رایگان" type="warning" />
+      <MenuAvatar percentage={75} avatar="M10" label="رایگان" type="warning" />
+      <MenuAvatar percentage={100} avatar="M10" label="رایگان" type="warning" />
     </div>
   </div>
 );
