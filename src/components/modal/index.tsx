@@ -12,10 +12,6 @@ export interface ModalProps {
 }
 
 const Modal = (props: ModalProps): JSX.Element => {
-  if (!props.isOpen) {
-    return null;
-  }
-
   const closeOnEscapeKeyDown = (event: {
     charCode: number;
     keyCode: number;
@@ -42,6 +38,10 @@ const Modal = (props: ModalProps): JSX.Element => {
       props.onClose();
     }
   };
+
+  if (!props.isOpen) {
+    return null;
+  }
 
   return (
     <div
