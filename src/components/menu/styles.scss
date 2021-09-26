@@ -8,7 +8,7 @@
   align-items: center;
 
   * {
-    font-family: 'IranSans';
+    font-family: "IranSansNumeral", "IranSans";
   }
 
   &-image img {
@@ -132,7 +132,7 @@
   .image {
     color: white;
     font-size: 14px;
-    font-family: 'IranSans';
+    font-family: "IranSansNumeral", "IranSans";
     z-index: 3;
   }
 
@@ -145,7 +145,7 @@
     border-radius: 100px;
     color: white;
     font-size: 10px;
-    font-family: 'IranSans';
+    font-family: "IranSansNumeral", "IranSans";
     text-align: center;
     display: flex;
     justify-content: center;
@@ -201,7 +201,7 @@
   align-items: center;
   color: $disabledColor;
   font-size: 14px;
-  font-family: 'IranSans';
+  font-family: "IranSansNumeral", "IranSans";
   font-weight: 500;
 }
 

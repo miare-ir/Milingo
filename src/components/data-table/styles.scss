@@ -3,7 +3,7 @@
 .date-line {
   @include font-size(14);
 
-  font-family: IRANSans;
+  font-family: "IranSansNumeral", "IranSans";
   font-weight: 500;
   color: #4a4a4a;
   background: #ecedef;
@@ -11,7 +11,7 @@
 }
 
 .data-table {
-  font-family: IRANSans;
+  font-family: "IranSansNumeral", "IranSans";
   font-size: 14px;
 
   table {

@@ -7,7 +7,7 @@
   .form-title {
     @include font-size(16);
 
-    font-family: IranSans;
+    font-family: "IranSansNumeral", "IranSans";
     font-weight: 500;
     margin: 0;
   }
@@ -15,7 +15,7 @@
   .form-description {
     @include font-size(14);
 
-    font-family: IranSans;
+    font-family: "IranSansNumeral", "IranSans";
     font-weight: normal;
     margin: 0;
   }
@@ -30,7 +30,7 @@
     @include font-size(14);
 
     font-weight: 500;
-    font-family: IranSans;
+    font-family: "IranSansNumeral", "IranSans";
     margin-bottom: calculatePixelToRem(16);
   }
 

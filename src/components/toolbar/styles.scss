@@ -18,7 +18,7 @@
   &-info {
     display: flex;
     flex-direction: column;
-    font-family: 'IranSans';
+    font-family: "IranSansNumeral", "IranSans";
 
     .toolbar-title {
       margin: 0 0 4px;
@@ -59,7 +59,7 @@
         font-size: 14px;
         font-weight: 500;
         color: $primary1;
-        font-family: 'IranSans';
+        font-family: "IranSansNumeral", "IranSans";
         margin: 0;
       }
 
