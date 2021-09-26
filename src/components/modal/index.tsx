@@ -39,6 +39,10 @@ const Modal = (props: ModalProps): JSX.Element => {
     }
   };
 
+  if (!props.isOpen) {
+    return null;
+  }
+
   return (
     <div
       className={`milingo-modal--overlay ${props.isOpen ? 'isOpen' : ''}`}
