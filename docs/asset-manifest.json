@@ -7,7 +7,7 @@
     "vendors~main.js": "./vendors~main.a058c204.iframe.bundle.js",
     "vendors~main.js.map": "./vendors~main.a058c204.iframe.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "precache-manifest.4a2ee3dce96c1b0fdb6241e84da41593.js": "./precache-manifest.4a2ee3dce96c1b0fdb6241e84da41593.js",
+    "precache-manifest.712711d999e002e13712832d24603da3.js": "./precache-manifest.712711d999e002e13712832d24603da3.js",
     "service-worker.js": "./service-worker.js",
     "static/media/styles.scss": "./static/media/iransans-regular.7e5c1289.woff",
     "static/media/notification-error.svg": "./static/media/notification-error.4843525f.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "runtime~main.248e4f1a.iframe.bundle.js",
     "vendors~main.a058c204.iframe.bundle.js",
-    "static/css/main.07d6de33.chunk.css",
+    "static/css/main.342eaad4.chunk.css",
     "0.styles.css",
     "main.bd5d72e9.iframe.bundle.js"
   ]
