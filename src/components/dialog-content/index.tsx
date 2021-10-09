@@ -55,7 +55,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
             <span onClick={onClose} className="material-icons">
               close
             </span>
-            <span>{title}</span>
+            <span className="title">{title}</span>
             <span> </span>
           </h2>
         </div>
