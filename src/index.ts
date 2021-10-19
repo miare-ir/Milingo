@@ -8,7 +8,7 @@ import { Collection, CollectionCard } from './components/collection';
 import { Tab, TabColumn } from './components/tab-column';
 import { Form, FormGroup } from './components/form';
 import Input from './components/input';
-import { List } from './components/list';
+import { List, ListSection, ListTitle, ListFooter } from './components/list';
 import {
   MenuAvatar,
   MenuHeader,
@@ -53,6 +53,9 @@ export {
   FormGroup,
   Input,
   List,
+  ListTitle,
+  ListSection,
+  ListFooter,
   Navbar,
   NavbarItem,
   Notification,
