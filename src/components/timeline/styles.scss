@@ -12,7 +12,7 @@
       }
 
       &-title {
-        color: #1e6dc8 ;
+        color: #1e6dc8;
       }
     }
   }
@@ -25,7 +25,15 @@
       }
 
       &-title {
-        color: #1e6dc8 ;
+        color: #1e6dc8;
+      }
+    }
+  }
+
+  &:last-of-type {
+    .entry {
+      &-content {
+        border-right-width: 0;
       }
     }
   }
