@@ -38,6 +38,8 @@
     margin: auto;
     transition: all 300ms ease-in-out;
     transform: translateY(-200%);
+    width: auto;
+    height: auto;
 
     &.start {
       align-items: start;
