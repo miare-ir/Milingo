@@ -9,7 +9,7 @@ export interface TimelineProps {
 }
 
 const Timeline: React.SFC<TimelineProps> = (props: TimelineProps) => (
-  <div className="timeline">{props.children}</div>
+  <div className="timeline-wrapper">{props.children}</div>
 );
 
 export { Timeline, TimelineEntry };
