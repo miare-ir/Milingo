@@ -2540,7 +2540,7 @@ var React = __webpack_require__(0);
 var entry_1 = __webpack_require__(63);
 exports.TimelineEntry = entry_1.default;
 __webpack_require__(11);
-var Timeline = function (props) { return (React.createElement("div", { className: "timeline" }, props.children)); };
+var Timeline = function (props) { return (React.createElement("div", { className: "timeline-wrapper" }, props.children)); };
 exports.Timeline = Timeline;
 
 
