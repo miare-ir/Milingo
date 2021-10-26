@@ -170,6 +170,7 @@
   }
 
   .CircularProgressbar-trail {
+    stroke: $primary2;
     transition: stroke 0.5s ease 0s;
   }
 
@@ -177,6 +178,10 @@
     stroke: $primary2;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s ease 0s;
+  }
+
+  .CircularProgressbar-text {
+    fill: transparent;
   }
 
   &:hover {
