@@ -27,6 +27,7 @@
 
   .modal-content {
     background: white;
+    background-clip: padding-box;
     overflow: auto;
     outline: none;
     border-radius: 4px;
