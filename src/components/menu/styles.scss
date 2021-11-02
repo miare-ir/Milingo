@@ -7,10 +7,6 @@
   flex-direction: column;
   align-items: center;
 
-  * {
-    font-family: "IranSansNumeral", "IranSans";
-  }
-
   &-image img {
     width: 96px;
     height: 96px;
@@ -37,10 +33,6 @@
   justify-content: space-between;
   align-items: center;
   transition: $transitionInward;
-
-  * {
-    font-family: 'IranSansNumeral', 'IranSans';
-  }
 
   &-title {
     font-size: 14px;
@@ -133,7 +125,7 @@
   .image {
     color: white;
     font-size: 14px;
-    font-family: "IranSans";
+    font-feature-settings: normal;
     z-index: 3;
   }
 
@@ -146,7 +138,7 @@
     border-radius: 100px;
     color: white;
     font-size: 10px;
-    font-family: "IranSans";
+    font-feature-settings: normal;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -207,7 +199,6 @@
   align-items: center;
   color: $disabledColor;
   font-size: 14px;
-  font-family: "IranSansNumeral", "IranSans";
   font-weight: 500;
 }
 
@@ -221,7 +212,6 @@
   align-items: center;
   box-sizing: border-box;
   color: white;
-  font-family: 'IranSansNumeral', 'IranSans';
 
   &:not(.has-avatar) {
     height: 80px;
