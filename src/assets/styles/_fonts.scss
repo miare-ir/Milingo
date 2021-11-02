@@ -1,22 +1,21 @@
 @font-face {
-  font-family: "IranSansNumeral", "IranSans";
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/iran_sans/iransans-regular.woff);
+  font-family: 'iransansxv';
+  src: url('../fonts/iran-sansX/webfont/IRANSansXV.woff') format('woff-variations'),
+  url('../fonts/iran-sansX/webfont/IRANSansXV.woff') format('woff');
+  font-weight: 100 900;
+  font-display: fallback;
 }
 
 @font-face {
-  font-family: "IranSansNumeral", "IranSans";
-  font-style: normal;
-  font-weight: 500;
-  src: url(../fonts/iran_sans/iransans-medium.woff);
+  font-family: 'iransansx';
+  src: url('../fonts/iran-sansX/webfont/staticfonts/IRANSansX-Regular.woff') format('woff');
+
 }
 
 @font-face {
-  font-family: "IranSansNumeral", "IranSans";
-  font-style: normal;
+  font-family: 'iransansx';
+  src: url('../fonts/iran-sansX/webfont/staticfonts/IRANSansX-Bold.woff') format('woff');
   font-weight: 700;
-  src: url(../fonts/iran_sans/iransans-bold.woff);
 }
 
 @font-face {
@@ -29,20 +28,6 @@
   url(../fonts/material_icons/MaterialIcons-Regular.woff2) format('woff2'),
   url(../fonts/material_icons/MaterialIcons-Regular.woff) format('woff'),
   url(../fonts/material_icons/MaterialIcons-Regular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'IranSansNumeral';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/iran_sans/IRANSansOnlyNumeral.woff);
-}
-
-@font-face {
-  font-family: 'IranSansNumeral';
-  font-style: normal;
-  font-weight: 500;
-  src: url(../fonts/iran_sans/IRANSansOnlyNumral_Medium.woff);
 }
 
 .material-icons {
