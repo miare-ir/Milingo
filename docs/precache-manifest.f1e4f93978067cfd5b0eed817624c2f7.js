@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c2e07dba479db9c91a34",
+    "revision": "b1bce1a779b708ddee57",
     "url": "0.styles.css"
   },
   {
-    "revision": "d96de8249796463d7a6014dd20c07541",
+    "revision": "1cad5a7b9e34301517ae59a969179efd",
     "url": "iframe.html"
   },
   {
-    "revision": "c2e07dba479db9c91a34",
+    "revision": "b1bce1a779b708ddee57",
     "url": "main.d2e8b521.iframe.bundle.js"
   },
   {
@@ -16,16 +16,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "runtime~main.248e4f1a.iframe.bundle.js"
   },
   {
-    "revision": "c2e07dba479db9c91a34",
-    "url": "static/css/main.e788dcb9.chunk.css"
+    "revision": "b1bce1a779b708ddee57",
+    "url": "static/css/main.30d3b177.chunk.css"
   },
   {
-    "revision": "63ce8b9656ad060fc7ddeb0a0f72fa16",
-    "url": "static/media/IRANSansOnlyNumeral.63ce8b96.woff"
+    "revision": "3adfaf1dba68cdd44358c4f4f711fdc8",
+    "url": "static/media/IRANSansX-Bold.3adfaf1d.woff"
   },
   {
-    "revision": "a0624a7c900e8f3a1a71b8921cceb6be",
-    "url": "static/media/IRANSansOnlyNumral_Medium.a0624a7c.woff"
+    "revision": "24ee6eaeebc111a3ee6814be32f1e464",
+    "url": "static/media/IRANSansX-Regular.24ee6eae.woff"
+  },
+  {
+    "revision": "c4fa851b629ba0db03a6fcb12c836e7d",
+    "url": "static/media/IRANSansXV.c4fa851b.woff"
   },
   {
     "revision": "012cf6a10129e2275d79d6adac7f3b02",
@@ -46,18 +50,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "beb4c4b35304a86b98fa6e95a22f0ffe",
     "url": "static/media/arrow.beb4c4b3.svg"
-  },
-  {
-    "revision": "748f32d92cf483f2eb5b46ca95fc4e40",
-    "url": "static/media/iransans-bold.748f32d9.woff"
-  },
-  {
-    "revision": "21996b67bae94dde1afea1865865f8ce",
-    "url": "static/media/iransans-medium.21996b67.woff"
-  },
-  {
-    "revision": "7e5c1289975b413a1f109bc490d7508c",
-    "url": "static/media/iransans-regular.7e5c1289.woff"
   },
   {
     "revision": "4843525fe3bf55010a24f26dd8575779",
