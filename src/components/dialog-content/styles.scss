@@ -99,7 +99,7 @@
 
       @include onMobile {
         padding: 16px;
-        height: 100%;
+        height: calc(100% - 236px);
       }
     }
 
