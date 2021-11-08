@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "401b669d57c3f426d646",
+    "revision": "c2e07dba479db9c91a34",
     "url": "0.styles.css"
   },
   {
-    "revision": "8ee3867ac1c671f2de4887fd80eba491",
+    "revision": "d96de8249796463d7a6014dd20c07541",
     "url": "iframe.html"
   },
   {
-    "revision": "401b669d57c3f426d646",
+    "revision": "c2e07dba479db9c91a34",
     "url": "main.d2e8b521.iframe.bundle.js"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "runtime~main.248e4f1a.iframe.bundle.js"
   },
   {
-    "revision": "401b669d57c3f426d646",
-    "url": "static/css/main.df47d27c.chunk.css"
+    "revision": "c2e07dba479db9c91a34",
+    "url": "static/css/main.e788dcb9.chunk.css"
   },
   {
     "revision": "63ce8b9656ad060fc7ddeb0a0f72fa16",
