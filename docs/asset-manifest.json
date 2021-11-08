@@ -7,7 +7,7 @@
     "vendors~main.js": "./vendors~main.a058c204.iframe.bundle.js",
     "vendors~main.js.map": "./vendors~main.a058c204.iframe.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "precache-manifest.f1e4f93978067cfd5b0eed817624c2f7.js": "./precache-manifest.f1e4f93978067cfd5b0eed817624c2f7.js",
+    "precache-manifest.b437f853ce1de04b6de371914144d520.js": "./precache-manifest.b437f853ce1de04b6de371914144d520.js",
     "service-worker.js": "./service-worker.js",
     "static/media/styles.scss": "./static/media/arrow.beb4c4b3.svg",
     "static/media/notification-error.svg": "./static/media/notification-error.4843525f.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "runtime~main.248e4f1a.iframe.bundle.js",
     "vendors~main.a058c204.iframe.bundle.js",
-    "static/css/main.30d3b177.chunk.css",
+    "static/css/main.2b310550.chunk.css",
     "0.styles.css",
     "main.d2e8b521.iframe.bundle.js"
   ]
