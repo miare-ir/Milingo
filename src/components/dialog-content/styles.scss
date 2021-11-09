@@ -99,7 +99,6 @@
 
       @include onMobile {
         padding: 16px;
-        height: calc(100% - 236px);
       }
     }
 
@@ -117,6 +116,18 @@
         &:not(:first-child) {
           margin-top: 0;
           margin-left: 16px;
+        }
+      }
+    }
+  }
+}
+
+.milingo-modal--overlay {
+  .dialog-content-wrapper.primary {
+    .dialog {
+      &-content {
+        @include onMobile {
+          height: calc(100% - 236px);
         }
       }
     }
