@@ -14,7 +14,7 @@ export const Normal = (): JSX.Element => {
       <div>
         <ToggleButton
           name="normal-switch"
-          label="درخواست خودکار"
+          label="تاگل باتن"
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
         />
@@ -23,7 +23,7 @@ export const Normal = (): JSX.Element => {
       <div style={{ margin: '16px 0' }}>
         <ToggleButton
           name="checked-switch"
-          label="درخواست خودکار غیرفعال"
+          label="تاگل باتن غیرفعال"
           onToggle={null}
           checked={false}
           disabled
@@ -34,9 +34,20 @@ export const Normal = (): JSX.Element => {
       <div>
         <ToggleButton
           name="checked-switch"
-          label="درخواست خودکار لودینگ"
+          label="تاگل باتن لودینگ"
           onToggle={null}
           checked={false}
+          loading
+          id={'loading-switch'}
+        />
+      </div>
+
+      <div style={{ margin: '16px 0' }}>
+        <ToggleButton
+          name="checked-switch"
+          label="تاگل باتن چک شده در لودینگ"
+          onToggle={null}
+          checked
           loading
           id={'loading-switch'}
         />
@@ -53,7 +64,7 @@ export const Large = (): JSX.Element => {
       <div>
         <ToggleButton
           name="large-switch"
-          label="درخواست خودکار"
+          label="تاگل باتن"
           large
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
@@ -63,7 +74,7 @@ export const Large = (): JSX.Element => {
       <div style={{ margin: '16px 0' }}>
         <ToggleButton
           name="checked-switch"
-          label="درخواست خودکار غیرفعال"
+          label="تاگل باتن غیرفعال"
           onToggle={null}
           checked={false}
           disabled
@@ -75,9 +86,21 @@ export const Large = (): JSX.Element => {
       <div>
         <ToggleButton
           name="checked-switch"
-          label="درخواست خودکار لودینگ"
+          label="تاگل باتن لودینگ"
           onToggle={null}
           checked={false}
+          loading
+          large
+          id={'loading-switch'}
+        />
+      </div>
+
+      <div style={{ margin: '16px 0' }}>
+        <ToggleButton
+          name="checked-switch"
+          label="تاگل باتن چک شده در لودینگ"
+          onToggle={null}
+          checked
           loading
           large
           id={'loading-switch'}

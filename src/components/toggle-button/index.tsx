@@ -32,7 +32,9 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => (
       <div className="slider" />
     </label>
 
-    {props.label && <p className="label">{props.label}</p>}
+    {props.label && (
+      <p className={`label ${props.large ? 'large' : ''}`}>{props.label}</p>
+    )}
   </div>
 );
 

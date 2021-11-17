@@ -4058,7 +4058,7 @@ var ToggleButton = function (props) { return (React.createElement("div", { class
     React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
         React.createElement("input", { disabled: props.disabled || props.loading, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked, onChange: props.onToggle }),
         React.createElement("div", { className: "slider" })),
-    props.label && React.createElement("p", { className: "label" }, props.label))); };
+    props.label && React.createElement("p", { className: "label " + (props.large ? 'large' : '') }, props.label))); };
 exports.default = ToggleButton;
 
 

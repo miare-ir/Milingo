@@ -9,6 +9,11 @@
 
   .label {
     margin-right: 12px;
+    font-size: 14px;
+
+    &.large {
+      font-size: 16px;
+    }
   }
 
   .toggle-button {
@@ -78,6 +83,19 @@
         content: attr(data-on);
       }
 
+      &.loading + .slider {
+        background-color: #bfcfe1;
+
+        &:before {
+          background-color: #8897a8;
+        }
+
+        &:after {
+          left: 30px;
+          display: block;
+        }
+      }
+
       &:checked + .slider {
         background-color: #1e6dc8;
         content: attr(data-on);
@@ -89,19 +107,7 @@
         }
 
         &:after {
-          left: 30px;
-        }
-      }
-
-      &.loading + .slider {
-        background-color: #bfcfe1;
-
-        &:before {
-          background-color: #8897a8;
-        }
-
-        &:after {
-          display: block;
+          left: 6px;
         }
       }
     }
@@ -129,6 +135,12 @@
       }
 
       input {
+        &.loading + .slider {
+          &:after {
+            left: 33px;
+          }
+        }
+
         &:checked + .slider {
           &:before {
             -webkit-transform: translateX(-26px);
@@ -137,7 +149,7 @@
           }
 
           &:after {
-            left: 30px;
+            left: 7px;
           }
         }
       }
