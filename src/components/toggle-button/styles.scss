@@ -35,7 +35,7 @@
         content: "";
         height: 18px;
         width: 18px;
-        left: 3px;
+        left: 27px;
         bottom: 3px;
         background-color: #fff;
         -webkit-transition: 0.4s;
@@ -54,7 +54,7 @@
         display: none;
         height: 9px;
         width: 10px;
-        left: 8px;
+        left: 30px;
         bottom: 5px;
         background-color: transparent;
         transition: 0.4s;
@@ -69,11 +69,6 @@
     input {
       display: none;
 
-      &:checked + .slider {
-        background-color: #1e6dc8;
-        content: attr(data-on);
-      }
-
       &:focus + .slider {
         box-shadow: 0 0 1px #1e6dc8;
       }
@@ -83,12 +78,14 @@
         content: attr(data-on);
       }
 
-      &:checked + .slider,
-      &:disabled + .slider {
+      &:checked + .slider {
+        background-color: #1e6dc8;
+        content: attr(data-on);
+
         &:before {
-          -webkit-transform: translateX(24px);
-          -ms-transform: translateX(24px);
-          transform: translateX(24px);
+          -webkit-transform: translateX(-24px);
+          -ms-transform: translateX(-24px);
+          transform: translateX(-24px);
         }
 
         &:after {
@@ -98,7 +95,6 @@
 
       &.loading + .slider {
         background-color: #bfcfe1;
-        content: attr(data-on);
 
         &:before {
           background-color: #8897a8;
@@ -120,29 +116,28 @@
         &:before {
           height: 26px;
           width: 26px;
-          left: 4px;
+          left: 30px;
           bottom: 4px;
         }
 
         &:after {
           height: 17px;
           width: 18px;
-          left: 9px;
+          left: 33px;
           bottom: 6px;
         }
       }
 
       input {
-        &:checked + .slider,
-        &:disabled + .slider {
+        &:checked + .slider {
           &:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
+            -webkit-transform: translateX(-26px);
+            -ms-transform: translateX(-26px);
+            transform: translateX(-26px);
           }
 
           &:after {
-            left: 33px;
+            left: 30px;
           }
         }
       }

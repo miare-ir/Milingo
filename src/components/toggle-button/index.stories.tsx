@@ -24,8 +24,8 @@ export const Normal = (): JSX.Element => {
         <ToggleButton
           name="checked-switch"
           label="درخواست خودکار غیرفعال"
-          onToggle={() => setToggle(!toggle)}
-          checked={toggle}
+          onToggle={null}
+          checked={false}
           disabled
           id={'checked-switch'}
         />
@@ -35,8 +35,8 @@ export const Normal = (): JSX.Element => {
         <ToggleButton
           name="checked-switch"
           label="درخواست خودکار لودینگ"
-          onToggle={() => setToggle(!toggle)}
-          checked={toggle}
+          onToggle={null}
+          checked={false}
           loading
           id={'loading-switch'}
         />
@@ -64,8 +64,8 @@ export const Large = (): JSX.Element => {
         <ToggleButton
           name="checked-switch"
           label="درخواست خودکار غیرفعال"
-          onToggle={() => setToggle(!toggle)}
-          checked={toggle}
+          onToggle={null}
+          checked={false}
           disabled
           large
           id={'checked-switch'}
@@ -76,8 +76,8 @@ export const Large = (): JSX.Element => {
         <ToggleButton
           name="checked-switch"
           label="درخواست خودکار لودینگ"
-          onToggle={() => setToggle(!toggle)}
-          checked={toggle}
+          onToggle={null}
+          checked={false}
           loading
           large
           id={'loading-switch'}
