@@ -81,6 +81,7 @@
       &:disabled + .slider {
         background-color: #8d8d8d;
         content: attr(data-on);
+        cursor: none;
       }
 
       &.loading + .slider {
