@@ -14,7 +14,7 @@ export const Normal = (): JSX.Element => {
       <div>
         <ToggleButton
           name="normal-switch"
-          label="تاگل باتن"
+          label="تاگل باتن فعال"
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
         />
@@ -64,7 +64,7 @@ export const Large = (): JSX.Element => {
       <div>
         <ToggleButton
           name="large-switch"
-          label="تاگل باتن"
+          label="تاگل باتن فعال"
           large
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
