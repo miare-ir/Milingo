@@ -14,7 +14,7 @@ export const Normal = (): JSX.Element => {
       <div>
         <ToggleButton
           name="normal-switch"
-          label="تاگل باتن فعال"
+          label="سلام دنیا"
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
         />
@@ -23,7 +23,7 @@ export const Normal = (): JSX.Element => {
       <div style={{ margin: '16px 0' }}>
         <ToggleButton
           name="checked-switch"
-          label="تاگل باتن غیرفعال"
+          label="سلام دنیا"
           onToggle={null}
           checked={false}
           disabled
@@ -34,7 +34,7 @@ export const Normal = (): JSX.Element => {
       <div>
         <ToggleButton
           name="checked-switch"
-          label="تاگل باتن لودینگ"
+          label="سلام دنیا"
           onToggle={null}
           checked={false}
           loading
@@ -45,7 +45,7 @@ export const Normal = (): JSX.Element => {
       <div style={{ margin: '16px 0' }}>
         <ToggleButton
           name="checked-switch"
-          label="تاگل باتن چک شده در لودینگ"
+          label="سلام دنیا"
           onToggle={null}
           checked
           loading
@@ -64,7 +64,7 @@ export const Large = (): JSX.Element => {
       <div>
         <ToggleButton
           name="large-switch"
-          label="تاگل باتن فعال"
+          label="سلام دنیا"
           large
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
@@ -74,7 +74,7 @@ export const Large = (): JSX.Element => {
       <div style={{ margin: '16px 0' }}>
         <ToggleButton
           name="checked-switch"
-          label="تاگل باتن غیرفعال"
+          label="سلام دنیا"
           onToggle={null}
           checked={false}
           disabled
@@ -86,7 +86,7 @@ export const Large = (): JSX.Element => {
       <div>
         <ToggleButton
           name="checked-switch"
-          label="تاگل باتن لودینگ"
+          label="سلام دنیا"
           onToggle={null}
           checked={false}
           loading
@@ -98,7 +98,7 @@ export const Large = (): JSX.Element => {
       <div style={{ margin: '16px 0' }}>
         <ToggleButton
           name="checked-switch"
-          label="تاگل باتن چک شده در لودینگ"
+          label="تسلام دنیا"
           onToggle={null}
           checked
           loading
