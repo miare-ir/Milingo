@@ -579,6 +579,8 @@ var modal_1 = __webpack_require__(97);
 exports.Modal = modal_1.default;
 var image_1 = __webpack_require__(99);
 exports.Image = image_1.default;
+var toggle_button_1 = __webpack_require__(101);
+exports.ToggleButton = toggle_button_1.default;
 
 
 /***/ }),
@@ -4039,6 +4041,29 @@ exports.default = Image;
 
 /***/ }),
 /* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+__webpack_require__(102);
+var ToggleButton = function (props) { return (React.createElement("div", { className: "toggle-button-container" },
+    React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
+        React.createElement("input", { disabled: props.disabled || props.loading, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked, onChange: props.onToggle }),
+        React.createElement("div", { className: "slider" })),
+    props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') }, props.label)))); };
+exports.default = ToggleButton;
+
+
+/***/ }),
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin

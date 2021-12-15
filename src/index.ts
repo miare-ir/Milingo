@@ -38,6 +38,7 @@ import { Table, Th, Tr, Td } from './components/data-table';
 import { Column, Row } from './components/flex';
 import Modal from './components/modal';
 import Image from './components/image';
+import ToggleButton from './components/toggle-button';
 
 export {
   Banner,
@@ -89,4 +90,5 @@ export {
   Row,
   Modal,
   Image,
+  ToggleButton,
 };
