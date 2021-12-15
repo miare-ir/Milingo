@@ -98,7 +98,7 @@ export const Large = (): JSX.Element => {
       <div style={{ margin: '16px 0' }}>
         <ToggleButton
           name="checked-switch"
-          label="تسلام دنیا"
+          label="سلام دنیا"
           onToggle={null}
           checked
           loading
