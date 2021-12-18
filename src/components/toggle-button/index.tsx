@@ -27,9 +27,8 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => (
         name={props.name}
         id={props.name}
         checked={props.checked}
-        onChange={props.onToggle}
       />
-      <div className="slider" />
+      <div onClick={props.onToggle} className="slider" />
     </label>
 
     {props.label && (
