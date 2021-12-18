@@ -4056,8 +4056,8 @@ var React = __webpack_require__(0);
 __webpack_require__(102);
 var ToggleButton = function (props) { return (React.createElement("div", { className: "toggle-button-container" },
     React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
-        React.createElement("input", { disabled: props.disabled || props.loading, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked, onChange: props.onToggle }),
-        React.createElement("div", { className: "slider" })),
+        React.createElement("input", { disabled: props.disabled || props.loading, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked }),
+        React.createElement("div", { onClick: props.onToggle, className: "slider" })),
     props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') }, props.label)))); };
 exports.default = ToggleButton;
 
