@@ -13,28 +13,36 @@ export interface ToggleButtonProps extends React.HTMLProps<HTMLInputElement> {
   classNames?: string;
 }
 
-const ToggleButton = (props: ToggleButtonProps): JSX.Element => (
-  <div className="toggle-button-container">
-    <label
-      className={`toggle-button ${props.classNames || ''} ${
-        props.large ? 'large' : ''
-      }`}
-      htmlFor={props.name}>
-      <input
-        disabled={props.disabled || props.loading}
-        className={`${props.loading ? 'loading' : ''}`}
-        type="checkbox"
-        name={props.name}
-        id={props.name}
-        checked={props.checked}
-      />
-      <div onClick={props.onToggle} className="slider" />
-    </label>
+const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
+  const handleOnToggle = (): void => {
+    if (!props.disabled || !props.loading) {
+      props.onToggle();
+    }
+  };
 
-    {props.label && (
-      <p className={`label ${props.large ? 'large' : ''}`}>{props.label}</p>
-    )}
-  </div>
-);
+  return (
+    <div className="toggle-button-container">
+      <label
+        className={`toggle-button ${props.classNames || ''} ${
+          props.large ? 'large' : ''
+        }`}
+        htmlFor={props.name}>
+        <input
+          disabled={props.disabled}
+          className={`${props.loading ? 'loading' : ''}`}
+          type="checkbox"
+          name={props.name}
+          id={props.name}
+          checked={props.checked}
+        />
+        <div onClick={handleOnToggle} className="slider" />
+      </label>
+
+      {props.label && (
+        <p className={`label ${props.large ? 'large' : ''}`}>{props.label}</p>
+      )}
+    </div>
+  );
+};
 
 export default ToggleButton;
