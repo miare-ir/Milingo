@@ -4056,7 +4056,7 @@ var React = __webpack_require__(0);
 __webpack_require__(102);
 var ToggleButton = function (props) {
     var handleOnToggle = function () {
-        if (!props.disabled || !props.loading) {
+        if (!(props.loading || props.disabled)) {
             props.onToggle();
         }
     };

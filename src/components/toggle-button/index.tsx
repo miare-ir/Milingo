@@ -15,7 +15,7 @@ export interface ToggleButtonProps extends React.HTMLProps<HTMLInputElement> {
 
 const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
   const handleOnToggle = (): void => {
-    if (!props.disabled || !props.loading) {
+    if (!(props.loading || props.disabled)) {
       props.onToggle();
     }
   };
