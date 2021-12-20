@@ -4054,11 +4054,18 @@ exports.default = Image;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 __webpack_require__(102);
-var ToggleButton = function (props) { return (React.createElement("div", { className: "toggle-button-container" },
-    React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
-        React.createElement("input", { disabled: props.disabled || props.loading, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked }),
-        React.createElement("div", { onClick: props.onToggle, className: "slider" })),
-    props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') }, props.label)))); };
+var ToggleButton = function (props) {
+    var handleOnToggle = function () {
+        if (!props.disabled || !props.loading) {
+            props.onToggle();
+        }
+    };
+    return (React.createElement("div", { className: "toggle-button-container" },
+        React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
+            React.createElement("input", { disabled: props.disabled, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked }),
+            React.createElement("div", { onClick: handleOnToggle, className: "slider" })),
+        props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') }, props.label))));
+};
 exports.default = ToggleButton;
 
 

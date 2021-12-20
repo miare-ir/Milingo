@@ -78,14 +78,9 @@
         box-shadow: 0 0 1px #1e6dc8;
       }
 
-      &:disabled + .slider {
-        background-color: #8d8d8d;
-        content: attr(data-on);
-        cursor: unset;
-      }
-
       &.loading + .slider {
         background-color: #bfcfe1;
+        cursor: unset;
 
         &:before {
           background-color: #8897a8;
@@ -110,6 +105,12 @@
         &:after {
           left: 6px;
         }
+      }
+
+      &:disabled + .slider {
+        background-color: #8d8d8d;
+        content: attr(data-on);
+        cursor: unset;
       }
     }
 
