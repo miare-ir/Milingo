@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "./0.styles.css",
-    "main.js": "./main.62437211.iframe.bundle.js",
+    "main.js": "./main.869d8315.iframe.bundle.js",
     "main.css.map": "./0.styles.css.map",
     "runtime~main.js": "./runtime~main.248e4f1a.iframe.bundle.js",
     "vendors~main.js": "./vendors~main.1cbb187a.iframe.bundle.js",
     "vendors~main.js.map": "./vendors~main.1cbb187a.iframe.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "precache-manifest.0125e043cb9c6b38e3bd8c19eca8f0ea.js": "./precache-manifest.0125e043cb9c6b38e3bd8c19eca8f0ea.js",
+    "precache-manifest.ee373d9595db6a48ccd67515de233ea6.js": "./precache-manifest.ee373d9595db6a48ccd67515de233ea6.js",
     "service-worker.js": "./service-worker.js",
     "static/media/styles.scss": "./static/media/arrow.beb4c4b3.svg",
     "static/media/notification-error.svg": "./static/media/notification-error.4843525f.svg",
@@ -19,8 +19,8 @@
   "entrypoints": [
     "runtime~main.248e4f1a.iframe.bundle.js",
     "vendors~main.1cbb187a.iframe.bundle.js",
-    "static/css/main.18779292.chunk.css",
+    "static/css/main.fed7873c.chunk.css",
     "0.styles.css",
-    "main.62437211.iframe.bundle.js"
+    "main.869d8315.iframe.bundle.js"
   ]
 }

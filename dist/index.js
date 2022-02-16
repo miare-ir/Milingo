@@ -3086,7 +3086,7 @@ var SelectComponent = /** @class */ (function (_super) {
     };
     SelectComponent.prototype.render = function () {
         var _this = this;
-        var _a = this.props, className = _a.className, showedItem = _a.showedItem, errorMessage = _a.errorMessage;
+        var _a = this.props, className = _a.className, showedItem = _a.showedItem, errorMessage = _a.errorMessage, errorMessagePosition = _a.errorMessagePosition;
         var placeHolderValue = typeof this.state.selected === 'string'
             ? this.state.selected
             : this.state.selected.label;
@@ -3098,14 +3098,16 @@ var SelectComponent = /** @class */ (function (_super) {
         });
         var menu = this.state.isOpen ? (React.createElement("div", { className: "select-menu", style: showedItem && { maxHeight: 40 * showedItem + 16 } }, this.buildMenu())) : null;
         return (React.createElement("div", { className: selectClass, ref: function (node) { return (_this.node = node); } },
-            errorMessage && React.createElement("span", { className: "error" }, errorMessage),
+            errorMessage &&
+                (!errorMessagePosition || errorMessagePosition === 'top') && (React.createElement("span", { className: "error top" }, errorMessage)),
             React.createElement("div", { tabIndex: 0, className: controlClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
                 React.createElement("div", { className: "select-placeholder" }, placeHolderValue),
                 React.createElement("div", { className: "select-arrow" })),
             menu,
             React.createElement("select", { name: this.props.name, ref: function (select) { return (_this.selectElement = select); }, hidden: true },
                 React.createElement("option", { value: "null" }, "default"),
-                this.renderSelectsOption())));
+                this.renderSelectsOption()),
+            errorMessage && errorMessagePosition === 'bottom' && (React.createElement("span", { className: "error bottom" }, errorMessage))));
     };
     return SelectComponent;
 }(React.Component));
