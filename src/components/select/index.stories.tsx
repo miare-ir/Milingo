@@ -27,6 +27,7 @@ export const Normal = () => (
       name="test1"
       options={options}
       errorMessage=".انتخاب این مورد اجباری است"
+      errorMessagePosition="bottom"
     />
     <br />
     <Select
