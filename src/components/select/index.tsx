@@ -21,6 +21,7 @@ export interface SelectProps {
   placeholder?: string;
   showedItem?: number;
   errorMessage?: string;
+  errorMessagePosition?: 'top' | 'bottom';
 }
 
 interface SelectState {
@@ -194,7 +195,12 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   }
 
   render(): React.ReactNode {
-    const { className, showedItem, errorMessage } = this.props;
+    const {
+      className,
+      showedItem,
+      errorMessage,
+      errorMessagePosition,
+    } = this.props;
 
     const placeHolderValue =
       typeof this.state.selected === 'string'
@@ -219,7 +225,10 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
 
     return (
       <div className={selectClass} ref={node => (this.node = node)}>
-        {errorMessage && <span className="error">{errorMessage}</span>}
+        {errorMessage &&
+          (!errorMessagePosition || errorMessagePosition === 'top') && (
+            <span className="error top">{errorMessage}</span>
+          )}
         <div
           tabIndex={0}
           className={controlClass}
@@ -236,6 +245,10 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
           <option value="null">default</option>
           {this.renderSelectsOption()}
         </select>
+
+        {errorMessage && errorMessagePosition === 'bottom' && (
+          <span className="error bottom">{errorMessage}</span>
+        )}
       </div>
     );
   }
