@@ -21,6 +21,7 @@ export const All = (): JSX.Element => (
     <Image
       src={require('./logo-192x192.png')}
       alt="thumbnail"
+      className={'test'}
       thumbnailInfo={{
         originalSrc: require('./logo-512x512.png'),
       }}
