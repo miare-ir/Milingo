@@ -38,7 +38,6 @@ import { Table, Th, Tr, Td } from './components/data-table';
 import { Column, Row } from './components/flex';
 import Modal from './components/modal';
 import Image from './components/image';
-import Thumbnail from './components/image-thumbnail';
 import ToggleButton from './components/toggle-button';
 
 export {
@@ -91,6 +90,5 @@ export {
   Row,
   Modal,
   Image,
-  Thumbnail,
   ToggleButton,
 };

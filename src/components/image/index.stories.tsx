@@ -13,10 +13,17 @@ export const All = (): JSX.Element => (
     {images.map((image, index) => (
       <Image
         key={index}
-        src={require('./logo-miare.png')}
+        src={require('./logo-192x192.png')}
         alt="placeholder"
         className={'test'}
       />
     ))}
+    <Image
+      src={require('./logo-192x192.png')}
+      alt="thumbnail"
+      thumbnailInfo={{
+        originalSrc: require('./logo-512x512.png'),
+      }}
+    />
   </div>
 );
