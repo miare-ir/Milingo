@@ -2254,9 +2254,9 @@ var classNames = __webpack_require__(1);
 __webpack_require__(10);
 var Navbar = function (props) {
     var navbarClassNames = classNames('navbar', {
-        horizontally: props.horizontally
+        horizontally: props.horizontally,
     });
-    return (React.createElement("div", { className: navbarClassNames }, props.children));
+    return React.createElement("div", { className: navbarClassNames }, props.children);
 };
 exports.default = Navbar;
 var navbar_item_1 = __webpack_require__(55);
