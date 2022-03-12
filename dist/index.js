@@ -2250,8 +2250,14 @@ exports.default = MenuStatus;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
 __webpack_require__(10);
-var Navbar = function (props) { return (React.createElement("div", { className: "navbar" }, props.children)); };
+var Navbar = function (props) {
+    var navbarClassNames = classNames('navbar', {
+        horizontally: props.horizontally,
+    });
+    return React.createElement("div", { className: navbarClassNames }, props.children);
+};
 exports.default = Navbar;
 var navbar_item_1 = __webpack_require__(55);
 exports.NavbarItem = navbar_item_1.default;

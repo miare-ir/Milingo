@@ -2,14 +2,17 @@ import * as React from 'react';
 // import { withViewport } from '@storybook/addon-viewport';
 import Navbar, { NavbarItem } from '.';
 
-class NavbarSample extends React.Component<{}, { selected: number }> {
+class NavbarSample extends React.Component<
+  { horizontally?: boolean },
+  { selected: number }
+> {
   state = {
     selected: 0,
   };
 
   render(): React.ReactNode {
     return (
-      <Navbar>
+      <Navbar horizontally={this.props.horizontally}>
         <NavbarItem
           selected={this.state.selected === 0}
           onClick={() => this.setState({ selected: 0 })}
@@ -42,4 +45,4 @@ export default {
 };
 
 export const Desktop = () => <NavbarSample />;
-export const Mobile = () => <NavbarSample />;
+export const Mobile = () => <NavbarSample horizontally />;
