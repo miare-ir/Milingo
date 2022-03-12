@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import './styles.scss';
 
+import Modal from '../modal';
+
 const placeHolder =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 
@@ -11,6 +13,10 @@ export interface ImageProps {
   alt?: string;
   className?: string;
   id?: string;
+  thumbnailInfo?: {
+    originalSrc: string;
+    originalAlt?: string;
+  };
   rest?: unknown;
 }
 
@@ -19,10 +25,17 @@ const observerOptions = {
   rootMargin: '75%',
 };
 
-const Image = ({ src, alt, ...rest }: ImageProps): JSX.Element => {
+const Image = ({
+  src,
+  alt,
+  thumbnailInfo,
+  ...rest
+}: ImageProps): JSX.Element => {
   const [imageSrc, setImageSrc] = useState<string>(placeHolder);
   const [didCancel, setDidCancel] = useState<boolean>(false);
   const [imageRef, setImageRef] = useState<HTMLImageElement | null>();
+  const [isOpen, toggleModal] = useState<boolean>(false);
+
   let observer;
 
   const onLoad = (event): void => event.target.classList.add('image-loaded');
@@ -53,6 +66,12 @@ const Image = ({ src, alt, ...rest }: ImageProps): JSX.Element => {
     observer.observe(imageRef);
   };
 
+  const onImageClick = (): void => {
+    if (thumbnailInfo.originalSrc) {
+      return toggleModal(true);
+    }
+  };
+
   useEffect(() => {
     if (hasImage()) {
       if (IntersectionObserver) {
@@ -68,14 +87,23 @@ const Image = ({ src, alt, ...rest }: ImageProps): JSX.Element => {
   }, [src, imageSrc, imageRef]);
 
   return (
-    <img
-      ref={setImageRef}
-      src={imageSrc}
-      alt={alt}
-      onLoad={onLoad}
-      onError={onError}
-      {...rest}
-    />
+    <>
+      <img
+        ref={setImageRef}
+        src={imageSrc}
+        alt={alt}
+        onLoad={onLoad}
+        onError={onError}
+        onClick={onImageClick}
+        {...rest}
+      />
+      <Modal isOpen={isOpen} onClose={() => toggleModal(false)}>
+        <img
+          src={thumbnailInfo?.originalSrc}
+          alt={thumbnailInfo?.originalAlt}
+        />
+      </Modal>
+    </>
   );
 };
 
