@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "92fab8cccaeb9e8a52e7",
+    "revision": "457639d8fb70892db367",
     "url": "0.styles.css"
   },
   {
-    "revision": "a9f3b915657b62b4824aab1032603909",
+    "revision": "9b018e1a480ad2c786aa2a4e80195578",
     "url": "iframe.html"
   },
   {
-    "revision": "92fab8cccaeb9e8a52e7",
-    "url": "main.c6cda4e3.iframe.bundle.js"
+    "revision": "457639d8fb70892db367",
+    "url": "main.610e42e3.iframe.bundle.js"
   },
   {
     "revision": "c156b6caa0afff344398",
     "url": "runtime~main.248e4f1a.iframe.bundle.js"
   },
   {
-    "revision": "92fab8cccaeb9e8a52e7",
-    "url": "static/css/main.931189e6.chunk.css"
+    "revision": "457639d8fb70892db367",
+    "url": "static/css/main.2f9914a8.chunk.css"
   },
   {
     "revision": "3adfaf1dba68cdd44358c4f4f711fdc8",
@@ -52,6 +52,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/arrow.beb4c4b3.svg"
   },
   {
+    "revision": "eb8ea43c9739794c06fc05f1f4110649",
+    "url": "static/media/logo-192x192.eb8ea43c.png"
+  },
+  {
+    "revision": "7f493b6f873673e51fcef1bdbe2ebf3f",
+    "url": "static/media/logo-512x512.7f493b6f.png"
+  },
+  {
     "revision": "4843525fe3bf55010a24f26dd8575779",
     "url": "static/media/notification-error.4843525f.svg"
   },
@@ -68,11 +76,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/notification-warning.fa3fd3bf.svg"
   },
   {
-    "revision": "5797208040c1f2bd88fb",
-    "url": "vendors~main.1cbb187a.iframe.bundle.js"
+    "revision": "80081355b9d65cfcac0c",
+    "url": "vendors~main.420758a2.iframe.bundle.js"
   },
   {
     "revision": "f08e38d2555c7d9a08544165a3e6fd36",
-    "url": "vendors~main.1cbb187a.iframe.bundle.js.LICENSE.txt"
+    "url": "vendors~main.420758a2.iframe.bundle.js.LICENSE.txt"
   }
 ]);
