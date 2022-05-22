@@ -11,9 +11,11 @@
   @include onTablet {
     flex-direction: row-reverse;
     width: 100vw;
-    height: 64px;
+    min-height: 64px;
+    height: auto;
     font-size: 8px;
-    padding: 0;
+    padding: 0 0 12px;
+    text-align: center;
     justify-content: space-evenly;
   }
 

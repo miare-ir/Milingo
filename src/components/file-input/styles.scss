@@ -13,6 +13,7 @@ $FileNameSpanBackgroundColor: #ecedef;
   .file-div {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 
     button {
       position: relative;
