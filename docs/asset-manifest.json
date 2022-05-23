@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "./0.styles.css",
-    "main.js": "./main.df04539a.iframe.bundle.js",
+    "main.js": "./main.48692a6f.iframe.bundle.js",
     "main.css.map": "./0.styles.css.map",
     "runtime~main.js": "./runtime~main.248e4f1a.iframe.bundle.js",
-    "vendors~main.js": "./vendors~main.5cbf7a45.iframe.bundle.js",
-    "vendors~main.js.map": "./vendors~main.5cbf7a45.iframe.bundle.js.map",
+    "vendors~main.js": "./vendors~main.06c9439c.iframe.bundle.js",
+    "vendors~main.js.map": "./vendors~main.06c9439c.iframe.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "precache-manifest.938b521510a7682d47557210a54bf381.js": "./precache-manifest.938b521510a7682d47557210a54bf381.js",
+    "precache-manifest.c8058f8de93c7b2ac83dffb5ec6b8996.js": "./precache-manifest.c8058f8de93c7b2ac83dffb5ec6b8996.js",
     "service-worker.js": "./service-worker.js",
     "static/media/styles.scss": "./static/media/arrow.beb4c4b3.svg",
     "static/media/icon.svg": "./static/media/icon.faedbf6b.svg",
@@ -17,13 +17,13 @@
     "static/media/notification-hint.svg": "./static/media/notification-hint.da1566f9.svg",
     "static/media/notification-success.svg": "./static/media/notification-success.3f9f471c.svg",
     "static/media/notification-warning.svg": "./static/media/notification-warning.fa3fd3bf.svg",
-    "vendors~main.5cbf7a45.iframe.bundle.js.LICENSE.txt": "./vendors~main.5cbf7a45.iframe.bundle.js.LICENSE.txt"
+    "vendors~main.06c9439c.iframe.bundle.js.LICENSE.txt": "./vendors~main.06c9439c.iframe.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
     "runtime~main.248e4f1a.iframe.bundle.js",
-    "vendors~main.5cbf7a45.iframe.bundle.js",
-    "static/css/main.a77e80e2.chunk.css",
+    "vendors~main.06c9439c.iframe.bundle.js",
+    "static/css/main.89bed281.chunk.css",
     "0.styles.css",
-    "main.df04539a.iframe.bundle.js"
+    "main.48692a6f.iframe.bundle.js"
   ]
 }
