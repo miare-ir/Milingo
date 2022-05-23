@@ -1624,7 +1624,7 @@ var Input = /** @class */ (function (_super) {
         if (!validInputTypes.includes(this.state.type)) {
             return '';
         }
-        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, disabled = _a.disabled, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus", "disabled"]);
+        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, icon = _a.icon, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, disabled = _a.disabled, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "icon", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus", "disabled"]);
         var hasError = errorMessage &&
             (forceDisplayError ||
                 (this.state.touched && !validate(this.state.value)));
@@ -1646,7 +1646,9 @@ var Input = /** @class */ (function (_super) {
                         _this.handleBlur(e);
                     } }, props)),
                 pre && React.createElement("pre", null, pre),
-                !pre && !!this.state.value && displayClear && !disabled && (React.createElement("i", { className: "material-icons clear", onClick: this.clear }, "add_circle"))),
+                !pre && !!this.state.value && displayClear && !disabled && (React.createElement("i", { className: "material-icons clear", onClick: this.clear }, "add_circle")),
+                !pre && icon && (React.createElement("span", { className: "icon" },
+                    React.createElement("img", { src: icon, alt: "" })))),
             hasError && React.createElement("span", { className: "error" }, errorMessage)));
     };
     Input.propTypes = {

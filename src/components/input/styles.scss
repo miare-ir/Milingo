@@ -71,7 +71,7 @@
     .icon {
       padding: 12px;
       margin: 0;
-      background-color: #fff;
+      background-color: transparent;
 
       img {
         width: 20px;
@@ -129,7 +129,7 @@
       padding: 8px 12px;
     }
 
-    pre {
+    pre, .icon {
       padding: 8px;
     }
 
