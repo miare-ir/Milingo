@@ -11,6 +11,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   forceDisplayError?: boolean;
   validate?: (value: string | string[] | number) => boolean;
   pre?: string;
+  icon?: string;
   title?: string;
   ltr?: boolean;
   extraTitle?: JSX.Element | string;
@@ -112,6 +113,7 @@ class Input extends React.Component<InputProps, InputState> {
       displayClear,
       title,
       pre,
+      icon,
       ltr,
       onClear,
       className,
@@ -167,6 +169,11 @@ class Input extends React.Component<InputProps, InputState> {
             <i className="material-icons clear" onClick={this.clear}>
               add_circle
             </i>
+          )}
+          {!pre && icon && (
+            <span className="icon">
+              <img src={icon} alt="" />
+            </span>
           )}
         </div>
         {hasError && <span className="error">{errorMessage}</span>}

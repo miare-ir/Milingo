@@ -72,6 +72,12 @@ export const Normal = () => (
       validate={value => !!value}
       displayClear
     />
+    <Input
+      title="عنوان"
+      placeholder="متن"
+      type="number"
+      icon={require('./icon.svg')}
+    />
   </div>
 );
 
