@@ -72,6 +72,12 @@ export const Normal = () => (
       validate={value => !!value}
       displayClear
     />
+    <Input
+      title="عنوان"
+      placeholder="متن"
+      type="number"
+      icon={require('./icon.svg')}
+    />
   </div>
 );
 
@@ -141,6 +147,13 @@ export const Small = () => (
       displayClear
       small
     />
+    <Input
+      title="عنوان"
+      placeholder="متن"
+      type="number"
+      small
+      icon={require('./icon.svg')}
+    />
   </div>
 );
 
@@ -151,5 +164,12 @@ export const Disabled = () => (
     <Input disabled title="عنوان" placeholder="متن" />
     <Input disabled title="عنوان" placeholder="متن" pre="ریال" type="number" />
     <Input disabled title="عنوان" placeholder="شماره تلفن" type="tel" />
+    <Input
+      title="عنوان"
+      placeholder="متن"
+      type="number"
+      disabled
+      icon={require('./icon.svg')}
+    />
   </div>
 );

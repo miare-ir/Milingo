@@ -24,7 +24,7 @@
     border: 1px solid $inputBorderColor;
     height: 48px;
     box-sizing: border-box;
-    padding: 1px;   // for border radius margin
+    padding: 1px; // for border radius margin
 
     &:not(.disabled) {
       &:hover {
@@ -66,6 +66,17 @@
       padding: 12px;
       margin: 0;
       font-size: 14px;
+    }
+
+    .icon {
+      padding: 12px;
+      margin: 0;
+      background-color: transparent;
+
+      img {
+        width: 20px;
+        height: auto;
+      }
     }
 
     .clear {
@@ -118,7 +129,7 @@
       padding: 8px 12px;
     }
 
-    pre {
+    pre, .icon {
       padding: 8px;
     }
 
