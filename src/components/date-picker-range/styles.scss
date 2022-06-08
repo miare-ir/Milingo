@@ -147,14 +147,16 @@
             transition: background-color 0.2s ease-in-out;
           }
 
-          &.primary.selected {
+          &.primary.selected, 
+          &.primary:hover {
             &:before {
               width: calc(50% + 5px);
               right: 50%;
             }
           }
 
-          &.secondary.selected {
+          &.secondary.selected, 
+          &.secondary:hover {
             &:before {
               width: calc(50% + 5px);
             }

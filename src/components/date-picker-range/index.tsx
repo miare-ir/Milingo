@@ -26,6 +26,7 @@ export interface DatePickerRangeProps {
   closeDialog?: () => void;
   forceDatePickerOpen?: boolean;
   inputButtonSize?: 'small' | 'tiny' | 'regular' | 'large';
+  inputButtonType?: 'primary' | 'danger' | 'ghost' | 'link';
   disabled?: boolean;
 }
 
@@ -170,8 +171,30 @@ class DatePicker extends React.Component<
       const dayElement = evt.currentTarget as HTMLDivElement;
 
       if (!month) {
+        if (this.state.fromDate && !dayElement.classList.contains('inRange')) {
+          const toDate = moment(dayElement.id.replace('day-', ''));
+          const fromDate = moment(this.state.fromDate.format('jYYYY-jMM-jD'));
+
+          if (toDate.isAfter(fromDate)) {
+            dayElement.classList.add('primary');
+          } else {
+            dayElement.classList.add('secondary');
+          }
+        }
+
         if (!(this.state.fromDate && this.state.toDate)) {
           this.handleCreateRange(dayElement);
+        }
+      }
+    };
+
+    const onMouseLeave = (
+      evt: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    ) => {
+      const { classList } = evt.currentTarget;
+      if (!classList.contains('selected')) {
+        if (classList.contains('primary') || classList.contains('secondary')) {
+          classList.remove('primary', 'secondary');
         }
       }
     };
@@ -180,6 +203,7 @@ class DatePicker extends React.Component<
       <div
         onClick={isSelectable ? onClick : null}
         onMouseOver={onMouseOver}
+        onMouseLeave={onMouseLeave}
         className={className}
         id={'day-' + day.format('jYYYY-jMM-jD')}
         key={day.format('jYYYY-jMM-jD')}>
@@ -490,6 +514,19 @@ class DatePicker extends React.Component<
   }
 
   saveDate = (date: DateRange): void => {
+    const firstDate = date[0];
+    const secondDate = date[1];
+
+    let from = date[0];
+    let to = date[1];
+
+    if (from.isAfter(to)) {
+      from = secondDate;
+      to = firstDate;
+    }
+
+    date = [from, to];
+
     this.setState({ savedDate: date });
     this.props.onChangeDate(date);
     this.closeDialog();
@@ -574,10 +611,10 @@ class DatePicker extends React.Component<
     return (
       <div className={`range-date-picker-container ${this.props.className}`}>
         <Button
-          ghost
           disabled={this.props.disabled}
           className={`date-picker-input ${this.state.savedDate ? '' : 'empty'}`}
           onClick={this.openDialog}
+          {...{ [this.props.inputButtonType]: true }}
           {...{ [this.props.inputButtonSize]: true }}>
           <PersianNumber value={this.createTitle(true)} className="clickable" />
         </Button>
@@ -629,7 +666,9 @@ class DatePicker extends React.Component<
             <Button
               link
               small
-              onClick={() => this.saveDate([this.state.fromDate, this.state])}>
+              onClick={() =>
+                this.saveDate([this.state.fromDate, this.state.toDate])
+              }>
               تایید
             </Button>
             <Button link small onClick={this.closeDialog}>

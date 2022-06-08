@@ -7,7 +7,7 @@
 		exports["Milingo"] = factory(require("react"), require("moment-jalaali"), require("react-modal"));
 	else
 		root["Milingo"] = factory(root["react"], root["moment-jalaali"], root["react-modal"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__87__, __WEBPACK_EXTERNAL_MODULE__88__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__15__, __WEBPACK_EXTERNAL_MODULE__16__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -201,7 +201,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(17);
+__webpack_require__(19);
 var Button = /** @class */ (function (_super) {
     __extends(Button, _super);
     function Button() {
@@ -243,70 +243,6 @@ exports.default = Button;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(21);
-var Loader = function (_a) {
-    var primary = _a.primary, danger = _a.danger, disabled = _a.disabled;
-    var className = classNames('spinner', {
-        'spinner-primary': primary,
-        'spinner-danger': danger,
-        'spinner-disabled': disabled,
-    });
-    return React.createElement("span", { className: className });
-};
-exports.default = Loader;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -445,7 +381,7 @@ exports.default = PersianNumber;
 
 
 /***/ }),
-/* 14 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -495,7 +431,83 @@ exports.Row.defaultProps = {
 
 
 /***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(23);
+var Loader = function (_a) {
+    var primary = _a.primary, danger = _a.danger, disabled = _a.disabled;
+    var className = classNames('spinner', {
+        'spinner-primary': primary,
+        'spinner-danger': danger,
+        'spinner-disabled': disabled,
+    });
+    return React.createElement("span", { className: className });
+};
+exports.default = Loader;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
 /* 15 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__15__;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__16__;
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -503,7 +515,7 @@ exports.Row.defaultProps = {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var react_1 = __webpack_require__(0);
-__webpack_require__(98);
+__webpack_require__(100);
 var Modal = function (props) {
     var closeOnEscapeKeyDown = function (event) {
         if ((event.charCode || event.keyCode) === 27) {
@@ -535,7 +547,7 @@ exports.default = Modal;
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -543,150 +555,86 @@ exports.default = Modal;
 Object.defineProperty(exports, "__esModule", { value: true });
 var button_1 = __webpack_require__(2);
 exports.Button = button_1.default;
-var button_group_1 = __webpack_require__(18);
+var button_group_1 = __webpack_require__(20);
 exports.ButtonGroup = button_group_1.default;
-var checkbox_1 = __webpack_require__(20);
+var checkbox_1 = __webpack_require__(22);
 exports.Checkbox = checkbox_1.default;
-var counter_button_1 = __webpack_require__(23);
+var counter_button_1 = __webpack_require__(25);
 exports.CounterButton = counter_button_1.default;
-var dialog_content_1 = __webpack_require__(25);
+var dialog_content_1 = __webpack_require__(27);
 exports.DialogContent = dialog_content_1.default;
-var file_input_1 = __webpack_require__(27);
+var file_input_1 = __webpack_require__(29);
 exports.FileInput = file_input_1.default;
-var collection_1 = __webpack_require__(29);
+var collection_1 = __webpack_require__(31);
 exports.Collection = collection_1.Collection;
 exports.CollectionCard = collection_1.CollectionCard;
-var tab_column_1 = __webpack_require__(32);
+var tab_column_1 = __webpack_require__(34);
 exports.Tab = tab_column_1.Tab;
 exports.TabColumn = tab_column_1.TabColumn;
-var form_1 = __webpack_require__(35);
+var form_1 = __webpack_require__(37);
 exports.Form = form_1.Form;
 exports.FormGroup = form_1.FormGroup;
-var input_1 = __webpack_require__(38);
+var input_1 = __webpack_require__(40);
 exports.Input = input_1.default;
-var list_1 = __webpack_require__(43);
+var list_1 = __webpack_require__(45);
 exports.List = list_1.List;
 exports.ListSection = list_1.ListSection;
 exports.ListTitle = list_1.ListTitle;
 exports.ListFooter = list_1.ListFooter;
-var menu_1 = __webpack_require__(48);
+var menu_1 = __webpack_require__(50);
 exports.MenuAvatar = menu_1.MenuAvatar;
 exports.MenuHeader = menu_1.MenuHeader;
 exports.MenuItem = menu_1.MenuItem;
 exports.MenuLink = menu_1.MenuLink;
 exports.MenuStatus = menu_1.MenuStatus;
-var navbar_1 = __webpack_require__(55);
+var navbar_1 = __webpack_require__(57);
 exports.Navbar = navbar_1.default;
 exports.NavbarItem = navbar_1.NavbarItem;
-var notification_1 = __webpack_require__(57);
+var notification_1 = __webpack_require__(59);
 exports.Notification = notification_1.default;
-var radiobutton_1 = __webpack_require__(59);
+var radiobutton_1 = __webpack_require__(61);
 exports.Radio = radiobutton_1.default;
-var textarea_1 = __webpack_require__(61);
+var textarea_1 = __webpack_require__(63);
 exports.Textarea = textarea_1.default;
-var timeline_1 = __webpack_require__(63);
+var timeline_1 = __webpack_require__(65);
 exports.Timeline = timeline_1.Timeline;
 exports.TimelineEntry = timeline_1.TimelineEntry;
-var banner_1 = __webpack_require__(65);
+var banner_1 = __webpack_require__(67);
 exports.Banner = banner_1.default;
-var toolbar_1 = __webpack_require__(72);
+var toolbar_1 = __webpack_require__(74);
 exports.Toolbar = toolbar_1.default;
-var action_table_1 = __webpack_require__(74);
+var action_table_1 = __webpack_require__(76);
 exports.ActionTable = action_table_1.ActionTable;
 exports.ActionTableRow = action_table_1.ActionTableRow;
-var select_1 = __webpack_require__(77);
+var select_1 = __webpack_require__(79);
 exports.Select = select_1.default;
-var tag_1 = __webpack_require__(79);
+var tag_1 = __webpack_require__(81);
 exports.Tag = tag_1.default;
-var tab_1 = __webpack_require__(81);
+var tab_1 = __webpack_require__(83);
 exports.TabNav = tab_1.TabNav;
 exports.TabNavItem = tab_1.TabNavItem;
 exports.TabContent = tab_1.TabContent;
 exports.TabContentItem = tab_1.TabContentItem;
-var persian_number_1 = __webpack_require__(13);
+var persian_number_1 = __webpack_require__(5);
 exports.PersianNumber = persian_number_1.default;
-var date_picker_1 = __webpack_require__(86);
+var date_picker_1 = __webpack_require__(88);
 exports.DatePicker = date_picker_1.default;
-var data_table_1 = __webpack_require__(91);
+var date_picker_range_1 = __webpack_require__(91);
+exports.RangeDatePicker = date_picker_range_1.default;
+var data_table_1 = __webpack_require__(93);
 exports.Table = data_table_1.Table;
 exports.Th = data_table_1.Th;
 exports.Tr = data_table_1.Tr;
 exports.Td = data_table_1.Td;
-var flex_1 = __webpack_require__(14);
+var flex_1 = __webpack_require__(6);
 exports.Column = flex_1.Column;
 exports.Row = flex_1.Row;
-var modal_1 = __webpack_require__(15);
+var modal_1 = __webpack_require__(17);
 exports.Modal = modal_1.default;
-var image_1 = __webpack_require__(99);
+var image_1 = __webpack_require__(101);
 exports.Image = image_1.default;
-var toggle_button_1 = __webpack_require__(101);
+var toggle_button_1 = __webpack_require__(103);
 exports.ToggleButton = toggle_button_1.default;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(19);
-var GroupButtonComponent = /** @class */ (function (_super) {
-    __extends(GroupButtonComponent, _super);
-    function GroupButtonComponent(props) {
-        return _super.call(this, props) || this;
-    }
-    GroupButtonComponent.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, props = __rest(_a, ["className", "children"]);
-        var buttonGroupClass = classNames('button-group-container', className);
-        return (React.createElement("div", __assign({ className: buttonGroupClass }, props), children));
-    };
-    return GroupButtonComponent;
-}(React.Component));
-exports.default = GroupButtonComponent;
 
 
 /***/ }),
@@ -739,8 +687,74 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var loader_1 = __webpack_require__(5);
-__webpack_require__(22);
+__webpack_require__(21);
+var GroupButtonComponent = /** @class */ (function (_super) {
+    __extends(GroupButtonComponent, _super);
+    function GroupButtonComponent(props) {
+        return _super.call(this, props) || this;
+    }
+    GroupButtonComponent.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, props = __rest(_a, ["className", "children"]);
+        var buttonGroupClass = classNames('button-group-container', className);
+        return (React.createElement("div", __assign({ className: buttonGroupClass }, props), children));
+    };
+    return GroupButtonComponent;
+}(React.Component));
+exports.default = GroupButtonComponent;
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+var loader_1 = __webpack_require__(7);
+__webpack_require__(24);
 var Checkbox = /** @class */ (function (_super) {
     __extends(Checkbox, _super);
     function Checkbox(props) {
@@ -788,90 +802,10 @@ exports.default = Checkbox;
 
 
 /***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(24);
-var CounterButton = /** @class */ (function (_super) {
-    __extends(CounterButton, _super);
-    function CounterButton() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    CounterButton.prototype.handleDecrease = function () {
-        if (this.props.onDecrease) {
-            this.props.onDecrease();
-        }
-    };
-    CounterButton.prototype.handleIncrease = function () {
-        if (this.props.onIncrease) {
-            this.props.onIncrease();
-        }
-    };
-    CounterButton.prototype.render = function () {
-        var _a = this.props, className = _a.className, onIncrease = _a.onIncrease, onDecrease = _a.onDecrease, props = __rest(_a, ["className", "onIncrease", "onDecrease"]);
-        var componentClassname = classNames('counter-button-wrapper', className);
-        return (React.createElement("div", __assign({ className: componentClassname }, props),
-            React.createElement("div", { className: "button-wrapper", onClick: this.handleIncrease.bind(this) },
-                React.createElement("span", { className: "icon material-icons" }, "add")),
-            React.createElement("div", { className: "button-wrapper", onClick: this.handleDecrease.bind(this) },
-                React.createElement("span", { className: "icon material-icons" }, "remove"))));
-    };
-    return CounterButton;
-}(React.Component));
-exports.default = CounterButton;
-
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 24 */
@@ -924,37 +858,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
 __webpack_require__(26);
-var DialogContent = /** @class */ (function (_super) {
-    __extends(DialogContent, _super);
-    function DialogContent() {
+var CounterButton = /** @class */ (function (_super) {
+    __extends(CounterButton, _super);
+    function CounterButton() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    DialogContent.prototype.componentDidMount = function () {
-        if (this.props.primary && this.props.secondary) {
-            throw new Error("Dialog content component can't receive primary and secondary props at same time ");
-        }
-        if (!this.props.primary && !this.props.secondary) {
-            throw new Error('Dialog content component needs one of primary or secondary props');
+    CounterButton.prototype.handleDecrease = function () {
+        if (this.props.onDecrease) {
+            this.props.onDecrease();
         }
     };
-    DialogContent.prototype.render = function () {
-        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, onClose = _a.onClose, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children", "onClose"]);
-        var componentClassNames = classNames('dialog-content-wrapper', className, {
-            primary: primary,
-            secondary: secondary,
-        });
-        return (React.createElement("div", __assign({ className: componentClassNames }, props),
-            React.createElement("div", { className: "dialog-header", key: "title" },
-                React.createElement("h2", { className: "dialog-title" },
-                    React.createElement("span", { onClick: onClose, className: "material-icons" }, "close"),
-                    React.createElement("span", null, title),
-                    React.createElement("span", null, " "))),
-            children && (React.createElement("div", { className: "dialog-content", key: "content" }, children)),
-            React.createElement("div", { className: "dialog-actions", key: "footer" }, actions)));
+    CounterButton.prototype.handleIncrease = function () {
+        if (this.props.onIncrease) {
+            this.props.onIncrease();
+        }
     };
-    return DialogContent;
+    CounterButton.prototype.render = function () {
+        var _a = this.props, className = _a.className, onIncrease = _a.onIncrease, onDecrease = _a.onDecrease, props = __rest(_a, ["className", "onIncrease", "onDecrease"]);
+        var componentClassname = classNames('counter-button-wrapper', className);
+        return (React.createElement("div", __assign({ className: componentClassname }, props),
+            React.createElement("div", { className: "button-wrapper", onClick: this.handleIncrease.bind(this) },
+                React.createElement("span", { className: "icon material-icons" }, "add")),
+            React.createElement("div", { className: "button-wrapper", onClick: this.handleDecrease.bind(this) },
+                React.createElement("span", { className: "icon material-icons" }, "remove"))));
+    };
+    return CounterButton;
 }(React.Component));
-exports.default = DialogContent;
+exports.default = CounterButton;
 
 
 /***/ }),
@@ -1007,8 +937,92 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var button_1 = __webpack_require__(2);
 __webpack_require__(28);
+var DialogContent = /** @class */ (function (_super) {
+    __extends(DialogContent, _super);
+    function DialogContent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    DialogContent.prototype.componentDidMount = function () {
+        if (this.props.primary && this.props.secondary) {
+            throw new Error("Dialog content component can't receive primary and secondary props at same time ");
+        }
+        if (!this.props.primary && !this.props.secondary) {
+            throw new Error('Dialog content component needs one of primary or secondary props');
+        }
+    };
+    DialogContent.prototype.render = function () {
+        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, onClose = _a.onClose, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children", "onClose"]);
+        var componentClassNames = classNames('dialog-content-wrapper', className, {
+            primary: primary,
+            secondary: secondary,
+        });
+        return (React.createElement("div", __assign({ className: componentClassNames }, props),
+            React.createElement("div", { className: "dialog-header", key: "title" },
+                React.createElement("h2", { className: "dialog-title" },
+                    React.createElement("span", { onClick: onClose, className: "material-icons" }, "close"),
+                    React.createElement("span", null, title),
+                    React.createElement("span", null, " "))),
+            children && (React.createElement("div", { className: "dialog-content", key: "content" }, children)),
+            React.createElement("div", { className: "dialog-actions", key: "footer" }, actions)));
+    };
+    return DialogContent;
+}(React.Component));
+exports.default = DialogContent;
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+var button_1 = __webpack_require__(2);
+__webpack_require__(30);
 var FileInput = /** @class */ (function (_super) {
     __extends(FileInput, _super);
     function FileInput(props) {
@@ -1091,26 +1105,26 @@ exports.default = FileInput;
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var collection_1 = __webpack_require__(30);
+var collection_1 = __webpack_require__(32);
 exports.Collection = collection_1.default;
-var collection_card_1 = __webpack_require__(31);
+var collection_card_1 = __webpack_require__(33);
 exports.CollectionCard = collection_card_1.default;
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1153,7 +1167,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(6);
+__webpack_require__(8);
 var Collection = /** @class */ (function (_super) {
     __extends(Collection, _super);
     function Collection() {
@@ -1169,85 +1183,6 @@ var Collection = /** @class */ (function (_super) {
     return Collection;
 }(React.Component));
 exports.default = Collection;
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(6);
-var CollectionCard = /** @class */ (function (_super) {
-    __extends(CollectionCard, _super);
-    function CollectionCard() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    CollectionCard.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, hasSubset = _a.hasSubset, footer = _a.footer, disabled = _a.disabled, selected = _a.selected, disabledMessage = _a.disabledMessage, props = __rest(_a, ["className", "children", "hasSubset", "footer", "disabled", "selected", "disabledMessage"]);
-        var componentClassName = classNames('card-container', className, {
-            disabled: disabled,
-            selected: selected,
-        });
-        return (React.createElement("div", __assign({ className: componentClassName }, props),
-            React.createElement("p", { className: "card-title" }, children),
-            disabled ? (React.createElement("span", { className: "disabled-message" }, disabledMessage ? disabledMessage : 'تمام شده')) : (React.createElement("div", { className: "price" }, footer)),
-            hasSubset && React.createElement("label", { className: "subset-dot" })));
-    };
-    return CollectionCard;
-}(React.Component));
-exports.default = CollectionCard;
-
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var tab_column_1 = __webpack_require__(33);
-exports.TabColumn = tab_column_1.default;
-var tab_1 = __webpack_require__(34);
-exports.Tab = tab_1.default;
 
 
 /***/ }),
@@ -1294,27 +1229,43 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(7);
-var Form = /** @class */ (function (_super) {
-    __extends(Form, _super);
-    function Form() {
+__webpack_require__(8);
+var CollectionCard = /** @class */ (function (_super) {
+    __extends(CollectionCard, _super);
+    function CollectionCard() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Form.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, fullWidth = _a.fullWidth, props = __rest(_a, ["className", "children", "fullWidth"]);
-        var componentClassName = classNames('tab-column-container', className, {
-            'full-width': fullWidth,
+    CollectionCard.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, hasSubset = _a.hasSubset, footer = _a.footer, disabled = _a.disabled, selected = _a.selected, disabledMessage = _a.disabledMessage, props = __rest(_a, ["className", "children", "hasSubset", "footer", "disabled", "selected", "disabledMessage"]);
+        var componentClassName = classNames('card-container', className, {
+            disabled: disabled,
+            selected: selected,
         });
         return (React.createElement("div", __assign({ className: componentClassName }, props),
-            React.createElement("div", null, children)));
+            React.createElement("p", { className: "card-title" }, children),
+            disabled ? (React.createElement("span", { className: "disabled-message" }, disabledMessage ? disabledMessage : 'تمام شده')) : (React.createElement("div", { className: "price" }, footer)),
+            hasSubset && React.createElement("label", { className: "subset-dot" })));
     };
-    return Form;
+    return CollectionCard;
 }(React.Component));
-exports.default = Form;
+exports.default = CollectionCard;
 
 
 /***/ }),
 /* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var tab_column_1 = __webpack_require__(35);
+exports.TabColumn = tab_column_1.default;
+var tab_1 = __webpack_require__(36);
+exports.Tab = tab_1.default;
+
+
+/***/ }),
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1357,35 +1308,23 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(7);
-var FormGroup = /** @class */ (function (_super) {
-    __extends(FormGroup, _super);
-    function FormGroup() {
+__webpack_require__(9);
+var Form = /** @class */ (function (_super) {
+    __extends(Form, _super);
+    function Form() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    FormGroup.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, selected = _a.selected, props = __rest(_a, ["className", "children", "selected"]);
-        var componentClassName = classNames('tab-container', className, {
-            selected: selected,
+    Form.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, fullWidth = _a.fullWidth, props = __rest(_a, ["className", "children", "fullWidth"]);
+        var componentClassName = classNames('tab-column-container', className, {
+            'full-width': fullWidth,
         });
-        return (React.createElement("div", __assign({ className: componentClassName }, props), children));
+        return (React.createElement("div", __assign({ className: componentClassName }, props),
+            React.createElement("div", null, children)));
     };
-    return FormGroup;
+    return Form;
 }(React.Component));
-exports.default = FormGroup;
-
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var form_1 = __webpack_require__(36);
-exports.Form = form_1.default;
-var form_group_1 = __webpack_require__(37);
-exports.FormGroup = form_group_1.default;
+exports.default = Form;
 
 
 /***/ }),
@@ -1432,24 +1371,22 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(8);
-var Form = /** @class */ (function (_super) {
-    __extends(Form, _super);
-    function Form() {
+__webpack_require__(9);
+var FormGroup = /** @class */ (function (_super) {
+    __extends(FormGroup, _super);
+    function FormGroup() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Form.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, props = __rest(_a, ["className", "children", "title", "description"]);
-        var componentClassName = classNames('form-container', className);
-        return (React.createElement("form", null,
-            React.createElement("div", __assign({ className: componentClassName }, props),
-                React.createElement("h4", { className: "form-title" }, title),
-                React.createElement("p", { className: "form-description" }, description),
-                children)));
+    FormGroup.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, selected = _a.selected, props = __rest(_a, ["className", "children", "selected"]);
+        var componentClassName = classNames('tab-container', className, {
+            selected: selected,
+        });
+        return (React.createElement("div", __assign({ className: componentClassName }, props), children));
     };
-    return Form;
+    return FormGroup;
 }(React.Component));
-exports.default = Form;
+exports.default = FormGroup;
 
 
 /***/ }),
@@ -1458,62 +1395,11 @@ exports.default = Form;
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(8);
-var FormGroup = /** @class */ (function (_super) {
-    __extends(FormGroup, _super);
-    function FormGroup() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    FormGroup.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, singleRow = _a.singleRow, extraTitle = _a.extraTitle, title = _a.title, props = __rest(_a, ["className", "children", "singleRow", "extraTitle", "title"]);
-        var componentClassName = classNames('form-group-container', className, {
-            'single-row': singleRow,
-        });
-        return (React.createElement("div", __assign({ className: componentClassName }, props),
-            extraTitle ? (extraTitle) : title ? (React.createElement("div", { className: "form-group-title" }, title)) : null,
-            children));
-    };
-    return FormGroup;
-}(React.Component));
-exports.default = FormGroup;
+var form_1 = __webpack_require__(38);
+exports.Form = form_1.default;
+var form_group_1 = __webpack_require__(39);
+exports.FormGroup = form_group_1.default;
 
 
 /***/ }),
@@ -1559,9 +1445,137 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var PropTypes = __webpack_require__(39);
 var classNames = __webpack_require__(1);
-__webpack_require__(42);
+__webpack_require__(10);
+var Form = /** @class */ (function (_super) {
+    __extends(Form, _super);
+    function Form() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Form.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, props = __rest(_a, ["className", "children", "title", "description"]);
+        var componentClassName = classNames('form-container', className);
+        return (React.createElement("form", null,
+            React.createElement("div", __assign({ className: componentClassName }, props),
+                React.createElement("h4", { className: "form-title" }, title),
+                React.createElement("p", { className: "form-description" }, description),
+                children)));
+    };
+    return Form;
+}(React.Component));
+exports.default = Form;
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(10);
+var FormGroup = /** @class */ (function (_super) {
+    __extends(FormGroup, _super);
+    function FormGroup() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    FormGroup.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, singleRow = _a.singleRow, extraTitle = _a.extraTitle, title = _a.title, props = __rest(_a, ["className", "children", "singleRow", "extraTitle", "title"]);
+        var componentClassName = classNames('form-group-container', className, {
+            'single-row': singleRow,
+        });
+        return (React.createElement("div", __assign({ className: componentClassName }, props),
+            extraTitle ? (extraTitle) : title ? (React.createElement("div", { className: "form-group-title" }, title)) : null,
+            children));
+    };
+    return FormGroup;
+}(React.Component));
+exports.default = FormGroup;
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var PropTypes = __webpack_require__(41);
+var classNames = __webpack_require__(1);
+__webpack_require__(44);
 var validInputTypes = ['text', 'number', 'tel'];
 var Input = /** @class */ (function (_super) {
     __extends(Input, _super);
@@ -1660,7 +1674,7 @@ exports.default = Input;
 
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1673,12 +1687,12 @@ exports.default = Input;
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(40)();
+  module.exports = __webpack_require__(42)();
 }
 
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1691,7 +1705,7 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(41);
+var ReactPropTypesSecret = __webpack_require__(43);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -1749,7 +1763,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1768,30 +1782,30 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var list_1 = __webpack_require__(44);
+var list_1 = __webpack_require__(46);
 exports.List = list_1.default;
-var section_1 = __webpack_require__(45);
+var section_1 = __webpack_require__(47);
 exports.ListSection = section_1.default;
-var title_1 = __webpack_require__(46);
+var title_1 = __webpack_require__(48);
 exports.ListTitle = title_1.default;
-var footer_1 = __webpack_require__(47);
+var footer_1 = __webpack_require__(49);
 exports.ListFooter = footer_1.default;
 
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1815,7 +1829,7 @@ exports.default = List;
 
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1854,7 +1868,7 @@ exports.default = ListSection;
 
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1892,7 +1906,7 @@ exports.default = ListTitle;
 
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1916,26 +1930,26 @@ exports.default = ListFooter;
 
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var avatar_1 = __webpack_require__(49);
+var avatar_1 = __webpack_require__(51);
 exports.MenuAvatar = avatar_1.default;
-var header_1 = __webpack_require__(51);
+var header_1 = __webpack_require__(53);
 exports.MenuHeader = header_1.default;
-var item_1 = __webpack_require__(52);
+var item_1 = __webpack_require__(54);
 exports.MenuItem = item_1.default;
-var link_1 = __webpack_require__(53);
+var link_1 = __webpack_require__(55);
 exports.MenuLink = link_1.default;
-var status_1 = __webpack_require__(54);
+var status_1 = __webpack_require__(56);
 exports.MenuStatus = status_1.default;
 
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1965,7 +1979,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var react_circular_progressbar_1 = __webpack_require__(50);
+var react_circular_progressbar_1 = __webpack_require__(52);
 var MenuAvatar = function (_a) {
     var avatar = _a.avatar, percentage = _a.percentage, selected = _a.selected, label = _a.label, largeText = _a.largeText, type = _a.type, props = __rest(_a, ["avatar", "percentage", "selected", "label", "largeText", "type"]);
     return (React.createElement("div", __assign({ className: classNames('menu-avatar', {
@@ -1984,7 +1998,7 @@ exports.default = MenuAvatar;
 
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2192,14 +2206,14 @@ function removeUndefinedValues(obj) {
 
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(9);
+__webpack_require__(11);
 var MenuHeader = function (props) { return (React.createElement("div", { className: "menu-header" },
     !!props.image && React.createElement("div", { className: "menu-header-image" }, props.image),
     React.createElement("div", { className: "menu-header-title" }, props.title),
@@ -2208,7 +2222,7 @@ exports.default = MenuHeader;
 
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2256,7 +2270,7 @@ exports.default = MenuItem;
 
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2264,7 +2278,7 @@ exports.default = MenuItem;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(9);
+__webpack_require__(11);
 var MenuLink = function (props) { return (React.createElement("div", { className: classNames('menu-link', { selected: props.selected }) },
     React.createElement("div", { className: "menu-link-title" }, props.title),
     props.notificationCount && (React.createElement("div", { className: "menu-link-notification-count" }, props.notificationCount)))); };
@@ -2272,7 +2286,7 @@ exports.default = MenuLink;
 
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2285,7 +2299,7 @@ exports.default = MenuStatus;
 
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2293,7 +2307,7 @@ exports.default = MenuStatus;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(10);
+__webpack_require__(12);
 var Navbar = function (props) {
     var navbarClassNames = classNames('navbar', {
         horizontally: props.horizontally,
@@ -2301,12 +2315,12 @@ var Navbar = function (props) {
     return React.createElement("div", { className: navbarClassNames }, props.children);
 };
 exports.default = Navbar;
-var navbar_item_1 = __webpack_require__(56);
+var navbar_item_1 = __webpack_require__(58);
 exports.NavbarItem = navbar_item_1.default;
 
 
 /***/ }),
-/* 56 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2336,7 +2350,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(10);
+__webpack_require__(12);
 var NavbarItem = function (_a) {
     var icon = _a.icon, text = _a.text, selected = _a.selected, props = __rest(_a, ["icon", "text", "selected"]);
     return (React.createElement("div", __assign({ className: classNames('navbar-item', { selected: selected }) }, props),
@@ -2347,72 +2361,11 @@ exports.default = NavbarItem;
 
 
 /***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(58);
-var Notification = function (props) {
-    var message = props.message, className = props.className, warning = props.warning, restOfProps = __rest(props, ["message", "className", "warning"]);
-    var componentClassName = classNames('notification', className, {
-        alarm: warning === true,
-    });
-    return (React.createElement("div", __assign({ className: componentClassName }, restOfProps), message));
-};
-exports.default = Notification;
-
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -2439,36 +2392,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
 __webpack_require__(60);
-var Radio = /** @class */ (function (_super) {
-    __extends(Radio, _super);
-    function Radio() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.handleChange = function (e) {
-            if (_this.props.disabled) {
-                return;
-            }
-            if (_this.props.onChange) {
-                _this.props.onChange(e);
-            }
-        };
-        return _this;
-    }
-    Radio.prototype.render = function () {
-        var _this = this;
-        var _a = this.props, children = _a.children, className = _a.className, disabled = _a.disabled, name = _a.name, value = _a.value, onChange = _a.onChange, props = __rest(_a, ["children", "className", "disabled", "name", "value", "onChange"]);
-        var checkClassName = classNames('radio-btn', className, {
-            disabled: this.props.disabled,
-        });
-        return (React.createElement("div", { className: checkClassName, onClick: function () { return _this.radioButton.click(); } },
-            React.createElement("div", { className: "radio-icon" },
-                React.createElement("input", __assign({ type: "radio", name: name, id: "" + name + value, value: value, onChange: this.handleChange, ref: function (node) { return (_this.radioButton = node); } }, props)),
-                React.createElement("label", { htmlFor: "" + name + value, className: "radio" },
-                    React.createElement("span", { className: "icon" }))),
-            React.createElement("div", { className: "children-div" }, children)));
-    };
-    return Radio;
-}(React.Component));
-exports.default = Radio;
+var Notification = function (props) {
+    var message = props.message, className = props.className, warning = props.warning, restOfProps = __rest(props, ["message", "className", "warning"]);
+    var componentClassName = classNames('notification', className, {
+        alarm: warning === true,
+    });
+    return (React.createElement("div", __assign({ className: componentClassName }, restOfProps), message));
+};
+exports.default = Notification;
 
 
 /***/ }),
@@ -2522,6 +2453,89 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
 __webpack_require__(62);
+var Radio = /** @class */ (function (_super) {
+    __extends(Radio, _super);
+    function Radio() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.handleChange = function (e) {
+            if (_this.props.disabled) {
+                return;
+            }
+            if (_this.props.onChange) {
+                _this.props.onChange(e);
+            }
+        };
+        return _this;
+    }
+    Radio.prototype.render = function () {
+        var _this = this;
+        var _a = this.props, children = _a.children, className = _a.className, disabled = _a.disabled, name = _a.name, value = _a.value, onChange = _a.onChange, props = __rest(_a, ["children", "className", "disabled", "name", "value", "onChange"]);
+        var checkClassName = classNames('radio-btn', className, {
+            disabled: this.props.disabled,
+        });
+        return (React.createElement("div", { className: checkClassName, onClick: function () { return _this.radioButton.click(); } },
+            React.createElement("div", { className: "radio-icon" },
+                React.createElement("input", __assign({ type: "radio", name: name, id: "" + name + value, value: value, onChange: this.handleChange, ref: function (node) { return (_this.radioButton = node); } }, props)),
+                React.createElement("label", { htmlFor: "" + name + value, className: "radio" },
+                    React.createElement("span", { className: "icon" }))),
+            React.createElement("div", { className: "children-div" }, children)));
+    };
+    return Radio;
+}(React.Component));
+exports.default = Radio;
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(64);
 var Textarea = /** @class */ (function (_super) {
     __extends(Textarea, _super);
     function Textarea(props) {
@@ -2574,28 +2588,28 @@ exports.default = Textarea;
 
 
 /***/ }),
-/* 62 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 63 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var entry_1 = __webpack_require__(64);
+var entry_1 = __webpack_require__(66);
 exports.TimelineEntry = entry_1.default;
-__webpack_require__(11);
+__webpack_require__(13);
 var Timeline = function (props) { return (React.createElement("div", { className: "timeline-wrapper" }, props.children)); };
 exports.Timeline = Timeline;
 
 
 /***/ }),
-/* 64 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2625,8 +2639,8 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var loader_1 = __webpack_require__(5);
-__webpack_require__(11);
+var loader_1 = __webpack_require__(7);
+__webpack_require__(13);
 var TimelineEntry = function (_a) {
     var time = _a.time, description = _a.description, noBorder = _a.noBorder, clickable = _a.clickable, children = _a.children, loading = _a.loading, props = __rest(_a, ["time", "description", "noBorder", "clickable", "children", "loading"]);
     return (React.createElement("div", __assign({ className: classNames('timeline', {
@@ -2646,7 +2660,7 @@ exports.default = TimelineEntry;
 
 
 /***/ }),
-/* 65 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2676,12 +2690,12 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var close_generator_1 = __webpack_require__(66);
-__webpack_require__(67);
-var notification_warning_svg_1 = __webpack_require__(68);
-var notification_error_svg_1 = __webpack_require__(69);
-var notification_hint_svg_1 = __webpack_require__(70);
-var notification_success_svg_1 = __webpack_require__(71);
+var close_generator_1 = __webpack_require__(68);
+__webpack_require__(69);
+var notification_warning_svg_1 = __webpack_require__(70);
+var notification_error_svg_1 = __webpack_require__(71);
+var notification_hint_svg_1 = __webpack_require__(72);
+var notification_success_svg_1 = __webpack_require__(73);
 var ICON_SELECTOR = {
     info: notification_hint_svg_1.default,
     success: notification_success_svg_1.default,
@@ -2714,7 +2728,7 @@ exports.default = Banner;
 
 
 /***/ }),
-/* 66 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2739,26 +2753,10 @@ exports.default = CloseGenerator;
 
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 68 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMzIiIGQ9Ik0yMyAxMmwtNSAxMEg2TDEgMTIgNiAyaDEyeiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiM3MDYxMzgiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEyYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjhjMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
-
-/***/ }),
-/* 69 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNCQzAwMDciIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTMuODY3IDIyYy0uNDggMC0uOTYyLS4xLTEuNDQyLS4zOTgtMS4zNDYtLjc5Ni0xLjgyNy0yLjY4Ny0xLjA1OC00LjA4TDkuNTQgMy4zOTNhMi4zNiAyLjM2IDAgMCAxIC45NjEtLjk5NSAyLjg1OSAyLjg1OSAwIDAgMSAyLjIxMS0uMjk4Yy43Ny4xOTkgMS4zNDYuNjk2IDEuODI3IDEuMzkzbDguMDc2IDE0LjAzYy4yODkuNDk3LjM4NS45OTQuMzg1IDEuNDkyIDAgLjc5Ni0uMjg4IDEuNTkyLS44NjUgMi4wOS0uNDgxLjU5Ni0xLjE1NC44OTUtMS45MjMuODk1SDMuODY3eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEzYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjljMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
 /* 70 */
@@ -2766,7 +2764,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgeD0iMiIgeT0iMiIgZmlsbD0iIzFFNkRDOCIgcng9IjEwIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTMgMTJ2NGMwIC42LS40IDEtMSAxcy0xLS40LTEtMXYtNGMwLS42LjQtMSAxLTFzMSAuNCAxIDF6bS0xLTNhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMzIiIGQ9Ik0yMyAxMmwtNSAxMEg2TDEgMTIgNiAyaDEyeiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiM3MDYxMzgiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEyYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjhjMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
 /* 71 */
@@ -2774,10 +2772,26 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSIjMjQ4MjEyIiByeD0iMTAiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTYuNjA3IDguMTIxbC02LjM2NCA2LjM2NC0yLjgyOS0yLjgyOCIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==");
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNCQzAwMDciIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTMuODY3IDIyYy0uNDggMC0uOTYyLS4xLTEuNDQyLS4zOTgtMS4zNDYtLjc5Ni0xLjgyNy0yLjY4Ny0xLjA1OC00LjA4TDkuNTQgMy4zOTNhMi4zNiAyLjM2IDAgMCAxIC45NjEtLjk5NSAyLjg1OSAyLjg1OSAwIDAgMSAyLjIxMS0uMjk4Yy43Ny4xOTkgMS4zNDYuNjk2IDEuODI3IDEuMzkzbDguMDc2IDE0LjAzYy4yODkuNDk3LjM4NS45OTQuMzg1IDEuNDkyIDAgLjc5Ni0uMjg4IDEuNTkyLS44NjUgMi4wOS0uNDgxLjU5Ni0xLjE1NC44OTUtMS45MjMuODk1SDMuODY3eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEzYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjljMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
 /* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgeD0iMiIgeT0iMiIgZmlsbD0iIzFFNkRDOCIgcng9IjEwIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTMgMTJ2NGMwIC42LS40IDEtMSAxcy0xLS40LTEtMXYtNGMwLS42LjQtMSAxLTFzMSAuNCAxIDF6bS0xLTNhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSIjMjQ4MjEyIiByeD0iMTAiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTYuNjA3IDguMTIxbC02LjM2NCA2LjM2NC0yLjgyOS0yLjgyOCIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==");
+
+/***/ }),
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2806,7 +2820,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(73);
+__webpack_require__(75);
 var Toolbal = function (props) { return (React.createElement("div", { className: "toolbar" },
     props.avatar && React.createElement("div", { className: "toolbar-avatar" }, props.avatar),
     React.createElement("div", { className: "toolbar-info" },
@@ -2822,26 +2836,26 @@ exports.default = Toolbal;
 
 
 /***/ }),
-/* 73 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var action_table_1 = __webpack_require__(75);
+var action_table_1 = __webpack_require__(77);
 exports.ActionTable = action_table_1.default;
-var action_table_row_1 = __webpack_require__(76);
+var action_table_row_1 = __webpack_require__(78);
 exports.ActionTableRow = action_table_row_1.default;
 
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2871,7 +2885,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(12);
+__webpack_require__(14);
 var ActionTable = function (props) {
     var title = props.title, restOfProps = __rest(props, ["title"]);
     return (React.createElement("div", __assign({}, restOfProps, { className: classNames('action-table', props.className) }),
@@ -2883,7 +2897,7 @@ exports.default = ActionTable;
 
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2927,7 +2941,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
 var button_1 = __webpack_require__(2);
-__webpack_require__(12);
+__webpack_require__(14);
 var ActionTableRow = /** @class */ (function (_super) {
     __extends(ActionTableRow, _super);
     function ActionTableRow(props) {
@@ -2996,7 +3010,7 @@ exports.default = ActionTableRow;
 
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3017,7 +3031,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(78);
+__webpack_require__(80);
 var DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 var SelectComponent = /** @class */ (function (_super) {
     __extends(SelectComponent, _super);
@@ -3163,13 +3177,13 @@ exports.default = SelectComponent;
 
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3212,7 +3226,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(80);
+__webpack_require__(82);
 var Tag = /** @class */ (function (_super) {
     __extends(Tag, _super);
     function Tag() {
@@ -3234,30 +3248,30 @@ exports.default = Tag;
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var tab_nav_1 = __webpack_require__(82);
+var tab_nav_1 = __webpack_require__(84);
 exports.TabNav = tab_nav_1.default;
-var tab_nav_item_1 = __webpack_require__(83);
+var tab_nav_item_1 = __webpack_require__(85);
 exports.TabNavItem = tab_nav_item_1.default;
-var tab_content_1 = __webpack_require__(84);
+var tab_content_1 = __webpack_require__(86);
 exports.TabContent = tab_content_1.default;
-var tab_content_item_1 = __webpack_require__(85);
+var tab_content_item_1 = __webpack_require__(87);
 exports.TabContentItem = tab_content_item_1.default;
 
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3297,7 +3311,7 @@ exports.default = TabNav;
 
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3360,7 +3374,7 @@ exports.default = TabNavItem;
 
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3439,7 +3453,7 @@ exports.default = TabContent;
 
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3499,7 +3513,7 @@ exports.default = TabContentItem;
 
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3530,12 +3544,12 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var moment = __webpack_require__(87);
+var moment = __webpack_require__(15);
 var classNames = __webpack_require__(1);
-var ReactModal = __webpack_require__(88);
+var ReactModal = __webpack_require__(16);
 var button_1 = __webpack_require__(2);
-var persian_number_1 = __webpack_require__(13);
-var flex_1 = __webpack_require__(14);
+var persian_number_1 = __webpack_require__(5);
+var flex_1 = __webpack_require__(6);
 __webpack_require__(90);
 moment.loadPersian({ dialect: 'persian-modern' });
 var DatePicker = /** @class */ (function (_super) {
@@ -3728,18 +3742,6 @@ exports.default = DatePicker;
 
 
 /***/ }),
-/* 87 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__87__;
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__88__;
-
-/***/ }),
 /* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3757,19 +3759,563 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__88__;
 
 "use strict";
 
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var table_1 = __webpack_require__(92);
-exports.Table = table_1.default;
-var table_row_1 = __webpack_require__(95);
-exports.Tr = table_row_1.default;
-var table_header_1 = __webpack_require__(96);
-exports.Th = table_header_1.default;
-var table_data_1 = __webpack_require__(97);
-exports.Td = table_data_1.default;
+var React = __webpack_require__(0);
+var moment = __webpack_require__(15);
+var classNames = __webpack_require__(1);
+var ReactModal = __webpack_require__(16);
+var button_1 = __webpack_require__(2);
+var persian_number_1 = __webpack_require__(5);
+var flex_1 = __webpack_require__(6);
+__webpack_require__(92);
+moment.loadPersian({ dialect: 'persian-modern' });
+var DatePicker = /** @class */ (function (_super) {
+    __extends(DatePicker, _super);
+    function DatePicker(props) {
+        var _this = _super.call(this, props) || this;
+        _this.calendar = React.createRef();
+        _this.generateMonth = function (mm, yyyy) {
+            var dates = [];
+            var month = moment(yyyy + "/" + mm + "/1", 'jYYYY/jM/jD');
+            var startOfNextMonth = moment(month).endOf('jMonth');
+            var date = moment(month);
+            for (var i = 6, j = 0; i !== date.day(); i === 6 ? (i = 0) : i++, j++) {
+                var day = moment(date).subtract(date.day() - j + 1, 'days');
+                dates.push(_this.generateDay(day, 'prev'));
+            }
+            while (date.isBefore(startOfNextMonth)) {
+                dates.push(_this.generateDay(date));
+                date.add(1, 'days');
+            }
+            for (var i = date.day(); i < 6; i++) {
+                var day = moment(date).subtract(date.day() - i, 'days');
+                dates.push(_this.generateDay(day, 'next'));
+            }
+            var weeks = [];
+            for (var i = 0; i < dates.length / 7; i++) {
+                var week = dates.slice(i * 7, (i + 1) * 7);
+                weeks.push(React.createElement(React.Fragment, { key: i }, week));
+            }
+            return (React.createElement("div", { onMouseLeave: function () { return _this.createDefaultRange(); }, className: "calendar-month" }, weeks));
+        };
+        _this.generateDay = function (day, month) {
+            var calendar = _this.calendar.current;
+            var isSelectable = !_this.props.isSelectable
+                ? day.isBefore(moment())
+                : _this.props.isSelectable(moment(day));
+            var isInRange = false;
+            var isSecondary = false;
+            var isPrimary = false;
+            if (calendar) {
+                var dayID = '#day-'.concat(day.format('jYYYY-jMM-jD'));
+                var dayElement = calendar.querySelector(dayID);
+                if (dayElement) {
+                    if (dayElement.classList.contains('secondary')) {
+                        isSecondary = true;
+                    }
+                    if (dayElement.classList.contains('primary')) {
+                        isPrimary = true;
+                    }
+                    if (dayElement.classList.contains('inRange')) {
+                        isInRange = true;
+                    }
+                }
+            }
+            var className = classNames('calendar-day', {
+                'seem-disabled': !!month || !isSelectable,
+                selected: day.isSame(_this.state.fromDate, 'day') ||
+                    day.isSame(_this.state.toDate, 'day'),
+                inRange: isInRange,
+                secondary: isSecondary,
+                primary: isPrimary,
+                clickable: isSelectable,
+            });
+            var onClick = !month
+                ? _this.selectDate.bind(_this, day.format('jYYYY jMM jD'))
+                : month === 'next'
+                    ? _this.changeMonth.bind(_this, 'add')
+                    : _this.changeMonth.bind(_this, 'subtract');
+            var onMouseOver = function (evt) {
+                var dayElement = evt.currentTarget;
+                if (!month) {
+                    if (_this.state.fromDate && !dayElement.classList.contains('inRange')) {
+                        var toDate = moment(dayElement.id.replace('day-', ''));
+                        var fromDate = moment(_this.state.fromDate.format('jYYYY-jMM-jD'));
+                        if (toDate.isAfter(fromDate)) {
+                            dayElement.classList.add('primary');
+                        }
+                        else {
+                            dayElement.classList.add('secondary');
+                        }
+                    }
+                    if (!(_this.state.fromDate && _this.state.toDate)) {
+                        _this.handleCreateRange(dayElement);
+                    }
+                }
+            };
+            var onMouseLeave = function (evt) {
+                var classList = evt.currentTarget.classList;
+                if (!classList.contains('selected')) {
+                    if (classList.contains('primary') || classList.contains('secondary')) {
+                        classList.remove('primary', 'secondary');
+                    }
+                }
+            };
+            return (React.createElement("div", { onClick: isSelectable ? onClick : null, onMouseOver: onMouseOver, onMouseLeave: onMouseLeave, className: className, id: 'day-' + day.format('jYYYY-jMM-jD'), key: day.format('jYYYY-jMM-jD') },
+                React.createElement(persian_number_1.default, { value: day.format('jD') })));
+        };
+        _this.saveDate = function (date) {
+            var firstDate = date[0];
+            var secondDate = date[1];
+            var from = date[0];
+            var to = date[1];
+            if (from.isAfter(to)) {
+                from = secondDate;
+                to = firstDate;
+            }
+            date = [from, to];
+            _this.setState({ savedDate: date });
+            _this.props.onChangeDate(date);
+            _this.closeDialog();
+        };
+        _this.openDialog = function () {
+            if (_this.props.disabled) {
+                return;
+            }
+            var date1 = _this.props.defaultValue
+                ? moment(_this.props.defaultValue[0])
+                : moment();
+            var month = date1.jMonth() + 1;
+            var year = date1.jYear();
+            if (_this.state.savedDate) {
+                month = _this.state.savedDate[0].jMonth() + 1;
+                year = _this.state.savedDate[0].jYear();
+            }
+            if (_this.props.openDialog) {
+                _this.setState({
+                    year: year,
+                    month: month,
+                }, function () { return _this.props.openDialog(); });
+            }
+            else {
+                _this.setState({
+                    dialogOpen: true,
+                    year: year,
+                    month: month,
+                });
+            }
+            setTimeout(function () { return _this.createDefaultRange(); }, 0);
+        };
+        _this.closeDialog = function () {
+            if (_this.props.closeDialog) {
+                _this.props.closeDialog();
+            }
+            else {
+                _this.setState({ dialogOpen: false });
+            }
+        };
+        var fromDate = props.defaultValue
+            ? moment(props.defaultValue[0])
+            : moment();
+        var toDate = props.defaultValue && props.defaultValue[1]
+            ? moment(props.defaultValue[1])
+            : null;
+        _this.state = {
+            month: fromDate.jMonth() + 1,
+            year: fromDate.jYear(),
+            fromDate: fromDate,
+            toDate: toDate,
+            dialogOpen: false,
+            savedDate: [fromDate, toDate],
+        };
+        return _this;
+    }
+    DatePicker.prototype.componentDidUpdate = function (prevProps) {
+        if (!moment(prevProps.defaultValue[0]).isSame(this.state.savedDate[0], 'day')) {
+            this.saveDate([
+                moment(this.state.savedDate[0]),
+                this.state.savedDate[1] ? moment(this.state.savedDate[1]) : null,
+            ]);
+        }
+        if (this.state.forceDatePickerOpen) {
+            this.openDialog();
+        }
+    };
+    DatePicker.prototype.getDashedDateDetail = function (date) {
+        var detail = date.split('-');
+        return {
+            year: parseInt(detail[0], 10),
+            month: parseInt(detail[1], 10),
+            day: parseInt(detail[2], 10),
+        };
+    };
+    DatePicker.prototype.handleCreateRange = function (toDayElement) {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        var toDayID = moment(toDayElement.id.replace('#day-', ''), 'jYYYY/jM/jD').format('jYYYY-jMM-jD');
+        var fromDayID = this.state.fromDate.format('jYYYY-jMM-jD');
+        var fromDayElement = calendar.querySelector('#day-' + fromDayID);
+        if (!fromDayElement) {
+            var fromDayDetail = this.getDashedDateDetail(fromDayID);
+            var toDayDetail = this.getDashedDateDetail(toDayID);
+            if (fromDayDetail.month < toDayDetail.month) {
+                return this.createRange(toDayElement, 'start');
+            }
+            else if (fromDayDetail.month > toDayDetail.month) {
+                return this.createRange(toDayElement, 'end');
+            }
+            else {
+                return;
+            }
+        }
+        this.createRange(fromDayElement, toDayElement);
+    };
+    DatePicker.prototype.createRange = function (from, to) {
+        var calendar = this.calendar.current;
+        if (!calendar) {
+            return;
+        }
+        if (from === 'start') {
+            from = calendar.querySelector('.calendar-day');
+        }
+        if (from === 'end') {
+            var allDays = calendar.querySelectorAll('.calendar-day');
+            from = allDays[allDays.length - 1];
+        }
+        if (to === 'start') {
+            to = calendar.querySelector('.calendar-day');
+        }
+        if (to === 'end') {
+            var allDays = calendar.querySelectorAll('.calendar-day');
+            to = allDays[allDays.length - 1];
+        }
+        var fromDay = moment(from.id.replace('day-', ''), 'jYYYY/jM/jD');
+        var toDay = moment(to.id.replace('day-', ''), 'jYYYY/jM/jD');
+        if (fromDay.isSame(toDay)) {
+            return;
+        }
+        from.classList.add('inRange');
+        var isToDayAfterFromDay = toDay.isAfter(fromDay);
+        var achievementFunc = isToDayAfterFromDay ? 'add' : 'subtract';
+        var difference = Math.abs(fromDay.diff(toDay, 'day'));
+        this.removeAllPrimariesAndSecondaries();
+        for (var i = 1; i <= difference; i++) {
+            var dayElementID = '#day-'.concat(fromDay[achievementFunc](1, 'day').format('jYYYY-jMM-jD'));
+            var dayElement = calendar.querySelector(dayElementID);
+            if (!dayElement) {
+                continue;
+            }
+            dayElement.classList.add('inRange');
+            if (isToDayAfterFromDay) {
+                this.removeAllNextInRanges(dayElement);
+                this.removeAllInRangesBeforePrimary(from);
+                from.classList.add('primary');
+                to.classList.add('secondary');
+            }
+            else {
+                this.removeAllPrevInRanges(dayElement);
+                this.removeAllInRangesAfterPrimary(from);
+                from.classList.add('secondary');
+                to.classList.add('primary');
+            }
+        }
+    };
+    DatePicker.prototype.removeAllNextInRanges = function (dayElement) {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        var day = moment(dayElement.id.replace('day-', ''), 'jYYYY/jM/jD');
+        var nextElementID = '#day-'.concat(day.add(1, 'day').format('jYYYY-jMM-jD'));
+        var nextElement = calendar.querySelector(nextElementID);
+        if (nextElement) {
+            nextElement.classList.remove('inRange');
+            this.removeAllNextInRanges(nextElement);
+        }
+    };
+    DatePicker.prototype.removeAllPrevInRanges = function (dayElement) {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        var day = moment(dayElement.id.replace('day-', ''), 'jYYYY/jM/jD');
+        var prevElementID = '#day-'.concat(day.subtract(1, 'day').format('jYYYY-jMM-jD'));
+        var prevElement = calendar.querySelector(prevElementID);
+        if (prevElement) {
+            prevElement.classList.remove('inRange');
+            this.removeAllPrevInRanges(prevElement);
+        }
+    };
+    DatePicker.prototype.removeAllInRangesAfterPrimary = function (dayElement) {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        var nextElement = dayElement.nextElementSibling;
+        if (nextElement) {
+            nextElement.classList.remove('inRange');
+            this.removeAllInRangesAfterPrimary(nextElement);
+        }
+    };
+    DatePicker.prototype.removeAllInRangesBeforePrimary = function (dayElement) {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        var prevElement = dayElement.previousElementSibling;
+        if (prevElement) {
+            prevElement.classList.remove('inRange');
+            this.removeAllInRangesBeforePrimary(prevElement);
+        }
+    };
+    DatePicker.prototype.removeAllInRanges = function () {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        calendar
+            .querySelectorAll('.inRange')
+            .forEach(function (inRange) { return inRange.classList.remove('inRange'); });
+    };
+    DatePicker.prototype.removeAllSecondaries = function () {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        calendar
+            .querySelectorAll('.secondary')
+            .forEach(function (inRange) { return inRange.classList.remove('secondary'); });
+    };
+    DatePicker.prototype.removeAllPrimaries = function () {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        calendar
+            .querySelectorAll('.primary')
+            .forEach(function (inRange) { return inRange.classList.remove('primary'); });
+    };
+    DatePicker.prototype.removeAllPrimariesAndSecondaries = function () {
+        this.removeAllPrimaries();
+        this.removeAllSecondaries();
+    };
+    DatePicker.prototype.createDefaultRange = function () {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
+        if (this.state.toDate && this.state.fromDate) {
+            var toDateID = this.state.toDate.format('jYYYY-jMM-jD');
+            var fromDateID = this.state.fromDate.format('jYYYY-jMM-jD');
+            var toDateElement = calendar.querySelector('#day-'.concat(toDateID));
+            var fromDateElement = calendar.querySelector('#day-'.concat(fromDateID));
+            var fromMonth = this.getDashedDateDetail(fromDateID).month;
+            var toMonth = this.getDashedDateDetail(toDateID).month;
+            if (fromMonth === toMonth) {
+                this.createRange(fromDateElement, toDateElement);
+            }
+            else {
+                if (!toDateElement && !fromDateElement) {
+                    if (fromMonth > toMonth) {
+                        if (this.state.month < fromMonth && this.state.month > toMonth) {
+                            this.createRange('start', 'end');
+                        }
+                    }
+                    else {
+                        if (this.state.month < toMonth && this.state.month > fromMonth) {
+                            this.createRange('start', 'end');
+                        }
+                    }
+                }
+                else if (toDateElement) {
+                    if (this.state.month < fromMonth) {
+                        this.createRange('end', toDateElement);
+                    }
+                    else {
+                        this.createRange('start', toDateElement);
+                    }
+                }
+                else {
+                    if (this.state.month < toMonth) {
+                        this.createRange(fromDateElement, 'end');
+                    }
+                    else {
+                        this.createRange('start', fromDateElement);
+                    }
+                }
+            }
+        }
+        else if (this.state.toDate) {
+            var toDateID = '#day-'.concat(this.state.toDate.format('jYYYY-jMM-jD'));
+            var toDateElement = calendar.querySelector(toDateID);
+            if (!toDateElement) {
+                return;
+            }
+            this.handleCreateRange(toDateElement);
+        }
+        else {
+            this.removeAllInRanges();
+        }
+    };
+    DatePicker.prototype.resetDate = function () {
+        var date = moment();
+        this.setState({
+            year: date.jYear(),
+            month: date.jMonth() + 1,
+            fromDate: date,
+            toDate: null,
+        });
+        this.removeAllInRanges();
+    };
+    DatePicker.prototype.selectDate = function (date) {
+        var selectedDate = moment(date, 'jYYYY/jM/jD');
+        if (this.state.fromDate && this.state.toDate) {
+            this.setState({
+                toDate: null,
+                fromDate: selectedDate,
+            });
+            this.removeAllInRanges();
+        }
+        else if (this.state.toDate) {
+            this.setState({ fromDate: selectedDate });
+        }
+        else {
+            this.setState({ toDate: selectedDate });
+        }
+        // this.saveDate(moment(date, 'jYYYY/jM/jD'));
+    };
+    DatePicker.prototype.changeMonth = function (fn) {
+        var _this = this;
+        var date = this.state.year + "/" + this.state.month + "/1";
+        var parsedDate = moment(date, 'jYYYY/jM/jD')[fn](1, 'jMonth');
+        this.setState({
+            month: parsedDate.jMonth() + 1,
+            year: parsedDate.jYear(),
+        });
+        // magic 0ms timeout to make sure all days are rendered
+        setTimeout(function () { return _this.createDefaultRange(); }, 0);
+    };
+    DatePicker.prototype.createTitle = function (minimal) {
+        var format = minimal ? 'jM/jD' : 'ddd jD jMMMM';
+        if (this.state.fromDate && this.state.toDate) {
+            var from = this.state.fromDate.toDate().getTime();
+            var to = this.state.toDate.toDate().getTime();
+            var fromTitle = moment(from).format(format);
+            var toTitle = moment(to).format(format);
+            if (from < to) {
+                return "\u0627\u0632 " + fromTitle + " \u062A\u0627 " + toTitle;
+            }
+            else {
+                return "\u0627\u0632 " + toTitle + " \u062A\u0627 " + fromTitle;
+            }
+        }
+        else if (this.state.fromDate) {
+            return this.state.fromDate.format(format);
+        }
+        return minimal ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
+    };
+    DatePicker.prototype.render = function () {
+        var _a, _b;
+        var _this = this;
+        var currentYear = this.state.fromDate
+            ? this.state.fromDate.jYear()
+            : '';
+        var year = this.state.year;
+        var month = this.state.month;
+        var displayedDate = moment(year + "-" + month + "-1", 'jYYYY/jM/jD').format('jMMMM jYYYY');
+        return (React.createElement("div", { className: "range-date-picker-container " + this.props.className },
+            React.createElement(button_1.default, __assign({ disabled: this.props.disabled, className: "date-picker-input " + (this.state.savedDate ? '' : 'empty'), onClick: this.openDialog }, (_a = {}, _a[this.props.inputButtonType] = true, _a), (_b = {}, _b[this.props.inputButtonSize] = true, _b)),
+                React.createElement(persian_number_1.default, { value: this.createTitle(true), className: "clickable" })),
+            React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.dialogOpen || this.state.dialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-range-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
+                React.createElement("div", { className: "calendar-info" },
+                    React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
+                    React.createElement(persian_number_1.default, { className: "month", value: this.createTitle() })),
+                React.createElement(flex_1.Row, { grow: 1, className: "padding-medium calendar-switches" },
+                    React.createElement(flex_1.Column, { grow: 0, order: 0 },
+                        React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('subtract'); } }, "chevron_right")),
+                    React.createElement(flex_1.Column, { grow: 0, order: 2 },
+                        React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('add'); } }, "chevron_left")),
+                    React.createElement(flex_1.Column, { grow: 1, order: 1, align: "center" },
+                        React.createElement(persian_number_1.default, { className: "month", value: displayedDate }))),
+                React.createElement("div", { className: "calendar", ref: this.calendar },
+                    React.createElement("div", { className: "calendar-month" },
+                        React.createElement("div", { className: "calendar-week" },
+                            React.createElement("div", { className: "calendar-weekday" }, "\u0634"),
+                            React.createElement("div", { className: "calendar-weekday" }, "\u06CC"),
+                            React.createElement("div", { className: "calendar-weekday" }, "\u062F"),
+                            React.createElement("div", { className: "calendar-weekday" }, "\u0633"),
+                            React.createElement("div", { className: "calendar-weekday" }, "\u0686"),
+                            React.createElement("div", { className: "calendar-weekday" }, "\u067E"),
+                            React.createElement("div", { className: "calendar-weekday" }, "\u062C"))),
+                    this.generateMonth(this.state.month, this.state.year)),
+                React.createElement("div", { className: "calendar-actions" },
+                    React.createElement(button_1.default, { link: true, small: true, onClick: function () {
+                            return _this.saveDate([_this.state.fromDate, _this.state.toDate]);
+                        } }, "\u062A\u0627\u06CC\u06CC\u062F"),
+                    React.createElement(button_1.default, { link: true, small: true, onClick: this.closeDialog }, "\u0627\u0646\u0635\u0631\u0627\u0641"),
+                    React.createElement(button_1.default, { link: true, small: true, onClick: this.resetDate.bind(this) }, "\u0627\u0645\u0631\u0648\u0632")))));
+    };
+    DatePicker.defaultProps = {
+        className: '',
+        dialogOpen: false,
+        onChangeDate: function () { },
+    };
+    return DatePicker;
+}(React.Component));
+exports.default = DatePicker;
 
 
 /***/ }),
 /* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var table_1 = __webpack_require__(94);
+exports.Table = table_1.default;
+var table_row_1 = __webpack_require__(97);
+exports.Tr = table_row_1.default;
+var table_header_1 = __webpack_require__(98);
+exports.Th = table_header_1.default;
+var table_data_1 = __webpack_require__(99);
+exports.Td = table_data_1.default;
+
+
+/***/ }),
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3811,7 +4357,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var tag_line_1 = __webpack_require__(93);
+var tag_line_1 = __webpack_require__(95);
 var DataTable = /** @class */ (function (_super) {
     __extends(DataTable, _super);
     function DataTable() {
@@ -3830,26 +4376,26 @@ exports.default = DataTable;
 
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(94);
+__webpack_require__(96);
 var TagLine = function (props) { return (React.createElement("div", { className: "date-line" }, props.children)); };
 exports.default = TagLine;
 
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3886,7 +4432,7 @@ exports.default = Tr;
 
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3923,7 +4469,7 @@ exports.default = Th;
 
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3960,13 +4506,13 @@ exports.default = Td;
 
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3996,8 +4542,8 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var react_1 = __webpack_require__(0);
-__webpack_require__(100);
-var modal_1 = __webpack_require__(15);
+__webpack_require__(102);
+var modal_1 = __webpack_require__(17);
 var placeHolder = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 var observerOptions = {
     threshold: 0.01,
@@ -4060,20 +4606,20 @@ exports.default = Image;
 
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(102);
+__webpack_require__(104);
 var ToggleButton = function (props) {
     var handleOnToggle = function () {
         if (!(props.loading || props.disabled)) {
@@ -4090,7 +4636,7 @@ exports.default = ToggleButton;
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
