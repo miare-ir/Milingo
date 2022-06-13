@@ -41,7 +41,7 @@ export interface RangeDatePickerState {
   forceDatePickerOpen?: boolean;
 }
 
-class DatePicker extends React.Component<
+class RangeDatePicker extends React.Component<
   RangeDatePickerProps,
   RangeDatePickerState
 > {
@@ -692,4 +692,4 @@ class DatePicker extends React.Component<
   }
 }
 
-export default DatePicker;
+export default RangeDatePicker;
