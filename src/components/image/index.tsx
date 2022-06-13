@@ -40,12 +40,12 @@ const Image = ({
   return (
     <>
       <img
+        loading="lazy"
         src={src}
         alt={alt}
         onLoad={onLoad}
         onError={onError}
         onClick={onImageClick}
-        loading="lazy"
         {...rest}
       />
       <Modal isOpen={isOpen} onClose={() => toggleModal(false)}>
