@@ -1,9 +1,6 @@
 import moment from 'moment';
 import * as React from 'react';
-import RangePicker, {
-  DatePickerRangeProps,
-  DateRange,
-} from '../date-picker-range';
+import RangePicker, { RangeDatePickerProps, DateRange } from '.';
 
 export default {
   title: 'Date Picker',
@@ -11,7 +8,7 @@ export default {
 };
 
 const RangeDatePickerWithState: React.FC<Partial<
-  DatePickerRangeProps
+  RangeDatePickerProps
 >> = props => {
   const [value, setValue] = React.useState<DateRange>([moment()]);
 

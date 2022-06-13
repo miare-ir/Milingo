@@ -24,7 +24,7 @@
   z-index: 1000;
 
   .date-picker {
-    background-color: #fff;
+    background-color: $whiteColor;
     padding: 0;
     width: 332px;
     direction: rtl;
@@ -65,7 +65,7 @@
       &-info {
         background-color: #212230;
         padding: calculatePixelToRem(10);
-        color: #fff;
+        color: $whiteColor;
 
         .year {
           float: left;
@@ -117,17 +117,17 @@
         }
 
         &.selected {
-          background-color: #4a90e2;
+          background-color: $primary2;
           border-radius: 50%;
-          color: #fff;
+          color: $whiteColor;
         }
 
         &.clickable {
           cursor: pointer;
 
           &:not(.seem-disabled):hover {
-            background-color: #4a90e2;
-            color: #fff;
+            background-color: $primary2;
+            color: $whiteColor;
           }
         }
 
@@ -143,7 +143,7 @@
             right: -5px;
             top: 0;
             bottom: 0;
-            background-color: #4a90e24d;
+            background-color: rgba($primary2, 0.3);
             transition: background-color 0.2s ease-in-out;
           }
 
@@ -166,7 +166,7 @@
             &:before {
               border-top-style: dashed;
               border-bottom-style: dashed;
-              border-color: #4a90e24d;
+              border-color: rgba($primary2, 0.3);
               background-color: transparent;
             }
           }
