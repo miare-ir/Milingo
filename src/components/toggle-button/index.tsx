@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 import './styles.scss';
 
@@ -10,6 +11,7 @@ export interface ToggleButtonProps extends React.HTMLProps<HTMLInputElement> {
   loading?: boolean;
   checked: boolean;
   large?: boolean;
+  ltr?: boolean;
   classNames?: string;
 }
 
@@ -20,8 +22,18 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
     }
   };
 
+  const renderTitle = (): JSX.Element => (
+    <p
+      className={`label ${props.large ? 'large' : ''} ${
+        props.ltr ? 'ltr' : ''
+      }`}>
+      {props.label}
+    </p>
+  );
+
   return (
     <div className="toggle-button-container">
+      {props.ltr && props.label && renderTitle()}
       <label
         className={`toggle-button ${props.classNames || ''} ${
           props.large ? 'large' : ''
@@ -37,12 +49,15 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
         />
         <div onClick={handleOnToggle} className="slider" />
       </label>
-
-      {props.label && (
-        <p className={`label ${props.large ? 'large' : ''}`}>{props.label}</p>
-      )}
+      {!props.ltr && props.label && renderTitle()}
     </div>
   );
+};
+
+ToggleButton.propTypes = {
+  large: PropTypes.bool,
+  ltr: PropTypes.bool,
+  label: PropTypes.bool,
 };
 
 export default ToggleButton;
