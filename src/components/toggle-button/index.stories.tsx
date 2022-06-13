@@ -59,7 +59,7 @@ export const Normal = (): JSX.Element => {
           label="سلام دنیا"
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
-          ltr={true}
+          ltr
         />
       </div>
     </>
@@ -124,7 +124,7 @@ export const Large = (): JSX.Element => {
           large
           onToggle={() => setToggle(!toggle)}
           checked={toggle}
-          ltr={true}
+          ltr
         />
       </div>
     </>

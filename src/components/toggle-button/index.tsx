@@ -57,7 +57,7 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
 ToggleButton.propTypes = {
   large: PropTypes.bool,
   ltr: PropTypes.bool,
-  label: PropTypes.bool,
+  label: PropTypes.string,
 };
 
 export default ToggleButton;
