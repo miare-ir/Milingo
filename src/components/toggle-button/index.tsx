@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import * as PropTypes from 'prop-types';
 
 import './styles.scss';
 
@@ -50,11 +49,5 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
     </div>
   );
 };
-
-// ToggleButton.propTypes = {
-//   large: PropTypes.bool,
-//   ltr: PropTypes.bool,
-//   label: PropTypes.string,
-// };
 
 export default ToggleButton;
