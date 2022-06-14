@@ -1,12 +1,12 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
+// import * as PropTypes from 'prop-types';
 
 import './styles.scss';
 
 export interface ToggleButtonProps extends React.HTMLProps<HTMLInputElement> {
   name: string;
-  label?: string;
   onToggle: () => void;
+  label?: string;
   disabled?: boolean;
   loading?: boolean;
   checked: boolean;
@@ -51,10 +51,10 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
   );
 };
 
-ToggleButton.propTypes = {
-  large: PropTypes.bool,
-  ltr: PropTypes.bool,
-  label: PropTypes.string,
-};
+// ToggleButton.propTypes = {
+//   large: PropTypes.bool,
+//   ltr: PropTypes.bool,
+//   label: PropTypes.string,
+// };
 
 export default ToggleButton;
