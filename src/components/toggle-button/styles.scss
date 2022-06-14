@@ -6,6 +6,10 @@
   justify-content: flex-start;
   direction: rtl;
   align-items: center;
+  
+  &.ltr {
+    direction: ltr;
+  }
 
   .label {
     margin-right: 12px;
@@ -13,6 +17,11 @@
 
     &.large {
       font-size: 16px;
+    }
+
+    &.ltr {
+      margin-right: 0;
+      margin-left: 12px;
     }
   }
 
