@@ -23,7 +23,7 @@ export interface RangeDatePickerProps {
   className?: string;
   isSelectable?: (day: Moment) => boolean;
   displayFormat?: (day: Moment) => string;
-  dialogOpen?: boolean;
+  isDialogOpen?: boolean;
   openDialog?: () => void;
   closeDialog?: () => void;
   forceDatePickerOpen?: boolean;
@@ -47,7 +47,7 @@ class RangeDatePicker extends React.Component<
 > {
   public static defaultProps: Partial<RangeDatePickerProps> = {
     className: '',
-    dialogOpen: false,
+    isDialogOpen: false,
     onChangeDate: () => {},
   };
 
@@ -627,7 +627,7 @@ class RangeDatePicker extends React.Component<
         </Button>
         <ReactModal
           ariaHideApp={false}
-          isOpen={this.props.dialogOpen || this.state.isDialogOpen}
+          isOpen={this.props.isDialogOpen || this.state.isDialogOpen}
           onRequestClose={this.closeDialog}
           overlayClassName="milingo-range-date-picker-overlay"
           className="date-picker"
