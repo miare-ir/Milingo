@@ -7,6 +7,7 @@ import * as ReactModal from 'react-modal';
 import Button from '../button';
 import PersianNumber from '../persian-number';
 import { Column, Row } from '../flex';
+import { ButtonProps } from '../button';
 
 import './styles.scss';
 import { generateMonth } from '../../common/utils/date-pickers';
@@ -26,9 +27,8 @@ export interface RangeDatePickerProps {
   openDialog?: () => void;
   closeDialog?: () => void;
   forceDatePickerOpen?: boolean;
-  inputButtonSize?: 'small' | 'tiny' | 'regular' | 'large';
-  inputButtonType?: 'primary' | 'danger' | 'ghost' | 'link';
   disabled?: boolean;
+  buttonProps: Omit<ButtonProps, 'ref'>;
 }
 
 export interface RangeDatePickerState {
@@ -617,13 +617,12 @@ class RangeDatePicker extends React.Component<
     return (
       <div className={`range-date-picker-container ${this.props.className}`}>
         <Button
+          {...this.props.buttonProps}
           disabled={this.props.disabled}
           className={`date-picker-input ${
             this.state.selectedDate ? '' : 'empty'
-          }`}
-          onClick={this.openDialog}
-          {...{ [this.props.inputButtonType]: true }}
-          {...{ [this.props.inputButtonSize]: true }}>
+          } ${this.props.buttonProps.className ?? ''}`}
+          onClick={this.openDialog}>
           <PersianNumber value={this.createTitle(true)} className="clickable" />
         </Button>
         <ReactModal

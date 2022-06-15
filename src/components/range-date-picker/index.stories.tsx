@@ -27,12 +27,12 @@ const RangeDatePickerWithState: React.FC<Partial<
 
 export const RangeDatePicker = (): JSX.Element => (
   <div>
-    <RangeDatePickerWithState inputButtonSize="tiny" />
+    <RangeDatePickerWithState buttonProps={{ ghost: true }} />
     <br />
-    <RangeDatePickerWithState inputButtonSize="small" />
+    <RangeDatePickerWithState buttonProps={{ ghost: true }} />
     <br />
-    <RangeDatePickerWithState inputButtonSize="regular" />
+    <RangeDatePickerWithState buttonProps={{ ghost: true }} />
     <br />
-    <RangeDatePickerWithState inputButtonSize="large" />
+    <RangeDatePickerWithState buttonProps={{ ghost: true }} />
   </div>
 );
