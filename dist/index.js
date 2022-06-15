@@ -4039,11 +4039,11 @@ var ToggleButton = function (props) {
             props.onToggle();
         }
     };
-    return (React.createElement("div", { className: "toggle-button-container" },
+    return (React.createElement("div", { className: "toggle-button-container " + (props.ltr ? 'ltr' : '') },
         React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
             React.createElement("input", { disabled: props.disabled, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked }),
             React.createElement("div", { onClick: handleOnToggle, className: "slider" })),
-        props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') }, props.label))));
+        props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') + " " + (props.ltr ? 'ltr' : '') }, props.label))));
 };
 exports.default = ToggleButton;
 
