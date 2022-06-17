@@ -4225,8 +4225,8 @@ var RangeDatePicker = /** @class */ (function (_super) {
         return minimal ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
     };
     RangeDatePicker.prototype.render = function () {
-        var _a, _b;
         var _this = this;
+        var _a, _b;
         var currentYear = this.state.fromDate
             ? this.state.fromDate.jYear()
             : '';
@@ -4234,9 +4234,9 @@ var RangeDatePicker = /** @class */ (function (_super) {
         var month = this.state.month;
         var displayedDate = moment(year + "-" + month + "-1", 'jYYYY/jM/jD').format('jMMMM jYYYY');
         return (React.createElement("div", { className: "range-date-picker-container " + this.props.className },
-            React.createElement(button_1.default, __assign({ disabled: this.props.disabled, className: "date-picker-input " + (this.state.selectedDate ? '' : 'empty'), onClick: this.openDialog }, (_a = {}, _a[this.props.inputButtonType] = true, _a), (_b = {}, _b[this.props.inputButtonSize] = true, _b)),
+            React.createElement(button_1.default, __assign({}, this.props.buttonProps, { disabled: this.props.disabled, className: "date-picker-input " + (this.state.selectedDate ? '' : 'empty') + " " + ((_b = (_a = this.props.buttonProps) === null || _a === void 0 ? void 0 : _a.className) !== null && _b !== void 0 ? _b : ''), onClick: this.openDialog }),
                 React.createElement(persian_number_1.default, { value: this.createTitle(true), className: "clickable" })),
-            React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.dialogOpen || this.state.isDialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-range-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
+            React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.isDialogOpen || this.state.isDialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-range-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
                 React.createElement("div", { className: "calendar-info" },
                     React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
                     React.createElement(persian_number_1.default, { className: "month", value: this.createTitle() })),
@@ -4267,7 +4267,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
     };
     RangeDatePicker.defaultProps = {
         className: '',
-        dialogOpen: false,
+        isDialogOpen: false,
         onChangeDate: function () { },
     };
     return RangeDatePicker;

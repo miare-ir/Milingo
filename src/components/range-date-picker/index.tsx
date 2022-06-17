@@ -28,7 +28,7 @@ export interface RangeDatePickerProps {
   closeDialog?: () => void;
   forceDatePickerOpen?: boolean;
   disabled?: boolean;
-  buttonProps: Omit<ButtonProps, 'ref'>;
+  buttonProps?: Omit<ButtonProps, 'ref'>;
 }
 
 export interface RangeDatePickerState {
@@ -621,7 +621,7 @@ class RangeDatePicker extends React.Component<
           disabled={this.props.disabled}
           className={`date-picker-input ${
             this.state.selectedDate ? '' : 'empty'
-          } ${this.props.buttonProps.className ?? ''}`}
+          } ${this.props.buttonProps?.className ?? ''}`}
           onClick={this.openDialog}>
           <PersianNumber value={this.createTitle(true)} className="clickable" />
         </Button>
