@@ -28,7 +28,7 @@ export interface RangeDatePickerProps {
   closeDialog?: () => void;
   forceDatePickerOpen?: boolean;
   disabled?: boolean;
-  buttonProps?: Omit<ButtonProps, 'ref'>;
+  buttonProps?: Omit<ButtonProps, 'children' | 'ref'>;
 }
 
 export interface RangeDatePickerState {
