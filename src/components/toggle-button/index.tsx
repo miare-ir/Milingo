@@ -4,12 +4,13 @@ import './styles.scss';
 
 export interface ToggleButtonProps extends React.HTMLProps<HTMLInputElement> {
   name: string;
-  label?: string;
   onToggle: () => void;
+  label?: string;
   disabled?: boolean;
   loading?: boolean;
   checked: boolean;
   large?: boolean;
+  ltr?: boolean;
   classNames?: string;
 }
 
@@ -21,7 +22,7 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
   };
 
   return (
-    <div className="toggle-button-container">
+    <div className={`toggle-button-container ${props.ltr ? 'ltr' : ''}`}>
       <label
         className={`toggle-button ${props.classNames || ''} ${
           props.large ? 'large' : ''
@@ -37,9 +38,13 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
         />
         <div onClick={handleOnToggle} className="slider" />
       </label>
-
       {props.label && (
-        <p className={`label ${props.large ? 'large' : ''}`}>{props.label}</p>
+        <p
+          className={`label ${props.large ? 'large' : ''} ${
+            props.ltr ? 'ltr' : ''
+          }`}>
+          {props.label}
+        </p>
       )}
     </div>
   );

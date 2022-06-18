@@ -52,6 +52,16 @@ export const Normal = (): JSX.Element => {
           id={'loading-switch'}
         />
       </div>
+
+      <div>
+        <ToggleButton
+          name="ltr-switch"
+          label="سلام دنیا"
+          onToggle={() => setToggle(!toggle)}
+          checked={toggle}
+          ltr
+        />
+      </div>
     </>
   );
 };
@@ -104,6 +114,17 @@ export const Large = (): JSX.Element => {
           loading
           large
           id={'loading-switch'}
+        />
+      </div>
+
+      <div>
+        <ToggleButton
+          name="large-ltr-switch"
+          label="سلام دنیا"
+          large
+          onToggle={() => setToggle(!toggle)}
+          checked={toggle}
+          ltr
         />
       </div>
     </>

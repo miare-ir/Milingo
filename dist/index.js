@@ -4535,54 +4535,18 @@ var observerOptions = {
 };
 var Image = function (_a) {
     var src = _a.src, alt = _a.alt, thumbnailInfo = _a.thumbnailInfo, rest = __rest(_a, ["src", "alt", "thumbnailInfo"]);
-    var _b = react_1.useState(placeHolder), imageSrc = _b[0], setImageSrc = _b[1];
-    var _c = react_1.useState(false), didCancel = _c[0], setDidCancel = _c[1];
-    var _d = react_1.useState(), imageRef = _d[0], setImageRef = _d[1];
-    var _e = react_1.useState(false), isOpen = _e[0], toggleModal = _e[1];
-    var observer;
+    var _b = react_1.useState(false), isOpen = _b[0], toggleModal = _b[1];
     var onLoad = function (event) { return event.target.classList.add('image-loaded'); };
     var onError = function (event) {
         return event.target.classList.add('image-has-error');
-    };
-    var hasImage = function () { return imageRef && imageSrc !== src; };
-    var unobserve = function () {
-        if (observer && observer.unobserve) {
-            observer.unobserve(imageRef);
-        }
-    };
-    var observeImage = function () {
-        observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (!didCancel &&
-                    (entry.intersectionRatio > 0 || entry.isIntersecting)) {
-                    setImageSrc(src);
-                    unobserve();
-                }
-            });
-        }, observerOptions);
-        observer.observe(imageRef);
     };
     var onImageClick = function () {
         if (thumbnailInfo.originalSrc) {
             return toggleModal(true);
         }
     };
-    react_1.useEffect(function () {
-        if (hasImage()) {
-            if (IntersectionObserver) {
-                observeImage();
-            }
-            else {
-                setImageSrc(src);
-            }
-        }
-        return function () {
-            setDidCancel(true);
-            unobserve();
-        };
-    }, [src, imageSrc, imageRef]);
     return (React.createElement(React.Fragment, null,
-        React.createElement("img", __assign({ ref: setImageRef, src: imageSrc, alt: alt, onLoad: onLoad, onError: onError, onClick: onImageClick }, rest)),
+        React.createElement("img", __assign({ loading: "lazy", src: src, alt: alt, onLoad: onLoad, onError: onError, onClick: onImageClick }, rest)),
         React.createElement(modal_1.default, { isOpen: isOpen, onClose: function () { return toggleModal(false); } },
             React.createElement("img", { src: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalSrc, alt: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalAlt }))));
 };
@@ -4610,11 +4574,11 @@ var ToggleButton = function (props) {
             props.onToggle();
         }
     };
-    return (React.createElement("div", { className: "toggle-button-container" },
+    return (React.createElement("div", { className: "toggle-button-container " + (props.ltr ? 'ltr' : '') },
         React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
             React.createElement("input", { disabled: props.disabled, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked }),
             React.createElement("div", { onClick: handleOnToggle, className: "slider" })),
-        props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') }, props.label))));
+        props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') + " " + (props.ltr ? 'ltr' : '') }, props.label))));
 };
 exports.default = ToggleButton;
 
