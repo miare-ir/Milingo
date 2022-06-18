@@ -4012,7 +4012,7 @@ var Image = function (_a) {
     };
     return (React.createElement(React.Fragment, null,
         React.createElement("img", __assign({ loading: "lazy", src: src, alt: alt, onLoad: onLoad, onError: onError, onClick: onImageClick }, rest)),
-        React.createElement(modal_1.default, { isOpen: isOpen, onClose: function () { return toggleModal(false); } },
+        React.createElement(modal_1.default, { isOpen: isOpen, onClose: function () { return toggleModal(false); }, className: "milingo-image-modal" },
             React.createElement("img", { src: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalSrc, alt: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalAlt }))));
 };
 exports.default = Image;
