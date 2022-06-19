@@ -48,7 +48,10 @@ const Image = ({
         onClick={onImageClick}
         {...rest}
       />
-      <Modal isOpen={isOpen} onClose={() => toggleModal(false)}>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => toggleModal(false)}
+        className="milingo-image-modal">
         <img
           src={thumbnailInfo?.originalSrc}
           alt={thumbnailInfo?.originalAlt}

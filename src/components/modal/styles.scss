@@ -44,6 +44,15 @@
       align-items: flex-start;
     }
 
+    &.milingo-image-modal {
+      @include onMobile {
+        padding: 0 !important;
+        height: auto !important;
+        width: auto !important;
+        max-width: 100% !important;
+      }
+    }
+
     &.start {
       align-items: start;
     }
