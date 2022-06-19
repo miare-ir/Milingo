@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "./0.styles.css",
-    "main.js": "./main.87b1a3db.iframe.bundle.js",
+    "main.js": "./main.9a6eda53.iframe.bundle.js",
     "main.css.map": "./0.styles.css.map",
     "runtime~main.js": "./runtime~main.248e4f1a.iframe.bundle.js",
-    "vendors~main.js": "./vendors~main.06c9439c.iframe.bundle.js",
-    "vendors~main.js.map": "./vendors~main.06c9439c.iframe.bundle.js.map",
+    "vendors~main.js": "./vendors~main.6f5ddb9b.iframe.bundle.js",
+    "vendors~main.js.map": "./vendors~main.6f5ddb9b.iframe.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "precache-manifest.be171a512c66d90c5056ebb3d853b65b.js": "./precache-manifest.be171a512c66d90c5056ebb3d853b65b.js",
+    "precache-manifest.50226f8464b7e43a47e239ff348dba93.js": "./precache-manifest.50226f8464b7e43a47e239ff348dba93.js",
     "service-worker.js": "./service-worker.js",
     "static/media/styles.scss": "./static/media/arrow.beb4c4b3.svg",
     "static/media/icon.svg": "./static/media/icon.faedbf6b.svg",
@@ -17,13 +17,13 @@
     "static/media/notification-hint.svg": "./static/media/notification-hint.da1566f9.svg",
     "static/media/notification-success.svg": "./static/media/notification-success.3f9f471c.svg",
     "static/media/notification-warning.svg": "./static/media/notification-warning.fa3fd3bf.svg",
-    "vendors~main.06c9439c.iframe.bundle.js.LICENSE.txt": "./vendors~main.06c9439c.iframe.bundle.js.LICENSE.txt"
+    "vendors~main.6f5ddb9b.iframe.bundle.js.LICENSE.txt": "./vendors~main.6f5ddb9b.iframe.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
     "runtime~main.248e4f1a.iframe.bundle.js",
-    "vendors~main.06c9439c.iframe.bundle.js",
-    "static/css/main.1ced2456.chunk.css",
+    "vendors~main.6f5ddb9b.iframe.bundle.js",
+    "static/css/main.b91934a7.chunk.css",
     "0.styles.css",
-    "main.87b1a3db.iframe.bundle.js"
+    "main.9a6eda53.iframe.bundle.js"
   ]
 }

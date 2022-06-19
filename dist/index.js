@@ -4528,11 +4528,6 @@ var React = __webpack_require__(0);
 var react_1 = __webpack_require__(0);
 __webpack_require__(103);
 var modal_1 = __webpack_require__(18);
-var placeHolder = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
-var observerOptions = {
-    threshold: 0.01,
-    rootMargin: '75%',
-};
 var Image = function (_a) {
     var src = _a.src, alt = _a.alt, thumbnailInfo = _a.thumbnailInfo, rest = __rest(_a, ["src", "alt", "thumbnailInfo"]);
     var _b = react_1.useState(false), isOpen = _b[0], toggleModal = _b[1];
