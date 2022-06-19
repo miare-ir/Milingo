@@ -1,29 +1,35 @@
+import moment from 'moment';
 import * as React from 'react';
-import DatePicker from '.';
+import DatePicker, { DatePickerProps } from '.';
 
 export default {
   title: 'Date Picker',
   decorators: [story => <div className="story-container">{story()}</div>],
 };
 
-export const All = () => (
+const DatePickerWithState: React.FC<Partial<DatePickerProps>> = props => {
+  const [value, setValue] = React.useState<moment.Moment>(moment());
+  return (
+    <DatePicker
+      title="انتخاب تاریخ"
+      onChangeDate={setValue}
+      defaultValue={value}
+      isSelectable={date =>
+        date.isSameOrBefore(moment()) || date.isSameOrAfter(moment())
+      }
+      {...props}
+    />
+  );
+};
+
+export const SingleDatePicker = (): JSX.Element => (
   <div>
-    <DatePicker
-      title="انتخاب تاریخ"
-      inputButtonSize="tiny"
-      onChangeDate={() => {}}
-    />
+    <DatePickerWithState inputButtonSize="tiny" />
     <br />
-    <DatePicker
-      title="انتخاب تاریخ"
-      inputButtonSize="small"
-      onChangeDate={() => {}}
-    />
+    <DatePickerWithState inputButtonSize="small" />
     <br />
-    <DatePicker
-      title="انتخاب تاریخ"
-      inputButtonSize="regular"
-      onChangeDate={() => {}}
-    />
+    <DatePickerWithState inputButtonSize="regular" />
+    <br />
+    <DatePickerWithState inputButtonSize="large" />
   </div>
 );

@@ -34,6 +34,7 @@ import {
 } from './components/tab';
 import PersianNumber from './components/persian-number';
 import DatePicker from './components/date-picker';
+import RangeDatePicker from './components/range-date-picker';
 import { Table, Th, Tr, Td } from './components/data-table';
 import { Column, Row } from './components/flex';
 import Modal from './components/modal';
@@ -82,6 +83,7 @@ export {
   TabContentItem,
   PersianNumber,
   DatePicker,
+  RangeDatePicker,
   Table,
   Th,
   Tr,
