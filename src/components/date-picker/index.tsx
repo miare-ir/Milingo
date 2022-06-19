@@ -7,6 +7,7 @@ import * as ReactModal from 'react-modal';
 import Button from '../button';
 import PersianNumber from '../persian-number';
 import { Column, Row } from '../flex';
+import { generateMonth } from '../../common/utils/date-pickers';
 
 import './styles.scss';
 
@@ -89,25 +90,9 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
   }
 
   generateMonth = (mm, yyyy): React.ReactNode => {
-    const dates = [];
-    const month = moment(`${yyyy}/${mm}/1`, 'jYYYY/jM/jD');
-    const startOfNextMonth = moment(month).endOf('jMonth');
-    const date = moment(month);
-
-    for (let i = 6, j = 0; i !== date.day(); i === 6 ? (i = 0) : i++, j++) {
-      const day = moment(date).subtract(date.day() - j + 1, 'days');
-      dates.push(this.generateDay(day, 'prev'));
-    }
-    while (date.isBefore(startOfNextMonth)) {
-      dates.push(this.generateDay(date));
-      date.add(1, 'days');
-    }
-    for (let i = date.day(); i < 6; i++) {
-      const day = moment(date).subtract(date.day() - i, 'days');
-      dates.push(this.generateDay(day, 'next'));
-    }
-
+    const dates = generateMonth(mm, yyyy, this.generateDay);
     const weeks: JSX.Element[] = [];
+
     for (let i = 0; i < dates.length / 7; i++) {
       const week: JSX.Element[] = dates.slice(i * 7, (i + 1) * 7);
       weeks.push(
@@ -116,6 +101,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
         </div>,
       );
     }
+
     return <div className="calendar-month">{weeks}</div>;
   };
 
