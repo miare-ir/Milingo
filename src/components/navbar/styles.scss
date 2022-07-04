@@ -17,6 +17,7 @@
     padding: 0;
     text-align: center;
     justify-content: space-evenly;
+    overflow: hidden;
   }
 
   &-item {
@@ -33,7 +34,7 @@
     cursor: pointer;
 
     @include onTablet {
-      height: 100%;
+      height: auto;
       width: 100%;
       padding: 8px 0;
 
@@ -77,6 +78,7 @@
     min-height: 64px;
     height: auto;
     font-size: 8px;
+    padding: 8px 0;
     justify-content: space-evenly;
     flex-wrap: nowrap;
 
