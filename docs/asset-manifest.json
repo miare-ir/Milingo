@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "./0.styles.css",
-    "main.js": "./main.9a6eda53.iframe.bundle.js",
+    "main.js": "./main.9e5c4b3d.iframe.bundle.js",
     "main.css.map": "./0.styles.css.map",
     "runtime~main.js": "./runtime~main.248e4f1a.iframe.bundle.js",
-    "vendors~main.js": "./vendors~main.6f5ddb9b.iframe.bundle.js",
-    "vendors~main.js.map": "./vendors~main.6f5ddb9b.iframe.bundle.js.map",
+    "vendors~main.js": "./vendors~main.19fdd7fd.iframe.bundle.js",
+    "vendors~main.js.map": "./vendors~main.19fdd7fd.iframe.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "precache-manifest.f062ad2db47fb86832e9c24cb930c95c.js": "./precache-manifest.f062ad2db47fb86832e9c24cb930c95c.js",
+    "precache-manifest.15d0ad9425d2d69e0c7f261ac89a027a.js": "./precache-manifest.15d0ad9425d2d69e0c7f261ac89a027a.js",
     "service-worker.js": "./service-worker.js",
     "static/media/styles.scss": "./static/media/arrow.beb4c4b3.svg",
     "static/media/icon.svg": "./static/media/icon.faedbf6b.svg",
@@ -17,13 +17,13 @@
     "static/media/notification-hint.svg": "./static/media/notification-hint.da1566f9.svg",
     "static/media/notification-success.svg": "./static/media/notification-success.3f9f471c.svg",
     "static/media/notification-warning.svg": "./static/media/notification-warning.fa3fd3bf.svg",
-    "vendors~main.6f5ddb9b.iframe.bundle.js.LICENSE.txt": "./vendors~main.6f5ddb9b.iframe.bundle.js.LICENSE.txt"
+    "vendors~main.19fdd7fd.iframe.bundle.js.LICENSE.txt": "./vendors~main.19fdd7fd.iframe.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
     "runtime~main.248e4f1a.iframe.bundle.js",
-    "vendors~main.6f5ddb9b.iframe.bundle.js",
-    "static/css/main.4f013f5d.chunk.css",
+    "vendors~main.19fdd7fd.iframe.bundle.js",
+    "static/css/main.b8427dc5.chunk.css",
     "0.styles.css",
-    "main.9a6eda53.iframe.bundle.js"
+    "main.9e5c4b3d.iframe.bundle.js"
   ]
 }

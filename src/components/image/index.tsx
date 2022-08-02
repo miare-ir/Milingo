@@ -11,7 +11,7 @@ export interface ImageProps {
   className?: string;
   id?: string;
   thumbnailInfo?: {
-    originalSrc: string;
+    originalSrc?: string;
     originalAlt?: string;
   };
   rest?: unknown;

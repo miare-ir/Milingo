@@ -664,6 +664,8 @@ var image_1 = __webpack_require__(102);
 exports.Image = image_1.default;
 var toggle_button_1 = __webpack_require__(104);
 exports.ToggleButton = toggle_button_1.default;
+var infinite_scroll_1 = __webpack_require__(106);
+exports.InfiniteScroll = infinite_scroll_1.default;
 
 
 /***/ }),
@@ -4580,6 +4582,65 @@ exports.default = ToggleButton;
 
 /***/ }),
 /* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+__webpack_require__(107);
+var InfiniteScroll = function (_a) {
+    var onEnd = _a.onEnd, children = _a.children, hasMore = _a.hasMore, _b = _a.loadingMessage, loadingMessage = _b === void 0 ? 'در حال دریافت ...' : _b, _c = _a.endMessage, endMessage = _c === void 0 ? 'پایان لیست 😊' : _c, _d = _a.maxHeight, maxHeight = _d === void 0 ? '100%' : _d, loading = _a.loading, scrollableProps = _a.scrollableProps, infoProps = _a.infoProps, rest = __rest(_a, ["onEnd", "children", "hasMore", "loadingMessage", "endMessage", "maxHeight", "loading", "scrollableProps", "infoProps"]);
+    var onScroll = React.useCallback(function (evt) {
+        if (!hasMore) {
+            return;
+        }
+        var target = evt.target;
+        var scrollTop = target.scrollTop, scrollHeight = target.scrollHeight, clientHeight = target.clientHeight;
+        var remainingOffset = scrollHeight - scrollTop;
+        var isAboutReachingBottom = remainingOffset === clientHeight;
+        if (isAboutReachingBottom) {
+            onEnd === null || onEnd === void 0 ? void 0 : onEnd();
+        }
+    }, [hasMore]);
+    return (React.createElement(React.Fragment, null,
+        React.createElement("div", __assign({}, rest, { className: "infinite-scroll " + (rest.className ? rest.className : ''), style: { maxHeight: maxHeight } }),
+            React.createElement("div", __assign({}, scrollableProps, { className: "infinite-scroll-children " + ((scrollableProps === null || scrollableProps === void 0 ? void 0 : scrollableProps.className) ? scrollableProps.className : ''), onScroll: onScroll }), children),
+            React.createElement("div", __assign({}, infoProps, { className: "infinite-scroll-info " + ((infoProps === null || infoProps === void 0 ? void 0 : infoProps.className) ? infoProps.className : '') }), loading ? loadingMessage : hasMore ? '' : endMessage))));
+};
+exports.default = InfiniteScroll;
+
+
+/***/ }),
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
