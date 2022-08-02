@@ -1,0 +1,22 @@
+.infinite-scroll {
+  display: flex;  
+  flex-direction: column;
+
+  &-children {
+    width: 100%;
+    display: block;
+    overflow: auto;
+    flex: 1;
+  }
+
+  &-info {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    direction: rtl;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
