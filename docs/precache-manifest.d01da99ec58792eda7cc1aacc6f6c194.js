@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "95f473013fe8c61cb04b",
+    "revision": "1a811b6972f3cc7ba671",
     "url": "0.styles.css"
   },
   {
-    "revision": "f2be26d67878be67d9f00c2f789f12c6",
+    "revision": "c109670cf0cecc2b55179f2e3afd6c27",
     "url": "iframe.html"
   },
   {
-    "revision": "95f473013fe8c61cb04b",
-    "url": "main.558c7c25.iframe.bundle.js"
+    "revision": "1a811b6972f3cc7ba671",
+    "url": "main.be17ea34.iframe.bundle.js"
   },
   {
     "revision": "c156b6caa0afff344398",
     "url": "runtime~main.248e4f1a.iframe.bundle.js"
   },
   {
-    "revision": "95f473013fe8c61cb04b",
-    "url": "static/css/main.85c93a5a.chunk.css"
+    "revision": "1a811b6972f3cc7ba671",
+    "url": "static/css/main.b8427dc5.chunk.css"
   },
   {
     "revision": "3adfaf1dba68cdd44358c4f4f711fdc8",
@@ -48,12 +48,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/MaterialIcons-Regular.e79bfd88.eot"
   },
   {
-    "revision": "461370ebc541c139fe3fdcdf76be3f70",
-    "url": "static/media/arrow.461370eb.svg"
+    "revision": "beb4c4b35304a86b98fa6e95a22f0ffe",
+    "url": "static/media/arrow.beb4c4b3.svg"
   },
   {
-    "revision": "4e4643f1db67d00192ae52a0e7948047",
-    "url": "static/media/icon.4e4643f1.svg"
+    "revision": "faedbf6ba0b4cdaf869eba98f2836800",
+    "url": "static/media/icon.faedbf6b.svg"
   },
   {
     "revision": "eb8ea43c9739794c06fc05f1f4110649",
@@ -64,20 +64,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/logo-512x512.7f493b6f.png"
   },
   {
-    "revision": "29414d04bb71de80f897bc19a0738b6c",
-    "url": "static/media/notification-error.29414d04.svg"
+    "revision": "4843525fe3bf55010a24f26dd8575779",
+    "url": "static/media/notification-error.4843525f.svg"
   },
   {
-    "revision": "ea02b5e49d02bf36c3c79f2b292a7b43",
-    "url": "static/media/notification-hint.ea02b5e4.svg"
+    "revision": "da1566f97f7cc61284a553a75d72d1e4",
+    "url": "static/media/notification-hint.da1566f9.svg"
   },
   {
-    "revision": "6b2f539ee0edcb0b47b45d4f2e775116",
-    "url": "static/media/notification-success.6b2f539e.svg"
+    "revision": "3f9f471c3a7f0da2f0f732ca65ab87e4",
+    "url": "static/media/notification-success.3f9f471c.svg"
   },
   {
-    "revision": "ad2afcb5262bc5b330b2fe0f3ffb85b4",
-    "url": "static/media/notification-warning.ad2afcb5.svg"
+    "revision": "fa3fd3bf0033e7fbc677385fde4b959c",
+    "url": "static/media/notification-warning.fa3fd3bf.svg"
   },
   {
     "revision": "73d20f97a952d6722f2f",
