@@ -22,11 +22,11 @@ const TimelineEntry: React.SFC<TimelineEntryProps> = ({
   ...props
 }: TimelineEntryProps) => (
   <div
+    {...props}
     className={classNames('timeline', {
       clickable: clickable,
       clicked: !!time && clickable && !loading,
-    })}
-    {...props}>
+    }).concat(props.className ? ' ' + props.className : '')}>
     <div className="entry-title-container">
       <div className="entry-time-container">
         <div className="entry-time">{loading ? <Loader disabled /> : time}</div>
