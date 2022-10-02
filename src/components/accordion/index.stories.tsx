@@ -3,6 +3,7 @@ import * as React from 'react';
 import Accordion from '.';
 import List from './list';
 import issues from './fixtures/issue';
+import Messages from '../messages';
 
 export default {
   title: 'Accordion',
@@ -18,17 +19,45 @@ export const Default = (): JSX.Element => (
   </Accordion>
 );
 
-export const AccordionList = (): JSX.Element => (
-  <Accordion className="issue-accordion" title={'لیست ایشیو ها'} count={3}>
-    {issues.map(issue => (
-      <List
-        key={issue.id}
-        id={issue.id}
-        title={issue.problem.title}
-        description={issue.description}
-        timer={33}
-        isResolved={!!issue.resolved_at}
-        reporter_type={issue.reporter_type}></List>
-    ))}
-  </Accordion>
-);
+export const AccordionList = (): JSX.Element => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedIssueId, setSelectedIssue] = React.useState('');
+
+  const openMessages = (id: string): void => {
+    setIsOpen(!isOpen);
+    setSelectedIssue(id);
+  };
+
+  return (
+    <>
+      <Accordion className="issue-accordion" title={'لیست ایشیو ها'} count={3}>
+        {issues.map(issue => (
+          <List
+            key={issue.id}
+            id={issue.id}
+            title={issue.problem.title}
+            description={issue.description}
+            timer={33}
+            isResolved={!!issue.resolved_at}
+            reporter_type={issue.reporter_type}
+            onClick={openMessages}
+          />
+        ))}
+      </Accordion>
+      {isOpen && (
+        <Messages
+          id={issues[selectedIssueId].id}
+          title={issues[selectedIssueId].problem.title}
+          description={issues[selectedIssueId].description}
+          reporter_type={issues[selectedIssueId].reporter_type}
+          username={
+            issues[selectedIssueId].reported_by.first_name +
+            ' ' +
+            issues[selectedIssueId].reported_by.last_name
+          }
+          isOpen={isOpen}
+          setOpen={() => setIsOpen(!isOpen)}></Messages>
+      )}
+    </>
+  );
+};

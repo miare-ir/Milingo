@@ -17,6 +17,7 @@ import {
   MenuLink,
   MenuStatus,
 } from './components/menu';
+import Messages from './components/messages';
 import Navbar, { NavbarItem } from './components/navbar';
 import Notification from './components/notification';
 import Radio from './components/radiobutton';
@@ -73,7 +74,6 @@ export {
   MenuItem,
   MenuLink,
   MenuStatus,
-  Accordion,
   ActionTable,
   ActionTableRow,
   Select,
@@ -97,4 +97,6 @@ export {
   Image,
   ToggleButton,
   InfiniteScroll,
+  Messages,
+  Accordion,
 };

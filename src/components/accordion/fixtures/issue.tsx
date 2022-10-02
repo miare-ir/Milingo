@@ -19,8 +19,8 @@ const issue = {
   reported_by: {
     id: 65,
     pk: 0,
-    first_name: '',
-    last_name: '',
+    first_name: 'ایرج',
+    last_name: 'پیروزبخت',
     is_staff: false,
     user_name: '',
   },

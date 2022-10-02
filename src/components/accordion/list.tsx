@@ -11,6 +11,7 @@ export interface AccordionProps {
   timer?: number;
   isResolved?: boolean;
   className?: string;
+  onClick: (id: string) => void;
 }
 
 const List = (props: AccordionProps): JSX.Element => {
@@ -20,8 +21,15 @@ const List = (props: AccordionProps): JSX.Element => {
     props.className,
   );
 
+  const handelClickList = (e: React.SyntheticEvent<HTMLDivElement>): void => {
+    props.onClick(e.currentTarget.dataset.id);
+  };
+
   return (
-    <div className={componentClassNames} id={props.id.toString()}>
+    <div
+      className={componentClassNames}
+      data-id={props.id}
+      onClick={handelClickList}>
       <div className="accordion-list-info">
         <div className="accordion-list-title">{props.title}</div>
         <div className="accordion-list-description">{props.description}</div>

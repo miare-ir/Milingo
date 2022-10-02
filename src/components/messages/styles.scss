@@ -1,0 +1,74 @@
+.messages {
+  &-container {
+    display: none;
+    position: fixed;
+    width: 316px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px 8px 0 0;
+    direction: rtl;
+
+    &.open {
+      max-height: 408px;
+      display: block;
+    }
+  }
+
+  &-header {
+    padding: 8px 24px 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 24px;
+    border-bottom: 1px solid #ecedef;
+
+    &:before {
+      content: ' ';
+      position: absolute;
+      height: 48px;
+      right: 0;
+      width: 8px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    &.driver-issue {
+      &:before {
+        background-color: #1eb973;
+      }
+    }
+
+    &.client-issue {
+      &:before {
+        background-color: #5b0b70;
+      }
+    }
+
+    &.auto-issue {
+      &:before {
+        background-color: #fbba00;
+      }
+    }
+
+    &.staff-issue {
+      &:before {
+        background-color: #ef5350;
+      }
+    }
+  }
+
+  &-username {
+    color: #3d3f53;
+    font-weight: 300;
+    font-variation-settings: 'wght' 300;
+    max-width: 242px;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+  }
+
+  &-title {
+    color: #191924;
+    max-width: 242px;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+  }
+}
