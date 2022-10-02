@@ -6,8 +6,8 @@ import { useState } from 'react';
 import './styles.scss';
 import Tag from '../../components/tag';
 
-export interface AccordionProps extends React.HTMLProps<HTMLDivElement> {
-  children: JSX.Element;
+export interface AccordionProps {
+  children: JSX.Element[] | JSX.Element;
   title: string;
   count?: number;
   className?: string;
