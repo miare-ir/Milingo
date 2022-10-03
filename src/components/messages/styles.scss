@@ -133,9 +133,12 @@
   color: #fff;
   overflow: hidden;
   text-overflow: ellipsis;  
+  text-align: right;
 
   &-container {
     &.right {
+      text-align: left;
+      
       .message {
         background: #ecedef;
         border-radius: 10px 10px 10px 0;
