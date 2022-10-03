@@ -30,7 +30,8 @@
 
     &.open {
       height: 408px;
-      display: block;
+      display: flex;
+      flex-direction: column;
     }
   }
 
@@ -76,7 +77,6 @@
   }
 
   &-content {
-    height: 249px;
     overflow-y: scroll;
   }
 

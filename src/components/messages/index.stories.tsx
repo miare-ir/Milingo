@@ -40,7 +40,7 @@ export const Default = (): JSX.Element => {
           id={index}
           key={index}
           message={message.message}
-          isRight={message.sender_type === 'staff'}
+          isRight={message.sender_type !== 'staff'}
           created_at={message.created_at}
         />
       ))}
