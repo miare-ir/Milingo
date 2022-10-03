@@ -9,8 +9,27 @@
     border-radius: 8px 8px 0 0;
     direction: rtl;
 
+    .textarea-container {
+      margin: 8px;
+    }
+
+    textarea {
+      border: 1px solid #ebebeb;
+      box-shadow: 2px 2px 1px rgba(238, 238, 238, 0.08);
+      border-radius: 10px;
+      font-weight: 400;
+      font-variation-settings: 'wght' 400;
+      font-size: 12px;
+      line-height: 19px;
+      text-align: right;      
+      color: #999;
+      height: 38px;
+      overflow: hidden;
+      text-overflow: ellipsis;  
+    }
+
     &.open {
-      max-height: 408px;
+      height: 408px;
       display: block;
     }
   }
@@ -56,6 +75,11 @@
     }
   }
 
+  &-content {
+    height: 249px;
+    overflow-y: scroll;
+  }
+
   &-username {
     color: #3d3f53;
     font-weight: 300;
@@ -70,5 +94,61 @@
     max-width: 242px;
     overflow: hidden;
     text-overflow: ellipsis;  
+  }
+
+  &-footer {
+    height: 40px;
+    background-color: #ecedef;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+    .link {
+      background-color: transparent !important;
+      padding: 0 !important;
+      margin-left: 13px;
+      margin-right: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:disabled {
+        color: rgba(16, 16, 16, 0.3) !important;
+      }
+    }
+  }
+}
+
+.message {
+  font-weight: 300;
+  font-variation-settings: 'wght' 300;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 8px;
+  margin: 8px 8px 4px 8px;
+  background: #1e6dc8;
+  border-radius: 10px 10px 0 10px;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+
+  &-container {
+    &.right {
+      .message {
+        background: #ecedef;
+        border-radius: 10px 10px 10px 0;
+        color: #3d3f53;
+      }
+    }
+
+    .time {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 16px;
+      color: #505050;
+      margin: 0 8px;
+    }
   }
 }

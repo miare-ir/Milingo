@@ -4,6 +4,7 @@ import Accordion from '.';
 import List from './list';
 import issues from './fixtures/issue';
 import Messages from '../messages';
+import Message from '../messages/message';
 
 export default {
   title: 'Accordion',
@@ -28,6 +29,10 @@ export const AccordionList = (): JSX.Element => {
     setSelectedIssue(id);
   };
 
+  const handelSubmitMessage = (id: number, message: string): void => {
+    alert(`پیام ${message} برای ایدی ${id} ارسال شد`);
+  };
+
   return (
     <>
       <Accordion className="issue-accordion" title={'لیست ایشیو ها'} count={3}>
@@ -48,7 +53,6 @@ export const AccordionList = (): JSX.Element => {
         <Messages
           id={issues[selectedIssueId].id}
           title={issues[selectedIssueId].problem.title}
-          description={issues[selectedIssueId].description}
           reporter_type={issues[selectedIssueId].reporter_type}
           username={
             issues[selectedIssueId].reported_by.first_name +
@@ -56,7 +60,22 @@ export const AccordionList = (): JSX.Element => {
             issues[selectedIssueId].reported_by.last_name
           }
           isOpen={isOpen}
-          setOpen={() => setIsOpen(!isOpen)}></Messages>
+          resolveBtnTitle={'رسیدگی شد'}
+          setOpen={() => setIsOpen(!isOpen)}
+          onSubmitMessage={handelSubmitMessage}
+          isSendingMessage={false}
+          canSubmitMessage={true}
+          isResolved={false}>
+          {issues[selectedIssueId].messages.map((message, index) => (
+            <Message
+              id={index}
+              key={index}
+              message={message.message}
+              isRight={message.sender_type === 'staff'}
+              created_at={message.created_at}
+            />
+          ))}
+        </Messages>
       )}
     </>
   );

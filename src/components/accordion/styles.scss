@@ -2,14 +2,14 @@
   &-container {
     position: fixed;
     width: 316px;
-    max-height: 56px;
+    height: 56px;
     box-sizing: border-box;
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
   
     &.active {
-      max-height: 408px;
+      height: 408px;
   
       .accordion-header > img {
         transform: none;
@@ -39,7 +39,7 @@
   
     .accordion-content {
       display: none;
-      max-height: 351px;
+      height: 351px;
       overflow-y: scroll;
       border-top: 1px solid #ecedef;
       text-align: right;
