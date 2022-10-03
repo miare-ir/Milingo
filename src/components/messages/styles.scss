@@ -9,6 +9,34 @@
     border-radius: 8px 8px 0 0;
     direction: rtl;
 
+    .messages-content {
+      display: none; 
+    }
+
+    .submit-form {
+      display: none;
+    }
+
+    &.active {
+      .messages-content {
+       display: block; 
+      }
+
+      .submit-form {
+        display: block;
+      }
+    }
+
+    &.open {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &.active {
+        height: 408px;
+      }
+    }
+
     .textarea-container {
       margin: 8px;
     }
@@ -29,13 +57,6 @@
       &:active, &:focus {
         box-shadow: none !important;
       }
-    }
-
-    &.open {
-      height: 408px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
   }
 

@@ -23,15 +23,20 @@ export interface MessagesProps {
 }
 
 const Messages = (props: MessagesProps): JSX.Element => {
+  const [toggle, setToggle] = React.useState(true);
+
   const componentClassNames = classNames(
     'messages-container',
-    `${props.isOpen ? 'open' : ''}`,
+    props.isOpen ? 'open' : '',
+    toggle ? 'active' : '',
     props.className,
   );
 
   return (
     <div className={componentClassNames} data-id={props.id}>
-      <div className={`messages-header ${props.reporter_type}-issue`}>
+      <div
+        className={`messages-header ${props.reporter_type}-issue`}
+        onClick={() => setToggle(!toggle)}>
         <div className="messages-info">
           <div className="messages-title">{props.title}</div>
           <div className="messages-username">{props.username}</div>
