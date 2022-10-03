@@ -25,8 +25,8 @@ const Message = (props: MessagesProps): JSX.Element => {
   );
 
   return (
-    <div className={componentClassNames} data-id={props.id}>
-      <div className={'message'}>
+    <div className={componentClassNames} key={props.id}>
+      <div className="message">
         <p className="content">{props.message}</p>
       </div>
       <span className="time">{dateTimeFormat(props.created_at)}</span>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import Accordion from '.';
-import List from './list';
-import issues from './fixtures/issue';
+import issues from '../../common/fixtures/issue';
 import Messages from '../messages';
 import Message from '../messages/message';
+import List from './list';
+import Accordion from '.';
 
 export default {
   title: 'Accordion',
@@ -25,12 +25,16 @@ export const AccordionList = (): JSX.Element => {
   const [selectedIssueId, setSelectedIssue] = React.useState('');
 
   const openMessages = (id: string): void => {
-    setIsOpen(!isOpen);
+    setIsOpen(true);
     setSelectedIssue(id);
   };
 
   const handelSubmitMessage = (id: number, message: string): void => {
     alert(`پیام ${message} برای ایدی ${id} ارسال شد`);
+  };
+
+  const handelResolve = (id: number): void => {
+    alert(`ایشیو ${id} بسته شد`);
   };
 
   return (
@@ -65,7 +69,8 @@ export const AccordionList = (): JSX.Element => {
           onSubmitMessage={handelSubmitMessage}
           isSendingMessage={false}
           canSubmitMessage={true}
-          isResolved={false}>
+          isResolved={false}
+          resolve={handelResolve}>
           {issues[selectedIssueId].messages.map((message, index) => (
             <Message
               id={index}

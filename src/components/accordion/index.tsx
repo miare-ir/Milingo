@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import arrowIcon from '../../assets/icon/arrow.svg';
 import { useState } from 'react';
 
-import './styles.scss';
 import Tag from '../../components/tag';
+import arrowIcon from '../../assets/icon/arrow.svg';
+import './styles.scss';
 
 export interface AccordionProps {
   children: JSX.Element[] | JSX.Element;

@@ -21,17 +21,21 @@
       font-variation-settings: 'wght' 400;
       font-size: 12px;
       line-height: 19px;
-      text-align: right;      
-      color: #999;
+      text-align: right;
       height: 38px;
       overflow: hidden;
       text-overflow: ellipsis;  
+
+      &:active, &:focus {
+        box-shadow: none !important;
+      }
     }
 
     &.open {
       height: 408px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
   }
 
@@ -78,6 +82,7 @@
 
   &-content {
     overflow-y: scroll;
+    height: 100%;
   }
 
   &-username {
