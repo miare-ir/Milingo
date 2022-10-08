@@ -6,7 +6,7 @@ const issue = {
     id: 0,
     title: 'مقصد اشتباه',
   },
-  reported_at: '2021-10-02T14:48:18+0330',
+  reported_at: new Date(),
   resolved_at: null,
   picked_by: {
     id: 165,

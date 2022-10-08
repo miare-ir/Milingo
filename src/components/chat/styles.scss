@@ -1,15 +1,15 @@
-.messages {
+.chat {
   &-container {
     display: none;
-    position: fixed;
     width: 316px;
     box-sizing: border-box;
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
     direction: rtl;
+    position: relative;
 
-    .messages-content {
+    .chat-content {
       display: none; 
     }
 
@@ -18,8 +18,12 @@
     }
 
     &.active {
-      .messages-content {
+      .chat-content {
        display: block; 
+      }
+
+      .chat-content::-webkit-scrollbar {
+        width: 17px;
       }
 
       .submit-form {
@@ -31,6 +35,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-self: flex-end;
 
       &.active {
         height: 408px;
@@ -42,13 +47,13 @@
     }
 
     textarea {
-      border: 1px solid #ebebeb;
+      border: 1px solid #ebebeb !important;
       box-shadow: 2px 2px 1px rgba(238, 238, 238, 0.08);
-      border-radius: 10px;
+      border-radius: 10px !important;
       font-weight: 400;
       font-variation-settings: 'wght' 400;
-      font-size: 12px;
-      line-height: 19px;
+      font-size: 12px !important;
+      line-height: 19px !important;
       text-align: right;
       height: 38px;
       overflow: hidden;

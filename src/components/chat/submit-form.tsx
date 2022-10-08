@@ -23,7 +23,7 @@ const SubmitForm = (props: SubmitFormProps): JSX.Element => {
   const handleSubmitMessage = (
     event?: React.FormEvent<HTMLFormElement>,
   ): void => {
-    event?.preventDefault();
+    event.preventDefault();
     if (!isSendButtonDisabled) {
       props.onSubmit?.(props.id, message.trim());
     }
@@ -51,30 +51,30 @@ const SubmitForm = (props: SubmitFormProps): JSX.Element => {
     <form onSubmit={handleSubmitMessage} className="submit-form">
       <Textarea
         rows={1}
-        disabled={props?.isSending}
+        disabled={props.isSending}
         value={message}
         placeholder="پیام خود را وارد کنید"
         onChange={handleTextareaChanges}
         onKeyDown={handleTextareaKeyDowns}
       />
-      <div className="messages-footer">
+      <div className="chat-footer">
         <Button
           type="submit"
           link
           tiny
           disabled={isSendButtonDisabled}
           className="send-button">
-          {props?.isSending ? <Loader /> : 'ارسال'}
+          {props.isSending ? <Loader /> : 'ارسال'}
           <img src={isSendButtonDisabled ? disabledSendIcon : sendIcon} />
         </Button>
-        {!props?.isResolved && (
+        {!props.isResolved && (
           <Button
             link
             tiny
             disabled={props?.isSending}
             onClick={handelResolve}
             className="resolve-button">
-            {props?.isSending ? <Loader /> : props?.resolveBtnTitle}
+            {props.isSending ? <Loader /> : props.resolveBtnTitle}
           </Button>
         )}
       </div>

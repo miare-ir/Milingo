@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import issues from '../../common/fixtures/issue';
 import Message from './message';
-import Messages from '.';
+import Chat from '.';
 
 export default {
-  title: 'Messages',
+  title: 'Chat',
 
   decorators: [
-    story => <div className="story-container messages-story">{story()}</div>,
+    story => <div className="story-container chat-story">{story()}</div>,
   ],
 };
 
@@ -25,7 +25,7 @@ export const Default = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <Messages
+    <Chat
       id={issue.id}
       title={issue.problem.title}
       reporter_type={issue.reporter_type}
@@ -34,10 +34,11 @@ export const Default = (): JSX.Element => {
       }
       isOpen={isOpen}
       resolveBtnTitle={'رسیدگی شد'}
-      setOpen={() => setIsOpen(!isOpen)}
+      setIsOpen={() => setIsOpen(!isOpen)}
       onSubmitMessage={handelSubmitMessage}
       isSendingMessage={false}
-      canSubmitMessage={true}
+      canSubmitMessage
+      hasHeader
       isResolved={false}
       resolve={handelResolve}>
       {issue.messages.map((message, index) => (
@@ -49,7 +50,7 @@ export const Default = (): JSX.Element => {
           created_at={message.created_at}
         />
       ))}
-    </Messages>
+    </Chat>
   );
 };
 
@@ -57,7 +58,7 @@ export const WithoutMessage = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <Messages
+    <Chat
       id={issue.id}
       title={issue.problem.title}
       reporter_type={issue.reporter_type}
@@ -66,10 +67,11 @@ export const WithoutMessage = (): JSX.Element => {
       }
       isOpen={isOpen}
       resolveBtnTitle={'رسیدگی شد'}
-      setOpen={() => setIsOpen(!isOpen)}
+      setIsOpen={() => setIsOpen(!isOpen)}
       onSubmitMessage={handelSubmitMessage}
       isSendingMessage={false}
-      canSubmitMessage={true}
+      canSubmitMessage
+      hasHeader
       isResolved={false}
       resolve={handelResolve}>
       {[].map((message, index) => (
@@ -81,7 +83,7 @@ export const WithoutMessage = (): JSX.Element => {
           created_at={message.created_at}
         />
       ))}
-    </Messages>
+    </Chat>
   );
 };
 
@@ -89,7 +91,7 @@ export const WithoutSubmitMessage = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <Messages
+    <Chat
       id={issue.id}
       title={issue.problem.title}
       reporter_type={issue.reporter_type}
@@ -97,8 +99,9 @@ export const WithoutSubmitMessage = (): JSX.Element => {
         issue.reported_by.first_name + ' ' + issue.reported_by.last_name
       }
       isOpen={isOpen}
-      setOpen={() => setIsOpen(!isOpen)}
+      setIsOpen={() => setIsOpen(!isOpen)}
       canSubmitMessage={false}
+      hasHeader
       isResolved={false}>
       {issue.messages.map((message, index) => (
         <Message
@@ -109,7 +112,7 @@ export const WithoutSubmitMessage = (): JSX.Element => {
           created_at={message.created_at}
         />
       ))}
-    </Messages>
+    </Chat>
   );
 };
 
@@ -117,16 +120,15 @@ export const WithoutHeader = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <Messages
+    <Chat
       id={issue.id}
       title={issue.problem.title}
       isOpen={isOpen}
-      setOpen={() => setIsOpen(!isOpen)}
+      setIsOpen={() => setIsOpen(!isOpen)}
       isSendingMessage={false}
       resolveBtnTitle={'رسیدگی شد'}
       onSubmitMessage={handelSubmitMessage}
-      canSubmitMessage={true}
-      isResolved={true}>
+      isResolved>
       {issue.messages.map((message, index) => (
         <Message
           id={index}
@@ -136,6 +138,6 @@ export const WithoutHeader = (): JSX.Element => {
           created_at={message.created_at}
         />
       ))}
-    </Messages>
+    </Chat>
   );
 };

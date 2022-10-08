@@ -46,9 +46,10 @@
       direction: rtl;
     }
   }
+}
 
-  &-list {
-    &-container {
+.list {
+    &-item-container {
       padding: 16px 24px 16px 16px;
       display: flex;
       justify-content: space-between;
@@ -58,7 +59,7 @@
         border-bottom: 1px solid #ecedef;
       }    
       
-      .accordion-list-timer.resolved {
+      .list-item-timer.resolved {
         color: #258613;
       }
 
@@ -96,7 +97,7 @@
       }
     }
 
-    &-description {
+    &-item-description {
       color: #3d3f53;
       font-weight: 300;
       font-variation-settings: 'wght' 300;
@@ -105,16 +106,15 @@
       text-overflow: ellipsis;  
     }
 
-    &-title {
+    &-item-title {
       color: #191924;
       max-width: 242px;
       overflow: hidden;
       text-overflow: ellipsis;  
     }
-  }
 }
-
-.issue-accordion{
+  
+.issue-accordion {
   bottom: 0;
   right: 8px;
 
@@ -122,4 +122,13 @@
     bottom: 0;
     right: 340px;
   }
+}
+
+.chats-container {
+  display: flex;
+  gap: 12px;
+  position: fixed;
+  bottom: 0;
+  right: 336px;
+  flex-direction: row-reverse;
 }

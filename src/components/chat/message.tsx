@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface MessagesProps {
+export interface MessageProps {
   message: string;
   isRight: boolean;
   created_at: string;
@@ -11,7 +11,7 @@ export interface MessagesProps {
   className?: string;
 }
 
-const Message = (props: MessagesProps): JSX.Element => {
+const Message = (props: MessageProps): JSX.Element => {
   const dateTimeFormat = (dateTime: string): string =>
     new Intl.DateTimeFormat('fa', {
       hour: '2-digit',
