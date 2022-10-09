@@ -9,7 +9,7 @@ import './styles.scss';
 
 export interface SubmitFormProps {
   id: number;
-  isSending: boolean;
+  isSending?: boolean;
   onSubmit: (id: number, message: string) => void;
   resolve: (id: number) => void;
   resolveBtnTitle: string;

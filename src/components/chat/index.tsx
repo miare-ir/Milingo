@@ -23,38 +23,54 @@ export interface ChatProps {
   children: JSX.Element[] | JSX.Element;
 }
 
-const Chat = (props: ChatProps): JSX.Element => {
+const Chat = ({
+  title,
+  id,
+  username,
+  reporter_type,
+  className,
+  isOpen,
+  setIsOpen,
+  onSubmitMessage,
+  isSendingMessage,
+  canSubmitMessage,
+  hasHeader,
+  isResolved,
+  resolveBtnTitle,
+  resolve,
+  children,
+}: ChatProps): JSX.Element => {
   const [toggle, setToggle] = React.useState(true);
 
   const componentClassNames = classNames(
     'chat-container',
-    props.isOpen ? 'open' : '',
+    isOpen ? 'open' : '',
     toggle ? 'active' : '',
-    props.className,
+    className,
   );
 
   return (
     <div className={componentClassNames}>
-      {props.hasHeader && (
+      {hasHeader && (
         <div
-          className={`chat-header ${props.reporter_type}-issue`}
-          onClick={() => setToggle(!toggle)}>
+          className={`chat-header ${reporter_type}-issue`}
+          onClick={() => setToggle(currentToggle => !currentToggle)}>
           <div className="chat-info">
-            <div className="chat-title">{props.title}</div>
-            <div className="chat-username">{props.username}</div>
+            <div className="chat-title">{title}</div>
+            <div className="chat-username">{username}</div>
           </div>
-          <img src={closeIcon} onClick={props.setIsOpen} />
+          <img src={closeIcon} onClick={setIsOpen} />
         </div>
       )}
-      <div className={'chat-content'}>{props.children}</div>
-      {props.canSubmitMessage && (
+      <div className={'chat-content'}>{children}</div>
+      {canSubmitMessage && (
         <SubmitForm
-          id={props.id}
-          isSending={props.isSendingMessage}
-          onSubmit={props.onSubmitMessage}
-          resolveBtnTitle={props.resolveBtnTitle}
-          isResolved={props.isResolved}
-          resolve={props.resolve}
+          id={id}
+          isSending={isSendingMessage}
+          onSubmit={onSubmitMessage}
+          resolveBtnTitle={resolveBtnTitle}
+          isResolved={isResolved}
+          resolve={resolve}
         />
       )}
     </div>
