@@ -9,7 +9,8 @@ import Accordion from './accordion';
 import ListItem from './list-item';
 import './styles.scss';
 
-export interface IssueListAccordionProps {
+export interface IssueListAccordionProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   accordionTitle: string;
   issues: Issue[];
   handelSubmitMessage: (id: number, message: string) => void;
@@ -25,6 +26,7 @@ const IssueListAccordion = ({
   handelResolve,
   maxOpenChat,
   className,
+  ...rest
 }: IssueListAccordionProps): JSX.Element => {
   const MAX_OPEN_CHATS_COUNT = maxOpenChat || 3;
   const [selectedChatIds, setSelectedChatIds] = React.useState(
@@ -65,7 +67,7 @@ const IssueListAccordion = ({
       return (
         <Chat
           key={selectedChatId}
-          id={selectedChatId}
+          chatId={selectedChatId}
           title={issue.problem.title}
           reporter_type={issue.reporter_type}
           username={
@@ -96,7 +98,7 @@ const IssueListAccordion = ({
     });
 
   return (
-    <div className={componentClassNames}>
+    <div className={componentClassNames} {...rest}>
       <Accordion
         className="issue-accordion"
         title={accordionTitle}

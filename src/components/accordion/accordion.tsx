@@ -7,7 +7,7 @@ import arrowIcon from '../../assets/icon/arrow.svg';
 import Tag from '../tag';
 import './styles.scss';
 
-export interface AccordionProps {
+export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   title: string;
   count?: number;
@@ -19,6 +19,7 @@ const Accordion = ({
   title,
   count,
   className,
+  ...rest
 }: AccordionProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,7 +30,7 @@ const Accordion = ({
   );
 
   return (
-    <div className={componentClassNames}>
+    <div className={componentClassNames} {...rest}>
       <div
         className="accordion-header"
         onClick={() => setIsOpen(currentIsOpen => !currentIsOpen)}>

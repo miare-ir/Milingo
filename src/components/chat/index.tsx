@@ -6,9 +6,9 @@ import closeIcon from '../../assets/icon/close.svg';
 import './styles.scss';
 import SubmitForm from './submit-form';
 
-export interface ChatProps {
+export interface ChatProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
-  id: number;
+  chatId: number;
   username?: string;
   reporter_type?: string;
   className?: string;
@@ -26,7 +26,7 @@ export interface ChatProps {
 
 const Chat = ({
   title,
-  id,
+  chatId,
   username,
   reporter_type,
   className,
@@ -40,6 +40,7 @@ const Chat = ({
   resolveBtnTitle,
   resolve,
   children,
+  ...rest
 }: ChatProps): JSX.Element => {
   const [toggle, setToggle] = React.useState(true);
 
@@ -51,7 +52,7 @@ const Chat = ({
   );
 
   return (
-    <div className={componentClassNames}>
+    <div className={componentClassNames} {...rest}>
       {hasHeader && (
         <div
           className={`chat-header ${reporter_type}-issue`}
@@ -66,7 +67,7 @@ const Chat = ({
       <div className={'chat-content'}>{children}</div>
       {canSubmitMessage && (
         <SubmitForm
-          id={id}
+          id={chatId}
           isSending={isSendingMessage}
           onSubmit={onSubmitMessage}
           resolveBtnTitle={resolveBtnTitle}
