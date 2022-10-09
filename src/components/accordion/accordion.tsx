@@ -1,9 +1,10 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 import { useState } from 'react';
 
-import Tag from '../tag';
+import * as classNames from 'classnames';
+
 import arrowIcon from '../../assets/icon/arrow.svg';
+import Tag from '../tag';
 import './styles.scss';
 
 export interface AccordionProps {

@@ -1,4 +1,6 @@
-const issue = {
+import Issue from '../types/issue';
+
+const issue: Issue = {
   id: 0,
   trip_id: 0,
   trip_hash_key: '85372269-03e3-4e3b-af46-1471daec0d9c',
@@ -59,13 +61,13 @@ const issue = {
   ],
 };
 
-const issues = [
+const issues: Issue[] = [
   { ...issue },
   {
     ...issue,
     id: 1,
     problem: { id: 1, title: 'تایتل' },
-    resolved_at: '2021-10-02T14:48:18+0330',
+    resolved_at: new Date(),
     reporter_type: 'driver',
   },
   {
