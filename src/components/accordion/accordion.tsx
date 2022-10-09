@@ -14,13 +14,18 @@ export interface AccordionProps {
   className?: string;
 }
 
-const Accordion = (props: AccordionProps): JSX.Element => {
+const Accordion = ({
+  children,
+  title,
+  count,
+  className,
+}: AccordionProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   const componentClassNames = classNames(
     'accordion-container',
     isOpen ? 'active' : '',
-    props.className,
+    className,
   );
 
   return (
@@ -29,12 +34,12 @@ const Accordion = (props: AccordionProps): JSX.Element => {
         className="accordion-header"
         onClick={() => setIsOpen(currentIsOpen => !currentIsOpen)}>
         <div className="accordion-title">
-          {props.title}
-          {props.count && <Tag success>{props.count}</Tag>}
+          {title}
+          {count && <Tag success>{count}</Tag>}
         </div>
         <img src={arrowIcon} />
       </div>
-      <div className="accordion-content">{props.children}</div>
+      <div className="accordion-content">{children}</div>
     </div>
   );
 };
