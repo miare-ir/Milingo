@@ -24,14 +24,16 @@ const Accordion = (props: AccordionProps): JSX.Element => {
 
   return (
     <div className={componentClassNames}>
-      <div className="accordion-header" onClick={() => setIsOpen(!isOpen)}>
+      <div
+        className="accordion-header"
+        onClick={() => setIsOpen(currentIsOpen => !currentIsOpen)}>
         <div className="accordion-title">
           {props.title}
           {props.count && <Tag success>{props.count}</Tag>}
         </div>
         <img src={arrowIcon} />
       </div>
-      <div className={'accordion-content'}>{props.children}</div>
+      <div className="accordion-content">{props.children}</div>
     </div>
   );
 };
