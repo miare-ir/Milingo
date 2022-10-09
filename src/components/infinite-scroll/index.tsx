@@ -45,10 +45,9 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
       const target = evt.target as HTMLDivElement;
       const { scrollTop, scrollHeight, clientHeight } = target;
-      const remainingOffset = scrollHeight - scrollTop;
-      const isAboutReachingBottom = remainingOffset - clientHeight;
+      const isAtTheBottom = scrollHeight - scrollTop <= clientHeight;
 
-      if (isAboutReachingBottom >= -1 && isAboutReachingBottom <= 1) {
+      if (isAtTheBottom) {
         onEnd?.();
       }
     },
