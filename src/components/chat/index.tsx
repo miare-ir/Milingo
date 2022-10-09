@@ -11,7 +11,7 @@ export interface ChatProps {
   username?: string;
   reporter_type?: string;
   className?: string;
-  isOpen: boolean;
+  isOpen?: boolean;
   setIsOpen: () => void;
   onSubmitMessage?: (id: number, text: string) => void;
   isSendingMessage?: boolean;
@@ -20,7 +20,7 @@ export interface ChatProps {
   isResolved?: boolean;
   resolveBtnTitle?: string;
   resolve?: (id: number) => void;
-  children: JSX.Element[] | JSX.Element;
+  children?: React.ReactNode;
 }
 
 const Chat = ({
