@@ -7,7 +7,7 @@ export interface MessageProps {
   message: string;
   isRight: boolean;
   created_at: string;
-  id: number;
+  id: string;
   className?: string;
 }
 

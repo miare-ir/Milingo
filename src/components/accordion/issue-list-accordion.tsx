@@ -17,16 +17,20 @@ export interface IssueListAccordionProps {
   className?: string;
 }
 
-const IssueListAccordion = (props: IssueListAccordionProps): JSX.Element => {
-  const MAX_OPEN_CHATS_COUNT = props.maxOpenChat || 3;
+const IssueListAccordion = ({
+  accordionTitle,
+  issues,
+  handelSubmitMessage,
+  handelResolve,
+  maxOpenChat,
+  className,
+}: IssueListAccordionProps): JSX.Element => {
+  const MAX_OPEN_CHATS_COUNT = maxOpenChat || 3;
   const [selectedChatIds, setSelectedChatIds] = React.useState(
     new Set<number>(),
   );
 
-  const componentClassNames = classNames(
-    'chat-list-accordion',
-    props.className,
-  );
+  const componentClassNames = classNames('chat-list-accordion', className);
 
   const handleChatSelect = (chatId: number): void => {
     if (
@@ -56,7 +60,7 @@ const IssueListAccordion = (props: IssueListAccordionProps): JSX.Element => {
 
   const renderChats = (): JSX.Element[] =>
     Array.from(selectedChatIds).map(selectedChatId => {
-      const issue = props.issues[selectedChatId];
+      const issue = issues[selectedChatId];
       return (
         <Chat
           key={selectedChatId}
@@ -69,21 +73,23 @@ const IssueListAccordion = (props: IssueListAccordionProps): JSX.Element => {
           isOpen
           resolveBtnTitle={'رسیدگی شد'}
           setIsOpen={() => handleChatUnselect(issue.id)}
-          onSubmitMessage={props.handelSubmitMessage}
+          onSubmitMessage={handelSubmitMessage}
           isSendingMessage={false}
           canSubmitMessage
           hasHeader
           isResolved={false}
-          resolve={props.handelResolve}>
-          {issue.messages.map((message, index) => (
-            <Message
-              id={index}
-              key={index}
-              message={message.message}
-              isRight={message.sender_type !== 'staff'}
-              created_at={message.created_at}
-            />
-          ))}
+          resolve={handelResolve}>
+          {issue.messages.map(
+            ({ id, message, sender_type, created_at }, index) => (
+              <Message
+                id={id}
+                key={id}
+                message={message}
+                isRight={sender_type !== 'staff'}
+                created_at={created_at}
+              />
+            ),
+          )}
         </Chat>
       );
     });
@@ -92,9 +98,9 @@ const IssueListAccordion = (props: IssueListAccordionProps): JSX.Element => {
     <div className={componentClassNames}>
       <Accordion
         className="issue-accordion"
-        title={props.accordionTitle}
-        count={props.issues.length}>
-        {props.issues.map(issue => (
+        title={accordionTitle}
+        count={issues.length}>
+        {issues.map(issue => (
           <ListItem
             className={`accordion-list-container ${issue.reporter_type}-issue`}
             key={issue.id}
