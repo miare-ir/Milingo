@@ -16,16 +16,23 @@ export interface SubmitFormProps {
   isResolved: boolean;
 }
 
-const SubmitForm = (props: SubmitFormProps): JSX.Element => {
+const SubmitForm = ({
+  id,
+  isSending,
+  onSubmit,
+  resolve,
+  resolveBtnTitle,
+  isResolved,
+}: SubmitFormProps): JSX.Element => {
   const [message, setMessage] = React.useState('');
-  const isSendButtonDisabled = !message || props.isSending;
+  const isSendButtonDisabled = !message || isSending;
 
   const handleSubmitMessage = (
     event?: React.FormEvent<HTMLFormElement>,
   ): void => {
-    event.preventDefault();
+    event?.preventDefault();
     if (!isSendButtonDisabled) {
-      props.onSubmit?.(props.id, message.trim());
+      onSubmit(id, message.trim());
     }
   };
 
@@ -44,14 +51,14 @@ const SubmitForm = (props: SubmitFormProps): JSX.Element => {
   };
 
   const handelResolve = (): void => {
-    props.resolve(props.id);
+    resolve(id);
   };
 
   return (
     <form onSubmit={handleSubmitMessage} className="submit-form">
       <Textarea
         rows={1}
-        disabled={props.isSending}
+        disabled={isSending}
         value={message}
         placeholder="پیام خود را وارد کنید"
         onChange={handleTextareaChanges}
@@ -64,17 +71,17 @@ const SubmitForm = (props: SubmitFormProps): JSX.Element => {
           tiny
           disabled={isSendButtonDisabled}
           className="send-button">
-          {props.isSending ? <Loader /> : 'ارسال'}
+          {isSending ? <Loader /> : 'ارسال'}
           <img src={isSendButtonDisabled ? disabledSendIcon : sendIcon} />
         </Button>
-        {!props.isResolved && (
+        {!isResolved && (
           <Button
             link
             tiny
-            disabled={props?.isSending}
+            disabled={isSending}
             onClick={handelResolve}
             className="resolve-button">
-            {props.isSending ? <Loader /> : props.resolveBtnTitle}
+            {isSending ? <Loader /> : resolveBtnTitle}
           </Button>
         )}
       </div>
