@@ -3,7 +3,7 @@
     display: none;
     width: 316px;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: $whiteColor;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
     direction: rtl;
@@ -162,7 +162,7 @@
   margin: 8px 8px 4px 8px;
   background: #1e6dc8;
   border-radius: 10px 10px 0 10px;
-  color: #fff;
+  color: $whiteColor;
   overflow: hidden;
   text-overflow: ellipsis;  
   text-align: right;

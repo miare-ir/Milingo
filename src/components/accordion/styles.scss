@@ -4,7 +4,7 @@
     width: 316px;
     height: 56px;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: $whiteColor;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
   
@@ -40,7 +40,7 @@
   
     .accordion-content {
       display: none;
-      height: 351px;
+      height: 350px;
       overflow-y: scroll;
       border-top: 1px solid #ecedef;
       text-align: right;
@@ -62,7 +62,7 @@
       }    
       
       .list-item-timer.resolved {
-        color: #258613;
+        color: $successDark;
       }
 
       &:before {
@@ -88,7 +88,7 @@
 
       &.auto-issue {
         &:before {
-          background-color: #fbba00;
+          background-color: $warning3;
         }
       }
 
