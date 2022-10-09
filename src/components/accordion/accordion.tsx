@@ -7,7 +7,7 @@ import arrowIcon from '../../assets/icon/arrow.svg';
 import './styles.scss';
 
 export interface AccordionProps {
-  children: JSX.Element[] | JSX.Element;
+  children: React.ReactNode;
   title: string;
   count?: number;
   className?: string;

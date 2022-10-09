@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import * as classNames from 'classnames';
 
 import closeIcon from '../../assets/icon/close.svg';
