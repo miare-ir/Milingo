@@ -4625,9 +4625,8 @@ var InfiniteScroll = function (_a) {
         }
         var target = evt.target;
         var scrollTop = target.scrollTop, scrollHeight = target.scrollHeight, clientHeight = target.clientHeight;
-        var remainingOffset = scrollHeight - scrollTop;
-        var isAboutReachingBottom = remainingOffset - clientHeight;
-        if (isAboutReachingBottom >= -1 && isAboutReachingBottom <= 1) {
+        var isAtTheBottom = scrollHeight - scrollTop <= clientHeight;
+        if (isAtTheBottom) {
             onEnd === null || onEnd === void 0 ? void 0 : onEnd();
         }
     }, [hasMore]);
