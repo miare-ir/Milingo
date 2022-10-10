@@ -80,17 +80,15 @@ const IssueListAccordion = ({
           hasHeader
           isResolved={false}
           resolve={handelResolve}>
-          {issue.messages.map(
-            ({ id, message, sender_type, created_at }, index) => (
-              <Message
-                id={id}
-                key={id}
-                message={message}
-                isRight={sender_type !== 'staff'}
-                created_at={created_at}
-              />
-            ),
-          )}
+          {issue.messages.map(({ id, message, sender_type, created_at }) => (
+            <Message
+              id={id}
+              key={id}
+              message={message}
+              isRight={sender_type !== 'staff'}
+              created_at={created_at}
+            />
+          ))}
         </Chat>
       );
     });

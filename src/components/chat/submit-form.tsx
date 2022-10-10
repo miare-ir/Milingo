@@ -76,6 +76,7 @@ const SubmitForm = ({
         </Button>
         {!isResolved && (
           <Button
+            type="button"
             link
             tiny
             disabled={isSending}

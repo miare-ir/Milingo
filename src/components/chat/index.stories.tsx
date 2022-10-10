@@ -41,7 +41,7 @@ export const Default = (): JSX.Element => {
       hasHeader
       isResolved={false}
       resolve={handelResolve}>
-      {issue.messages.map(({ message, id, sender_type, created_at }, index) => (
+      {issue.messages.map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}
           key={id}
@@ -74,7 +74,7 @@ export const WithoutMessage = (): JSX.Element => {
       hasHeader
       isResolved={false}
       resolve={handelResolve}>
-      {[].map(({ message, id, sender_type, created_at }, index) => (
+      {[].map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}
           key={id}
@@ -103,7 +103,7 @@ export const WithoutSubmitMessage = (): JSX.Element => {
       canSubmitMessage={false}
       hasHeader
       isResolved={false}>
-      {issue.messages.map(({ message, id, sender_type, created_at }, index) => (
+      {issue.messages.map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}
           key={id}
@@ -129,7 +129,7 @@ export const WithoutHeader = (): JSX.Element => {
       resolveBtnTitle={'رسیدگی شد'}
       onSubmitMessage={handelSubmitMessage}
       isResolved>
-      {issue.messages.map(({ message, id, sender_type, created_at }, index) => (
+      {issue.messages.map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}
           key={id}
