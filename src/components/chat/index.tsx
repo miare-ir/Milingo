@@ -11,7 +11,6 @@ export interface ChatProps extends React.HTMLAttributes<HTMLDivElement> {
   chatId: number;
   username?: string;
   reporter_type?: string;
-  className?: string;
   isOpen?: boolean;
   setIsOpen: () => void;
   onSubmitMessage?: (id: number, text: string) => void;
@@ -29,7 +28,6 @@ const Chat = ({
   chatId,
   username,
   reporter_type,
-  className,
   isOpen,
   setIsOpen,
   onSubmitMessage,
@@ -48,11 +46,11 @@ const Chat = ({
     'chat-container',
     isOpen ? 'open' : '',
     toggle ? 'active' : '',
-    className,
+    rest.className,
   );
 
   return (
-    <div className={componentClassNames} {...rest}>
+    <div {...rest} className={componentClassNames}>
       {hasHeader && (
         <div
           className={`chat-header ${reporter_type}-issue`}

@@ -3,7 +3,7 @@ import ButtonGroup from './components/button-group';
 import Checkbox from './components/checkbox';
 import CounterButton from './components/counter-button';
 import DialogContent from './components/dialog-content';
-import { Accordion } from './components/accordion';
+import * as Accordion from './components/accordion';
 import FileInput from './components/file-input';
 import { Collection, CollectionCard } from './components/collection';
 import { Tab, TabColumn } from './components/tab-column';

@@ -11,14 +11,12 @@ export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   title: string;
   count?: number;
-  className?: string;
 }
 
 const Accordion = ({
   children,
   title,
   count,
-  className,
   ...rest
 }: AccordionProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,11 +24,11 @@ const Accordion = ({
   const componentClassNames = classNames(
     'accordion-container',
     isOpen ? 'active' : '',
-    className,
+    rest.className,
   );
 
   return (
-    <div className={componentClassNames} {...rest}>
+    <div {...rest} className={componentClassNames}>
       <div
         className="accordion-header"
         onClick={() => setIsOpen(currentIsOpen => !currentIsOpen)}>

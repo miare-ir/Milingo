@@ -26,7 +26,7 @@ export const Default = (): JSX.Element => {
 
   return (
     <Chat
-      id={issue.id}
+      chatId={issue.id}
       title={issue.problem.title}
       reporter_type={issue.reporter_type}
       username={
@@ -41,13 +41,13 @@ export const Default = (): JSX.Element => {
       hasHeader
       isResolved={false}
       resolve={handelResolve}>
-      {issue.messages.map((message, index) => (
+      {issue.messages.map(({ message, id, sender_type, created_at }, index) => (
         <Message
-          id={index}
-          key={index}
-          message={message.message}
-          isRight={message.sender_type !== 'staff'}
-          created_at={message.created_at}
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type !== 'staff'}
+          created_at={created_at}
         />
       ))}
     </Chat>
@@ -59,7 +59,7 @@ export const WithoutMessage = (): JSX.Element => {
 
   return (
     <Chat
-      id={issue.id}
+      chatId={issue.id}
       title={issue.problem.title}
       reporter_type={issue.reporter_type}
       username={
@@ -74,13 +74,13 @@ export const WithoutMessage = (): JSX.Element => {
       hasHeader
       isResolved={false}
       resolve={handelResolve}>
-      {[].map((message, index) => (
+      {[].map(({ message, id, sender_type, created_at }, index) => (
         <Message
-          id={index}
-          key={index}
-          message={message.message}
-          isRight={message.sender_type !== 'staff'}
-          created_at={message.created_at}
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type !== 'staff'}
+          created_at={created_at}
         />
       ))}
     </Chat>
@@ -92,7 +92,7 @@ export const WithoutSubmitMessage = (): JSX.Element => {
 
   return (
     <Chat
-      id={issue.id}
+      chatId={issue.id}
       title={issue.problem.title}
       reporter_type={issue.reporter_type}
       username={
@@ -103,13 +103,13 @@ export const WithoutSubmitMessage = (): JSX.Element => {
       canSubmitMessage={false}
       hasHeader
       isResolved={false}>
-      {issue.messages.map((message, index) => (
+      {issue.messages.map(({ message, id, sender_type, created_at }, index) => (
         <Message
-          id={index}
-          key={index}
-          message={message.message}
-          isRight={message.sender_type === 'staff'}
-          created_at={message.created_at}
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type === 'staff'}
+          created_at={created_at}
         />
       ))}
     </Chat>
@@ -121,7 +121,7 @@ export const WithoutHeader = (): JSX.Element => {
 
   return (
     <Chat
-      id={issue.id}
+      chatId={issue.id}
       title={issue.problem.title}
       isOpen={isOpen}
       setIsOpen={() => setIsOpen(!isOpen)}
@@ -129,13 +129,13 @@ export const WithoutHeader = (): JSX.Element => {
       resolveBtnTitle={'رسیدگی شد'}
       onSubmitMessage={handelSubmitMessage}
       isResolved>
-      {issue.messages.map((message, index) => (
+      {issue.messages.map(({ message, id, sender_type, created_at }, index) => (
         <Message
-          id={index}
-          key={index}
-          message={message.message}
-          isRight={message.sender_type === 'staff'}
-          created_at={message.created_at}
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type === 'staff'}
+          created_at={created_at}
         />
       ))}
     </Chat>

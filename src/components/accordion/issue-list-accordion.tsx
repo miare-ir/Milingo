@@ -16,7 +16,6 @@ export interface IssueListAccordionProps
   handelSubmitMessage: (id: number, message: string) => void;
   handelResolve: (id: number) => void;
   maxOpenChat?: number;
-  className?: string;
 }
 
 const IssueListAccordion = ({
@@ -25,7 +24,6 @@ const IssueListAccordion = ({
   handelSubmitMessage,
   handelResolve,
   maxOpenChat,
-  className,
   ...rest
 }: IssueListAccordionProps): JSX.Element => {
   const MAX_OPEN_CHATS_COUNT = maxOpenChat || 3;
@@ -33,7 +31,7 @@ const IssueListAccordion = ({
     new Set<number>(),
   );
 
-  const componentClassNames = classNames('chat-list-accordion', className);
+  const componentClassNames = classNames('chat-list-accordion', rest.className);
 
   const handleChatSelect = (chatId: number): void => {
     if (
@@ -98,7 +96,7 @@ const IssueListAccordion = ({
     });
 
   return (
-    <div className={componentClassNames} {...rest}>
+    <div {...rest} className={componentClassNames}>
       <Accordion
         className="issue-accordion"
         title={accordionTitle}

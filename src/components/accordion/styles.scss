@@ -52,70 +52,70 @@
 }
 
 .list {
-    &-item-container {
-      padding: 16px 24px 16px 16px;
-      display: flex;
-      justify-content: space-between;
-      line-height: 24px;
-      cursor: pointer;
+  &-item-container {
+    padding: 16px 24px 16px 16px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 24px;
+    cursor: pointer;
+  
+    &:not(:last-child) {
+      border-bottom: 1px solid #ecedef;
+    }    
     
-      &:not(:last-child) {
-        border-bottom: 1px solid #ecedef;
-      }    
-      
-      .list-item-timer.resolved {
-        color: $successDark;
-      }
+    .list-item-timer.resolved {
+      color: $successDark;
+    }
 
+    &:before {
+      content: ' ';
+      position: absolute;
+      height: 48px;
+      right: 0;
+      width: 8px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    &.driver-issue {
       &:before {
-        content: ' ';
-        position: absolute;
-        height: 48px;
-        right: 0;
-        width: 8px;
-        border-radius: 5px 0 0 5px;
-      }
-
-      &.driver-issue {
-        &:before {
-          background-color: #1eb973;
-        }
-      }
-
-      &.client-issue {
-        &:before {
-          background-color: #5b0b70;
-        }
-      }
-
-      &.auto-issue {
-        &:before {
-          background-color: $warning3;
-        }
-      }
-
-      &.staff-issue {
-        &:before {
-          background-color: #ef5350;
-        }
+        background-color: #1eb973;
       }
     }
 
-    &-item-description {
-      color: #3d3f53;
-      font-weight: 300;
-      font-variation-settings: 'wght' 300;
-      max-width: 242px;
-      overflow: hidden;
-      text-overflow: ellipsis;  
+    &.client-issue {
+      &:before {
+        background-color: #5b0b70;
+      }
     }
 
-    &-item-title {
-      color: #191924;
-      max-width: 242px;
-      overflow: hidden;
-      text-overflow: ellipsis;  
+    &.auto-issue {
+      &:before {
+        background-color: $warning3;
+      }
     }
+
+    &.staff-issue {
+      &:before {
+        background-color: #ef5350;
+      }
+    }
+  }
+
+  &-item-description {
+    color: #3d3f53;
+    font-weight: 300;
+    font-variation-settings: 'wght' 300;
+    max-width: 242px;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+  }
+
+  &-item-title {
+    color: #191924;
+    max-width: 242px;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+  }
 }
   
 .issue-accordion {
