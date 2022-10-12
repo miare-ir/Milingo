@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import sendIcon from '../../assets/icon/send.svg';
-import disabledSendIcon from '../../assets/icon/disabledsend.svg';
+import disabledSendIcon from '../../assets/icon/disabled-send.svg';
 import Button from '../button';
 import Textarea from '../textarea';
 import Loader from '../loader';
