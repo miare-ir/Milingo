@@ -40,7 +40,6 @@ import { Column, Row } from './components/flex';
 import Modal from './components/modal';
 import Image from './components/image';
 import ToggleButton from './components/toggle-button';
-import InfiniteScroll from './components/infinite-scroll';
 
 export {
   Banner,
@@ -94,5 +93,4 @@ export {
   Modal,
   Image,
   ToggleButton,
-  InfiniteScroll,
 };
