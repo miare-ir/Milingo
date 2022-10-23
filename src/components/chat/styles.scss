@@ -2,7 +2,10 @@
 
 .chat {
   &-container {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-end;
     width: 316px;
     box-sizing: border-box;
     background-color: $whiteColor;
@@ -10,38 +13,18 @@
     border-radius: 8px 8px 0 0;
     direction: rtl;
     position: relative;
+    height: 408px;
 
     .chat-content {
-      display: none; 
+      display: block; 
+    }
+
+    .chat-content::-webkit-scrollbar {
+      width: 17px;
     }
 
     .submit-form {
-      display: none;
-    }
-
-    &.active {
-      .chat-content {
-       display: block; 
-      }
-
-      .chat-content::-webkit-scrollbar {
-        width: 17px;
-      }
-
-      .submit-form {
-        display: block;
-      }
-    }
-
-    &.open {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-self: flex-end;
-
-      &.active {
-        height: 408px;
-      }
+      display: block;
     }
 
     .textarea-container {
@@ -67,67 +50,9 @@
     }
   }
 
-  &-header {
-    padding: 8px 24px 8px 16px;
-    display: flex;
-    justify-content: space-between;
-    line-height: 24px;
-    border-bottom: 1px solid #ecedef;
-    cursor: pointer;
-
-    &:before {
-      content: ' ';
-      position: absolute;
-      height: 48px;
-      right: 0;
-      width: 8px;
-      border-radius: 4px 0 0 4px;
-    }
-
-    &.driver-issue {
-      &:before {
-        background-color: #1eb973;
-      }
-    }
-
-    &.client-issue {
-      &:before {
-        background-color: #5b0b70;
-      }
-    }
-
-    &.auto-issue {
-      &:before {
-        background-color: #fbba00;
-      }
-    }
-
-    &.staff-issue {
-      &:before {
-        background-color: #ef5350;
-      }
-    }
-  }
-
   &-content {
     overflow-y: scroll;
     height: 100%;
-  }
-
-  &-username {
-    color: #3d3f53;
-    font-weight: 300;
-    font-variation-settings: 'wght' 300;
-    max-width: 242px;
-    overflow: hidden;
-    text-overflow: ellipsis;  
-  }
-
-  &-title {
-    color: #191924;
-    max-width: 242px;
-    overflow: hidden;
-    text-overflow: ellipsis;  
   }
 
   &-footer {
