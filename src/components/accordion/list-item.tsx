@@ -8,7 +8,6 @@ export interface ListItemProps {
   id: number;
   description?: string;
   reporter_type?: string;
-  timer?: number;
   isResolved?: boolean;
   className?: string;
   onClick: (id: number) => void;

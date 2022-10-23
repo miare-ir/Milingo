@@ -155,25 +155,12 @@
   }
 }
 
-.message {
-  font-weight: 300;
-  font-variation-settings: 'wght' 300;
-  font-size: 14px;
-  line-height: 24px;
-  padding: 8px;
-  margin: 8px 8px 4px 8px;
-  background: #1e6dc8;
-  border-radius: 10px 10px 0 10px;
-  color: $whiteColor;
-  overflow: hidden;
-  text-overflow: ellipsis;  
-  text-align: right;
-
+.chat-message {
   &-container {
     &.right {
       text-align: left;
       
-      .message {
+      .chat-message-item {
         background: #ecedef;
         border-radius: 10px 10px 10px 0;
         color: #3d3f53;
@@ -187,5 +174,20 @@
       color: #505050;
       margin: 0 8px;
     }
+  }
+
+  &-item {
+    font-weight: 300;
+    font-variation-settings: 'wght' 300;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 8px;
+    margin: 8px 8px 4px 8px;
+    background: #1e6dc8;
+    border-radius: 10px 10px 0 10px;
+    color: $whiteColor;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+    text-align: right;
   }
 }

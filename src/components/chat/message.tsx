@@ -19,15 +19,15 @@ const Message = (props: MessageProps): JSX.Element => {
     }).format(new Date(dateTime));
 
   const componentClassNames = classNames(
-    'message-container',
+    'chat-message-container',
     props.isRight ? 'right' : 'left',
     props.className,
   );
 
   return (
     <div className={componentClassNames} key={props.id}>
-      <div className="message">
-        <p className="content">{props.message}</p>
+      <div className="chat-message-item">
+        <p className="message-content">{props.message}</p>
       </div>
       <span className="time">{dateTimeFormat(props.created_at)}</span>
     </div>

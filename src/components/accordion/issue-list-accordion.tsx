@@ -106,7 +106,6 @@ const IssueListAccordion = ({
             id={issue.id}
             title={issue.problem.title}
             description={issue.description}
-            timer={33}
             isResolved={!!issue.resolved_at}
             reporter_type={issue.reporter_type}
             onClick={handleChatSelect}>

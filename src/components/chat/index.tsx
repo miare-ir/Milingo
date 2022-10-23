@@ -62,7 +62,7 @@ const Chat = ({
           <img src={closeIcon} onClick={setIsOpen} />
         </div>
       )}
-      <div className={'chat-content'}>{children}</div>
+      <div className="chat-content">{children}</div>
       {canSubmitMessage && (
         <SubmitForm
           id={chatId}
