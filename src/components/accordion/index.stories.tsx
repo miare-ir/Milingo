@@ -19,13 +19,10 @@ export const Default = (): JSX.Element => (
 );
 
 export const IssuesListAccordion = (): JSX.Element => {
-  const handelSubmitMessage = (id: number, message: string): void => {
+  const handelSubmitMessage = (id: number, message: string): void =>
     alert(`پیام ${message} برای ایدی ${id} ارسال شد`);
-  };
 
-  const handelResolve = (id: number): void => {
-    alert(`ایشیو ${id} بسته شد`);
-  };
+  const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
 
   return (
     <IssueListAccordion

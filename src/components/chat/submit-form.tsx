@@ -46,13 +46,9 @@ const SubmitForm = ({
 
   const handleTextareaChanges = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
-  ): void => {
-    setMessage(event.target.value);
-  };
+  ): void => setMessage(event.target.value);
 
-  const handelResolve = (): void => {
-    resolve(id);
-  };
+  const handelResolve = (): void => resolve(id);
 
   return (
     <form onSubmit={handleSubmitMessage} className="submit-form">

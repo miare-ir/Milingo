@@ -22,9 +22,8 @@ const ListItem = (props: ListItemProps): JSX.Element => {
     props.className,
   );
 
-  const handelClickItem = (e: React.SyntheticEvent<HTMLDivElement>): void => {
+  const handelClickItem = (e: React.SyntheticEvent<HTMLDivElement>): void =>
     props.onClick(props.id);
-  };
 
   return (
     <div className={componentClassNames} onClick={handelClickItem}>

@@ -13,13 +13,10 @@ export default {
 };
 
 const issue = issues[0];
-const handelSubmitMessage = (id: number, message: string): void => {
+const handelSubmitMessage = (id: number, message: string): void =>
   alert(`پیام ${message} برای ایدی ${id} ارسال شد`);
-};
 
-const handelResolve = (id: number): void => {
-  alert(`ایشیو ${id} بسته شد`);
-};
+const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
 
 export const Default = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(true);
