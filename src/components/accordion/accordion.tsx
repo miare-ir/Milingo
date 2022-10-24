@@ -28,7 +28,7 @@ const Accordion = ({
   setIsClose,
   ...rest
 }: AccordionProps): JSX.Element => {
-  const [isActiveAccordion, setisActiveAccordion] = useState(isActive || false);
+  const [isActiveAccordion, setIsActiveAccordion] = useState(isActive || false);
 
   const componentClassNames = classNames(
     'accordion-container',
@@ -49,7 +49,7 @@ const Accordion = ({
       <div
         className={`accordion-header ${description ? 'with-description' : ''}`}
         onClick={() =>
-          setisActiveAccordion(currentIsActive => !currentIsActive)
+          setIsActiveAccordion(currentIsActive => !currentIsActive)
         }>
         <div className="accordion-info">
           <div className="accordion-title">
