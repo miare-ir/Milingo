@@ -6,7 +6,7 @@ import './styles.scss';
 export interface MessageProps {
   message: string;
   isRight: boolean;
-  created_at: string;
+  createdDate: string;
   id: string;
   className?: string;
 }
@@ -29,7 +29,7 @@ const Message = (props: MessageProps): JSX.Element => {
       <div className="chat-message-item">
         <p className="message-content">{props.message}</p>
       </div>
-      <span className="time">{dateTimeFormat(props.created_at)}</span>
+      <span className="time">{dateTimeFormat(props.createdDate)}</span>
     </div>
   );
 };

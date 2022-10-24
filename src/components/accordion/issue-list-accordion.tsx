@@ -73,19 +73,16 @@ const IssueListAccordion = ({
           <Chat
             style={{ height: '350px' }}
             chatId={selectedChatId}
-            resolveBtnTitle={'رسیدگی شد'}
             onSubmitMessage={handelSubmitMessage}
             isSendingMessage={false}
-            canSubmitMessage
-            isResolved={false}
-            resolve={handelResolve}>
+            canSubmitMessage>
             {issue.messages.map(({ id, message, sender_type, created_at }) => (
               <Message
                 id={id}
                 key={id}
                 message={message}
                 isRight={sender_type !== 'staff'}
-                created_at={created_at}
+                createdDate={created_at}
               />
             ))}
           </Chat>

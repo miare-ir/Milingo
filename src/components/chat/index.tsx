@@ -10,10 +10,8 @@ export interface ChatProps extends React.HTMLAttributes<HTMLDivElement> {
   onSubmitMessage?: (id: number, text: string) => void;
   isSendingMessage?: boolean;
   canSubmitMessage?: boolean;
-  isResolved?: boolean;
-  resolveBtnTitle?: string;
-  resolve?: (id: number) => void;
   children?: React.ReactNode;
+  chatFooter?: React.ReactNode;
 }
 
 const Chat = ({
@@ -21,10 +19,8 @@ const Chat = ({
   onSubmitMessage,
   isSendingMessage,
   canSubmitMessage,
-  isResolved,
-  resolveBtnTitle,
-  resolve,
   children,
+  chatFooter,
   ...rest
 }: ChatProps): JSX.Element => {
   const componentClassNames = classNames('chat-container', rest.className);
@@ -37,11 +33,9 @@ const Chat = ({
           id={chatId}
           isSending={isSendingMessage}
           onSubmit={onSubmitMessage}
-          resolveBtnTitle={resolveBtnTitle}
-          isResolved={isResolved}
-          resolve={resolve}
         />
       )}
+      <div className="chat-footer">{chatFooter}</div>
     </div>
   );
 };
