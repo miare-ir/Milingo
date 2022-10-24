@@ -12,26 +12,33 @@ export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   title: string;
   count?: number;
-  isOpen?: boolean;
-  setIsOpen?: () => void;
+  isClose?: boolean;
+  setIsClose?: () => void;
 }
 
 const Accordion = ({
   children,
   title,
   count,
-  isOpen,
-  setIsOpen,
+  isClose,
+  setIsClose,
   ...rest
 }: AccordionProps): JSX.Element => {
   const [isActive, setIsActive] = useState(false);
 
   const componentClassNames = classNames(
     'accordion-container',
-    isOpen ? 'open' : '',
+    isClose ? 'close' : '',
     isActive ? 'active' : '',
     rest.className,
   );
+
+  const renderIcon = (): JSX.Element =>
+    setIsClose ? (
+      <img src={closeIcon} onClick={setIsClose} />
+    ) : (
+      <img src={arrowIcon} />
+    );
 
   return (
     <div {...rest} className={componentClassNames}>
@@ -42,11 +49,7 @@ const Accordion = ({
           {title}
           {count && <Tag success>{count}</Tag>}
         </div>
-        {setIsOpen ? (
-          <img src={closeIcon} onClick={setIsOpen} />
-        ) : (
-          <img src={arrowIcon} />
-        )}
+        {renderIcon()}
       </div>
       <div className="accordion-content">{children}</div>
     </div>

@@ -19,12 +19,13 @@ export const Default = (): JSX.Element => (
 );
 
 export const WithCloseButton = (): JSX.Element => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isClose, setIsClose] = React.useState(false);
+
   return (
     <Accordion
       title={'تیتر'}
-      isOpen={isOpen}
-      setIsOpen={() => setIsOpen(!isOpen)}>
+      isClose={isClose}
+      setIsClose={() => setIsClose(!isClose)}>
       <p style={{ padding: '16px' }}>پیامی چیزی...</p>
     </Accordion>
   );
