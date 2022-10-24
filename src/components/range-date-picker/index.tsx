@@ -90,7 +90,22 @@ class RangeDatePicker extends React.Component<
     };
   }
 
-  componentDidUpdate(prevProps: RangeDatePickerProps): void {
+  componentDidUpdate(
+    prevProps: RangeDatePickerProps,
+    prevState: Readonly<RangeDatePickerState>,
+  ): void {
+    if (
+      prevState.isDialogOpen !== this.state.isDialogOpen &&
+      this.state.isDialogOpen
+    ) {
+      if (this.state.fromDate) {
+        const { month, year } = this.getDashedDateDetail(
+          this.state.fromDate.format(this.persianFormats.fullDashed),
+        );
+        this.setState({ month, year });
+      }
+    }
+
     if (
       !moment(prevProps.defaultValue[0]).isSame(
         this.state.selectedDate[0],
@@ -258,12 +273,12 @@ class RangeDatePicker extends React.Component<
     );
 
     if (!fromDayElement) {
-      const fromDayDetail = this.getDashedDateDetail(fromDayID);
-      const toDayDetail = this.getDashedDateDetail(toDayID);
+      const from = moment(fromDayID, 'jYYYY/jM/jD');
+      const to = moment(toDayID, 'jYYYY/jM/jD');
 
-      if (fromDayDetail.month < toDayDetail.month) {
+      if (to.isAfter(from)) {
         return this.createRange(toDayElement, 'start');
-      } else if (fromDayDetail.month > toDayDetail.month) {
+      } else if (from.isAfter(to)) {
         return this.createRange(toDayElement, 'end');
       } else {
         return;
@@ -299,27 +314,27 @@ class RangeDatePicker extends React.Component<
     }
 
     const fromDay = moment(
-      from.id.replace(this.daysIdPrefix, ''),
+      from?.id.replace(this.daysIdPrefix, ''),
       'jYYYY/jM/jD',
     );
-    const toDay = moment(to.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
+    const toDay = moment(to?.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
 
-    if (fromDay.isSame(toDay)) {
+    if (fromDay?.isSame(toDay)) {
       return;
     }
 
-    from.classList.add(this.classNames.inRange);
+    from?.classList.add(this.classNames.inRange);
 
-    const isToDayAfterFromDay = toDay.isAfter(fromDay);
+    const isToDayAfterFromDay = toDay?.isAfter(fromDay);
     const achievementFunc = isToDayAfterFromDay ? 'add' : 'subtract';
-    const difference = Math.abs(fromDay.diff(toDay, 'day'));
+    const difference = Math.abs(fromDay?.diff(toDay, 'day'));
 
     this.removeAllByClassName(this.classNames.primary);
     this.removeAllByClassName(this.classNames.secondary);
 
     for (let i = 1; i <= difference; i++) {
       const dayElementID = `#${this.daysIdPrefix}`.concat(
-        fromDay[achievementFunc](1, 'day').format(
+        fromDay?.[achievementFunc](1, 'day').format(
           this.persianFormats.fullDashed,
         ),
       );
@@ -435,30 +450,53 @@ class RangeDatePicker extends React.Component<
         `#${this.daysIdPrefix}`.concat(fromDateID),
       );
 
-      const { month: fromMonth } = this.getDashedDateDetail(fromDateID);
-      const { month: toMonth } = this.getDashedDateDetail(toDateID);
+      const { month: fromMonth, year: fromYear } = this.getDashedDateDetail(
+        fromDateID,
+      );
+      const { month: toMonth, year: toYear } = this.getDashedDateDetail(
+        toDateID,
+      );
+
+      const from = moment(fromDateID, 'jYYYY/jM/jD');
+      const to = moment(toDateID, 'jYYYY/jM/jD');
+
+      const isActiveMonthBeforeFromMonth =
+        (this.state.month < fromMonth && this.state.year <= fromYear) ||
+        this.state.year < fromYear;
+
+      const isActiveMonthAfterFromMonth =
+        (this.state.month > fromMonth && this.state.year >= fromYear) ||
+        this.state.year > fromYear;
+
+      const isActiveMonthAfterToMonth =
+        (this.state.month > toMonth && this.state.year >= toYear) ||
+        this.state.year > toYear;
+
+      const isActiveMonthBeforeToMonth =
+        (this.state.month < toMonth && this.state.year <= toYear) ||
+        this.state.year < toYear;
 
       if (fromMonth === toMonth) {
         this.createRange(fromDateElement, toDateElement);
       } else {
         if (!toDateElement && !fromDateElement) {
-          if (fromMonth > toMonth) {
-            if (this.state.month < fromMonth && this.state.month > toMonth) {
+          if (from.isAfter(to)) {
+            if (isActiveMonthBeforeFromMonth && isActiveMonthAfterToMonth) {
               this.createRange('start', 'end');
             }
           } else {
-            if (this.state.month < toMonth && this.state.month > fromMonth) {
+            if (isActiveMonthBeforeToMonth && isActiveMonthAfterFromMonth) {
               this.createRange('start', 'end');
             }
           }
         } else if (toDateElement) {
-          if (this.state.month < fromMonth) {
+          if (isActiveMonthBeforeFromMonth) {
             this.createRange('end', toDateElement);
           } else {
             this.createRange('start', toDateElement);
           }
         } else {
-          if (this.state.month < toMonth) {
+          if (isActiveMonthBeforeToMonth) {
             this.createRange(fromDateElement, 'end');
           } else {
             this.createRange('start', fromDateElement);
