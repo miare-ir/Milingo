@@ -6,8 +6,8 @@ import Issue from '../../common/types/issue';
 import Chat from '../chat';
 import Message from '../chat/message';
 import Accordion from './accordion';
-import ListItem from './list-item';
-import './styles.scss';
+import AccordionItem from './accordion-item';
+import './styles/index.scss';
 
 export interface IssueListAccordionProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -52,12 +52,12 @@ const IssueListAccordion = ({
     );
   };
 
-  const handleChatUnselect = (chatId: number): void =>
-    setSelectedChatIds(previousSelectedChatIds => {
-      const clone = new Set(Array.from(previousSelectedChatIds));
-      clone.delete(chatId);
-      return clone;
-    });
+  // const handleChatUnselect = (chatId: number): void =>
+  //   setSelectedChatIds(previousSelectedChatIds => {
+  //     const clone = new Set(Array.from(previousSelectedChatIds));
+  //     clone.delete(chatId);
+  //     return clone;
+  //   });
 
   const renderChats = (): JSX.Element[] =>
     Array.from(selectedChatIds).map(selectedChatId => {
@@ -67,17 +67,10 @@ const IssueListAccordion = ({
           key={selectedChatId}
           chatId={selectedChatId}
           title={issue.problem.title}
-          reporter_type={issue.reporter_type}
-          username={
-            issue.reported_by.first_name + ' ' + issue.reported_by.last_name
-          }
-          isOpen
           resolveBtnTitle={'رسیدگی شد'}
-          setIsOpen={() => handleChatUnselect(issue.id)}
           onSubmitMessage={handelSubmitMessage}
           isSendingMessage={false}
           canSubmitMessage
-          hasHeader
           isResolved={false}
           resolve={handelResolve}>
           {issue.messages.map(({ id, message, sender_type, created_at }) => (
@@ -93,6 +86,19 @@ const IssueListAccordion = ({
       );
     });
 
+  const renderTimer = (issue: Issue): JSX.Element => (
+    <div
+      className={`accordion-item-timer ${
+        issue?.resolved_at ? 'resolved' : ''
+      }`}>
+      {issue?.resolved_at ? (
+        'تکمیل شده'
+      ) : (
+        <div className={'timer'}>{issue?.reported_at.getMinutes()}</div>
+      )}
+    </div>
+  );
+
   return (
     <div {...rest} className={componentClassNames}>
       <Accordion
@@ -100,17 +106,15 @@ const IssueListAccordion = ({
         title={accordionTitle}
         count={issues.length}>
         {issues.map(issue => (
-          <ListItem
-            className={`accordion-list-container ${issue.reporter_type}-issue`}
+          <AccordionItem
+            className={`${issue.reporter_type}-issue`}
             key={issue.id}
             id={issue.id}
             title={issue.problem.title}
             description={issue.description}
-            isResolved={!!issue.resolved_at}
-            reporter_type={issue.reporter_type}
-            onClick={handleChatSelect}>
-            <div className={'timer'}>{issue.reported_at.getMinutes()}</div>
-          </ListItem>
+            onClick={handleChatSelect}
+            extraElement={renderTimer(issue)}
+          />
         ))}
       </Accordion>
       <div className="chats-container">{renderChats()}</div>

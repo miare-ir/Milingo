@@ -5,7 +5,7 @@ import * as classNames from 'classnames';
 
 import arrowIcon from '../../assets/icon/arrow.svg';
 import Tag from '../tag';
-import './styles.scss';
+import './styles/index.scss';
 
 export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
