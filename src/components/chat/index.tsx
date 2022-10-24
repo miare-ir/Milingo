@@ -7,20 +7,20 @@ import SubmitForm from './submit-form';
 
 export interface ChatProps extends React.HTMLAttributes<HTMLDivElement> {
   chatId: number;
-  onSubmitMessage?: (id: number, text: string) => void;
-  isSendingMessage?: boolean;
-  canSubmitMessage?: boolean;
+  handelSubmit?: (id: number, text: string) => void;
+  isSending?: boolean;
+  canSubmit?: boolean;
   children?: React.ReactNode;
-  chatFooter?: React.ReactNode;
+  footer?: React.ReactNode;
 }
 
 const Chat = ({
   chatId,
-  onSubmitMessage,
-  isSendingMessage,
-  canSubmitMessage,
+  handelSubmit,
+  isSending,
+  canSubmit,
   children,
-  chatFooter,
+  footer,
   ...rest
 }: ChatProps): JSX.Element => {
   const componentClassNames = classNames('chat-container', rest.className);
@@ -28,14 +28,10 @@ const Chat = ({
   return (
     <div {...rest} className={componentClassNames}>
       <div className="chat-content">{children}</div>
-      {canSubmitMessage && (
-        <SubmitForm
-          id={chatId}
-          isSending={isSendingMessage}
-          onSubmit={onSubmitMessage}
-        />
+      {canSubmit && (
+        <SubmitForm id={chatId} isSending={isSending} onSubmit={handelSubmit} />
       )}
-      <div className="chat-footer">{chatFooter}</div>
+      <div className="chat-footer">{footer}</div>
     </div>
   );
 };

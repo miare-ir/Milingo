@@ -73,9 +73,9 @@ const IssueListAccordion = ({
           <Chat
             style={{ height: '350px' }}
             chatId={selectedChatId}
-            onSubmitMessage={handelSubmitMessage}
-            isSendingMessage={false}
-            canSubmitMessage>
+            handelSubmit={handelSubmitMessage}
+            isSending={false}
+            canSubmit>
             {issue.messages.map(({ id, message, sender_type, created_at }) => (
               <Message
                 id={id}

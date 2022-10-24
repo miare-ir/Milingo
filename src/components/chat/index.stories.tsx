@@ -20,9 +20,9 @@ const handelSubmitMessage = (id: number, message: string): void =>
 export const Default = (): JSX.Element => (
   <Chat
     chatId={issue.id}
-    onSubmitMessage={handelSubmitMessage}
-    isSendingMessage={false}
-    canSubmitMessage>
+    handelSubmit={handelSubmitMessage}
+    isSending={false}
+    canSubmit>
     {issue.messages.map(({ message, id, sender_type, created_at }) => (
       <Message
         id={id}
@@ -38,9 +38,9 @@ export const Default = (): JSX.Element => (
 export const WithoutMessage = (): JSX.Element => (
   <Chat
     chatId={issue.id}
-    onSubmitMessage={handelSubmitMessage}
-    isSendingMessage={false}
-    canSubmitMessage>
+    handelSubmit={handelSubmitMessage}
+    isSending={false}
+    canSubmit>
     {[].map(({ message, id, sender_type, created_at }) => (
       <Message
         id={id}
@@ -54,7 +54,7 @@ export const WithoutMessage = (): JSX.Element => (
 );
 
 export const WithoutSubmitMessage = (): JSX.Element => (
-  <Chat chatId={issue.id} canSubmitMessage={false}>
+  <Chat chatId={issue.id} canSubmit={false}>
     {issue.messages.map(({ message, id, sender_type, created_at }) => (
       <Message
         id={id}
@@ -94,10 +94,10 @@ export const WhitFooter = (): JSX.Element => {
   return (
     <Chat
       chatId={issue.id}
-      onSubmitMessage={handelSubmitMessage}
-      isSendingMessage={false}
-      canSubmitMessage
-      chatFooter={renderChatFooter()}>
+      handelSubmit={handelSubmitMessage}
+      isSending={false}
+      canSubmit
+      footer={renderChatFooter()}>
       {issue.messages.map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}
