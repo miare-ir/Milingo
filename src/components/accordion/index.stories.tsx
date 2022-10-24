@@ -18,6 +18,18 @@ export const Default = (): JSX.Element => (
   </Accordion>
 );
 
+export const WithCloseButton = (): JSX.Element => {
+  const [isOpen, setIsOpen] = React.useState(true);
+  return (
+    <Accordion
+      title={'تیتر'}
+      isOpen={isOpen}
+      setIsOpen={() => setIsOpen(!isOpen)}>
+      <p style={{ padding: '16px' }}>پیامی چیزی...</p>
+    </Accordion>
+  );
+};
+
 export const IssuesListAccordion = (): JSX.Element => {
   const handelSubmitMessage = (id: number, message: string): void =>
     alert(`پیام ${message} برای ایدی ${id} ارسال شد`);

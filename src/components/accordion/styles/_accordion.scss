@@ -1,5 +1,6 @@
 .accordion {
   &-container {
+    display: none;
     position: fixed;
     width: 316px;
     height: 56px;
@@ -7,6 +8,10 @@
     background-color: $whiteColor;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
+
+    &.open {
+      display: block;
+    }
   
     &.active {
       height: 408px;
