@@ -12,6 +12,8 @@ export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   title: string;
   count?: number;
+  description?: string;
+  isActive?: boolean;
   isClose?: boolean;
   setIsClose?: () => void;
 }
@@ -20,16 +22,18 @@ const Accordion = ({
   children,
   title,
   count,
+  description,
+  isActive,
   isClose,
   setIsClose,
   ...rest
 }: AccordionProps): JSX.Element => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActiveAccordion, setisActiveAccordion] = useState(isActive || false);
 
   const componentClassNames = classNames(
     'accordion-container',
     isClose ? 'close' : '',
-    isActive ? 'active' : '',
+    isActiveAccordion ? 'active' : '',
     rest.className,
   );
 
@@ -43,11 +47,18 @@ const Accordion = ({
   return (
     <div {...rest} className={componentClassNames}>
       <div
-        className="accordion-header"
-        onClick={() => setIsActive(currentIsActive => !currentIsActive)}>
-        <div className="accordion-title">
-          {title}
-          {count && <Tag success>{count}</Tag>}
+        className={`accordion-header ${description ? 'with-description' : ''}`}
+        onClick={() =>
+          setisActiveAccordion(currentIsActive => !currentIsActive)
+        }>
+        <div className="accordion-info">
+          <div className="accordion-title">
+            {title}
+            {count && <Tag success>{count}</Tag>}
+          </div>
+          {description && (
+            <div className="accordion-description">{description}</div>
+          )}
         </div>
         {renderIcon()}
       </div>

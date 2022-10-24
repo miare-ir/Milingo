@@ -1,6 +1,5 @@
 .accordion {
   &-container {
-    position: fixed;
     width: 316px;
     height: 56px;
     box-sizing: border-box;
@@ -31,6 +30,30 @@
       align-items: center;
       padding: 16px;
       cursor: pointer;
+
+      &.with-description {
+        padding: 8px 24px 8px 16px;
+        line-height: 24px;
+
+        .accordion-info {
+          text-align: end;
+
+          .accordion-title {
+            max-width: 228px;
+            overflow: hidden;
+            text-overflow: ellipsis;  
+          }
+
+          .accordion-description {
+            color: #3d3f53;
+            font-weight: 300;
+            font-variation-settings: 'wght' 300;
+            max-width: 228px;
+            overflow: hidden;
+            text-overflow: ellipsis;  
+          }
+        }
+      }
   
       .tag-wrapper {
         margin-right: 8px;

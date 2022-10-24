@@ -52,37 +52,44 @@ const IssueListAccordion = ({
     );
   };
 
-  // const handleChatUnselect = (chatId: number): void =>
-  //   setSelectedChatIds(previousSelectedChatIds => {
-  //     const clone = new Set(Array.from(previousSelectedChatIds));
-  //     clone.delete(chatId);
-  //     return clone;
-  //   });
+  const handleChatUnselect = (chatId: number): void =>
+    setSelectedChatIds(previousSelectedChatIds => {
+      const clone = new Set(Array.from(previousSelectedChatIds));
+      clone.delete(chatId);
+      return clone;
+    });
 
   const renderChats = (): JSX.Element[] =>
     Array.from(selectedChatIds).map(selectedChatId => {
       const issue = issues[selectedChatId];
       return (
-        <Chat
+        <Accordion
+          style={{ bottom: '0' }}
           key={selectedChatId}
-          chatId={selectedChatId}
           title={issue.problem.title}
-          resolveBtnTitle={'رسیدگی شد'}
-          onSubmitMessage={handelSubmitMessage}
-          isSendingMessage={false}
-          canSubmitMessage
-          isResolved={false}
-          resolve={handelResolve}>
-          {issue.messages.map(({ id, message, sender_type, created_at }) => (
-            <Message
-              id={id}
-              key={id}
-              message={message}
-              isRight={sender_type !== 'staff'}
-              created_at={created_at}
-            />
-          ))}
-        </Chat>
+          description={issue.reported_by.last_name}
+          isActive
+          setIsClose={() => handleChatUnselect(selectedChatId)}>
+          <Chat
+            style={{ height: '350px' }}
+            chatId={selectedChatId}
+            resolveBtnTitle={'رسیدگی شد'}
+            onSubmitMessage={handelSubmitMessage}
+            isSendingMessage={false}
+            canSubmitMessage
+            isResolved={false}
+            resolve={handelResolve}>
+            {issue.messages.map(({ id, message, sender_type, created_at }) => (
+              <Message
+                id={id}
+                key={id}
+                message={message}
+                isRight={sender_type !== 'staff'}
+                created_at={created_at}
+              />
+            ))}
+          </Chat>
+        </Accordion>
       );
     });
 

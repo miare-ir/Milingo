@@ -1,6 +1,7 @@
 .issue-accordion {
   bottom: 0;
   right: 8px;
+  position: fixed;
 
   & + .messages-container {
     bottom: 0;
@@ -15,4 +16,5 @@
   bottom: 0;
   right: 336px;
   flex-direction: row-reverse;
+  align-items: flex-end;
 }
