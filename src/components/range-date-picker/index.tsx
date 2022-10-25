@@ -643,6 +643,11 @@ class RangeDatePicker extends React.Component<
   };
 
   closeDialog = (): void => {
+    this.setState({
+      fromDate: this.state.selectedDate?.[0] || null,
+      toDate: this.state.selectedDate?.[1] || null,
+    });
+
     if (this.props.closeDialog) {
       this.props.closeDialog();
     } else {
@@ -650,12 +655,14 @@ class RangeDatePicker extends React.Component<
     }
   };
 
-  createTitle(minimal?: boolean): string {
-    const format = minimal ? 'jM/jD' : 'ddd jD jMMMM';
+  createTitle(range: DateRange, lessContent?: boolean): string {
+    const format = lessContent ? 'jM/jD' : 'ddd jD jMMMM';
+    const fromDate = range?.[0];
+    const toDate = range?.[1];
 
-    if (this.state.fromDate && this.state.toDate) {
-      const from = this.state.fromDate.toDate().getTime();
-      const to = this.state.toDate.toDate().getTime();
+    if (fromDate && toDate) {
+      const from = fromDate.toDate().getTime();
+      const to = toDate.toDate().getTime();
 
       const fromTitle = moment(from).format(format);
       const toTitle = moment(to).format(format);
@@ -665,10 +672,10 @@ class RangeDatePicker extends React.Component<
       } else {
         return `از ${toTitle} تا ${fromTitle}`;
       }
-    } else if (this.state.fromDate) {
-      return this.state.fromDate.format(format);
+    } else if (fromDate) {
+      return fromDate.format(format);
     }
-    return minimal ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
+    return lessContent ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
   }
 
   render(): React.ReactNode {
@@ -691,7 +698,10 @@ class RangeDatePicker extends React.Component<
             this.state.selectedDate ? '' : 'empty'
           } ${this.props.buttonProps?.className ?? ''}`}
           onClick={this.openDialog}>
-          <PersianNumber value={this.createTitle(true)} className="clickable" />
+          <PersianNumber
+            value={this.createTitle(this.state.selectedDate, true)}
+            className="clickable"
+          />
         </Button>
         <ReactModal
           ariaHideApp={false}
@@ -702,7 +712,10 @@ class RangeDatePicker extends React.Component<
           contentLabel="Modal">
           <div className="calendar-info">
             <PersianNumber className="year" value={currentYear} />
-            <PersianNumber className="month" value={this.createTitle()} />
+            <PersianNumber
+              className="month"
+              value={this.createTitle([this.state.fromDate, this.state.toDate])}
+            />
           </div>
           <Row grow={1} className="padding-medium calendar-switches">
             <Column grow={0} order={0}>

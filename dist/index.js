@@ -3913,6 +3913,9 @@ var RangeDatePicker = /** @class */ (function (_super) {
         _this.saveDate = function (date) {
             var firstDate = date[0];
             var secondDate = date[1];
+            if (!firstDate || !secondDate) {
+                return;
+            }
             var from = date[0];
             var to = date[1];
             if (from.isAfter(to)) {
@@ -4293,7 +4296,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                             React.createElement("div", { className: "calendar-weekday" }, "\u062C"))),
                     this.generateMonth(this.state.month, this.state.year)),
                 React.createElement("div", { className: "calendar-actions" },
-                    React.createElement(button_1.default, { link: true, small: true, onClick: function () {
+                    React.createElement(button_1.default, { link: true, small: true, disabled: !this.state.toDate || !this.state.fromDate, onClick: function () {
                             return _this.saveDate([_this.state.fromDate, _this.state.toDate]);
                         } }, "\u062A\u0627\u06CC\u06CC\u062F"),
                     React.createElement(button_1.default, { link: true, small: true, onClick: this.closeDialog }, "\u0627\u0646\u0635\u0631\u0627\u0641"),
