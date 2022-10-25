@@ -3928,6 +3928,11 @@ var RangeDatePicker = /** @class */ (function (_super) {
             _this.closeDialog();
         };
         _this.openDialog = function () {
+            var _a, _b;
+            _this.setState({
+                fromDate: ((_a = _this.state.selectedDate) === null || _a === void 0 ? void 0 : _a[0]) || moment(),
+                toDate: ((_b = _this.state.selectedDate) === null || _b === void 0 ? void 0 : _b[1]) || null,
+            });
             if (_this.props.disabled) {
                 return;
             }
@@ -3956,11 +3961,6 @@ var RangeDatePicker = /** @class */ (function (_super) {
             setTimeout(function () { return _this.createDefaultRange(); }, 0);
         };
         _this.closeDialog = function () {
-            var _a, _b;
-            _this.setState({
-                fromDate: ((_a = _this.state.selectedDate) === null || _a === void 0 ? void 0 : _a[0]) || null,
-                toDate: ((_b = _this.state.selectedDate) === null || _b === void 0 ? void 0 : _b[1]) || null,
-            });
             if (_this.props.closeDialog) {
                 _this.props.closeDialog();
             }
@@ -3968,7 +3968,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                 _this.setState({ isDialogOpen: false });
             }
         };
-        var fromDate = props.defaultValue
+        var fromDate = props.defaultValue && props.defaultValue[0]
             ? moment(props.defaultValue[0])
             : moment();
         var toDate = props.defaultValue && props.defaultValue[1]
@@ -3980,22 +3980,24 @@ var RangeDatePicker = /** @class */ (function (_super) {
             fromDate: fromDate,
             toDate: toDate,
             isDialogOpen: false,
-            selectedDate: [fromDate, toDate],
+            selectedDate: props.defaultValue && [fromDate, toDate],
         };
         return _this;
     }
     RangeDatePicker.prototype.componentDidUpdate = function (prevProps, prevState) {
+        var _a, _b, _c, _d, _e;
         if (prevState.isDialogOpen !== this.state.isDialogOpen &&
             this.state.isDialogOpen) {
             if (this.state.fromDate) {
-                var _a = this.getDashedDateDetail(this.state.fromDate.format(this.persianFormats.fullDashed)), month = _a.month, year = _a.year;
+                var _f = this.getDashedDateDetail(this.state.fromDate.format(this.persianFormats.fullDashed)), month = _f.month, year = _f.year;
                 this.setState({ month: month, year: year });
             }
         }
-        if (!moment(prevProps.defaultValue[0]).isSame(this.state.selectedDate[0], 'day')) {
+        if (!moment((_a = prevState.selectedDate) === null || _a === void 0 ? void 0 : _a[0]).isSame((_b = this.state.selectedDate) === null || _b === void 0 ? void 0 : _b[0])) {
             this.saveDate([
-                moment(this.state.selectedDate[0]),
-                this.state.selectedDate[1] ? moment(this.state.selectedDate[1]) : null,
+                moment((_c = this.state.selectedDate) === null || _c === void 0 ? void 0 : _c[0]),
+                ((_d = this.state.selectedDate) === null || _d === void 0 ? void 0 : _d[1]) ? moment((_e = this.state.selectedDate) === null || _e === void 0 ? void 0 : _e[1])
+                    : null,
             ]);
         }
         if (this.state.forceDatePickerOpen) {
@@ -4266,7 +4268,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
         else if (fromDate) {
             return fromDate.format(format);
         }
-        return lessContent ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
+        return lessContent ? 'انتخاب تاریخ' : 'لطفا یک روز را انتخاب کنید';
     };
     RangeDatePicker.prototype.render = function () {
         var _this = this;

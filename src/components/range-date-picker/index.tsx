@@ -74,9 +74,10 @@ class RangeDatePicker extends React.Component<
   constructor(props: RangeDatePickerProps) {
     super(props);
 
-    const fromDate = props.defaultValue
-      ? moment(props.defaultValue[0])
-      : moment();
+    const fromDate =
+      props.defaultValue && props.defaultValue[0]
+        ? moment(props.defaultValue[0])
+        : moment();
 
     const toDate =
       props.defaultValue && props.defaultValue[1]
@@ -89,7 +90,7 @@ class RangeDatePicker extends React.Component<
       fromDate,
       toDate,
       isDialogOpen: false,
-      selectedDate: [fromDate, toDate],
+      selectedDate: props.defaultValue && [fromDate, toDate],
     };
   }
 
@@ -110,14 +111,13 @@ class RangeDatePicker extends React.Component<
     }
 
     if (
-      !moment(prevProps.defaultValue[0]).isSame(
-        this.state.selectedDate[0],
-        'day',
-      )
+      !moment(prevState.selectedDate?.[0]).isSame(this.state.selectedDate?.[0])
     ) {
       this.saveDate([
-        moment(this.state.selectedDate[0]),
-        this.state.selectedDate[1] ? moment(this.state.selectedDate[1]) : null,
+        moment(this.state.selectedDate?.[0]),
+        this.state.selectedDate?.[1]
+          ? moment(this.state.selectedDate?.[1])
+          : null,
       ]);
     }
 
@@ -607,6 +607,11 @@ class RangeDatePicker extends React.Component<
   };
 
   openDialog = (): void => {
+    this.setState({
+      fromDate: this.state.selectedDate?.[0] || moment(),
+      toDate: this.state.selectedDate?.[1] || null,
+    });
+
     if (this.props.disabled) {
       return;
     }
@@ -643,11 +648,6 @@ class RangeDatePicker extends React.Component<
   };
 
   closeDialog = (): void => {
-    this.setState({
-      fromDate: this.state.selectedDate?.[0] || null,
-      toDate: this.state.selectedDate?.[1] || null,
-    });
-
     if (this.props.closeDialog) {
       this.props.closeDialog();
     } else {
@@ -675,7 +675,7 @@ class RangeDatePicker extends React.Component<
     } else if (fromDate) {
       return fromDate.format(format);
     }
-    return lessContent ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
+    return lessContent ? 'انتخاب تاریخ' : 'لطفا یک روز را انتخاب کنید';
   }
 
   render(): React.ReactNode {
