@@ -3956,6 +3956,11 @@ var RangeDatePicker = /** @class */ (function (_super) {
             setTimeout(function () { return _this.createDefaultRange(); }, 0);
         };
         _this.closeDialog = function () {
+            var _a, _b;
+            _this.setState({
+                fromDate: ((_a = _this.state.selectedDate) === null || _a === void 0 ? void 0 : _a[0]) || null,
+                toDate: ((_b = _this.state.selectedDate) === null || _b === void 0 ? void 0 : _b[1]) || null,
+            });
             if (_this.props.closeDialog) {
                 _this.props.closeDialog();
             }
@@ -4242,11 +4247,13 @@ var RangeDatePicker = /** @class */ (function (_super) {
         // magic 0ms timeout to make sure all days are rendered
         setTimeout(function () { return _this.createDefaultRange(); }, 0);
     };
-    RangeDatePicker.prototype.createTitle = function (minimal) {
-        var format = minimal ? 'jM/jD' : 'ddd jD jMMMM';
-        if (this.state.fromDate && this.state.toDate) {
-            var from = this.state.fromDate.toDate().getTime();
-            var to = this.state.toDate.toDate().getTime();
+    RangeDatePicker.prototype.createTitle = function (range, lessContent) {
+        var format = lessContent ? 'jM/jD' : 'ddd jD jMMMM';
+        var fromDate = range === null || range === void 0 ? void 0 : range[0];
+        var toDate = range === null || range === void 0 ? void 0 : range[1];
+        if (fromDate && toDate) {
+            var from = fromDate.toDate().getTime();
+            var to = toDate.toDate().getTime();
             var fromTitle = moment(from).format(format);
             var toTitle = moment(to).format(format);
             if (from < to) {
@@ -4256,10 +4263,10 @@ var RangeDatePicker = /** @class */ (function (_super) {
                 return "\u0627\u0632 " + toTitle + " \u062A\u0627 " + fromTitle;
             }
         }
-        else if (this.state.fromDate) {
-            return this.state.fromDate.format(format);
+        else if (fromDate) {
+            return fromDate.format(format);
         }
-        return minimal ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
+        return lessContent ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
     };
     RangeDatePicker.prototype.render = function () {
         var _this = this;
@@ -4272,11 +4279,11 @@ var RangeDatePicker = /** @class */ (function (_super) {
         var displayedDate = moment(year + "-" + month + "-1", 'jYYYY/jM/jD').format('jMMMM jYYYY');
         return (React.createElement("div", { className: "range-date-picker-container " + this.props.className },
             React.createElement(button_1.default, __assign({}, this.props.buttonProps, { disabled: this.props.disabled, className: "date-picker-input " + (this.state.selectedDate ? '' : 'empty') + " " + ((_b = (_a = this.props.buttonProps) === null || _a === void 0 ? void 0 : _a.className) !== null && _b !== void 0 ? _b : ''), onClick: this.openDialog }),
-                React.createElement(persian_number_1.default, { value: this.createTitle(true), className: "clickable" })),
+                React.createElement(persian_number_1.default, { value: this.createTitle(this.state.selectedDate, true), className: "clickable" })),
             React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.isDialogOpen || this.state.isDialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-range-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
                 React.createElement("div", { className: "calendar-info" },
                     React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
-                    React.createElement(persian_number_1.default, { className: "month", value: this.createTitle() })),
+                    React.createElement(persian_number_1.default, { className: "month", value: this.createTitle([this.state.fromDate, this.state.toDate]) })),
                 React.createElement(flex_1.Row, { grow: 1, className: "padding-medium calendar-switches" },
                     React.createElement(flex_1.Column, { grow: 0, order: 0 },
                         React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('subtract'); } }, "chevron_right")),
