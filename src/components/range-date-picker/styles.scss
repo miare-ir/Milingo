@@ -112,7 +112,8 @@
           justify-content: center;
         }
 
-        &.seem-disabled {
+        &.seem-disabled,
+        &.inactive {
           color: #b6b6b6;
         }
 
@@ -125,7 +126,8 @@
         &.clickable {
           cursor: pointer;
 
-          &:not(.seem-disabled):hover {
+          &:not(.seem-disabled):hover,
+          &:not(.inactive):hover {
             background-color: $primary2;
             color: $whiteColor;
           }
@@ -147,7 +149,7 @@
             transition: background-color 0.2s ease-in-out;
           }
 
-          &.primary.selected, 
+          &.primary.selected,
           &.primary:hover {
             &:before {
               width: calc(50% + 5px);
@@ -155,13 +157,13 @@
             }
           }
 
-          &.secondary.selected, 
+          &.secondary.selected,
           &.secondary:hover {
             &:before {
               width: calc(50% + 5px);
             }
           }
-          
+
           &.preview {
             &:before {
               border-top-style: dashed;
@@ -171,8 +173,6 @@
             }
           }
         }
-
-     
       }
     }
   }

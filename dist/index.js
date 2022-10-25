@@ -664,8 +664,6 @@ var image_1 = __webpack_require__(102);
 exports.Image = image_1.default;
 var toggle_button_1 = __webpack_require__(104);
 exports.ToggleButton = toggle_button_1.default;
-var infinite_scroll_1 = __webpack_require__(106);
-exports.InfiniteScroll = infinite_scroll_1.default;
 
 
 /***/ }),
@@ -2674,10 +2672,10 @@ var loader_1 = __webpack_require__(8);
 __webpack_require__(14);
 var TimelineEntry = function (_a) {
     var time = _a.time, description = _a.description, noBorder = _a.noBorder, clickable = _a.clickable, children = _a.children, loading = _a.loading, props = __rest(_a, ["time", "description", "noBorder", "clickable", "children", "loading"]);
-    return (React.createElement("div", __assign({ className: classNames('timeline', {
+    return (React.createElement("div", __assign({}, props, { className: classNames("timeline " + (props.className ? props.className : ''), {
             clickable: clickable,
             clicked: !!time && clickable && !loading,
-        }) }, props),
+        }) }),
         React.createElement("div", { className: "entry-title-container" },
             React.createElement("div", { className: "entry-time-container" },
                 React.createElement("div", { className: "entry-time" }, loading ? React.createElement(loader_1.default, { disabled: true }) : time)),
@@ -3971,7 +3969,14 @@ var RangeDatePicker = /** @class */ (function (_super) {
         };
         return _this;
     }
-    RangeDatePicker.prototype.componentDidUpdate = function (prevProps) {
+    RangeDatePicker.prototype.componentDidUpdate = function (prevProps, prevState) {
+        if (prevState.isDialogOpen !== this.state.isDialogOpen &&
+            this.state.isDialogOpen) {
+            if (this.state.fromDate) {
+                var _a = this.getDashedDateDetail(this.state.fromDate.format(this.persianFormats.fullDashed)), month = _a.month, year = _a.year;
+                this.setState({ month: month, year: year });
+            }
+        }
         if (!moment(prevProps.defaultValue[0]).isSame(this.state.selectedDate[0], 'day')) {
             this.saveDate([
                 moment(this.state.selectedDate[0]),
@@ -3999,12 +4004,12 @@ var RangeDatePicker = /** @class */ (function (_super) {
         var fromDayID = this.state.fromDate.format(this.persianFormats.fullDashed);
         var fromDayElement = calendar.querySelector("#" + this.daysIdPrefix + fromDayID);
         if (!fromDayElement) {
-            var fromDayDetail = this.getDashedDateDetail(fromDayID);
-            var toDayDetail = this.getDashedDateDetail(toDayID);
-            if (fromDayDetail.month < toDayDetail.month) {
+            var from = moment(fromDayID, 'jYYYY/jM/jD');
+            var to = moment(toDayID, 'jYYYY/jM/jD');
+            if (to.isAfter(from)) {
                 return this.createRange(toDayElement, 'start');
             }
-            else if (fromDayDetail.month > toDayDetail.month) {
+            else if (from.isAfter(to)) {
                 return this.createRange(toDayElement, 'end');
             }
             else {
@@ -4032,19 +4037,19 @@ var RangeDatePicker = /** @class */ (function (_super) {
             var allDays = calendar.querySelectorAll('.calendar-day');
             to = allDays[allDays.length - 1];
         }
-        var fromDay = moment(from.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
-        var toDay = moment(to.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
-        if (fromDay.isSame(toDay)) {
+        var fromDay = moment(from === null || from === void 0 ? void 0 : from.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
+        var toDay = moment(to === null || to === void 0 ? void 0 : to.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
+        if (fromDay === null || fromDay === void 0 ? void 0 : fromDay.isSame(toDay)) {
             return;
         }
-        from.classList.add(this.classNames.inRange);
-        var isToDayAfterFromDay = toDay.isAfter(fromDay);
+        from === null || from === void 0 ? void 0 : from.classList.add(this.classNames.inRange);
+        var isToDayAfterFromDay = toDay === null || toDay === void 0 ? void 0 : toDay.isAfter(fromDay);
         var achievementFunc = isToDayAfterFromDay ? 'add' : 'subtract';
-        var difference = Math.abs(fromDay.diff(toDay, 'day'));
+        var difference = Math.abs(fromDay === null || fromDay === void 0 ? void 0 : fromDay.diff(toDay, 'day'));
         this.removeAllByClassName(this.classNames.primary);
         this.removeAllByClassName(this.classNames.secondary);
         for (var i = 1; i <= difference; i++) {
-            var dayElementID = ("#" + this.daysIdPrefix).concat(fromDay[achievementFunc](1, 'day').format(this.persianFormats.fullDashed));
+            var dayElementID = ("#" + this.daysIdPrefix).concat(fromDay === null || fromDay === void 0 ? void 0 : fromDay[achievementFunc](1, 'day').format(this.persianFormats.fullDashed));
             var dayElement = calendar.querySelector(dayElementID);
             if (!dayElement) {
                 continue;
@@ -4122,26 +4127,36 @@ var RangeDatePicker = /** @class */ (function (_super) {
             var fromDateID = this.state.fromDate.format(this.persianFormats.fullDashed);
             var toDateElement = calendar.querySelector(("#" + this.daysIdPrefix).concat(toDateID));
             var fromDateElement = calendar.querySelector(("#" + this.daysIdPrefix).concat(fromDateID));
-            var fromMonth = this.getDashedDateDetail(fromDateID).month;
-            var toMonth = this.getDashedDateDetail(toDateID).month;
+            var _a = this.getDashedDateDetail(fromDateID), fromMonth = _a.month, fromYear = _a.year;
+            var _b = this.getDashedDateDetail(toDateID), toMonth = _b.month, toYear = _b.year;
+            var from = moment(fromDateID, 'jYYYY/jM/jD');
+            var to = moment(toDateID, 'jYYYY/jM/jD');
+            var isActiveMonthBeforeFromMonth = (this.state.month < fromMonth && this.state.year <= fromYear) ||
+                this.state.year < fromYear;
+            var isActiveMonthAfterFromMonth = (this.state.month > fromMonth && this.state.year >= fromYear) ||
+                this.state.year > fromYear;
+            var isActiveMonthAfterToMonth = (this.state.month > toMonth && this.state.year >= toYear) ||
+                this.state.year > toYear;
+            var isActiveMonthBeforeToMonth = (this.state.month < toMonth && this.state.year <= toYear) ||
+                this.state.year < toYear;
             if (fromMonth === toMonth) {
                 this.createRange(fromDateElement, toDateElement);
             }
             else {
                 if (!toDateElement && !fromDateElement) {
-                    if (fromMonth > toMonth) {
-                        if (this.state.month < fromMonth && this.state.month > toMonth) {
+                    if (from.isAfter(to)) {
+                        if (isActiveMonthBeforeFromMonth && isActiveMonthAfterToMonth) {
                             this.createRange('start', 'end');
                         }
                     }
                     else {
-                        if (this.state.month < toMonth && this.state.month > fromMonth) {
+                        if (isActiveMonthBeforeToMonth && isActiveMonthAfterFromMonth) {
                             this.createRange('start', 'end');
                         }
                     }
                 }
                 else if (toDateElement) {
-                    if (this.state.month < fromMonth) {
+                    if (isActiveMonthBeforeFromMonth) {
                         this.createRange('end', toDateElement);
                     }
                     else {
@@ -4149,7 +4164,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                     }
                 }
                 else {
-                    if (this.state.month < toMonth) {
+                    if (isActiveMonthBeforeToMonth) {
                         this.createRange(fromDateElement, 'end');
                     }
                     else {
@@ -4582,64 +4597,6 @@ exports.default = ToggleButton;
 
 /***/ }),
 /* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-__webpack_require__(107);
-var InfiniteScroll = function (_a) {
-    var onEnd = _a.onEnd, children = _a.children, hasMore = _a.hasMore, _b = _a.loadingMessage, loadingMessage = _b === void 0 ? 'در حال دریافت ...' : _b, _c = _a.endMessage, endMessage = _c === void 0 ? 'پایان لیست 😊' : _c, _d = _a.maxHeight, maxHeight = _d === void 0 ? '100%' : _d, loading = _a.loading, scrollableProps = _a.scrollableProps, infoProps = _a.infoProps, rest = __rest(_a, ["onEnd", "children", "hasMore", "loadingMessage", "endMessage", "maxHeight", "loading", "scrollableProps", "infoProps"]);
-    var onScroll = React.useCallback(function (evt) {
-        if (!hasMore) {
-            return;
-        }
-        var target = evt.target;
-        var scrollTop = target.scrollTop, scrollHeight = target.scrollHeight, clientHeight = target.clientHeight;
-        var isAtTheBottom = scrollHeight - scrollTop <= clientHeight;
-        if (isAtTheBottom) {
-            onEnd === null || onEnd === void 0 ? void 0 : onEnd();
-        }
-    }, [hasMore]);
-    return (React.createElement(React.Fragment, null,
-        React.createElement("div", __assign({}, rest, { className: "infinite-scroll " + (rest.className ? rest.className : ''), style: { maxHeight: maxHeight } }),
-            React.createElement("div", __assign({}, scrollableProps, { className: "infinite-scroll-children " + ((scrollableProps === null || scrollableProps === void 0 ? void 0 : scrollableProps.className) ? scrollableProps.className : ''), onScroll: onScroll }), children),
-            React.createElement("div", __assign({}, infoProps, { className: "infinite-scroll-info " + ((infoProps === null || infoProps === void 0 ? void 0 : infoProps.className) ? infoProps.className : '') }), loading ? loadingMessage : hasMore ? '' : endMessage))));
-};
-exports.default = InfiniteScroll;
-
-
-/***/ }),
-/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin

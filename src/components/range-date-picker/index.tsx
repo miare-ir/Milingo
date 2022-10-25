@@ -22,6 +22,7 @@ export interface RangeDatePickerProps {
   defaultValue?: DateRange;
   className?: string;
   isSelectable?: (day: Moment) => boolean;
+  isActive?: (day: Moment) => boolean;
   displayFormat?: (day: Moment) => string;
   isDialogOpen?: boolean;
   openDialog?: () => void;
@@ -64,6 +65,8 @@ class RangeDatePicker extends React.Component<
     primary: 'primary',
     secondary: 'secondary',
     selected: 'selected',
+    disabled: 'seem-disabled',
+    inactive: 'inactive',
   };
 
   daysIdPrefix = 'day-';
@@ -190,6 +193,10 @@ class RangeDatePicker extends React.Component<
       ? day.isBefore(moment())
       : this.props.isSelectable(moment(day));
 
+    const isActive: boolean = !this.props.isActive
+      ? true
+      : this.props.isActive(moment(day));
+
     let isInRange = false;
     let isSecondary = false;
     let isPrimary = false;
@@ -214,14 +221,15 @@ class RangeDatePicker extends React.Component<
     }
 
     const className = classNames('calendar-day', {
-      'seem-disabled': !!month || !isSelectable,
+      [this.classNames.disabled]: !!month || !isSelectable,
+      [this.classNames.inactive]: !isActive,
       selected:
         day.isSame(this.state.fromDate, 'day') ||
         day.isSame(this.state.toDate, 'day'),
       inRange: isInRange,
       secondary: isSecondary,
       primary: isPrimary,
-      clickable: isSelectable,
+      clickable: isSelectable && isActive,
     });
 
     const onClick = !month
@@ -344,7 +352,9 @@ class RangeDatePicker extends React.Component<
         continue;
       }
 
-      dayElement.classList.add(this.classNames.inRange);
+      if (!dayElement.classList.contains(this.classNames.inactive)) {
+        dayElement.classList.add(this.classNames.inRange);
+      }
 
       if (isToDayAfterFromDay) {
         this.removeAllNextInRanges(dayElement);
@@ -355,7 +365,7 @@ class RangeDatePicker extends React.Component<
         this.removeAllPrevInRanges(dayElement);
         this.removeAllInRangesExceptPrimary(from, 'after');
         from.classList.add(this.classNames.secondary);
-        to.classList.add(this.classNames.primary);
+        to?.classList.add(this.classNames.primary);
       }
     }
   }
@@ -476,7 +486,10 @@ class RangeDatePicker extends React.Component<
         (this.state.month < toMonth && this.state.year <= toYear) ||
         this.state.year < toYear;
 
-      if (fromMonth === toMonth) {
+      if (
+        (fromMonth === toMonth && fromDateElement && toDateElement) ||
+        (fromDateElement && toDateElement)
+      ) {
         this.createRange(fromDateElement, toDateElement);
       } else {
         if (!toDateElement && !fromDateElement) {
@@ -495,7 +508,7 @@ class RangeDatePicker extends React.Component<
           } else {
             this.createRange('start', toDateElement);
           }
-        } else {
+        } else if (fromDateElement) {
           if (isActiveMonthBeforeToMonth) {
             this.createRange(fromDateElement, 'end');
           } else {
@@ -529,18 +542,31 @@ class RangeDatePicker extends React.Component<
   }
 
   selectDate(date): void {
+    const { current: calendar } = this.calendar;
+    if (!this.state.fromDate || !calendar) {
+      return;
+    }
+
     const selectedDate = moment(date, 'jYYYY/jM/jD');
 
-    if (this.state.fromDate && this.state.toDate) {
-      this.setState({
-        toDate: null,
-        fromDate: selectedDate,
-      });
-      this.removeAllByClassName(this.classNames.inRange);
-    } else if (this.state.toDate) {
-      this.setState({ fromDate: selectedDate });
-    } else {
-      this.setState({ toDate: selectedDate });
+    const selectedDateElement = calendar.querySelector(
+      `#${this.daysIdPrefix}`.concat(
+        selectedDate.format(this.persianFormats.fullDashed),
+      ),
+    );
+
+    if (!selectedDateElement?.classList.contains(this.classNames.inactive)) {
+      if (this.state.fromDate && this.state.toDate) {
+        this.setState({
+          toDate: null,
+          fromDate: selectedDate,
+        });
+        this.removeAllByClassName(this.classNames.inRange);
+      } else if (this.state.toDate) {
+        this.setState({ fromDate: selectedDate });
+      } else {
+        this.setState({ toDate: selectedDate });
+      }
     }
   }
 
