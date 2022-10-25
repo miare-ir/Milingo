@@ -3824,6 +3824,8 @@ var RangeDatePicker = /** @class */ (function (_super) {
             primary: 'primary',
             secondary: 'secondary',
             selected: 'selected',
+            disabled: 'seem-disabled',
+            inactive: 'inactive',
         };
         _this.daysIdPrefix = 'day-';
         _this.generateMonth = function (mm, yyyy) {
@@ -3864,10 +3866,14 @@ var RangeDatePicker = /** @class */ (function (_super) {
             }
         };
         _this.generateDay = function (day, month) {
+            var _a;
             var calendar = _this.calendar.current;
             var isSelectable = !_this.props.isSelectable
                 ? day.isBefore(moment())
                 : _this.props.isSelectable(moment(day));
+            var isActive = !_this.props.isActive
+                ? true
+                : _this.props.isActive(moment(day));
             var isInRange = false;
             var isSecondary = false;
             var isPrimary = false;
@@ -3886,15 +3892,16 @@ var RangeDatePicker = /** @class */ (function (_super) {
                     }
                 }
             }
-            var className = classNames('calendar-day', {
-                'seem-disabled': !!month || !isSelectable,
-                selected: day.isSame(_this.state.fromDate, 'day') ||
+            var className = classNames('calendar-day', (_a = {},
+                _a[_this.classNames.disabled] = !!month || !isSelectable,
+                _a[_this.classNames.inactive] = !isActive,
+                _a.selected = day.isSame(_this.state.fromDate, 'day') ||
                     day.isSame(_this.state.toDate, 'day'),
-                inRange: isInRange,
-                secondary: isSecondary,
-                primary: isPrimary,
-                clickable: isSelectable,
-            });
+                _a.inRange = isInRange,
+                _a.secondary = isSecondary,
+                _a.primary = isPrimary,
+                _a.clickable = isSelectable && isActive,
+                _a));
             var onClick = !month
                 ? _this.selectDate.bind(_this, day.format(_this.persianFormats.fullSpaced))
                 : month === 'next'
@@ -4054,7 +4061,9 @@ var RangeDatePicker = /** @class */ (function (_super) {
             if (!dayElement) {
                 continue;
             }
-            dayElement.classList.add(this.classNames.inRange);
+            if (!dayElement.classList.contains(this.classNames.inactive)) {
+                dayElement.classList.add(this.classNames.inRange);
+            }
             if (isToDayAfterFromDay) {
                 this.removeAllNextInRanges(dayElement);
                 this.removeAllInRangesExceptPrimary(from, 'before');
@@ -4065,7 +4074,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                 this.removeAllPrevInRanges(dayElement);
                 this.removeAllInRangesExceptPrimary(from, 'after');
                 from.classList.add(this.classNames.secondary);
-                to.classList.add(this.classNames.primary);
+                to === null || to === void 0 ? void 0 : to.classList.add(this.classNames.primary);
             }
         }
     };
@@ -4139,7 +4148,8 @@ var RangeDatePicker = /** @class */ (function (_super) {
                 this.state.year > toYear;
             var isActiveMonthBeforeToMonth = (this.state.month < toMonth && this.state.year <= toYear) ||
                 this.state.year < toYear;
-            if (fromMonth === toMonth) {
+            if ((fromMonth === toMonth && fromDateElement && toDateElement) ||
+                (fromDateElement && toDateElement)) {
                 this.createRange(fromDateElement, toDateElement);
             }
             else {
@@ -4163,7 +4173,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                         this.createRange('start', toDateElement);
                     }
                 }
-                else {
+                else if (fromDateElement) {
                     if (isActiveMonthBeforeToMonth) {
                         this.createRange(fromDateElement, 'end');
                     }
@@ -4196,19 +4206,26 @@ var RangeDatePicker = /** @class */ (function (_super) {
         this.removeAllByClassName(this.classNames.inRange);
     };
     RangeDatePicker.prototype.selectDate = function (date) {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
         var selectedDate = moment(date, 'jYYYY/jM/jD');
-        if (this.state.fromDate && this.state.toDate) {
-            this.setState({
-                toDate: null,
-                fromDate: selectedDate,
-            });
-            this.removeAllByClassName(this.classNames.inRange);
-        }
-        else if (this.state.toDate) {
-            this.setState({ fromDate: selectedDate });
-        }
-        else {
-            this.setState({ toDate: selectedDate });
+        var selectedDateElement = calendar.querySelector(("#" + this.daysIdPrefix).concat(selectedDate.format(this.persianFormats.fullDashed)));
+        if (!(selectedDateElement === null || selectedDateElement === void 0 ? void 0 : selectedDateElement.classList.contains(this.classNames.inactive))) {
+            if (this.state.fromDate && this.state.toDate) {
+                this.setState({
+                    toDate: null,
+                    fromDate: selectedDate,
+                });
+                this.removeAllByClassName(this.classNames.inRange);
+            }
+            else if (this.state.toDate) {
+                this.setState({ fromDate: selectedDate });
+            }
+            else {
+                this.setState({ toDate: selectedDate });
+            }
         }
     };
     RangeDatePicker.prototype.changeMonth = function (fn) {

@@ -587,6 +587,10 @@ class RangeDatePicker extends React.Component<
     const firstDate = date[0];
     const secondDate = date[1];
 
+    if (!firstDate || !secondDate) {
+      return;
+    }
+
     let from = date[0];
     let to = date[1];
 
@@ -737,6 +741,7 @@ class RangeDatePicker extends React.Component<
             <Button
               link
               small
+              disabled={!this.state.toDate || !this.state.fromDate}
               onClick={() =>
                 this.saveDate([this.state.fromDate, this.state.toDate])
               }>
