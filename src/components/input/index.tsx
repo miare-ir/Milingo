@@ -16,6 +16,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   ltr?: boolean;
   extraTitle?: JSX.Element | string;
   small?: boolean;
+  htmlInputRef?: React.MutableRefObject<HTMLInputElement>;
 }
 
 export interface InputState {
@@ -122,6 +123,7 @@ class Input extends React.Component<InputProps, InputState> {
       onBlur,
       onFocus,
       disabled,
+      htmlInputRef,
       ...props
     } = this.props;
 
@@ -152,6 +154,7 @@ class Input extends React.Component<InputProps, InputState> {
         </div>
         <div className={inputContainerClass}>
           <input
+            ref={htmlInputRef}
             type={this.state.type}
             value={this.state.value}
             onInput={this.handleInput}

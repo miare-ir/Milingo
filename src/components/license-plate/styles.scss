@@ -1,0 +1,71 @@
+@import '../../assets/styles/_base.scss';
+@import "../../assets/styles/input-variables";
+
+$plate-border-radius: 4px;
+
+.license-plate {
+  border: 2px solid $inputPlaceholderColor;
+  display: flex;
+  height: 48px;
+  width: 100%;
+  max-width: 198px;
+  border-radius: $plate-border-radius + 2px;
+
+  > .iran-flag {
+    background-color: #002f9c;
+    min-width: 30px;
+    border-radius: $plate-border-radius 0 0 $plate-border-radius;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    box-sizing: border-box;
+
+    > .flag {
+      width: 14px;
+    }
+
+    > .plate-sign {
+      width: 14px;
+    }
+  }
+
+  > .plate-number {
+    background-color: $whiteColor;
+
+    &.section-1 {
+      border-right: 2px solid $inputPlaceholderColor;
+      width: 44%;
+    }
+
+    &.section-2 {
+      width: 56%;
+
+      &,
+      & .input-container {
+        border-radius: 0 $plate-border-radius $plate-border-radius 0;
+      }
+    }
+
+    .input-container {
+      position: relative;
+      z-index: 1;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+
+      &.focused {
+        z-index: 2;
+      }
+
+      > input {
+        text-align: center;
+        padding: 12px 4px;
+        direction: ltr;
+        background-color: transparent;
+      }
+    }
+  }
+}
