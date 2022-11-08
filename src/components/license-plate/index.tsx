@@ -11,6 +11,7 @@ type LicensePlateValue = [number, number?];
 
 export interface LicensePlateProps {
   editable?: boolean;
+  oldStyle?: boolean;
   onInput?: (value: LicensePlateValue) => void;
   value?: LicensePlateValue;
 }
@@ -19,6 +20,7 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
   editable,
   onInput,
   value,
+  oldStyle,
 }: LicensePlateProps): JSX.Element => {
   const [plateNumberPartOneValue, setPlateNumberPartOneValue] = React.useState(
     value?.[0],
@@ -77,35 +79,44 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
 
   return (
     <div className="license-plate">
-      <div className="iran-flag">
-        <img src={iranFlag} alt="Iran flag" className="flag" />
-        <img src={iranPlateSign} alt="Iran plate sign" className="plate-sign" />
+      <div className="top-section">
+        <div className="iran-flag">
+          <img src={iranFlag} alt="Iran flag" className="flag" />
+          <img
+            src={iranPlateSign}
+            alt="Iran plate sign"
+            className="plate-sign"
+          />
+        </div>
+
+        <Input
+          placeholder={getPlateNumberPlaceholder(
+            MAX_PLATE_NUMBER_LENGTH_PART_ONE,
+          )}
+          className="plate-number"
+          max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE)}
+          onInput={handlePlateNumberPartOneInput}
+          htmlInputRef={plateNumberPartOneRef}
+          disabled={!editable}
+          value={plateNumberPartOneValue ?? undefined}
+          type="number"
+        />
       </div>
 
-      <Input
-        placeholder={getPlateNumberPlaceholder(
-          MAX_PLATE_NUMBER_LENGTH_PART_ONE,
-        )}
-        className="plate-number part-1"
-        max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE)}
-        onInput={handlePlateNumberPartOneInput}
-        htmlInputRef={plateNumberPartOneRef}
-        disabled={!editable}
-        value={plateNumberPartOneValue ?? undefined}
-        type="number"
-      />
-      <Input
-        placeholder={getPlateNumberPlaceholder(
-          MAX_PLATE_NUMBER_LENGTH_PART_TWO,
-        )}
-        className="plate-number part-2"
-        max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO)}
-        onInput={handlePlateNumberPartTwoInput}
-        htmlInputRef={plateNumberPartTwoRef}
-        disabled={!editable}
-        value={plateNumberPartTwoValue ?? undefined}
-        type="number"
-      />
+      <div className="bottom-section">
+        <Input
+          placeholder={getPlateNumberPlaceholder(
+            MAX_PLATE_NUMBER_LENGTH_PART_TWO,
+          )}
+          className="plate-number"
+          max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO)}
+          onInput={handlePlateNumberPartTwoInput}
+          htmlInputRef={plateNumberPartTwoRef}
+          disabled={!editable}
+          value={plateNumberPartTwoValue ?? undefined}
+          type="number"
+        />
+      </div>
     </div>
   );
 };
