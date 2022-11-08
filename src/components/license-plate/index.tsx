@@ -20,20 +20,18 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
   onInput,
   value,
 }: LicensePlateProps): JSX.Element => {
-  const [
-    plateNumberSectionOneValue,
-    setPlateNumberSectionOneValue,
-  ] = React.useState(value?.[0]);
-  const [
-    plateNumberSectionTwoValue,
-    setPlateNumberSectionTwoValue,
-  ] = React.useState(value?.[1]);
+  const [plateNumberPartOneValue, setPlateNumberPartOneValue] = React.useState(
+    value?.[0],
+  );
+  const [plateNumberPartTwoValue, setPlateNumberPartTwoValue] = React.useState(
+    value?.[1],
+  );
 
-  const plateNumberSectionOneRef = React.useRef<HTMLInputElement>(null);
-  const plateNumberSectionTwoRef = React.useRef<HTMLInputElement>(null);
+  const plateNumberPartOneRef = React.useRef<HTMLInputElement>(null);
+  const plateNumberPartTwoRef = React.useRef<HTMLInputElement>(null);
 
-  const MAX_PLATE_NUMBER_LENGTH_SECTION_ONE = 3;
-  const MAX_PLATE_NUMBER_LENGTH_SECTION_TWO = 5;
+  const MAX_PLATE_NUMBER_LENGTH_PART_ONE = 3;
+  const MAX_PLATE_NUMBER_LENGTH_PART_TWO = 5;
 
   const getPlateNumberPlaceholder = (length: number): string =>
     Array.from(Array(length))
@@ -45,36 +43,36 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
       .map(() => '9')
       .join('');
 
-  const handlePlateNumberSectionOneInput = (
+  const handlePlateNumberPartOneInput = (
     e: React.FormEvent<HTMLInputElement>,
   ): void => {
     const inputValue = e.currentTarget.value;
-    if (inputValue.length > MAX_PLATE_NUMBER_LENGTH_SECTION_ONE) {
+    if (inputValue.length > MAX_PLATE_NUMBER_LENGTH_PART_ONE) {
       return;
     }
-    if (inputValue.length >= MAX_PLATE_NUMBER_LENGTH_SECTION_ONE) {
-      plateNumberSectionTwoRef.current?.focus();
+    if (inputValue.length >= MAX_PLATE_NUMBER_LENGTH_PART_ONE) {
+      plateNumberPartTwoRef.current?.focus();
     }
 
     const accurateInputValue = inputValue ? +inputValue : null;
-    setPlateNumberSectionOneValue(accurateInputValue);
-    onInput?.([accurateInputValue, plateNumberSectionTwoValue]);
+    setPlateNumberPartOneValue(accurateInputValue);
+    onInput?.([accurateInputValue, plateNumberPartTwoValue]);
   };
 
-  const handlePlateNumberSectionTwoInput = (
+  const handlePlateNumberPartTwoInput = (
     e: React.FormEvent<HTMLInputElement>,
   ): void => {
     const inputValue = e.currentTarget.value;
-    if (inputValue.length > MAX_PLATE_NUMBER_LENGTH_SECTION_TWO) {
+    if (inputValue.length > MAX_PLATE_NUMBER_LENGTH_PART_TWO) {
       return;
     }
     if (inputValue.length === 0) {
-      plateNumberSectionOneRef.current?.focus();
+      plateNumberPartOneRef.current?.focus();
     }
 
     const accurateInputValue = inputValue ? +inputValue : null;
-    setPlateNumberSectionTwoValue(accurateInputValue);
-    onInput?.([plateNumberSectionOneValue, accurateInputValue]);
+    setPlateNumberPartTwoValue(accurateInputValue);
+    onInput?.([plateNumberPartOneValue, accurateInputValue]);
   };
 
   return (
@@ -86,26 +84,26 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
 
       <Input
         placeholder={getPlateNumberPlaceholder(
-          MAX_PLATE_NUMBER_LENGTH_SECTION_ONE,
+          MAX_PLATE_NUMBER_LENGTH_PART_ONE,
         )}
-        className="plate-number section-1"
-        max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_SECTION_ONE)}
-        onInput={handlePlateNumberSectionOneInput}
-        htmlInputRef={plateNumberSectionOneRef}
+        className="plate-number part-1"
+        max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE)}
+        onInput={handlePlateNumberPartOneInput}
+        htmlInputRef={plateNumberPartOneRef}
         disabled={!editable}
-        value={plateNumberSectionOneValue ?? undefined}
+        value={plateNumberPartOneValue ?? undefined}
         type="number"
       />
       <Input
         placeholder={getPlateNumberPlaceholder(
-          MAX_PLATE_NUMBER_LENGTH_SECTION_TWO,
+          MAX_PLATE_NUMBER_LENGTH_PART_TWO,
         )}
-        className="plate-number section-2"
-        max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_SECTION_TWO)}
-        onInput={handlePlateNumberSectionTwoInput}
-        htmlInputRef={plateNumberSectionTwoRef}
+        className="plate-number part-2"
+        max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO)}
+        onInput={handlePlateNumberPartTwoInput}
+        htmlInputRef={plateNumberPartTwoRef}
         disabled={!editable}
-        value={plateNumberSectionTwoValue ?? undefined}
+        value={plateNumberPartTwoValue ?? undefined}
         type="number"
       />
     </div>

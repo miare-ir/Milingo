@@ -35,12 +35,12 @@ $plate-border-radius: 4px;
   > .plate-number {
     background-color: $whiteColor;
 
-    &.section-1 {
+    &.part-1 {
       border-right: 2px solid $inputPlaceholderColor;
       width: 44%;
     }
 
-    &.section-2 {
+    &.part-2 {
       width: 56%;
 
       &,
