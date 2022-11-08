@@ -12,7 +12,7 @@ export default {
 
 const Template: ComponentStory<typeof LicensePlate> = props => (
   <div className="license-plates">
-    <LicensePlate {...props} />
+    <LicensePlate {...props} className="asdasd asdasdssdddd  cccc" />
     <LicensePlate
       {...props}
       oldStyle

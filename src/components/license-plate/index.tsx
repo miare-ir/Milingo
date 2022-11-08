@@ -11,7 +11,8 @@ import stripesPattern from '../../assets/patterns/stripes.svg';
 
 type LicensePlateValue = [number, number?];
 
-export interface LicensePlateProps {
+export interface LicensePlateProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onInput'> {
   editable?: boolean;
   oldStyle?: boolean;
   onInput?: (value: LicensePlateValue) => void;
@@ -23,6 +24,8 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
   onInput,
   value,
   oldStyle,
+  className,
+  ...rest
 }: LicensePlateProps): JSX.Element => {
   const [plateNumberPartOneValue, setPlateNumberPartOneValue] = React.useState(
     oldStyle ? value?.[1] : value?.[0],
@@ -81,10 +84,11 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
 
   const ContainerClassNames = classnames('license-plate', {
     ['old-style']: oldStyle,
+    [className]: !!className,
   });
 
   return (
-    <div className={ContainerClassNames}>
+    <div {...rest} className={ContainerClassNames}>
       <div className="top-section">
         {oldStyle ? (
           <span className="plate-city">
