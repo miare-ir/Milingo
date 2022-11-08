@@ -3,12 +3,11 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 
 import Input from '../input';
+import './styles.scss';
 
 import iranFlag from '../../assets/icon/iran-flag.svg';
 import iranPlateSign from '../../assets/icon/iran-plate-sign.svg';
 import stripesPattern from '../../assets/patterns/stripes.svg';
-
-import './styles.scss';
 
 type LicensePlateValue = [number, number?];
 
