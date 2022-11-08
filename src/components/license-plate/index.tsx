@@ -45,38 +45,38 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
       .map(() => '9')
       .join('');
 
-  const handlePlateNumberPartOneInput = (
+  const handlePlateNumberInput = (
     e: React.FormEvent<HTMLInputElement>,
+    part: 'one' | 'two',
   ): void => {
     const inputValue = e.currentTarget.value;
-    if (inputValue.length > MAX_PLATE_NUMBER_LENGTH_PART_ONE) {
+    const maxLength =
+      part === 'one'
+        ? MAX_PLATE_NUMBER_LENGTH_PART_ONE
+        : MAX_PLATE_NUMBER_LENGTH_PART_TWO;
+
+    if (inputValue.length > maxLength) {
       return;
     }
 
     const accurateInputValue = inputValue ? +inputValue : null;
-    setPlateNumberPartOneValue(accurateInputValue);
-    if (oldStyle) {
-      onInput?.([plateNumberPartTwoValue, accurateInputValue]);
+
+    if (part === 'one') {
+      setPlateNumberPartOneValue(accurateInputValue);
+
+      if (oldStyle) {
+        onInput?.([plateNumberPartTwoValue, accurateInputValue]);
+      } else {
+        onInput?.([accurateInputValue, plateNumberPartTwoValue]);
+      }
     } else {
-      onInput?.([accurateInputValue, plateNumberPartTwoValue]);
-    }
-  };
+      setPlateNumberPartTwoValue(accurateInputValue);
 
-  const handlePlateNumberPartTwoInput = (
-    e: React.FormEvent<HTMLInputElement>,
-  ): void => {
-    const inputValue = e.currentTarget.value;
-    if (inputValue.length > MAX_PLATE_NUMBER_LENGTH_PART_TWO) {
-      return;
-    }
-
-    const accurateInputValue = inputValue ? +inputValue : null;
-    setPlateNumberPartTwoValue(accurateInputValue);
-
-    if (oldStyle) {
-      onInput?.([accurateInputValue, plateNumberPartOneValue]);
-    } else {
-      onInput?.([plateNumberPartOneValue, accurateInputValue]);
+      if (oldStyle) {
+        onInput?.([accurateInputValue, plateNumberPartOneValue]);
+      } else {
+        onInput?.([plateNumberPartOneValue, accurateInputValue]);
+      }
     }
   };
 
@@ -108,7 +108,7 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           )}
           className="plate-number"
           max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE)}
-          onInput={handlePlateNumberPartOneInput}
+          onInput={e => handlePlateNumberInput(e, 'one')}
           disabled={!editable}
           value={plateNumberPartOneValue ?? undefined}
           type="number"
@@ -122,7 +122,7 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           )}
           className="plate-number"
           max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO)}
-          onInput={handlePlateNumberPartTwoInput}
+          onInput={e => handlePlateNumberInput(e, 'two')}
           disabled={!editable}
           value={plateNumberPartTwoValue ?? undefined}
           type="number"
