@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import LicensePlate, { LicensePlateProps } from '.';
+import './style.stories.scss';
 
 export default {
   title: 'License plate',
@@ -10,7 +11,14 @@ export default {
 } as ComponentMeta<typeof LicensePlate>;
 
 const Template: ComponentStory<typeof LicensePlate> = props => (
-  <LicensePlate {...props} />
+  <div className="license-plates">
+    <LicensePlate {...props} />
+    <LicensePlate
+      {...props}
+      oldStyle
+      value={[props?.value?.[1], props?.value?.[0]]}
+    />
+  </div>
 );
 
 export const EditableLicensePlate = Template.bind({});

@@ -13,6 +13,55 @@ $plate-border-radius: 4px;
   border-radius: $plate-border-radius + 2px;
   background-color: $whiteColor;
 
+  &.old-style {
+    flex-direction: column-reverse;
+
+    > .top-section {
+      flex-direction: row-reverse;
+
+      > .plate-city {
+        min-width: 40%;
+        height: 100%;
+        position: relative;
+        display: block;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $inputPlaceholderColor;
+          left: -8px;
+          width: 10px;
+          height: 4px;
+          border-radius: 100px;
+        }
+
+        > img {
+          content: '';
+          position: absolute;
+          width: 70%;
+          height: 60%;
+          opacity: 0.4;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+        }
+      }
+    }
+
+    > .bottom-section > .plate-number > .input-container {
+      border-radius: $plate-border-radius $plate-border-radius 0 0;
+    }
+
+    > .top-section > .plate-number > .input-container {
+      border-radius: 0 0 0 $plate-border-radius;
+    }
+  }
+
   .plate-number {
     height: 100%;
 
