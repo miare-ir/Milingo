@@ -28,6 +28,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   validate?: (value: File[]) => boolean;
   children?: string;
   tryAgainText?: string;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 export interface FileInputState {
@@ -94,6 +95,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       children,
       className,
       onChangeFiles,
+      inputRef,
       ...props
     } = this.props;
 
@@ -116,6 +118,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
             <input
               disabled={disabled}
               type="file"
+              ref={inputRef}
               onChange={this.handleInput}
               value=""
               {...props}

@@ -8,6 +8,7 @@ export interface ModalProps {
   isOpen: boolean;
   align?: 'start' | 'end';
   className?: string;
+  overlayClassName?: string;
   children: JSX.Element;
 }
 
@@ -45,7 +46,9 @@ const Modal = (props: ModalProps): JSX.Element => {
 
   return (
     <div
-      className={`milingo-modal--overlay ${props.isOpen ? 'isOpen' : ''}`}
+      className={`milingo-modal--overlay ${props.isOpen ? 'isOpen' : ''} ${
+        props.overlayClassName ?? ''
+      }`}
       onClick={handleClose}>
       <div
         className={`modal modal-content ${props.align} ${props.className}`}
