@@ -3453,30 +3453,21 @@ var TabContent = /** @class */ (function (_super) {
     __extends(TabContent, _super);
     function TabContent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.state = { children: null };
+        _this.renderSelectedChild = function () {
+            for (var _i = 0, _a = _this.props.children; _i < _a.length; _i++) {
+                var child = _a[_i];
+                if (child.props.tabId === _this.props.selectedTab) {
+                    return child;
+                }
+            }
+            return React.createElement(React.Fragment, null);
+        };
         return _this;
     }
-    TabContent.prototype.handleActiveTab = function (props) {
-        for (var _i = 0, _a = props.children; _i < _a.length; _i++) {
-            var child = _a[_i];
-            if (child.props.tabId === props.selectedtab) {
-                this.setState({ children: child });
-                break;
-            }
-        }
-    };
-    TabContent.prototype.componentDidMount = function () {
-        this.handleActiveTab(this.props);
-    };
-    TabContent.prototype.componentDidUpdate = function (prevProps) {
-        if (prevProps.selectedtab !== this.props.selectedtab) {
-            this.handleActiveTab(this.props);
-        }
-    };
     TabContent.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, props = __rest(_a, ["className", "children"]);
+        var _a = this.props, className = _a.className, children = _a.children, selectedTab = _a.selectedTab, props = __rest(_a, ["className", "children", "selectedTab"]);
         var componentClassName = classNames('tab-content-wrapper', className);
-        return (React.createElement("div", __assign({ className: componentClassName }, props), this.state.children));
+        return (React.createElement("div", __assign({ className: componentClassName }, props), this.renderSelectedChild()));
     };
     return TabContent;
 }(React.Component));
@@ -3814,6 +3805,7 @@ moment.loadPersian({ dialect: 'persian-modern' });
 var RangeDatePicker = /** @class */ (function (_super) {
     __extends(RangeDatePicker, _super);
     function RangeDatePicker(props) {
+        var _a;
         var _this = _super.call(this, props) || this;
         _this.calendar = React.createRef();
         _this.persianFormats = {
@@ -3826,6 +3818,8 @@ var RangeDatePicker = /** @class */ (function (_super) {
             primary: 'primary',
             secondary: 'secondary',
             selected: 'selected',
+            disabled: 'seem-disabled',
+            inactive: 'inactive',
         };
         _this.daysIdPrefix = 'day-';
         _this.generateMonth = function (mm, yyyy) {
@@ -3866,10 +3860,14 @@ var RangeDatePicker = /** @class */ (function (_super) {
             }
         };
         _this.generateDay = function (day, month) {
+            var _a;
             var calendar = _this.calendar.current;
             var isSelectable = !_this.props.isSelectable
                 ? day.isBefore(moment())
                 : _this.props.isSelectable(moment(day));
+            var isActive = !_this.props.isActive
+                ? true
+                : _this.props.isActive(moment(day));
             var isInRange = false;
             var isSecondary = false;
             var isPrimary = false;
@@ -3888,15 +3886,16 @@ var RangeDatePicker = /** @class */ (function (_super) {
                     }
                 }
             }
-            var className = classNames('calendar-day', {
-                'seem-disabled': !!month || !isSelectable,
-                selected: day.isSame(_this.state.fromDate, 'day') ||
+            var className = classNames('calendar-day', (_a = {},
+                _a[_this.classNames.disabled] = !!month || !isSelectable,
+                _a[_this.classNames.inactive] = !isActive,
+                _a.selected = day.isSame(_this.state.fromDate, 'day') ||
                     day.isSame(_this.state.toDate, 'day'),
-                inRange: isInRange,
-                secondary: isSecondary,
-                primary: isPrimary,
-                clickable: isSelectable,
-            });
+                _a.inRange = isInRange,
+                _a.secondary = isSecondary,
+                _a.primary = isPrimary,
+                _a.clickable = isSelectable && isActive,
+                _a));
             var onClick = !month
                 ? _this.selectDate.bind(_this, day.format(_this.persianFormats.fullSpaced))
                 : month === 'next'
@@ -3908,6 +3907,9 @@ var RangeDatePicker = /** @class */ (function (_super) {
         _this.saveDate = function (date) {
             var firstDate = date[0];
             var secondDate = date[1];
+            if (!firstDate || !secondDate) {
+                return;
+            }
             var from = date[0];
             var to = date[1];
             if (from.isAfter(to)) {
@@ -3920,6 +3922,11 @@ var RangeDatePicker = /** @class */ (function (_super) {
             _this.closeDialog();
         };
         _this.openDialog = function () {
+            var _a, _b;
+            _this.setState({
+                fromDate: ((_a = _this.state.selectedDate) === null || _a === void 0 ? void 0 : _a[0]) || moment(),
+                toDate: ((_b = _this.state.selectedDate) === null || _b === void 0 ? void 0 : _b[1]) || null,
+            });
             if (_this.props.disabled) {
                 return;
             }
@@ -3955,8 +3962,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                 _this.setState({ isDialogOpen: false });
             }
         };
-        var fromDate = props.defaultValue
-            ? moment(props.defaultValue[0])
+        var fromDate = ((_a = props.defaultValue) === null || _a === void 0 ? void 0 : _a[0]) ? moment(props.defaultValue[0])
             : moment();
         var toDate = props.defaultValue && props.defaultValue[1]
             ? moment(props.defaultValue[1])
@@ -3967,15 +3973,24 @@ var RangeDatePicker = /** @class */ (function (_super) {
             fromDate: fromDate,
             toDate: toDate,
             isDialogOpen: false,
-            selectedDate: [fromDate, toDate],
+            selectedDate: props.defaultValue && [fromDate, toDate],
         };
         return _this;
     }
-    RangeDatePicker.prototype.componentDidUpdate = function (prevProps) {
-        if (!moment(prevProps.defaultValue[0]).isSame(this.state.selectedDate[0], 'day')) {
+    RangeDatePicker.prototype.componentDidUpdate = function (prevProps, prevState) {
+        var _a, _b, _c, _d, _e;
+        if (prevState.isDialogOpen !== this.state.isDialogOpen &&
+            this.state.isDialogOpen) {
+            if (this.state.fromDate) {
+                var _f = this.getDashedDateDetail(this.state.fromDate.format(this.persianFormats.fullDashed)), month = _f.month, year = _f.year;
+                this.setState({ month: month, year: year });
+            }
+        }
+        if (!moment((_a = prevState.selectedDate) === null || _a === void 0 ? void 0 : _a[0]).isSame((_b = this.state.selectedDate) === null || _b === void 0 ? void 0 : _b[0])) {
             this.saveDate([
-                moment(this.state.selectedDate[0]),
-                this.state.selectedDate[1] ? moment(this.state.selectedDate[1]) : null,
+                moment((_c = this.state.selectedDate) === null || _c === void 0 ? void 0 : _c[0]),
+                ((_d = this.state.selectedDate) === null || _d === void 0 ? void 0 : _d[1]) ? moment((_e = this.state.selectedDate) === null || _e === void 0 ? void 0 : _e[1])
+                    : null,
             ]);
         }
         if (this.state.forceDatePickerOpen) {
@@ -3999,12 +4014,12 @@ var RangeDatePicker = /** @class */ (function (_super) {
         var fromDayID = this.state.fromDate.format(this.persianFormats.fullDashed);
         var fromDayElement = calendar.querySelector("#" + this.daysIdPrefix + fromDayID);
         if (!fromDayElement) {
-            var fromDayDetail = this.getDashedDateDetail(fromDayID);
-            var toDayDetail = this.getDashedDateDetail(toDayID);
-            if (fromDayDetail.month < toDayDetail.month) {
+            var from = moment(fromDayID, 'jYYYY/jM/jD');
+            var to = moment(toDayID, 'jYYYY/jM/jD');
+            if (to.isAfter(from)) {
                 return this.createRange(toDayElement, 'start');
             }
-            else if (fromDayDetail.month > toDayDetail.month) {
+            else if (from.isAfter(to)) {
                 return this.createRange(toDayElement, 'end');
             }
             else {
@@ -4032,24 +4047,26 @@ var RangeDatePicker = /** @class */ (function (_super) {
             var allDays = calendar.querySelectorAll('.calendar-day');
             to = allDays[allDays.length - 1];
         }
-        var fromDay = moment(from.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
-        var toDay = moment(to.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
-        if (fromDay.isSame(toDay)) {
+        var fromDay = moment(from === null || from === void 0 ? void 0 : from.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
+        var toDay = moment(to === null || to === void 0 ? void 0 : to.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
+        if (fromDay === null || fromDay === void 0 ? void 0 : fromDay.isSame(toDay)) {
             return;
         }
-        from.classList.add(this.classNames.inRange);
-        var isToDayAfterFromDay = toDay.isAfter(fromDay);
+        from === null || from === void 0 ? void 0 : from.classList.add(this.classNames.inRange);
+        var isToDayAfterFromDay = toDay === null || toDay === void 0 ? void 0 : toDay.isAfter(fromDay);
         var achievementFunc = isToDayAfterFromDay ? 'add' : 'subtract';
-        var difference = Math.abs(fromDay.diff(toDay, 'day'));
+        var difference = Math.abs(fromDay === null || fromDay === void 0 ? void 0 : fromDay.diff(toDay, 'day'));
         this.removeAllByClassName(this.classNames.primary);
         this.removeAllByClassName(this.classNames.secondary);
         for (var i = 1; i <= difference; i++) {
-            var dayElementID = ("#" + this.daysIdPrefix).concat(fromDay[achievementFunc](1, 'day').format(this.persianFormats.fullDashed));
+            var dayElementID = ("#" + this.daysIdPrefix).concat(fromDay === null || fromDay === void 0 ? void 0 : fromDay[achievementFunc](1, 'day').format(this.persianFormats.fullDashed));
             var dayElement = calendar.querySelector(dayElementID);
             if (!dayElement) {
                 continue;
             }
-            dayElement.classList.add(this.classNames.inRange);
+            if (!dayElement.classList.contains(this.classNames.inactive)) {
+                dayElement.classList.add(this.classNames.inRange);
+            }
             if (isToDayAfterFromDay) {
                 this.removeAllNextInRanges(dayElement);
                 this.removeAllInRangesExceptPrimary(from, 'before');
@@ -4060,7 +4077,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                 this.removeAllPrevInRanges(dayElement);
                 this.removeAllInRangesExceptPrimary(from, 'after');
                 from.classList.add(this.classNames.secondary);
-                to.classList.add(this.classNames.primary);
+                to === null || to === void 0 ? void 0 : to.classList.add(this.classNames.primary);
             }
         }
     };
@@ -4122,34 +4139,45 @@ var RangeDatePicker = /** @class */ (function (_super) {
             var fromDateID = this.state.fromDate.format(this.persianFormats.fullDashed);
             var toDateElement = calendar.querySelector(("#" + this.daysIdPrefix).concat(toDateID));
             var fromDateElement = calendar.querySelector(("#" + this.daysIdPrefix).concat(fromDateID));
-            var fromMonth = this.getDashedDateDetail(fromDateID).month;
-            var toMonth = this.getDashedDateDetail(toDateID).month;
-            if (fromMonth === toMonth) {
+            var _a = this.getDashedDateDetail(fromDateID), fromMonth = _a.month, fromYear = _a.year;
+            var _b = this.getDashedDateDetail(toDateID), toMonth = _b.month, toYear = _b.year;
+            var from = moment(fromDateID, 'jYYYY/jM/jD');
+            var to = moment(toDateID, 'jYYYY/jM/jD');
+            var isActiveMonthBeforeFromMonth = (this.state.month < fromMonth && this.state.year <= fromYear) ||
+                this.state.year < fromYear;
+            var isActiveMonthAfterFromMonth = (this.state.month > fromMonth && this.state.year >= fromYear) ||
+                this.state.year > fromYear;
+            var isActiveMonthAfterToMonth = (this.state.month > toMonth && this.state.year >= toYear) ||
+                this.state.year > toYear;
+            var isActiveMonthBeforeToMonth = (this.state.month < toMonth && this.state.year <= toYear) ||
+                this.state.year < toYear;
+            if ((fromMonth === toMonth && fromDateElement && toDateElement) ||
+                (fromDateElement && toDateElement)) {
                 this.createRange(fromDateElement, toDateElement);
             }
             else {
                 if (!toDateElement && !fromDateElement) {
-                    if (fromMonth > toMonth) {
-                        if (this.state.month < fromMonth && this.state.month > toMonth) {
+                    if (from.isAfter(to)) {
+                        if (isActiveMonthBeforeFromMonth && isActiveMonthAfterToMonth) {
                             this.createRange('start', 'end');
                         }
                     }
                     else {
-                        if (this.state.month < toMonth && this.state.month > fromMonth) {
+                        if (isActiveMonthBeforeToMonth && isActiveMonthAfterFromMonth) {
                             this.createRange('start', 'end');
                         }
                     }
                 }
                 else if (toDateElement) {
-                    if (this.state.month < fromMonth) {
+                    if (isActiveMonthBeforeFromMonth) {
                         this.createRange('end', toDateElement);
                     }
                     else {
                         this.createRange('start', toDateElement);
                     }
                 }
-                else {
-                    if (this.state.month < toMonth) {
+                else if (fromDateElement) {
+                    if (isActiveMonthBeforeToMonth) {
                         this.createRange(fromDateElement, 'end');
                     }
                     else {
@@ -4181,19 +4209,26 @@ var RangeDatePicker = /** @class */ (function (_super) {
         this.removeAllByClassName(this.classNames.inRange);
     };
     RangeDatePicker.prototype.selectDate = function (date) {
+        var calendar = this.calendar.current;
+        if (!this.state.fromDate || !calendar) {
+            return;
+        }
         var selectedDate = moment(date, 'jYYYY/jM/jD');
-        if (this.state.fromDate && this.state.toDate) {
-            this.setState({
-                toDate: null,
-                fromDate: selectedDate,
-            });
-            this.removeAllByClassName(this.classNames.inRange);
-        }
-        else if (this.state.toDate) {
-            this.setState({ fromDate: selectedDate });
-        }
-        else {
-            this.setState({ toDate: selectedDate });
+        var selectedDateElement = calendar.querySelector(("#" + this.daysIdPrefix).concat(selectedDate.format(this.persianFormats.fullDashed)));
+        if (!(selectedDateElement === null || selectedDateElement === void 0 ? void 0 : selectedDateElement.classList.contains(this.classNames.inactive))) {
+            if (this.state.fromDate && this.state.toDate) {
+                this.setState({
+                    toDate: null,
+                    fromDate: selectedDate,
+                });
+                this.removeAllByClassName(this.classNames.inRange);
+            }
+            else if (this.state.toDate) {
+                this.setState({ fromDate: selectedDate });
+            }
+            else {
+                this.setState({ toDate: selectedDate });
+            }
         }
     };
     RangeDatePicker.prototype.changeMonth = function (fn) {
@@ -4207,11 +4242,13 @@ var RangeDatePicker = /** @class */ (function (_super) {
         // magic 0ms timeout to make sure all days are rendered
         setTimeout(function () { return _this.createDefaultRange(); }, 0);
     };
-    RangeDatePicker.prototype.createTitle = function (minimal) {
-        var format = minimal ? 'jM/jD' : 'ddd jD jMMMM';
-        if (this.state.fromDate && this.state.toDate) {
-            var from = this.state.fromDate.toDate().getTime();
-            var to = this.state.toDate.toDate().getTime();
+    RangeDatePicker.prototype.createTitle = function (range, lessContent) {
+        var format = lessContent ? 'jM/jD' : 'ddd jD jMMMM';
+        var fromDate = range === null || range === void 0 ? void 0 : range[0];
+        var toDate = range === null || range === void 0 ? void 0 : range[1];
+        if (fromDate && toDate) {
+            var from = fromDate.toDate().getTime();
+            var to = toDate.toDate().getTime();
             var fromTitle = moment(from).format(format);
             var toTitle = moment(to).format(format);
             if (from < to) {
@@ -4221,10 +4258,10 @@ var RangeDatePicker = /** @class */ (function (_super) {
                 return "\u0627\u0632 " + toTitle + " \u062A\u0627 " + fromTitle;
             }
         }
-        else if (this.state.fromDate) {
-            return this.state.fromDate.format(format);
+        else if (fromDate) {
+            return fromDate.format(format);
         }
-        return minimal ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
+        return lessContent ? 'انتخاب تاریخ' : 'لطفا یک روز را انتخاب کنید';
     };
     RangeDatePicker.prototype.render = function () {
         var _this = this;
@@ -4237,11 +4274,11 @@ var RangeDatePicker = /** @class */ (function (_super) {
         var displayedDate = moment(year + "-" + month + "-1", 'jYYYY/jM/jD').format('jMMMM jYYYY');
         return (React.createElement("div", { className: "range-date-picker-container " + this.props.className },
             React.createElement(button_1.default, __assign({}, this.props.buttonProps, { disabled: this.props.disabled, className: "date-picker-input " + (this.state.selectedDate ? '' : 'empty') + " " + ((_b = (_a = this.props.buttonProps) === null || _a === void 0 ? void 0 : _a.className) !== null && _b !== void 0 ? _b : ''), onClick: this.openDialog }),
-                React.createElement(persian_number_1.default, { value: this.createTitle(true), className: "clickable" })),
+                React.createElement(persian_number_1.default, { value: this.createTitle(this.state.selectedDate, true), className: "clickable" })),
             React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.isDialogOpen || this.state.isDialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-range-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
                 React.createElement("div", { className: "calendar-info" },
                     React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
-                    React.createElement(persian_number_1.default, { className: "month", value: this.createTitle() })),
+                    React.createElement(persian_number_1.default, { className: "month", value: this.createTitle([this.state.fromDate, this.state.toDate]) })),
                 React.createElement(flex_1.Row, { grow: 1, className: "padding-medium calendar-switches" },
                     React.createElement(flex_1.Column, { grow: 0, order: 0 },
                         React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('subtract'); } }, "chevron_right")),
@@ -4261,7 +4298,7 @@ var RangeDatePicker = /** @class */ (function (_super) {
                             React.createElement("div", { className: "calendar-weekday" }, "\u062C"))),
                     this.generateMonth(this.state.month, this.state.year)),
                 React.createElement("div", { className: "calendar-actions" },
-                    React.createElement(button_1.default, { link: true, small: true, onClick: function () {
+                    React.createElement(button_1.default, { link: true, small: true, disabled: !this.state.toDate || !this.state.fromDate, onClick: function () {
                             return _this.saveDate([_this.state.fromDate, _this.state.toDate]);
                         } }, "\u062A\u0627\u06CC\u06CC\u062F"),
                     React.createElement(button_1.default, { link: true, small: true, onClick: this.closeDialog }, "\u0627\u0646\u0635\u0631\u0627\u0641"),
@@ -4592,6 +4629,28 @@ exports.default = ToggleButton;
 
 "use strict";
 
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classnames = __webpack_require__(1);
@@ -4602,7 +4661,7 @@ var iran_plate_sign_svg_1 = __webpack_require__(109);
 var stripes_svg_1 = __webpack_require__(110);
 var LicensePlate = function (_a) {
     var _b;
-    var editable = _a.editable, onInput = _a.onInput, value = _a.value, oldStyle = _a.oldStyle;
+    var editable = _a.editable, onInput = _a.onInput, value = _a.value, oldStyle = _a.oldStyle, className = _a.className, rest = __rest(_a, ["editable", "onInput", "value", "oldStyle", "className"]);
     var _c = React.useState(oldStyle ? value === null || value === void 0 ? void 0 : value[1] : value === null || value === void 0 ? void 0 : value[0]), plateNumberPartOneValue = _c[0], setPlateNumberPartOneValue = _c[1];
     var _d = React.useState(oldStyle ? value === null || value === void 0 ? void 0 : value[0] : value === null || value === void 0 ? void 0 : value[1]), plateNumberPartTwoValue = _d[0], setPlateNumberPartTwoValue = _d[1];
     var MAX_PLATE_NUMBER_LENGTH_PART_ONE = 3;
@@ -4647,8 +4706,9 @@ var LicensePlate = function (_a) {
     };
     var ContainerClassNames = classnames('license-plate', (_b = {},
         _b['old-style'] = oldStyle,
+        _b[className] = !!className,
         _b));
-    return (React.createElement("div", { className: ContainerClassNames },
+    return (React.createElement("div", __assign({}, rest, { className: ContainerClassNames }),
         React.createElement("div", { className: "top-section" },
             oldStyle ? (React.createElement("span", { className: "plate-city" },
                 React.createElement("img", { src: stripes_svg_1.default, alt: "Pattern" }))) : (React.createElement("div", { className: "iran-flag" },

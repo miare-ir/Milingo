@@ -22,6 +22,7 @@ export interface RangeDatePickerProps {
   defaultValue?: DateRange;
   className?: string;
   isSelectable?: (day: Moment) => boolean;
+  isActive?: (day: Moment) => boolean;
   displayFormat?: (day: Moment) => string;
   isDialogOpen?: boolean;
   openDialog?: () => void;
@@ -64,6 +65,8 @@ class RangeDatePicker extends React.Component<
     primary: 'primary',
     secondary: 'secondary',
     selected: 'selected',
+    disabled: 'seem-disabled',
+    inactive: 'inactive',
   };
 
   daysIdPrefix = 'day-';
@@ -71,7 +74,7 @@ class RangeDatePicker extends React.Component<
   constructor(props: RangeDatePickerProps) {
     super(props);
 
-    const fromDate = props.defaultValue
+    const fromDate = props.defaultValue?.[0]
       ? moment(props.defaultValue[0])
       : moment();
 
@@ -86,20 +89,34 @@ class RangeDatePicker extends React.Component<
       fromDate,
       toDate,
       isDialogOpen: false,
-      selectedDate: [fromDate, toDate],
+      selectedDate: props.defaultValue && [fromDate, toDate],
     };
   }
 
-  componentDidUpdate(prevProps: RangeDatePickerProps): void {
+  componentDidUpdate(
+    prevProps: RangeDatePickerProps,
+    prevState: Readonly<RangeDatePickerState>,
+  ): void {
     if (
-      !moment(prevProps.defaultValue[0]).isSame(
-        this.state.selectedDate[0],
-        'day',
-      )
+      prevState.isDialogOpen !== this.state.isDialogOpen &&
+      this.state.isDialogOpen
+    ) {
+      if (this.state.fromDate) {
+        const { month, year } = this.getDashedDateDetail(
+          this.state.fromDate.format(this.persianFormats.fullDashed),
+        );
+        this.setState({ month, year });
+      }
+    }
+
+    if (
+      !moment(prevState.selectedDate?.[0]).isSame(this.state.selectedDate?.[0])
     ) {
       this.saveDate([
-        moment(this.state.selectedDate[0]),
-        this.state.selectedDate[1] ? moment(this.state.selectedDate[1]) : null,
+        moment(this.state.selectedDate?.[0]),
+        this.state.selectedDate?.[1]
+          ? moment(this.state.selectedDate?.[1])
+          : null,
       ]);
     }
 
@@ -175,6 +192,10 @@ class RangeDatePicker extends React.Component<
       ? day.isBefore(moment())
       : this.props.isSelectable(moment(day));
 
+    const isActive: boolean = !this.props.isActive
+      ? true
+      : this.props.isActive(moment(day));
+
     let isInRange = false;
     let isSecondary = false;
     let isPrimary = false;
@@ -199,14 +220,15 @@ class RangeDatePicker extends React.Component<
     }
 
     const className = classNames('calendar-day', {
-      'seem-disabled': !!month || !isSelectable,
+      [this.classNames.disabled]: !!month || !isSelectable,
+      [this.classNames.inactive]: !isActive,
       selected:
         day.isSame(this.state.fromDate, 'day') ||
         day.isSame(this.state.toDate, 'day'),
       inRange: isInRange,
       secondary: isSecondary,
       primary: isPrimary,
-      clickable: isSelectable,
+      clickable: isSelectable && isActive,
     });
 
     const onClick = !month
@@ -258,12 +280,12 @@ class RangeDatePicker extends React.Component<
     );
 
     if (!fromDayElement) {
-      const fromDayDetail = this.getDashedDateDetail(fromDayID);
-      const toDayDetail = this.getDashedDateDetail(toDayID);
+      const from = moment(fromDayID, 'jYYYY/jM/jD');
+      const to = moment(toDayID, 'jYYYY/jM/jD');
 
-      if (fromDayDetail.month < toDayDetail.month) {
+      if (to.isAfter(from)) {
         return this.createRange(toDayElement, 'start');
-      } else if (fromDayDetail.month > toDayDetail.month) {
+      } else if (from.isAfter(to)) {
         return this.createRange(toDayElement, 'end');
       } else {
         return;
@@ -299,27 +321,27 @@ class RangeDatePicker extends React.Component<
     }
 
     const fromDay = moment(
-      from.id.replace(this.daysIdPrefix, ''),
+      from?.id.replace(this.daysIdPrefix, ''),
       'jYYYY/jM/jD',
     );
-    const toDay = moment(to.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
+    const toDay = moment(to?.id.replace(this.daysIdPrefix, ''), 'jYYYY/jM/jD');
 
-    if (fromDay.isSame(toDay)) {
+    if (fromDay?.isSame(toDay)) {
       return;
     }
 
-    from.classList.add(this.classNames.inRange);
+    from?.classList.add(this.classNames.inRange);
 
-    const isToDayAfterFromDay = toDay.isAfter(fromDay);
+    const isToDayAfterFromDay = toDay?.isAfter(fromDay);
     const achievementFunc = isToDayAfterFromDay ? 'add' : 'subtract';
-    const difference = Math.abs(fromDay.diff(toDay, 'day'));
+    const difference = Math.abs(fromDay?.diff(toDay, 'day'));
 
     this.removeAllByClassName(this.classNames.primary);
     this.removeAllByClassName(this.classNames.secondary);
 
     for (let i = 1; i <= difference; i++) {
       const dayElementID = `#${this.daysIdPrefix}`.concat(
-        fromDay[achievementFunc](1, 'day').format(
+        fromDay?.[achievementFunc](1, 'day').format(
           this.persianFormats.fullDashed,
         ),
       );
@@ -329,7 +351,9 @@ class RangeDatePicker extends React.Component<
         continue;
       }
 
-      dayElement.classList.add(this.classNames.inRange);
+      if (!dayElement.classList.contains(this.classNames.inactive)) {
+        dayElement.classList.add(this.classNames.inRange);
+      }
 
       if (isToDayAfterFromDay) {
         this.removeAllNextInRanges(dayElement);
@@ -340,7 +364,7 @@ class RangeDatePicker extends React.Component<
         this.removeAllPrevInRanges(dayElement);
         this.removeAllInRangesExceptPrimary(from, 'after');
         from.classList.add(this.classNames.secondary);
-        to.classList.add(this.classNames.primary);
+        to?.classList.add(this.classNames.primary);
       }
     }
   }
@@ -435,30 +459,56 @@ class RangeDatePicker extends React.Component<
         `#${this.daysIdPrefix}`.concat(fromDateID),
       );
 
-      const { month: fromMonth } = this.getDashedDateDetail(fromDateID);
-      const { month: toMonth } = this.getDashedDateDetail(toDateID);
+      const { month: fromMonth, year: fromYear } = this.getDashedDateDetail(
+        fromDateID,
+      );
+      const { month: toMonth, year: toYear } = this.getDashedDateDetail(
+        toDateID,
+      );
 
-      if (fromMonth === toMonth) {
+      const from = moment(fromDateID, 'jYYYY/jM/jD');
+      const to = moment(toDateID, 'jYYYY/jM/jD');
+
+      const isActiveMonthBeforeFromMonth =
+        (this.state.month < fromMonth && this.state.year <= fromYear) ||
+        this.state.year < fromYear;
+
+      const isActiveMonthAfterFromMonth =
+        (this.state.month > fromMonth && this.state.year >= fromYear) ||
+        this.state.year > fromYear;
+
+      const isActiveMonthAfterToMonth =
+        (this.state.month > toMonth && this.state.year >= toYear) ||
+        this.state.year > toYear;
+
+      const isActiveMonthBeforeToMonth =
+        (this.state.month < toMonth && this.state.year <= toYear) ||
+        this.state.year < toYear;
+
+      if (
+        (fromMonth === toMonth && fromDateElement && toDateElement) ||
+        (fromDateElement && toDateElement)
+      ) {
         this.createRange(fromDateElement, toDateElement);
       } else {
         if (!toDateElement && !fromDateElement) {
-          if (fromMonth > toMonth) {
-            if (this.state.month < fromMonth && this.state.month > toMonth) {
+          if (from.isAfter(to)) {
+            if (isActiveMonthBeforeFromMonth && isActiveMonthAfterToMonth) {
               this.createRange('start', 'end');
             }
           } else {
-            if (this.state.month < toMonth && this.state.month > fromMonth) {
+            if (isActiveMonthBeforeToMonth && isActiveMonthAfterFromMonth) {
               this.createRange('start', 'end');
             }
           }
         } else if (toDateElement) {
-          if (this.state.month < fromMonth) {
+          if (isActiveMonthBeforeFromMonth) {
             this.createRange('end', toDateElement);
           } else {
             this.createRange('start', toDateElement);
           }
-        } else {
-          if (this.state.month < toMonth) {
+        } else if (fromDateElement) {
+          if (isActiveMonthBeforeToMonth) {
             this.createRange(fromDateElement, 'end');
           } else {
             this.createRange('start', fromDateElement);
@@ -491,18 +541,31 @@ class RangeDatePicker extends React.Component<
   }
 
   selectDate(date): void {
+    const { current: calendar } = this.calendar;
+    if (!this.state.fromDate || !calendar) {
+      return;
+    }
+
     const selectedDate = moment(date, 'jYYYY/jM/jD');
 
-    if (this.state.fromDate && this.state.toDate) {
-      this.setState({
-        toDate: null,
-        fromDate: selectedDate,
-      });
-      this.removeAllByClassName(this.classNames.inRange);
-    } else if (this.state.toDate) {
-      this.setState({ fromDate: selectedDate });
-    } else {
-      this.setState({ toDate: selectedDate });
+    const selectedDateElement = calendar.querySelector(
+      `#${this.daysIdPrefix}`.concat(
+        selectedDate.format(this.persianFormats.fullDashed),
+      ),
+    );
+
+    if (!selectedDateElement?.classList.contains(this.classNames.inactive)) {
+      if (this.state.fromDate && this.state.toDate) {
+        this.setState({
+          toDate: null,
+          fromDate: selectedDate,
+        });
+        this.removeAllByClassName(this.classNames.inRange);
+      } else if (this.state.toDate) {
+        this.setState({ fromDate: selectedDate });
+      } else {
+        this.setState({ toDate: selectedDate });
+      }
     }
   }
 
@@ -523,6 +586,10 @@ class RangeDatePicker extends React.Component<
     const firstDate = date[0];
     const secondDate = date[1];
 
+    if (!firstDate || !secondDate) {
+      return;
+    }
+
     let from = date[0];
     let to = date[1];
 
@@ -539,6 +606,11 @@ class RangeDatePicker extends React.Component<
   };
 
   openDialog = (): void => {
+    this.setState({
+      fromDate: this.state.selectedDate?.[0] || moment(),
+      toDate: this.state.selectedDate?.[1] || null,
+    });
+
     if (this.props.disabled) {
       return;
     }
@@ -582,12 +654,14 @@ class RangeDatePicker extends React.Component<
     }
   };
 
-  createTitle(minimal?: boolean): string {
-    const format = minimal ? 'jM/jD' : 'ddd jD jMMMM';
+  createTitle(range: DateRange, lessContent?: boolean): string {
+    const format = lessContent ? 'jM/jD' : 'ddd jD jMMMM';
+    const fromDate = range?.[0];
+    const toDate = range?.[1];
 
-    if (this.state.fromDate && this.state.toDate) {
-      const from = this.state.fromDate.toDate().getTime();
-      const to = this.state.toDate.toDate().getTime();
+    if (fromDate && toDate) {
+      const from = fromDate.toDate().getTime();
+      const to = toDate.toDate().getTime();
 
       const fromTitle = moment(from).format(format);
       const toTitle = moment(to).format(format);
@@ -597,10 +671,10 @@ class RangeDatePicker extends React.Component<
       } else {
         return `از ${toTitle} تا ${fromTitle}`;
       }
-    } else if (this.state.fromDate) {
-      return this.state.fromDate.format(format);
+    } else if (fromDate) {
+      return fromDate.format(format);
     }
-    return minimal ? 'انتخاب' : 'لطفا یک روز را انتخاب کنید';
+    return lessContent ? 'انتخاب تاریخ' : 'لطفا یک روز را انتخاب کنید';
   }
 
   render(): React.ReactNode {
@@ -623,7 +697,10 @@ class RangeDatePicker extends React.Component<
             this.state.selectedDate ? '' : 'empty'
           } ${this.props.buttonProps?.className ?? ''}`}
           onClick={this.openDialog}>
-          <PersianNumber value={this.createTitle(true)} className="clickable" />
+          <PersianNumber
+            value={this.createTitle(this.state.selectedDate, true)}
+            className="clickable"
+          />
         </Button>
         <ReactModal
           ariaHideApp={false}
@@ -634,7 +711,10 @@ class RangeDatePicker extends React.Component<
           contentLabel="Modal">
           <div className="calendar-info">
             <PersianNumber className="year" value={currentYear} />
-            <PersianNumber className="month" value={this.createTitle()} />
+            <PersianNumber
+              className="month"
+              value={this.createTitle([this.state.fromDate, this.state.toDate])}
+            />
           </div>
           <Row grow={1} className="padding-medium calendar-switches">
             <Column grow={0} order={0}>
@@ -673,6 +753,7 @@ class RangeDatePicker extends React.Component<
             <Button
               link
               small
+              disabled={!this.state.toDate || !this.state.fromDate}
               onClick={() =>
                 this.saveDate([this.state.fromDate, this.state.toDate])
               }>
