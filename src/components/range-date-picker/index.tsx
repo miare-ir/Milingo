@@ -75,7 +75,7 @@ class RangeDatePicker extends React.Component<
     super(props);
 
     const fromDate =
-      props.defaultValue && props.defaultValue[0]
+      props.defaultValue?.[0]
         ? moment(props.defaultValue[0])
         : moment();
 
