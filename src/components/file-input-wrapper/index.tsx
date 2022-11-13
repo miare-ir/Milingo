@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 
 import Button, { ButtonProps } from '../button';
+import Image, { ImageProps } from '../image';
 import Loader from '../loader';
 import FileInput, { FileInputProps } from '../file-input';
 import UploadHint, { UploadHintProps } from './upload-hint';
@@ -13,6 +14,7 @@ import './styles.scss';
 
 export interface FileInputWrapperProps extends Omit<FileInputProps, 'ref'> {
   wrapperTitle?: string;
+  imageProps?: ImageProps;
   description?: string;
   image?: string;
   uploadFileText?: string;
@@ -42,6 +44,7 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
   onImageChange,
   fileName,
   disabled,
+  imageProps,
   ...fileInputProps
 }: FileInputWrapperProps): JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -108,7 +111,7 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
         <div className="uploader-container">
           {imagePath && !progressState.loading ? (
             <div className="image-preview">
-              <img src={imagePath} className="image" draggable={false} />
+              <Image {...imageProps} src={imagePath} className="image" />
 
               <div className="image-info">
                 <p className="image-name">{imageName}</p>
@@ -139,6 +142,7 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
           <FileInput
             {...fileInputProps}
             className={fileInputClasses}
+            files={[new File([''], fileName)]}
             inputRef={inputRef}
             onChangeFiles={resizeImage}
           />

@@ -17,7 +17,7 @@ export const _FileInputWrapper = Template.bind({});
 
 _FileInputWrapper.args = {
   wrapperTitle: 'عکس پروفایل',
-  description: 'یک عکس برای پروفایل خود انتخاب کنید.',
+  description: 'یک عکس برای پروفایل خود انتخاب کنید',
   maxFileSize: 2 * 1000 * 1000,
   hint: {
     children: 'content',
