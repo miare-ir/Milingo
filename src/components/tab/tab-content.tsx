@@ -9,22 +9,22 @@ export interface TabContentProps extends React.HTMLProps<HTMLDivElement> {
   selectedTab: number | string;
 }
 class TabContent extends React.Component<TabContentProps> {
+  renderSelectedChild = (): JSX.Element => {
+    for (const child of this.props.children as JSX.Element[]) {
+      if (child.props.tabId === this.props.selectedTab) {
+        return child;
+      }
+    }
+    return <></>;
+  };
+
   render(): React.ReactNode {
     const { className, children, selectedTab, ...props } = this.props;
     const componentClassName = classNames('tab-content-wrapper', className);
 
-    const renderSelectedChild = (): JSX.Element => {
-      for (const child of children as JSX.Element[]) {
-        if (child.props.tabId === selectedTab) {
-          return child;
-        }
-      }
-      return <></>;
-    };
-
     return (
       <div className={componentClassName} {...props}>
-        {renderSelectedChild()}
+        {this.renderSelectedChild()}
       </div>
     );
   }
