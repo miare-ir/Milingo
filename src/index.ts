@@ -4,6 +4,7 @@ import Checkbox from './components/checkbox';
 import CounterButton from './components/counter-button';
 import DialogContent from './components/dialog-content';
 import FileInput from './components/file-input';
+import FileInputWrapper from './components/file-input-wrapper';
 import { Collection, CollectionCard } from './components/collection';
 import { Tab, TabColumn } from './components/tab-column';
 import { Form, FormGroup } from './components/form';
@@ -51,6 +52,7 @@ export {
   CounterButton,
   DialogContent,
   FileInput,
+  FileInputWrapper,
   Form,
   FormGroup,
   Input,
