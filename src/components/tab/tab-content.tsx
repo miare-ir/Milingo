@@ -6,41 +6,25 @@ import './styles.scss';
 export interface TabContentProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   children?: JSX.Element[] | JSX.Element;
-  selectedtab: number | string;
+  selectedTab: number | string;
 }
-
-export interface TabContentState {
-  children: JSX.Element | string;
-}
-
-class TabContent extends React.Component<TabContentProps, TabContentState> {
-  state = { children: null };
-
-  handleActiveTab(props: TabContentProps): void {
-    for (const child of props.children as JSX.Element[]) {
-      if (child.props.tabId === props.selectedtab) {
-        this.setState({ children: child });
-        break;
+class TabContent extends React.Component<TabContentProps> {
+  renderSelectedChild = (): JSX.Element => {
+    for (const child of this.props.children as JSX.Element[]) {
+      if (child.props.tabId === this.props.selectedTab) {
+        return child;
       }
     }
-  }
-
-  componentDidMount(): void {
-    this.handleActiveTab(this.props);
-  }
-
-  componentDidUpdate(prevProps: TabContentProps): void {
-    if (prevProps.selectedtab !== this.props.selectedtab) {
-      this.handleActiveTab(this.props);
-    }
-  }
+    return <></>;
+  };
 
   render(): React.ReactNode {
-    const { className, children, ...props } = this.props;
+    const { className, children, selectedTab, ...props } = this.props;
     const componentClassName = classNames('tab-content-wrapper', className);
+
     return (
       <div className={componentClassName} {...props}>
-        {this.state.children}
+        {this.renderSelectedChild()}
       </div>
     );
   }

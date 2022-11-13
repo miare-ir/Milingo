@@ -40,9 +40,11 @@ import { Column, Row } from './components/flex';
 import Modal from './components/modal';
 import Image from './components/image';
 import ToggleButton from './components/toggle-button';
+import LicensePlate from './components/license-plate';
 
 export {
   Banner,
+  LicensePlate,
   Button,
   ButtonGroup,
   Checkbox,
