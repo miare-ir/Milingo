@@ -1,0 +1,100 @@
+@import '../../assets/styles/_base.scss';
+
+.chat {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-end;
+    width: 316px;
+    box-sizing: border-box;
+    background-color: $whiteColor;
+    direction: rtl;
+    position: relative;
+
+    .chat-content {
+      display: block; 
+    }
+
+    .chat-content::-webkit-scrollbar {
+      width: 17px;
+    }
+
+    .submit-form {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-top: 1px solid #ecedef;
+
+      .send-button {
+        margin: auto;
+      }
+
+      .textarea-container {
+        width: 268px;
+        margin-bottom: 0;
+      }
+
+      textarea {
+        border: 1px solid #ebebeb !important;
+        box-shadow: 2px 2px 1px rgba(238, 238, 238, 0.08);
+        border-radius: 10px !important;
+        font-weight: 400;
+        font-variation-settings: 'wght' 400;
+        font-size: 12px !important;
+        line-height: 19px !important;
+        text-align: right;
+        height: 38px;
+        overflow: hidden;
+        text-overflow: ellipsis;  
+
+        &:active, &:focus {
+          box-shadow: none !important;
+        }
+      }
+    }
+  }
+
+  &-content {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  &-message {
+    &-container {
+      &.right {
+        text-align: left;
+        
+        .chat-message-item {
+          background: #ecedef;
+          border-radius: 10px 10px 10px 0;
+          color: #3d3f53;
+        }
+      }
+  
+      .time {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 16px;
+        color: #505050;
+        margin: 0 8px;
+      }
+    }
+  
+    &-item {
+      font-weight: 300;
+      font-variation-settings: 'wght' 300;
+      font-size: 14px;
+      line-height: 24px;
+      padding: 8px;
+      margin: 8px 8px 4px 8px;
+      background: #1e6dc8;
+      border-radius: 10px 10px 0 10px;
+      color: $whiteColor;
+      overflow: hidden;
+      text-overflow: ellipsis;  
+      text-align: right;
+    }
+  }
+}

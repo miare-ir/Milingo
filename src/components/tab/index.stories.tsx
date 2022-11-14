@@ -41,7 +41,7 @@ class TabSample extends React.Component<{}, { active: number }> {
             سایر
           </TabNavItem>
         </TabNav>
-        <TabContent selectedtab={this.state.active}>
+        <TabContent selectedTab={this.state.active}>
           <TabContentItem tabId={1}>انتخاب غذا</TabContentItem>
           <TabContentItem tabId={2}>اطلاعات مشتری</TabContentItem>
           <TabContentItem tabId={3}>نوع سفارش</TabContentItem>

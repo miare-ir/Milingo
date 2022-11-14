@@ -1,0 +1,20 @@
+.issue-accordion {
+  bottom: 0;
+  right: 8px;
+  position: fixed;
+
+  & + .messages-container {
+    bottom: 0;
+    right: 340px;
+  }
+}
+
+.chats-container {
+  display: flex;
+  gap: 12px;
+  position: fixed;
+  bottom: 0;
+  right: 336px;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}

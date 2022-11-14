@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "edc0c1264abbebc071b4",
+    "revision": "a1ae6e7cb5277db7a93d",
     "url": "0.styles.css"
   },
   {
-    "revision": "9afad674bc3dec05ba8315cacd307c10",
+    "revision": "368a061da4175ca759f3a73bd93be493",
     "url": "iframe.html"
   },
   {
-    "revision": "edc0c1264abbebc071b4",
-    "url": "main.5d6acfa5.iframe.bundle.js"
+    "revision": "a1ae6e7cb5277db7a93d",
+    "url": "main.f1caa60a.iframe.bundle.js"
   },
   {
     "revision": "c156b6caa0afff344398",
     "url": "runtime~main.248e4f1a.iframe.bundle.js"
   },
   {
-    "revision": "edc0c1264abbebc071b4",
-    "url": "static/css/main.b8427dc5.chunk.css"
+    "revision": "a1ae6e7cb5277db7a93d",
+    "url": "static/css/main.0340d047.chunk.css"
   },
   {
     "revision": "3adfaf1dba68cdd44358c4f4f711fdc8",
@@ -48,12 +48,32 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/MaterialIcons-Regular.e79bfd88.eot"
   },
   {
+    "revision": "1485382d31de8d814cc2b0a98623468a",
+    "url": "static/media/arrow.1485382d.svg"
+  },
+  {
     "revision": "beb4c4b35304a86b98fa6e95a22f0ffe",
     "url": "static/media/arrow.beb4c4b3.svg"
   },
   {
+    "revision": "dc05bbe9145d74de9df8d08359687049",
+    "url": "static/media/close.dc05bbe9.svg"
+  },
+  {
+    "revision": "0e590b76cf7e65074a5c15dd222c8f48",
+    "url": "static/media/disabled-send.0e590b76.svg"
+  },
+  {
     "revision": "faedbf6ba0b4cdaf869eba98f2836800",
     "url": "static/media/icon.faedbf6b.svg"
+  },
+  {
+    "revision": "b0adb2fe73e3af1561dbf79467a7b4b0",
+    "url": "static/media/iran-flag.b0adb2fe.svg"
+  },
+  {
+    "revision": "cef8adda3351528186b3e26e198ee47a",
+    "url": "static/media/iran-plate-sign.cef8adda.svg"
   },
   {
     "revision": "eb8ea43c9739794c06fc05f1f4110649",
@@ -80,11 +100,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/notification-warning.fa3fd3bf.svg"
   },
   {
-    "revision": "73d20f97a952d6722f2f",
-    "url": "vendors~main.19fdd7fd.iframe.bundle.js"
+    "revision": "6776e0564a3f68efeaf94ca3766f014f",
+    "url": "static/media/send.6776e056.svg"
+  },
+  {
+    "revision": "0779ac7fce5a342c90ec338861e53fb3",
+    "url": "static/media/stripes.0779ac7f.svg"
+  },
+  {
+    "revision": "877b30348226effdf828",
+    "url": "vendors~main.cbedd669.iframe.bundle.js"
   },
   {
     "revision": "f08e38d2555c7d9a08544165a3e6fd36",
-    "url": "vendors~main.19fdd7fd.iframe.bundle.js.LICENSE.txt"
+    "url": "vendors~main.cbedd669.iframe.bundle.js.LICENSE.txt"
   }
 ]);

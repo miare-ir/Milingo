@@ -3,6 +3,7 @@ import ButtonGroup from './components/button-group';
 import Checkbox from './components/checkbox';
 import CounterButton from './components/counter-button';
 import DialogContent from './components/dialog-content';
+import * as Accordion from './components/accordion';
 import FileInput from './components/file-input';
 import FileInputWrapper from './components/file-input-wrapper';
 import { Collection, CollectionCard } from './components/collection';
@@ -17,6 +18,7 @@ import {
   MenuLink,
   MenuStatus,
 } from './components/menu';
+import Chat from './components/chat';
 import Navbar, { NavbarItem } from './components/navbar';
 import Notification from './components/notification';
 import Radio from './components/radiobutton';
@@ -41,9 +43,11 @@ import { Column, Row } from './components/flex';
 import Modal from './components/modal';
 import Image from './components/image';
 import ToggleButton from './components/toggle-button';
+import LicensePlate from './components/license-plate';
 
 export {
   Banner,
+  LicensePlate,
   Button,
   ButtonGroup,
   Checkbox,
@@ -95,4 +99,6 @@ export {
   Modal,
   Image,
   ToggleButton,
+  Chat,
+  Accordion,
 };
