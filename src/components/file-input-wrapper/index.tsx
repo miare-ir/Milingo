@@ -7,24 +7,30 @@ import Image, { ImageProps } from '../image';
 import Loader from '../loader';
 import FileInput, { FileInputProps } from '../file-input';
 import UploadHint, { UploadHintProps } from './upload-hint';
+import { ModalProps } from '../modal';
 
 import Img from '../../common/utils/image';
 
 import './styles.scss';
 
+type FileType = 'image' | 'video';
+
 export interface FileInputWrapperProps extends Omit<FileInputProps, 'ref'> {
   wrapperTitle?: string;
   imageProps?: ImageProps;
+  videoProps?: React.HTMLAttributes<HTMLVideoElement>;
   description?: string;
-  image?: string;
+  defaultFilePath?: string;
   uploadFileText?: string;
   buttonProps?: Omit<ButtonProps, 'ref' | 'children'>;
   maxFileSize?: number;
   fileName?: string;
   decreaseImageSizeSteps?: number;
-  onRemoveImage?: () => void;
-  onImageChange?: (image: File) => void;
+  onFileChange?: (file: File) => void;
+  uploaderType?: FileType;
   disabled?: boolean;
+  hintModalProps?: ModalProps;
+  containerProps?: React.HTMLAttributes<HTMLDivElement>;
   hint?: Omit<
     UploadHintProps,
     'isHintModalOpen' | 'setIsHintModalOpen' | 'onSelect'
@@ -35,24 +41,29 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
   wrapperTitle,
   description,
   hint,
-  image,
+  defaultFilePath,
+  videoProps,
   buttonProps,
   uploadFileText = 'بارگذاری عکس',
   maxFileSize = 10 * 1000 * 1000, // 10 Mb
   decreaseImageSizeSteps = 500,
-  onRemoveImage,
-  onImageChange,
+  onFileChange,
   fileName,
   disabled,
   imageProps,
+  uploaderType = 'image',
+  hintModalProps,
+  containerProps,
   ...fileInputProps
 }: FileInputWrapperProps): JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const [isHintModalOpen, setIsHintModalOpen] = React.useState(false);
   const [isResizing, setIsResizing] = React.useState(false);
-  const [imagePath, setImagePath] = React.useState<string | null>(image);
-  const [imageName, setImageName] = React.useState(fileName);
+  const [filePath, setFilePath] = React.useState<string | null>(
+    defaultFilePath,
+  );
+  const [previewFileName, setPreviewFileName] = React.useState(fileName);
 
   const progressState = fileInputProps?.states?.[0] || {
     loading: false,
@@ -71,26 +82,68 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
     }
   };
 
-  const resizeImage = (files: File[]): void => {
-    if (files[0]) {
-      setIsResizing(true);
-      setIsHintModalOpen(false);
-      Img.decreaseToFixedWeight(
-        files[0],
-        maxFileSize,
-        decreaseImageSizeSteps,
-      ).then(compressed => {
+  const handleImage = (file: File): void => {
+    setIsResizing(true);
+    setIsHintModalOpen(false);
+    Img.decreaseToFixedWeight(file, maxFileSize, decreaseImageSizeSteps).then(
+      compressed => {
         setIsResizing(false);
-        setImagePath(compressed.image);
-        onImageChange?.(compressed.file);
-        setImageName(compressed.file.name);
-      });
+        setFilePath(compressed.image);
+        onFileChange?.(compressed.file);
+        setPreviewFileName(compressed.file.name);
+      },
+    );
+  };
+
+  const handleVideo = (file: File): void => {
+    setIsHintModalOpen(false);
+    onFileChange?.(file);
+  };
+
+  const getFileType = (file: File): FileType =>
+    file.type.split('/')[0] as FileType;
+
+  const handleOnFileChange = (files: File[]): void => {
+    const file = files[0];
+    if (file) {
+      const type = getFileType(file);
+
+      switch (type) {
+        case 'image': {
+          return handleImage(file);
+        }
+        case 'video': {
+          return handleVideo(file);
+        }
+      }
     }
   };
 
-  const removeImage = (): void => {
-    setImagePath(null);
-    onRemoveImage?.();
+  React.useEffect(() => {
+    setFilePath(defaultFilePath);
+  }, [defaultFilePath]);
+
+  const renderPreview = (): React.ReactNode => {
+    switch (uploaderType) {
+      case 'image': {
+        return (
+          <div className="previewer image-preview">
+            <Image {...imageProps} src={filePath} className="image" />
+            <div className="image-info">
+              <p className="image-name">{previewFileName}</p>
+            </div>
+          </div>
+        );
+      }
+
+      case 'video': {
+        return (
+          <div className="previewer video-preview">
+            <video className="video" controls {...videoProps} src={filePath} />
+          </div>
+        );
+      }
+    }
   };
 
   return (
@@ -101,27 +154,19 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
           isHintModalOpen={isHintModalOpen}
           setIsHintModalOpen={setIsHintModalOpen}
           onSelect={openFileDialog}
+          modalProps={hintModalProps}
         />
       )}
 
-      <div className="file-input-wrapper">
+      <div
+        {...containerProps}
+        className={`file-input-wrapper ${containerProps?.className ?? ''}`}>
         {wrapperTitle && <h4 className="wrapper-title">{wrapperTitle}</h4>}
         {description && <h4 className="wrapper-description">{description}</h4>}
 
         <div className="uploader-container">
-          {imagePath && !progressState.loading ? (
-            <div className="image-preview">
-              <Image {...imageProps} src={imagePath} className="image" />
-
-              <div className="image-info">
-                <p className="image-name">{imageName}</p>
-                <span
-                  onClick={removeImage}
-                  className="material-icons remove-image-button">
-                  close
-                </span>
-              </div>
-            </div>
+          {filePath && !progressState.loading ? (
+            renderPreview()
           ) : (
             <div className="uploader-description">
               <span className="material-icons upload-icon">cloud_upload</span>
@@ -135,7 +180,7 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
               className="uploader-button"
               disabled={isResizing || disabled}
               onClick={openFileDialog}>
-              {isResizing ? <Loader primary /> : imagePath ? 'تغییر' : 'انتخاب'}
+              {isResizing ? <Loader primary /> : filePath ? 'تغییر' : 'انتخاب'}
             </Button>
           )}
 
@@ -144,7 +189,7 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
             className={fileInputClasses}
             files={[new File([''], fileName)]}
             inputRef={inputRef}
-            onChangeFiles={resizeImage}
+            onChangeFiles={handleOnFileChange}
           />
         </div>
       </div>

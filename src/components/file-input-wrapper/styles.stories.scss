@@ -1,0 +1,14 @@
+.file-input-wrapper-story {
+  width: 100%;
+
+  > h1 {
+    font-size: 20px;
+    color: rgba(128, 128, 128, 0.5);
+  }
+
+  > .file-input-wrapper:not(:last-child) {
+    margin-bottom: 10px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  }
+}

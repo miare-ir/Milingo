@@ -1889,15 +1889,15 @@ var upload_hint_1 = __webpack_require__(54);
 var image_2 = __webpack_require__(55);
 __webpack_require__(56);
 var FileInputWrapper = function (_a) {
-    var _b;
-    var wrapperTitle = _a.wrapperTitle, description = _a.description, hint = _a.hint, image = _a.image, buttonProps = _a.buttonProps, _c = _a.uploadFileText, uploadFileText = _c === void 0 ? 'بارگذاری عکس' : _c, _d = _a.maxFileSize, maxFileSize = _d === void 0 ? 10 * 1000 * 1000 : _d, // 10 Mb
-    _e = _a.decreaseImageSizeSteps, // 10 Mb
-    decreaseImageSizeSteps = _e === void 0 ? 500 : _e, onRemoveImage = _a.onRemoveImage, onImageChange = _a.onImageChange, fileName = _a.fileName, disabled = _a.disabled, imageProps = _a.imageProps, fileInputProps = __rest(_a, ["wrapperTitle", "description", "hint", "image", "buttonProps", "uploadFileText", "maxFileSize", "decreaseImageSizeSteps", "onRemoveImage", "onImageChange", "fileName", "disabled", "imageProps"]);
+    var _b, _c;
+    var wrapperTitle = _a.wrapperTitle, description = _a.description, hint = _a.hint, defaultFilePath = _a.defaultFilePath, videoProps = _a.videoProps, buttonProps = _a.buttonProps, _d = _a.uploadFileText, uploadFileText = _d === void 0 ? 'بارگذاری عکس' : _d, _e = _a.maxFileSize, maxFileSize = _e === void 0 ? 10 * 1000 * 1000 : _e, // 10 Mb
+    _f = _a.decreaseImageSizeSteps, // 10 Mb
+    decreaseImageSizeSteps = _f === void 0 ? 500 : _f, onFileChange = _a.onFileChange, fileName = _a.fileName, disabled = _a.disabled, imageProps = _a.imageProps, _g = _a.uploaderType, uploaderType = _g === void 0 ? 'image' : _g, hintModalProps = _a.hintModalProps, containerProps = _a.containerProps, fileInputProps = __rest(_a, ["wrapperTitle", "description", "hint", "defaultFilePath", "videoProps", "buttonProps", "uploadFileText", "maxFileSize", "decreaseImageSizeSteps", "onFileChange", "fileName", "disabled", "imageProps", "uploaderType", "hintModalProps", "containerProps"]);
     var inputRef = React.useRef(null);
-    var _f = React.useState(false), isHintModalOpen = _f[0], setIsHintModalOpen = _f[1];
-    var _g = React.useState(false), isResizing = _g[0], setIsResizing = _g[1];
-    var _h = React.useState(image), imagePath = _h[0], setImagePath = _h[1];
-    var _j = React.useState(fileName), imageName = _j[0], setImageName = _j[1];
+    var _h = React.useState(false), isHintModalOpen = _h[0], setIsHintModalOpen = _h[1];
+    var _j = React.useState(false), isResizing = _j[0], setIsResizing = _j[1];
+    var _k = React.useState(defaultFilePath), filePath = _k[0], setFilePath = _k[1];
+    var _l = React.useState(fileName), previewFileName = _l[0], setPreviewFileName = _l[1];
     var progressState = ((_b = fileInputProps === null || fileInputProps === void 0 ? void 0 : fileInputProps.states) === null || _b === void 0 ? void 0 : _b[0]) || {
         loading: false,
         progress: 0,
@@ -1914,37 +1914,65 @@ var FileInputWrapper = function (_a) {
             (_a = inputRef.current) === null || _a === void 0 ? void 0 : _a.click();
         }
     };
-    var resizeImage = function (files) {
-        if (files[0]) {
-            setIsResizing(true);
-            setIsHintModalOpen(false);
-            image_2.default.decreaseToFixedWeight(files[0], maxFileSize, decreaseImageSizeSteps).then(function (compressed) {
-                setIsResizing(false);
-                setImagePath(compressed.image);
-                onImageChange === null || onImageChange === void 0 ? void 0 : onImageChange(compressed.file);
-                setImageName(compressed.file.name);
-            });
+    var handleImage = function (file) {
+        setIsResizing(true);
+        setIsHintModalOpen(false);
+        image_2.default.decreaseToFixedWeight(file, maxFileSize, decreaseImageSizeSteps).then(function (compressed) {
+            setIsResizing(false);
+            setFilePath(compressed.image);
+            onFileChange === null || onFileChange === void 0 ? void 0 : onFileChange(compressed.file);
+            setPreviewFileName(compressed.file.name);
+        });
+    };
+    var handleVideo = function (file) {
+        setIsHintModalOpen(false);
+        onFileChange === null || onFileChange === void 0 ? void 0 : onFileChange(file);
+    };
+    var getFileType = function (file) {
+        return file.type.split('/')[0];
+    };
+    var handleOnFileChange = function (files) {
+        var file = files[0];
+        if (file) {
+            var type = getFileType(file);
+            switch (type) {
+                case 'image': {
+                    return handleImage(file);
+                }
+                case 'video': {
+                    return handleVideo(file);
+                }
+            }
         }
     };
-    var removeImage = function () {
-        setImagePath(null);
-        onRemoveImage === null || onRemoveImage === void 0 ? void 0 : onRemoveImage();
+    React.useEffect(function () {
+        setFilePath(defaultFilePath);
+    }, [defaultFilePath]);
+    var renderPreview = function () {
+        switch (uploaderType) {
+            case 'image': {
+                return (React.createElement("div", { className: "previewer image-preview" },
+                    React.createElement(image_1.default, __assign({}, imageProps, { src: filePath, className: "image" })),
+                    React.createElement("div", { className: "image-info" },
+                        React.createElement("p", { className: "image-name" }, previewFileName))));
+            }
+            case 'video': {
+                return (React.createElement("div", { className: "previewer video-preview" },
+                    React.createElement("video", __assign({ className: "video", controls: true }, videoProps, { src: filePath }))));
+            }
+        }
     };
     return (React.createElement(React.Fragment, null,
-        hint && (React.createElement(upload_hint_1.default, __assign({}, hint, { isHintModalOpen: isHintModalOpen, setIsHintModalOpen: setIsHintModalOpen, onSelect: openFileDialog }))),
-        React.createElement("div", { className: "file-input-wrapper" },
+        hint && (React.createElement(upload_hint_1.default, __assign({}, hint, { isHintModalOpen: isHintModalOpen, setIsHintModalOpen: setIsHintModalOpen, onSelect: openFileDialog, modalProps: hintModalProps }))),
+        React.createElement("div", __assign({}, containerProps, { className: "file-input-wrapper " + ((_c = containerProps === null || containerProps === void 0 ? void 0 : containerProps.className) !== null && _c !== void 0 ? _c : '') }),
             wrapperTitle && React.createElement("h4", { className: "wrapper-title" }, wrapperTitle),
             description && React.createElement("h4", { className: "wrapper-description" }, description),
             React.createElement("div", { className: "uploader-container" },
-                imagePath && !progressState.loading ? (React.createElement("div", { className: "image-preview" },
-                    React.createElement(image_1.default, __assign({}, imageProps, { src: imagePath, className: "image" })),
-                    React.createElement("div", { className: "image-info" },
-                        React.createElement("p", { className: "image-name" }, imageName),
-                        React.createElement("span", { onClick: removeImage, className: "material-icons remove-image-button" }, "close")))) : (React.createElement("div", { className: "uploader-description" },
+                filePath && !progressState.loading ? (renderPreview()) : (React.createElement("div", { className: "uploader-description" },
                     React.createElement("span", { className: "material-icons upload-icon" }, "cloud_upload"),
                     React.createElement("p", { className: "uploader-title" }, uploadFileText))),
-                !progressState.loading && (React.createElement(button_1.default, __assign({}, buttonProps, { className: "uploader-button", disabled: isResizing || disabled, onClick: openFileDialog }), isResizing ? React.createElement(loader_1.default, { primary: true }) : imagePath ? 'تغییر' : 'انتخاب')),
-                React.createElement(file_input_1.default, __assign({}, fileInputProps, { className: fileInputClasses, files: [new File([''], fileName)], inputRef: inputRef, onChangeFiles: resizeImage }))))));
+                !progressState.loading && (React.createElement(button_1.default, __assign({}, buttonProps, { className: "uploader-button", disabled: isResizing || disabled, onClick: openFileDialog }), isResizing ? React.createElement(loader_1.default, { primary: true }) : filePath ? 'تغییر' : 'انتخاب')),
+                React.createElement(file_input_1.default, __assign({}, fileInputProps, { className: fileInputClasses, files: [new File([''], fileName)], inputRef: inputRef, onChangeFiles: handleOnFileChange }))))));
 };
 exports.default = FileInputWrapper;
 
@@ -1967,14 +1995,26 @@ exports.default = FileInputWrapper;
 
 "use strict";
 
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var button_1 = __webpack_require__(2);
 var dialog_content_1 = __webpack_require__(12);
 var modal_1 = __webpack_require__(8);
 var UploadHint = function (_a) {
-    var children = _a.children, title = _a.title, cancelText = _a.cancelText, selectText = _a.selectText, isHintModalOpen = _a.isHintModalOpen, setIsHintModalOpen = _a.setIsHintModalOpen, onSelect = _a.onSelect;
-    return (React.createElement(modal_1.default, { overlayClassName: "file-input-hint-overlay", isOpen: isHintModalOpen, className: "file-input-hint", onClose: function () { return setIsHintModalOpen(false); } },
+    var children = _a.children, title = _a.title, cancelText = _a.cancelText, selectText = _a.selectText, isHintModalOpen = _a.isHintModalOpen, setIsHintModalOpen = _a.setIsHintModalOpen, onSelect = _a.onSelect, modalProps = _a.modalProps;
+    var _b;
+    return (React.createElement(modal_1.default, __assign({ overlayClassName: "file-input-hint-overlay", isOpen: isHintModalOpen, className: "file-input-hint " + ((_b = modalProps === null || modalProps === void 0 ? void 0 : modalProps.className) !== null && _b !== void 0 ? _b : '') }, modalProps, { onClose: function () { return setIsHintModalOpen(false); } }),
         React.createElement(dialog_content_1.default, { title: title, primary: true, actions: [
                 React.createElement(button_1.default, { primary: true, small: true, key: 0, onClick: onSelect }, selectText !== null && selectText !== void 0 ? selectText : 'انتخاب عکس'),
                 React.createElement(button_1.default, { ghost: true, small: true, key: 1, onClick: function () { return setIsHintModalOpen(false); } }, cancelText !== null && cancelText !== void 0 ? cancelText : 'انصراف'),

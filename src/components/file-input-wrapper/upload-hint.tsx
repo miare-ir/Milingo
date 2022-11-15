@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Button from '../button';
 import DialogContent from '../dialog-content';
-import Modal from '../modal';
+import Modal, { ModalProps } from '../modal';
 
 export interface UploadHintProps {
   children?: React.ReactNode;
@@ -12,6 +12,7 @@ export interface UploadHintProps {
   isHintModalOpen: boolean;
   setIsHintModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onSelect: () => void;
+  modalProps?: ModalProps;
 }
 
 const UploadHint: React.FC<UploadHintProps> = ({
@@ -22,11 +23,13 @@ const UploadHint: React.FC<UploadHintProps> = ({
   isHintModalOpen,
   setIsHintModalOpen,
   onSelect,
+  modalProps,
 }: UploadHintProps): JSX.Element => (
   <Modal
     overlayClassName="file-input-hint-overlay"
     isOpen={isHintModalOpen}
-    className="file-input-hint"
+    className={`file-input-hint ${modalProps?.className ?? ''}`}
+    {...modalProps}
     onClose={() => setIsHintModalOpen(false)}>
     <DialogContent
       title={title}

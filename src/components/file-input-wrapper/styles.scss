@@ -89,53 +89,48 @@
       }
     }
 
-    > .image-preview {
+    > .previewer {
       max-width: 146px;
       margin-bottom: 16px;
       overflow: hidden;
-      border-radius: 16px;
-      position: relative;
 
-      > .image {
-        width: 100%;
-        -webkit-user-drag: none;
+      &.video-preview {
+        > .video {
+          max-width: 100%;
+          max-height: 50vh;
+          border-radius: 16px;
+        }
       }
 
-      > .image-info {
-        background-color: #0009;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        color: $whiteColor;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        direction: ltr;
-        padding: 0 8px;
-        height: 32px;
+      &.image-preview {
+        position: relative;
+        border-radius: 16px;
 
-        > .image-name {
-          @include font-size(12);
-
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+        > .image {
+          width: 100%;
+          -webkit-user-drag: none;
         }
 
-        > .remove-image-button {
-          @include font-size(24);
+        > .image-info {
+          background-color: #0009;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          color: $whiteColor;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          direction: ltr;
+          padding: 0 8px;
+          height: 32px;
 
-          display: block;
-          width: 24px;
-          height: 24px;
-          cursor: pointer;
-          border-radius: 4px;
-          margin-left: 10px;
-          transition: all 150ms linear;
+          > .image-name {
+            @include font-size(12);
 
-          &:hover {
-            background: #fff3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
       }
