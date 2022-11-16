@@ -35,10 +35,15 @@ const UploadHint: React.FC<UploadHintProps> = ({
       title={title}
       primary
       actions={[
-        <Button primary small key={0} onClick={onSelect}>
+        <Button primary small key={0} onClick={onSelect} type="button">
           {selectText ?? 'انتخاب عکس'}
         </Button>,
-        <Button ghost small key={1} onClick={() => setIsHintModalOpen(false)}>
+        <Button
+          ghost
+          small
+          key={1}
+          onClick={() => setIsHintModalOpen(false)}
+          type="button">
           {cancelText ?? 'انصراف'}
         </Button>,
       ]}>

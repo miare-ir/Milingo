@@ -1971,7 +1971,7 @@ var FileInputWrapper = function (_a) {
                 filePath && !progressState.loading ? (renderPreview()) : (React.createElement("div", { className: "uploader-description" },
                     React.createElement("span", { className: "material-icons upload-icon" }, "cloud_upload"),
                     React.createElement("p", { className: "uploader-title" }, uploadFileText))),
-                !progressState.loading && (React.createElement(button_1.default, __assign({}, buttonProps, { className: "uploader-button", disabled: isResizing || disabled, onClick: openFileDialog }), isResizing ? React.createElement(loader_1.default, { primary: true }) : filePath ? 'تغییر' : 'انتخاب')),
+                !progressState.loading && (React.createElement(button_1.default, __assign({}, buttonProps, { className: "uploader-button", disabled: isResizing || disabled, type: "button", onClick: openFileDialog }), isResizing ? React.createElement(loader_1.default, { primary: true }) : filePath ? 'تغییر' : 'انتخاب')),
                 React.createElement(file_input_1.default, __assign({}, fileInputProps, { className: fileInputClasses, files: [new File([''], fileName)], inputRef: inputRef, onChangeFiles: handleOnFileChange }))))));
 };
 exports.default = FileInputWrapper;
@@ -2016,8 +2016,8 @@ var UploadHint = function (_a) {
     var _b;
     return (React.createElement(modal_1.default, __assign({ overlayClassName: "file-input-hint-overlay", isOpen: isHintModalOpen, className: "file-input-hint " + ((_b = modalProps === null || modalProps === void 0 ? void 0 : modalProps.className) !== null && _b !== void 0 ? _b : '') }, modalProps, { onClose: function () { return setIsHintModalOpen(false); } }),
         React.createElement(dialog_content_1.default, { title: title, primary: true, actions: [
-                React.createElement(button_1.default, { primary: true, small: true, key: 0, onClick: onSelect }, selectText !== null && selectText !== void 0 ? selectText : 'انتخاب عکس'),
-                React.createElement(button_1.default, { ghost: true, small: true, key: 1, onClick: function () { return setIsHintModalOpen(false); } }, cancelText !== null && cancelText !== void 0 ? cancelText : 'انصراف'),
+                React.createElement(button_1.default, { primary: true, small: true, key: 0, onClick: onSelect, type: "button" }, selectText !== null && selectText !== void 0 ? selectText : 'انتخاب عکس'),
+                React.createElement(button_1.default, { ghost: true, small: true, key: 1, onClick: function () { return setIsHintModalOpen(false); }, type: "button" }, cancelText !== null && cancelText !== void 0 ? cancelText : 'انصراف'),
             ] },
             React.createElement(React.Fragment, null, children))));
 };

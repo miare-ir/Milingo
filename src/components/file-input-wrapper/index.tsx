@@ -179,6 +179,7 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
               {...buttonProps}
               className="uploader-button"
               disabled={isResizing || disabled}
+              type="button"
               onClick={openFileDialog}>
               {isResizing ? <Loader primary /> : filePath ? 'تغییر' : 'انتخاب'}
             </Button>
