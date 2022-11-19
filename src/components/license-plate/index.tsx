@@ -54,6 +54,10 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
     const inputValue = e.currentTarget.value;
     const maxLength =
       part === 'one'
+        ? oldStyle
+          ? MAX_PLATE_NUMBER_LENGTH_PART_TWO
+          : MAX_PLATE_NUMBER_LENGTH_PART_ONE
+        : oldStyle
         ? MAX_PLATE_NUMBER_LENGTH_PART_ONE
         : MAX_PLATE_NUMBER_LENGTH_PART_TWO;
 
@@ -65,20 +69,10 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
 
     if (part === 'one') {
       setPlateNumberPartOneValue(accurateInputValue);
-
-      if (oldStyle) {
-        onInput?.([plateNumberPartTwoValue, accurateInputValue]);
-      } else {
-        onInput?.([accurateInputValue, plateNumberPartTwoValue]);
-      }
+      onInput?.([accurateInputValue, plateNumberPartTwoValue]);
     } else {
       setPlateNumberPartTwoValue(accurateInputValue);
-
-      if (oldStyle) {
-        onInput?.([accurateInputValue, plateNumberPartOneValue]);
-      } else {
-        onInput?.([plateNumberPartOneValue, accurateInputValue]);
-      }
+      onInput?.([plateNumberPartOneValue, accurateInputValue]);
     }
   };
 
@@ -111,9 +105,12 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           )}
           className="plate-number"
           max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE)}
-          onInput={e => handlePlateNumberInput(e, 'one')}
+          onInput={e => handlePlateNumberInput(e, oldStyle ? 'two' : 'one')}
           disabled={!editable}
-          value={plateNumberPartOneValue ?? undefined}
+          value={
+            (oldStyle ? plateNumberPartTwoValue : plateNumberPartOneValue) ??
+            undefined
+          }
           type="number"
           tabIndex={oldStyle ? 2 : 1}
         />
@@ -126,9 +123,12 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           )}
           className="plate-number"
           max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO)}
-          onInput={e => handlePlateNumberInput(e, 'two')}
+          onInput={e => handlePlateNumberInput(e, oldStyle ? 'one' : 'two')}
           disabled={!editable}
-          value={plateNumberPartTwoValue ?? undefined}
+          value={
+            (oldStyle ? plateNumberPartOneValue : plateNumberPartTwoValue) ??
+            undefined
+          }
           type="number"
           tabIndex={oldStyle ? 1 : 2}
         />

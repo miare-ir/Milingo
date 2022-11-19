@@ -29,6 +29,6 @@ NewStyle.args = {
 
 export const OldStyle = Template.bind({});
 OldStyle.args = {
-  value: [123, 45678],
+  value: [12345, 678],
   oldStyle: true,
 } as LicensePlateProps;
