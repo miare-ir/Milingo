@@ -28,10 +28,10 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
   ...rest
 }: LicensePlateProps): JSX.Element => {
   const [plateNumberPartOneValue, setPlateNumberPartOneValue] = React.useState(
-    oldStyle ? value?.[1] : value?.[0],
+    value?.[0],
   );
   const [plateNumberPartTwoValue, setPlateNumberPartTwoValue] = React.useState(
-    oldStyle ? value?.[0] : value?.[1],
+    value?.[1],
   );
 
   const MAX_PLATE_NUMBER_LENGTH_PART_ONE = 3;
@@ -115,6 +115,7 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           disabled={!editable}
           value={plateNumberPartOneValue ?? undefined}
           type="number"
+          tabIndex={oldStyle ? 2 : 1}
         />
       </div>
 
@@ -129,6 +130,7 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           disabled={!editable}
           value={plateNumberPartTwoValue ?? undefined}
           type="number"
+          tabIndex={oldStyle ? 1 : 2}
         />
       </div>
     </div>

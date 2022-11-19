@@ -5485,8 +5485,8 @@ var stripes_svg_1 = __webpack_require__(127);
 var LicensePlate = function (_a) {
     var _b;
     var editable = _a.editable, onInput = _a.onInput, value = _a.value, oldStyle = _a.oldStyle, className = _a.className, rest = __rest(_a, ["editable", "onInput", "value", "oldStyle", "className"]);
-    var _c = React.useState(oldStyle ? value === null || value === void 0 ? void 0 : value[1] : value === null || value === void 0 ? void 0 : value[0]), plateNumberPartOneValue = _c[0], setPlateNumberPartOneValue = _c[1];
-    var _d = React.useState(oldStyle ? value === null || value === void 0 ? void 0 : value[0] : value === null || value === void 0 ? void 0 : value[1]), plateNumberPartTwoValue = _d[0], setPlateNumberPartTwoValue = _d[1];
+    var _c = React.useState(value === null || value === void 0 ? void 0 : value[0]), plateNumberPartOneValue = _c[0], setPlateNumberPartOneValue = _c[1];
+    var _d = React.useState(value === null || value === void 0 ? void 0 : value[1]), plateNumberPartTwoValue = _d[0], setPlateNumberPartTwoValue = _d[1];
     var MAX_PLATE_NUMBER_LENGTH_PART_ONE = 3;
     var MAX_PLATE_NUMBER_LENGTH_PART_TWO = 5;
     var getPlateNumberPlaceholder = function (length) {
@@ -5537,9 +5537,9 @@ var LicensePlate = function (_a) {
                 React.createElement("img", { src: stripes_svg_1.default, alt: "Pattern" }))) : (React.createElement("div", { className: "iran-flag" },
                 React.createElement("img", { src: iran_flag_svg_1.default, alt: "Iran flag", className: "flag" }),
                 React.createElement("img", { src: iran_plate_sign_svg_1.default, alt: "Iran plate sign", className: "plate-sign" }))),
-            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_ONE), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE), onInput: function (e) { return handlePlateNumberInput(e, 'one'); }, disabled: !editable, value: plateNumberPartOneValue !== null && plateNumberPartOneValue !== void 0 ? plateNumberPartOneValue : undefined, type: "number" })),
+            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_ONE), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE), onInput: function (e) { return handlePlateNumberInput(e, 'one'); }, disabled: !editable, value: plateNumberPartOneValue !== null && plateNumberPartOneValue !== void 0 ? plateNumberPartOneValue : undefined, type: "number", tabIndex: oldStyle ? 2 : 1 })),
         React.createElement("div", { className: "bottom-section" },
-            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_TWO), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO), onInput: function (e) { return handlePlateNumberInput(e, 'two'); }, disabled: !editable, value: plateNumberPartTwoValue !== null && plateNumberPartTwoValue !== void 0 ? plateNumberPartTwoValue : undefined, type: "number" }))));
+            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_TWO), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO), onInput: function (e) { return handlePlateNumberInput(e, 'two'); }, disabled: !editable, value: plateNumberPartTwoValue !== null && plateNumberPartTwoValue !== void 0 ? plateNumberPartTwoValue : undefined, type: "number", tabIndex: oldStyle ? 1 : 2 }))));
 };
 exports.default = LicensePlate;
 
