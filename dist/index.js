@@ -1948,6 +1948,9 @@ var FileInputWrapper = function (_a) {
     React.useEffect(function () {
         setFilePath(defaultFilePath);
     }, [defaultFilePath]);
+    React.useEffect(function () {
+        setPreviewFileName(fileName);
+    }, [fileName]);
     var renderPreview = function () {
         switch (uploaderType) {
             case 'image': {

@@ -123,6 +123,10 @@ const FileInputWrapper: React.FC<FileInputWrapperProps> = ({
     setFilePath(defaultFilePath);
   }, [defaultFilePath]);
 
+  React.useEffect(() => {
+    setPreviewFileName(fileName);
+  }, [fileName]);
+
   const renderPreview = (): React.ReactNode => {
     switch (uploaderType) {
       case 'image': {
