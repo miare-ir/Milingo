@@ -33,6 +33,7 @@ const UploadHint: React.FC<UploadHintProps> = ({
     onClose={() => setIsHintModalOpen(false)}>
     <DialogContent
       title={title}
+      onClose={() => setIsHintModalOpen(false)}
       primary
       actions={[
         <Button primary small key={0} onClick={onSelect} type="button">
