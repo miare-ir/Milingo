@@ -19,7 +19,7 @@ const handelSubmitMessage = (id: number, message: string): void =>
 
 export const Default = (): JSX.Element => (
   <Chat
-    chatId={issue.id}
+    id={issue.id}
     handelSubmit={handelSubmitMessage}
     isSending={false}
     canSubmit>
@@ -37,7 +37,7 @@ export const Default = (): JSX.Element => (
 
 export const WithoutMessage = (): JSX.Element => (
   <Chat
-    chatId={issue.id}
+    id={issue.id}
     handelSubmit={handelSubmitMessage}
     isSending={false}
     canSubmit>
@@ -54,7 +54,7 @@ export const WithoutMessage = (): JSX.Element => (
 );
 
 export const WithoutSubmitMessage = (): JSX.Element => (
-  <Chat chatId={issue.id} canSubmit={false}>
+  <Chat id={issue.id} canSubmit={false}>
     {issue.messages.map(({ message, id, sender_type, created_at }) => (
       <Message
         id={id}
@@ -93,7 +93,7 @@ export const WhitFooter = (): JSX.Element => {
 
   return (
     <Chat
-      chatId={issue.id}
+      id={issue.id}
       handelSubmit={handelSubmitMessage}
       isSending={false}
       canSubmit

@@ -8,10 +8,6 @@
   
     &:not(:last-child) {
       border-bottom: 1px solid #ecedef;
-    }    
-    
-    .accordion-item-timer.resolved {
-      color: $successDark;
     }
 
     &:before {
