@@ -27,6 +27,15 @@
       margin: 0;
       text-align: center;
 
+      .dialog-title-description {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 300;
+        font-variation-settings: 'wght' 300;
+        color: #3d3f53;
+        padding: 0 8px;
+      }
+
       .material-icons {
         display: none;
       }

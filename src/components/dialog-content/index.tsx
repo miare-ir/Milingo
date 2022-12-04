@@ -8,6 +8,7 @@ export interface DialogContentProps extends React.HTMLProps<HTMLDivElement> {
   children?: JSX.Element;
   actions?: JSX.Element | JSX.Element[];
   title: string;
+  titleDescription?: string;
   className?: string;
   primary?: boolean;
   secondary?: boolean;
@@ -37,6 +38,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
       actions,
       children,
       onClose,
+      titleDescription,
       ...props
     } = this.props;
     const componentClassNames = classNames(
@@ -56,7 +58,7 @@ class DialogContent extends React.Component<DialogContentProps, {}> {
               close
             </span>
             <span>{title}</span>
-            <span> </span>
+            <span className="dialog-title-description">{titleDescription}</span>
           </h2>
         </div>
         {children && (

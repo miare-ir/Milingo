@@ -33,6 +33,24 @@ PrimaryWithContent.story = {
   name: 'Primary with content',
 };
 
+export const PrimaryWithDescription = () => (
+  <DialogContent
+    primary
+    title="عنوان"
+    titleDescription="(توضیحات اضافه کوچیک)"
+    actions={[
+      <Button key="primary" primary>
+        دکمه اصلی
+      </Button>,
+      <Button key="secondary">دکمه فرعی</Button>,
+    ]}
+  />
+);
+
+PrimaryWithDescription.story = {
+  name: 'Primary with description in title',
+};
+
 export const SecondaryWithContent = () => (
   <DialogContent
     secondary
