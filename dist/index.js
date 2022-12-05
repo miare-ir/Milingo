@@ -570,7 +570,7 @@ var DialogContent = /** @class */ (function (_super) {
         }
     };
     DialogContent.prototype.render = function () {
-        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, onClose = _a.onClose, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children", "onClose"]);
+        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, onClose = _a.onClose, titleDescription = _a.titleDescription, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children", "onClose", "titleDescription"]);
         var componentClassNames = classNames('dialog-content-wrapper', className, {
             primary: primary,
             secondary: secondary,
@@ -580,7 +580,7 @@ var DialogContent = /** @class */ (function (_super) {
                 React.createElement("h2", { className: "dialog-title" },
                     React.createElement("span", { onClick: onClose, className: "material-icons" }, "close"),
                     React.createElement("span", null, title),
-                    React.createElement("span", null, " "))),
+                    React.createElement("span", { className: "dialog-title-description" }, titleDescription))),
             children && (React.createElement("div", { className: "dialog-content", key: "content" }, children)),
             React.createElement("div", { className: "dialog-actions", key: "footer" }, actions)));
     };
@@ -2018,7 +2018,7 @@ var UploadHint = function (_a) {
     var children = _a.children, title = _a.title, cancelText = _a.cancelText, selectText = _a.selectText, isHintModalOpen = _a.isHintModalOpen, setIsHintModalOpen = _a.setIsHintModalOpen, onSelect = _a.onSelect, modalProps = _a.modalProps;
     var _b;
     return (React.createElement(modal_1.default, __assign({ overlayClassName: "file-input-hint-overlay", isOpen: isHintModalOpen, className: "file-input-hint " + ((_b = modalProps === null || modalProps === void 0 ? void 0 : modalProps.className) !== null && _b !== void 0 ? _b : '') }, modalProps, { onClose: function () { return setIsHintModalOpen(false); } }),
-        React.createElement(dialog_content_1.default, { title: title, primary: true, actions: [
+        React.createElement(dialog_content_1.default, { title: title, onClose: function () { return setIsHintModalOpen(false); }, primary: true, actions: [
                 React.createElement(button_1.default, { primary: true, small: true, key: 0, onClick: onSelect, type: "button" }, selectText !== null && selectText !== void 0 ? selectText : 'انتخاب عکس'),
                 React.createElement(button_1.default, { ghost: true, small: true, key: 1, onClick: function () { return setIsHintModalOpen(false); }, type: "button" }, cancelText !== null && cancelText !== void 0 ? cancelText : 'انصراف'),
             ] },
