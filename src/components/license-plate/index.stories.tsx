@@ -10,24 +10,25 @@ export default {
   component: LicensePlate,
 } as ComponentMeta<typeof LicensePlate>;
 
-const Template: ComponentStory<typeof LicensePlate> = props => (
+const Template: ComponentStory<typeof LicensePlate> = (
+  props: LicensePlateProps,
+) => (
   <div className="license-plates">
-    <LicensePlate {...props} />
-    <LicensePlate
-      {...props}
-      oldStyle
-      value={[props?.value?.[1], props?.value?.[0]]}
-    />
+    <h1>Editable</h1>
+    <LicensePlate {...props} value={undefined} editable />
+
+    <h1>Readonly</h1>
+    <LicensePlate {...props} value={props.value} />
   </div>
 );
 
-export const EditableLicensePlate = Template.bind({});
-EditableLicensePlate.args = {
-  editable: true,
+export const NewStyle = Template.bind({});
+NewStyle.args = {
+  value: [123, 45678],
 } as LicensePlateProps;
 
-export const ReadonlyLicensePlate = Template.bind({});
-ReadonlyLicensePlate.args = {
-  editable: false,
-  value: [123, 45678],
+export const OldStyle = Template.bind({});
+OldStyle.args = {
+  value: [12345, 678],
+  oldStyle: true,
 } as LicensePlateProps;
