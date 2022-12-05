@@ -7,7 +7,7 @@
 		exports["Milingo"] = factory(require("react"), require("moment-jalaali"), require("react-modal"));
 	else
 		root["Milingo"] = factory(root["react"], root["moment-jalaali"], root["react-modal"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__8__, __WEBPACK_EXTERNAL_MODULE__23__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__10__, __WEBPACK_EXTERNAL_MODULE__27__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 29);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -201,7 +201,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(27);
+__webpack_require__(30);
 var Button = /** @class */ (function (_super) {
     __extends(Button, _super);
     function Button() {
@@ -245,7 +245,23 @@ exports.default = Button;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(34);
+var Loader = function (_a) {
+    var primary = _a.primary, danger = _a.danger, disabled = _a.disabled;
+    var className = classNames('spinner', {
+        'spinner-primary': primary,
+        'spinner-danger': danger,
+        'spinner-disabled': disabled,
+    });
+    return React.createElement("span", { className: className });
+};
+exports.default = Loader;
+
 
 /***/ }),
 /* 6 */
@@ -255,6 +271,53 @@ exports.default = Button;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var react_1 = __webpack_require__(0);
+__webpack_require__(53);
+var Modal = function (props) {
+    var _a;
+    var closeOnEscapeKeyDown = function (event) {
+        if ((event.charCode || event.keyCode) === 27) {
+            props.onClose();
+        }
+    };
+    react_1.useEffect(function () {
+        if (props.onClose) {
+            document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+        }
+        return function cleanup() {
+            if (props.onClose) {
+                document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+            }
+        };
+    }, []);
+    var handleClose = function () {
+        if (props.onClose) {
+            props.onClose();
+        }
+    };
+    if (!props.isOpen) {
+        return null;
+    }
+    return (React.createElement("div", { className: "milingo-modal--overlay " + (props.isOpen ? 'isOpen' : '') + " " + ((_a = props.overlayClassName) !== null && _a !== void 0 ? _a : ''), onClick: handleClose },
+        React.createElement("div", { className: "modal modal-content " + props.align + " " + props.className, onClick: function (event) { return event.stopPropagation(); } }, props.children)));
+};
+exports.default = Modal;
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -393,13 +456,13 @@ exports.default = PersianNumber;
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__8__;
+module.exports = __WEBPACK_EXTERNAL_MODULE__10__;
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -407,7 +470,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__8__;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(103);
+__webpack_require__(110);
 exports.Column = function (props) {
     var _a;
     var classes = classNames(props.className, 'flex-column', (_a = {
@@ -446,86 +509,6 @@ exports.Row = function (props) {
 exports.Row.defaultProps = {
     className: '',
 };
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(31);
-var Loader = function (_a) {
-    var primary = _a.primary, danger = _a.danger, disabled = _a.disabled;
-    var className = classNames('spinner', {
-        'spinner-primary': primary,
-        'spinner-danger': danger,
-        'spinner-disabled': disabled,
-    });
-    return React.createElement("span", { className: className });
-};
-exports.default = Loader;
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var react_1 = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-var arrow_svg_1 = __webpack_require__(38);
-var close_svg_1 = __webpack_require__(39);
-var tag_1 = __webpack_require__(12);
-__webpack_require__(5);
-var Accordion = function (_a) {
-    var children = _a.children, title = _a.title, count = _a.count, description = _a.description, isActive = _a.isActive, isClose = _a.isClose, setIsClose = _a.setIsClose, rest = __rest(_a, ["children", "title", "count", "description", "isActive", "isClose", "setIsClose"]);
-    var _b = react_1.useState(isActive || false), isActiveAccordion = _b[0], setIsActiveAccordion = _b[1];
-    var componentClassNames = classNames('accordion-container', isClose ? 'close' : '', isActiveAccordion ? 'active' : '', rest.className);
-    var renderIcon = function () {
-        return setIsClose ? (React.createElement("img", { src: close_svg_1.default, onClick: setIsClose })) : (React.createElement("img", { src: arrow_svg_1.default }));
-    };
-    return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
-        React.createElement("div", { className: "accordion-header " + (description ? 'with-description' : ''), onClick: function () {
-                return setIsActiveAccordion(function (currentIsActive) { return !currentIsActive; });
-            } },
-            React.createElement("div", { className: "accordion-info" },
-                React.createElement("div", { className: "accordion-title" },
-                    title,
-                    count && React.createElement(tag_1.default, { success: true }, count)),
-                description && (React.createElement("div", { className: "accordion-description" }, description))),
-            renderIcon()),
-        React.createElement("div", { className: "accordion-content" }, children)));
-};
-exports.default = Accordion;
 
 
 /***/ }),
@@ -572,25 +555,38 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(40);
-var Tag = /** @class */ (function (_super) {
-    __extends(Tag, _super);
-    function Tag() {
+__webpack_require__(38);
+var DialogContent = /** @class */ (function (_super) {
+    __extends(DialogContent, _super);
+    function DialogContent() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Tag.prototype.render = function () {
-        var _a = this.props, children = _a.children, className = _a.className, primary = _a.primary, warning = _a.warning, success = _a.success, alert = _a.alert, props = __rest(_a, ["children", "className", "primary", "warning", "success", "alert"]);
-        var componentClassName = classNames('tag-wrapper', className, {
-            primary: primary,
-            warning: warning,
-            success: success,
-            alert: alert,
-        });
-        return React.createElement(this.props.component || 'span', __assign({ className: componentClassName }, props), children);
+    DialogContent.prototype.componentDidMount = function () {
+        if (this.props.primary && this.props.secondary) {
+            throw new Error("Dialog content component can't receive primary and secondary props at same time ");
+        }
+        if (!this.props.primary && !this.props.secondary) {
+            throw new Error('Dialog content component needs one of primary or secondary props');
+        }
     };
-    return Tag;
+    DialogContent.prototype.render = function () {
+        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, onClose = _a.onClose, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children", "onClose"]);
+        var componentClassNames = classNames('dialog-content-wrapper', className, {
+            primary: primary,
+            secondary: secondary,
+        });
+        return (React.createElement("div", __assign({ className: componentClassNames }, props),
+            React.createElement("div", { className: "dialog-header", key: "title" },
+                React.createElement("h2", { className: "dialog-title" },
+                    React.createElement("span", { onClick: onClose, className: "material-icons" }, "close"),
+                    React.createElement("span", null, title),
+                    React.createElement("span", null, " "))),
+            children && (React.createElement("div", { className: "dialog-content", key: "content" }, children)),
+            React.createElement("div", { className: "dialog-actions", key: "footer" }, actions)));
+    };
+    return DialogContent;
 }(React.Component));
-exports.default = Tag;
+exports.default = DialogContent;
 
 
 /***/ }),
@@ -623,18 +619,32 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
+var react_1 = __webpack_require__(0);
 var classNames = __webpack_require__(1);
+var arrow_svg_1 = __webpack_require__(40);
+var close_svg_1 = __webpack_require__(41);
+var tag_1 = __webpack_require__(14);
 __webpack_require__(6);
-var submit_form_1 = __webpack_require__(42);
-var Chat = function (_a) {
-    var chatId = _a.chatId, handelSubmit = _a.handelSubmit, isSending = _a.isSending, canSubmit = _a.canSubmit, children = _a.children, footer = _a.footer, rest = __rest(_a, ["chatId", "handelSubmit", "isSending", "canSubmit", "children", "footer"]);
-    var componentClassNames = classNames('chat-container', rest.className);
+var Accordion = function (_a) {
+    var children = _a.children, title = _a.title, count = _a.count, description = _a.description, isActive = _a.isActive, isClose = _a.isClose, setIsClose = _a.setIsClose, rest = __rest(_a, ["children", "title", "count", "description", "isActive", "isClose", "setIsClose"]);
+    var _b = react_1.useState(isActive || false), isActiveAccordion = _b[0], setIsActiveAccordion = _b[1];
+    var componentClassNames = classNames('accordion-container', isClose ? 'close' : '', isActiveAccordion ? 'active' : '', rest.className);
+    var renderIcon = function () {
+        return setIsClose ? (React.createElement("img", { src: close_svg_1.default, onClick: setIsClose })) : (React.createElement("img", { src: arrow_svg_1.default }));
+    };
     return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
-        React.createElement("div", { className: "chat-content" }, children),
-        canSubmit && (React.createElement(submit_form_1.default, { id: chatId, isSending: isSending, onSubmit: handelSubmit })),
-        React.createElement("div", { className: "chat-footer" }, footer)));
+        React.createElement("div", { className: "accordion-header " + (description ? 'with-description' : ''), onClick: function () {
+                return setIsActiveAccordion(function (currentIsActive) { return !currentIsActive; });
+            } },
+            React.createElement("div", { className: "accordion-info" },
+                React.createElement("div", { className: "accordion-title" },
+                    title,
+                    count && React.createElement(tag_1.default, { success: true }, count)),
+                description && (React.createElement("div", { className: "accordion-description" }, description))),
+            renderIcon()),
+        React.createElement("div", { className: "accordion-content" }, children)));
 };
-exports.default = Chat;
+exports.default = Accordion;
 
 
 /***/ }),
@@ -681,7 +691,116 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(45);
+__webpack_require__(42);
+var Tag = /** @class */ (function (_super) {
+    __extends(Tag, _super);
+    function Tag() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Tag.prototype.render = function () {
+        var _a = this.props, children = _a.children, className = _a.className, primary = _a.primary, warning = _a.warning, success = _a.success, alert = _a.alert, props = __rest(_a, ["children", "className", "primary", "warning", "success", "alert"]);
+        var componentClassName = classNames('tag-wrapper', className, {
+            primary: primary,
+            warning: warning,
+            success: success,
+            alert: alert,
+        });
+        return React.createElement(this.props.component || 'span', __assign({ className: componentClassName }, props), children);
+    };
+    return Tag;
+}(React.Component));
+exports.default = Tag;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(7);
+var submit_form_1 = __webpack_require__(44);
+var Chat = function (_a) {
+    var chatId = _a.chatId, handelSubmit = _a.handelSubmit, isSending = _a.isSending, canSubmit = _a.canSubmit, children = _a.children, footer = _a.footer, rest = __rest(_a, ["chatId", "handelSubmit", "isSending", "canSubmit", "children", "footer"]);
+    var componentClassNames = classNames('chat-container', rest.className);
+    return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
+        React.createElement("div", { className: "chat-content" }, children),
+        canSubmit && (React.createElement(submit_form_1.default, { id: chatId, isSending: isSending, onSubmit: handelSubmit })),
+        React.createElement("div", { className: "chat-footer" }, footer)));
+};
+exports.default = Chat;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(47);
 var Textarea = /** @class */ (function (_super) {
     __extends(Textarea, _super);
     function Textarea(props) {
@@ -734,25 +853,7 @@ exports.default = Textarea;
 
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
 /* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -794,9 +895,207 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var PropTypes = __webpack_require__(59);
 var classNames = __webpack_require__(1);
-__webpack_require__(62);
+var button_1 = __webpack_require__(2);
+__webpack_require__(50);
+var FileInput = /** @class */ (function (_super) {
+    __extends(FileInput, _super);
+    function FileInput(props) {
+        var _this = _super.call(this, props) || this;
+        _this.handleInput = function (e) {
+            var newFiles = Array.from(e.target.files);
+            _this.setState({
+                touched: true,
+                files: _this.props.multiple ? _this.state.files.concat(newFiles) : newFiles,
+            });
+            if (_this.props.onChangeFiles) {
+                _this.props.onChangeFiles(_this.props.multiple ? _this.state.files.concat(newFiles) : newFiles);
+            }
+        };
+        _this.clear = function (index) {
+            if (_this.props.disabled) {
+                return;
+            }
+            _this.setState({
+                files: _this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }),
+            });
+            if (_this.props.onChangeFiles) {
+                _this.props.onChangeFiles(_this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }));
+            }
+        };
+        _this.renderFiles = function (state, file, index) {
+            if (state && state.message && !_this.props.validate) {
+                throw new TypeError('Please provide either both errorMessage and ' +
+                    'validate or non of them.');
+            }
+            var hasError = (_this.props.forceDisplayError || _this.state.touched) &&
+                _this.props.validate &&
+                !_this.props.validate(_this.state.files);
+            var className = classNames('file-name-container', {
+                'error-state': hasError,
+                'try-again-state': state && state.tryAgain,
+            });
+            return (React.createElement("div", { className: className, key: file.name + file.size },
+                React.createElement("div", { className: "file-name" },
+                    React.createElement("div", { className: "file-name-text" },
+                        React.createElement("p", null, file.name),
+                        _this.props.displayClear && (React.createElement("i", { className: "material-icons clear", onClick: function () { return _this.clear(index); } }, "close"))),
+                    state && state.tryAgain && (React.createElement("div", { onClick: function () { return _this.props.onTryAgain(_this.state.files); }, className: "try-again" }, _this.props.tryAgainText ? _this.props.tryAgainText : 'تلاش مجدد')),
+                    state && state.progress ? (React.createElement("div", { className: "loading-container" },
+                        React.createElement("div", { className: "loading", style: { width: state.progress + "%" } }))) : null),
+                hasError && state && state.message && (React.createElement("span", { className: "error" }, state.message))));
+        };
+        _this.state = {
+            touched: false,
+            files: props.files || null,
+        };
+        return _this;
+    }
+    FileInput.prototype.componentDidUpdate = function (prevProps) {
+        if (prevProps.files !== this.props.files) {
+            this.setState({ files: prevProps.files });
+        }
+    };
+    FileInput.prototype.render = function () {
+        var _this = this;
+        var _a = this.props, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, disabled = _a.disabled, states = _a.states, children = _a.children, className = _a.className, onChangeFiles = _a.onChangeFiles, inputRef = _a.inputRef, props = __rest(_a, ["forceDisplayError", "validate", "displayClear", "title", "pre", "disabled", "states", "children", "className", "onChangeFiles", "inputRef"]);
+        var files = this.state.files;
+        var componentClassName = classNames('file-container', className, {
+            multiple: this.props.multiple,
+        });
+        return (React.createElement("div", { className: componentClassName },
+            React.createElement("div", { className: "file-div" },
+                files &&
+                    files.length > 0 &&
+                    files.map(function (file, index) {
+                        return _this.renderFiles(states && states[index], file, index);
+                    }),
+                React.createElement(button_1.default, { disabled: disabled, primary: true },
+                    children ? children : 'افزودن فایل',
+                    React.createElement("input", __assign({ disabled: disabled, type: "file", ref: inputRef, onChange: this.handleInput, value: "" }, props))))));
+    };
+    return FileInput;
+}(React.Component));
+exports.default = FileInput;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var react_1 = __webpack_require__(0);
+__webpack_require__(52);
+var modal_1 = __webpack_require__(8);
+var Image = function (_a) {
+    var src = _a.src, alt = _a.alt, thumbnailInfo = _a.thumbnailInfo, rest = __rest(_a, ["src", "alt", "thumbnailInfo"]);
+    var _b = react_1.useState(false), isOpen = _b[0], toggleModal = _b[1];
+    var onLoad = function (event) { return event.target.classList.add('image-loaded'); };
+    var onError = function (event) {
+        return event.target.classList.add('image-has-error');
+    };
+    var onImageClick = function () {
+        if (thumbnailInfo.originalSrc) {
+            return toggleModal(true);
+        }
+    };
+    return (React.createElement(React.Fragment, null,
+        React.createElement("img", __assign({ loading: "lazy", src: src, alt: alt, onLoad: onLoad, onError: onError, onClick: onImageClick }, rest)),
+        React.createElement(modal_1.default, { isOpen: isOpen, onClose: function () { return toggleModal(false); }, className: "milingo-image-modal" },
+            React.createElement("img", { src: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalSrc, alt: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalAlt }))));
+};
+exports.default = Image;
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var PropTypes = __webpack_require__(66);
+var classNames = __webpack_require__(1);
+__webpack_require__(69);
 var validInputTypes = ['text', 'number', 'tel'];
 var Input = /** @class */ (function (_super) {
     __extends(Input, _super);
@@ -895,43 +1194,43 @@ exports.default = Input;
 
 
 /***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
 /* 23 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__23__;
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__27__;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var moment = __webpack_require__(8);
+var moment = __webpack_require__(10);
 exports.generateMonth = function (mm, yyyy, generateDay) {
     var dates = [];
     var month = moment(yyyy + "/" + mm + "/1", 'jYYYY/jM/jD');
@@ -954,47 +1253,7 @@ exports.generateMonth = function (mm, yyyy, generateDay) {
 
 
 /***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var react_1 = __webpack_require__(0);
-__webpack_require__(114);
-var Modal = function (props) {
-    var closeOnEscapeKeyDown = function (event) {
-        if ((event.charCode || event.keyCode) === 27) {
-            props.onClose();
-        }
-    };
-    react_1.useEffect(function () {
-        if (props.onClose) {
-            document.body.addEventListener('keydown', closeOnEscapeKeyDown);
-        }
-        return function cleanup() {
-            if (props.onClose) {
-                document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
-            }
-        };
-    }, []);
-    var handleClose = function () {
-        if (props.onClose) {
-            props.onClose();
-        }
-    };
-    if (!props.isOpen) {
-        return null;
-    }
-    return (React.createElement("div", { className: "milingo-modal--overlay " + (props.isOpen ? 'isOpen' : ''), onClick: handleClose },
-        React.createElement("div", { className: "modal modal-content " + props.align + " " + props.className, onClick: function (event) { return event.stopPropagation(); } }, props.children)));
-};
-exports.default = Modal;
-
-
-/***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1002,102 +1261,104 @@ exports.default = Modal;
 Object.defineProperty(exports, "__esModule", { value: true });
 var button_1 = __webpack_require__(2);
 exports.Button = button_1.default;
-var button_group_1 = __webpack_require__(28);
+var button_group_1 = __webpack_require__(31);
 exports.ButtonGroup = button_group_1.default;
-var checkbox_1 = __webpack_require__(30);
+var checkbox_1 = __webpack_require__(33);
 exports.Checkbox = checkbox_1.default;
-var counter_button_1 = __webpack_require__(33);
+var counter_button_1 = __webpack_require__(36);
 exports.CounterButton = counter_button_1.default;
-var dialog_content_1 = __webpack_require__(35);
+var dialog_content_1 = __webpack_require__(12);
 exports.DialogContent = dialog_content_1.default;
-var Accordion = __webpack_require__(37);
+var Accordion = __webpack_require__(39);
 exports.Accordion = Accordion;
-var file_input_1 = __webpack_require__(48);
+var file_input_1 = __webpack_require__(17);
 exports.FileInput = file_input_1.default;
-var collection_1 = __webpack_require__(50);
+var file_input_wrapper_1 = __webpack_require__(51);
+exports.FileInputWrapper = file_input_wrapper_1.default;
+var collection_1 = __webpack_require__(57);
 exports.Collection = collection_1.Collection;
 exports.CollectionCard = collection_1.CollectionCard;
-var tab_column_1 = __webpack_require__(53);
+var tab_column_1 = __webpack_require__(60);
 exports.Tab = tab_column_1.Tab;
 exports.TabColumn = tab_column_1.TabColumn;
-var form_1 = __webpack_require__(56);
+var form_1 = __webpack_require__(63);
 exports.Form = form_1.Form;
 exports.FormGroup = form_1.FormGroup;
-var input_1 = __webpack_require__(18);
+var input_1 = __webpack_require__(22);
 exports.Input = input_1.default;
-var list_1 = __webpack_require__(63);
+var list_1 = __webpack_require__(70);
 exports.List = list_1.List;
 exports.ListSection = list_1.ListSection;
 exports.ListTitle = list_1.ListTitle;
 exports.ListFooter = list_1.ListFooter;
-var menu_1 = __webpack_require__(68);
+var menu_1 = __webpack_require__(75);
 exports.MenuAvatar = menu_1.MenuAvatar;
 exports.MenuHeader = menu_1.MenuHeader;
 exports.MenuItem = menu_1.MenuItem;
 exports.MenuLink = menu_1.MenuLink;
 exports.MenuStatus = menu_1.MenuStatus;
-var chat_1 = __webpack_require__(13);
+var chat_1 = __webpack_require__(15);
 exports.Chat = chat_1.default;
-var navbar_1 = __webpack_require__(75);
+var navbar_1 = __webpack_require__(82);
 exports.Navbar = navbar_1.default;
 exports.NavbarItem = navbar_1.NavbarItem;
-var notification_1 = __webpack_require__(77);
+var notification_1 = __webpack_require__(84);
 exports.Notification = notification_1.default;
-var radiobutton_1 = __webpack_require__(79);
+var radiobutton_1 = __webpack_require__(86);
 exports.Radio = radiobutton_1.default;
-var textarea_1 = __webpack_require__(14);
+var textarea_1 = __webpack_require__(16);
 exports.Textarea = textarea_1.default;
-var timeline_1 = __webpack_require__(81);
+var timeline_1 = __webpack_require__(88);
 exports.Timeline = timeline_1.Timeline;
 exports.TimelineEntry = timeline_1.TimelineEntry;
-var banner_1 = __webpack_require__(83);
+var banner_1 = __webpack_require__(90);
 exports.Banner = banner_1.default;
-var toolbar_1 = __webpack_require__(90);
+var toolbar_1 = __webpack_require__(97);
 exports.Toolbar = toolbar_1.default;
-var action_table_1 = __webpack_require__(92);
+var action_table_1 = __webpack_require__(99);
 exports.ActionTable = action_table_1.ActionTable;
 exports.ActionTableRow = action_table_1.ActionTableRow;
-var select_1 = __webpack_require__(95);
+var select_1 = __webpack_require__(102);
 exports.Select = select_1.default;
-var tag_1 = __webpack_require__(12);
+var tag_1 = __webpack_require__(14);
 exports.Tag = tag_1.default;
-var tab_1 = __webpack_require__(97);
+var tab_1 = __webpack_require__(104);
 exports.TabNav = tab_1.TabNav;
 exports.TabNavItem = tab_1.TabNavItem;
 exports.TabContent = tab_1.TabContent;
 exports.TabContentItem = tab_1.TabContentItem;
-var persian_number_1 = __webpack_require__(7);
+var persian_number_1 = __webpack_require__(9);
 exports.PersianNumber = persian_number_1.default;
-var date_picker_1 = __webpack_require__(102);
+var date_picker_1 = __webpack_require__(109);
 exports.DatePicker = date_picker_1.default;
-var range_date_picker_1 = __webpack_require__(105);
+var range_date_picker_1 = __webpack_require__(112);
 exports.RangeDatePicker = range_date_picker_1.default;
-var data_table_1 = __webpack_require__(107);
+var data_table_1 = __webpack_require__(114);
 exports.Table = data_table_1.Table;
 exports.Th = data_table_1.Th;
 exports.Tr = data_table_1.Tr;
 exports.Td = data_table_1.Td;
-var flex_1 = __webpack_require__(9);
+var flex_1 = __webpack_require__(11);
 exports.Column = flex_1.Column;
 exports.Row = flex_1.Row;
-var modal_1 = __webpack_require__(25);
+var modal_1 = __webpack_require__(8);
 exports.Modal = modal_1.default;
-var image_1 = __webpack_require__(115);
+var image_1 = __webpack_require__(18);
 exports.Image = image_1.default;
-var toggle_button_1 = __webpack_require__(117);
+var toggle_button_1 = __webpack_require__(121);
 exports.ToggleButton = toggle_button_1.default;
-var license_plate_1 = __webpack_require__(119);
+var license_plate_1 = __webpack_require__(123);
 exports.LicensePlate = license_plate_1.default;
 
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1140,7 +1401,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(29);
+__webpack_require__(32);
 var GroupButtonComponent = /** @class */ (function (_super) {
     __extends(GroupButtonComponent, _super);
     function GroupButtonComponent(props) {
@@ -1155,110 +1416,6 @@ var GroupButtonComponent = /** @class */ (function (_super) {
 }(React.Component));
 exports.default = GroupButtonComponent;
 
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-var loader_1 = __webpack_require__(10);
-__webpack_require__(32);
-var Checkbox = /** @class */ (function (_super) {
-    __extends(Checkbox, _super);
-    function Checkbox(props) {
-        var _this = _super.call(this, props) || this;
-        _this.handleChange = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (!_this.props.disabled) {
-                _this.setState({ checked: e.target.checked });
-                if (_this.props.onChange) {
-                    _this.props.onChange(e);
-                }
-            }
-        };
-        _this.state = {
-            checked: props.checked || false,
-        };
-        return _this;
-    }
-    Checkbox.getDerivedStateFromProps = function (nextProps, prevState) {
-        if (typeof nextProps.checked !== 'undefined' &&
-            nextProps.checked !== prevState.checked) {
-            return { checked: nextProps.checked };
-        }
-        return null;
-    };
-    Checkbox.prototype.render = function () {
-        var _this = this;
-        var _a = this.props, children = _a.children, disabled = _a.disabled, className = _a.className, onChange = _a.onChange, checked = _a.checked, loading = _a.loading, props = __rest(_a, ["children", "disabled", "className", "onChange", "checked", "loading"]);
-        var checkClassName = classNames('checkbox', className, {
-            checked: this.state.checked,
-            disabled: this.props.disabled,
-        });
-        return (React.createElement("div", { className: "checkbox-container", onClick: function (e) {
-                _this.checkboxElement.click();
-            } },
-            React.createElement("button", { className: checkClassName },
-                React.createElement("input", __assign({ type: "checkbox", checked: this.state.checked, value: !!this.state.checked + '', onChange: this.handleChange, ref: function (input) { return (_this.checkboxElement = input); } }, props)),
-                React.createElement("span", { className: "check" }, this.props.loading ? (React.createElement(loader_1.default, { disabled: true })) : (React.createElement("span", { className: "icon material-icons" }, "check"))),
-                children && React.createElement("label", { htmlFor: props.id }, children))));
-    };
-    return Checkbox;
-}(React.Component));
-exports.default = Checkbox;
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 32 */
@@ -1310,34 +1467,52 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(34);
-var CounterButton = /** @class */ (function (_super) {
-    __extends(CounterButton, _super);
-    function CounterButton() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var loader_1 = __webpack_require__(5);
+__webpack_require__(35);
+var Checkbox = /** @class */ (function (_super) {
+    __extends(Checkbox, _super);
+    function Checkbox(props) {
+        var _this = _super.call(this, props) || this;
+        _this.handleChange = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!_this.props.disabled) {
+                _this.setState({ checked: e.target.checked });
+                if (_this.props.onChange) {
+                    _this.props.onChange(e);
+                }
+            }
+        };
+        _this.state = {
+            checked: props.checked || false,
+        };
+        return _this;
     }
-    CounterButton.prototype.handleDecrease = function () {
-        if (this.props.onDecrease) {
-            this.props.onDecrease();
+    Checkbox.getDerivedStateFromProps = function (nextProps, prevState) {
+        if (typeof nextProps.checked !== 'undefined' &&
+            nextProps.checked !== prevState.checked) {
+            return { checked: nextProps.checked };
         }
+        return null;
     };
-    CounterButton.prototype.handleIncrease = function () {
-        if (this.props.onIncrease) {
-            this.props.onIncrease();
-        }
+    Checkbox.prototype.render = function () {
+        var _this = this;
+        var _a = this.props, children = _a.children, disabled = _a.disabled, className = _a.className, onChange = _a.onChange, checked = _a.checked, loading = _a.loading, props = __rest(_a, ["children", "disabled", "className", "onChange", "checked", "loading"]);
+        var checkClassName = classNames('checkbox', className, {
+            checked: this.state.checked,
+            disabled: this.props.disabled,
+        });
+        return (React.createElement("div", { className: "checkbox-container", onClick: function (e) {
+                _this.checkboxElement.click();
+            } },
+            React.createElement("button", { className: checkClassName },
+                React.createElement("input", __assign({ type: "checkbox", checked: this.state.checked, value: !!this.state.checked + '', onChange: this.handleChange, ref: function (input) { return (_this.checkboxElement = input); } }, props)),
+                React.createElement("span", { className: "check" }, this.props.loading ? (React.createElement(loader_1.default, { disabled: true })) : (React.createElement("span", { className: "icon material-icons" }, "check"))),
+                children && React.createElement("label", { htmlFor: props.id }, children))));
     };
-    CounterButton.prototype.render = function () {
-        var _a = this.props, className = _a.className, onIncrease = _a.onIncrease, onDecrease = _a.onDecrease, props = __rest(_a, ["className", "onIncrease", "onDecrease"]);
-        var componentClassname = classNames('counter-button-wrapper', className);
-        return (React.createElement("div", __assign({ className: componentClassname }, props),
-            React.createElement("div", { className: "button-wrapper", onClick: this.handleIncrease.bind(this) },
-                React.createElement("span", { className: "icon material-icons" }, "add")),
-            React.createElement("div", { className: "button-wrapper", onClick: this.handleDecrease.bind(this) },
-                React.createElement("span", { className: "icon material-icons" }, "remove"))));
-    };
-    return CounterButton;
+    return Checkbox;
 }(React.Component));
-exports.default = CounterButton;
+exports.default = Checkbox;
 
 
 /***/ }),
@@ -1348,6 +1523,12 @@ exports.default = CounterButton;
 
 /***/ }),
 /* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1390,48 +1571,50 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(36);
-var DialogContent = /** @class */ (function (_super) {
-    __extends(DialogContent, _super);
-    function DialogContent() {
+__webpack_require__(37);
+var CounterButton = /** @class */ (function (_super) {
+    __extends(CounterButton, _super);
+    function CounterButton() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    DialogContent.prototype.componentDidMount = function () {
-        if (this.props.primary && this.props.secondary) {
-            throw new Error("Dialog content component can't receive primary and secondary props at same time ");
-        }
-        if (!this.props.primary && !this.props.secondary) {
-            throw new Error('Dialog content component needs one of primary or secondary props');
+    CounterButton.prototype.handleDecrease = function () {
+        if (this.props.onDecrease) {
+            this.props.onDecrease();
         }
     };
-    DialogContent.prototype.render = function () {
-        var _a = this.props, className = _a.className, title = _a.title, primary = _a.primary, secondary = _a.secondary, actions = _a.actions, children = _a.children, onClose = _a.onClose, props = __rest(_a, ["className", "title", "primary", "secondary", "actions", "children", "onClose"]);
-        var componentClassNames = classNames('dialog-content-wrapper', className, {
-            primary: primary,
-            secondary: secondary,
-        });
-        return (React.createElement("div", __assign({ className: componentClassNames }, props),
-            React.createElement("div", { className: "dialog-header", key: "title" },
-                React.createElement("h2", { className: "dialog-title" },
-                    React.createElement("span", { onClick: onClose, className: "material-icons" }, "close"),
-                    React.createElement("span", null, title),
-                    React.createElement("span", null, " "))),
-            children && (React.createElement("div", { className: "dialog-content", key: "content" }, children)),
-            React.createElement("div", { className: "dialog-actions", key: "footer" }, actions)));
+    CounterButton.prototype.handleIncrease = function () {
+        if (this.props.onIncrease) {
+            this.props.onIncrease();
+        }
     };
-    return DialogContent;
+    CounterButton.prototype.render = function () {
+        var _a = this.props, className = _a.className, onIncrease = _a.onIncrease, onDecrease = _a.onDecrease, props = __rest(_a, ["className", "onIncrease", "onDecrease"]);
+        var componentClassname = classNames('counter-button-wrapper', className);
+        return (React.createElement("div", __assign({ className: componentClassname }, props),
+            React.createElement("div", { className: "button-wrapper", onClick: this.handleIncrease.bind(this) },
+                React.createElement("span", { className: "icon material-icons" }, "add")),
+            React.createElement("div", { className: "button-wrapper", onClick: this.handleDecrease.bind(this) },
+                React.createElement("span", { className: "icon material-icons" }, "remove"))));
+    };
+    return CounterButton;
 }(React.Component));
-exports.default = DialogContent;
+exports.default = CounterButton;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 37 */
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1440,12 +1623,12 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(11));
-__export(__webpack_require__(41));
+__export(__webpack_require__(13));
+__export(__webpack_require__(43));
 
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1453,7 +1636,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEzIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMS4wOSAwLjU5TDYuNSA1LjE3TDEuOTEgMC41OUwwLjUgMkw2LjUgOEwxMi41IDJMMTEuMDkgMC41OVoiIGZpbGw9ImJsYWNrIi8+Cjwvc3ZnPgo=");
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1461,13 +1644,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMTYuMjQyMiIgeT0iNi4zNDI3NyIgd2lkdGg9IjIiIGhlaWdodD0iMTQiIHJ4PSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg0NSAxNi4yNDIyIDYuMzQyNzcpIiBmaWxsPSIjM0QzRjUzIi8+CjxyZWN0IHg9IjE3LjY1NjIiIHk9IjE2LjI0MjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjE0IiByeD0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoMTM1IDE3LjY1NjIgMTYuMjQyMikiIGZpbGw9IiMzRDNGNTMiLz4KPC9zdmc+Cg==");
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1504,11 +1687,11 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var chat_1 = __webpack_require__(13);
-var message_1 = __webpack_require__(46);
-var accordion_1 = __webpack_require__(11);
-var accordion_item_1 = __webpack_require__(47);
-__webpack_require__(5);
+var chat_1 = __webpack_require__(15);
+var message_1 = __webpack_require__(48);
+var accordion_1 = __webpack_require__(13);
+var accordion_item_1 = __webpack_require__(49);
+__webpack_require__(6);
 var IssueListAccordion = function (_a) {
     var accordionTitle = _a.accordionTitle, issues = _a.issues, handelSubmitMessage = _a.handelSubmitMessage, handelResolve = _a.handelResolve, maxOpenChat = _a.maxOpenChat, rest = __rest(_a, ["accordionTitle", "issues", "handelSubmitMessage", "handelResolve", "maxOpenChat"]);
     var MAX_OPEN_CHATS_COUNT = maxOpenChat || 3;
@@ -1553,18 +1736,18 @@ exports.default = IssueListAccordion;
 
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var send_svg_1 = __webpack_require__(43);
-var disabled_send_svg_1 = __webpack_require__(44);
+var send_svg_1 = __webpack_require__(45);
+var disabled_send_svg_1 = __webpack_require__(46);
 var button_1 = __webpack_require__(2);
-var textarea_1 = __webpack_require__(14);
-__webpack_require__(6);
+var textarea_1 = __webpack_require__(16);
+__webpack_require__(7);
 var SubmitForm = function (_a) {
     var id = _a.id, isSending = _a.isSending, onSubmit = _a.onSubmit;
     var _b = React.useState(''), message = _b[0], setMessage = _b[1];
@@ -1590,7 +1773,7 @@ exports.default = SubmitForm;
 
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1598,7 +1781,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzI3OF8zMTk3KSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMS4wNTIwMiA3LjM1Nzk3TDE0LjE2ODQgMC43NDQ3MjRDMTQuODI3OSAwLjQ1MDgwMiAxNS41NjA2IDEuMDM4NjUgMTUuMjY3NSAxLjY5OTk3TDEzLjUzNjUgNi4zNTIwNkMxMy40NzQxIDYuNTE5NzcgMTMuMzI2OCA2LjY0MTM1IDEzLjE1MDMgNi42NzA4NUw1LjA4MjE5IDguMDE5M0wxMy4xNTAzIDkuMzY3NzRDMTMuMzI2OCA5LjM5NzI0IDEzLjQ3NDEgOS41MTg4MiAxMy41MzY1IDkuNjg2NTNMMTUuMjY3NSAxNC4zMzg2QzE1LjQ4NzQgMTQuOTk5OSAxNC44Mjc5IDE1LjU4NzggMTQuMTY4NCAxNS4yMjA0TDEuMDUyMDIgOC42MDcxNEMwLjUzOTA4NSA4LjM4NjcgMC41MzkwODUgNy42NTE4OSAxLjA1MjAyIDcuMzU3OTdaIiBmaWxsPSIjMUU2REM4Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMjc4XzMxOTciPgo8cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgMSAxNiAwKSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1606,13 +1789,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzI3OF8zMTk3KSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMS4wNTIwMiA3LjM1Nzk3TDE0LjE2ODQgMC43NDQ3MjRDMTQuODI3OSAwLjQ1MDgwMiAxNS41NjA2IDEuMDM4NjUgMTUuMjY3NSAxLjY5OTk3TDEzLjUzNjUgNi4zNTIwNkMxMy40NzQxIDYuNTE5NzcgMTMuMzI2OCA2LjY0MTM1IDEzLjE1MDMgNi42NzA4NUw1LjA4MjE5IDguMDE5M0wxMy4xNTAzIDkuMzY3NzRDMTMuMzI2OCA5LjM5NzI0IDEzLjQ3NDEgOS41MTg4MiAxMy41MzY1IDkuNjg2NTNMMTUuMjY3NSAxNC4zMzg2QzE1LjQ4NzQgMTQuOTk5OSAxNC44Mjc5IDE1LjU4NzggMTQuMTY4NCAxNS4yMjA0TDEuMDUyMDIgOC42MDcxNEMwLjUzOTA4NSA4LjM4NjcgMC41MzkwODUgNy42NTE4OSAxLjA1MjAyIDcuMzU3OTdaIiBmaWxsPSJyZ2JhKDE2LCAxNiwgMTYsIDAuMykiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8yNzhfMzE5NyI+CjxyZWN0IHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0ibWF0cml4KC0xIDAgMCAxIDE2IDApIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==");
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1620,7 +1803,7 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(6);
+__webpack_require__(7);
 var Message = function (props) {
     var dateTimeFormat = function (dateTime) {
         return new Intl.DateTimeFormat('fa', {
@@ -1638,7 +1821,7 @@ exports.default = Message;
 
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1646,7 +1829,7 @@ exports.default = Message;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(5);
+__webpack_require__(6);
 var AccordionItem = function (props) {
     var componentClassNames = classNames('accordion-item-container', props.className);
     var handelClickItem = function (e) {
@@ -1662,150 +1845,10 @@ exports.default = AccordionItem;
 
 
 /***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-var button_1 = __webpack_require__(2);
-__webpack_require__(49);
-var FileInput = /** @class */ (function (_super) {
-    __extends(FileInput, _super);
-    function FileInput(props) {
-        var _this = _super.call(this, props) || this;
-        _this.handleInput = function (e) {
-            var newFiles = Array.from(e.target.files);
-            _this.setState({
-                touched: true,
-                files: _this.props.multiple ? _this.state.files.concat(newFiles) : newFiles,
-            });
-            if (_this.props.onChangeFiles) {
-                _this.props.onChangeFiles(_this.props.multiple ? _this.state.files.concat(newFiles) : newFiles);
-            }
-        };
-        _this.clear = function (index) {
-            if (_this.props.disabled) {
-                return;
-            }
-            _this.setState({
-                files: _this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }),
-            });
-            if (_this.props.onChangeFiles) {
-                _this.props.onChangeFiles(_this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }));
-            }
-        };
-        _this.renderFiles = function (state, file, index) {
-            if (state && state.message && !_this.props.validate) {
-                throw new TypeError('Please provide either both errorMessage and ' +
-                    'validate or non of them.');
-            }
-            var hasError = (_this.props.forceDisplayError || _this.state.touched) &&
-                _this.props.validate &&
-                !_this.props.validate(_this.state.files);
-            var className = classNames('file-name-container', {
-                'error-state': hasError,
-                'try-again-state': state && state.tryAgain,
-            });
-            return (React.createElement("div", { className: className, key: file.name + file.size },
-                React.createElement("div", { className: "file-name" },
-                    React.createElement("div", { className: "file-name-text" },
-                        React.createElement("p", null, file.name),
-                        _this.props.displayClear && (React.createElement("i", { className: "material-icons clear", onClick: function () { return _this.clear(index); } }, "close"))),
-                    state && state.tryAgain && (React.createElement("div", { onClick: function () { return _this.props.onTryAgain(_this.state.files); }, className: "try-again" }, _this.props.tryAgainText ? _this.props.tryAgainText : 'تلاش مجدد')),
-                    state && state.progress ? (React.createElement("div", { className: "loading-container" },
-                        React.createElement("div", { className: "loading", style: { width: state.progress + "%" } }))) : null),
-                hasError && state && state.message && (React.createElement("span", { className: "error" }, state.message))));
-        };
-        _this.state = {
-            touched: false,
-            files: props.files || null,
-        };
-        return _this;
-    }
-    FileInput.prototype.componentDidUpdate = function (prevProps) {
-        if (prevProps.files !== this.props.files) {
-            this.setState({ files: prevProps.files });
-        }
-    };
-    FileInput.prototype.render = function () {
-        var _this = this;
-        var _a = this.props, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, disabled = _a.disabled, states = _a.states, children = _a.children, className = _a.className, onChangeFiles = _a.onChangeFiles, props = __rest(_a, ["forceDisplayError", "validate", "displayClear", "title", "pre", "disabled", "states", "children", "className", "onChangeFiles"]);
-        var files = this.state.files;
-        var componentClassName = classNames('file-container', className, {
-            multiple: this.props.multiple,
-        });
-        return (React.createElement("div", { className: componentClassName },
-            React.createElement("div", { className: "file-div" },
-                files &&
-                    files.length > 0 &&
-                    files.map(function (file, index) {
-                        return _this.renderFiles(states && states[index], file, index);
-                    }),
-                React.createElement(button_1.default, { disabled: disabled, primary: true },
-                    children ? children : 'افزودن فایل',
-                    React.createElement("input", __assign({ disabled: disabled, type: "file", onChange: this.handleInput, value: "" }, props))))));
-    };
-    return FileInput;
-}(React.Component));
-exports.default = FileInput;
-
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var collection_1 = __webpack_require__(51);
-exports.Collection = collection_1.default;
-var collection_card_1 = __webpack_require__(52);
-exports.CollectionCard = collection_card_1.default;
-
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 51 */
@@ -1813,19 +1856,6 @@ exports.CollectionCard = collection_card_1.default;
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -1850,103 +1880,117 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(15);
-var Collection = /** @class */ (function (_super) {
-    __extends(Collection, _super);
-    function Collection() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Collection.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, props = __rest(_a, ["className", "children", "title"]);
-        var componentClassName = classNames('collection-container', className);
-        return (React.createElement("div", __assign({ className: componentClassName }, props),
-            React.createElement("div", { className: "header" }, title),
-            React.createElement("div", { className: "collection" }, children)));
+var classnames = __webpack_require__(1);
+var button_1 = __webpack_require__(2);
+var image_1 = __webpack_require__(18);
+var loader_1 = __webpack_require__(5);
+var file_input_1 = __webpack_require__(17);
+var upload_hint_1 = __webpack_require__(54);
+var image_2 = __webpack_require__(55);
+__webpack_require__(56);
+var FileInputWrapper = function (_a) {
+    var _b, _c;
+    var wrapperTitle = _a.wrapperTitle, description = _a.description, hint = _a.hint, defaultFilePath = _a.defaultFilePath, videoProps = _a.videoProps, buttonProps = _a.buttonProps, _d = _a.uploadFileText, uploadFileText = _d === void 0 ? 'بارگذاری عکس' : _d, _e = _a.maxFileSize, maxFileSize = _e === void 0 ? 10 * 1000 * 1000 : _e, // 10 Mb
+    _f = _a.decreaseImageSizeSteps, // 10 Mb
+    decreaseImageSizeSteps = _f === void 0 ? 500 : _f, onFileChange = _a.onFileChange, fileName = _a.fileName, disabled = _a.disabled, imageProps = _a.imageProps, _g = _a.uploaderType, uploaderType = _g === void 0 ? 'image' : _g, hintModalProps = _a.hintModalProps, containerProps = _a.containerProps, fileInputProps = __rest(_a, ["wrapperTitle", "description", "hint", "defaultFilePath", "videoProps", "buttonProps", "uploadFileText", "maxFileSize", "decreaseImageSizeSteps", "onFileChange", "fileName", "disabled", "imageProps", "uploaderType", "hintModalProps", "containerProps"]);
+    var inputRef = React.useRef(null);
+    var _h = React.useState(false), isHintModalOpen = _h[0], setIsHintModalOpen = _h[1];
+    var _j = React.useState(false), isResizing = _j[0], setIsResizing = _j[1];
+    var _k = React.useState(defaultFilePath), filePath = _k[0], setFilePath = _k[1];
+    var _l = React.useState(fileName), previewFileName = _l[0], setPreviewFileName = _l[1];
+    var progressState = ((_b = fileInputProps === null || fileInputProps === void 0 ? void 0 : fileInputProps.states) === null || _b === void 0 ? void 0 : _b[0]) || {
+        loading: false,
+        progress: 0,
     };
-    return Collection;
-}(React.Component));
-exports.default = Collection;
+    var fileInputClasses = classnames('uploader-input', {
+        visible: !isResizing && progressState.loading,
+    });
+    var openFileDialog = function () {
+        var _a;
+        if (hint && !isHintModalOpen) {
+            setIsHintModalOpen(true);
+        }
+        else {
+            (_a = inputRef.current) === null || _a === void 0 ? void 0 : _a.click();
+        }
+    };
+    var handleImage = function (file) {
+        setIsResizing(true);
+        setIsHintModalOpen(false);
+        image_2.default.decreaseToFixedWeight(file, maxFileSize, decreaseImageSizeSteps).then(function (compressed) {
+            setIsResizing(false);
+            setFilePath(compressed.image);
+            onFileChange === null || onFileChange === void 0 ? void 0 : onFileChange(compressed.file);
+            setPreviewFileName(compressed.file.name);
+        });
+    };
+    var handleVideo = function (file) {
+        setIsHintModalOpen(false);
+        onFileChange === null || onFileChange === void 0 ? void 0 : onFileChange(file);
+    };
+    var getFileType = function (file) {
+        return file.type.split('/')[0];
+    };
+    var handleOnFileChange = function (files) {
+        var file = files[0];
+        if (file) {
+            var type = getFileType(file);
+            switch (type) {
+                case 'image': {
+                    return handleImage(file);
+                }
+                case 'video': {
+                    return handleVideo(file);
+                }
+            }
+        }
+    };
+    React.useEffect(function () {
+        setFilePath(defaultFilePath);
+    }, [defaultFilePath]);
+    React.useEffect(function () {
+        setPreviewFileName(fileName);
+    }, [fileName]);
+    var renderPreview = function () {
+        switch (uploaderType) {
+            case 'image': {
+                return (React.createElement("div", { className: "previewer image-preview" },
+                    React.createElement(image_1.default, __assign({}, imageProps, { src: filePath, className: "image" })),
+                    React.createElement("div", { className: "image-info" },
+                        React.createElement("p", { className: "image-name" }, previewFileName))));
+            }
+            case 'video': {
+                return (React.createElement("div", { className: "previewer video-preview" },
+                    React.createElement("video", __assign({ className: "video", controls: true }, videoProps, { src: filePath }))));
+            }
+        }
+    };
+    return (React.createElement(React.Fragment, null,
+        hint && (React.createElement(upload_hint_1.default, __assign({}, hint, { isHintModalOpen: isHintModalOpen, setIsHintModalOpen: setIsHintModalOpen, onSelect: openFileDialog, modalProps: hintModalProps }))),
+        React.createElement("div", __assign({}, containerProps, { className: "file-input-wrapper " + ((_c = containerProps === null || containerProps === void 0 ? void 0 : containerProps.className) !== null && _c !== void 0 ? _c : '') }),
+            wrapperTitle && React.createElement("h4", { className: "wrapper-title" }, wrapperTitle),
+            description && React.createElement("h4", { className: "wrapper-description" }, description),
+            React.createElement("div", { className: "uploader-container" },
+                filePath && !progressState.loading ? (renderPreview()) : (React.createElement("div", { className: "uploader-description" },
+                    React.createElement("span", { className: "material-icons upload-icon" }, "cloud_upload"),
+                    React.createElement("p", { className: "uploader-title" }, uploadFileText))),
+                !progressState.loading && (React.createElement(button_1.default, __assign({}, buttonProps, { className: "uploader-button", disabled: isResizing || disabled, type: "button", onClick: openFileDialog }), isResizing ? React.createElement(loader_1.default, { primary: true }) : filePath ? 'تغییر' : 'انتخاب')),
+                React.createElement(file_input_1.default, __assign({}, fileInputProps, { className: fileInputClasses, files: [new File([''], fileName)], inputRef: inputRef, onChangeFiles: handleOnFileChange }))))));
+};
+exports.default = FileInputWrapper;
 
 
 /***/ }),
 /* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(15);
-var CollectionCard = /** @class */ (function (_super) {
-    __extends(CollectionCard, _super);
-    function CollectionCard() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    CollectionCard.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, hasSubset = _a.hasSubset, footer = _a.footer, disabled = _a.disabled, selected = _a.selected, disabledMessage = _a.disabledMessage, props = __rest(_a, ["className", "children", "hasSubset", "footer", "disabled", "selected", "disabledMessage"]);
-        var componentClassName = classNames('card-container', className, {
-            disabled: disabled,
-            selected: selected,
-        });
-        return (React.createElement("div", __assign({ className: componentClassName }, props),
-            React.createElement("p", { className: "card-title" }, children),
-            disabled ? (React.createElement("span", { className: "disabled-message" }, disabledMessage ? disabledMessage : 'تمام شده')) : (React.createElement("div", { className: "price" }, footer)),
-            hasSubset && React.createElement("label", { className: "subset-dot" })));
-    };
-    return CollectionCard;
-}(React.Component));
-exports.default = CollectionCard;
-
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var tab_column_1 = __webpack_require__(54);
-exports.TabColumn = tab_column_1.default;
-var tab_1 = __webpack_require__(55);
-exports.Tab = tab_1.default;
-
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 54 */
@@ -1954,19 +1998,6 @@ exports.Tab = tab_1.default;
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -1978,37 +2009,22 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(16);
-var Form = /** @class */ (function (_super) {
-    __extends(Form, _super);
-    function Form() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Form.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, fullWidth = _a.fullWidth, props = __rest(_a, ["className", "children", "fullWidth"]);
-        var componentClassName = classNames('tab-column-container', className, {
-            'full-width': fullWidth,
-        });
-        return (React.createElement("div", __assign({ className: componentClassName }, props),
-            React.createElement("div", null, children)));
-    };
-    return Form;
-}(React.Component));
-exports.default = Form;
+var button_1 = __webpack_require__(2);
+var dialog_content_1 = __webpack_require__(12);
+var modal_1 = __webpack_require__(8);
+var UploadHint = function (_a) {
+    var children = _a.children, title = _a.title, cancelText = _a.cancelText, selectText = _a.selectText, isHintModalOpen = _a.isHintModalOpen, setIsHintModalOpen = _a.setIsHintModalOpen, onSelect = _a.onSelect, modalProps = _a.modalProps;
+    var _b;
+    return (React.createElement(modal_1.default, __assign({ overlayClassName: "file-input-hint-overlay", isOpen: isHintModalOpen, className: "file-input-hint " + ((_b = modalProps === null || modalProps === void 0 ? void 0 : modalProps.className) !== null && _b !== void 0 ? _b : '') }, modalProps, { onClose: function () { return setIsHintModalOpen(false); } }),
+        React.createElement(dialog_content_1.default, { title: title, primary: true, actions: [
+                React.createElement(button_1.default, { primary: true, small: true, key: 0, onClick: onSelect, type: "button" }, selectText !== null && selectText !== void 0 ? selectText : 'انتخاب عکس'),
+                React.createElement(button_1.default, { ghost: true, small: true, key: 1, onClick: function () { return setIsHintModalOpen(false); }, type: "button" }, cancelText !== null && cancelText !== void 0 ? cancelText : 'انصراف'),
+            ] },
+            React.createElement(React.Fragment, null, children))));
+};
+exports.default = UploadHint;
 
 
 /***/ }),
@@ -2017,74 +2033,317 @@ exports.default = Form;
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(16);
-var FormGroup = /** @class */ (function (_super) {
-    __extends(FormGroup, _super);
-    function FormGroup() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var Img = /** @class */ (function () {
+    function Img() {
     }
-    FormGroup.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, selected = _a.selected, props = __rest(_a, ["className", "children", "selected"]);
-        var componentClassName = classNames('tab-container', className, {
-            selected: selected,
+    Img.resize = function (image, scaleOrCustom, onError) {
+        if (scaleOrCustom === void 0) { scaleOrCustom = {
+            newSizeOrScale: 0.5,
+            sizeOrScale: 'scale',
+            target: 'width',
+        }; }
+        return __awaiter(void 0, void 0, Promise, function () {
+            var resize, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        resize = function () { return __awaiter(void 0, void 0, Promise, function () {
+                            return __generator(this, function (_a) {
+                                // eslint-disable-next-line no-async-promise-executor
+                                return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(void 0, void 0, void 0, function () {
+                                        var _image, _a, sizes, defaultWidth, defaultHeight, _b, newWidth, newHeight, canvas, context, img;
+                                        return __generator(this, function (_c) {
+                                            switch (_c.label) {
+                                                case 0:
+                                                    if (!(typeof image === 'string')) return [3 /*break*/, 1];
+                                                    _a = image;
+                                                    return [3 /*break*/, 3];
+                                                case 1: return [4 /*yield*/, Img.toBase64(image, reject)];
+                                                case 2:
+                                                    _a = _c.sent();
+                                                    _c.label = 3;
+                                                case 3:
+                                                    _image = _a;
+                                                    if (!_image) {
+                                                        return [2 /*return*/, null];
+                                                    }
+                                                    return [4 /*yield*/, Img.getSizes(_image, reject)];
+                                                case 4:
+                                                    sizes = _c.sent();
+                                                    if (!sizes) {
+                                                        return [2 /*return*/];
+                                                    }
+                                                    defaultWidth = sizes.width, defaultHeight = sizes.height;
+                                                    _b = Img.calculateSize(defaultWidth, defaultHeight, scaleOrCustom), newWidth = _b.width, newHeight = _b.height;
+                                                    canvas = document.createElement('canvas');
+                                                    canvas.width = newWidth;
+                                                    canvas.height = newHeight;
+                                                    context = canvas.getContext('2d');
+                                                    if (!context) {
+                                                        return [2 /*return*/];
+                                                    }
+                                                    return [4 /*yield*/, Img.base64ToImage(_image, reject)];
+                                                case 5:
+                                                    img = _c.sent();
+                                                    if (!img) {
+                                                        return [2 /*return*/];
+                                                    }
+                                                    context.drawImage(img, 0, 0, newWidth, newHeight);
+                                                    resolve(canvas.toDataURL());
+                                                    return [2 /*return*/];
+                                            }
+                                        });
+                                    }); })];
+                            });
+                        }); };
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, resize()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                    case 3:
+                        error_1 = _a.sent();
+                        onError === null || onError === void 0 ? void 0 : onError(error_1);
+                        return [2 /*return*/, null];
+                    case 4: return [2 /*return*/];
+                }
+            });
         });
-        return (React.createElement("div", __assign({ className: componentClassName }, props), children));
     };
-    return FormGroup;
-}(React.Component));
-exports.default = FormGroup;
+    Img.decreaseToFixedWeight = function (image, maxSize, decreaseSteps, fileName) { return __awaiter(void 0, void 0, Promise, function () {
+        var isFile, width, originalFile, _a, _b, _c, compressedBase64, compressedFile;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
+                case 0:
+                    isFile = typeof image !== 'string';
+                    return [4 /*yield*/, Img.getSizes(image)];
+                case 1:
+                    width = (_d.sent()).width;
+                    decreaseSteps = decreaseSteps || 100;
+                    if (isFile && !fileName) {
+                        fileName = image.name;
+                    }
+                    if (!isFile) return [3 /*break*/, 2];
+                    _a = image;
+                    return [3 /*break*/, 4];
+                case 2: return [4 /*yield*/, Img.base64ToFile(image, fileName)];
+                case 3:
+                    _a = _d.sent();
+                    _d.label = 4;
+                case 4:
+                    originalFile = _a;
+                    if (!(originalFile.size <= maxSize)) return [3 /*break*/, 8];
+                    _b = {};
+                    if (!isFile) return [3 /*break*/, 6];
+                    return [4 /*yield*/, Img.toBase64(image)];
+                case 5:
+                    _c = _d.sent();
+                    return [3 /*break*/, 7];
+                case 6:
+                    _c = image;
+                    _d.label = 7;
+                case 7: return [2 /*return*/, (_b.image = (_c),
+                        _b.file = originalFile,
+                        _b)];
+                case 8: return [4 /*yield*/, Img.resize(image, {
+                        newSizeOrScale: width - decreaseSteps,
+                        sizeOrScale: 'size',
+                        target: 'width',
+                    })];
+                case 9:
+                    compressedBase64 = _d.sent();
+                    return [4 /*yield*/, Img.base64ToFile(compressedBase64, fileName)];
+                case 10:
+                    compressedFile = _d.sent();
+                    if (compressedFile.size > maxSize) {
+                        return [2 /*return*/, Img.decreaseToFixedWeight(compressedBase64, maxSize, decreaseSteps, fileName)];
+                    }
+                    return [2 /*return*/, {
+                            image: compressedBase64,
+                            file: compressedFile,
+                        }];
+            }
+        });
+    }); };
+    Img.toBase64 = function (imageFile, onError) { return __awaiter(void 0, void 0, Promise, function () {
+        var toBase64, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    toBase64 = function () {
+                        return new Promise(function (resolve, reject) {
+                            var reader = new FileReader();
+                            reader.readAsDataURL(imageFile);
+                            reader.onload = function () { return resolve(reader.result); };
+                            reader.onerror = reject;
+                        });
+                    };
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, toBase64()];
+                case 2: return [2 /*return*/, _a.sent()];
+                case 3:
+                    error_2 = _a.sent();
+                    onError === null || onError === void 0 ? void 0 : onError(error_2);
+                    return [2 /*return*/, null];
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); };
+    Img.base64ToImage = function (base64, onError) { return __awaiter(void 0, void 0, Promise, function () {
+        var getImage, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    getImage = function () {
+                        return new Promise(function (resolve, reject) {
+                            var image = new Image();
+                            image.src = base64;
+                            image.onload = function () { return resolve(image); };
+                            image.onerror = function (_0, _1, _2, _3, error) { return reject(error); };
+                        });
+                    };
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, getImage()];
+                case 2: return [2 /*return*/, _a.sent()];
+                case 3:
+                    error_3 = _a.sent();
+                    onError === null || onError === void 0 ? void 0 : onError(error_3);
+                    return [2 /*return*/, null];
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); };
+    Img.base64ToFile = function (base64, fileName) { return __awaiter(void 0, void 0, Promise, function () {
+        var res, blob;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch(base64)];
+                case 1:
+                    res = _a.sent();
+                    return [4 /*yield*/, res.blob()];
+                case 2:
+                    blob = _a.sent();
+                    return [2 /*return*/, new File([blob], fileName, { type: 'image/png' })];
+            }
+        });
+    }); };
+    Img.getSizes = function (image, onError) { return __awaiter(void 0, void 0, Promise, function () {
+        var base64Image, _a, getSizes, error_4;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    if (!(typeof image === 'string')) return [3 /*break*/, 1];
+                    _a = image;
+                    return [3 /*break*/, 3];
+                case 1: return [4 /*yield*/, Img.toBase64(image, onError)];
+                case 2:
+                    _a = _b.sent();
+                    _b.label = 3;
+                case 3:
+                    base64Image = _a;
+                    if (!base64Image) {
+                        return [2 /*return*/, null];
+                    }
+                    getSizes = function () {
+                        return new Promise(function (resolve, reject) {
+                            var newImage = new Image();
+                            newImage.onload = function () { return resolve(newImage); };
+                            newImage.onerror = function (_0, _1, _2, _3, error) { return reject(error); };
+                            newImage.src = base64Image;
+                        });
+                    };
+                    _b.label = 4;
+                case 4:
+                    _b.trys.push([4, 6, , 7]);
+                    return [4 /*yield*/, getSizes()];
+                case 5: return [2 /*return*/, _b.sent()];
+                case 6:
+                    error_4 = _b.sent();
+                    onError === null || onError === void 0 ? void 0 : onError(error_4);
+                    return [2 /*return*/, null];
+                case 7: return [2 /*return*/];
+            }
+        });
+    }); };
+    Img.calculateSize = function (defaultWidth, defaultHeight, scaleOrCustom) {
+        var newSizeOrScale = scaleOrCustom.newSizeOrScale, sizeOrScale = scaleOrCustom.sizeOrScale, target = scaleOrCustom.target;
+        var width = defaultWidth;
+        var height = defaultHeight;
+        switch (sizeOrScale) {
+            case 'scale': {
+                width = defaultWidth / newSizeOrScale;
+                height = defaultHeight / newSizeOrScale;
+                break;
+            }
+            case 'size': {
+                if (target === 'width') {
+                    if (defaultWidth > newSizeOrScale) {
+                        width = newSizeOrScale;
+                        height = (defaultHeight * newSizeOrScale) / defaultWidth;
+                    }
+                }
+                else {
+                    if (defaultHeight > newSizeOrScale) {
+                        height = newSizeOrScale;
+                        width = (defaultWidth * newSizeOrScale) / defaultHeight;
+                    }
+                }
+                break;
+            }
+        }
+        return { width: width, height: height };
+    };
+    return Img;
+}());
+exports.default = Img;
 
 
 /***/ }),
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var form_1 = __webpack_require__(57);
-exports.Form = form_1.default;
-var form_group_1 = __webpack_require__(58);
-exports.FormGroup = form_group_1.default;
-
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 /* 57 */
@@ -2092,62 +2351,11 @@ exports.FormGroup = form_group_1.default;
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(1);
-__webpack_require__(17);
-var Form = /** @class */ (function (_super) {
-    __extends(Form, _super);
-    function Form() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Form.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, props = __rest(_a, ["className", "children", "title", "description"]);
-        var componentClassName = classNames('form-container', className);
-        return (React.createElement("form", null,
-            React.createElement("div", __assign({ className: componentClassName }, props),
-                React.createElement("h4", { className: "form-title" }, title),
-                React.createElement("p", { className: "form-description" }, description),
-                children)));
-    };
-    return Form;
-}(React.Component));
-exports.default = Form;
+var collection_1 = __webpack_require__(58);
+exports.Collection = collection_1.default;
+var collection_card_1 = __webpack_require__(59);
+exports.CollectionCard = collection_card_1.default;
 
 
 /***/ }),
@@ -2194,7 +2402,350 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(17);
+__webpack_require__(19);
+var Collection = /** @class */ (function (_super) {
+    __extends(Collection, _super);
+    function Collection() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Collection.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, props = __rest(_a, ["className", "children", "title"]);
+        var componentClassName = classNames('collection-container', className);
+        return (React.createElement("div", __assign({ className: componentClassName }, props),
+            React.createElement("div", { className: "header" }, title),
+            React.createElement("div", { className: "collection" }, children)));
+    };
+    return Collection;
+}(React.Component));
+exports.default = Collection;
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(19);
+var CollectionCard = /** @class */ (function (_super) {
+    __extends(CollectionCard, _super);
+    function CollectionCard() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    CollectionCard.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, hasSubset = _a.hasSubset, footer = _a.footer, disabled = _a.disabled, selected = _a.selected, disabledMessage = _a.disabledMessage, props = __rest(_a, ["className", "children", "hasSubset", "footer", "disabled", "selected", "disabledMessage"]);
+        var componentClassName = classNames('card-container', className, {
+            disabled: disabled,
+            selected: selected,
+        });
+        return (React.createElement("div", __assign({ className: componentClassName }, props),
+            React.createElement("p", { className: "card-title" }, children),
+            disabled ? (React.createElement("span", { className: "disabled-message" }, disabledMessage ? disabledMessage : 'تمام شده')) : (React.createElement("div", { className: "price" }, footer)),
+            hasSubset && React.createElement("label", { className: "subset-dot" })));
+    };
+    return CollectionCard;
+}(React.Component));
+exports.default = CollectionCard;
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var tab_column_1 = __webpack_require__(61);
+exports.TabColumn = tab_column_1.default;
+var tab_1 = __webpack_require__(62);
+exports.Tab = tab_1.default;
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(20);
+var Form = /** @class */ (function (_super) {
+    __extends(Form, _super);
+    function Form() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Form.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, fullWidth = _a.fullWidth, props = __rest(_a, ["className", "children", "fullWidth"]);
+        var componentClassName = classNames('tab-column-container', className, {
+            'full-width': fullWidth,
+        });
+        return (React.createElement("div", __assign({ className: componentClassName }, props),
+            React.createElement("div", null, children)));
+    };
+    return Form;
+}(React.Component));
+exports.default = Form;
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(20);
+var FormGroup = /** @class */ (function (_super) {
+    __extends(FormGroup, _super);
+    function FormGroup() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    FormGroup.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, selected = _a.selected, props = __rest(_a, ["className", "children", "selected"]);
+        var componentClassName = classNames('tab-container', className, {
+            selected: selected,
+        });
+        return (React.createElement("div", __assign({ className: componentClassName }, props), children));
+    };
+    return FormGroup;
+}(React.Component));
+exports.default = FormGroup;
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var form_1 = __webpack_require__(64);
+exports.Form = form_1.default;
+var form_group_1 = __webpack_require__(65);
+exports.FormGroup = form_group_1.default;
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(21);
+var Form = /** @class */ (function (_super) {
+    __extends(Form, _super);
+    function Form() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Form.prototype.render = function () {
+        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, props = __rest(_a, ["className", "children", "title", "description"]);
+        var componentClassName = classNames('form-container', className);
+        return (React.createElement("form", null,
+            React.createElement("div", __assign({ className: componentClassName }, props),
+                React.createElement("h4", { className: "form-title" }, title),
+                React.createElement("p", { className: "form-description" }, description),
+                children)));
+    };
+    return Form;
+}(React.Component));
+exports.default = Form;
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(1);
+__webpack_require__(21);
 var FormGroup = /** @class */ (function (_super) {
     __extends(FormGroup, _super);
     function FormGroup() {
@@ -2215,7 +2766,7 @@ exports.default = FormGroup;
 
 
 /***/ }),
-/* 59 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2228,12 +2779,12 @@ exports.default = FormGroup;
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(60)();
+  module.exports = __webpack_require__(67)();
 }
 
 
 /***/ }),
-/* 60 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2246,7 +2797,7 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(61);
+var ReactPropTypesSecret = __webpack_require__(68);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -2304,7 +2855,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 61 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2323,30 +2874,30 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 62 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 63 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var list_1 = __webpack_require__(64);
+var list_1 = __webpack_require__(71);
 exports.List = list_1.default;
-var section_1 = __webpack_require__(65);
+var section_1 = __webpack_require__(72);
 exports.ListSection = section_1.default;
-var title_1 = __webpack_require__(66);
+var title_1 = __webpack_require__(73);
 exports.ListTitle = title_1.default;
-var footer_1 = __webpack_require__(67);
+var footer_1 = __webpack_require__(74);
 exports.ListFooter = footer_1.default;
 
 
 /***/ }),
-/* 64 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2370,7 +2921,7 @@ exports.default = List;
 
 
 /***/ }),
-/* 65 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2409,7 +2960,7 @@ exports.default = ListSection;
 
 
 /***/ }),
-/* 66 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2447,7 +2998,7 @@ exports.default = ListTitle;
 
 
 /***/ }),
-/* 67 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2471,26 +3022,26 @@ exports.default = ListFooter;
 
 
 /***/ }),
-/* 68 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var avatar_1 = __webpack_require__(69);
+var avatar_1 = __webpack_require__(76);
 exports.MenuAvatar = avatar_1.default;
-var header_1 = __webpack_require__(71);
+var header_1 = __webpack_require__(78);
 exports.MenuHeader = header_1.default;
-var item_1 = __webpack_require__(72);
+var item_1 = __webpack_require__(79);
 exports.MenuItem = item_1.default;
-var link_1 = __webpack_require__(73);
+var link_1 = __webpack_require__(80);
 exports.MenuLink = link_1.default;
-var status_1 = __webpack_require__(74);
+var status_1 = __webpack_require__(81);
 exports.MenuStatus = status_1.default;
 
 
 /***/ }),
-/* 69 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2520,7 +3071,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var react_circular_progressbar_1 = __webpack_require__(70);
+var react_circular_progressbar_1 = __webpack_require__(77);
 var MenuAvatar = function (_a) {
     var avatar = _a.avatar, percentage = _a.percentage, selected = _a.selected, label = _a.label, largeText = _a.largeText, type = _a.type, props = __rest(_a, ["avatar", "percentage", "selected", "label", "largeText", "type"]);
     return (React.createElement("div", __assign({ className: classNames('menu-avatar', {
@@ -2539,7 +3090,7 @@ exports.default = MenuAvatar;
 
 
 /***/ }),
-/* 70 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2747,14 +3298,14 @@ function removeUndefinedValues(obj) {
 
 
 /***/ }),
-/* 71 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(19);
+__webpack_require__(23);
 var MenuHeader = function (props) { return (React.createElement("div", { className: "menu-header" },
     !!props.image && React.createElement("div", { className: "menu-header-image" }, props.image),
     React.createElement("div", { className: "menu-header-title" }, props.title),
@@ -2763,7 +3314,7 @@ exports.default = MenuHeader;
 
 
 /***/ }),
-/* 72 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2811,7 +3362,7 @@ exports.default = MenuItem;
 
 
 /***/ }),
-/* 73 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2819,7 +3370,7 @@ exports.default = MenuItem;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(19);
+__webpack_require__(23);
 var MenuLink = function (props) { return (React.createElement("div", { className: classNames('menu-link', { selected: props.selected }) },
     React.createElement("div", { className: "menu-link-title" }, props.title),
     props.notificationCount && (React.createElement("div", { className: "menu-link-notification-count" }, props.notificationCount)))); };
@@ -2827,7 +3378,7 @@ exports.default = MenuLink;
 
 
 /***/ }),
-/* 74 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2840,7 +3391,7 @@ exports.default = MenuStatus;
 
 
 /***/ }),
-/* 75 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2848,7 +3399,7 @@ exports.default = MenuStatus;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(20);
+__webpack_require__(24);
 var Navbar = function (props) {
     var navbarClassNames = classNames('navbar', {
         horizontally: props.horizontally,
@@ -2856,12 +3407,12 @@ var Navbar = function (props) {
     return React.createElement("div", { className: navbarClassNames }, props.children);
 };
 exports.default = Navbar;
-var navbar_item_1 = __webpack_require__(76);
+var navbar_item_1 = __webpack_require__(83);
 exports.NavbarItem = navbar_item_1.default;
 
 
 /***/ }),
-/* 76 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2891,7 +3442,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(20);
+__webpack_require__(24);
 var NavbarItem = function (_a) {
     var icon = _a.icon, text = _a.text, selected = _a.selected, props = __rest(_a, ["icon", "text", "selected"]);
     return (React.createElement("div", __assign({ className: classNames('navbar-item', { selected: selected }) }, props),
@@ -2902,7 +3453,7 @@ exports.default = NavbarItem;
 
 
 /***/ }),
-/* 77 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2932,7 +3483,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(78);
+__webpack_require__(85);
 var Notification = function (props) {
     var message = props.message, className = props.className, warning = props.warning, restOfProps = __rest(props, ["message", "className", "warning"]);
     var componentClassName = classNames('notification', className, {
@@ -2944,13 +3495,13 @@ exports.default = Notification;
 
 
 /***/ }),
-/* 78 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 79 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2993,7 +3544,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(80);
+__webpack_require__(87);
 var Radio = /** @class */ (function (_super) {
     __extends(Radio, _super);
     function Radio() {
@@ -3027,28 +3578,28 @@ exports.default = Radio;
 
 
 /***/ }),
-/* 80 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 81 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var entry_1 = __webpack_require__(82);
+var entry_1 = __webpack_require__(89);
 exports.TimelineEntry = entry_1.default;
-__webpack_require__(21);
+__webpack_require__(25);
 var Timeline = function (props) { return (React.createElement("div", { className: "timeline-wrapper" }, props.children)); };
 exports.Timeline = Timeline;
 
 
 /***/ }),
-/* 82 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3078,8 +3629,8 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var loader_1 = __webpack_require__(10);
-__webpack_require__(21);
+var loader_1 = __webpack_require__(5);
+__webpack_require__(25);
 var TimelineEntry = function (_a) {
     var time = _a.time, description = _a.description, noBorder = _a.noBorder, clickable = _a.clickable, children = _a.children, loading = _a.loading, props = __rest(_a, ["time", "description", "noBorder", "clickable", "children", "loading"]);
     return (React.createElement("div", __assign({}, props, { className: classNames("timeline " + (props.className ? props.className : ''), {
@@ -3099,7 +3650,7 @@ exports.default = TimelineEntry;
 
 
 /***/ }),
-/* 83 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3129,12 +3680,12 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-var close_generator_1 = __webpack_require__(84);
-__webpack_require__(85);
-var notification_warning_svg_1 = __webpack_require__(86);
-var notification_error_svg_1 = __webpack_require__(87);
-var notification_hint_svg_1 = __webpack_require__(88);
-var notification_success_svg_1 = __webpack_require__(89);
+var close_generator_1 = __webpack_require__(91);
+__webpack_require__(92);
+var notification_warning_svg_1 = __webpack_require__(93);
+var notification_error_svg_1 = __webpack_require__(94);
+var notification_hint_svg_1 = __webpack_require__(95);
+var notification_success_svg_1 = __webpack_require__(96);
 var ICON_SELECTOR = {
     info: notification_hint_svg_1.default,
     success: notification_success_svg_1.default,
@@ -3167,7 +3718,7 @@ exports.default = Banner;
 
 
 /***/ }),
-/* 84 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3192,13 +3743,13 @@ exports.default = CloseGenerator;
 
 
 /***/ }),
-/* 85 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 86 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3206,7 +3757,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMzIiIGQ9Ik0yMyAxMmwtNSAxMEg2TDEgMTIgNiAyaDEyeiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiM3MDYxMzgiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEyYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjhjMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
-/* 87 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3214,7 +3765,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNCQzAwMDciIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTMuODY3IDIyYy0uNDggMC0uOTYyLS4xLTEuNDQyLS4zOTgtMS4zNDYtLjc5Ni0xLjgyNy0yLjY4Ny0xLjA1OC00LjA4TDkuNTQgMy4zOTNhMi4zNiAyLjM2IDAgMCAxIC45NjEtLjk5NSAyLjg1OSAyLjg1OSAwIDAgMSAyLjIxMS0uMjk4Yy43Ny4xOTkgMS4zNDYuNjk2IDEuODI3IDEuMzkzbDguMDc2IDE0LjAzYy4yODkuNDk3LjM4NS45OTQuMzg1IDEuNDkyIDAgLjc5Ni0uMjg4IDEuNTkyLS44NjUgMi4wOS0uNDgxLjU5Ni0xLjE1NC44OTUtMS45MjMuODk1SDMuODY3eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEzYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjljMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
-/* 88 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3222,7 +3773,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgeD0iMiIgeT0iMiIgZmlsbD0iIzFFNkRDOCIgcng9IjEwIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTMgMTJ2NGMwIC42LS40IDEtMSAxcy0xLS40LTEtMXYtNGMwLS42LjQtMSAxLTFzMSAuNCAxIDF6bS0xLTNhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
-/* 89 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3230,7 +3781,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSIjMjQ4MjEyIiByeD0iMTAiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTYuNjA3IDguMTIxbC02LjM2NCA2LjM2NC0yLjgyOS0yLjgyOCIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==");
 
 /***/ }),
-/* 90 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3259,7 +3810,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(91);
+__webpack_require__(98);
 var Toolbal = function (props) { return (React.createElement("div", { className: "toolbar" },
     props.avatar && React.createElement("div", { className: "toolbar-avatar" }, props.avatar),
     React.createElement("div", { className: "toolbar-info" },
@@ -3275,26 +3826,26 @@ exports.default = Toolbal;
 
 
 /***/ }),
-/* 91 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 92 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var action_table_1 = __webpack_require__(93);
+var action_table_1 = __webpack_require__(100);
 exports.ActionTable = action_table_1.default;
-var action_table_row_1 = __webpack_require__(94);
+var action_table_row_1 = __webpack_require__(101);
 exports.ActionTableRow = action_table_row_1.default;
 
 
 /***/ }),
-/* 93 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3324,7 +3875,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(22);
+__webpack_require__(26);
 var ActionTable = function (props) {
     var title = props.title, restOfProps = __rest(props, ["title"]);
     return (React.createElement("div", __assign({}, restOfProps, { className: classNames('action-table', props.className) }),
@@ -3336,7 +3887,7 @@ exports.default = ActionTable;
 
 
 /***/ }),
-/* 94 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3380,7 +3931,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
 var button_1 = __webpack_require__(2);
-__webpack_require__(22);
+__webpack_require__(26);
 var ActionTableRow = /** @class */ (function (_super) {
     __extends(ActionTableRow, _super);
     function ActionTableRow(props) {
@@ -3449,7 +4000,7 @@ exports.default = ActionTableRow;
 
 
 /***/ }),
-/* 95 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3470,7 +4021,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(1);
-__webpack_require__(96);
+__webpack_require__(103);
 var DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 var SelectComponent = /** @class */ (function (_super) {
     __extends(SelectComponent, _super);
@@ -3616,30 +4167,30 @@ exports.default = SelectComponent;
 
 
 /***/ }),
-/* 96 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 97 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var tab_nav_1 = __webpack_require__(98);
+var tab_nav_1 = __webpack_require__(105);
 exports.TabNav = tab_nav_1.default;
-var tab_nav_item_1 = __webpack_require__(99);
+var tab_nav_item_1 = __webpack_require__(106);
 exports.TabNavItem = tab_nav_item_1.default;
-var tab_content_1 = __webpack_require__(100);
+var tab_content_1 = __webpack_require__(107);
 exports.TabContent = tab_content_1.default;
-var tab_content_item_1 = __webpack_require__(101);
+var tab_content_item_1 = __webpack_require__(108);
 exports.TabContentItem = tab_content_item_1.default;
 
 
 /***/ }),
-/* 98 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3679,7 +4230,7 @@ exports.default = TabNav;
 
 
 /***/ }),
-/* 99 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3742,7 +4293,7 @@ exports.default = TabNavItem;
 
 
 /***/ }),
-/* 100 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3812,7 +4363,7 @@ exports.default = TabContent;
 
 
 /***/ }),
-/* 101 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3872,7 +4423,7 @@ exports.default = TabContentItem;
 
 
 /***/ }),
-/* 102 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3903,14 +4454,14 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var moment = __webpack_require__(8);
+var moment = __webpack_require__(10);
 var classNames = __webpack_require__(1);
-var ReactModal = __webpack_require__(23);
+var ReactModal = __webpack_require__(27);
 var button_1 = __webpack_require__(2);
-var persian_number_1 = __webpack_require__(7);
-var flex_1 = __webpack_require__(9);
-var date_pickers_1 = __webpack_require__(24);
-__webpack_require__(104);
+var persian_number_1 = __webpack_require__(9);
+var flex_1 = __webpack_require__(11);
+var date_pickers_1 = __webpack_require__(28);
+__webpack_require__(111);
 moment.loadPersian({ dialect: 'persian-modern' });
 var DatePicker = /** @class */ (function (_super) {
     __extends(DatePicker, _super);
@@ -4087,19 +4638,19 @@ exports.default = DatePicker;
 
 
 /***/ }),
-/* 103 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 104 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 105 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4130,14 +4681,14 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var moment = __webpack_require__(8);
+var moment = __webpack_require__(10);
 var classNames = __webpack_require__(1);
-var ReactModal = __webpack_require__(23);
+var ReactModal = __webpack_require__(27);
 var button_1 = __webpack_require__(2);
-var persian_number_1 = __webpack_require__(7);
-var flex_1 = __webpack_require__(9);
-__webpack_require__(106);
-var date_pickers_1 = __webpack_require__(24);
+var persian_number_1 = __webpack_require__(9);
+var flex_1 = __webpack_require__(11);
+__webpack_require__(113);
+var date_pickers_1 = __webpack_require__(28);
 moment.loadPersian({ dialect: 'persian-modern' });
 var RangeDatePicker = /** @class */ (function (_super) {
     __extends(RangeDatePicker, _super);
@@ -4652,30 +5203,30 @@ exports.default = RangeDatePicker;
 
 
 /***/ }),
-/* 106 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 107 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var table_1 = __webpack_require__(108);
+var table_1 = __webpack_require__(115);
 exports.Table = table_1.default;
-var table_row_1 = __webpack_require__(111);
+var table_row_1 = __webpack_require__(118);
 exports.Tr = table_row_1.default;
-var table_header_1 = __webpack_require__(112);
+var table_header_1 = __webpack_require__(119);
 exports.Th = table_header_1.default;
-var table_data_1 = __webpack_require__(113);
+var table_data_1 = __webpack_require__(120);
 exports.Td = table_data_1.default;
 
 
 /***/ }),
-/* 108 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4717,7 +5268,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var tag_line_1 = __webpack_require__(109);
+var tag_line_1 = __webpack_require__(116);
 var DataTable = /** @class */ (function (_super) {
     __extends(DataTable, _super);
     function DataTable() {
@@ -4736,26 +5287,26 @@ exports.default = DataTable;
 
 
 /***/ }),
-/* 109 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(110);
+__webpack_require__(117);
 var TagLine = function (props) { return (React.createElement("div", { className: "date-line" }, props.children)); };
 exports.default = TagLine;
 
 
 /***/ }),
-/* 110 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 111 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4792,7 +5343,7 @@ exports.default = Tr;
 
 
 /***/ }),
-/* 112 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4829,7 +5380,7 @@ exports.default = Th;
 
 
 /***/ }),
-/* 113 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4866,79 +5417,14 @@ exports.default = Td;
 
 
 /***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var react_1 = __webpack_require__(0);
-__webpack_require__(116);
-var modal_1 = __webpack_require__(25);
-var Image = function (_a) {
-    var src = _a.src, alt = _a.alt, thumbnailInfo = _a.thumbnailInfo, rest = __rest(_a, ["src", "alt", "thumbnailInfo"]);
-    var _b = react_1.useState(false), isOpen = _b[0], toggleModal = _b[1];
-    var onLoad = function (event) { return event.target.classList.add('image-loaded'); };
-    var onError = function (event) {
-        return event.target.classList.add('image-has-error');
-    };
-    var onImageClick = function () {
-        if (thumbnailInfo.originalSrc) {
-            return toggleModal(true);
-        }
-    };
-    return (React.createElement(React.Fragment, null,
-        React.createElement("img", __assign({ loading: "lazy", src: src, alt: alt, onLoad: onLoad, onError: onError, onClick: onImageClick }, rest)),
-        React.createElement(modal_1.default, { isOpen: isOpen, onClose: function () { return toggleModal(false); }, className: "milingo-image-modal" },
-            React.createElement("img", { src: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalSrc, alt: thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalAlt }))));
-};
-exports.default = Image;
-
-
-/***/ }),
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 117 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(118);
+__webpack_require__(122);
 var ToggleButton = function (props) {
     var handleOnToggle = function () {
         if (!(props.loading || props.disabled)) {
@@ -4955,13 +5441,13 @@ exports.default = ToggleButton;
 
 
 /***/ }),
-/* 118 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 119 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4991,11 +5477,11 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classnames = __webpack_require__(1);
-var input_1 = __webpack_require__(18);
-__webpack_require__(120);
-var iran_flag_svg_1 = __webpack_require__(121);
-var iran_plate_sign_svg_1 = __webpack_require__(122);
-var stripes_svg_1 = __webpack_require__(123);
+var input_1 = __webpack_require__(22);
+__webpack_require__(124);
+var iran_flag_svg_1 = __webpack_require__(125);
+var iran_plate_sign_svg_1 = __webpack_require__(126);
+var stripes_svg_1 = __webpack_require__(127);
 var LicensePlate = function (_a) {
     var _b;
     var editable = _a.editable, onInput = _a.onInput, value = _a.value, oldStyle = _a.oldStyle, className = _a.className, rest = __rest(_a, ["editable", "onInput", "value", "oldStyle", "className"]);
@@ -5059,13 +5545,13 @@ exports.default = LicensePlate;
 
 
 /***/ }),
-/* 120 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 121 */
+/* 125 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5073,7 +5559,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDE0IDkiIGZpbGw9Im5vbmUiCiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNMC4wMDYxMDM1MiAwLjAwMTIyMDdIMTMuOTk4MVY4Ljk5OTkxSDAuMDA2MTAzNTJWMC4wMDEyMjA3WiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBkPSJNMC4wMDYxMDM1MiA2LjAwMDczSDEzLjk5ODFWOC45OTk5NEgwLjAwNjEwMzUyVjYuMDAwNzNaIiBmaWxsPSIjREEwMDAwIi8+CiAgPHBhdGggZD0iTTcuMTkyOTIgMy44NjY1TDcuMzA2OTIgMy45ODg3VjQuNjAxODNMNy4yNDk5MiA1LjM5NzE5QzcuMzcxNjggNS4zMjc5MSA3LjQ3MTMgNS4yMjExNCA3LjUzNTkyIDUuMDkwNjJDNy42MzQzNCA0LjkxNDQxIDcuNjg2MzMgNC43MTI4OCA3LjY4NjMzIDQuNTA3NUM3LjY4NjMzIDQuMzAyMTIgNy42MzQzNCA0LjEwMDU5IDcuNTM1OTIgMy45MjQzOEM3LjY5OTk0IDQuMDcxNTIgNy44MDgwMSA0LjI3Nzk1IDcuODM5NyA0LjUwNDY4QzcuODcxMzkgNC43MzE0MSA3LjgyNDUxIDQuOTYyNzMgNy43MDc5MiA1LjE1NDkzQzcuNjIzOSA1LjMwNjE3IDcuNTA2MDEgNS40MzI1NCA3LjM2NDkyIDUuNTIyNkM3LjQ5MTcyIDUuNTc3MTcgNy42Mjg5NCA1LjU5ODEzIDcuNzY0OTIgNS41ODM3QzcuNjE3NjIgNS42NDUwOCA3LjQ1NDIyIDUuNjQ1MDggNy4zMDY5MiA1LjU4MzdWNS42NDQ4TDcuMTkyOTIgNS43NjdMNy4xMzU5MiA1LjY0NDhWNS41ODM3QzYuOTg0NiA1LjYxNDM4IDYuODI5MjQgNS42MTQzOCA2LjY3NzkyIDUuNTgzN0M2LjgxMzc3IDUuNTkzNTMgNi45NTAwNCA1LjU3MjcxIDcuMDc3OTIgNS41MjI2QzYuOTA5ODggNS40NTE2MSA2Ljc2OSA1LjMyMjEyIDYuNjc3OTIgNS4xNTQ5M0M2LjU3NzkgNC45NTgyMSA2LjU0MDU3IDQuNzMxODUgNi41NzE2MiA0LjUxMDNDNi42MDI2NyA0LjI4ODc1IDYuNzAwMzkgNC4wODQxMyA2Ljg0OTkyIDMuOTI3NkM2Ljc1MTcxIDQuMDkyNDcgNi42OTk1MyA0LjI4NDAxIDYuNjk5NTMgNC40Nzk2M0M2LjY5OTUzIDQuNjc1MjUgNi43NTE3MSA0Ljg2Njc5IDYuODQ5OTIgNS4wMzE2NkM2LjkxNDU0IDUuMTYyMTggNy4wMTQxNiA1LjI2ODk2IDcuMTM1OTIgNS4zMzgyM0w3LjA3NzkyIDQuNjAyOVYzLjk4ODdDNy4xMzQ5MiAzLjk4ODcgNy4xMzQ5MiAzLjkyNzYgNy4xOTE5MiAzLjg2NjVINy4xOTI5MlpNNy41OTI5MiAzLjkyNzZDNy43Mzc0OSAzLjk3MTg3IDcuODY3NjQgNC4wNTg1NSA3Ljk2ODcgNC4xNzc4N0M4LjA2OTc3IDQuMjk3MTkgOC4xMzc3MyA0LjQ0NDQgOC4xNjQ5MiA0LjYwMjlDOC4xODE4IDQuNzU2OCA4LjE1ODcgNC45MTI3IDguMDk4MTggNS4wNTM0MkM4LjAzNzY1IDUuMTk0MTQgNy45NDIwNSA1LjMxNDIxIDcuODIxOTIgNS40MDA0QzcuOTY1MjggNS4xNjQ2NiA4LjAyNjIxIDQuODgyMTYgNy45OTM5MiA0LjYwMjlDNy45MzkwMyA0LjMzNDI5IDcuNzk3MzYgNC4wOTUxMSA3LjU5MzkyIDMuOTI3Nkg3LjU5MjkyWk02Ljc5MjkyIDMuOTI3NkM2LjU4OTQ4IDQuMDk1MTEgNi40NDc4MSA0LjMzNDI5IDYuMzkyOTIgNC42MDI5QzYuMzYwNjMgNC44ODIxNiA2LjQyMTU2IDUuMTY0NjYgNi41NjQ5MiA1LjQwMDRDNi40NDQ3OSA1LjMxNDIxIDYuMzQ5MTkgNS4xOTQxNCA2LjI4ODY2IDUuMDUzNDJDNi4yMjgxNCA0LjkxMjcgNi4yMDUwNCA0Ljc1NjggNi4yMjE5MiA0LjYwMjlDNi4yNDg5NSA0LjQ0NDY2IDYuMzE2NjEgNC4yOTc2MyA2LjQxNzMgNC4xNzgzNEM2LjUxOCA0LjA1OTA0IDYuNjQ3NzMgMy45NzIyMSA2Ljc5MTkyIDMuOTI3Nkg2Ljc5MjkyWk03LjAyMTkyIDMuODY2NUM2Ljk2NDkyIDMuODA1NCA2LjkwNzkyIDMuNzQ0MyA2Ljk2NDkyIDMuNjgyMTNDNi45NjcwMSAzLjcxMzggNi45Nzk3IDMuNzQzNTkgNy4wMDA2NCAzLjc2NjA0QzcuMDIxNTggMy43ODg0OSA3LjA0OTM4IDMuODAyMDggNy4wNzg5MiAzLjgwNDMzQzcuMTM1OTIgMy44MDQzMyA3LjE5MjkyIDMuODA0MzMgNy4xOTI5MiAzLjc0MzIzQzcuMjQ5OTIgMy44MDQzMyA3LjI0OTkyIDMuODA0MzMgNy4zMDY5MiAzLjgwNDMzQzcuMzM2NjQgMy44MDIzMyA3LjM2NDY4IDMuNzg4ODUgNy4zODU4MyAzLjc2NjM3QzcuNDA2OTcgMy43NDM5IDcuNDE5OCAzLjcxMzk3IDcuNDIxOTIgMy42ODIxM0M3LjQyNTg2IDMuNzE1NDcgNy40MjI3OSAzLjc0OTM0IDcuNDEyOTMgMy43ODEyNEM3LjQwMzA2IDMuODEzMTUgNy4zODY2NiAzLjg0MjI4IDcuMzY0OTIgMy44NjY1SDcuMTkyOTJDNy4xMzU5MiAzLjg2NjUgNy4wNzc5MiAzLjkyNzYgNy4wMjA5MiAzLjg2NjVINy4wMjE5MloiIGZpbGw9IiNEQTAwMDAiLz4KICA8cGF0aCBkPSJNMCAwSDE0VjMuMDY3ODFIMFYwWiIgZmlsbD0iIzIzOUY0MCIvPgo8L3N2Zz4K");
 
 /***/ }),
-/* 122 */
+/* 126 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5081,7 +5567,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNCAxMSIgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Ik0wLjggNC41ODk4OEgwVjAuMDAwNTk2ODI1SDAuOFY0LjU4OTg4Wk0yLjIgMy43ODMzMkMyLjMyMzYxIDMuNzg2IDIuNDQyIDMuODM0MDQgMi41MzMgMy45MTg0MkMyLjU3MzcgMy45NTA2NSAyLjYwNjc2IDMuOTkxNjMgMi42Mjk3NyA0LjAzODM3QzIuNjUyNzggNC4wODUxMiAyLjY2NTE2IDQuMTM2NDQgMi42NjYgNC4xODg2MkMyLjY2NTE2IDQuMjQwNzkgMi42NTI3OCA0LjI5MjEyIDIuNjI5NzcgNC4zMzg4NkMyLjYwNjc2IDQuMzg1NiAyLjU3MzcgNC40MjY1OCAyLjUzMyA0LjQ1ODgxQzIuNDQyIDQuNTQzMiAyLjMyMzYxIDQuNTkxMjMgMi4yIDQuNTkzOTFDMi4wNzYzOSA0LjU5MTIzIDEuOTU4IDQuNTQzMiAxLjg2NyA0LjQ1ODgxQzEuNzk2NzcgNC4zODQyNSAxLjc1MDQzIDQuMjkwMSAxLjczNCA0LjE4ODYyQzEuNzUwNDMgNC4wODcxMyAxLjc5Njc3IDMuOTkyOTkgMS44NjcgMy45MTg0MkMxLjk1NzU1IDMuODMyOTQgMi4wNzYgMy43ODM4MSAyLjIgMy43ODAzVjMuNzgzMzJaTTUuMzMzIDIuNzc1MTNINC40NjZWNC41MzAzOUgzLjY2NlYwLjAwMDU5NjgyNUg1LjMzM0M1Ljc3ODQ2IC0wLjAwOTQ1NDI4IDYuMjE3NjggMC4xMDc2MjUgNi42IDAuMzM4MzM5QzYuNzQ1ODYgMC40NjIwNTcgNi44NjMyIDAuNjE2MzU0IDYuOTQzODYgMC43OTA0NzZDNy4wMjQ1MSAwLjk2NDU5OCA3LjA2NjU0IDEuMTU0MzYgNy4wNjcgMS4zNDY1M0M3LjA3MjI0IDEuNjA4MDggNy4wMDI4MSAxLjg2NTY1IDYuODY3IDIuMDg4NTZDNi43MTIyNiAyLjI5NzE1IDYuNTA1MTQgMi40NjAzNyA2LjI2NyAyLjU2MTRMNy4zMzMgNC40NTU3OVY0LjUyMzM0SDYuMjY2TDUuMzMzIDIuNzc1MTNaTTQuNDY2IDIuMTcwMjJINS4zMzNDNS41NzA5MSAyLjE3NTk2IDUuODA0NDcgMi4xMDUzNSA2IDEuOTY4NThDNi4xMzM3NSAxLjgyMTQ4IDYuMjA1NDggMS42Mjc2OCA2LjIgMS40MjgxOUM2LjIwOTAxIDEuMzI4NzYgNi4xOTU3MiAxLjIyODU2IDYuMTYxMDkgMS4xMzUwMUM2LjEyNjQ3IDEuMDQxNDcgNi4wNzE0MSAwLjk1Njk4IDYgMC44ODc4MDVDNS44MDE4NSAwLjc0NjA4OSA1LjU3MzMyIDAuNjUzNTE0IDUuMzMzIDAuNjE3NjA4SDQuNDY2VjIuMTcwMjJaTTguMTMzIDMuNzgwM0M4LjI0NjMxIDMuNzc4MjUgOC4zNTY0MiAzLjgxODE3IDguNDQyNDkgMy44OTI0OUM4LjUyODU1IDMuOTY2ODIgOC41ODQ2IDQuMDcwMzkgOC42IDQuMTgzNThDOC41OTkxNiA0LjIzNTc1IDguNTg2NzggNC4yODcwOCA4LjU2Mzc3IDQuMzMzODJDOC41NDA3NiA0LjM4MDU2IDguNTA3NyA0LjQyMTU0IDguNDY3IDQuNDUzNzdDOC4zNzcyNyA0LjU0MDQ3IDguMjU3NzkgNC41ODg4NyA4LjEzMzUgNC41ODg4N0M4LjAwOTIxIDQuNTg4ODcgNy44ODk3MyA0LjU0MDQ3IDcuOCA0LjQ1Mzc3QzcuNzQ1MTUgNC4zOTM2OCA3LjcwOTY4IDQuMzE4MjIgNy42OTgzIDQuMjM3MzdDNy42ODY5MSA0LjE1NjUyIDcuNzAwMTQgNC4wNzQwOCA3LjczNjIzIDQuMDAwOThDNy43NzIzMyAzLjkyNzg3IDcuODI5NTkgMy44Njc1MyA3LjkwMDQzIDMuODI3OTVDNy45NzEyOCAzLjc4ODM2IDguMDUyMzggMy43NzI0MSA4LjEzMyAzLjc4MDNaTTAuODAwMDAxIDEwLjk5OEgwVjYuNDA4N0gwLjgwMDAwMVYxMC45OThaTTMuNTMzIDkuMjQyNzNIMi42VjEwLjk5OEgxLjhWNi40MDg3SDMuNDY3QzMuOTEyNDcgNi4zOTg2NSA0LjM1MTY4IDYuNTE1NzMgNC43MzQgNi43NDY0NUM0Ljg3OTg2IDYuODcwMTYgNC45OTcyIDcuMDI0NDYgNS4wNzc4NiA3LjE5ODU4QzUuMTU4NTEgNy4zNzI3IDUuMjAwNTQgNy41NjI0NiA1LjIwMSA3Ljc1NDY0QzUuMjA2MjMgOC4wMTYxOSA1LjEzNjgxIDguMjczNzUgNS4wMDEgOC40OTY2NkM0Ljg0NjI2IDguNzA1MjYgNC42MzkxNCA4Ljg2ODQ4IDQuNDAxIDguOTY5NTFMNS4zMzQgMTAuOTI2NFYxMC45OTRINC40NjdMMy41MzMgOS4yNDI3M1pNMi42IDguNjM3ODFIMy40NjdDMy43MDQ5MSA4LjY0MzU1IDMuOTM4NDcgOC41NzI5NCA0LjEzNCA4LjQzNjE3QzQuMjY3NzUgOC4yODkwNyA0LjMzOTQ4IDguMDk1MjYgNC4zMzQgNy44OTU3OEM0LjM0MzAxIDcuNzk2MzUgNC4zMjk3MiA3LjY5NjE1IDQuMjk1MSA3LjYwMjYxQzQuMjYwNDcgNy41MDkwNiA0LjIwNTQyIDcuNDI0NTcgNC4xMzQgNy4zNTUzOUM0LjA0MjIyIDcuMjc3OSAzLjkzNTc0IDcuMjIwMDcgMy44MjEwNyA3LjE4NTRDMy43MDY0IDcuMTUwNzQgMy41ODU5MyA3LjEzOTk3IDMuNDY3IDcuMTUzNzVIMi42VjguNjM3ODFaTTguNTMzIDkuOTIwMjNINi43MzNMNi4zMzMgMTFINS40NjZMNy4yNjYgNi40MTA3Mkg4TDkuNzMzIDExSDguOTMzTDguNTMzIDkuOTIwMjNaTTYuOTMzIDkuMzE1MzFIOC4yNjZMNy42IDcuNDIwOTJMNi45MzMgOS4zMTUzMVpNMTQgMTAuOTk5SDEzLjJMMTEuMTMzIDcuNzU5NjhWMTAuOTk5SDEwLjMzM1Y2LjQwODdIMTEuMTMzTDEzLjIgOS42NDkwM1Y2LjQwODdIMTRWMTAuOTk5WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==");
 
 /***/ }),
-/* 123 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

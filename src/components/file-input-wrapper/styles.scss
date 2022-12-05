@@ -1,0 +1,169 @@
+@import "../../assets/styles/variables";
+@import '../../assets/styles/_base.scss';
+
+.file-input-wrapper {
+  width: 100%;
+  max-width: 328px;
+  height: auto;
+  box-sizing: border-box;
+  direction: rtl;
+
+  > .wrapper-title {
+    @include font-size(14);
+
+    margin-bottom: 8px;
+    font-family: 'iransansx';
+    font-weight: 900;
+    text-align: right;
+  }
+
+  > .wrapper-description {
+    @include font-size(16);
+
+    color: $disabledColor;
+    margin-bottom: 16px;
+    text-align: right;
+  }
+
+  > .uploader-container {
+    width: 100%;
+    min-height: 210px;
+    padding: 16px;
+    background-color: #ecedef;
+    border: 2px dashed #8897a8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .uploader-description {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      > .upload-icon {
+        @include font-size(60);
+
+        color: $disabledColor;
+        margin-bottom: 8px
+      }
+
+      > .uploader-title {
+        @include font-size(16);
+
+        color: #191924;
+      }
+    }
+
+    > .uploader-input {
+      width: 100%;
+
+      &:not(.visible) {
+        display: none;
+      }
+
+      > .file-div {
+        width: 100%;
+        justify-content: center;
+
+        > .file-name-container {
+          width: 100%;
+
+          > .file-name {
+            background-color: $whiteColor;
+
+            > .file-name-text {
+              > .clear {
+                color: $warning1;
+              }
+            }
+          }
+        }
+
+        > .milingo-btn-wrapper {
+          display: none;
+        }
+      }
+    }
+
+    > .previewer {
+      max-width: 146px;
+      margin-bottom: 16px;
+      overflow: hidden;
+
+      &.video-preview {
+        > .video {
+          max-width: 100%;
+          max-height: 50vh;
+          border-radius: 16px;
+        }
+      }
+
+      &.image-preview {
+        position: relative;
+        border-radius: 16px;
+
+        > .image {
+          width: 100%;
+          -webkit-user-drag: none;
+        }
+
+        > .image-info {
+          background-color: #0009;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          color: $whiteColor;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          direction: ltr;
+          padding: 0 8px;
+          height: 32px;
+
+          > .image-name {
+            @include font-size(12);
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes hint-animation {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hint-overlay-animation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.file-input-hint {
+  animation: hint-animation 75ms ease-in;
+}
+
+.file-input-hint-overlay {
+  animation: hint-overlay-animation 75ms ease-in;
+}
