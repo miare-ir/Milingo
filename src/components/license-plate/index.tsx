@@ -27,12 +27,8 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
   className,
   ...rest
 }: LicensePlateProps): JSX.Element => {
-  const [plateNumberPartOneValue, setPlateNumberPartOneValue] = React.useState(
-    value?.[0],
-  );
-  const [plateNumberPartTwoValue, setPlateNumberPartTwoValue] = React.useState(
-    value?.[1],
-  );
+  const firstInputRef = React.useRef<HTMLInputElement>(null);
+  const secondInputRef = React.useRef<HTMLInputElement>(null);
 
   const MAX_PLATE_NUMBER_LENGTH_PART_ONE = 3;
   const MAX_PLATE_NUMBER_LENGTH_PART_TWO = 5;
@@ -51,7 +47,6 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
     e: React.FormEvent<HTMLInputElement>,
     part: 'one' | 'two',
   ): void => {
-    const inputValue = e.currentTarget.value;
     const maxLength =
       part === 'one'
         ? oldStyle
@@ -61,18 +56,15 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
         ? MAX_PLATE_NUMBER_LENGTH_PART_ONE
         : MAX_PLATE_NUMBER_LENGTH_PART_TWO;
 
-    if (inputValue.length > maxLength) {
-      return;
-    }
+    const inputValue = e.currentTarget.value.substring(0, maxLength);
+    e.currentTarget.value = inputValue;
 
     const accurateInputValue = inputValue ? +inputValue : null;
 
     if (part === 'one') {
-      setPlateNumberPartOneValue(accurateInputValue);
-      onInput?.([accurateInputValue, plateNumberPartTwoValue]);
+      onInput?.([accurateInputValue, value?.[1]]);
     } else {
-      setPlateNumberPartTwoValue(accurateInputValue);
-      onInput?.([plateNumberPartOneValue, accurateInputValue]);
+      onInput?.([value?.[0], accurateInputValue]);
     }
   };
 
@@ -80,6 +72,19 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
     ['old-style']: oldStyle,
     [className]: !!className,
   });
+
+  React.useEffect(() => {
+    const { current: firstInput } = firstInputRef;
+    const { current: secondInput } = secondInputRef;
+
+    const firstValue = value?.[0]?.toString();
+    const secondValue = value?.[1]?.toString();
+
+    if (firstInput && secondInput) {
+      firstInput.value = (oldStyle ? secondValue : firstValue) ?? '';
+      secondInput.value = (oldStyle ? firstValue : secondValue) ?? '';
+    }
+  }, [value?.[0], value?.[1]]);
 
   return (
     <div {...rest} className={ContainerClassNames}>
@@ -107,12 +112,9 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE)}
           onInput={e => handlePlateNumberInput(e, oldStyle ? 'two' : 'one')}
           disabled={!editable}
-          value={
-            (oldStyle ? plateNumberPartTwoValue : plateNumberPartOneValue) ??
-            undefined
-          }
           type="number"
           tabIndex={oldStyle ? 2 : 1}
+          inputRef={firstInputRef}
         />
       </div>
 
@@ -125,12 +127,9 @@ const LicensePlate: React.FC<LicensePlateProps> = ({
           max={getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO)}
           onInput={e => handlePlateNumberInput(e, oldStyle ? 'one' : 'two')}
           disabled={!editable}
-          value={
-            (oldStyle ? plateNumberPartOneValue : plateNumberPartTwoValue) ??
-            undefined
-          }
           type="number"
           tabIndex={oldStyle ? 1 : 2}
+          inputRef={secondInputRef}
         />
       </div>
     </div>

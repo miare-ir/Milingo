@@ -16,6 +16,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   ltr?: boolean;
   extraTitle?: JSX.Element | string;
   small?: boolean;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 export interface InputState {
@@ -122,6 +123,7 @@ class Input extends React.Component<InputProps, InputState> {
       onBlur,
       onFocus,
       disabled,
+      inputRef,
       ...props
     } = this.props;
 
@@ -162,6 +164,7 @@ class Input extends React.Component<InputProps, InputState> {
             onBlur={e => {
               this.handleBlur(e);
             }}
+            ref={inputRef}
             {...props}
           />
           {pre && <pre>{pre}</pre>}
