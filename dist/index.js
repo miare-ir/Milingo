@@ -4070,6 +4070,8 @@ var SelectComponent = /** @class */ (function (_super) {
         document.removeEventListener('touchend', this.handleDocumentClick.bind(this), false);
     };
     SelectComponent.prototype.handleMouseDown = function (event) {
+        var _a;
+        (_a = window.document.activeElement) === null || _a === void 0 ? void 0 : _a.blur();
         if (this.props.onFocus && typeof this.props.onFocus === 'function') {
             this.props.onFocus(this.state.isOpen);
         }
