@@ -102,6 +102,8 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   }
 
   handleMouseDown(event): void {
+    (window.document.activeElement as HTMLInputElement)?.blur();
+
     if (this.props.onFocus && typeof this.props.onFocus === 'function') {
       this.props.onFocus(this.state.isOpen);
     }
