@@ -1158,7 +1158,7 @@ var Input = /** @class */ (function (_super) {
         if (!validInputTypes.includes(this.state.type)) {
             return '';
         }
-        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, icon = _a.icon, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, disabled = _a.disabled, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "icon", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus", "disabled"]);
+        var _a = this.props, errorMessage = _a.errorMessage, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, icon = _a.icon, ltr = _a.ltr, onClear = _a.onClear, className = _a.className, extraTitle = _a.extraTitle, small = _a.small, onBlur = _a.onBlur, onFocus = _a.onFocus, disabled = _a.disabled, inputRef = _a.inputRef, props = __rest(_a, ["errorMessage", "forceDisplayError", "validate", "displayClear", "title", "pre", "icon", "ltr", "onClear", "className", "extraTitle", "small", "onBlur", "onFocus", "disabled", "inputRef"]);
         var hasError = errorMessage &&
             (forceDisplayError ||
                 (this.state.touched && !validate(this.state.value)));
@@ -1178,7 +1178,7 @@ var Input = /** @class */ (function (_super) {
                         _this.handleFocus(e);
                     }, onBlur: function (e) {
                         _this.handleBlur(e);
-                    } }, props)),
+                    }, ref: inputRef }, props)),
                 pre && React.createElement("pre", null, pre),
                 !pre && !!this.state.value && displayClear && !disabled && (React.createElement("i", { className: "material-icons clear", onClick: this.clear }, "add_circle")),
                 !pre && icon && (React.createElement("span", { className: "icon" },
@@ -5484,10 +5484,9 @@ var iran_plate_sign_svg_1 = __webpack_require__(126);
 var stripes_svg_1 = __webpack_require__(127);
 var LicensePlate = function (_a) {
     var _b;
-    var _c, _d;
     var editable = _a.editable, onInput = _a.onInput, value = _a.value, oldStyle = _a.oldStyle, className = _a.className, rest = __rest(_a, ["editable", "onInput", "value", "oldStyle", "className"]);
-    var _e = React.useState(value === null || value === void 0 ? void 0 : value[0]), plateNumberPartOneValue = _e[0], setPlateNumberPartOneValue = _e[1];
-    var _f = React.useState(value === null || value === void 0 ? void 0 : value[1]), plateNumberPartTwoValue = _f[0], setPlateNumberPartTwoValue = _f[1];
+    var firstInputRef = React.useRef(null);
+    var secondInputRef = React.useRef(null);
     var MAX_PLATE_NUMBER_LENGTH_PART_ONE = 3;
     var MAX_PLATE_NUMBER_LENGTH_PART_TWO = 5;
     var getPlateNumberPlaceholder = function (length) {
@@ -5501,7 +5500,6 @@ var LicensePlate = function (_a) {
             .join('');
     };
     var handlePlateNumberInput = function (e, part) {
-        var inputValue = e.currentTarget.value;
         var maxLength = part === 'one'
             ? oldStyle
                 ? MAX_PLATE_NUMBER_LENGTH_PART_TWO
@@ -5509,32 +5507,40 @@ var LicensePlate = function (_a) {
             : oldStyle
                 ? MAX_PLATE_NUMBER_LENGTH_PART_ONE
                 : MAX_PLATE_NUMBER_LENGTH_PART_TWO;
-        if (inputValue.length > maxLength) {
-            return;
-        }
+        var inputValue = e.currentTarget.value.substring(0, maxLength);
+        e.currentTarget.value = inputValue;
         var accurateInputValue = inputValue ? +inputValue : null;
         if (part === 'one') {
-            setPlateNumberPartOneValue(accurateInputValue);
-            onInput === null || onInput === void 0 ? void 0 : onInput([accurateInputValue, plateNumberPartTwoValue]);
+            onInput === null || onInput === void 0 ? void 0 : onInput([accurateInputValue, value === null || value === void 0 ? void 0 : value[1]]);
         }
         else {
-            setPlateNumberPartTwoValue(accurateInputValue);
-            onInput === null || onInput === void 0 ? void 0 : onInput([plateNumberPartOneValue, accurateInputValue]);
+            onInput === null || onInput === void 0 ? void 0 : onInput([value === null || value === void 0 ? void 0 : value[0], accurateInputValue]);
         }
     };
     var ContainerClassNames = classnames('license-plate', (_b = {},
         _b['old-style'] = oldStyle,
         _b[className] = !!className,
         _b));
+    React.useEffect(function () {
+        var _a, _b, _c, _d;
+        var firstInput = firstInputRef.current;
+        var secondInput = secondInputRef.current;
+        var firstValue = (_a = value === null || value === void 0 ? void 0 : value[0]) === null || _a === void 0 ? void 0 : _a.toString();
+        var secondValue = (_b = value === null || value === void 0 ? void 0 : value[1]) === null || _b === void 0 ? void 0 : _b.toString();
+        if (firstInput && secondInput) {
+            firstInput.value = (_c = (oldStyle ? secondValue : firstValue)) !== null && _c !== void 0 ? _c : '';
+            secondInput.value = (_d = (oldStyle ? firstValue : secondValue)) !== null && _d !== void 0 ? _d : '';
+        }
+    }, [value === null || value === void 0 ? void 0 : value[0], value === null || value === void 0 ? void 0 : value[1]]);
     return (React.createElement("div", __assign({}, rest, { className: ContainerClassNames }),
         React.createElement("div", { className: "top-section" },
             oldStyle ? (React.createElement("span", { className: "plate-city" },
                 React.createElement("img", { src: stripes_svg_1.default, alt: "Pattern" }))) : (React.createElement("div", { className: "iran-flag" },
                 React.createElement("img", { src: iran_flag_svg_1.default, alt: "Iran flag", className: "flag" }),
                 React.createElement("img", { src: iran_plate_sign_svg_1.default, alt: "Iran plate sign", className: "plate-sign" }))),
-            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_ONE), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE), onInput: function (e) { return handlePlateNumberInput(e, oldStyle ? 'two' : 'one'); }, disabled: !editable, value: (_c = (oldStyle ? plateNumberPartTwoValue : plateNumberPartOneValue)) !== null && _c !== void 0 ? _c : undefined, type: "number", tabIndex: oldStyle ? 2 : 1 })),
+            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_ONE), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_ONE), onInput: function (e) { return handlePlateNumberInput(e, oldStyle ? 'two' : 'one'); }, disabled: !editable, type: "number", tabIndex: oldStyle ? 2 : 1, inputRef: firstInputRef })),
         React.createElement("div", { className: "bottom-section" },
-            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_TWO), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO), onInput: function (e) { return handlePlateNumberInput(e, oldStyle ? 'one' : 'two'); }, disabled: !editable, value: (_d = (oldStyle ? plateNumberPartOneValue : plateNumberPartTwoValue)) !== null && _d !== void 0 ? _d : undefined, type: "number", tabIndex: oldStyle ? 1 : 2 }))));
+            React.createElement(input_1.default, { placeholder: getPlateNumberPlaceholder(MAX_PLATE_NUMBER_LENGTH_PART_TWO), className: "plate-number", max: getPlateNumberMaxValue(MAX_PLATE_NUMBER_LENGTH_PART_TWO), onInput: function (e) { return handlePlateNumberInput(e, oldStyle ? 'one' : 'two'); }, disabled: !editable, type: "number", tabIndex: oldStyle ? 1 : 2, inputRef: secondInputRef }))));
 };
 exports.default = LicensePlate;
 
