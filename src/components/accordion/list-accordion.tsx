@@ -25,7 +25,7 @@ const ListAccordion = ({
 
   const componentClassNames = classNames('list-accordion', rest.className);
 
-  const handleItemSelect = (itemId: number): void => {
+  const handleItemSelect = (itemId: number) => (): void => {
     if (
       selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
       !selectedIds.has(itemId)
@@ -44,26 +44,23 @@ const ListAccordion = ({
     );
   };
 
-  const handleItemUnselect = (itemId: number): void =>
-    setSelectedIds(previousselectedIds => {
-      const clone = new Set(Array.from(previousselectedIds));
+  const handleItemUnselect = (itemId: number) => (): void =>
+    setSelectedIds(previousSelectedIds => {
+      const clone = new Set(Array.from(previousSelectedIds));
       clone.delete(itemId);
       return clone;
     });
 
-  const renderlistItems = (): JSX.Element[] =>
+  const renderListItems = (): JSX.Element[] =>
     Array.from(selectedIds).map(selectedId => {
       const item = listItems.find(listitem => listitem.props.id === selectedId);
       return (
         <Accordion
-          style={{ bottom: '0' }}
           key={selectedId}
           title={`${item.props.title}`}
           description={`${item.props.about}`}
           isActive
-          setIsClose={() => {
-            handleItemUnselect(selectedId);
-          }}>
+          setIsClose={handleItemUnselect(selectedId)}>
           {item}
         </Accordion>
       );
@@ -79,12 +76,12 @@ const ListAccordion = ({
           <div
             className="accordion-item-container"
             key={child.props.id}
-            onClick={() => handleItemSelect(child.props.id)}>
+            onClick={handleItemSelect(child.props.id)}>
             {child}
           </div>
         ))}
       </Accordion>
-      <div className="items-container">{renderlistItems()}</div>
+      <div className="items-container">{renderListItems()}</div>
     </div>
   );
 };
