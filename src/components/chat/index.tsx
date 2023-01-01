@@ -5,8 +5,9 @@ import * as classNames from 'classnames';
 import './styles.scss';
 import SubmitForm from './submit-form';
 
-export interface ChatProps extends React.HTMLAttributes<HTMLDivElement> {
-  chatId: number;
+export interface ChatProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'id'> {
+  id: number;
   handelSubmit?: (id: number, text: string) => void;
   isSending?: boolean;
   canSubmit?: boolean;
@@ -15,7 +16,7 @@ export interface ChatProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Chat = ({
-  chatId,
+  id,
   handelSubmit,
   isSending,
   canSubmit,
@@ -29,7 +30,7 @@ const Chat = ({
     <div {...rest} className={componentClassNames}>
       <div className="chat-content">{children}</div>
       {canSubmit && (
-        <SubmitForm id={chatId} isSending={isSending} onSubmit={handelSubmit} />
+        <SubmitForm id={id} isSending={isSending} onSubmit={handelSubmit} />
       )}
       <div className="chat-footer">{footer}</div>
     </div>

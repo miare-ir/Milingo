@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import issues from '../../common/fixtures/issue';
+import Chat from '../chat';
 import Accordion from './accordion';
-import IssueListAccordion from './issue-list-accordion';
+import ListAccordion from './list-accordion';
+import AccordionItem from './accordion-item';
 
 export default {
   title: 'Accordion',
@@ -31,18 +32,38 @@ export const WithCloseButton = (): JSX.Element => {
   );
 };
 
-export const IssuesListAccordion = (): JSX.Element => {
-  const handelSubmitMessage = (id: number, message: string): void =>
-    alert(`پیام ${message} برای ایدی ${id} ارسال شد`);
-
-  const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
+export const ListsAccordion = (): JSX.Element => {
+  const listItems = [
+    {
+      id: 0,
+      title: 'تایتل 0',
+      description: 'توضیحات 0',
+      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+    },
+    {
+      id: 1,
+      title: 'تایتل 1',
+      description: 'توضیحات 1',
+      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+    },
+    {
+      id: 2,
+      title: 'تایتل 2',
+      description: 'توضیحات 2',
+      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+    },
+  ];
 
   return (
-    <IssueListAccordion
-      accordionTitle={'لیست ایشیو ها'}
-      issues={issues}
-      handelResolve={handelResolve}
-      handelSubmitMessage={handelSubmitMessage}
-    />
+    <ListAccordion accordionTitle={'لیست ایشیو ها'} listItems={listItems}>
+      {listItems.map(item => (
+        <AccordionItem
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          description={item.description}
+        />
+      ))}
+    </ListAccordion>
   );
 };
