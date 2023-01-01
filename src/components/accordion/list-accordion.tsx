@@ -5,12 +5,19 @@ import * as classNames from 'classnames';
 import Accordion from './accordion';
 import './styles/index.scss';
 
+interface ListItems {
+  id: number;
+  title: string;
+  description: string;
+  item: JSX.Element;
+}
+
 export interface ListAccordionProps
   extends React.HTMLAttributes<HTMLDivElement> {
   accordionTitle: string;
   maxOpenAccordion?: number;
   children: JSX.Element[];
-  listItems: JSX.Element[];
+  listItems: ListItems[];
 }
 
 const ListAccordion = ({
@@ -53,15 +60,15 @@ const ListAccordion = ({
 
   const renderListItems = (): JSX.Element[] =>
     Array.from(selectedIds).map(selectedId => {
-      const item = listItems.find(listitem => listitem.props.id === selectedId);
+      const Listitem = listItems.find(listitem => listitem.id === selectedId);
       return (
         <Accordion
           key={selectedId}
-          title={`${item.props.title}`}
-          description={`${item.props.about}`}
+          title={`${Listitem.title}`}
+          description={`${Listitem.description}`}
           isActive
           setIsClose={handleItemUnselect(selectedId)}>
-          {item}
+          {Listitem.item}
         </Accordion>
       );
     });

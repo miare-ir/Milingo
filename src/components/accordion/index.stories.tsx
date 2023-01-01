@@ -33,24 +33,30 @@ export const WithCloseButton = (): JSX.Element => {
 };
 
 export const ListsAccordion = (): JSX.Element => {
-  const items = [
-    { id: 0, title: 'تایتل 0', description: 'توضیحات 0' },
-    { id: 1, title: 'تایتل 1', description: 'توضیحات 1' },
-    { id: 2, title: 'تایتل 2', description: 'توضیحات 2' },
+  const listItems = [
+    {
+      id: 0,
+      title: 'تایتل 0',
+      description: 'توضیحات 0',
+      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+    },
+    {
+      id: 1,
+      title: 'تایتل 1',
+      description: 'توضیحات 1',
+      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+    },
+    {
+      id: 2,
+      title: 'تایتل 2',
+      description: 'توضیحات 2',
+      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+    },
   ];
-
-  const listItems = items.map(item => (
-    <Chat
-      style={{ height: '350px' }}
-      key={item.id}
-      title={item.title}
-      about={item.description}
-      id={item.id}></Chat>
-  ));
 
   return (
     <ListAccordion accordionTitle={'لیست ایشیو ها'} listItems={listItems}>
-      {items.map(item => (
+      {listItems.map(item => (
         <AccordionItem
           key={item.id}
           id={item.id}
