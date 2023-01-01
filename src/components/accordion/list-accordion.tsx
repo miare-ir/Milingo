@@ -64,8 +64,8 @@ const ListAccordion = ({
       return (
         <Accordion
           key={selectedId}
-          title={`${Listitem.title}`}
-          description={`${Listitem.description}`}
+          title={Listitem.title}
+          description={Listitem.description}
           isActive
           setIsClose={handleItemUnselect(selectedId)}>
           {Listitem.item}
