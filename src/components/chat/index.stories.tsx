@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import issues from '../../common/fixtures/issue';
 import Button from '../button';
 import Message from './message';
 import Chat from '.';
@@ -13,17 +12,43 @@ export default {
   ],
 };
 
-const issue = issues[0];
 const handelSubmitMessage = (id: number, message: string): void =>
   alert(`پیام ${message} برای ایدی ${id} ارسال شد`);
 
+const messages = [
+  {
+    id: '9ad24b31-8f1e-4c5e-b488-b715b2825792',
+    created_at: '2021-11-02T14:48:18+0330',
+    sender_type: 'staff',
+    type: 'text',
+    message: 'سلام! پشتیبان میاره هستم. ',
+  },
+  {
+    id: '9ad24b31-8f1e-4c5e-b488-b715b2825796',
+    created_at: '2021-11-02T14:49:18+0330',
+    sender_type: 'client',
+    type: 'text',
+    message: 'علیک سلام کلاینت هستم',
+  },
+  {
+    id: '9ad24b31-8f1e-4c5e-b488-b715b2825797',
+    created_at: '2021-11-02T14:50:18+0330',
+    sender_type: 'staff',
+    type: 'text',
+    message: 'مشکلی داری؟',
+  },
+  {
+    id: '9ad24b31-8f1e-4c5e-b488-b715b2825790',
+    created_at: '2021-11-02T15:00:18+0330',
+    sender_type: 'client',
+    type: 'text',
+    message: 'نه مشکلی نیست',
+  },
+];
+
 export const Default = (): JSX.Element => (
-  <Chat
-    id={issue.id}
-    handelSubmit={handelSubmitMessage}
-    isSending={false}
-    canSubmit>
-    {issue.messages.map(({ message, id, sender_type, created_at }) => (
+  <Chat id={1} handelSubmit={handelSubmitMessage} isSending={false} canSubmit>
+    {messages.map(({ message, id, sender_type, created_at }) => (
       <Message
         id={id}
         key={id}
@@ -36,11 +61,7 @@ export const Default = (): JSX.Element => (
 );
 
 export const WithoutMessage = (): JSX.Element => (
-  <Chat
-    id={issue.id}
-    handelSubmit={handelSubmitMessage}
-    isSending={false}
-    canSubmit>
+  <Chat id={1} handelSubmit={handelSubmitMessage} isSending={false} canSubmit>
     {[].map(({ message, id, sender_type, created_at }) => (
       <Message
         id={id}
@@ -54,8 +75,8 @@ export const WithoutMessage = (): JSX.Element => (
 );
 
 export const WithoutSubmitMessage = (): JSX.Element => (
-  <Chat id={issue.id} canSubmit={false}>
-    {issue.messages.map(({ message, id, sender_type, created_at }) => (
+  <Chat id={1} canSubmit={false}>
+    {messages.map(({ message, id, sender_type, created_at }) => (
       <Message
         id={id}
         key={id}
@@ -85,7 +106,7 @@ export const WhitFooter = (): JSX.Element => {
         type="button"
         link
         tiny
-        onClick={() => handelResolve(issue.id)}>
+        onClick={() => handelResolve(1)}>
         رسیدگی شد
       </Button>
     </div>
@@ -93,12 +114,12 @@ export const WhitFooter = (): JSX.Element => {
 
   return (
     <Chat
-      id={issue.id}
+      id={1}
       handelSubmit={handelSubmitMessage}
       isSending={false}
       canSubmit
       footer={renderChatFooter()}>
-      {issue.messages.map(({ message, id, sender_type, created_at }) => (
+      {messages.map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}
           key={id}
