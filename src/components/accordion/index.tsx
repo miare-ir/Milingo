@@ -1,3 +1,3 @@
-export * from './accordion';
-export * from './list-accordion';
-export * from './accordion-item';
+export { default as Accordion } from './accordion';
+export { default as ListAccordion } from './list-accordion';
+export { default as AccordionItem } from './accordion-item';
