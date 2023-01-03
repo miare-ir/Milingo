@@ -38,32 +38,39 @@ export const ListsAccordion = (): JSX.Element => {
       id: 0,
       title: 'تایتل 0',
       description: 'توضیحات 0',
-      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+      element: <Chat style={{ height: '350px' }} id={0}></Chat>,
     },
     {
       id: 1,
       title: 'تایتل 1',
       description: 'توضیحات 1',
-      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+      element: <Chat style={{ height: '350px' }} id={0}></Chat>,
     },
     {
       id: 2,
       title: 'تایتل 2',
       description: 'توضیحات 2',
-      item: <Chat style={{ height: '350px' }} id={0}></Chat>,
+      element: <Chat style={{ height: '350px' }} id={0}></Chat>,
     },
   ];
 
+  const accordionItems = listItems.map(listItem => ({
+    id: listItem.id,
+    element: (
+      <AccordionItem
+        key={listItem.id}
+        id={listItem.id}
+        title={listItem.title}
+        description={listItem.description}
+      />
+    ),
+  }));
+
   return (
-    <ListAccordion accordionTitle={'لیست ایشیو ها'} listItems={listItems}>
-      {listItems.map(item => (
-        <AccordionItem
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          description={item.description}
-        />
-      ))}
-    </ListAccordion>
+    <ListAccordion
+      accordionTitle={'لیست ایشیو ها'}
+      listItems={listItems}
+      accordionItems={accordionItems}
+    />
   );
 };
