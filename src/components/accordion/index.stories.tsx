@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Chat from '../chat';
+import { Chat } from '../chat';
 import Accordion from './accordion';
 import ListAccordion from './list-accordion';
 import AccordionItem from './accordion-item';
