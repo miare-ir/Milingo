@@ -8,26 +8,19 @@ export interface AccordionItemProps {
   id: number;
   description?: string;
   className?: string;
-  onClick: (id: number) => void;
-  extraElement?: JSX.Element;
+  children?: JSX.Element;
 }
 
 const AccordionItem = (props: AccordionItemProps): JSX.Element => {
-  const componentClassNames = classNames(
-    'accordion-item-container',
-    props.className,
-  );
-
-  const handelClickItem = (e: React.SyntheticEvent<HTMLDivElement>): void =>
-    props.onClick(props.id);
+  const componentClassNames = classNames('accordion-item', props.className);
 
   return (
-    <div className={componentClassNames} onClick={handelClickItem}>
+    <div className={componentClassNames} id={props.id.toString()}>
       <div className="accordion-item-info">
         <div className="accordion-item-title">{props.title}</div>
         <div className="accordion-item-description">{props.description}</div>
       </div>
-      {props.extraElement}
+      {props.children}
     </div>
   );
 };
