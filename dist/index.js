@@ -2079,12 +2079,12 @@ var Img = /** @class */ (function () {
             sizeOrScale: 'scale',
             target: 'width',
         }; }
-        return __awaiter(void 0, void 0, Promise, function () {
+        return __awaiter(void 0, void 0, void 0, function () {
             var resize, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        resize = function () { return __awaiter(void 0, void 0, Promise, function () {
+                        resize = function () { return __awaiter(void 0, void 0, void 0, function () {
                             return __generator(this, function (_a) {
                                 // eslint-disable-next-line no-async-promise-executor
                                 return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(void 0, void 0, void 0, function () {
@@ -2147,7 +2147,7 @@ var Img = /** @class */ (function () {
             });
         });
     };
-    Img.decreaseToFixedWeight = function (image, maxSize, decreaseSteps, fileName) { return __awaiter(void 0, void 0, Promise, function () {
+    Img.decreaseToFixedWeight = function (image, maxSize, decreaseSteps, fileName) { return __awaiter(void 0, void 0, void 0, function () {
         var isFile, width, originalFile, _a, _b, _c, compressedBase64, compressedFile;
         return __generator(this, function (_d) {
             switch (_d.label) {
@@ -2202,7 +2202,7 @@ var Img = /** @class */ (function () {
             }
         });
     }); };
-    Img.toBase64 = function (imageFile, onError) { return __awaiter(void 0, void 0, Promise, function () {
+    Img.toBase64 = function (imageFile, onError) { return __awaiter(void 0, void 0, void 0, function () {
         var toBase64, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -2228,7 +2228,7 @@ var Img = /** @class */ (function () {
             }
         });
     }); };
-    Img.base64ToImage = function (base64, onError) { return __awaiter(void 0, void 0, Promise, function () {
+    Img.base64ToImage = function (base64, onError) { return __awaiter(void 0, void 0, void 0, function () {
         var getImage, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -2254,7 +2254,7 @@ var Img = /** @class */ (function () {
             }
         });
     }); };
-    Img.base64ToFile = function (base64, fileName) { return __awaiter(void 0, void 0, Promise, function () {
+    Img.base64ToFile = function (base64, fileName) { return __awaiter(void 0, void 0, void 0, function () {
         var res, blob;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -2268,7 +2268,7 @@ var Img = /** @class */ (function () {
             }
         });
     }); };
-    Img.getSizes = function (image, onError) { return __awaiter(void 0, void 0, Promise, function () {
+    Img.getSizes = function (image, onError) { return __awaiter(void 0, void 0, void 0, function () {
         var base64Image, _a, getSizes, error_4;
         return __generator(this, function (_b) {
             switch (_b.label) {
