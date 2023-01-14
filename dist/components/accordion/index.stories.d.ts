@@ -5,4 +5,4 @@ declare const _default: {
 export default _default;
 export declare const Default: () => JSX.Element;
 export declare const WithCloseButton: () => JSX.Element;
-export declare const IssuesListAccordion: () => JSX.Element;
+export declare const ListsAccordion: () => JSX.Element;

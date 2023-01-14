@@ -4,8 +4,7 @@ export interface AccordionItemProps {
     id: number;
     description?: string;
     className?: string;
-    onClick: (id: number) => void;
-    extraElement?: JSX.Element;
+    children?: JSX.Element;
 }
 declare const AccordionItem: (props: AccordionItemProps) => JSX.Element;
 export default AccordionItem;
