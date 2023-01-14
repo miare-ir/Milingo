@@ -20,6 +20,12 @@ const SubmitForm = ({
   const [message, setMessage] = React.useState('');
   const isSendButtonDisabled = !message || isSending;
 
+  React.useEffect(() => {
+    if (!isSending) {
+      setMessage('');
+    }
+  }, [isSending]);
+
   const handleSubmitMessage = (
     event?: React.FormEvent<HTMLFormElement>,
   ): void => {

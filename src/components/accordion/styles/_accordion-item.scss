@@ -1,22 +1,15 @@
 .accordion-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px 16px 16px;
+  
   &-container {
-    padding: 16px 24px 16px 16px;
     display: flex;
-    justify-content: space-between;
     line-height: 24px;
     cursor: pointer;
   
     &:not(:last-child) {
       border-bottom: 1px solid #ecedef;
-    }
-
-    &:before {
-      content: ' ';
-      position: absolute;
-      height: 48px;
-      right: 0;
-      width: 8px;
-      border-radius: 4px 0 0 4px;
     }
   }
 

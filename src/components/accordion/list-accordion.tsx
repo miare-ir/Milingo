@@ -9,14 +9,20 @@ interface ListItems {
   id: number;
   title: string;
   description: string;
-  item: JSX.Element;
+  element: JSX.Element;
+}
+
+interface AccordionItems {
+  id: number;
+  element: JSX.Element;
+  isDisable?: boolean;
 }
 
 export interface ListAccordionProps
   extends React.HTMLAttributes<HTMLDivElement> {
   accordionTitle: string;
   maxOpenAccordion?: number;
-  children: JSX.Element[];
+  accordionItems: AccordionItems[];
   listItems: ListItems[];
 }
 
@@ -24,7 +30,7 @@ const ListAccordion = ({
   accordionTitle,
   maxOpenAccordion,
   listItems,
-  children,
+  accordionItems,
   ...rest
 }: ListAccordionProps): JSX.Element => {
   const MAX_OPEN_ACCORDIONS_COUNT = maxOpenAccordion || 3;
@@ -68,7 +74,7 @@ const ListAccordion = ({
           description={Listitem.description}
           isActive
           setIsClose={handleItemUnselect(selectedId)}>
-          {Listitem.item}
+          {Listitem.element}
         </Accordion>
       );
     });
@@ -79,12 +85,14 @@ const ListAccordion = ({
         className="main-accordion"
         title={accordionTitle}
         count={listItems.length}>
-        {children.map(child => (
+        {accordionItems.map(accordionItem => (
           <div
             className="accordion-item-container"
-            key={child.props.id}
-            onClick={handleItemSelect(child.props.id)}>
-            {child}
+            key={accordionItem.id}
+            onClick={
+              !accordionItem.isDisable && handleItemSelect(accordionItem.id)
+            }>
+            {accordionItem.element}
           </div>
         ))}
       </Accordion>

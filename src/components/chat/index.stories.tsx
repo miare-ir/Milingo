@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Button from '../button';
 import Message from './message';
-import Chat from '.';
+import { Chat } from '.';
 
 export default {
   title: 'Chat',

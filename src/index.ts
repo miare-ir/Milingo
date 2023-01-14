@@ -22,7 +22,7 @@ import {
   MenuLink,
   MenuStatus,
 } from './components/menu';
-import Chat from './components/chat';
+import { Chat, Message } from './components/chat';
 import Navbar, { NavbarItem } from './components/navbar';
 import Notification from './components/notification';
 import Radio from './components/radiobutton';
@@ -104,6 +104,7 @@ export {
   Image,
   ToggleButton,
   Chat,
+  Message,
   Accordion,
   AccordionItem,
   ListAccordion,
