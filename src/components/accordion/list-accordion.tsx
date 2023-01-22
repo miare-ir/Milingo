@@ -7,6 +7,7 @@ import './styles/index.scss';
 
 interface ListItems {
   id: number;
+  className?: string;
   title: string;
   description: string;
   element: JSX.Element;
@@ -70,6 +71,7 @@ const ListAccordion = ({
       return (
         <Accordion
           key={selectedId}
+          className={Listitem.className}
           title={Listitem.title}
           description={Listitem.description}
           isActive
