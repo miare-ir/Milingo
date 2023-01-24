@@ -639,7 +639,7 @@ var Accordion = function (_a) {
             React.createElement("div", { className: "accordion-info" },
                 React.createElement("div", { className: "accordion-title" },
                     title,
-                    count && React.createElement(tag_1.default, { success: true }, count)),
+                    count ? React.createElement(tag_1.default, { success: true }, count) : React.createElement(React.Fragment, null)),
                 description && (React.createElement("div", { className: "accordion-description" }, description))),
             renderIcon()),
         React.createElement("div", { className: "accordion-content" }, children)));
@@ -1677,7 +1677,7 @@ var ListAccordion = function (_a) {
     var renderListItems = function () {
         return Array.from(selectedIds).map(function (selectedId) {
             var Listitem = listItems.find(function (listitem) { return listitem.id === selectedId; });
-            return (React.createElement(accordion_1.default, { key: selectedId, title: Listitem.title, description: Listitem.description, isActive: true, setIsClose: handleItemUnselect(selectedId) }, Listitem.element));
+            return (React.createElement(accordion_1.default, { key: selectedId, className: Listitem.className, title: Listitem.title, description: Listitem.description, isActive: true, setIsClose: handleItemUnselect(selectedId) }, Listitem.element));
         });
     };
     return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
