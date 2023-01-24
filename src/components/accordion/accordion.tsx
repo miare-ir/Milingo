@@ -54,7 +54,7 @@ const Accordion = ({
         <div className="accordion-info">
           <div className="accordion-title">
             {title}
-            {count && <Tag success>{count}</Tag>}
+            {count ? <Tag success>{count}</Tag> : <></>}
           </div>
           {description && (
             <div className="accordion-description">{description}</div>
