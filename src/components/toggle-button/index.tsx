@@ -34,6 +34,7 @@ const ToggleButton = (props: ToggleButtonProps): JSX.Element => {
           type="checkbox"
           name={props.name}
           id={props.name}
+          onChange={() => {}}
           checked={props.checked}
         />
         <div onClick={handleOnToggle} className="slider" />
