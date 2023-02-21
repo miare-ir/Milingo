@@ -92,7 +92,9 @@ const ListAccordion = ({
             className="accordion-item-container"
             key={accordionItem.id}
             onClick={
-              !accordionItem.isDisable && handleItemSelect(accordionItem.id)
+              !accordionItem.isDisable
+                ? handleItemSelect(accordionItem.id)
+                : undefined
             }>
             {accordionItem.element}
           </div>
