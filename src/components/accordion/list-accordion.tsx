@@ -39,23 +39,25 @@ const ListAccordion = ({
 
   const componentClassNames = classNames('list-accordion', rest.className);
 
-  const handleItemSelect = (itemId: number) => (): void => {
-    if (
-      selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
-      !selectedIds.has(itemId)
-    ) {
-      return setSelectedIds(
-        previousSelectedIds =>
-          new Set([
-            itemId,
-            ...Array.from(previousSelectedIds.values()).slice(1),
-          ]),
+  const handleItemSelect = (itemId: number, isDisable: boolean) => (): void => {
+    if (!isDisable) {
+      if (
+        selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
+        !selectedIds.has(itemId)
+      ) {
+        return setSelectedIds(
+          previousSelectedIds =>
+            new Set([
+              itemId,
+              ...Array.from(previousSelectedIds.values()).slice(1),
+            ]),
+        );
+      }
+
+      return setSelectedIds(previousSelectedIds =>
+        new Set(previousSelectedIds).add(itemId),
       );
     }
-
-    return setSelectedIds(previousSelectedIds =>
-      new Set(previousSelectedIds).add(itemId),
-    );
   };
 
   const handleItemUnselect = (itemId: number) => (): void =>
@@ -91,11 +93,10 @@ const ListAccordion = ({
           <div
             className="accordion-item-container"
             key={accordionItem.id}
-            onClick={
-              !accordionItem.isDisable
-                ? handleItemSelect(accordionItem.id)
-                : undefined
-            }>
+            onClick={handleItemSelect(
+              accordionItem.id,
+              accordionItem.isDisable,
+            )}>
             {accordionItem.element}
           </div>
         ))}
