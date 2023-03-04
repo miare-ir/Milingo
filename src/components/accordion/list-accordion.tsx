@@ -68,7 +68,7 @@ const ListAccordion = ({
   const renderListItems = (): JSX.Element[] =>
     Array.from(selectedIds).map(selectedId => {
       const Listitem = listItems.find(listitem => listitem.id === selectedId);
-      return (
+      return Listitem ? (
         <Accordion
           key={selectedId}
           className={Listitem.className}
@@ -78,6 +78,8 @@ const ListAccordion = ({
           setIsClose={handleItemUnselect(selectedId)}>
           {Listitem.element}
         </Accordion>
+      ) : (
+        <></>
       );
     });
 
