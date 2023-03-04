@@ -39,7 +39,11 @@ const ListAccordion = ({
 
   const componentClassNames = classNames('list-accordion', rest.className);
 
-  const handleItemSelect = (itemId: number) => (): void => {
+  const handleItemSelect = (itemId: number, isDisable: boolean) => (): void => {
+    if (isDisable) {
+      return;
+    }
+
     if (
       selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
       !selectedIds.has(itemId)
@@ -93,9 +97,10 @@ const ListAccordion = ({
           <div
             className="accordion-item-container"
             key={accordionItem.id}
-            onClick={
-              !accordionItem.isDisable && handleItemSelect(accordionItem.id)
-            }>
+            onClick={handleItemSelect(
+              accordionItem.id,
+              accordionItem.isDisable,
+            )}>
             {accordionItem.element}
           </div>
         ))}
