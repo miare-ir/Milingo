@@ -40,24 +40,26 @@ const ListAccordion = ({
   const componentClassNames = classNames('list-accordion', rest.className);
 
   const handleItemSelect = (itemId: number, isDisable: boolean) => (): void => {
-    if (!isDisable) {
-      if (
-        selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
-        !selectedIds.has(itemId)
-      ) {
-        return setSelectedIds(
-          previousSelectedIds =>
-            new Set([
-              itemId,
-              ...Array.from(previousSelectedIds.values()).slice(1),
-            ]),
-        );
-      }
+    if (isDisable) {
+      return;
+    }
 
-      return setSelectedIds(previousSelectedIds =>
-        new Set(previousSelectedIds).add(itemId),
+    if (
+      selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
+      !selectedIds.has(itemId)
+    ) {
+      return setSelectedIds(
+        previousSelectedIds =>
+          new Set([
+            itemId,
+            ...Array.from(previousSelectedIds.values()).slice(1),
+          ]),
       );
     }
+
+    return setSelectedIds(previousSelectedIds =>
+      new Set(previousSelectedIds).add(itemId),
+    );
   };
 
   const handleItemUnselect = (itemId: number) => (): void =>
