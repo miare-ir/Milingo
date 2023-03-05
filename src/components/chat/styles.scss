@@ -24,11 +24,12 @@
       padding: 8px;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: flex-end;
       border-top: 1px solid #ecedef;
 
       .send-button {
-        margin: auto;
+        margin: unset;
+        height: 38px;
       }
 
       .textarea-container {
@@ -51,6 +52,111 @@
 
         &:active, &:focus {
           box-shadow: none !important;
+        }
+      }
+    }
+
+    .chat-footer {
+      color: #1e6dc8;
+      background-color: #ecedef;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      align-items: center;
+
+      .file-container {
+        .file-div {
+          flex-direction: column;
+
+          button {
+            margin: 0;
+            background-color: transparent;
+            border: none;
+            padding: 12px 19px;
+            width: fit-content;
+
+            &:hover {
+              background-color: transparent !important;
+              border-color: transparent !important;
+            }
+          }
+
+          .file-name-container{ 
+            margin: 0;
+            position: absolute;
+            right: 8px;
+            bottom: 48px;
+            max-width: 268px;                
+
+            .file-name {
+              border-radius: 10px;
+              font-size: 12px;
+              line-height: 19px;
+              height: 38px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              width: 268px;
+
+              .try-again {
+                margin: 0;
+                background-color: transparent;
+                border: none;
+                padding: 9px 8px;
+                width: fit-content;
+                min-width: 16px;
+    
+                &:hover {
+                  background-color: transparent !important;
+                  border-color: transparent !important;
+                }
+
+                .reload-icon {
+                  width: 16px;
+                }
+              }
+
+              &-text {
+                padding: 10px 8px;
+
+                p {
+                  max-width: 230px;
+                }
+
+                .clear {
+                  font-size: 20px;
+                  top: 8px;
+                }
+              }
+            }
+
+            &.error-state {
+              bottom: 38px;
+
+              .file-name {
+                line-height: 14px;
+                height: 34px;
+
+                
+                &-text {
+                  .clear {
+                    font-size: 19px;
+                  }
+                }
+              }
+            }
+
+            &.try-again-state {
+              .clear {
+                right: 0;
+              }
+            }
+          }
+        }
+
+        .error {
+          font-size: 12px;
+          margin-top: 0;
         }
       }
     }
