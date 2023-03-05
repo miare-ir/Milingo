@@ -26,8 +26,8 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   states?: StatesDictionary;
   title?: string;
   validate?: (value: File[]) => boolean;
-  children?: string;
-  tryAgainText?: string;
+  children?: string | React.ReactNode;
+  tryAgainText?: string | React.ReactNode;
   inputRef?: React.RefObject<HTMLInputElement>;
 }
 
