@@ -123,6 +123,7 @@ const SubmitForm = ({
             states={{ 0: state }}
             onTryAgain={onTryAgain}
             validate={validate}
+            accept="image/*"
             tryAgainText={renderTryAgainIcon()}>
             <img className="attach-icon" src={attachIcon} />
           </FileInput>
