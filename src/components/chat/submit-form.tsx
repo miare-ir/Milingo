@@ -91,6 +91,7 @@ const SubmitForm = ({
       <form onSubmit={handleSubmitMessage} className="submit-form">
         {!isFileSelect && (
           <Textarea
+            autoFocus
             rows={1}
             disabled={isSending}
             value={message}
