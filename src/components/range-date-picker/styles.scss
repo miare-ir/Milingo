@@ -1,9 +1,9 @@
 @import '../../assets/styles/_base.scss';
 
 .range-date-picker-container {
-  .date-picker-input {
+.date-picker-input {
     display: flex;
-
+    
     .material-icons {
       margin-left: 8px;
       color: $warning1;
@@ -22,8 +22,9 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
 
-  .date-picker {
+.date-picker {
     background-color: $whiteColor;
     padding: 0;
     width: 332px;
@@ -176,4 +177,3 @@
       }
     }
   }
-}
