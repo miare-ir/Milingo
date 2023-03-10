@@ -13,7 +13,7 @@ export interface SubmitFormProps {
   id: number;
   isSending?: boolean;
   canAttach?: boolean;
-  onSubmit: (id: number, message: string) => void;
+  onSubmit: (id: number, message: string, attachment?: File) => void;
   onChangeFiles?: (value: File[]) => void;
   onTryAgain?: (value: File[]) => void;
   validate?: (value: File[]) => boolean;
@@ -43,6 +43,7 @@ const SubmitForm = ({
     isSending ||
     (state && state.loading) ||
     forceDisplayError;
+  const [attachment, setAttachment] = React.useState(null);
 
   React.useEffect(() => {
     if (!isSending) {
@@ -55,7 +56,7 @@ const SubmitForm = ({
   ): void => {
     event?.preventDefault();
     if (!isSendButtonDisabled) {
-      onSubmit(id, message.trim());
+      onSubmit(id, message.trim(), attachment);
     }
   };
 
@@ -77,6 +78,7 @@ const SubmitForm = ({
     } else {
       setIsFileSelect(false);
     }
+    setAttachment(value);
     if (onChangeFiles) {
       onChangeFiles(value);
     }
