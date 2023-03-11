@@ -118,12 +118,13 @@ const SubmitForm = ({
         <div className="chat-footer">
           {footer}
           <FileInput
-            displayClear
+            displayClear={!isSending}
             forceDisplayError={forceDisplayError}
             files={files}
             onChangeFiles={handleFileChange}
             states={{ 0: state }}
             onTryAgain={onTryAgain}
+            disabled={isSending || state?.loading}
             validate={validate}
             accept="image/*"
             tryAgainText={renderTryAgainIcon()}>
