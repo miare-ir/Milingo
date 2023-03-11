@@ -102,7 +102,7 @@ export const WithFooter = (): JSX.Element => {
   const renderChatFooter = (): JSX.Element => (
     <div style={footerStyle}>
       <Button
-        style={{ backgroundColor: 'transparent' }}
+        style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
         type="button"
         link
         tiny
@@ -137,7 +137,7 @@ export const WithAttachment = (): JSX.Element => {
   const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
   const renderChatFooter = (): JSX.Element => (
     <Button
-      style={{ backgroundColor: 'transparent' }}
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
       type="button"
       link
       tiny
@@ -177,7 +177,7 @@ export const WithProgressAttachment = (): JSX.Element => {
   const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
   const renderChatFooter = (): JSX.Element => (
     <Button
-      style={{ backgroundColor: 'transparent' }}
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
       type="button"
       link
       tiny
@@ -217,7 +217,7 @@ export const WithErrorAttachment = (): JSX.Element => {
   const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
   const renderChatFooter = (): JSX.Element => (
     <Button
-      style={{ backgroundColor: 'transparent' }}
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
       type="button"
       link
       tiny
@@ -260,7 +260,7 @@ export const WithTryAgainAttachment = (): JSX.Element => {
   const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
   const renderChatFooter = (): JSX.Element => (
     <Button
-      style={{ backgroundColor: 'transparent' }}
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
       type="button"
       link
       tiny
