@@ -60,6 +60,8 @@
       color: #1e6dc8;
       background-color: #ecedef;
       height: 40px;
+      padding: 8px 20px;
+      box-sizing: border-box;
       display: flex;
       justify-content: space-between;
       flex-direction: row-reverse;
@@ -73,8 +75,17 @@
             margin: 0;
             background-color: transparent;
             border: none;
-            padding: 12px 19px;
+            padding: 0;
             width: fit-content;
+            cursor: pointer;
+
+            img {
+              cursor: pointer;
+            }
+
+            input {
+              cursor: pointer;
+            }
 
             &:hover {
               background-color: transparent !important;
