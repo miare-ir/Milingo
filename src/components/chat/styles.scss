@@ -224,6 +224,16 @@
       overflow: hidden;
       text-overflow: ellipsis;  
       text-align: right;
+
+      .attached-image {
+        width: 170px;
+      }
+
+      .milingo-image-modal {
+        img {
+          width: 60vw;
+        }
+      }
     }
   }
 }
