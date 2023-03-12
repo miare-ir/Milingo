@@ -29,6 +29,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   children?: string | React.ReactNode;
   tryAgainText?: string | React.ReactNode;
   inputRef?: React.RefObject<HTMLInputElement>;
+  isClear?: boolean;
 }
 
 export interface FileInputState {
@@ -50,6 +51,11 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     if (prevProps.files !== this.props.files) {
       this.setState({ files: prevProps.files });
     }
+    if (prevProps.isClear !== this.props.isClear) {
+      if (this.props.isClear) {
+        this.clear();
+      }
+    }
   }
 
   handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -67,19 +73,27 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
     }
   };
 
-  clear = (index: number): void => {
+  clear = (index?: number): void => {
     if (this.props.disabled) {
       return;
     }
+    if (index) {
+      this.setState({
+        files: this.state.files.filter(
+          (_, filterIndex) => index !== filterIndex,
+        ),
+      });
 
-    this.setState({
-      files: this.state.files.filter((_, filterIndex) => index !== filterIndex),
-    });
-
-    if (this.props.onChangeFiles) {
-      this.props.onChangeFiles(
-        this.state.files.filter((_, filterIndex) => index !== filterIndex),
-      );
+      if (this.props.onChangeFiles) {
+        this.props.onChangeFiles(
+          this.state.files.filter((_, filterIndex) => index !== filterIndex),
+        );
+      }
+    } else {
+      this.setState({ files: null });
+      if (this.props.onChangeFiles) {
+        this.props.onChangeFiles([]);
+      }
     }
   };
 
@@ -95,6 +109,9 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       children,
       className,
       onChangeFiles,
+      onTryAgain,
+      tryAgainText,
+      isClear,
       inputRef,
       ...props
     } = this.props;

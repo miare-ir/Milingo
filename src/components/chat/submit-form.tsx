@@ -2,12 +2,13 @@ import * as React from 'react';
 
 import sendIcon from '../../assets/icon/send.svg';
 import disabledSendIcon from '../../assets/icon/disabled-send.svg';
+import attachIcon from '../../assets/icon/attachment.svg';
+import ReloadIcon from '../../assets/icon/reload.svg';
+import usePrevious from '../../common/use-previous';
 import Button from '../button';
 import Textarea from '../textarea';
 import FileInput, { States } from '../file-input';
 import './styles.scss';
-import attachIcon from '../../assets/icon/attachment.svg';
-import ReloadIcon from '../../assets/icon/reload.svg';
 
 export interface SubmitFormProps {
   id: number;
@@ -38,16 +39,15 @@ const SubmitForm = ({
 }: SubmitFormProps): JSX.Element => {
   const [message, setMessage] = React.useState('');
   const [isFileSelect, setIsFileSelect] = React.useState(files?.length > 0);
+  const prevIsSending = usePrevious(isSending);
   const isSendButtonDisabled =
-    (!message && !isFileSelect) ||
-    isSending ||
-    (state && state.loading) ||
-    forceDisplayError;
+    (!message && !isFileSelect) || isSending || forceDisplayError;
   const [attachment, setAttachment] = React.useState(null);
 
   React.useEffect(() => {
-    if (!isSending) {
+    if (prevIsSending && !isSending) {
       setMessage('');
+      setIsFileSelect(false);
     }
   }, [isSending]);
 
@@ -124,9 +124,10 @@ const SubmitForm = ({
             onChangeFiles={handleFileChange}
             states={{ 0: state }}
             onTryAgain={onTryAgain}
-            disabled={isSending || state?.loading}
+            disabled={isSending}
             validate={validate}
             accept="image/*"
+            isClear={!isFileSelect}
             tryAgainText={renderTryAgainIcon()}>
             <img className="attach-icon" src={attachIcon} />
           </FileInput>
