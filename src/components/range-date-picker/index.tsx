@@ -11,6 +11,7 @@ import { ButtonProps } from '../button';
 
 import './styles.scss';
 import { generateMonth } from '../../common/utils/date-pickers';
+import Loader from '../../components/loader';
 
 moment.loadPersian({ dialect: 'persian-modern' });
 
@@ -30,7 +31,10 @@ export interface RangeDatePickerProps {
   forceDatePickerOpen?: boolean;
   disabled?: boolean;
   buttonProps?: Omit<ButtonProps, 'children' | 'ref'>;
-  isInline: boolean;
+  isInline?: boolean;
+  submitButtonTitle?: string;
+  isLoading?: boolean;
+  isDisabled?: boolean;
 }
 
 export interface RangeDatePickerState {
@@ -707,7 +711,9 @@ class RangeDatePicker extends React.Component<
             <PersianNumber className="month" value={displayedDate} />
           </Column>
         </Row>
-        <div className="calendar" ref={this.calendar}>
+        <div
+          className={this.props.isInline ? 'calendar-inline' : 'calendar'}
+          ref={this.calendar}>
           <div className="calendar-month">
             <div className="calendar-week">
               <div className="calendar-weekday">ش</div>
@@ -721,23 +727,57 @@ class RangeDatePicker extends React.Component<
           </div>
           {this.generateMonth(this.state.month, this.state.year)}
         </div>
-        <div className="calendar-actions">
-          <Button
-            link
-            small
-            disabled={!this.state.toDate || !this.state.fromDate}
-            onClick={() =>
-              this.saveDate([this.state.fromDate, this.state.toDate])
-            }>
-            تایید
-          </Button>
-          <Button link small onClick={this.closeDialog}>
-            انصراف
-          </Button>
-          <Button link small onClick={this.resetDate.bind(this)}>
-            امروز
-          </Button>
-        </div>
+        {this.props.isInline ? (
+          <div className="calendar-actions-inline">
+            <Button primary small onClick={this.resetDate.bind(this)}>
+              امروز
+            </Button>
+            <hr />
+            <Button
+              primary
+              small
+              disabled={
+                !this.state.toDate ||
+                !this.state.fromDate ||
+                this.props.isDisabled
+              }
+              onClick={() =>
+                this.saveDate([this.state.fromDate, this.state.toDate])
+              }>
+              {this.props.isLoading ? (
+                <Loader />
+              ) : (
+                this.props.submitButtonTitle || 'تایید'
+              )}
+            </Button>
+          </div>
+        ) : (
+          <div className="calendar-actions">
+            <Button
+              link
+              small
+              disabled={
+                !this.state.toDate ||
+                !this.state.fromDate ||
+                this.props.isDisabled
+              }
+              onClick={() =>
+                this.saveDate([this.state.fromDate, this.state.toDate])
+              }>
+              {this.props.isLoading ? (
+                <Loader primary />
+              ) : (
+                this.props.submitButtonTitle || 'تایید'
+              )}
+            </Button>
+            <Button link small onClick={this.closeDialog}>
+              انصراف
+            </Button>
+            <Button link small onClick={this.resetDate.bind(this)}>
+              امروز
+            </Button>
+          </div>
+        )}
       </>
     );
   }
