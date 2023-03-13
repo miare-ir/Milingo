@@ -729,7 +729,11 @@ class RangeDatePicker extends React.Component<
         </div>
         {this.props.isInline ? (
           <div className="calendar-actions-inline">
-            <Button primary small onClick={this.resetDate.bind(this)}>
+            <Button
+              className="today-btn"
+              text
+              small
+              onClick={this.resetDate.bind(this)}>
               امروز
             </Button>
             <hr />

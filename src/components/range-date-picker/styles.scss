@@ -67,12 +67,16 @@
         display: flex;
         justify-content: space-around;
       }
-
+      
       &-actions-inline {
         padding: calculatePixelToRem(10);
         display: flex;
         flex-direction: column;
         justify-content: center;
+        
+        .today-btn {
+          align-self: center;
+        }
 
         hr {
           border: 1px solid #d0d0d0;
@@ -80,7 +84,7 @@
           margin-bottom: 24px;
         }
       }
-
+      
       &-info {
         background-color: #212230;
         padding: calculatePixelToRem(10);

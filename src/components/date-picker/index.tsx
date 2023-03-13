@@ -206,6 +206,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       this.setState({ dialogOpen: false });
     }
   };
+
   renderCalender(
     currentDate: string,
     currentYear: string,
@@ -252,7 +253,11 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
         </div>
         {this.props.isInline ? (
           <div className="calendar-actions-inline">
-            <Button primary small onClick={this.resetDate.bind(this)}>
+            <Button
+              className="today-btn"
+              text
+              small
+              onClick={this.resetDate.bind(this)}>
               امروز
             </Button>
             <hr />
@@ -292,6 +297,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
       </>
     );
   }
+
   render(): React.ReactNode {
     const currentDate: string = this.state.currentDate.format('ddd jD jMMMM');
     const currentYear: string = this.state.currentDate.jYear();
