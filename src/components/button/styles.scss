@@ -33,6 +33,9 @@ $buttonLinkHoverBackgroundColor: $primary3;
 $buttonLinkHoverBorderColor: $primary3;
 $buttonLinkHoverColor: $primary1;
 
+$buttonTextColor: $primary1;
+$buttonTextHoverColor: $primary2;
+
 .milingo-btn-wrapper {
   box-sizing: border-box;
   border-radius: 4px;
@@ -130,6 +133,18 @@ $buttonLinkHoverColor: $primary1;
       background-color: $buttonPrimaryDisabledBackgroundColor;
       border-color: $buttonPrimaryDisabledBorderColor;
       color: $buttonPrimaryDisabledColor;
+    }
+  }
+
+  &.text {
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    color: $buttonTextColor;
+
+    &:not(.disabled):not([disabled]):not(:disabled):hover{
+      background-color: transparent;
+      color:$buttonTextHoverColor ;
     }
   }
 
