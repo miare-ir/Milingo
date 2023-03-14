@@ -142,7 +142,7 @@ $buttonTextHoverColor: $primary2;
     border: none;
     color: $buttonTextColor;
 
-    &:not(.disabled):not([disabled]):not(:disabled):hover{
+    &:not(.disabled):not([disabled]):not(:disabled):hover {
       background-color: transparent;
       color:$buttonTextHoverColor ;
     }
