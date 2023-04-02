@@ -154,7 +154,11 @@ export const WithAttachment = (): JSX.Element => {
       canSubmit
       canAttach
       footer={renderChatFooter()}
-      files={testFiles}>
+      files={testFiles}
+      errorInvalidSize="ارور سایز"
+      validFileSize={10000000}
+      validFileFormat={['image/jpeg', 'image/png']}
+      errorInvalidFormat="ارور فورمت">
       {messages.map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}

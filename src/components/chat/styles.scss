@@ -166,6 +166,10 @@
         }
 
         .error {
+          width: 266px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           font-size: 12px;
           margin-top: 0;
         }
@@ -231,7 +235,7 @@
 
       .milingo-image-modal {
         img {
-          width: 60vw;
+          width: 46vw;
         }
       }
     }

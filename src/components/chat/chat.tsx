@@ -11,6 +11,7 @@ export interface ChatProps
   id: number;
   handelSubmit?: (id: number, text: string) => void;
   isSending?: boolean;
+  isClear?: boolean;
   canSubmit?: boolean;
   canAttach?: boolean;
   children?: React.ReactNode;
@@ -18,8 +19,13 @@ export interface ChatProps
   state?: States;
   files?: File[];
   forceDisplayError?: boolean;
+  validFileSize?: number;
+  validFileFormat?: string[];
+  errorInvalidSize?: string;
+  errorInvalidFormat?: string;
   onChangeFiles?: (value: File[]) => void;
   onTryAgain?: (value: File[]) => void;
+  onFileCancelled?: (index?: number) => void;
   validate?: (value: File[]) => boolean;
 }
 
@@ -27,6 +33,7 @@ const Chat = ({
   id,
   handelSubmit,
   isSending,
+  isClear,
   canSubmit,
   canAttach,
   children,
@@ -34,8 +41,13 @@ const Chat = ({
   state,
   forceDisplayError,
   files,
+  validFileSize,
+  validFileFormat,
+  errorInvalidFormat,
+  errorInvalidSize,
   onChangeFiles,
   onTryAgain,
+  onFileCancelled,
   validate,
   ...rest
 }: ChatProps): JSX.Element => {
@@ -55,8 +67,14 @@ const Chat = ({
           files={files}
           onChangeFiles={onChangeFiles}
           onTryAgain={onTryAgain}
+          onFileCancelled={onFileCancelled}
           validate={validate}
           forceDisplayError={forceDisplayError}
+          isClear={isClear}
+          errorInvalidSize={errorInvalidSize}
+          errorInvalidFormat={errorInvalidFormat}
+          validFileSize={validFileSize}
+          validFileFormat={validFileFormat}
         />
       )}
       {!canAttach && <div className="chat-footer">{footer}</div>}

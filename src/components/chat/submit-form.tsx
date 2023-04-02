@@ -4,7 +4,6 @@ import sendIcon from '../../assets/icon/send.svg';
 import disabledSendIcon from '../../assets/icon/disabled-send.svg';
 import attachIcon from '../../assets/icon/attachment.svg';
 import ReloadIcon from '../../assets/icon/reload.svg';
-import usePrevious from '../../common/use-previous';
 import Button from '../button';
 import Textarea from '../textarea';
 import FileInput, { States } from '../file-input';
@@ -17,11 +16,17 @@ export interface SubmitFormProps {
   onSubmit: (id: number, message: string, attachment?: File) => void;
   onChangeFiles?: (value: File[]) => void;
   onTryAgain?: (value: File[]) => void;
+  onFileCancelled?: (index?: number) => void;
   validate?: (value: File[]) => boolean;
   footer?: React.ReactNode;
   state?: States;
   forceDisplayError?: boolean;
   files?: File[];
+  isClear?: boolean;
+  validFileSize?: number;
+  validFileFormat?: string[];
+  errorInvalidSize?: string;
+  errorInvalidFormat?: string;
 }
 
 const SubmitForm = ({
@@ -31,25 +36,31 @@ const SubmitForm = ({
   canAttach,
   onChangeFiles,
   onTryAgain,
+  onFileCancelled,
   validate,
+  validFileSize,
+  validFileFormat,
+  errorInvalidSize,
+  errorInvalidFormat,
   footer,
   state,
   forceDisplayError,
   files,
+  isClear = false,
 }: SubmitFormProps): JSX.Element => {
   const [message, setMessage] = React.useState('');
+  const [fileState, setFileState] = React.useState(state);
   const [isFileSelect, setIsFileSelect] = React.useState(files?.length > 0);
-  const prevIsSending = usePrevious(isSending);
   const isSendButtonDisabled =
-    (!message && !isFileSelect) || isSending || forceDisplayError;
+    (!message && !isFileSelect) ||
+    isSending ||
+    (!!fileState && !!fileState.message);
   const [attachment, setAttachment] = React.useState(null);
 
-  React.useEffect(() => {
-    if (prevIsSending && !isSending) {
-      setMessage('');
-      setIsFileSelect(false);
-    }
-  }, [isSending]);
+  const isSizeInvalid = (file: File): boolean =>
+    validFileSize && file.size > validFileSize;
+  const isFormatInvalid = (file: File): boolean =>
+    validFileFormat && !validFileFormat.some(format => file.type === format);
 
   const handleSubmitMessage = (
     event?: React.FormEvent<HTMLFormElement>,
@@ -60,10 +71,21 @@ const SubmitForm = ({
     }
   };
 
+  React.useEffect(() => {
+    if (isClear) {
+      setAttachment(null);
+      setIsFileSelect(false);
+      setMessage('');
+    }
+  }, [isClear, attachment]);
+
   const handleTextareaKeyDowns = (
     event: React.KeyboardEvent<HTMLTextAreaElement>,
   ): void => {
-    if (event.ctrlKey && event.key === 'Enter') {
+    if (
+      (event.ctrlKey && event.key === 'Enter') ||
+      (event.shiftKey && event.key === 'Enter')
+    ) {
       handleSubmitMessage();
     }
   };
@@ -75,6 +97,18 @@ const SubmitForm = ({
   const handleFileChange = (value: File[]): void => {
     if (value.length > 0) {
       setIsFileSelect(true);
+      if (isSizeInvalid(value[0])) {
+        setFileState({
+          message:
+            errorInvalidSize || 'حجم فایل ارسالی شما بیش از حد مجاز است.',
+        });
+      } else if (isFormatInvalid(value[0])) {
+        setFileState({
+          message: errorInvalidFormat || 'فرمت فایل ارسالی مناسب نیست',
+        });
+      } else {
+        setFileState(state);
+      }
     } else {
       setIsFileSelect(false);
     }
@@ -82,6 +116,16 @@ const SubmitForm = ({
     if (onChangeFiles) {
       onChangeFiles(value);
     }
+  };
+
+  const handleValidate = (value: File[]): boolean => {
+    if (isSizeInvalid(value[0]) || isFormatInvalid(value[0])) {
+      return false;
+    }
+    if (validate) {
+      return validate(value);
+    }
+    return true;
   };
 
   const renderTryAgainIcon = (): JSX.Element => (
@@ -118,16 +162,16 @@ const SubmitForm = ({
         <div className="chat-footer">
           {footer}
           <FileInput
-            displayClear={!isSending}
+            displayClear
             forceDisplayError={forceDisplayError}
             files={files}
             onChangeFiles={handleFileChange}
-            states={{ 0: state }}
+            onFileCancelled={onFileCancelled}
+            states={{ 0: fileState }}
             onTryAgain={onTryAgain}
-            disabled={isSending}
-            validate={validate}
-            accept="image/*"
-            isClear={!isFileSelect}
+            validate={handleValidate}
+            accept={validFileFormat && String(validFileFormat)}
+            isClear={isClear}
             tryAgainText={renderTryAgainIcon()}>
             <img className="attach-icon" src={attachIcon} />
           </FileInput>

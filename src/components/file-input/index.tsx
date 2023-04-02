@@ -22,6 +22,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   forceDisplayError?: boolean;
   onChangeFiles?: (value: File[]) => void;
   onTryAgain?: (files: File[]) => void;
+  onFileCancelled?: (index?: number) => void;
   pre?: string;
   states?: StatesDictionary;
   title?: string;
@@ -89,10 +90,16 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
           this.state.files.filter((_, filterIndex) => index !== filterIndex),
         );
       }
+      if (this.props.onFileCancelled) {
+        this.props.onFileCancelled(index);
+      }
     } else {
       this.setState({ files: null });
       if (this.props.onChangeFiles) {
         this.props.onChangeFiles([]);
+      }
+      if (this.props.onFileCancelled) {
+        this.props.onFileCancelled();
       }
     }
   };
@@ -110,6 +117,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
       className,
       onChangeFiles,
       onTryAgain,
+      onFileCancelled,
       tryAgainText,
       isClear,
       inputRef,
