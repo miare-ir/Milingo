@@ -49,12 +49,13 @@ const SubmitForm = ({
   isClear = false,
 }: SubmitFormProps): JSX.Element => {
   const [message, setMessage] = React.useState('');
-  const [fileState, setFileState] = React.useState(state);
+  const [errorMessage, setErrorMessage] = React.useState('');
   const [isFileSelect, setIsFileSelect] = React.useState(files?.length > 0);
   const isSendButtonDisabled =
     (!message && !isFileSelect) ||
     isSending ||
-    (!!fileState && !!fileState.message);
+    (!!state && !!state.message) ||
+    !!errorMessage;
   const [attachment, setAttachment] = React.useState(null);
 
   const isSizeInvalid = (file: File): boolean =>
@@ -98,16 +99,13 @@ const SubmitForm = ({
     if (value.length > 0) {
       setIsFileSelect(true);
       if (isSizeInvalid(value[0])) {
-        setFileState({
-          message:
-            errorInvalidSize || 'حجم فایل ارسالی شما بیش از حد مجاز است.',
-        });
+        setErrorMessage(
+          errorInvalidSize || 'حجم فایل ارسالی شما بیش از حد مجاز است.',
+        );
       } else if (isFormatInvalid(value[0])) {
-        setFileState({
-          message: errorInvalidFormat || 'فرمت فایل ارسالی مناسب نیست',
-        });
+        setErrorMessage(errorInvalidFormat || 'فرمت فایل ارسالی مناسب نیست');
       } else {
-        setFileState(state);
+        setErrorMessage('');
       }
     } else {
       setIsFileSelect(false);
@@ -167,7 +165,7 @@ const SubmitForm = ({
             files={files}
             onChangeFiles={handleFileChange}
             onFileCancelled={onFileCancelled}
-            states={{ 0: fileState }}
+            states={{ 0: { ...state, message: errorMessage || state.message } }}
             onTryAgain={onTryAgain}
             validate={handleValidate}
             accept={validFileFormat && String(validFileFormat)}
