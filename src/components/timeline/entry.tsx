@@ -5,7 +5,7 @@ import Loader from '../loader';
 import './styles.scss';
 
 export interface TimelineEntryProps extends React.HTMLProps<HTMLDivElement> {
-  time?: string;
+  time?: string | JSX.Element;
   description: string | JSX.Element;
   loading?: boolean;
   noBorder?: boolean;

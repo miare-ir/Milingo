@@ -5,7 +5,7 @@ import './styles.scss';
 
 export interface TabNavItemProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
-  children: string;
+  children: React.ReactNode;
   active?: boolean;
 }
 

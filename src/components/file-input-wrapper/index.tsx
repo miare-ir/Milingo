@@ -16,7 +16,7 @@ import './styles.scss';
 type FileType = 'image' | 'video';
 
 export interface FileInputWrapperProps extends Omit<FileInputProps, 'ref'> {
-  wrapperTitle?: string;
+  wrapperTitle?: string | JSX.Element;
   imageProps?: ImageProps;
   videoProps?: React.HTMLAttributes<HTMLVideoElement>;
   description?: string;
