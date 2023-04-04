@@ -2,7 +2,7 @@
   "name": "milingo",
   "description": "Miare's Design Language (Milingo)",
   "main": "./dist/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "author": "Miare <tech@miare.ir> (https://mia.re)",
   "version": "0.7.7",
   "keywords": [
