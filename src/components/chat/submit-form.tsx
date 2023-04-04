@@ -50,6 +50,7 @@ const SubmitForm = ({
   return (
     <form onSubmit={handleSubmitMessage} className="submit-form">
       <Textarea
+        autoFocus
         rows={1}
         disabled={isSending}
         value={message}

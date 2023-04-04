@@ -639,7 +639,7 @@ var Accordion = function (_a) {
             React.createElement("div", { className: "accordion-info" },
                 React.createElement("div", { className: "accordion-title" },
                     title,
-                    count && React.createElement(tag_1.default, { success: true }, count)),
+                    count ? React.createElement(tag_1.default, { success: true }, count) : React.createElement(React.Fragment, null)),
                 description && (React.createElement("div", { className: "accordion-description" }, description))),
             renderIcon()),
         React.createElement("div", { className: "accordion-content" }, children)));
@@ -1654,7 +1654,10 @@ var ListAccordion = function (_a) {
     var MAX_OPEN_ACCORDIONS_COUNT = maxOpenAccordion || 3;
     var _b = React.useState(new Set()), selectedIds = _b[0], setSelectedIds = _b[1];
     var componentClassNames = classNames('list-accordion', rest.className);
-    var handleItemSelect = function (itemId) { return function () {
+    var handleItemSelect = function (itemId, isDisable) { return function () {
+        if (isDisable) {
+            return;
+        }
         if (selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
             !selectedIds.has(itemId)) {
             return setSelectedIds(function (previousSelectedIds) {
@@ -1677,11 +1680,11 @@ var ListAccordion = function (_a) {
     var renderListItems = function () {
         return Array.from(selectedIds).map(function (selectedId) {
             var Listitem = listItems.find(function (listitem) { return listitem.id === selectedId; });
-            return (React.createElement(accordion_1.default, { key: selectedId, title: Listitem.title, description: Listitem.description, isActive: true, setIsClose: handleItemUnselect(selectedId) }, Listitem.element));
+            return Listitem ? (React.createElement(accordion_1.default, { key: selectedId, className: Listitem.className, title: Listitem.title, description: Listitem.description, isActive: true, setIsClose: handleItemUnselect(selectedId) }, Listitem.element)) : (React.createElement(React.Fragment, null));
         });
     };
     return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
-        React.createElement(accordion_1.default, { className: "main-accordion", title: accordionTitle, count: listItems.length }, accordionItems.map(function (accordionItem) { return (React.createElement("div", { className: "accordion-item-container", key: accordionItem.id, onClick: !accordionItem.isDisable && handleItemSelect(accordionItem.id) }, accordionItem.element)); })),
+        React.createElement(accordion_1.default, { className: "main-accordion", title: accordionTitle, count: listItems.length }, accordionItems.map(function (accordionItem) { return (React.createElement("div", { className: "accordion-item-container", key: accordionItem.id, onClick: handleItemSelect(accordionItem.id, accordionItem.isDisable) }, accordionItem.element)); })),
         React.createElement("div", { className: "items-container" }, renderListItems())));
 };
 exports.default = ListAccordion;
@@ -3346,7 +3349,7 @@ var SubmitForm = function (_a) {
     };
     var handleTextareaChanges = function (event) { return setMessage(event.target.value); };
     return (React.createElement("form", { onSubmit: handleSubmitMessage, className: "submit-form" },
-        React.createElement(textarea_1.default, { rows: 1, disabled: isSending, value: message, placeholder: "\u067E\u06CC\u0627\u0645 \u062E\u0648\u062F \u0631\u0627 \u0648\u0627\u0631\u062F \u06A9\u0646\u06CC\u062F", onChange: handleTextareaChanges, onKeyDown: handleTextareaKeyDowns }),
+        React.createElement(textarea_1.default, { autoFocus: true, rows: 1, disabled: isSending, value: message, placeholder: "\u067E\u06CC\u0627\u0645 \u062E\u0648\u062F \u0631\u0627 \u0648\u0627\u0631\u062F \u06A9\u0646\u06CC\u062F", onChange: handleTextareaChanges, onKeyDown: handleTextareaKeyDowns }),
         React.createElement(button_1.default, { type: "submit", link: true, tiny: true, disabled: isSendButtonDisabled, className: "send-button" },
             React.createElement("img", { src: isSendButtonDisabled ? disabled_send_svg_1.default : send_svg_1.default }))));
 };
@@ -5447,7 +5450,7 @@ var ToggleButton = function (props) {
     };
     return (React.createElement("div", { className: "toggle-button-container " + (props.ltr ? 'ltr' : '') },
         React.createElement("label", { className: "toggle-button " + (props.classNames || '') + " " + (props.large ? 'large' : ''), htmlFor: props.name },
-            React.createElement("input", { disabled: props.disabled, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, checked: props.checked }),
+            React.createElement("input", { disabled: props.disabled, className: "" + (props.loading ? 'loading' : ''), type: "checkbox", name: props.name, id: props.name, onChange: function () { }, checked: props.checked }),
             React.createElement("div", { onClick: handleOnToggle, className: "slider" })),
         props.label && (React.createElement("p", { className: "label " + (props.large ? 'large' : '') + " " + (props.ltr ? 'ltr' : '') }, props.label))));
 };

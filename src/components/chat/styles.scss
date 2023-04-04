@@ -63,13 +63,25 @@
 
   &-message {
     &-container {
+      display: flex;
+      flex-direction: column;
+
+      .chat-message-item {
+        width: fit-content;
+        max-width: calc( 100% - 34px);
+        word-break: break-word;
+        overflow: hidden;
+      }
+
       &.right {
         text-align: left;
+        align-items: flex-end;
         
         .chat-message-item {
           background: #ecedef;
           border-radius: 10px 10px 10px 0;
           color: #3d3f53;
+          width: fit-content;
         }
       }
   

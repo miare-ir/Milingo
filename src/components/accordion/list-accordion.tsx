@@ -7,6 +7,7 @@ import './styles/index.scss';
 
 interface ListItems {
   id: number;
+  className?: string;
   title: string;
   description: string;
   element: JSX.Element;
@@ -38,7 +39,11 @@ const ListAccordion = ({
 
   const componentClassNames = classNames('list-accordion', rest.className);
 
-  const handleItemSelect = (itemId: number) => (): void => {
+  const handleItemSelect = (itemId: number, isDisable: boolean) => (): void => {
+    if (isDisable) {
+      return;
+    }
+
     if (
       selectedIds.size >= MAX_OPEN_ACCORDIONS_COUNT &&
       !selectedIds.has(itemId)
@@ -67,15 +72,18 @@ const ListAccordion = ({
   const renderListItems = (): JSX.Element[] =>
     Array.from(selectedIds).map(selectedId => {
       const Listitem = listItems.find(listitem => listitem.id === selectedId);
-      return (
+      return Listitem ? (
         <Accordion
           key={selectedId}
+          className={Listitem.className}
           title={Listitem.title}
           description={Listitem.description}
           isActive
           setIsClose={handleItemUnselect(selectedId)}>
           {Listitem.element}
         </Accordion>
+      ) : (
+        <></>
       );
     });
 
@@ -89,9 +97,10 @@ const ListAccordion = ({
           <div
             className="accordion-item-container"
             key={accordionItem.id}
-            onClick={
-              !accordionItem.isDisable && handleItemSelect(accordionItem.id)
-            }>
+            onClick={handleItemSelect(
+              accordionItem.id,
+              accordionItem.isDisable,
+            )}>
             {accordionItem.element}
           </div>
         ))}
