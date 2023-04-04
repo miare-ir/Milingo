@@ -4073,7 +4073,8 @@ var SelectComponent = /** @class */ (function (_super) {
     SelectComponent.prototype.componentDidMount = function () {
         document.addEventListener('click', this.handleDocumentClick.bind(this), false);
         document.addEventListener('touchend', this.handleDocumentClick.bind(this), false);
-        this.selectElement.value = this.props.value && this.props.value.value;
+        this.selectElement.value =
+            this.props.value && this.props.value.value;
     };
     SelectComponent.prototype.componentWillUnmount = function () {
         this.setState({ mounted: false });

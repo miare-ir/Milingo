@@ -3,11 +3,12 @@ import * as classNames from 'classnames';
 
 import './styles.scss';
 
-export interface FormGroupProps extends React.HTMLProps<HTMLDivElement> {
+export interface FormGroupProps
+  extends Omit<React.HTMLProps<HTMLDivElement>, 'title'> {
   className?: string;
   children?: React.ReactNode;
   singleRow?: boolean;
-  title?: string;
+  title?: React.ReactNode;
   extraTitle?: JSX.Element | string;
 }
 

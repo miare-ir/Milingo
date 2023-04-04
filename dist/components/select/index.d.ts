@@ -2,11 +2,11 @@ import * as React from 'react';
 import './styles.scss';
 export interface Option {
     label: string;
-    value: string;
+    value: string | number;
     className?: string;
 }
 export interface SelectProps {
-    name: string;
+    name?: string;
     options: Option[];
     baseClassName?: string;
     className?: string;
@@ -18,6 +18,8 @@ export interface SelectProps {
     showedItem?: number;
     errorMessage?: string;
     errorMessagePosition?: 'top' | 'bottom';
+    forceDisplayError?: boolean;
+    validate?: () => boolean;
 }
 interface SelectState {
     selected: Option;

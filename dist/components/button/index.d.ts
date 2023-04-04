@@ -10,6 +10,9 @@ export interface ButtonProps extends React.ComponentProps<'button'> {
     regular?: boolean;
     large?: boolean;
     shouldRender?: boolean;
+    raised?: boolean;
+    noBorder?: boolean;
+    loading?: boolean;
 }
 declare class Button extends React.Component<ButtonProps, {}> {
     render(): JSX.Element;
