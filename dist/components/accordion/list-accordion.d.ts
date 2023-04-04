@@ -2,6 +2,7 @@ import * as React from 'react';
 import './styles/index.scss';
 interface ListItems {
     id: number;
+    className?: string;
     title: string;
     description: string;
     element: JSX.Element;
