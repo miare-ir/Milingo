@@ -20,7 +20,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
     new ForkTsCheckerWebpackPlugin()
   ],
   optimization: {

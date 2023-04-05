@@ -109,6 +109,7 @@
   "dependencies": {
     "@percy/cli": "^1.21.0",
     "babel-loader": "^9.1.2",
+    "classnames": "^2.3.2",
     "prop-types": "^15.8.1",
     "react-circular-progressbar": "^2.1.0"
   },
