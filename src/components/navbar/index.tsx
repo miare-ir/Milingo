@@ -8,7 +8,7 @@ export interface NavbarProps {
   horizontally?: boolean;
 }
 
-const Navbar: React.SFC<NavbarProps> = (props: NavbarProps) => {
+const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
   const navbarClassNames = classNames('navbar', {
     horizontally: props.horizontally,
   });

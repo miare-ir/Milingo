@@ -16,7 +16,7 @@ export interface ColumnProps extends React.HTMLProps<HTMLDivElement> {
   justify?: 'center' | 'space-between' | 'flex-end' | 'flex-start';
 }
 
-export const Column: React.SFC<ColumnProps> = (props: ColumnProps) => {
+export const Column: React.FC<ColumnProps> = (props: ColumnProps) => {
   const classes = classNames(props.className, 'flex-column', {
     'flex-row-mobile': props['mb-row'],
     [`flex-order-${props.order}`]: props.order !== undefined,
@@ -57,7 +57,7 @@ export interface RowProps extends React.HTMLProps<HTMLDivElement> {
   justify?: 'center' | 'space-between' | 'flex-end' | 'flex-start';
 }
 
-export const Row: React.SFC<RowProps> = (props: RowProps) => {
+export const Row: React.FC<RowProps> = (props: RowProps) => {
   const classes = classNames(props.className, 'flex-row', {
     'flex-column-mobile': props['mb-column'],
     [`flex-order-${props.order}`]: props.order !== undefined,

@@ -6,7 +6,7 @@ export interface ListProps extends React.HTMLProps<HTMLUListElement> {
   large?: boolean;
 }
 
-const List: React.SFC<ListProps> = (props: ListProps) => (
+const List: React.FC<ListProps> = (props: ListProps) => (
   <ul className="list" {...props} />
 );
 

@@ -11,7 +11,7 @@ export interface MenuAvatarProps extends React.HTMLProps<HTMLDivElement> {
   type?: 'warning';
 }
 
-const MenuAvatar: React.SFC<MenuAvatarProps> = ({
+const MenuAvatar: React.FC<MenuAvatarProps> = ({
   avatar,
   percentage,
   selected,

@@ -9,7 +9,7 @@ export interface NotificationProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
 }
 
-const Notification: React.SFC<NotificationProps> = (
+const Notification: React.FC<NotificationProps> = (
   props: NotificationProps,
 ) => {
   const { message, className, warning, ...restOfProps } = props;

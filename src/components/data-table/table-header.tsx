@@ -4,7 +4,7 @@ export interface ThProps extends React.HTMLProps<HTMLTableHeaderCellElement> {
   children?: React.ReactNode;
 }
 
-const Th: React.SFC<ThProps> = (props: ThProps) => {
+const Th: React.FC<ThProps> = (props: ThProps) => {
   const { children, ...restOfProps } = props;
 
   return <th {...restOfProps}>{children}</th>;

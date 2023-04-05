@@ -8,7 +8,7 @@ export interface TimelineProps {
   children?: React.ReactNode;
 }
 
-const Timeline: React.SFC<TimelineProps> = (props: TimelineProps) => (
+const Timeline: React.FC<TimelineProps> = (props: TimelineProps) => (
   <div className="timeline-wrapper">{props.children}</div>
 );
 
