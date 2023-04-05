@@ -50,6 +50,7 @@
     "@storybook/cli": "^7.0.2",
     "@storybook/preset-create-react-app": "^7.0.2",
     "@storybook/react": "^7.0.2",
+    "@storybook/react-webpack5": "^7.0.2",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
