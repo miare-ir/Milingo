@@ -45,24 +45,21 @@ module.exports = {
         },
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.scss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'resolve-url-loader',
-            options: {},
-          },
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: 'css-loader' },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [require('autoprefixer')],
-              sourceMap: true,
+              postcssOptions: {
+                plugins: [require('autoprefixer')],
+                sourceMap: true,
+              },
             },
+          },
+          {
+            loader: 'resolve-url-loader',
           },
           {
             loader: 'sass-loader',
@@ -73,9 +70,9 @@ module.exports = {
                   './node_modules',
                 ],
               },
-            },
+            }
           },
-        ],
+        ]
       },
       {
         test: /\.(ts|tsx)$/,
