@@ -1,0 +1,7 @@
+declare const _default: {
+    title: string;
+    decorators: ((story: any) => JSX.Element)[];
+};
+export default _default;
+export declare const WithTitle: () => JSX.Element;
+export declare const WithoutTitle: () => JSX.Element;
