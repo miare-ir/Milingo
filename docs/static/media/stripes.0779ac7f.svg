@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-  <defs>
-    <pattern id="p" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="rotate(90) scale(0.06)">
-      <path id="a" data-color="fill" fill="#FFF" stroke="#FFF" stroke-width="48" d="M49-1h2v102h-2z"></path>
-    </pattern>
-  </defs>
-  <rect fill="#8897A8" width="100%" height="100%"></rect>
-  <rect fill="url(#p)" width="100%" height="100%"></rect>
-</svg>
