@@ -165,7 +165,9 @@ const SubmitForm = ({
             files={files}
             onChangeFiles={handleFileChange}
             onFileCancelled={onFileCancelled}
-            states={{ 0: { ...state, message: errorMessage || state.message } }}
+            states={{
+              0: { ...state, message: errorMessage || state?.message },
+            }}
             onTryAgain={onTryAgain}
             validate={handleValidate}
             accept={validFileFormat && String(validFileFormat)}
