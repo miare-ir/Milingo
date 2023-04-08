@@ -1,5 +1,5 @@
 import * as React from 'react';
-interface DataTableProps extends React.HTMLProps<HTMLTableElement> {
+export interface DataTableProps extends React.HTMLProps<HTMLTableElement> {
     tagline?: string | React.ReactNode;
     children?: React.ReactNode;
 }

@@ -1,4 +1,4 @@
-export { default as List } from './list';
-export { default as ListSection } from './section';
-export { default as ListTitle } from './title';
-export { default as ListFooter } from './footer';
+export { default as List, ListProps } from './list';
+export { default as ListSection, ListSectionProps } from './section';
+export { default as ListTitle, ListTitleProps } from './title';
+export { default as ListFooter, ListFooterProps } from './footer';
