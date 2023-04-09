@@ -177,6 +177,7 @@ module.exports = {
     "@typescript-eslint/restrict-plus-operands": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
+    "no-shadow": "off",
   },
   "overrides": [{
     "files": ["*.stories.tsx"],
