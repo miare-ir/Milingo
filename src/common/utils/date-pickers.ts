@@ -4,7 +4,7 @@ import * as moment from 'moment-jalaali';
 export const generateMonth = (
   mm: string,
   yyyy: string,
-  generateDay: (day?: Moment, month?: 'next' | 'prev') => React.ReactNode,
+  generateDay: (day?: Moment, months?: 'next' | 'prev') => React.ReactNode,
 ): JSX.Element[] => {
   const dates = [];
   const month = moment(`${yyyy}/${mm}/1`, 'jYYYY/jM/jD');
