@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import TagLine from './tag-line';
 
-interface DataTableProps extends React.HTMLProps<HTMLTableElement> {
+export interface DataTableProps extends React.HTMLProps<HTMLTableElement> {
   tagline?: string | React.ReactNode;
   children?: React.ReactNode;
 }

@@ -1,3 +1,3 @@
-export { default as Accordion } from './accordion';
-export { default as ListAccordion } from './list-accordion';
-export { default as AccordionItem } from './accordion-item';
+export { default as Accordion, AccordionProps } from './accordion';
+export { default as ListAccordion, ListAccordionProps } from './list-accordion';
+export { default as AccordionItem, AccordionItemProps } from './accordion-item';

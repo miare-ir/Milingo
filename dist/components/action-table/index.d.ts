@@ -1,2 +1,2 @@
-export { default as ActionTable } from './action-table';
-export { default as ActionTableRow } from './action-table-row';
+export { default as ActionTable, ActionTableProps } from './action-table';
+export { default as ActionTableRow, ActionTableRowProps, } from './action-table-row';

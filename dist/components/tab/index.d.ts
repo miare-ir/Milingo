@@ -1,4 +1,4 @@
-export { default as TabNav } from './tab-nav';
-export { default as TabNavItem } from './tab-nav-item';
-export { default as TabContent } from './tab-content';
-export { default as TabContentItem } from './tab-content-item';
+export { default as TabNav, TabNavProps } from './tab-nav';
+export { default as TabNavItem, TabNavItemProps } from './tab-nav-item';
+export { default as TabContent, TabContentProps } from './tab-content';
+export { default as TabContentItem, TabContentItemProps, } from './tab-content-item';
