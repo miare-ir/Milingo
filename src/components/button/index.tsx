@@ -8,6 +8,7 @@ export interface ButtonProps extends React.ComponentProps<'button'> {
   danger?: boolean;
   ghost?: boolean;
   link?: boolean;
+  text?: boolean;
   tiny?: boolean;
   small?: boolean;
   regular?: boolean;
@@ -24,6 +25,7 @@ class Button extends React.Component<ButtonProps, {}> {
       primary,
       ghost,
       link,
+      text,
       tiny,
       small,
       regular,
@@ -45,6 +47,7 @@ class Button extends React.Component<ButtonProps, {}> {
         danger,
         ghost: (ghost || (!primary && !link)) && !danger,
         link,
+        text,
         tiny,
         small,
         regular,
