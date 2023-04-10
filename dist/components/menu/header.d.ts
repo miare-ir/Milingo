@@ -5,5 +5,5 @@ export interface MenuHeaderProps {
     image?: JSX.Element;
     action?: JSX.Element;
 }
-declare const MenuHeader: React.SFC<MenuHeaderProps>;
+declare const MenuHeader: React.FC<MenuHeaderProps>;
 export default MenuHeader;

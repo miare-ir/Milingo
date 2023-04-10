@@ -9,7 +9,7 @@ export interface MenuItemProps extends React.HTMLProps<HTMLDivElement> {
   time?: string;
 }
 
-const MenuItem: React.SFC<MenuItemProps> = ({
+const MenuItem: React.FC<MenuItemProps> = ({
   avatar,
   description,
   selected,

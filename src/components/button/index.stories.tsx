@@ -37,6 +37,12 @@ export const Ghost = () => (
 
 export const Link = () => <Button link>سلام دنیا</Button>;
 
+export const Text = () => (
+  <div>
+    <Button text>سلام دنیا</Button>
+  </div>
+);
+
 export const Tiny = () => (
   <div>
     <Button primary tiny>

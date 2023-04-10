@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './styles.scss';
-declare type LicensePlateValue = [number, number?];
+type LicensePlateValue = [number, number?];
 export interface LicensePlateProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onInput'> {
     editable?: boolean;
     oldStyle?: boolean;

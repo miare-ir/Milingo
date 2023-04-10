@@ -4,5 +4,5 @@ import './styles.scss';
 export interface TimelineProps {
     children?: React.ReactNode;
 }
-declare const Timeline: React.SFC<TimelineProps>;
+declare const Timeline: React.FC<TimelineProps>;
 export { Timeline, TimelineEntry };

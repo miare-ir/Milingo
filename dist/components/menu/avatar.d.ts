@@ -7,5 +7,5 @@ export interface MenuAvatarProps extends React.HTMLProps<HTMLDivElement> {
     largeText?: boolean;
     type?: 'warning';
 }
-declare const MenuAvatar: React.SFC<MenuAvatarProps>;
+declare const MenuAvatar: React.FC<MenuAvatarProps>;
 export default MenuAvatar;

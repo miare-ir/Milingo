@@ -30,7 +30,7 @@ declare class DatePicker extends React.Component<DatePickerProps, DatePickerStat
     static getDerivedStateFromProps(nextProps: DatePickerProps, prevState: DatePickerState): {};
     componentDidUpdate(prevProps: DatePickerProps): void;
     generateMonth: (mm: any, yyyy: any) => React.ReactNode;
-    generateDay: (day?: Moment, month?: "next" | "prev") => React.ReactNode;
+    generateDay: (day?: Moment, month?: 'next' | 'prev') => React.ReactNode;
     resetDate(): void;
     selectDate(date: any): void;
     changeMonth(fn: 'add' | 'subtract'): void;

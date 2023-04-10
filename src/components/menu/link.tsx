@@ -9,7 +9,7 @@ export interface MenuLinkProps {
   selected?: boolean;
 }
 
-const MenuLink: React.SFC<MenuLinkProps> = (props: MenuLinkProps) => (
+const MenuLink: React.FC<MenuLinkProps> = (props: MenuLinkProps) => (
   <div className={classNames('menu-link', { selected: props.selected })}>
     <div className="menu-link-title">{props.title}</div>
     {props.notificationCount && (

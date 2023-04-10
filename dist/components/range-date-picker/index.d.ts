@@ -3,7 +3,7 @@ import { Moment } from 'moment';
 import * as moment from 'moment-jalaali';
 import { ButtonProps } from '../button';
 import './styles.scss';
-export declare type DateRange = [moment.Moment, moment.Moment?];
+export type DateRange = [moment.Moment, moment.Moment?];
 export interface RangeDatePickerProps {
     title: string;
     onChangeDate: (date: DateRange) => void;
@@ -48,9 +48,9 @@ declare class RangeDatePicker extends React.Component<RangeDatePickerProps, Rang
     constructor(props: RangeDatePickerProps);
     componentDidUpdate(prevProps: RangeDatePickerProps, prevState: Readonly<RangeDatePickerState>): void;
     generateMonth: (mm: any, yyyy: any) => React.ReactNode;
-    onMouseOverDays: (evt: React.MouseEvent<HTMLDivElement, MouseEvent>, month?: "next" | "prev") => void;
+    onMouseOverDays: (evt: React.MouseEvent<HTMLDivElement, MouseEvent>, month?: 'next' | 'prev') => void;
     onMouseLeaveDays: (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-    generateDay: (day?: Moment, month?: "next" | "prev") => React.ReactNode;
+    generateDay: (day?: Moment, month?: 'next' | 'prev') => React.ReactNode;
     getDashedDateDetail(date: string): {
         year: number;
         month: number;

@@ -7,5 +7,5 @@ export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
     fullWidth?: boolean;
     onClose?: () => void;
 }
-declare const Banner: React.SFC<BannerProps>;
+declare const Banner: React.FC<BannerProps>;
 export default Banner;

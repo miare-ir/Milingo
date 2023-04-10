@@ -5,5 +5,5 @@ export interface LoaderProps {
     disabled?: boolean;
     danger?: boolean;
 }
-declare const Loader: React.SFC<LoaderProps>;
+declare const Loader: React.FC<LoaderProps>;
 export default Loader;

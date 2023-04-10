@@ -11,7 +11,7 @@ const FILL_COLORS = {
   success: '#248212',
 };
 
-const CloseGenerator: React.SFC<CloseGeneratorProps> = ({
+const CloseGenerator: React.FC<CloseGeneratorProps> = ({
   type,
 }: CloseGeneratorProps) => (
   <svg
