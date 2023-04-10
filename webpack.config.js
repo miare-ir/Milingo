@@ -74,7 +74,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'ts-loader',
         options: {
-          transpileOnly: true
+          transpileOnly: false
         }
       }, {
         test: /\.(ts|tsx)$/,
