@@ -8,7 +8,7 @@ export interface MenuHeaderProps {
   action?: JSX.Element;
 }
 
-const MenuHeader: React.SFC<MenuHeaderProps> = (props: MenuHeaderProps) => (
+const MenuHeader: React.FC<MenuHeaderProps> = (props: MenuHeaderProps) => (
   <div className="menu-header">
     {!!props.image && <div className="menu-header-image">{props.image}</div>}
     <div className="menu-header-title">{props.title}</div>

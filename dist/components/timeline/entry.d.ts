@@ -7,5 +7,5 @@ export interface TimelineEntryProps extends React.HTMLProps<HTMLDivElement> {
     noBorder?: boolean;
     clickable?: boolean;
 }
-declare const TimelineEntry: React.SFC<TimelineEntryProps>;
+declare const TimelineEntry: React.FC<TimelineEntryProps>;
 export default TimelineEntry;

@@ -30,7 +30,7 @@ const defaultProps: Partial<BannerProps> = {
   type: 'info',
 };
 
-const Banner: React.SFC<BannerProps> = ({
+const Banner: React.FC<BannerProps> = ({
   className,
   show,
   type,

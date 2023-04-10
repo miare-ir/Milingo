@@ -12,7 +12,7 @@ export interface ToolbarProps {
   })[];
 }
 
-const Toolbal: React.SFC<ToolbarProps> = (props: ToolbarProps) => (
+const Toolbal: React.FC<ToolbarProps> = (props: ToolbarProps) => (
   <div className="toolbar">
     {props.avatar && <div className="toolbar-avatar">{props.avatar}</div>}
     <div className="toolbar-info">

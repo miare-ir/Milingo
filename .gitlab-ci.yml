@@ -1,4 +1,4 @@
-image: node:13.8-buster
+image: node:16.17.1-buster
 
 stages:
   - build

@@ -5,6 +5,7 @@
 const OurConfig = require('../webpack.config.js');
 
 module.exports = {
+  framework: '@storybook/react-webpack5',
   webpackFinal: async (defaultConfig, options) => {
     return {
       ...defaultConfig,

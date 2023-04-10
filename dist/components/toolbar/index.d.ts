@@ -9,5 +9,5 @@ export interface ToolbarProps {
         icon: string | JSX.Element;
     })[];
 }
-declare const Toolbal: React.SFC<ToolbarProps>;
+declare const Toolbal: React.FC<ToolbarProps>;
 export default Toolbal;

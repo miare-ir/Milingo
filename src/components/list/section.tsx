@@ -8,7 +8,7 @@ export interface ListSectionProps extends React.HTMLProps<HTMLUListElement> {
   seperator?: boolean;
 }
 
-const ListSection: React.SFC<ListSectionProps> = ({
+const ListSection: React.FC<ListSectionProps> = ({
   large,
   seperator,
   ...props

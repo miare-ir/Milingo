@@ -5,7 +5,7 @@ import { FileInputProps } from '../file-input';
 import { UploadHintProps } from './upload-hint';
 import { ModalProps } from '../modal';
 import './styles.scss';
-declare type FileType = 'image' | 'video';
+type FileType = 'image' | 'video';
 export interface FileInputWrapperProps extends Omit<FileInputProps, 'ref'> {
     wrapperTitle?: string | JSX.Element;
     imageProps?: ImageProps;

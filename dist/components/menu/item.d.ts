@@ -6,5 +6,5 @@ export interface MenuItemProps extends React.HTMLProps<HTMLDivElement> {
     selected?: boolean;
     time?: string;
 }
-declare const MenuItem: React.SFC<MenuItemProps>;
+declare const MenuItem: React.FC<MenuItemProps>;
 export default MenuItem;

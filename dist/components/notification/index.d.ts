@@ -5,5 +5,5 @@ export interface NotificationProps extends React.HTMLProps<HTMLDivElement> {
     warning?: boolean;
     className?: string;
 }
-declare const Notification: React.SFC<NotificationProps>;
+declare const Notification: React.FC<NotificationProps>;
 export default Notification;

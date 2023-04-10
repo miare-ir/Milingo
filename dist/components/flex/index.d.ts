@@ -12,7 +12,7 @@ export interface ColumnProps extends React.HTMLProps<HTMLDivElement> {
     align?: 'center';
     justify?: 'center' | 'space-between' | 'flex-end' | 'flex-start';
 }
-export declare const Column: React.SFC<ColumnProps>;
+export declare const Column: React.FC<ColumnProps>;
 export interface RowProps extends React.HTMLProps<HTMLDivElement> {
     innerRef?: string | ((node: any) => void);
     'mb-column'?: boolean;
@@ -25,4 +25,4 @@ export interface RowProps extends React.HTMLProps<HTMLDivElement> {
     align?: 'center';
     justify?: 'center' | 'space-between' | 'flex-end' | 'flex-start';
 }
-export declare const Row: React.SFC<RowProps>;
+export declare const Row: React.FC<RowProps>;

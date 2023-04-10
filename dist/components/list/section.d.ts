@@ -4,5 +4,5 @@ export interface ListSectionProps extends React.HTMLProps<HTMLUListElement> {
     large?: boolean;
     seperator?: boolean;
 }
-declare const ListSection: React.SFC<ListSectionProps>;
+declare const ListSection: React.FC<ListSectionProps>;
 export default ListSection;

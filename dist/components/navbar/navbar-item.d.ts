@@ -5,5 +5,5 @@ export interface NavbarItemProps extends React.HTMLProps<HTMLDivElement> {
     text: string | JSX.Element;
     selected?: boolean;
 }
-declare const NavbarItem: React.SFC<NavbarItemProps>;
+declare const NavbarItem: React.FC<NavbarItemProps>;
 export default NavbarItem;

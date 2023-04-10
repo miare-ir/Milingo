@@ -5,5 +5,5 @@ export interface MenuLinkProps {
     notificationCount?: number;
     selected?: boolean;
 }
-declare const MenuLink: React.SFC<MenuLinkProps>;
+declare const MenuLink: React.FC<MenuLinkProps>;
 export default MenuLink;
