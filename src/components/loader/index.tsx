@@ -10,7 +10,7 @@ export interface LoaderProps {
   danger?: boolean;
 }
 
-const Loader: React.SFC<LoaderProps> = ({
+const Loader: React.FC<LoaderProps> = ({
   primary,
   danger,
   disabled,

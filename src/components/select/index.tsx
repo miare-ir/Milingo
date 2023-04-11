@@ -5,12 +5,12 @@ import './styles.scss';
 
 export interface Option {
   label: string;
-  value: string;
+  value: string | number;
   className?: string;
 }
 
 export interface SelectProps {
-  name: string;
+  name?: string;
   options: Option[];
   baseClassName?: string;
   className?: string;
@@ -22,6 +22,8 @@ export interface SelectProps {
   showedItem?: number;
   errorMessage?: string;
   errorMessagePosition?: 'top' | 'bottom';
+  forceDisplayError?: boolean;
+  validate?: () => boolean;
 }
 
 interface SelectState {
@@ -59,7 +61,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
       this.setState({
         selected: { value: newProps.value.value, label: newProps.value.label },
       });
-      this.selectElement.value = newProps.value.value;
+      this.selectElement.value = newProps.value.value as string;
     } else if (!newProps.value) {
       this.setState({
         selected: {
@@ -84,7 +86,8 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
       this.handleDocumentClick.bind(this),
       false,
     );
-    this.selectElement.value = this.props.value && this.props.value.value;
+    this.selectElement.value =
+      this.props.value && (this.props.value.value as string);
   }
 
   componentWillUnmount(): void {

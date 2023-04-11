@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "types",
+    "outDir": "dist",
     "module": "commonjs",
     "target": "es5",
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
@@ -15,7 +15,6 @@
     "noImplicitThis": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
@@ -23,5 +22,5 @@
     "skipLibCheck": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "types"]
+  "exclude": ["node_modules", "dist"]
 }

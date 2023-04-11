@@ -4,9 +4,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.ts'),
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index.js',
@@ -20,8 +22,14 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new ForkTsCheckerWebpackPlugin()
+    new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
+    new ForkTsCheckerWebpackPlugin(),
+    new ESLintPlugin({
+      cache: true,
+      fix: true,
+      formatter: 'codeframe',
+      ignore: false,
+    })
   ],
   optimization: {
     minimizer: [new OptimizeCSSAssetsPlugin({})],
@@ -39,22 +47,19 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'resolve-url-loader',
-            options: {},
-          },
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: 'css-loader' },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [require('autoprefixer')],
-              sourceMap: true,
+              postcssOptions: {
+                plugins: [require('autoprefixer')],
+                sourceMap: true,
+              },
             },
+          },
+          {
+            loader: 'resolve-url-loader',
           },
           {
             loader: 'sass-loader',
@@ -65,31 +70,17 @@ module.exports = {
                   './node_modules',
                 ],
               },
-            },
+            }
           },
-        ],
+        ]
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'ts-loader',
         options: {
-          transpileOnly: true
+          transpileOnly: false
         }
-      }, {
-        test: /\.(ts|tsx)$/,
-        enforce: 'pre',
-        use: [
-          {
-            loader: 'eslint-loader',
-            options: {
-              cache: true,
-              fix: true,
-              formatter: 'codeframe',
-              ignore: false
-            }
-          }
-        ]
       }, {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp3)$/,
         loader: 'url-loader',

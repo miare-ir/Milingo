@@ -5,7 +5,7 @@ import './styles.scss';
 
 export interface DialogContentProps extends React.HTMLProps<HTMLDivElement> {
   onClose?: () => void;
-  children?: JSX.Element;
+  children?: React.ReactNode;
   actions?: JSX.Element | JSX.Element[];
   title: string;
   titleDescription?: string;
