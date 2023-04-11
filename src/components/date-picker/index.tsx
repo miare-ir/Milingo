@@ -10,6 +10,7 @@ import { Column, Row } from '../flex';
 import { generateMonth } from '../../common/utils/date-pickers';
 
 import './styles.scss';
+import Loader from '../../components/loader';
 
 moment.loadPersian({ dialect: 'persian-modern' });
 
@@ -26,6 +27,9 @@ export interface DatePickerProps {
   forceDatePickerOpen?: boolean;
   inputButtonSize?: 'small' | 'tiny' | 'regular' | 'large';
   disabled?: boolean;
+  isInline?: boolean;
+  submitButtonTitle?: string;
+  isLoading?: boolean;
 }
 
 export interface DatePickerState {
@@ -143,7 +147,6 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
   selectDate(date): void {
     this.setState({ currentDate: moment(date, 'jYYYY/jM/jD') });
-    this.saveDate(moment(date, 'jYYYY/jM/jD'));
   }
 
   changeMonth(fn: 'add' | 'subtract'): void {
@@ -202,6 +205,97 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
     }
   };
 
+  renderCalender(
+    currentDate: string,
+    currentYear: string,
+    displayedDate: string,
+  ): React.ReactNode {
+    return (
+      <>
+        <div className="calendar-info">
+          <PersianNumber className="year" value={currentYear} />
+          <PersianNumber className="month" value={currentDate} />
+        </div>
+        <Row grow={1} className="padding-medium calendar-switches">
+          <Column grow={0} order={0}>
+            <span
+              className="material-icons clickable"
+              onClick={() => this.changeMonth('subtract')}>
+              chevron_right
+            </span>
+          </Column>
+          <Column grow={0} order={2}>
+            <span
+              className="material-icons clickable"
+              onClick={() => this.changeMonth('add')}>
+              chevron_left
+            </span>
+          </Column>
+          <Column grow={1} order={1} align="center">
+            <PersianNumber className="month" value={displayedDate} />
+          </Column>
+        </Row>
+        <div className={this.props.isInline ? 'calendar-inline' : 'calendar'}>
+          <div className="calendar-month">
+            <div className="calendar-week">
+              <div className="calendar-weekday">ش</div>
+              <div className="calendar-weekday">ی</div>
+              <div className="calendar-weekday">د</div>
+              <div className="calendar-weekday">س</div>
+              <div className="calendar-weekday">چ</div>
+              <div className="calendar-weekday">پ</div>
+              <div className="calendar-weekday">ج</div>
+            </div>
+          </div>
+          {this.generateMonth(this.state.month, this.state.year)}
+        </div>
+        {this.props.isInline ? (
+          <div className="calendar-actions-inline">
+            <Button
+              className="today-btn"
+              text
+              small
+              onClick={this.resetDate.bind(this)}>
+              امروز
+            </Button>
+            <hr />
+            <Button
+              primary
+              small
+              disabled={this.props.disabled}
+              onClick={() => this.saveDate(this.state.currentDate)}>
+              {this.props.isLoading ? (
+                <Loader />
+              ) : (
+                this.props.submitButtonTitle || 'تایید'
+              )}
+            </Button>
+          </div>
+        ) : (
+          <div className="calendar-actions">
+            <Button
+              link
+              small
+              disabled={this.props.disabled}
+              onClick={() => this.saveDate(this.state.currentDate)}>
+              {this.props.isLoading ? (
+                <Loader primary />
+              ) : (
+                this.props.submitButtonTitle || 'تایید'
+              )}
+            </Button>
+            <Button link small onClick={this.closeDialog}>
+              انصراف
+            </Button>
+            <Button link small onClick={this.resetDate.bind(this)}>
+              امروز
+            </Button>
+          </div>
+        )}
+      </>
+    );
+  }
+
   render(): React.ReactNode {
     const currentDate: string = this.state.currentDate.format('ddd jD jMMMM');
     const currentYear: string = this.state.currentDate.jYear();
@@ -217,7 +311,13 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
         : moment(this.state.savedDate).format('jYYYY/jMM/jDD')
       : this.props.title || 'انتخاب تاریخ';
 
-    return (
+    return this.props.isInline ? (
+      <div className={`date-picker-container ${this.props.className}`}>
+        <div className="date-picker">
+          {this.renderCalender(currentDate, currentYear, displayedDate)}
+        </div>
+      </div>
+    ) : (
       <div className={`date-picker-container ${this.props.className}`}>
         <Button
           ghost
@@ -234,57 +334,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
           overlayClassName="milingo-date-picker-overlay"
           className="date-picker"
           contentLabel="Modal">
-          <div className="calendar-info">
-            <PersianNumber className="year" value={currentYear} />
-            <PersianNumber className="month" value={currentDate} />
-          </div>
-          <Row grow={1} className="padding-medium calendar-switches">
-            <Column grow={0} order={0}>
-              <span
-                className="material-icons clickable"
-                onClick={() => this.changeMonth('subtract')}>
-                chevron_right
-              </span>
-            </Column>
-            <Column grow={0} order={2}>
-              <span
-                className="material-icons clickable"
-                onClick={() => this.changeMonth('add')}>
-                chevron_left
-              </span>
-            </Column>
-            <Column grow={1} order={1} align="center">
-              <PersianNumber className="month" value={displayedDate} />
-            </Column>
-          </Row>
-          <div className="calendar">
-            <div className="calendar-month">
-              <div className="calendar-week">
-                <div className="calendar-weekday">ش</div>
-                <div className="calendar-weekday">ی</div>
-                <div className="calendar-weekday">د</div>
-                <div className="calendar-weekday">س</div>
-                <div className="calendar-weekday">چ</div>
-                <div className="calendar-weekday">پ</div>
-                <div className="calendar-weekday">ج</div>
-              </div>
-            </div>
-            {this.generateMonth(this.state.month, this.state.year)}
-          </div>
-          <div className="calendar-actions">
-            <Button
-              link
-              small
-              onClick={() => this.saveDate(this.state.currentDate)}>
-              تایید
-            </Button>
-            <Button link small onClick={this.closeDialog}>
-              انصراف
-            </Button>
-            <Button link small onClick={this.resetDate.bind(this)}>
-              امروز
-            </Button>
-          </div>
+          {this.renderCalender(currentDate, currentYear, displayedDate)}
         </ReactModal>
       </div>
     );
