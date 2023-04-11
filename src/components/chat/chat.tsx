@@ -77,7 +77,7 @@ const Chat = ({
           validFileFormat={validFileFormat}
         />
       )}
-      {!canAttach && <div className="chat-footer">{footer}</div>}
+      {!canAttach && !!footer && <div className="chat-footer">{footer}</div>}
     </div>
   );
 };

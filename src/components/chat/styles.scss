@@ -22,6 +22,7 @@
 
     .submit-form {
       padding: 8px;
+      height: 50px;  
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -30,11 +31,17 @@
       .send-button {
         margin: unset;
         height: 38px;
+        
+        &:hover {
+          background-color: transparent !important;
+          border-color: transparent !important;
+        }
       }
 
       .textarea-container {
         width: 268px;
         margin-bottom: 0;
+        height: 100%;
       }
 
       textarea {
@@ -46,9 +53,11 @@
         font-size: 12px !important;
         line-height: 19px !important;
         text-align: right;
-        height: 38px;
+        height: 100%;
         overflow: hidden;
-        text-overflow: ellipsis;  
+        text-overflow: ellipsis;
+        overflow-y: scroll;
+        padding: 6px;
 
         &:active, &:focus {
           box-shadow: none !important;
@@ -104,10 +113,11 @@
               border-radius: 10px;
               font-size: 12px;
               line-height: 19px;
-              height: 38px;
+              height: 50px;
               overflow: hidden;
               text-overflow: ellipsis;
               width: 268px;
+              align-items: center;
 
               .try-again {
                 margin: 0;
@@ -142,7 +152,7 @@
             }
 
             &.error-state {
-              bottom: 34px;
+              bottom: 38px;
 
               .file-name {
                 line-height: 14px;
@@ -167,6 +177,7 @@
 
         .error {
           width: 266px;
+          padding: 4px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
