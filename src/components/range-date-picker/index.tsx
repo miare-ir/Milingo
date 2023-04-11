@@ -34,7 +34,6 @@ export interface RangeDatePickerProps {
   isInline?: boolean;
   submitButtonTitle?: string;
   isLoading?: boolean;
-  isDisabled?: boolean;
 }
 
 export interface RangeDatePickerState {
@@ -743,7 +742,7 @@ class RangeDatePicker extends React.Component<
               disabled={
                 !this.state.toDate ||
                 !this.state.fromDate ||
-                this.props.isDisabled
+                this.props.disabled
               }
               onClick={() =>
                 this.saveDate([this.state.fromDate, this.state.toDate])
@@ -763,7 +762,7 @@ class RangeDatePicker extends React.Component<
               disabled={
                 !this.state.toDate ||
                 !this.state.fromDate ||
-                this.props.isDisabled
+                this.props.disabled
               }
               onClick={() =>
                 this.saveDate([this.state.fromDate, this.state.toDate])

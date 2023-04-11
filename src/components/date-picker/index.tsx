@@ -30,7 +30,6 @@ export interface DatePickerProps {
   isInline?: boolean;
   submitButtonTitle?: string;
   isLoading?: boolean;
-  isDisabled?: boolean;
 }
 
 export interface DatePickerState {
@@ -148,7 +147,6 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
   selectDate(date): void {
     this.setState({ currentDate: moment(date, 'jYYYY/jM/jD') });
-    // this.saveDate(moment(date, 'jYYYY/jM/jD'));
   }
 
   changeMonth(fn: 'add' | 'subtract'): void {
@@ -264,7 +262,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
             <Button
               primary
               small
-              disabled={this.props.isDisabled}
+              disabled={this.props.disabled}
               onClick={() => this.saveDate(this.state.currentDate)}>
               {this.props.isLoading ? (
                 <Loader />
@@ -278,7 +276,7 @@ class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
             <Button
               link
               small
-              disabled={this.props.isDisabled}
+              disabled={this.props.disabled}
               onClick={() => this.saveDate(this.state.currentDate)}>
               {this.props.isLoading ? (
                 <Loader primary />

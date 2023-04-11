@@ -39,10 +39,10 @@
       padding: 0 calculatePixelToRem(5);
 
       &-inline {
-      height: calculatePixelToRem(300);
+        height: calculatePixelToRem(300);
         padding: 0 calculatePixelToRem(0);
       }
-      
+
       &-month {
         &:first-child {
           border-bottom: 1px solid rgba(236, 237, 239, 0.6);
@@ -67,7 +67,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        
+
         .today-btn {
           align-self: center;
         }
