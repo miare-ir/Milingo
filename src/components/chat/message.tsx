@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import Image from '../../components/image';
+import Image from '../image';
 import './styles.scss';
 
 export interface MessageProps {
