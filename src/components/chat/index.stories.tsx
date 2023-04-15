@@ -88,7 +88,7 @@ export const WithoutSubmitMessage = (): JSX.Element => (
   </Chat>
 );
 
-export const WhitFooter = (): JSX.Element => {
+export const WithFooter = (): JSX.Element => {
   const footerStyle = {
     color: '#1e6dc8',
     background: '#ecedef',
@@ -102,7 +102,7 @@ export const WhitFooter = (): JSX.Element => {
   const renderChatFooter = (): JSX.Element => (
     <div style={footerStyle}>
       <Button
-        style={{ backgroundColor: 'transparent' }}
+        style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
         type="button"
         link
         tiny
@@ -119,6 +119,172 @@ export const WhitFooter = (): JSX.Element => {
       isSending={false}
       canSubmit
       footer={renderChatFooter()}>
+      {messages.map(({ message, id, sender_type, created_at }) => (
+        <Message
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type !== 'staff'}
+          createdDate={created_at}
+        />
+      ))}
+    </Chat>
+  );
+};
+
+export const WithAttachment = (): JSX.Element => {
+  const testFiles = [new File([''], 'filename.jpg')];
+  const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
+  const renderChatFooter = (): JSX.Element => (
+    <Button
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
+      type="button"
+      link
+      tiny
+      onClick={() => handelResolve(1)}>
+      رسیدگی شد
+    </Button>
+  );
+
+  return (
+    <Chat
+      id={1}
+      handelSubmit={handelSubmitMessage}
+      isSending={false}
+      canSubmit
+      canAttach
+      footer={renderChatFooter()}
+      files={testFiles}
+      errorInvalidSize="ارور سایز"
+      validFileSize={10000000}
+      validFileFormat={['image/jpeg', 'image/png']}
+      errorInvalidFormat="ارور فورمت">
+      {messages.map(({ message, id, sender_type, created_at }) => (
+        <Message
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type !== 'staff'}
+          createdDate={created_at}
+        />
+      ))}
+    </Chat>
+  );
+};
+
+export const WithProgressAttachment = (): JSX.Element => {
+  const loadingTestState = {
+    loading: true,
+    progress: 70,
+  };
+  const testFiles = [new File([''], 'filename.jpg')];
+  const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
+  const renderChatFooter = (): JSX.Element => (
+    <Button
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
+      type="button"
+      link
+      tiny
+      onClick={() => handelResolve(1)}>
+      رسیدگی شد
+    </Button>
+  );
+
+  return (
+    <Chat
+      id={1}
+      handelSubmit={handelSubmitMessage}
+      isSending={false}
+      canSubmit
+      canAttach
+      footer={renderChatFooter()}
+      files={testFiles}
+      state={loadingTestState}>
+      {messages.map(({ message, id, sender_type, created_at }) => (
+        <Message
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type !== 'staff'}
+          createdDate={created_at}
+        />
+      ))}
+    </Chat>
+  );
+};
+
+export const WithErrorAttachment = (): JSX.Element => {
+  const errorTestState = {
+    message: 'حجم فایل شما بیش از حد مجاز است.',
+  };
+  const testFiles = [new File([''], 'filename.jpg')];
+  const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
+  const renderChatFooter = (): JSX.Element => (
+    <Button
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
+      type="button"
+      link
+      tiny
+      onClick={() => handelResolve(1)}>
+      رسیدگی شد
+    </Button>
+  );
+
+  return (
+    <Chat
+      id={1}
+      handelSubmit={handelSubmitMessage}
+      isSending={false}
+      canSubmit
+      canAttach
+      footer={renderChatFooter()}
+      files={testFiles}
+      validate={() => false}
+      state={errorTestState}
+      forceDisplayError>
+      {messages.map(({ message, id, sender_type, created_at }) => (
+        <Message
+          id={id}
+          key={id}
+          message={message}
+          isRight={sender_type !== 'staff'}
+          createdDate={created_at}
+        />
+      ))}
+    </Chat>
+  );
+};
+
+export const WithTryAgainAttachment = (): JSX.Element => {
+  const tryTestState = {
+    message: 'فایل بارگذاری نشد.',
+    tryAgain: true,
+  };
+  const testFiles = [new File([''], 'filename.jpg')];
+  const handelResolve = (id: number): void => alert(`ایشیو ${id} بسته شد`);
+  const renderChatFooter = (): JSX.Element => (
+    <Button
+      style={{ backgroundColor: 'transparent', padding: 0, margin: 0 }}
+      type="button"
+      link
+      tiny
+      onClick={() => handelResolve(1)}>
+      رسیدگی شد
+    </Button>
+  );
+
+  return (
+    <Chat
+      id={1}
+      handelSubmit={handelSubmitMessage}
+      isSending={false}
+      canSubmit
+      canAttach
+      footer={renderChatFooter()}
+      files={testFiles}
+      validate={() => false}
+      state={tryTestState}
+      forceDisplayError>
       {messages.map(({ message, id, sender_type, created_at }) => (
         <Message
           id={id}
