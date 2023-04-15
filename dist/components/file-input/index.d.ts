@@ -16,13 +16,15 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
     forceDisplayError?: boolean;
     onChangeFiles?: (value: File[]) => void;
     onTryAgain?: (files: File[]) => void;
+    onFileCancelled?: (index?: number) => void;
     pre?: string;
     states?: StatesDictionary;
     title?: string;
     validate?: (value: File[]) => boolean;
-    children?: string;
-    tryAgainText?: string;
+    children?: string | React.ReactNode;
+    tryAgainText?: string | React.ReactNode;
     inputRef?: React.RefObject<HTMLInputElement>;
+    isClear?: boolean;
 }
 export interface FileInputState {
     touched: boolean;
@@ -32,7 +34,7 @@ declare class FileInput extends React.Component<FileInputProps, FileInputState> 
     constructor(props: any);
     componentDidUpdate(prevProps: FileInputProps): void;
     handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    clear: (index: number) => void;
+    clear: (index?: number) => void;
     render(): React.ReactNode;
     private renderFiles;
 }

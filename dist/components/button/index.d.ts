@@ -5,6 +5,7 @@ export interface ButtonProps extends React.ComponentProps<'button'> {
     danger?: boolean;
     ghost?: boolean;
     link?: boolean;
+    text?: boolean;
     tiny?: boolean;
     small?: boolean;
     regular?: boolean;

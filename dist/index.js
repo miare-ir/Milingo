@@ -1664,7 +1664,7 @@ var Button = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Button.prototype.render = function () {
-        var _a = this.props, primary = _a.primary, ghost = _a.ghost, link = _a.link, tiny = _a.tiny, small = _a.small, regular = _a.regular, large = _a.large, danger = _a.danger, shouldRender = _a.shouldRender, props = __rest(_a, ["primary", "ghost", "link", "tiny", "small", "regular", "large", "danger", "shouldRender"]);
+        var _a = this.props, primary = _a.primary, ghost = _a.ghost, link = _a.link, text = _a.text, tiny = _a.tiny, small = _a.small, regular = _a.regular, large = _a.large, danger = _a.danger, shouldRender = _a.shouldRender, props = __rest(_a, ["primary", "ghost", "link", "text", "tiny", "small", "regular", "large", "danger", "shouldRender"]);
         if (shouldRender === false) {
             return null;
         }
@@ -1673,6 +1673,7 @@ var Button = /** @class */ (function (_super) {
             danger: danger,
             ghost: (ghost || (!primary && !link)) && !danger,
             link: link,
+            text: text,
             tiny: tiny,
             small: small,
             regular: regular,
@@ -1720,12 +1721,12 @@ var classNames = __webpack_require__(4184);
 __webpack_require__(3838);
 var submit_form_1 = __webpack_require__(7508);
 var Chat = function (_a) {
-    var id = _a.id, handelSubmit = _a.handelSubmit, isSending = _a.isSending, canSubmit = _a.canSubmit, children = _a.children, footer = _a.footer, rest = __rest(_a, ["id", "handelSubmit", "isSending", "canSubmit", "children", "footer"]);
+    var id = _a.id, handelSubmit = _a.handelSubmit, isSending = _a.isSending, isClear = _a.isClear, canSubmit = _a.canSubmit, canAttach = _a.canAttach, children = _a.children, footer = _a.footer, state = _a.state, forceDisplayError = _a.forceDisplayError, files = _a.files, validFileSize = _a.validFileSize, validFileFormat = _a.validFileFormat, errorInvalidFormat = _a.errorInvalidFormat, errorInvalidSize = _a.errorInvalidSize, onChangeFiles = _a.onChangeFiles, onTryAgain = _a.onTryAgain, onFileCancelled = _a.onFileCancelled, validate = _a.validate, rest = __rest(_a, ["id", "handelSubmit", "isSending", "isClear", "canSubmit", "canAttach", "children", "footer", "state", "forceDisplayError", "files", "validFileSize", "validFileFormat", "errorInvalidFormat", "errorInvalidSize", "onChangeFiles", "onTryAgain", "onFileCancelled", "validate"]);
     var componentClassNames = classNames('chat-container', rest.className);
     return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
         React.createElement("div", { className: "chat-content" }, children),
-        canSubmit && (React.createElement(submit_form_1.default, { id: id, isSending: isSending, onSubmit: handelSubmit })),
-        React.createElement("div", { className: "chat-footer" }, footer)));
+        canSubmit && (React.createElement(submit_form_1.default, { id: id, isSending: isSending, onSubmit: handelSubmit, canAttach: canAttach, footer: footer, state: state, files: files, onChangeFiles: onChangeFiles, onTryAgain: onTryAgain, onFileCancelled: onFileCancelled, validate: validate, forceDisplayError: forceDisplayError, isClear: isClear, errorInvalidSize: errorInvalidSize, errorInvalidFormat: errorInvalidFormat, validFileSize: validFileSize, validFileFormat: validFileFormat })),
+        !canAttach && !!footer && React.createElement("div", { className: "chat-footer" }, footer)));
 };
 exports["default"] = Chat;
 
@@ -1755,6 +1756,7 @@ Object.defineProperty(exports, "Message", ({ enumerable: true, get: function () 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var React = __webpack_require__(8156);
 var classNames = __webpack_require__(4184);
+var image_1 = __webpack_require__(4302);
 __webpack_require__(3838);
 var Message = function (props) {
     var dateTimeFormat = function (dateTime) {
@@ -1765,8 +1767,9 @@ var Message = function (props) {
     };
     var componentClassNames = classNames('chat-message-container', props.isRight ? 'right' : 'left', props.className);
     return (React.createElement("div", { className: componentClassNames, key: props.id },
-        React.createElement("div", { className: "chat-message-item" },
-            React.createElement("p", { className: "message-content" }, props.message)),
+        React.createElement("div", { className: "chat-message-item" }, props.isImage ? (React.createElement(image_1.default, { src: props.message, alt: "attached-image", className: "attached-image", thumbnailInfo: {
+                originalSrc: props.message,
+            } })) : (React.createElement("p", { className: "message-content" }, props.message))),
         React.createElement("span", { className: "time" }, dateTimeFormat(props.createdDate))));
 };
 exports["default"] = Message;
@@ -1779,38 +1782,105 @@ exports["default"] = Message;
 
 "use strict";
 
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var React = __webpack_require__(8156);
 var send_svg_1 = __webpack_require__(9539);
 var disabled_send_svg_1 = __webpack_require__(4058);
+var attachment_svg_1 = __webpack_require__(5663);
+var reload_svg_1 = __webpack_require__(9477);
 var button_1 = __webpack_require__(731);
 var textarea_1 = __webpack_require__(8744);
+var file_input_1 = __webpack_require__(1964);
 __webpack_require__(3838);
 var SubmitForm = function (_a) {
-    var id = _a.id, isSending = _a.isSending, onSubmit = _a.onSubmit;
-    var _b = React.useState(''), message = _b[0], setMessage = _b[1];
-    var isSendButtonDisabled = !message || isSending;
-    React.useEffect(function () {
-        if (!isSending) {
-            setMessage('');
-        }
-    }, [isSending]);
+    var id = _a.id, isSending = _a.isSending, onSubmit = _a.onSubmit, canAttach = _a.canAttach, onChangeFiles = _a.onChangeFiles, onTryAgain = _a.onTryAgain, onFileCancelled = _a.onFileCancelled, validate = _a.validate, validFileSize = _a.validFileSize, validFileFormat = _a.validFileFormat, errorInvalidSize = _a.errorInvalidSize, errorInvalidFormat = _a.errorInvalidFormat, footer = _a.footer, state = _a.state, forceDisplayError = _a.forceDisplayError, files = _a.files, _b = _a.isClear, isClear = _b === void 0 ? false : _b;
+    var _c = React.useState(''), message = _c[0], setMessage = _c[1];
+    var _d = React.useState(''), errorMessage = _d[0], setErrorMessage = _d[1];
+    var _e = React.useState((files === null || files === void 0 ? void 0 : files.length) > 0), isFileSelect = _e[0], setIsFileSelect = _e[1];
+    var isSendButtonDisabled = (!message && !isFileSelect) ||
+        isSending ||
+        (!!state && !!state.message) ||
+        !!errorMessage;
+    var _f = React.useState(null), attachment = _f[0], setAttachment = _f[1];
+    var isSizeInvalid = function (file) {
+        return validFileSize && file.size > validFileSize;
+    };
+    var isFormatInvalid = function (file) {
+        return validFileFormat && !validFileFormat.some(function (format) { return file.type === format; });
+    };
     var handleSubmitMessage = function (event) {
         event === null || event === void 0 ? void 0 : event.preventDefault();
         if (!isSendButtonDisabled) {
-            onSubmit(id, message.trim());
+            onSubmit(id, message.trim(), attachment);
         }
     };
+    React.useEffect(function () {
+        if (isClear) {
+            setAttachment(null);
+            setIsFileSelect(false);
+            setMessage('');
+        }
+    }, [isClear, attachment]);
     var handleTextareaKeyDowns = function (event) {
-        if (event.ctrlKey && event.key === 'Enter') {
+        if ((event.ctrlKey && event.key === 'Enter') ||
+            (event.shiftKey && event.key === 'Enter')) {
             handleSubmitMessage();
         }
     };
     var handleTextareaChanges = function (event) { return setMessage(event.target.value); };
-    return (React.createElement("form", { onSubmit: handleSubmitMessage, className: "submit-form" },
-        React.createElement(textarea_1.default, { autoFocus: true, rows: 1, disabled: isSending, value: message, placeholder: "\u067E\u06CC\u0627\u0645 \u062E\u0648\u062F \u0631\u0627 \u0648\u0627\u0631\u062F \u06A9\u0646\u06CC\u062F", onChange: handleTextareaChanges, onKeyDown: handleTextareaKeyDowns }),
-        React.createElement(button_1.default, { type: "submit", link: true, tiny: true, disabled: isSendButtonDisabled, className: "send-button" },
-            React.createElement("img", { src: isSendButtonDisabled ? disabled_send_svg_1.default : send_svg_1.default }))));
+    var handleFileChange = function (value) {
+        if (value.length > 0) {
+            setIsFileSelect(true);
+            if (isSizeInvalid(value[0])) {
+                setErrorMessage(errorInvalidSize || 'حجم فایل ارسالی شما بیش از حد مجاز است.');
+            }
+            else if (isFormatInvalid(value[0])) {
+                setErrorMessage(errorInvalidFormat || 'فرمت فایل ارسالی مناسب نیست');
+            }
+            else {
+                setErrorMessage('');
+            }
+        }
+        else {
+            setIsFileSelect(false);
+        }
+        setAttachment(value);
+        if (onChangeFiles) {
+            onChangeFiles(value);
+        }
+    };
+    var handleValidate = function (value) {
+        if (isSizeInvalid(value[0]) || isFormatInvalid(value[0])) {
+            return false;
+        }
+        if (validate) {
+            return validate(value);
+        }
+        return true;
+    };
+    var renderTryAgainIcon = function () { return (React.createElement("img", { className: "reload-icon", src: reload_svg_1.default })); };
+    return (React.createElement(React.Fragment, null,
+        React.createElement("form", { onSubmit: handleSubmitMessage, className: "submit-form" },
+            !isFileSelect && (React.createElement(textarea_1.default, { autoFocus: true, rows: 1, disabled: isSending, value: message, placeholder: "\u067E\u06CC\u0627\u0645 \u062E\u0648\u062F \u0631\u0627 \u0648\u0627\u0631\u062F \u06A9\u0646\u06CC\u062F", onChange: handleTextareaChanges, onKeyDown: handleTextareaKeyDowns })),
+            React.createElement(button_1.default, { type: "submit", link: true, tiny: true, disabled: isSendButtonDisabled, className: "send-button" },
+                React.createElement("img", { className: "send-icon", src: isSendButtonDisabled ? disabled_send_svg_1.default : send_svg_1.default }))),
+        canAttach && (React.createElement("div", { className: "chat-footer" },
+            footer,
+            React.createElement(file_input_1.default, { displayClear: true, forceDisplayError: forceDisplayError, files: files, onChangeFiles: handleFileChange, onFileCancelled: onFileCancelled, states: {
+                    0: __assign(__assign({}, state), { message: errorMessage || (state === null || state === void 0 ? void 0 : state.message) }),
+                }, onTryAgain: onTryAgain, validate: handleValidate, accept: validFileFormat && String(validFileFormat), isClear: isClear, tryAgainText: renderTryAgainIcon() },
+                React.createElement("img", { className: "attach-icon", src: attachment_svg_1.default }))))));
 };
 exports["default"] = SubmitForm;
 
@@ -2390,6 +2460,7 @@ var persian_number_1 = __webpack_require__(1396);
 var flex_1 = __webpack_require__(7180);
 var date_pickers_1 = __webpack_require__(9785);
 __webpack_require__(8581);
+var loader_1 = __webpack_require__(7125);
 moment.loadPersian({ dialect: 'persian-modern' });
 var DatePicker = /** @class */ (function (_super) {
     __extends(DatePicker, _super);
@@ -2502,7 +2573,6 @@ var DatePicker = /** @class */ (function (_super) {
     };
     DatePicker.prototype.selectDate = function (date) {
         this.setState({ currentDate: moment(date, 'jYYYY/jM/jD') });
-        this.saveDate(moment(date, 'jYYYY/jM/jD'));
     };
     DatePicker.prototype.changeMonth = function (fn) {
         var date = "".concat(this.state.year, "/").concat(this.state.month, "/1");
@@ -2512,9 +2582,40 @@ var DatePicker = /** @class */ (function (_super) {
             year: parsedDate.jYear(),
         });
     };
+    DatePicker.prototype.renderCalender = function (currentDate, currentYear, displayedDate) {
+        var _this = this;
+        return (React.createElement(React.Fragment, null,
+            React.createElement("div", { className: "calendar-info" },
+                React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
+                React.createElement(persian_number_1.default, { className: "month", value: currentDate })),
+            React.createElement(flex_1.Row, { grow: 1, className: "padding-medium calendar-switches" },
+                React.createElement(flex_1.Column, { grow: 0, order: 0 },
+                    React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('subtract'); } }, "chevron_right")),
+                React.createElement(flex_1.Column, { grow: 0, order: 2 },
+                    React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('add'); } }, "chevron_left")),
+                React.createElement(flex_1.Column, { grow: 1, order: 1, align: "center" },
+                    React.createElement(persian_number_1.default, { className: "month", value: displayedDate }))),
+            React.createElement("div", { className: this.props.isInline ? 'calendar-inline' : 'calendar' },
+                React.createElement("div", { className: "calendar-month" },
+                    React.createElement("div", { className: "calendar-week" },
+                        React.createElement("div", { className: "calendar-weekday" }, "\u0634"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u06CC"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u062F"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u0633"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u0686"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u067E"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u062C"))),
+                this.generateMonth(this.state.month, this.state.year)),
+            this.props.isInline ? (React.createElement("div", { className: "calendar-actions-inline" },
+                React.createElement(button_1.default, { className: "today-btn", text: true, small: true, onClick: this.resetDate.bind(this) }, "\u0627\u0645\u0631\u0648\u0632"),
+                React.createElement("hr", null),
+                React.createElement(button_1.default, { primary: true, small: true, disabled: this.props.disabled, onClick: function () { return _this.saveDate(_this.state.currentDate); } }, this.props.isLoading ? (React.createElement(loader_1.default, null)) : (this.props.submitButtonTitle || 'تایید')))) : (React.createElement("div", { className: "calendar-actions" },
+                React.createElement(button_1.default, { link: true, small: true, disabled: this.props.disabled, onClick: function () { return _this.saveDate(_this.state.currentDate); } }, this.props.isLoading ? (React.createElement(loader_1.default, { primary: true })) : (this.props.submitButtonTitle || 'تایید')),
+                React.createElement(button_1.default, { link: true, small: true, onClick: this.closeDialog }, "\u0627\u0646\u0635\u0631\u0627\u0641"),
+                React.createElement(button_1.default, { link: true, small: true, onClick: this.resetDate.bind(this) }, "\u0627\u0645\u0631\u0648\u0632")))));
+    };
     DatePicker.prototype.render = function () {
         var _a;
-        var _this = this;
         var currentDate = this.state.currentDate.format('ddd jD jMMMM');
         var currentYear = this.state.currentDate.jYear();
         var year = this.state.year;
@@ -2525,35 +2626,11 @@ var DatePicker = /** @class */ (function (_super) {
                 ? this.props.displayFormat(moment(this.state.savedDate))
                 : moment(this.state.savedDate).format('jYYYY/jMM/jDD')
             : this.props.title || 'انتخاب تاریخ';
-        return (React.createElement("div", { className: "date-picker-container ".concat(this.props.className) },
+        return this.props.isInline ? (React.createElement("div", { className: "date-picker-container ".concat(this.props.className) },
+            React.createElement("div", { className: "date-picker" }, this.renderCalender(currentDate, currentYear, displayedDate)))) : (React.createElement("div", { className: "date-picker-container ".concat(this.props.className) },
             React.createElement(button_1.default, __assign({ ghost: true, disabled: this.props.disabled, className: "date-picker-input ".concat(this.state.savedDate ? '' : 'empty'), onClick: this.openDialog }, (_a = {}, _a[this.props.inputButtonSize] = true, _a)),
                 React.createElement(persian_number_1.default, { value: savedDate, className: "clickable" })),
-            React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.dialogOpen || this.state.dialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
-                React.createElement("div", { className: "calendar-info" },
-                    React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
-                    React.createElement(persian_number_1.default, { className: "month", value: currentDate })),
-                React.createElement(flex_1.Row, { grow: 1, className: "padding-medium calendar-switches" },
-                    React.createElement(flex_1.Column, { grow: 0, order: 0 },
-                        React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('subtract'); } }, "chevron_right")),
-                    React.createElement(flex_1.Column, { grow: 0, order: 2 },
-                        React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('add'); } }, "chevron_left")),
-                    React.createElement(flex_1.Column, { grow: 1, order: 1, align: "center" },
-                        React.createElement(persian_number_1.default, { className: "month", value: displayedDate }))),
-                React.createElement("div", { className: "calendar" },
-                    React.createElement("div", { className: "calendar-month" },
-                        React.createElement("div", { className: "calendar-week" },
-                            React.createElement("div", { className: "calendar-weekday" }, "\u0634"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u06CC"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u062F"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u0633"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u0686"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u067E"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u062C"))),
-                    this.generateMonth(this.state.month, this.state.year)),
-                React.createElement("div", { className: "calendar-actions" },
-                    React.createElement(button_1.default, { link: true, small: true, onClick: function () { return _this.saveDate(_this.state.currentDate); } }, "\u062A\u0627\u06CC\u06CC\u062F"),
-                    React.createElement(button_1.default, { link: true, small: true, onClick: this.closeDialog }, "\u0627\u0646\u0635\u0631\u0627\u0641"),
-                    React.createElement(button_1.default, { link: true, small: true, onClick: this.resetDate.bind(this) }, "\u0627\u0645\u0631\u0648\u0632")))));
+            React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.dialogOpen || this.state.dialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-date-picker-overlay", className: "date-picker", contentLabel: "Modal" }, this.renderCalender(currentDate, currentYear, displayedDate))));
     };
     DatePicker.defaultProps = {
         className: '',
@@ -2880,11 +2957,25 @@ var FileInput = /** @class */ (function (_super) {
             if (_this.props.disabled) {
                 return;
             }
-            _this.setState({
-                files: _this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }),
-            });
-            if (_this.props.onChangeFiles) {
-                _this.props.onChangeFiles(_this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }));
+            if (index) {
+                _this.setState({
+                    files: _this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }),
+                });
+                if (_this.props.onChangeFiles) {
+                    _this.props.onChangeFiles(_this.state.files.filter(function (_, filterIndex) { return index !== filterIndex; }));
+                }
+                if (_this.props.onFileCancelled) {
+                    _this.props.onFileCancelled(index);
+                }
+            }
+            else {
+                _this.setState({ files: null });
+                if (_this.props.onChangeFiles) {
+                    _this.props.onChangeFiles([]);
+                }
+                if (_this.props.onFileCancelled) {
+                    _this.props.onFileCancelled();
+                }
             }
         };
         _this.renderFiles = function (state, file, index) {
@@ -2919,10 +3010,15 @@ var FileInput = /** @class */ (function (_super) {
         if (prevProps.files !== this.props.files) {
             this.setState({ files: prevProps.files });
         }
+        if (prevProps.isClear !== this.props.isClear) {
+            if (this.props.isClear) {
+                this.clear();
+            }
+        }
     };
     FileInput.prototype.render = function () {
         var _this = this;
-        var _a = this.props, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, disabled = _a.disabled, states = _a.states, children = _a.children, className = _a.className, onChangeFiles = _a.onChangeFiles, inputRef = _a.inputRef, props = __rest(_a, ["forceDisplayError", "validate", "displayClear", "title", "pre", "disabled", "states", "children", "className", "onChangeFiles", "inputRef"]);
+        var _a = this.props, forceDisplayError = _a.forceDisplayError, validate = _a.validate, displayClear = _a.displayClear, title = _a.title, pre = _a.pre, disabled = _a.disabled, states = _a.states, children = _a.children, className = _a.className, onChangeFiles = _a.onChangeFiles, onTryAgain = _a.onTryAgain, onFileCancelled = _a.onFileCancelled, tryAgainText = _a.tryAgainText, isClear = _a.isClear, inputRef = _a.inputRef, props = __rest(_a, ["forceDisplayError", "validate", "displayClear", "title", "pre", "disabled", "states", "children", "className", "onChangeFiles", "onTryAgain", "onFileCancelled", "tryAgainText", "isClear", "inputRef"]);
         var files = this.state.files;
         var componentClassName = classNames('file-container', className, {
             multiple: this.props.multiple,
@@ -4200,6 +4296,7 @@ var persian_number_1 = __webpack_require__(1396);
 var flex_1 = __webpack_require__(7180);
 __webpack_require__(2245);
 var date_pickers_1 = __webpack_require__(9785);
+var loader_1 = __webpack_require__(7125);
 moment.loadPersian({ dialect: 'persian-modern' });
 var RangeDatePicker = /** @class */ (function (_super) {
     __extends(RangeDatePicker, _super);
@@ -4665,8 +4762,47 @@ var RangeDatePicker = /** @class */ (function (_super) {
         }
         return lessContent ? 'انتخاب تاریخ' : 'لطفا یک روز را انتخاب کنید';
     };
-    RangeDatePicker.prototype.render = function () {
+    RangeDatePicker.prototype.renderCalender = function (currentYear, displayedDate) {
         var _this = this;
+        return (React.createElement(React.Fragment, null,
+            React.createElement("div", { className: "calendar-info" },
+                React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
+                React.createElement(persian_number_1.default, { className: "month", value: this.createTitle([this.state.fromDate, this.state.toDate]) })),
+            React.createElement(flex_1.Row, { grow: 1, className: "padding-medium calendar-switches" },
+                React.createElement(flex_1.Column, { grow: 0, order: 0 },
+                    React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('subtract'); } }, "chevron_right")),
+                React.createElement(flex_1.Column, { grow: 0, order: 2 },
+                    React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('add'); } }, "chevron_left")),
+                React.createElement(flex_1.Column, { grow: 1, order: 1, align: "center" },
+                    React.createElement(persian_number_1.default, { className: "month", value: displayedDate }))),
+            React.createElement("div", { className: this.props.isInline ? 'calendar-inline' : 'calendar', ref: this.calendar },
+                React.createElement("div", { className: "calendar-month" },
+                    React.createElement("div", { className: "calendar-week" },
+                        React.createElement("div", { className: "calendar-weekday" }, "\u0634"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u06CC"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u062F"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u0633"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u0686"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u067E"),
+                        React.createElement("div", { className: "calendar-weekday" }, "\u062C"))),
+                this.generateMonth(this.state.month, this.state.year)),
+            this.props.isInline ? (React.createElement("div", { className: "calendar-actions-inline" },
+                React.createElement(button_1.default, { className: "today-btn", text: true, small: true, onClick: this.resetDate.bind(this) }, "\u0627\u0645\u0631\u0648\u0632"),
+                React.createElement("hr", null),
+                React.createElement(button_1.default, { primary: true, small: true, disabled: !this.state.toDate ||
+                        !this.state.fromDate ||
+                        this.props.disabled, onClick: function () {
+                        return _this.saveDate([_this.state.fromDate, _this.state.toDate]);
+                    } }, this.props.isLoading ? (React.createElement(loader_1.default, null)) : (this.props.submitButtonTitle || 'تایید')))) : (React.createElement("div", { className: "calendar-actions" },
+                React.createElement(button_1.default, { link: true, small: true, disabled: !this.state.toDate ||
+                        !this.state.fromDate ||
+                        this.props.disabled, onClick: function () {
+                        return _this.saveDate([_this.state.fromDate, _this.state.toDate]);
+                    } }, this.props.isLoading ? (React.createElement(loader_1.default, { primary: true })) : (this.props.submitButtonTitle || 'تایید')),
+                React.createElement(button_1.default, { link: true, small: true, onClick: this.closeDialog }, "\u0627\u0646\u0635\u0631\u0627\u0641"),
+                React.createElement(button_1.default, { link: true, small: true, onClick: this.resetDate.bind(this) }, "\u0627\u0645\u0631\u0648\u0632")))));
+    };
+    RangeDatePicker.prototype.render = function () {
         var _a, _b;
         var currentYear = this.state.fromDate
             ? this.state.fromDate.jYear()
@@ -4674,37 +4810,11 @@ var RangeDatePicker = /** @class */ (function (_super) {
         var year = this.state.year;
         var month = this.state.month;
         var displayedDate = moment("".concat(year, "-").concat(month, "-1"), 'jYYYY/jM/jD').format('jMMMM jYYYY');
-        return (React.createElement("div", { className: "range-date-picker-container ".concat(this.props.className) },
+        return this.props.isInline ? (React.createElement("div", { className: "range-date-picker-container ".concat(this.props.className) },
+            React.createElement("div", { className: "date-picker" }, this.renderCalender(currentYear, displayedDate)))) : (React.createElement("div", { className: "range-date-picker-container ".concat(this.props.className) },
             React.createElement(button_1.default, __assign({}, this.props.buttonProps, { disabled: this.props.disabled, className: "date-picker-input ".concat(this.state.selectedDate ? '' : 'empty', " ").concat((_b = (_a = this.props.buttonProps) === null || _a === void 0 ? void 0 : _a.className) !== null && _b !== void 0 ? _b : ''), onClick: this.openDialog }),
                 React.createElement(persian_number_1.default, { value: this.createTitle(this.state.selectedDate, true), className: "clickable" })),
-            React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.isDialogOpen || this.state.isDialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-range-date-picker-overlay", className: "date-picker", contentLabel: "Modal" },
-                React.createElement("div", { className: "calendar-info" },
-                    React.createElement(persian_number_1.default, { className: "year", value: currentYear }),
-                    React.createElement(persian_number_1.default, { className: "month", value: this.createTitle([this.state.fromDate, this.state.toDate]) })),
-                React.createElement(flex_1.Row, { grow: 1, className: "padding-medium calendar-switches" },
-                    React.createElement(flex_1.Column, { grow: 0, order: 0 },
-                        React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('subtract'); } }, "chevron_right")),
-                    React.createElement(flex_1.Column, { grow: 0, order: 2 },
-                        React.createElement("span", { className: "material-icons clickable", onClick: function () { return _this.changeMonth('add'); } }, "chevron_left")),
-                    React.createElement(flex_1.Column, { grow: 1, order: 1, align: "center" },
-                        React.createElement(persian_number_1.default, { className: "month", value: displayedDate }))),
-                React.createElement("div", { className: "calendar", ref: this.calendar },
-                    React.createElement("div", { className: "calendar-month" },
-                        React.createElement("div", { className: "calendar-week" },
-                            React.createElement("div", { className: "calendar-weekday" }, "\u0634"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u06CC"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u062F"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u0633"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u0686"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u067E"),
-                            React.createElement("div", { className: "calendar-weekday" }, "\u062C"))),
-                    this.generateMonth(this.state.month, this.state.year)),
-                React.createElement("div", { className: "calendar-actions" },
-                    React.createElement(button_1.default, { link: true, small: true, disabled: !this.state.toDate || !this.state.fromDate, onClick: function () {
-                            return _this.saveDate([_this.state.fromDate, _this.state.toDate]);
-                        } }, "\u062A\u0627\u06CC\u06CC\u062F"),
-                    React.createElement(button_1.default, { link: true, small: true, onClick: this.closeDialog }, "\u0627\u0646\u0635\u0631\u0627\u0641"),
-                    React.createElement(button_1.default, { link: true, small: true, onClick: this.resetDate.bind(this) }, "\u0627\u0645\u0631\u0648\u0632")))));
+            React.createElement(ReactModal, { ariaHideApp: false, isOpen: this.props.isDialogOpen || this.state.isDialogOpen, onRequestClose: this.closeDialog, overlayClassName: "milingo-range-date-picker-overlay", className: "date-picker", contentLabel: "Modal" }, this.renderCalender(currentYear, displayedDate))));
     };
     RangeDatePicker.defaultProps = {
         className: '',
@@ -5722,6 +5832,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 5663:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxOCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjY0NDIgMi4yOTY0NEMxNS4wMjk2IDEuNjI3OTEgMTMuOTIxIDEuNTg2OTEgMTMuMTgyMiAyLjMyNDA3TDUuOTQ2MzYgOS41NDQyMUM1Ljc1ODc3IDkuNzMxNCA1Ljc1ODc3IDkuOTY4NTEgNS45NDYzNiAxMC4xNTU3QzYuMTMzOTYgMTAuMzQyOSA2LjM3MTU4IDEwLjM0MjkgNi41NTkxOCAxMC4xNTU3TDEyLjU0NDQgNC4xODM0OEMxMi43MTI5IDQuMDIxMTEgMTIuOTM4NSAzLjkzMTI2IDEzLjE3MjggMy45MzMzQzEzLjQwNyAzLjkzNTMzIDEzLjYzMSA0LjAyOTA3IDEzLjc5NjcgNC4xOTQzNEMxMy45NjIzIDQuMzU5NjEgMTQuMDU2MiA0LjU4MzE4IDE0LjA1ODMgNC44MTY4OUMxNC4wNjAzIDUuMDUwNjEgMTMuOTcwMyA1LjI3NTc3IDEzLjgwNzUgNS40NDM4OUw3LjgyMjMzIDExLjQxNjFDNy42MTgzNSAxMS42MjU1IDcuMzc0MzUgMTEuNzkyIDcuMTA0NzUgMTEuOTA1N0M2LjgzNTE2IDEyLjAxOTQgNi41NDU0NSAxMi4wNzggNi4yNTI3NyAxMi4wNzhDNS45NjAwOSAxMi4wNzggNS42NzAzOCAxMi4wMTk0IDUuNDAwNzkgMTEuOTA1N0M1LjEzMTE5IDExLjc5MiA0Ljg4NzE5IDExLjYyNTUgNC42ODMyMSAxMS40MTYxQzQuNDczMzIgMTEuMjEyNiA0LjMwNjQ3IDEwLjk2OTEgNC4xOTI1MyAxMC43MDAxQzQuMDc4NiAxMC40MzExIDQuMDE5OSAxMC4xNDIgNC4wMTk5IDkuODQ5OTZDNC4wMTk5IDkuNTU3OTEgNC4wNzg2IDkuMjY4ODMgNC4xOTI1MyA4Ljk5OTgyQzQuMzA2NDcgOC43MzA4MiA0LjQ3MzMyIDguNDg3MzQgNC42ODMyMSA4LjI4MzgxTDExLjkxOTEgMS4wNjM2N0MxMy4zMTg5IC0wLjMzNDAwOSAxNS41OTUxIC0wLjM3OTQ2OSAxNi45NDg0IDEuMDc3MDRDMTguMzM0OSAyLjQ3NTYxIDE4LjM3NTEgNC43MzUyNCAxNi45MjE2IDYuMDgwMzNMOC40NDc2NSAxNC41MzU5QzYuNDkxMjggMTYuNDg4IDMuNDIzNjQgMTYuNDg4IDEuNDY3MjcgMTQuNTM1OUMtMC40ODkwOTEgMTIuNTgzOCAtMC40ODkwOTEgOS41MjI4MiAxLjQ2NzI3IDcuNTcwNzFMOC43MDMxNCAwLjM1MDU2N0M4Ljg3MTYyIDAuMTg4MTk2IDkuMDk3MjcgMC4wOTgzNTAyIDkuMzMxNSAwLjEwMDM4MUM5LjU2NTcyIDAuMTAyNDEyIDkuNzg5NzggMC4xOTYxNTcgOS45NTU0IDAuMzYxNDI1QzEwLjEyMSAwLjUyNjY5NCAxMC4yMTUgMC43NTAyNjIgMTAuMjE3IDAuOTgzOTc3QzEwLjIxOTEgMS4yMTc2OSAxMC4xMjkgMS40NDI4NiA5Ljk2NjI5IDEuNjEwOTdMMi43MzA0MiA4LjgzMTExQzEuNDcwODUgMTAuMDg4IDEuNDcwODUgMTIuMDE4NyAyLjczMDQyIDEzLjI3NTVDMy45OSAxNC41MzI0IDUuOTI0OTIgMTQuNTMyNCA3LjE4NDUgMTMuMjc1NUwxNS42NzEgNC44MDc0NEwxNS42OTg3IDQuNzgwN0MxNi4zNjg3IDQuMTY4MzMgMTYuNDA5OCAzLjA2MTI0IDE1LjY3MSAyLjMyNDA3TDE1LjY0NDIgMi4yOTY0NFoiIGZpbGw9IiMyMTIyMzAiLz4KPC9zdmc+Cg==");
+
+/***/ }),
+
 /***/ 1213:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -5791,6 +5910,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMzIiIGQ9Ik0yMyAxMmwtNSAxMEg2TDEgMTIgNiAyaDEyeiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiM3MDYxMzgiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEyYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjhjMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+
+/***/ 9477:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KDTwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIFRyYW5zZm9ybWVkIGJ5OiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB0cmFuc2Zvcm09InJvdGF0ZSgyNzApbWF0cml4KDEsIDAsIDAsIDEsIDAsIDApIj4KDTxnIGlkPSJTVkdSZXBvX2JnQ2FycmllciIgc3Ryb2tlLXdpZHRoPSIwIi8+Cg08ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KDTxnIGlkPSJTVkdSZXBvX2ljb25DYXJyaWVyIj4gPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy43MDcxIDEuMjkyODlDMTQuMDk3NiAxLjY4MzQyIDE0LjA5NzYgMi4zMTY1OCAxMy43MDcxIDIuNzA3MTFMMTIuNDA1MyA0LjAwODk2QzE3LjE4NzcgNC4yMjA4OSAyMSA4LjE2NTI0IDIxIDEzQzIxIDE3Ljk3MDYgMTYuOTcwNiAyMiAxMiAyMkM3LjAyOTQ0IDIyIDMgMTcuOTcwNiAzIDEzQzMgMTIuNDQ3NyAzLjQ0NzcyIDEyIDQgMTJDNC41NTIyOCAxMiA1IDEyLjQ0NzcgNSAxM0M1IDE2Ljg2NiA4LjEzNDAxIDIwIDEyIDIwQzE1Ljg2NiAyMCAxOSAxNi44NjYgMTkgMTNDMTkgOS4yNzc0IDE2LjA5NDIgNi4yMzM0OSAxMi40MjcgNi4wMTI4MUwxMy43MDcxIDcuMjkyODlDMTQuMDk3NiA3LjY4MzQyIDE0LjA5NzYgOC4zMTY1OCAxMy43MDcxIDguNzA3MTFDMTMuMzE2NiA5LjA5NzYzIDEyLjY4MzQgOS4wOTc2MyAxMi4yOTI5IDguNzA3MTFMOS4yOTI4OSA1LjcwNzExQzkuMTA1MzYgNS41MTk1NyA5IDUuMjY1MjIgOSA1QzkgNC43MzQ3OCA5LjEwNTM2IDQuNDgwNDMgOS4yOTI4OSA0LjI5Mjg5TDEyLjI5MjkgMS4yOTI4OUMxMi42ODM0IDAuOTAyMzY5IDEzLjMxNjYgMC45MDIzNjkgMTMuNzA3MSAxLjI5Mjg5WiIgZmlsbD0iI2JjMDAwNyIvPiA8L2c+Cg08L3N2Zz4=");
 
 /***/ }),
 

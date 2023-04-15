@@ -18,6 +18,9 @@ export interface RangeDatePickerProps {
     forceDatePickerOpen?: boolean;
     disabled?: boolean;
     buttonProps?: Omit<ButtonProps, 'children' | 'ref'>;
+    isInline?: boolean;
+    submitButtonTitle?: string;
+    isLoading?: boolean;
 }
 export interface RangeDatePickerState {
     month: number;
@@ -70,6 +73,7 @@ declare class RangeDatePicker extends React.Component<RangeDatePickerProps, Rang
     openDialog: () => void;
     closeDialog: () => void;
     createTitle(range: DateRange, lessContent?: boolean): string;
+    renderCalender(currentYear: string, displayedDate: string): React.ReactNode;
     render(): React.ReactNode;
 }
 export default RangeDatePicker;

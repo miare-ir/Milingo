@@ -2,6 +2,7 @@ import './styles.scss';
 export interface MessageProps {
     message: string;
     isRight?: boolean;
+    isImage?: boolean;
     createdDate: string;
     id: string;
     className?: string;

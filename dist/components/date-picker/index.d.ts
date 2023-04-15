@@ -15,6 +15,9 @@ export interface DatePickerProps {
     forceDatePickerOpen?: boolean;
     inputButtonSize?: 'small' | 'tiny' | 'regular' | 'large';
     disabled?: boolean;
+    isInline?: boolean;
+    submitButtonTitle?: string;
+    isLoading?: boolean;
 }
 export interface DatePickerState {
     month: number;
@@ -37,6 +40,7 @@ declare class DatePicker extends React.Component<DatePickerProps, DatePickerStat
     saveDate: (date: any) => void;
     openDialog: () => void;
     closeDialog: () => void;
+    renderCalender(currentDate: string, currentYear: string, displayedDate: string): React.ReactNode;
     render(): React.ReactNode;
 }
 export default DatePicker;
