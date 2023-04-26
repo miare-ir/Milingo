@@ -1,0 +1,47 @@
+$pointer-color: #F3B229;
+
+@keyframes milingo-pointer-animation {
+  0%, 100% {
+    box-shadow: 0 0 0 0 $pointer-color, inset 0 0 0 0 $pointer-color;
+  }
+
+  50% {
+    box-shadow: 0 0 0 2px $pointer-color, inset 0 0 0 2px $pointer-color;
+  }
+}
+
+.milingo-pointer {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: $pointer-color;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.small {
+    width: 12px;
+    height: 12px;
+  }
+
+  &.normal {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.large {
+    width: 20px;
+    height: 20px;
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    min-width: calc(100% + 8px);
+    min-height: calc(100% + 8px);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 $pointer-color, inset 0 0 0 0 $pointer-color;
+    will-change: box-shadow;
+    animation: milingo-pointer-animation 1.5s linear infinite;
+  }
+}

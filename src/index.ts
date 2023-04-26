@@ -90,3 +90,6 @@ export * from './components/toggle-button';
 
 export { default as LicensePlate } from './components/license-plate';
 export * from './components/license-plate';
+
+export { default as Pinter } from './components/pointer';
+export * from './components/pointer';
