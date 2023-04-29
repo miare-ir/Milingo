@@ -4851,6 +4851,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var React = __webpack_require__(8156);
 var classNames = __webpack_require__(4184);
+var arrow_white_svg_1 = __webpack_require__(386);
 __webpack_require__(6045);
 var DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 var SelectComponent = /** @class */ (function (_super) {
@@ -4987,7 +4988,8 @@ var SelectComponent = /** @class */ (function (_super) {
                 (!errorMessagePosition || errorMessagePosition === 'top') && (React.createElement("span", { className: "error top" }, errorMessage)),
             React.createElement("div", { tabIndex: 0, className: controlClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
                 React.createElement("div", { className: "select-placeholder" }, placeHolderValue),
-                React.createElement("div", { className: "select-arrow" })),
+                React.createElement("div", { className: "select-arrow" },
+                    React.createElement("img", { src: arrow_white_svg_1.default, className: "arrow-icon" }))),
             menu,
             React.createElement("select", { name: this.props.name, ref: function (select) { return (_this.selectElement = select); }, hidden: true },
                 React.createElement("option", { value: "null" }, "default"),
@@ -5820,6 +5822,15 @@ var license_plate_1 = __webpack_require__(7376);
 Object.defineProperty(exports, "LicensePlate", ({ enumerable: true, get: function () { return license_plate_1.default; } }));
 __exportStar(__webpack_require__(7376), exports);
 
+
+/***/ }),
+
+/***/ 386:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIyNHB4IgoJIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnIGlkPSJCb3VuZGluZ19Cb3hlcyI+Cgk8ZyBpZD0idWlfeDVGX3NwZWNfeDVGX2hlYWRlcl9jb3B5XzMiPgoJPC9nPgoJPHBhdGggZmlsbD0ibm9uZSIgZD0iTTAsMGgyNHYyNEgwVjB6Ii8+CjwvZz4KPGcgaWQ9IlNoYXJwIj4KCTxnIGlkPSJ1aV94NUZfc3BlY194NUZfaGVhZGVyX2NvcHlfNCI+Cgk8L2c+Cgk8cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNNy40MSw4LjU5TDEyLDEzLjE3bDQuNTktNC41OEwxOCwxMGwtNiw2bC02LTZMNy40MSw4LjU5eiIvPgo8L2c+Cjwvc3ZnPgo=");
 
 /***/ }),
 
