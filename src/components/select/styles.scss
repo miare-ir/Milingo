@@ -64,14 +64,17 @@
   }
 
   .select-arrow {
-    display: block;
+    display: flex;
     min-width: 48px;
     height: 48px;
     background-color: $primary1;
-    background-image: url('./arrow.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
     border-radius: 4px 0 0 4px;
+    align-items: center;
+    justify-content: center;
+
+    > .arrow-icon {
+      max-width: 20px;
+    }
   }
 
   .select-menu {
