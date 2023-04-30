@@ -1,0 +1,6 @@
+@keyframes milingo-pointer-animation{0%,100%{box-shadow:0 0 0 0 #F3B229,inset 0 0 0 0 #F3B229}50%{box-shadow:0 0 0 2px #F3B229,inset 0 0 0 2px #F3B229}}.milingo-pointer{display:inline-block;border-radius:50%;background-color:#F3B229;pointer-events:none;display:flex;align-items:center;justify-content:center}.milingo-pointer.small{width:12px;height:12px}.milingo-pointer.normal{width:16px;height:16px}.milingo-pointer.large{width:20px;height:20px}.milingo-pointer::after{content:'';display:inline-block;min-width:calc(100% + 8px);min-height:calc(100% + 8px);border-radius:50%;box-shadow:0 0 0 0 #F3B229,inset 0 0 0 0 #F3B229;will-change:box-shadow;animation:milingo-pointer-animation 1.5s linear infinite}
+
+.story-container.pointers{display:flex;gap:30px;padding:50px;align-items:center}
+
+
+/*# sourceMappingURL=pointer-index-stories.89288c59.chunk.css.map*/
