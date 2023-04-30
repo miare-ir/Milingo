@@ -9,7 +9,7 @@ import SubmitForm from './submit-form';
 export interface ChatProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'id'> {
   id: number;
-  handelSubmit?: (id: number, text: string) => void;
+  handelSubmit?: (id: number, text: string, attachment?: File) => void;
   isSending?: boolean;
   isClear?: boolean;
   canSubmit?: boolean;
