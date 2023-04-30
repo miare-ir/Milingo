@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import arrowIcon from '../../assets/icon/arrow-white.svg';
+
 import './styles.scss';
 
 export interface Option {
@@ -200,12 +202,8 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
   }
 
   render(): React.ReactNode {
-    const {
-      className,
-      showedItem,
-      errorMessage,
-      errorMessagePosition,
-    } = this.props;
+    const { className, showedItem, errorMessage, errorMessagePosition } =
+      this.props;
 
     const placeHolderValue =
       typeof this.state.selected === 'string'
@@ -240,7 +238,9 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
           onMouseDown={this.handleMouseDown.bind(this)}
           onTouchEnd={this.handleMouseDown.bind(this)}>
           <div className="select-placeholder">{placeHolderValue}</div>
-          <div className="select-arrow" />
+          <div className="select-arrow">
+            <img src={arrowIcon} className="arrow-icon" />
+          </div>
         </div>
         {menu}
         <select
