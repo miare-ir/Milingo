@@ -5795,7 +5795,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Pinter = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
+exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
 __exportStar(__webpack_require__(8410), exports);
 __exportStar(__webpack_require__(8877), exports);
 __exportStar(__webpack_require__(5630), exports);
@@ -5877,7 +5877,7 @@ var license_plate_1 = __webpack_require__(7376);
 Object.defineProperty(exports, "LicensePlate", ({ enumerable: true, get: function () { return license_plate_1.default; } }));
 __exportStar(__webpack_require__(7376), exports);
 var pointer_1 = __webpack_require__(1845);
-Object.defineProperty(exports, "Pinter", ({ enumerable: true, get: function () { return pointer_1.default; } }));
+Object.defineProperty(exports, "Pointer", ({ enumerable: true, get: function () { return pointer_1.default; } }));
 __exportStar(__webpack_require__(1845), exports);
 
 
