@@ -44,6 +44,13 @@ const messages = [
     type: 'text',
     message: 'نه مشکلی نیست',
   },
+  {
+    id: '9ad24b31-8f1e-4c5e-b488-b715b2825790',
+    created_at: '2021-11-02T15:00:18+0330',
+    sender_type: 'client',
+    type: 'text',
+    message: 'mia.re',
+  },
 ];
 
 export const Default = (): JSX.Element => (
@@ -55,6 +62,12 @@ export const Default = (): JSX.Element => (
         message={message}
         isRight={sender_type !== 'staff'}
         createdDate={created_at}
+        timeFormat={{
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        }}
       />
     ))}
   </Chat>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import Linkify from 'react-linkify';
 
 import Image from '../image';
 import './styles.scss';
@@ -11,14 +12,22 @@ export interface MessageProps {
   createdDate: string;
   id: string;
   className?: string;
+  timeFormat?: Intl.DateTimeFormatOptions;
 }
 
 const Message = (props: MessageProps): JSX.Element => {
-  const dateTimeFormat = (dateTime: string): string =>
-    new Intl.DateTimeFormat('fa', {
+  const dateTimeFormat = (dateTime: string): string => {
+    if (props.timeFormat) {
+      return new Intl.DateTimeFormat('fa', props.timeFormat).format(
+        new Date(dateTime),
+      );
+    }
+
+    return new Intl.DateTimeFormat('fa', {
       hour: '2-digit',
       minute: '2-digit',
     }).format(new Date(dateTime));
+  };
 
   const componentClassNames = classNames(
     'chat-message-container',
@@ -39,7 +48,9 @@ const Message = (props: MessageProps): JSX.Element => {
             }}
           />
         ) : (
-          <p className="message-content">{props.message}</p>
+          <Linkify properties={{ target: '_blank' }}>
+            <p className="message-content">{props.message}</p>
+          </Linkify>
         )}
       </div>
       <span className="time">{dateTimeFormat(props.createdDate)}</span>
