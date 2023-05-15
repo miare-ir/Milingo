@@ -4,7 +4,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Miare <tech@miare.ir> (https://mia.re)",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "keywords": [
     "design-library",
     "react"
@@ -114,7 +114,8 @@
     "babel-loader": "^9.1.2",
     "classnames": "^2.3.2",
     "prop-types": "^15.8.1",
-    "react-circular-progressbar": "^2.1.0"
+    "react-circular-progressbar": "^2.1.0",
+    "react-linkify": "^1.0.0-alpha"
   },
   "husky": {
     "hooks": {

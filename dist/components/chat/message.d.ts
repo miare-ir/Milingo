@@ -6,6 +6,7 @@ export interface MessageProps {
     createdDate: string;
     id: string;
     className?: string;
+    timeFormat?: Intl.DateTimeFormatOptions;
 }
 declare const Message: (props: MessageProps) => JSX.Element;
 export default Message;
