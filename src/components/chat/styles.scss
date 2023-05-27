@@ -200,6 +200,10 @@
         max-width: calc( 100% - 34px);
         word-break: break-word;
         overflow: hidden;
+
+        .message-content {
+          white-space: pre-wrap;
+        }
       }
 
       &.right {
