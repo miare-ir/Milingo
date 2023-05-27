@@ -68,7 +68,7 @@ const SubmitForm = ({
   ): void => {
     event?.preventDefault();
     if (!isSendButtonDisabled) {
-      onSubmit(id, message.trim(), attachment);
+      onSubmit(id, message, attachment);
     }
   };
 
