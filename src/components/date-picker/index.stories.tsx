@@ -8,7 +8,7 @@ export default {
 };
 
 const DatePickerWithState: React.FC<Partial<DatePickerProps>> = props => {
-  const [value, setValue] = React.useState<moment.Moment>(moment());
+  const [value, setValue] = React.useState<moment.Moment>();
   return (
     <DatePicker
       title="انتخاب تاریخ"
