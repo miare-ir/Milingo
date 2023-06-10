@@ -181,9 +181,9 @@ const SubmitForm = ({
             </Button>
             <div className='chat-footer-elements'>
               {canAttach && 
-                <Button className='attach-button' disabled={!!message} primary link>
+                <Button className='attach-button' disabled={!!message} tiny link>
                   <img
-                    className="send-icon"
+                    className="attach-icon"
                     src={message ? disabledAttachIcon : attachIcon}
                   />
                   <input

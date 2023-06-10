@@ -22,164 +22,213 @@
 
     .submit-form {
       padding: 8px;
-      height: 50px;  
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      border-top: 1px solid #ecedef;
+      background-color: #ecedef;
 
-      .send-button {
-        margin: unset;
-        height: 38px;
-        
-        &:hover {
-          background-color: transparent !important;
-          border-color: transparent !important;
+      .chat-actions {
+        background-color: #fff;
+        width: 100%;
+        border: 1px solid #d0d0d0;
+        border-radius: 12px;
+        height: 106px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .file-name-container {
+          height: 48px;
+          margin: 8px 12px;    
+
+          .file-name {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 8px;
+            box-sizing: border-box;
+            width: 276px;
+            height: 32px;
+            background: rgba(37, 134, 19, 0.2);
+            border-radius: 8px;
+            position: relative;
+
+            .clear {
+              font-size: 20px;
+              top: 8px;
+              color: #8897a8;
+              z-index: 1;
+              cursor: pointer;
+            }
+
+            .loading-container {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              border-radius: 8px;
+              right: 0;
+              background-color: #ecedef;
+              z-index: 0;
+
+              .loading {
+                position: absolute;
+                height: 100%;
+                border-radius: 0 8px 8px 0;
+                right: 0;
+                background-color: rgba(30, 109, 200, 0.2);
+                z-index: 0;
+              }
+            }
+
+            &-text {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 19px;
+              color: #3D3F53;
+              z-index: 1;
+  
+              p {
+                max-width: 212px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              .show-icon {
+                cursor: pointer;
+              }
+            }
+          }
+
+          &.error-state {
+            .file-name {
+              background-color: #ffd0d6;
+            }
+          }
         }
-      }
 
-      .textarea-container {
-        width: 268px;
-        margin-bottom: 0;
-        height: 100%;
-      }
+        .error {
+          font-size: 10px;
+          line-height: 16px;
+          color: #bc0007;
+          width: 260px;
+          padding: 4px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
 
-      textarea {
-        border: 1px solid #ebebeb !important;
-        box-shadow: 2px 2px 1px rgba(238, 238, 238, 0.08);
-        border-radius: 10px !important;
-        font-weight: 400;
-        font-variation-settings: 'wght' 400;
-        font-size: 12px !important;
-        line-height: 19px !important;
-        text-align: right;
-        height: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        overflow-y: scroll;
-        padding: 6px;
+          .try-again {
+            cursor: pointer;
+            color: #1e6dc8;
+            padding-right: 2px;
+          }
+        }
 
-        &:active, &:focus {
-          box-shadow: none !important;
+        .send-button {
+          margin: unset;
+          height: fit-content;
+          padding: 0 4px;
+          
+          &:hover {
+            background-color: transparent !important;
+            border-color: transparent !important;
+          }
+        }
+
+        .textarea-container {
+          margin-bottom: 0;
+
+          textarea {
+            border: none !important;
+            font-weight: 400;
+            font-variation-settings: 'wght' 400;
+            font-size: 12px !important;
+            line-height: 19px !important;
+            text-align: right;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            overflow-y: scroll;
+            padding: 0;
+            color: #3d3f53;
+            direction: ltr;
+            border-radius: 12px;
+            direction: ltr;
+            height: 62px;
+            padding: 8px 12px;
+            padding-right: 2px;
+
+            &::-webkit-scrollbar {
+              display: block;
+              width: 11px;
+              visibility: visible;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              border-radius: 50px;
+              border: 4px solid rgba(0, 0, 0, 0);
+              background-clip: padding-box;
+              background-color: #d0d0d0;
+            }
+
+            &:active, &:focus {
+              box-shadow: none !important;
+            }
+          }
         }
       }
     }
 
     .chat-footer {
       color: #1e6dc8;
-      background-color: #ecedef;
-      height: 40px;
-      padding: 8px 20px;
-      box-sizing: border-box;
+      height: 16px;
+      padding-top: 12px;
+      margin: 12px;
+      margin-top: 0;
       display: flex;
       justify-content: space-between;
       flex-direction: row-reverse;
       align-items: center;
+      border-top: 1px solid #ecedef;
 
-      .file-container {
-        .file-div {
-          flex-direction: column;
+      &-elements {
+        display: flex;
+        align-items: center;
+        gap: 14px;
 
-          button {
-            margin: 0;
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            width: fit-content;
+        .attach-button {
+          margin: 0;
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          width: fit-content;
+          height: fit-content;
+          position: relative;
+
+          img {
+            padding-right: 4px;
+          }
+
+          input {
             cursor: pointer;
-
-            img {
-              cursor: pointer;
-            }
-
-            input {
-              cursor: pointer;
-            }
-
-            &:hover {
-              background-color: transparent !important;
-              border-color: transparent !important;
-            }
-          }
-
-          .file-name-container {
-            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             position: absolute;
-            right: 8px;
-            bottom: 48px;
-            max-width: 268px;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            font-size: 0;
 
-            .file-name {
-              border-radius: 10px;
-              font-size: 12px;
-              line-height: 19px;
-              height: 50px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              width: 268px;
-              align-items: center;
-
-              .try-again {
-                margin: 0;
-                background-color: transparent;
-                border: none;
-                padding: 9px 8px;
-                width: fit-content;
-                min-width: 16px;
-                &:hover {
-                  background-color: transparent !important;
-                  border-color: transparent !important;
-                }
-
-                .reload-icon {
-                  width: 16px;
-                }
-              }
-
-              &-text {
-                padding: 10px 8px;
-
-                p {
-                  max-width: 230px;
-                }
-
-                .clear {
-                  font-size: 20px;
-                  top: 8px;
-                }
-              }
-            }
-
-            &.error-state {
-              bottom: 38px;
-
-              .file-name {
-                line-height: 14px;
-                height: 34px;
-                &-text {
-                  .clear {
-                    font-size: 19px;
-                  }
-                }
-              }
-            }
-
-            &.try-again-state {
-              .clear {
-                right: 0;
-              }
+            &:disabled {
+              cursor: default;
             }
           }
-        }
 
-        .error {
-          width: 266px;
-          padding: 4px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 12px;
-          margin-top: 0;
+          &:hover {
+            background-color: transparent !important;
+            border-color: transparent !important;
+          }
         }
       }
     }
