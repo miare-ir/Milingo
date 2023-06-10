@@ -106,6 +106,10 @@
               background-color: #ffd0d6;
             }
           }
+
+          .milingo-image-modal {
+            max-width: 80vw;
+          }
         }
 
         .error {
@@ -296,7 +300,7 @@
 
       .milingo-image-modal {
         img {
-          width: 46vw;
+          max-width: 80vw;
         }
       }
     }
