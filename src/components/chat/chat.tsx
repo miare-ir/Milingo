@@ -17,16 +17,17 @@ export interface ChatProps
   children?: React.ReactNode;
   footer?: React.ReactNode;
   state?: States;
-  files?: File[];
+  file?: File;
   forceDisplayError?: boolean;
   validFileSize?: number;
   validFileFormat?: string[];
   errorInvalidSize?: string;
   errorInvalidFormat?: string;
-  onChangeFiles?: (value: File[]) => void;
-  onTryAgain?: (value: File[]) => void;
+  onChangeFile?: (value: File) => void;
+  onTryAgain?: (value: File) => void;
   onFileCancelled?: (index?: number) => void;
-  validate?: (value: File[]) => boolean;
+  validate?: (value: File) => boolean;
+  message?: string;
 }
 
 const Chat = ({
@@ -40,15 +41,16 @@ const Chat = ({
   footer,
   state,
   forceDisplayError,
-  files,
+  file,
   validFileSize,
   validFileFormat,
   errorInvalidFormat,
   errorInvalidSize,
-  onChangeFiles,
+  onChangeFile,
   onTryAgain,
   onFileCancelled,
   validate,
+  message,
   ...rest
 }: ChatProps): JSX.Element => {
   const componentClassNames = classNames('chat-container', rest.className);
@@ -64,8 +66,8 @@ const Chat = ({
           canAttach={canAttach}
           footer={footer}
           state={state}
-          files={files}
-          onChangeFiles={onChangeFiles}
+          file={file}
+          onChangeFile={onChangeFile}
           onTryAgain={onTryAgain}
           onFileCancelled={onFileCancelled}
           validate={validate}
@@ -75,9 +77,9 @@ const Chat = ({
           errorInvalidFormat={errorInvalidFormat}
           validFileSize={validFileSize}
           validFileFormat={validFileFormat}
+          preMessage={message}
         />
       )}
-      {!canAttach && !!footer && <div className="chat-footer">{footer}</div>}
     </div>
   );
 };
