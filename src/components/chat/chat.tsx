@@ -27,6 +27,7 @@ export interface ChatProps
   onTryAgain?: (value: File) => void;
   onFileCancelled?: (index?: number) => void;
   validate?: (value: File) => boolean;
+  message?: string;
 }
 
 const Chat = ({
@@ -49,6 +50,7 @@ const Chat = ({
   onTryAgain,
   onFileCancelled,
   validate,
+  message,
   ...rest
 }: ChatProps): JSX.Element => {
   const componentClassNames = classNames('chat-container', rest.className);
@@ -75,6 +77,7 @@ const Chat = ({
           errorInvalidFormat={errorInvalidFormat}
           validFileSize={validFileSize}
           validFileFormat={validFileFormat}
+          preMessage={message}
         />
       )}
     </div>

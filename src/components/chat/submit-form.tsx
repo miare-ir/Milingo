@@ -28,6 +28,7 @@ export interface SubmitFormProps {
   validFileFormat?: string[];
   errorInvalidSize?: string;
   errorInvalidFormat?: string;
+  preMessage?: string;
 }
 
 const SubmitForm = ({
@@ -48,8 +49,9 @@ const SubmitForm = ({
   forceDisplayError,
   file,
   isClear = false,
+  preMessage,
 }: SubmitFormProps): JSX.Element => {
-  const [message, setMessage] = React.useState('');
+  const [message, setMessage] = React.useState(preMessage);
   const [errorMessage, setErrorMessage] = React.useState('');
   const [isFileSelect, setIsFileSelect] = React.useState(!!file);
   const [touched, setTouched] = React.useState(false);
@@ -83,6 +85,12 @@ const SubmitForm = ({
       setMessage('');
     }
   }, [isClear, attachment]);
+
+  React.useEffect(()=>{
+    if(preMessage) {
+      setMessage(preMessage);
+    }
+  },[preMessage])
 
   React.useEffect(()=>{
     if(prevFile !== file) {
