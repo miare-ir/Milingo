@@ -101,19 +101,13 @@ export const WithoutSubmitMessage = (): JSX.Element => (
   </Chat>
 );
 
-export const WithFooter = (): JSX.Element => {    
-  const renderChatFooter = (): JSX.Element => 
-    <Button
-      type="submit"
-      link
-      tiny
-      className="send-button">
-    <img
-      className="send-icon"
-      src={predefinedMessageIcon}
-    />
-  </Button>
-    
+export const WithFooter = (): JSX.Element => {
+  const renderChatFooter = (): JSX.Element => (
+    <Button type="submit" link tiny className="send-button">
+      <img className="send-icon" src={predefinedMessageIcon} />
+    </Button>
+  );
+
   return (
     <Chat
       id={1}
@@ -136,17 +130,11 @@ export const WithFooter = (): JSX.Element => {
 
 export const WithAttachment = (): JSX.Element => {
   const testFile = new File([''], 'filename.jpg');
-  const renderChatFooter = (): JSX.Element => 
-    <Button
-      type="submit"
-      link
-      tiny
-      className="send-button">
-    <img
-      className="send-icon"
-      src={predefinedMessageIcon}
-    />
-  </Button>
+  const renderChatFooter = (): JSX.Element => (
+    <Button type="submit" link tiny className="send-button">
+      <img className="send-icon" src={predefinedMessageIcon} />
+    </Button>
+  );
 
   return (
     <Chat

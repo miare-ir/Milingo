@@ -86,17 +86,17 @@ const SubmitForm = ({
     }
   }, [isClear, attachment]);
 
-  React.useEffect(()=>{
-    if(preMessage) {
+  React.useEffect(() => {
+    if (preMessage) {
       setMessage(preMessage);
     }
-  },[preMessage])
+  }, [preMessage]);
 
-  React.useEffect(()=>{
-    if(prevFile !== file) {
-      setSelectedFile(file)
+  React.useEffect(() => {
+    if (prevFile !== file) {
+      setSelectedFile(file);
     }
-  },[file])
+  }, [file]);
 
   const handleTextareaKeyDowns = (
     event: React.KeyboardEvent<HTMLTextAreaElement>,
@@ -154,17 +154,22 @@ const SubmitForm = ({
   return (
     <>
       <form onSubmit={handleSubmitMessage} className="submit-form">
-        <div className='chat-actions'>
-          {isFileSelect && selectedFile ? (<AttachmentFile 
-            displayClear
-            forceDisplayError={forceDisplayError}
-            onChangeFile={handleFileChange}
-            onFileCancelled={onFileCancelled}
-            state={{ ...state, message: errorMessage || state?.message }}
-            onTryAgain={onTryAgain}
-            validate={handleValidate}
-            isClear={isClear}
-            touched={touched} disabled={!!message} file={selectedFile} setFile={setSelectedFile}></AttachmentFile>) : (
+        <div className="chat-actions">
+          {isFileSelect && selectedFile ? (
+            <AttachmentFile
+              displayClear
+              forceDisplayError={forceDisplayError}
+              onChangeFile={handleFileChange}
+              onFileCancelled={onFileCancelled}
+              state={{ ...state, message: errorMessage || state?.message }}
+              onTryAgain={onTryAgain}
+              validate={handleValidate}
+              isClear={isClear}
+              touched={touched}
+              disabled={!!message}
+              file={selectedFile}
+              setFile={setSelectedFile}></AttachmentFile>
+          ) : (
             <Textarea
               autoFocus
               rows={1}
@@ -175,7 +180,7 @@ const SubmitForm = ({
               onKeyDown={handleTextareaKeyDowns}
             />
           )}
-          <div className='chat-footer'>
+          <div className="chat-footer">
             <Button
               type="submit"
               link
@@ -187,9 +192,13 @@ const SubmitForm = ({
                 src={isSendButtonDisabled ? disabledSendIcon : sendIcon}
               />
             </Button>
-            <div className='chat-footer-elements'>
-              {canAttach && 
-                <Button className='attach-button' disabled={!!message} tiny link>
+            <div className="chat-footer-elements">
+              {canAttach && (
+                <Button
+                  className="attach-button"
+                  disabled={!!message}
+                  tiny
+                  link>
                   <img
                     className="attach-icon"
                     src={message ? disabledAttachIcon : attachIcon}
@@ -201,7 +210,7 @@ const SubmitForm = ({
                     value=""
                   />
                 </Button>
-              }
+              )}
               {footer}
             </div>
           </div>

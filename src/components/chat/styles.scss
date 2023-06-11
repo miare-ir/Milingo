@@ -13,7 +13,7 @@
     position: relative;
 
     .chat-content {
-      display: block; 
+      display: block;
     }
 
     .chat-content::-webkit-scrollbar {
@@ -37,7 +37,7 @@
 
         .file-name-container {
           height: 48px;
-          margin: 8px 12px;    
+          margin: 8px 12px;
 
           .file-name {
             display: flex;
@@ -88,7 +88,7 @@
               line-height: 19px;
               color: #3D3F53;
               z-index: 1;
-  
+
               p {
                 max-width: 212px;
                 overflow: hidden;
@@ -133,7 +133,7 @@
           margin: unset;
           height: fit-content;
           padding: 0 4px;
-          
+
           &:hover {
             background-color: transparent !important;
             border-color: transparent !important;
@@ -250,7 +250,7 @@
 
       .chat-message-item {
         width: fit-content;
-        max-width: calc( 100% - 34px);
+        max-width: calc(100% - 34px);
         word-break: break-word;
         overflow: hidden;
 
@@ -262,7 +262,7 @@
       &.right {
         text-align: left;
         align-items: flex-end;
-        
+
         .chat-message-item {
           background: #ecedef;
           border-radius: 10px 10px 10px 0;
@@ -270,7 +270,7 @@
           width: fit-content;
         }
       }
-  
+
       .time {
         font-weight: 400;
         font-size: 10px;
@@ -279,7 +279,7 @@
         margin: 0 8px;
       }
     }
-  
+
     &-item {
       font-weight: 300;
       font-variation-settings: 'wght' 300;
@@ -291,7 +291,7 @@
       border-radius: 10px 10px 0 10px;
       color: $whiteColor;
       overflow: hidden;
-      text-overflow: ellipsis;  
+      text-overflow: ellipsis;
       text-align: right;
 
       .attached-image {
