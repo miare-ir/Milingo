@@ -58,3 +58,5 @@ export { default as LicensePlate } from './components/license-plate';
 export * from './components/license-plate';
 export { default as Pointer } from './components/pointer';
 export * from './components/pointer';
+export { default as CountInput } from './components/count-input';
+export * from './components/count-input';

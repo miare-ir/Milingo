@@ -988,6 +988,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 8322:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ 3822:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -3321,6 +3331,63 @@ var collection_1 = __webpack_require__(9522);
 Object.defineProperty(exports, "Collection", ({ enumerable: true, get: function () { return collection_1.default; } }));
 var collection_card_1 = __webpack_require__(2791);
 Object.defineProperty(exports, "CollectionCard", ({ enumerable: true, get: function () { return collection_card_1.default; } }));
+
+
+/***/ }),
+
+/***/ 39:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var React = __webpack_require__(8156);
+var classnames = __webpack_require__(4184);
+var __1 = __webpack_require__(7636);
+__webpack_require__(8322);
+var CountInput = React.forwardRef(function (_a, ref) {
+    var _b;
+    var _c = _a.min, min = _c === void 0 ? Number.MIN_SAFE_INTEGER : _c, _d = _a.max, max = _d === void 0 ? Number.MAX_SAFE_INTEGER : _d, _e = _a.steps, steps = _e === void 0 ? 1 : _e, value = _a.value, onChange = _a.onChange, className = _a.className, rest = __rest(_a, ["min", "max", "steps", "value", "onChange", "className"]);
+    var classes = classnames('count-input', (_b = {},
+        _b[className] = !!className,
+        _b));
+    var handleChangeValue = function (increase) { return function () {
+        onChange(function (currentValue) {
+            var newValue = increase ? currentValue + steps : currentValue - steps;
+            return newValue <= max && newValue >= min ? newValue : currentValue;
+        });
+    }; };
+    return (React.createElement("div", __assign({}, rest, { ref: ref, className: classes }),
+        React.createElement(__1.Button, { disabled: value <= min, primary: true, className: "action-button", onClick: handleChangeValue() },
+            React.createElement("span", { className: "material-icons button-icon" }, "remove")),
+        React.createElement("span", { className: "value" }, value),
+        React.createElement(__1.Button, { disabled: value >= max, primary: true, className: "action-button", onClick: handleChangeValue(true) },
+            React.createElement("span", { className: "material-icons button-icon" }, "add"))));
+});
+CountInput.displayName = 'CountInput';
+exports["default"] = CountInput;
 
 
 /***/ }),
@@ -6979,7 +7046,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
+exports.CountInput = exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
 __exportStar(__webpack_require__(8410), exports);
 __exportStar(__webpack_require__(8877), exports);
 __exportStar(__webpack_require__(5630), exports);
@@ -7063,6 +7130,9 @@ __exportStar(__webpack_require__(7376), exports);
 var pointer_1 = __webpack_require__(1845);
 Object.defineProperty(exports, "Pointer", ({ enumerable: true, get: function () { return pointer_1.default; } }));
 __exportStar(__webpack_require__(1845), exports);
+var count_input_1 = __webpack_require__(39);
+Object.defineProperty(exports, "CountInput", ({ enumerable: true, get: function () { return count_input_1.default; } }));
+__exportStar(__webpack_require__(39), exports);
 
 
 /***/ }),

@@ -1,0 +1,32 @@
+@import '../../assets/styles/base';
+
+.count-input {
+  display: inline-flex;
+  justify-content: space-between;
+  user-select: none;
+  align-items: center;
+  min-width: 70px;
+
+  > .value {
+    color: $primary1;
+  }
+
+  > .action-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    background-color: #e8f0fa;
+    color: $primary1;
+    border: 0;
+
+    &:hover {
+      color: $whiteColor;
+    }
+
+    > .button-icon {
+      font-size: 18px;
+    }
+  }
+}
