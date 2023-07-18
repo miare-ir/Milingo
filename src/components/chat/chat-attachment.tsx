@@ -18,7 +18,7 @@ export interface States {
 export interface AttachmentFileProps {
   displayClear?: boolean;
   file?: File;
-  setFile: (file: File)=> void;
+  setFile: (file: File) => void;
   forceDisplayError?: boolean;
   onChangeFile?: (value?: File) => void;
   onTryAgain?: (files: File) => void;
@@ -30,7 +30,9 @@ export interface AttachmentFileProps {
   disabled?: boolean;
 }
 
-const AttachmentFile: React.FC<AttachmentFileProps> = (props: AttachmentFileProps) => {
+const AttachmentFile: React.FC<AttachmentFileProps> = (
+  props: AttachmentFileProps,
+) => {
   const prevIsClear = usePrevious(props.isClear);
   const [isOpen, toggleModal] = React.useState<boolean>(false);
 
@@ -47,17 +49,15 @@ const AttachmentFile: React.FC<AttachmentFileProps> = (props: AttachmentFileProp
     }
   };
 
-  React.useEffect(()=>{
-    if(prevIsClear !== props.isClear) {
+  React.useEffect(() => {
+    if (prevIsClear !== props.isClear) {
       if (props.isClear) {
         clear();
       }
     }
-  },[props.isClear]);
+  }, [props.isClear]);
 
-  React.useEffect(()=>{
-    
-  },[isOpen])
+  React.useEffect(() => {}, [isOpen]);
 
   if (props.state && props.state.message && !props.validate) {
     throw new TypeError(
@@ -71,11 +71,16 @@ const AttachmentFile: React.FC<AttachmentFileProps> = (props: AttachmentFileProp
     props.validate &&
     !props.validate(props.file);
 
-  const errorMessage = props.state.tryAgain ? <><span>{props.state.message}</span><span
-      onClick={() => props.onTryAgain(props.file)}
-      className="try-again">
-      {'(بارگزاری مجدد)'}
-    </span></>: <p>{props.state.message}</p>;
+  const errorMessage = props.state.tryAgain ? (
+    <>
+      <span>{props.state.message}</span>
+      <span onClick={() => props.onTryAgain(props.file)} className="try-again">
+        {'(بارگزاری مجدد)'}
+      </span>
+    </>
+  ) : (
+    <p>{props.state.message}</p>
+  );
 
   const className = classNames('file-name-container', {
     'error-state': hasError,
@@ -86,23 +91,31 @@ const AttachmentFile: React.FC<AttachmentFileProps> = (props: AttachmentFileProp
     <div className={className} key={props.file.name + props.file.size}>
       <div className="file-name">
         <div className="file-name-text">
-          {props.state && !props.state.progress && !hasError && !props.state.tryAgain && (
-            <img src={showIcon} className="show-icon" onClick={() => toggleModal(true)} />
-          )}
+          {props.state &&
+            !props.state.progress &&
+            !hasError &&
+            !props.state.tryAgain && (
+              <img
+                src={showIcon}
+                className="show-icon"
+                onClick={() => toggleModal(true)}
+              />
+            )}
           <p>{props.file.name}</p>
         </div>
         {props.displayClear && (
-            <i
-              className="material-icons clear"
-              onClick={() => clear()}>
-              close
-            </i>
-          )}
+          <i className="material-icons clear" onClick={() => clear()}>
+            close
+          </i>
+        )}
         {props.state && props.state.progress ? (
           <div className="loading-container">
             <div
               className="loading"
-              style={{ width: `${props.state.progress}%` ,borderRadius: props.state.progress > 98 ? '8px' : ''}}
+              style={{
+                width: `${props.state.progress}%`,
+                borderRadius: props.state.progress > 98 ? '8px' : '',
+              }}
             />
           </div>
         ) : null}
@@ -114,13 +127,10 @@ const AttachmentFile: React.FC<AttachmentFileProps> = (props: AttachmentFileProp
         isOpen={isOpen}
         onClose={() => toggleModal(false)}
         className="milingo-image-modal">
-        <img
-          src={URL.createObjectURL(props.file)}
-        />
+        <img src={URL.createObjectURL(props.file)} />
       </Modal>
     </div>
-
-  )
-}
+  );
+};
 
 export default AttachmentFile;

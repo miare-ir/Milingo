@@ -11,16 +11,17 @@ export interface ChatProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'i
     children?: React.ReactNode;
     footer?: React.ReactNode;
     state?: States;
-    files?: File[];
+    file?: File;
     forceDisplayError?: boolean;
     validFileSize?: number;
     validFileFormat?: string[];
     errorInvalidSize?: string;
     errorInvalidFormat?: string;
-    onChangeFiles?: (value: File[]) => void;
-    onTryAgain?: (value: File[]) => void;
+    onChangeFile?: (value: File) => void;
+    onTryAgain?: (value: File) => void;
     onFileCancelled?: (index?: number) => void;
-    validate?: (value: File[]) => boolean;
+    validate?: (value: File) => boolean;
+    message?: string;
 }
-declare const Chat: ({ id, handelSubmit, isSending, isClear, canSubmit, canAttach, children, footer, state, forceDisplayError, files, validFileSize, validFileFormat, errorInvalidFormat, errorInvalidSize, onChangeFiles, onTryAgain, onFileCancelled, validate, ...rest }: ChatProps) => JSX.Element;
+declare const Chat: ({ id, handelSubmit, isSending, isClear, canSubmit, canAttach, children, footer, state, forceDisplayError, file, validFileSize, validFileFormat, errorInvalidFormat, errorInvalidSize, onChangeFile, onTryAgain, onFileCancelled, validate, message, ...rest }: ChatProps) => JSX.Element;
 export default Chat;
