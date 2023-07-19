@@ -19,4 +19,8 @@
   right: 336px;
   flex-direction: row-reverse;
   align-items: flex-end;
+
+  .accordion-header.active {
+    background-color: #fff;
+  }
 }
