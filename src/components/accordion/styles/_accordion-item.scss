@@ -1,7 +1,10 @@
 .accordion-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
   padding: 8px 16px 8px 8px;
+  box-sizing: border-box;
+  max-width: 300px;
   
   &-container {
     display: flex;
@@ -17,14 +20,14 @@
     color: #3d3f53;
     font-weight: 300;
     font-variation-settings: 'wght' 300;
-    max-width: 242px;
+    max-width: 276px;
     overflow: hidden;
     text-overflow: ellipsis;  
   }
 
   &-title {
     color: #191924;
-    max-width: 242px;
+    max-width: 276px;
     overflow: hidden;
     text-overflow: ellipsis;  
   }
