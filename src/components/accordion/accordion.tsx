@@ -37,6 +37,12 @@ const Accordion = ({
     rest.className,
   );
 
+  const headerClassNames = classNames(
+    'accordion-header',
+    description ? 'with-description' : '',
+    isActiveAccordion ? 'active' : '',
+  );
+
   const renderIcon = (): JSX.Element =>
     setIsClose ? (
       <img src={closeIcon} onClick={setIsClose} />
@@ -47,7 +53,7 @@ const Accordion = ({
   return (
     <div {...rest} className={componentClassNames}>
       <div
-        className={`accordion-header ${description ? 'with-description' : ''}`}
+        className={headerClassNames}
         onClick={() =>
           setIsActiveAccordion(currentIsActive => !currentIsActive)
         }>
