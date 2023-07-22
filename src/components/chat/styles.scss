@@ -248,9 +248,17 @@
       display: flex;
       flex-direction: column;
 
+      &:last-child {
+        margin-bottom: 10px;
+      }
+
+      &:first-child {
+        margin-top: 10px;
+      }
+
       .chat-message-item {
         width: fit-content;
-        max-width: calc(100% - 34px);
+        max-width: calc(100% - 58px);
         word-break: break-word;
         overflow: hidden;
 
@@ -265,9 +273,13 @@
 
         .chat-message-item {
           background: #ecedef;
-          border-radius: 10px 10px 10px 0;
+          border-radius: 12px 12px 12px 0;
           color: #3d3f53;
           width: fit-content;
+
+          .time {
+            color: #8897a8;
+          }
         }
       }
 
@@ -275,8 +287,7 @@
         font-weight: 400;
         font-size: 10px;
         line-height: 16px;
-        color: #505050;
-        margin: 0 8px;
+        margin-top: 2px;
       }
     }
 
@@ -286,13 +297,18 @@
       font-size: 14px;
       line-height: 24px;
       padding: 8px;
-      margin: 8px 8px 4px 8px;
+      padding-bottom: 4px;
+      margin: 6px 8px;
       background: #1e6dc8;
-      border-radius: 10px 10px 0 10px;
+      border-radius: 12px 12px 0 12px;
       color: $whiteColor;
       overflow: hidden;
       text-overflow: ellipsis;
       text-align: right;
+
+      .time {
+        color: #ecedef;
+      }
 
       .attached-image {
         width: 170px;
@@ -300,7 +316,8 @@
 
       .milingo-image-modal {
         img {
-          max-width: 80vw;
+          max-width: 90vw;
+          max-height: 90vh;
         }
       }
     }

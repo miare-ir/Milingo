@@ -12,7 +12,7 @@
     }
   
     &.active {
-      height: 408px;
+      height: 512px;
   
       .accordion-header > img {
         transform: none;
@@ -30,6 +30,11 @@
       align-items: center;
       padding: 16px;
       cursor: pointer;
+
+      &.active {
+        background-color: #ecedef;
+        border-radius: 8px 8px 0 0;
+      }
 
       &.with-description {
         padding: 8px 24px 8px 16px;
@@ -57,6 +62,8 @@
   
       .tag-wrapper {
         margin-right: 8px;
+        padding: 2px 8px;
+        border-radius: 190px;
       }
   
       img {
@@ -67,7 +74,7 @@
   
     .accordion-content {
       display: none;
-      height: 350px;
+      height: 454px;
       overflow-y: scroll;
       border-top: 1px solid #ecedef;
       text-align: right;
