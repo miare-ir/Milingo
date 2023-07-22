@@ -2218,9 +2218,8 @@ __webpack_require__(4934);
 var AccordionItem = function (props) {
     var componentClassNames = classNames('accordion-item', props.className);
     return (React.createElement("div", { className: componentClassNames, id: props.id.toString() },
-        React.createElement("div", { className: "accordion-item-info" },
-            React.createElement("div", { className: "accordion-item-title" }, props.title),
-            React.createElement("div", { className: "accordion-item-description" }, props.description)),
+        React.createElement("div", { className: "accordion-item-title" }, props.title),
+        React.createElement("div", { className: "accordion-item-description" }, props.description),
         props.children));
 };
 exports["default"] = AccordionItem;
@@ -2267,11 +2266,12 @@ var Accordion = function (_a) {
     var children = _a.children, title = _a.title, count = _a.count, description = _a.description, isActive = _a.isActive, isClose = _a.isClose, setIsClose = _a.setIsClose, rest = __rest(_a, ["children", "title", "count", "description", "isActive", "isClose", "setIsClose"]);
     var _b = (0, react_1.useState)(isActive || false), isActiveAccordion = _b[0], setIsActiveAccordion = _b[1];
     var componentClassNames = classNames('accordion-container', isClose ? 'close' : '', isActiveAccordion ? 'active' : '', rest.className);
+    var headerClassNames = classNames('accordion-header', description ? 'with-description' : '', isActiveAccordion ? 'active' : '');
     var renderIcon = function () {
         return setIsClose ? (React.createElement("img", { src: close_svg_1.default, onClick: setIsClose })) : (React.createElement("img", { src: arrow_svg_1.default }));
     };
     return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
-        React.createElement("div", { className: "accordion-header ".concat(description ? 'with-description' : ''), onClick: function () {
+        React.createElement("div", { className: headerClassNames, onClick: function () {
                 return setIsActiveAccordion(function (currentIsActive) { return !currentIsActive; });
             } },
             React.createElement("div", { className: "accordion-info" },
@@ -2950,11 +2950,12 @@ var Message = function (props) {
     };
     var componentClassNames = classNames('chat-message-container', props.isRight ? 'right' : 'left', props.className);
     return (React.createElement("div", { className: componentClassNames, key: props.id },
-        React.createElement("div", { className: "chat-message-item" }, props.isImage ? (React.createElement(image_1.default, { src: props.message, alt: "attached-image", className: "attached-image", thumbnailInfo: {
-                originalSrc: props.message,
-            } })) : (React.createElement(react_linkify_1.default, { properties: { target: '_blank' } },
-            React.createElement("p", { className: "message-content" }, props.message)))),
-        React.createElement("span", { className: "time" }, dateTimeFormat(props.createdDate))));
+        React.createElement("div", { className: "chat-message-item" },
+            props.isImage ? (React.createElement(image_1.default, { src: props.message, alt: "attached-image", className: "attached-image", thumbnailInfo: {
+                    originalSrc: props.message,
+                } })) : (React.createElement(react_linkify_1.default, { properties: { target: '_blank' } },
+                React.createElement("p", { className: "message-content" }, props.message))),
+            React.createElement("p", { className: "time" }, dateTimeFormat(props.createdDate)))));
 };
 exports["default"] = Message;
 
