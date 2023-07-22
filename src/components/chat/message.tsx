@@ -52,8 +52,8 @@ const Message = (props: MessageProps): JSX.Element => {
             <p className="message-content">{props.message}</p>
           </Linkify>
         )}
+        <p className="time">{dateTimeFormat(props.createdDate)}</p>
       </div>
-      <span className="time">{dateTimeFormat(props.createdDate)}</span>
     </div>
   );
 };
