@@ -73,13 +73,13 @@ const AttachmentFile: React.FC<AttachmentFileProps> = (
 
   const errorMessage = props.state.tryAgain ? (
     <>
-      <span>{props.state.message}</span>
+      <span>{props.state?.message}</span>
       <span onClick={() => props.onTryAgain(props.file)} className="try-again">
         {'(بارگزاری مجدد)'}
       </span>
     </>
   ) : (
-    <p>{props.state.message}</p>
+    <p>{props.state?.message}</p>
   );
 
   const className = classNames('file-name-container', {
