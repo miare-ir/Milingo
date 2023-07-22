@@ -16,10 +16,8 @@ const AccordionItem = (props: AccordionItemProps): JSX.Element => {
 
   return (
     <div className={componentClassNames} id={props.id.toString()}>
-      <div className="accordion-item-info">
-        <div className="accordion-item-title">{props.title}</div>
-        <div className="accordion-item-description">{props.description}</div>
-      </div>
+      <div className="accordion-item-title">{props.title}</div>
+      <div className="accordion-item-description">{props.description}</div>
       {props.children}
     </div>
   );
