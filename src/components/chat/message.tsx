@@ -40,16 +40,16 @@ const Message = (props: MessageProps): JSX.Element => {
       <div className="chat-message-item">
         {props.isImage ? (
           <Image
-            src={props.message}
+            src={props?.message}
             alt="attached-image"
             className="attached-image"
             thumbnailInfo={{
-              originalSrc: props.message,
+              originalSrc: props?.message,
             }}
           />
         ) : (
           <Linkify properties={{ target: '_blank' }}>
-            <p className="message-content">{props.message}</p>
+            <p className="message-content">{props?.message}</p>
           </Linkify>
         )}
         <p className="time">{dateTimeFormat(props.createdDate)}</p>
