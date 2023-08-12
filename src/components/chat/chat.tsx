@@ -15,6 +15,7 @@ export interface ChatProps
   canSubmit?: boolean;
   canAttach?: boolean;
   children?: React.ReactNode;
+  chatContentFooter?: React.ReactNode;
   footer?: React.ReactNode;
   state?: States;
   file?: File;
@@ -38,6 +39,7 @@ const Chat = ({
   canSubmit,
   canAttach,
   children,
+  chatContentFooter,
   footer,
   state,
   forceDisplayError,
@@ -58,6 +60,7 @@ const Chat = ({
   return (
     <div {...rest} className={componentClassNames}>
       <div className="chat-content">{children}</div>
+      {chatContentFooter && <div className='chat-content-footer'>{chatContentFooter}</div>}
       {canSubmit && (
         <SubmitForm
           id={id}
