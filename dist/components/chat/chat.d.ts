@@ -9,6 +9,7 @@ export interface ChatProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'i
     canSubmit?: boolean;
     canAttach?: boolean;
     children?: React.ReactNode;
+    chatContentFooter?: React.ReactNode;
     footer?: React.ReactNode;
     state?: States;
     file?: File;
@@ -23,5 +24,5 @@ export interface ChatProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'i
     validate?: (value: File) => boolean;
     message?: string;
 }
-declare const Chat: ({ id, handelSubmit, isSending, isClear, canSubmit, canAttach, children, footer, state, forceDisplayError, file, validFileSize, validFileFormat, errorInvalidFormat, errorInvalidSize, onChangeFile, onTryAgain, onFileCancelled, validate, message, ...rest }: ChatProps) => JSX.Element;
+declare const Chat: ({ id, handelSubmit, isSending, isClear, canSubmit, canAttach, children, chatContentFooter, footer, state, forceDisplayError, file, validFileSize, validFileFormat, errorInvalidFormat, errorInvalidSize, onChangeFile, onTryAgain, onFileCancelled, validate, message, ...rest }: ChatProps) => JSX.Element;
 export default Chat;

@@ -2809,8 +2809,9 @@ var use_previous_1 = __webpack_require__(8198);
 var modal_1 = __webpack_require__(426);
 __webpack_require__(3838);
 var AttachmentFile = function (props) {
+    var _a, _b;
     var prevIsClear = (0, use_previous_1.default)(props.isClear);
-    var _a = React.useState(false), isOpen = _a[0], toggleModal = _a[1];
+    var _c = React.useState(false), isOpen = _c[0], toggleModal = _c[1];
     var clear = function () {
         if (props.disabled) {
             return;
@@ -2839,8 +2840,8 @@ var AttachmentFile = function (props) {
         props.validate &&
         !props.validate(props.file);
     var errorMessage = props.state.tryAgain ? (React.createElement(React.Fragment, null,
-        React.createElement("span", null, props.state.message),
-        React.createElement("span", { onClick: function () { return props.onTryAgain(props.file); }, className: "try-again" }, '(بارگزاری مجدد)'))) : (React.createElement("p", null, props.state.message));
+        React.createElement("span", null, (_a = props.state) === null || _a === void 0 ? void 0 : _a.message),
+        React.createElement("span", { onClick: function () { return props.onTryAgain(props.file); }, className: "try-again" }, '(بارگزاری مجدد)'))) : (React.createElement("p", null, (_b = props.state) === null || _b === void 0 ? void 0 : _b.message));
     var className = classNames('file-name-container', {
         'error-state': hasError,
         'try-again-state': props.state && props.state.tryAgain,
@@ -2901,10 +2902,11 @@ var classNames = __webpack_require__(4184);
 __webpack_require__(3838);
 var submit_form_1 = __webpack_require__(7508);
 var Chat = function (_a) {
-    var id = _a.id, handelSubmit = _a.handelSubmit, isSending = _a.isSending, isClear = _a.isClear, canSubmit = _a.canSubmit, canAttach = _a.canAttach, children = _a.children, footer = _a.footer, state = _a.state, forceDisplayError = _a.forceDisplayError, file = _a.file, validFileSize = _a.validFileSize, validFileFormat = _a.validFileFormat, errorInvalidFormat = _a.errorInvalidFormat, errorInvalidSize = _a.errorInvalidSize, onChangeFile = _a.onChangeFile, onTryAgain = _a.onTryAgain, onFileCancelled = _a.onFileCancelled, validate = _a.validate, message = _a.message, rest = __rest(_a, ["id", "handelSubmit", "isSending", "isClear", "canSubmit", "canAttach", "children", "footer", "state", "forceDisplayError", "file", "validFileSize", "validFileFormat", "errorInvalidFormat", "errorInvalidSize", "onChangeFile", "onTryAgain", "onFileCancelled", "validate", "message"]);
+    var id = _a.id, handelSubmit = _a.handelSubmit, isSending = _a.isSending, isClear = _a.isClear, canSubmit = _a.canSubmit, canAttach = _a.canAttach, children = _a.children, chatContentFooter = _a.chatContentFooter, footer = _a.footer, state = _a.state, forceDisplayError = _a.forceDisplayError, file = _a.file, validFileSize = _a.validFileSize, validFileFormat = _a.validFileFormat, errorInvalidFormat = _a.errorInvalidFormat, errorInvalidSize = _a.errorInvalidSize, onChangeFile = _a.onChangeFile, onTryAgain = _a.onTryAgain, onFileCancelled = _a.onFileCancelled, validate = _a.validate, message = _a.message, rest = __rest(_a, ["id", "handelSubmit", "isSending", "isClear", "canSubmit", "canAttach", "children", "chatContentFooter", "footer", "state", "forceDisplayError", "file", "validFileSize", "validFileFormat", "errorInvalidFormat", "errorInvalidSize", "onChangeFile", "onTryAgain", "onFileCancelled", "validate", "message"]);
     var componentClassNames = classNames('chat-container', rest.className);
     return (React.createElement("div", __assign({}, rest, { className: componentClassNames }),
         React.createElement("div", { className: "chat-content" }, children),
+        chatContentFooter && React.createElement("div", { className: 'chat-content-footer' }, chatContentFooter),
         canSubmit && (React.createElement(submit_form_1.default, { id: id, isSending: isSending, onSubmit: handelSubmit, canAttach: canAttach, footer: footer, state: state, file: file, onChangeFile: onChangeFile, onTryAgain: onTryAgain, onFileCancelled: onFileCancelled, validate: validate, forceDisplayError: forceDisplayError, isClear: isClear, errorInvalidSize: errorInvalidSize, errorInvalidFormat: errorInvalidFormat, validFileSize: validFileSize, validFileFormat: validFileFormat, preMessage: message }))));
 };
 exports["default"] = Chat;
@@ -2951,10 +2953,10 @@ var Message = function (props) {
     var componentClassNames = classNames('chat-message-container', props.isRight ? 'right' : 'left', props.className);
     return (React.createElement("div", { className: componentClassNames, key: props.id },
         React.createElement("div", { className: "chat-message-item" },
-            props.isImage ? (React.createElement(image_1.default, { src: props.message, alt: "attached-image", className: "attached-image", thumbnailInfo: {
-                    originalSrc: props.message,
+            props.isImage ? (React.createElement(image_1.default, { src: props === null || props === void 0 ? void 0 : props.message, alt: "attached-image", className: "attached-image", thumbnailInfo: {
+                    originalSrc: props === null || props === void 0 ? void 0 : props.message,
                 } })) : (React.createElement(react_linkify_1.default, { properties: { target: '_blank' } },
-                React.createElement("p", { className: "message-content" }, props.message))),
+                React.createElement("p", { className: "message-content" }, props === null || props === void 0 ? void 0 : props.message))),
             React.createElement("p", { className: "time" }, dateTimeFormat(props.createdDate)))));
 };
 exports["default"] = Message;
