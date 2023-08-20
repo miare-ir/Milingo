@@ -40,3 +40,46 @@
     color: #000;
   }
 }
+
+.light-table {
+  border: 1px solid #bfcfe1;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: fit-content;
+  overflow-x: auto;
+
+  table {
+    border-collapse: collapse;
+    text-align: right;
+    width: 100%;
+    border-spacing: 0;
+
+    tr {
+      text-align: right;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #bfcfe1;
+      }
+
+      &:has(th) {
+        background-color: #bfcfe1;
+      }
+
+      td {
+        color: #212230;
+        padding: 8px 24px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      th {
+        font-size: 12px;
+        line-height: 24px;
+        color: #3d3f53;
+        background-color: #bfcfe1;
+        padding: 4px 24px;
+      }
+    }
+  }
+}

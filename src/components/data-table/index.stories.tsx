@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Tag from '../tag';
-import { Table, Th, Tr, Td } from '.';
+import { Table, LightTable, Th, Tr, Td } from '.';
 import PersianNumber from '../persian-number';
 
 export default {
@@ -133,4 +133,35 @@ export const DefaultTable = () => (
 
 DefaultTable.story = {
   name: 'Default table',
+};
+
+export const DefaultTableLight = () => (
+  <LightTable>
+      <Tr>
+        <Th>فیش</Th>
+        <Th>زمان ثبت اولیه</Th>
+        <Th>مبلغ (ریال)</Th>
+        <Th>وضعیت</Th>
+      </Tr>
+      <Tr>
+        <Td>۱</Td>
+        <Td>۱۲:۳۰</Td>
+        <Td>۵۶۰٫۰۰۰</Td>
+        <Td>
+          تسویه نشده
+        </Td>
+      </Tr>
+      <Tr>
+        <Td>۲</Td>
+        <Td>۱۲:۰۷</Td>
+        <Td>۲۳۰٫۰۰۰</Td>
+        <Td>
+          تسویه نشده
+        </Td>
+      </Tr>
+  </LightTable>
+);
+
+DefaultTableLight.story = {
+  name: 'Default table light',
 };
