@@ -64,7 +64,7 @@ export * from './components/banner';
 export { default as Toolbar } from './components/toolbar';
 export * from './components/toolbar';
 
-export { default as Select } from './components/select';
+export { Select } from './components/select';
 export * from './components/select';
 
 export { default as Tag } from './components/tag';
