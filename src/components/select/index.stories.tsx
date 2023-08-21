@@ -53,4 +53,3 @@ export const With5Rows = () => (
 With5Rows.story = {
   name: 'With 5 rows',
 };
-
