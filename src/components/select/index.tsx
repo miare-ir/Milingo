@@ -25,6 +25,7 @@ export interface SelectProps {
   errorMessagePosition?: 'top' | 'bottom';
   forceDisplayError?: boolean;
   validate?: () => boolean;
+  selectArrow?: React.ReactNode;
 }
 
 interface SelectState {
@@ -237,9 +238,9 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
           onMouseDown={this.handleMouseDown.bind(this)}
           onTouchEnd={this.handleMouseDown.bind(this)}>
           <div className="select-placeholder">{placeHolderValue}</div>
-          <div className="select-arrow">
+          {this.props.selectArrow ? this.props.selectArrow : <div className="select-arrow">
             <img src={arrowIcon} className="arrow-icon" />
-          </div>
+          </div>}
         </div>
         {menu}
         <select
