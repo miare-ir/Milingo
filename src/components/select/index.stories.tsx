@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import Select, { Option } from './select';
-import LightSelectComponent from './light-select';
+import Select, { Option } from '.';
 
 const options: Option[] = [
   { value: '1', label: 'گزینه ۱' },
@@ -55,26 +54,3 @@ With5Rows.story = {
   name: 'With 5 rows',
 };
 
-export const LightSelect = () => (
-  <div
-    style={{
-      width: '160px',
-      maxWidth: '100%',
-      backgroundColor: '#ffffff',
-      padding: '40px',
-    }}>
-    <LightSelectComponent name="test1" options={options} showedItem={2} />
-  </div>
-);
-
-export const LightSelectDisabled = () => (
-  <div
-    style={{
-      width: '160px',
-      maxWidth: '100%',
-      backgroundColor: '#ffffff',
-      padding: '40px',
-    }}>
-    <LightSelectComponent name="test1" options={options} showedItem={3} disabled />
-  </div>
-);

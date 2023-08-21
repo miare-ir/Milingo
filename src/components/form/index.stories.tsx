@@ -6,8 +6,7 @@ import Textarea from '../textarea';
 import Checkbox from '../checkbox';
 import Radio from '../radiobutton';
 import Button from '../button';
-import { Select } from '../select';
-import { Option } from '../select/select';
+import Select, { Option } from '../select';
 
 const options: Option[] = [
   { value: '1', label: 'گزینه ۱' },
