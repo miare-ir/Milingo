@@ -10,3 +10,4 @@ export declare const With5Rows: {
         name: string;
     };
 };
+export declare const LightSelect: () => JSX.Element;

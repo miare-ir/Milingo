@@ -8,7 +8,6 @@ export interface Option {
 export interface SelectProps {
     name?: string;
     options: Option[];
-    baseClassName?: string;
     className?: string;
     disabled?: boolean;
     onChange?: (arg: Option) => void;
@@ -20,6 +19,7 @@ export interface SelectProps {
     errorMessagePosition?: 'top' | 'bottom';
     forceDisplayError?: boolean;
     validate?: () => boolean;
+    lightTheme?: boolean;
 }
 interface SelectState {
     selected: Option;

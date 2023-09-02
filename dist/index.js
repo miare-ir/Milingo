@@ -3478,15 +3478,56 @@ exports["default"] = CounterButton;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Td = exports.Th = exports.Tr = exports.Table = void 0;
+exports.Td = exports.Th = exports.Tr = exports.LightTable = exports.Table = void 0;
 var table_1 = __webpack_require__(6671);
 Object.defineProperty(exports, "Table", ({ enumerable: true, get: function () { return table_1.default; } }));
+var light_table_1 = __webpack_require__(7665);
+Object.defineProperty(exports, "LightTable", ({ enumerable: true, get: function () { return light_table_1.default; } }));
 var table_row_1 = __webpack_require__(6492);
 Object.defineProperty(exports, "Tr", ({ enumerable: true, get: function () { return table_row_1.default; } }));
 var table_header_1 = __webpack_require__(6892);
 Object.defineProperty(exports, "Th", ({ enumerable: true, get: function () { return table_header_1.default; } }));
 var table_data_1 = __webpack_require__(3541);
 Object.defineProperty(exports, "Td", ({ enumerable: true, get: function () { return table_data_1.default; } }));
+
+
+/***/ }),
+
+/***/ 7665:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var React = __webpack_require__(8156);
+var LightTable = function (props) {
+    var children = props.children, restOfProps = __rest(props, ["children"]);
+    return (React.createElement("div", { className: "light-table" },
+        React.createElement("table", __assign({}, restOfProps), children)));
+};
+exports["default"] = LightTable;
 
 
 /***/ }),
@@ -6161,6 +6202,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 var React = __webpack_require__(8156);
 var classNames = __webpack_require__(4184);
 var arrow_white_svg_1 = __webpack_require__(386);
+var arrow_drop_down_svg_1 = __webpack_require__(88);
 __webpack_require__(6045);
 var DEFAULT_PLACEHOLDER_STRING = 'انتخاب ...';
 var SelectComponent = /** @class */ (function (_super) {
@@ -6285,7 +6327,7 @@ var SelectComponent = /** @class */ (function (_super) {
         var placeHolderValue = typeof this.state.selected === 'string'
             ? this.state.selected
             : this.state.selected.label;
-        var selectClass = classNames('select-root', className, {
+        var selectClass = classNames("select-root".concat(this.props.lightTheme ? '-light-theme' : ''), className, {
             'is-open': this.state.isOpen,
         });
         var controlClass = classNames('select-control', {
@@ -6298,7 +6340,7 @@ var SelectComponent = /** @class */ (function (_super) {
             React.createElement("div", { tabIndex: 0, className: controlClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
                 React.createElement("div", { className: "select-placeholder" }, placeHolderValue),
                 React.createElement("div", { className: "select-arrow" },
-                    React.createElement("img", { src: arrow_white_svg_1.default, className: "arrow-icon" }))),
+                    React.createElement("img", { src: this.props.lightTheme ? arrow_drop_down_svg_1.default : arrow_white_svg_1.default, className: "arrow-icon" }))),
             menu,
             React.createElement("select", { name: this.props.name, ref: function (select) { return (_this.selectElement = select); }, hidden: true },
                 React.createElement("option", { value: "null" }, "default"),
@@ -7183,6 +7225,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEzIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMS4wOSAwLjU5TDYuNSA1LjE3TDEuOTEgMC41OUwwLjUgMkw2LjUgOEwxMi41IDJMMTEuMDkgMC41OVoiIGZpbGw9ImJsYWNrIi8+Cjwvc3ZnPgo=");
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjM3NzcgMTQuMDIxMUw5LjE0MzExIDExLjc4NjVDOC44NTg0OSAxMS41MDE5IDguNzk0MDYgMTEuMTc0NyA4Ljk0OTgzIDEwLjgwNDhDOS4xMDU2IDEwLjQzNDkgOS4zODYwNCAxMC4yNSA5Ljc5MTE2IDEwLjI1SDE0LjIyOTZDMTQuNjM0NyAxMC4yNSAxNC45MTUxIDEwLjQzNDkgMTUuMDcwOSAxMC44MDQ4QzE1LjIyNjcgMTEuMTc0NyAxNS4xNjIzIDExLjUwMTkgMTQuODc3NyAxMS43ODY1TDEyLjY0MzEgMTQuMDIxMUMxMi41NDk1IDE0LjExNDcgMTIuNDUwOCAxNC4xODMzIDEyLjM0NjkgMTQuMjI2OUMxMi4yNDMxIDE0LjI3MDUgMTIuMTMwOSAxNC4yOTIzIDEyLjAxMDQgMTQuMjkyM0MxMS44ODk5IDE0LjI5MjMgMTEuNzc3NyAxNC4yNzA1IDExLjY3MzggMTQuMjI2OUMxMS41NyAxNC4xODMzIDExLjQ3MTMgMTQuMTE0NyAxMS4zNzc3IDE0LjAyMTFaIiBmaWxsPSIjODg5N0E4Ii8+Cjwvc3ZnPgo=");
 
 /***/ }),
 

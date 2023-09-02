@@ -15,3 +15,9 @@ export declare const DefaultTable: {
         name: string;
     };
 };
+export declare const DefaultTableLight: {
+    (): JSX.Element;
+    story: {
+        name: string;
+    };
+};
