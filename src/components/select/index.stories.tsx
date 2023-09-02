@@ -53,3 +53,33 @@ export const With5Rows = () => (
 With5Rows.story = {
   name: 'With 5 rows',
 };
+
+export const LightSelect = () => (
+  <div
+    style={{
+      width: '160px',
+      maxWidth: '100%',
+      backgroundColor: '#ffffff',
+      padding: '40px',
+    }}>
+    <Select
+      name="test1"
+      options={options}
+      lightTheme
+    />
+    <br />
+    <Select
+      name="test1"
+      options={options}
+      disabled
+      lightTheme
+    />
+    <br />
+    <Select
+      name="test2"
+      value={{ value: '2', label: 'گزینه ۲' }}
+      options={options}
+      lightTheme
+    />
+  </div>
+);

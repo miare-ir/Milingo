@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 import arrowIcon from '../../assets/icon/arrow-white.svg';
+import arrowLightIcon from '../../assets/icon/arrow_drop_down.svg';
 
 import './styles.scss';
 
@@ -14,7 +15,6 @@ export interface Option {
 export interface SelectProps {
   name?: string;
   options: Option[];
-  baseClassName?: string;
   className?: string;
   disabled?: boolean;
   onChange?: (arg: Option) => void;
@@ -26,6 +26,7 @@ export interface SelectProps {
   errorMessagePosition?: 'top' | 'bottom';
   forceDisplayError?: boolean;
   validate?: () => boolean;
+  lightTheme?: boolean;
 }
 
 interface SelectState {
@@ -210,7 +211,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
         ? this.state.selected
         : this.state.selected.label;
 
-    const selectClass = classNames('select-root', className, {
+    const selectClass = classNames(`select-root${this.props.lightTheme? '-light-theme': ''}`, className, {
       'is-open': this.state.isOpen,
     });
 
@@ -239,7 +240,7 @@ class SelectComponent extends React.Component<SelectProps, SelectState> {
           onTouchEnd={this.handleMouseDown.bind(this)}>
           <div className="select-placeholder">{placeHolderValue}</div>
           <div className="select-arrow">
-            <img src={arrowIcon} className="arrow-icon" />
+            <img src={this.props.lightTheme? arrowLightIcon : arrowIcon} className="arrow-icon" />
           </div>
         </div>
         {menu}
