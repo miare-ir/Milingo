@@ -193,6 +193,10 @@
     direction: rtl;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 100%;
+    width: -webkit-fill-available;
+    z-index: 1000;
 
     .select-option {
       color: #3d3f53;
