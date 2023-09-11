@@ -9,23 +9,23 @@ export default {
 
 export const Sizes: React.FC = () => (
   <div>
-    <ProgressBar
-      primaryColor="#4A90E2"
-      secondaryColor="#F3B229"
-      range={[0, 100]}
-      current={20}
-      title="عنوان پروگرس‌بار"
-    />
+    <ProgressBar range={[0, 100]} current={20} title="پروگرس‌بار عنوان دار" />
+
+    <br />
+    <br />
+    <br />
+
+    <ProgressBar range={[20, 100]} current={50} />
 
     <br />
     <br />
     <br />
 
     <ProgressBar
-      primaryColor="#4A90E2"
-      secondaryColor="#F3B229"
-      range={[20, 100]}
-      current={50}
+      range={[150, 200]}
+      current={185}
+      secondaryMode
+      title="پروگرس‌بار در حالت ثانویه"
     />
   </div>
 );

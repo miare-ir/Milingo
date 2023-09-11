@@ -6,19 +6,17 @@ import './styles.scss';
 
 export interface ProgressBarProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
-  primaryColor: string;
-  secondaryColor: string;
   range: [number, number];
   current: number;
   title?: ReactNode;
+  secondaryMode?: boolean;
 }
 
 export const ProgressBar: FC<ProgressBarProps> = ({
-  primaryColor,
-  secondaryColor,
   range,
   current,
   title,
+  secondaryMode,
   ...rest
 }) => {
   const min = range[0];
@@ -26,6 +24,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({
 
   const classes = classnames('progress-bar-container', {
     [rest.className ?? '']: !!rest.className,
+    'secondary-mode': !!secondaryMode,
   });
 
   const getIndicatorWidth = (): number => ((current - min) / (max - min)) * 100;
@@ -38,14 +37,8 @@ export const ProgressBar: FC<ProgressBarProps> = ({
         <div
           className="indicators"
           style={{ width: `${getIndicatorWidth()}%` }}>
-          <span
-            className="primary-indicator"
-            style={{ background: primaryColor }}
-          />
-          <span
-            className="secondary-indicator"
-            style={{ background: secondaryColor }}
-          />
+          <span className="primary-indicator" />
+          <span className="secondary-indicator" />
         </div>
       </div>
 

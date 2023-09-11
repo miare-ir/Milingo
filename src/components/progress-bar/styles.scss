@@ -33,11 +33,23 @@
       > .primary-indicator {
         flex: 1;
         height: 100%;
+        background-color: #4a90e2;
       }
 
       > .secondary-indicator {
         width: 2px;
         height: 100%;
+        background-color: #f3b229;
+      }
+    }
+  }
+
+  &.secondary-mode {
+    > .progress-bar {
+      > .indicators  {
+        > .primary-indicator {
+          background-color: #8897a8;
+        }
       }
     }
   }
