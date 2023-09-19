@@ -5559,19 +5559,20 @@ __webpack_require__(8879);
 var ProgressBar = function (_a) {
     var _b;
     var _c;
-    var primaryColor = _a.primaryColor, secondaryColor = _a.secondaryColor, range = _a.range, current = _a.current, title = _a.title, rest = __rest(_a, ["primaryColor", "secondaryColor", "range", "current", "title"]);
+    var range = _a.range, current = _a.current, title = _a.title, secondaryMode = _a.secondaryMode, rest = __rest(_a, ["range", "current", "title", "secondaryMode"]);
     var min = range[0];
     var max = range[1];
     var classes = classnames('progress-bar-container', (_b = {},
         _b[(_c = rest.className) !== null && _c !== void 0 ? _c : ''] = !!rest.className,
+        _b['secondary-mode'] = !!secondaryMode,
         _b));
     var getIndicatorWidth = function () { return ((current - min) / (max - min)) * 100; };
     return (react_1.default.createElement("div", { className: classes },
         title && react_1.default.createElement("div", { className: "title" }, title),
         react_1.default.createElement("div", { className: "progress-bar" },
             react_1.default.createElement("div", { className: "indicators", style: { width: "".concat(getIndicatorWidth(), "%") } },
-                react_1.default.createElement("span", { className: "primary-indicator", style: { background: primaryColor } }),
-                react_1.default.createElement("span", { className: "secondary-indicator", style: { background: secondaryColor } }))),
+                react_1.default.createElement("span", { className: "primary-indicator" }),
+                react_1.default.createElement("span", { className: "secondary-indicator" }))),
         react_1.default.createElement("div", { className: "footer" },
             react_1.default.createElement("p", { className: "value" }, min),
             react_1.default.createElement("p", { className: "value" }, max))));
