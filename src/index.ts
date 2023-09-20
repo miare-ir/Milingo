@@ -22,6 +22,8 @@ export * from './components/data-table';
 
 export * from './components/flex';
 
+export * from './components/progress-bar';
+
 export { default as Button } from './components/button';
 export * from './components/button';
 

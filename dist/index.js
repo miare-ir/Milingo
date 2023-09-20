@@ -1178,6 +1178,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 8879:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ 9603:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -5525,6 +5535,53 @@ exports["default"] = Pointer;
 
 /***/ }),
 
+/***/ 2489:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ProgressBar = void 0;
+var react_1 = __webpack_require__(8156);
+var classnames = __webpack_require__(4184);
+__webpack_require__(8879);
+var ProgressBar = function (_a) {
+    var _b;
+    var _c;
+    var range = _a.range, current = _a.current, title = _a.title, secondaryMode = _a.secondaryMode, rest = __rest(_a, ["range", "current", "title", "secondaryMode"]);
+    var min = range[0];
+    var max = range[1];
+    var classes = classnames('progress-bar-container', (_b = {},
+        _b[(_c = rest.className) !== null && _c !== void 0 ? _c : ''] = !!rest.className,
+        _b['secondary-mode'] = !!secondaryMode,
+        _b));
+    var getIndicatorWidth = function () { return ((current - min) / (max - min)) * 100; };
+    return (react_1.default.createElement("div", { className: classes },
+        title && react_1.default.createElement("div", { className: "title" }, title),
+        react_1.default.createElement("div", { className: "progress-bar" },
+            react_1.default.createElement("div", { className: "indicators", style: { width: "".concat(getIndicatorWidth(), "%") } },
+                react_1.default.createElement("span", { className: "primary-indicator" }),
+                react_1.default.createElement("span", { className: "secondary-indicator" }))),
+        react_1.default.createElement("div", { className: "footer" },
+            react_1.default.createElement("p", { className: "value" }, min),
+            react_1.default.createElement("p", { className: "value" }, max))));
+};
+exports.ProgressBar = ProgressBar;
+
+
+/***/ }),
+
 /***/ 4812:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -7104,6 +7161,7 @@ __exportStar(__webpack_require__(3073), exports);
 __exportStar(__webpack_require__(4224), exports);
 __exportStar(__webpack_require__(1387), exports);
 __exportStar(__webpack_require__(7180), exports);
+__exportStar(__webpack_require__(2489), exports);
 var button_1 = __webpack_require__(731);
 Object.defineProperty(exports, "Button", ({ enumerable: true, get: function () { return button_1.default; } }));
 __exportStar(__webpack_require__(731), exports);
