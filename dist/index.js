@@ -5553,7 +5553,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProgressBar = void 0;
-var react_1 = __webpack_require__(8156);
+var React = __webpack_require__(8156);
 var classnames = __webpack_require__(4184);
 __webpack_require__(8879);
 var ProgressBar = function (_a) {
@@ -5567,15 +5567,15 @@ var ProgressBar = function (_a) {
         _b['secondary-mode'] = !!secondaryMode,
         _b));
     var getIndicatorWidth = function () { return ((current - min) / (max - min)) * 100; };
-    return (react_1.default.createElement("div", { className: classes },
-        title && react_1.default.createElement("div", { className: "title" }, title),
-        react_1.default.createElement("div", { className: "progress-bar" },
-            react_1.default.createElement("div", { className: "indicators", style: { width: "".concat(getIndicatorWidth(), "%") } },
-                react_1.default.createElement("span", { className: "primary-indicator" }),
-                react_1.default.createElement("span", { className: "secondary-indicator" }))),
-        react_1.default.createElement("div", { className: "footer" },
-            react_1.default.createElement("p", { className: "value" }, min),
-            react_1.default.createElement("p", { className: "value" }, max))));
+    return (React.createElement("div", { className: classes },
+        title && React.createElement("div", { className: "title" }, title),
+        React.createElement("div", { className: "progress-bar" },
+            React.createElement("div", { className: "indicators", style: { width: "".concat(getIndicatorWidth(), "%") } },
+                React.createElement("span", { className: "primary-indicator" }),
+                React.createElement("span", { className: "secondary-indicator" }))),
+        React.createElement("div", { className: "footer" },
+            React.createElement("p", { className: "value" }, min),
+            React.createElement("p", { className: "value" }, max))));
 };
 exports.ProgressBar = ProgressBar;
 
