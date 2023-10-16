@@ -1,9 +1,9 @@
-import { FC, HTMLAttributes, ReactNode } from 'react';
+import * as React from 'react';
 import './styles.scss';
-export interface ProgressBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface ProgressBarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
     range: [number, number];
     current: number;
-    title?: ReactNode;
+    title?: React.ReactNode;
     secondaryMode?: boolean;
 }
-export declare const ProgressBar: FC<ProgressBarProps>;
+export declare const ProgressBar: React.FC<ProgressBarProps>;

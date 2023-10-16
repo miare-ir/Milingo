@@ -29,6 +29,7 @@
       height: 100%;
       display: flex;
       animation: progress-bar-animation 700ms cubic-bezier(.1,.8,.16,.93);
+      transition: all 700ms cubic-bezier(.1,.8,.16,.93);
 
       > .primary-indicator {
         flex: 1;
