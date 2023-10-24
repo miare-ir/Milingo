@@ -2782,7 +2782,7 @@ var Button = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Button.prototype.render = function () {
-        var _a = this.props, primary = _a.primary, ghost = _a.ghost, link = _a.link, text = _a.text, tiny = _a.tiny, small = _a.small, regular = _a.regular, large = _a.large, danger = _a.danger, shouldRender = _a.shouldRender, props = __rest(_a, ["primary", "ghost", "link", "text", "tiny", "small", "regular", "large", "danger", "shouldRender"]);
+        var _a = this.props, primary = _a.primary, ghost = _a.ghost, link = _a.link, text = _a.text, tiny = _a.tiny, small = _a.small, regular = _a.regular, large = _a.large, danger = _a.danger, shouldRender = _a.shouldRender, purplePrimary = _a.purplePrimary, purpleGhost = _a.purpleGhost, purpleLink = _a.purpleLink, props = __rest(_a, ["primary", "ghost", "link", "text", "tiny", "small", "regular", "large", "danger", "shouldRender", "purplePrimary", "purpleGhost", "purpleLink"]);
         if (shouldRender === false) {
             return null;
         }
@@ -2796,6 +2796,9 @@ var Button = /** @class */ (function (_super) {
             small: small,
             regular: regular,
             large: large,
+            purplePrimary: purplePrimary,
+            purpleGhost: purpleGhost,
+            purpleLink: purpleLink,
         });
         return React.createElement("button", __assign({}, props, { className: className }));
     };
