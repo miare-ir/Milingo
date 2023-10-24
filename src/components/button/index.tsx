@@ -17,6 +17,9 @@ export interface ButtonProps extends React.ComponentProps<'button'> {
   raised?: boolean;
   noBorder?: boolean;
   loading?: boolean;
+  purplePrimary?: boolean;
+  purpleGhost?: boolean;
+  purpleLink?: boolean;
 }
 
 class Button extends React.Component<ButtonProps, {}> {
@@ -32,6 +35,9 @@ class Button extends React.Component<ButtonProps, {}> {
       large,
       danger,
       shouldRender,
+      purplePrimary,
+      purpleGhost,
+      purpleLink,
       ...props
     }: ButtonProps & React.HTMLProps<HTMLButtonElement> = this.props;
 
@@ -52,6 +58,9 @@ class Button extends React.Component<ButtonProps, {}> {
         small,
         regular,
         large,
+        purplePrimary,
+        purpleGhost,
+        purpleLink,
       },
     );
 

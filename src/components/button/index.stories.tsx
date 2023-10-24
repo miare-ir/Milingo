@@ -43,6 +43,15 @@ export const Text = () => (
   </div>
 );
 
+export const Purple = () => (
+  <div>
+    <Button purplePrimary>سلام دنیا</Button>
+    <Button purpleGhost>سلام دنیا</Button>
+    <Button purpleLink>سلام دنیا</Button>
+    <Button purplePrimary disabled>سلام دنیا</Button>
+  </div>
+);
+
 export const Tiny = () => (
   <div>
     <Button primary tiny>
