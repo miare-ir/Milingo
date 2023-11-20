@@ -42,6 +42,9 @@
 
     @include onMobile {
       align-items: flex-start;
+      width: 100vw;
+      height: 100vh;
+      height: 100svh;
     }
 
     &.milingo-image-modal {
