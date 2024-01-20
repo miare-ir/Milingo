@@ -2775,6 +2775,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var React = __webpack_require__(8156);
 var classNames = __webpack_require__(4184);
+var loader_1 = __webpack_require__(7125);
 __webpack_require__(7410);
 var Button = /** @class */ (function (_super) {
     __extends(Button, _super);
@@ -2782,7 +2783,7 @@ var Button = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Button.prototype.render = function () {
-        var _a = this.props, primary = _a.primary, ghost = _a.ghost, link = _a.link, text = _a.text, tiny = _a.tiny, small = _a.small, regular = _a.regular, large = _a.large, danger = _a.danger, shouldRender = _a.shouldRender, purplePrimary = _a.purplePrimary, purpleGhost = _a.purpleGhost, purpleLink = _a.purpleLink, props = __rest(_a, ["primary", "ghost", "link", "text", "tiny", "small", "regular", "large", "danger", "shouldRender", "purplePrimary", "purpleGhost", "purpleLink"]);
+        var _a = this.props, primary = _a.primary, ghost = _a.ghost, link = _a.link, text = _a.text, tiny = _a.tiny, small = _a.small, regular = _a.regular, large = _a.large, danger = _a.danger, shouldRender = _a.shouldRender, loading = _a.loading, purplePrimary = _a.purplePrimary, purpleGhost = _a.purpleGhost, purpleLink = _a.purpleLink, props = __rest(_a, ["primary", "ghost", "link", "text", "tiny", "small", "regular", "large", "danger", "shouldRender", "loading", "purplePrimary", "purpleGhost", "purpleLink"]);
         if (shouldRender === false) {
             return null;
         }
@@ -2799,8 +2800,12 @@ var Button = /** @class */ (function (_super) {
             purplePrimary: purplePrimary,
             purpleGhost: purpleGhost,
             purpleLink: purpleLink,
+            loading: loading,
         });
-        return React.createElement("button", __assign({}, props, { className: className }));
+        return (React.createElement("button", __assign({}, props, { className: className }),
+            loading && (React.createElement("div", { className: "loader-container" },
+                React.createElement(loader_1.default, { primary: link || text || ghost || purpleGhost || purpleLink }))),
+            props.children));
     };
     return Button;
 }(React.Component));
