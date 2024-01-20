@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import Loader from '../loader';
+
 import './styles.scss';
 
 export interface ButtonProps extends React.ComponentProps<'button'> {
@@ -35,6 +37,7 @@ class Button extends React.Component<ButtonProps, {}> {
       large,
       danger,
       shouldRender,
+      loading,
       purplePrimary,
       purpleGhost,
       purpleLink,
@@ -61,10 +64,23 @@ class Button extends React.Component<ButtonProps, {}> {
         purplePrimary,
         purpleGhost,
         purpleLink,
+        loading,
       },
     );
 
-    return <button {...props} className={className} />;
+    return (
+      <button {...props} className={className}>
+        {loading && (
+          <div className="loader-container">
+            <Loader
+              primary={link || text || ghost || purpleGhost || purpleLink}
+            />
+          </div>
+        )}
+
+        {props.children}
+      </button>
+    );
   }
 }
 
