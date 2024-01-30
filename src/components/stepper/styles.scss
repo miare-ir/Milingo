@@ -22,17 +22,13 @@
     font-weight: 500;
   }
 
-  hr {
+  .line {
     display: block;
     height: 1px;
     border: 0;
     margin: 1em 0;
     padding: 0;
     width: 32px;
-
-    @media only screen and (max-width: 480px) {
-      width: 35%;
-    }
   }
 
   .todo {
@@ -42,7 +38,7 @@
       color: #8897a8;
     }
 
-    hr {
+    .line {
       border: 1px solid #ecedef;
       background: #ecedef;
     }
@@ -55,7 +51,7 @@
       color: #3d3f53;
     }
 
-    hr {
+    .line {
       border: 1px solid #3d3f53;
       background: #3d3f53;
     }
@@ -68,9 +64,21 @@
       color: #fff;
     }
 
-    hr {
+    .line {
       border: 1px solid #258613;
       background: #258613;
     }
   }
 }
+
+@media (min-width: 1024px) {
+    .not-in-desktop {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .not-in-mobile {
+      display: none !important;
+    }
+  } 
