@@ -5,35 +5,35 @@
 }
 
 @mixin font-size($size) {
-    font-size: calculatePixelToRem($size);
+  font-size: calculatePixelToRem($size);
 
-    @if map-has-key($sizeLineHeightMap, $size) {
-        line-height: calculatePixelToRem(map-get($sizeLineHeightMap, $size));
-    }
+  @if map-has-key($sizeLineHeightMap, $size) {
+    line-height: calculatePixelToRem(map-get($sizeLineHeightMap, $size));
+  }
 }
 
 @mixin light-scrollbar {
-    &::-webkit-scrollbar {
-      display: block;
-      visibility: visible;
-      width: 8px;
-    }
-  
-    &::-webkit-scrollbar-track {
-      border-radius: 4px;
-      background-color: transparent;
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: #d0d0d0;
-    }
+  &::-webkit-scrollbar {
+    display: block;
+    visibility: visible;
+    width: 8px;
+  }
 
-    &::-webkit-scrollbar-track:hover {
-      background-color: #ecedef;
-    }
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: transparent;
+  }
 
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: #4a90e2;
-    }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #d0d0d0;
+  }
+
+  &::-webkit-scrollbar-track:hover {
+    background-color: #ecedef;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #4a90e2;
+  }
 }
