@@ -81,7 +81,7 @@
     padding: 8px 0;
     background-color: white;
     border: 1px solid #d0d0d0;
-    border-radius: 2px;
+    border-radius: 4px;
     box-shadow: 0 4px 8px 0 rgba(74, 74, 74, 0.25);
     box-sizing: border-box;
     margin-top: 2px;
@@ -92,7 +92,8 @@
     top: 100%;
     width: 100%;
     z-index: 1000;
-    -webkit-overflow-scrolling: touch;
+
+    @include light-scrollbar;
   }
 
   .select-option {
@@ -209,6 +210,8 @@
     .is-selected {
       color: #4a90e2;
     }
+
+    @include light-scrollbar;
   }
 
   .select-disabled {
