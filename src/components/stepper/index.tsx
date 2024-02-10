@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from "react"
 import './styles.scss';
 
 export enum StepsStatus {
@@ -27,9 +27,9 @@ const Stepper = (props: StepperProps): JSX.Element => {
 
   const getStepIndex = (step): number => props.steps.indexOf(step);
   const isFirstStep = (step): boolean => getStepIndex(step) === 0;
-  const isLastStep = (step): boolean =>
-    getStepIndex(step) + 1 === props.steps.length;
+  const isLastStep = (step): boolean =>getStepIndex(step) + 1 === props.steps.length
   const isOnlyStep = (): boolean => props.steps.length === 1;
+   
 
   const renderMobileStepper = (): JSX.Element => {
     const doingStep = props.steps.find(
@@ -65,7 +65,7 @@ const Stepper = (props: StepperProps): JSX.Element => {
             step.status,
           )}`}>
           <div className="step">{step.title}</div>
-          {!isLastStep(index) && !isOnlyStep() && <hr className="line" />}
+          {!isLastStep(step) && !isOnlyStep() && <hr className="line" />}
         </div>
       ))}
       {props.steps.length >= 3 && renderMobileStepper()}

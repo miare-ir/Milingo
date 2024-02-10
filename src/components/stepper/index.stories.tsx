@@ -34,7 +34,6 @@ const steps = [
 ];
 
 export const Normal = () => (
-  
   <div>
    <Stepper steps={steps}></Stepper>
   </div>
