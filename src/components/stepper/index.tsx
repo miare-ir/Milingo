@@ -60,7 +60,7 @@ const Stepper = (props: StepperProps): JSX.Element => {
                   props.steps[getStepIndex(step)-1]?.status,
                 )}`}/>}
                 <div className="step">{step.title}</div>
-                {!isLastStep(step) && <hr className="line" />}
+                {!isLastStep(step) && <hr className={`line ${index===steps.length -1 && 'end-line'}`} />}
               </div>
             ))
           : !isMoreThanThreeSteps &&

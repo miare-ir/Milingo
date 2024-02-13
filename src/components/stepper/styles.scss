@@ -33,7 +33,11 @@
   }
 
   .start-line {
-    width: 4px;
+    width: 20px;
+  }
+
+  .end-line {
+    width: 48px;
   }
 
   .todo {
@@ -76,13 +80,13 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 480px) {
     .not-in-desktop {
       display: none !important;
     }
   }
 
-  @media (max-width: 1023px) {
+  @media (max-width: 479px) {
     .not-in-mobile {
       display: none !important;
     }

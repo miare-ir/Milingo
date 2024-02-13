@@ -6474,7 +6474,7 @@ var Stepper = function (props) {
                 return (React.createElement("div", { className: "step-container not-in-desktop ".concat(getClassName(step.status)), key: index },
                     index === 0 && !isFirstStep(step) && React.createElement("hr", { className: "line start-line ".concat(getClassName((_a = props.steps[getStepIndex(step) - 1]) === null || _a === void 0 ? void 0 : _a.status)) }),
                     React.createElement("div", { className: "step" }, step.title),
-                    !isLastStep(step) && React.createElement("hr", { className: "line" })));
+                    !isLastStep(step) && React.createElement("hr", { className: "line ".concat(index === steps.length - 1 && 'end-line') })));
             })
             : !isMoreThanThreeSteps &&
                 props.steps.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container  not-in-desktop ".concat(getClassName(step.status)) },
