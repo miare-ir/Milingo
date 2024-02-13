@@ -1218,6 +1218,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 6371:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ 7885:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -6414,6 +6424,74 @@ exports["default"] = SelectComponent;
 
 /***/ }),
 
+/***/ 5830:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StepsStatus = void 0;
+var React = __webpack_require__(8156);
+__webpack_require__(6371);
+var StepsStatus;
+(function (StepsStatus) {
+    StepsStatus[StepsStatus["ToDo"] = 0] = "ToDo";
+    StepsStatus[StepsStatus["Doing"] = 1] = "Doing";
+    StepsStatus[StepsStatus["Done"] = 2] = "Done";
+})(StepsStatus = exports.StepsStatus || (exports.StepsStatus = {}));
+var Stepper = function (props) {
+    var getClassName = function (stepStatus) {
+        switch (stepStatus) {
+            case StepsStatus.ToDo:
+                return 'todo';
+            case StepsStatus.Doing:
+                return 'doing';
+            case StepsStatus.Done:
+                return 'done';
+            default:
+                return '';
+        }
+    };
+    var getStepIndex = function (step) { return props.steps.indexOf(step); };
+    var isFirstStep = function (step) { return getStepIndex(step) === 0; };
+    var isLastStep = function (step) {
+        return getStepIndex(step) + 1 === props.steps.length;
+    };
+    var isOnlyStep = function () { return props.steps.length === 1; };
+    var renderMobileStepper = function () {
+        var doingStep = props.steps.find(function (step) { return step.status === StepsStatus.Doing; });
+        var doingStepIndex = getStepIndex(doingStep);
+        var steps = !isLastStep(doingStep) && !isFirstStep(doingStep)
+            ? props.steps.slice(doingStepIndex - 1, doingStepIndex + 2)
+            : isFirstStep(doingStep)
+                ? props.steps.slice(doingStepIndex, doingStepIndex + 3)
+                : isLastStep(doingStep) &&
+                    props.steps.slice(doingStepIndex - 2, doingStepIndex + 1);
+        var isMoreThanThreeSteps = props.steps.length > 3;
+        return (React.createElement(React.Fragment, null, isMoreThanThreeSteps
+            ? steps.map(function (step, index) {
+                var _a;
+                return (React.createElement("div", { className: "step-container not-in-desktop ".concat(getClassName(step.status)), key: index },
+                    index === 0 && !isFirstStep(step) && React.createElement("hr", { className: "line start-line ".concat(getClassName((_a = props.steps[getStepIndex(step) - 1]) === null || _a === void 0 ? void 0 : _a.status)) }),
+                    React.createElement("div", { className: "step" }, step.title),
+                    !isLastStep(step) && React.createElement("hr", { className: "line" })));
+            })
+            : !isMoreThanThreeSteps &&
+                props.steps.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container  not-in-desktop ".concat(getClassName(step.status)) },
+                    React.createElement("div", { className: "step" }, step.title),
+                    !isLastStep(step) && !isOnlyStep() && React.createElement("hr", { className: "line" }))); })));
+    };
+    return (React.createElement("div", { className: "container " },
+        props.steps.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container ".concat(getClassName(step.status), " not-in-mobile") },
+            React.createElement("div", { className: "step" }, step.title),
+            !isLastStep(step) && !isOnlyStep() && React.createElement("hr", { className: "line" }))); }),
+        renderMobileStepper()));
+};
+exports["default"] = Stepper;
+
+
+/***/ }),
+
 /***/ 5630:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -7151,7 +7229,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CountInput = exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
+exports.Stepper = exports.CountInput = exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
 __exportStar(__webpack_require__(8410), exports);
 __exportStar(__webpack_require__(8877), exports);
 __exportStar(__webpack_require__(5630), exports);
@@ -7239,6 +7317,9 @@ __exportStar(__webpack_require__(1845), exports);
 var count_input_1 = __webpack_require__(39);
 Object.defineProperty(exports, "CountInput", ({ enumerable: true, get: function () { return count_input_1.default; } }));
 __exportStar(__webpack_require__(39), exports);
+var stepper_1 = __webpack_require__(5830);
+Object.defineProperty(exports, "Stepper", ({ enumerable: true, get: function () { return stepper_1.default; } }));
+__exportStar(__webpack_require__(5830), exports);
 
 
 /***/ }),
