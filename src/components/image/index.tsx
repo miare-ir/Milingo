@@ -32,7 +32,7 @@ const Image = ({
     event.target.classList.add('image-has-error');
 
   const onImageClick = (): void => {
-    if (thumbnailInfo.originalSrc) {
+    if (thumbnailInfo?.originalSrc) {
       return toggleModal(true);
     }
   };
