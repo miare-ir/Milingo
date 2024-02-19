@@ -6430,61 +6430,50 @@ exports["default"] = SelectComponent;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StepsStatus = void 0;
+exports.StepStatus = void 0;
 var React = __webpack_require__(8156);
 __webpack_require__(6371);
-var StepsStatus;
-(function (StepsStatus) {
-    StepsStatus[StepsStatus["ToDo"] = 0] = "ToDo";
-    StepsStatus[StepsStatus["Doing"] = 1] = "Doing";
-    StepsStatus[StepsStatus["Done"] = 2] = "Done";
-})(StepsStatus = exports.StepsStatus || (exports.StepsStatus = {}));
+var StepStatus;
+(function (StepStatus) {
+    StepStatus[StepStatus["ToDo"] = 0] = "ToDo";
+    StepStatus[StepStatus["Doing"] = 1] = "Doing";
+    StepStatus[StepStatus["Done"] = 2] = "Done";
+})(StepStatus = exports.StepStatus || (exports.StepStatus = {}));
 var Stepper = function (props) {
-    var getClassName = function (stepStatus) {
-        switch (stepStatus) {
-            case StepsStatus.ToDo:
-                return 'todo';
-            case StepsStatus.Doing:
-                return 'doing';
-            case StepsStatus.Done:
-                return 'done';
-            default:
-                return '';
-        }
-    };
-    var getStepIndex = function (step) { return props.steps.indexOf(step); };
+    var _a;
+    var getClassName = function (status) { return Object.values(StepStatus)[status].toString().toLowerCase(); };
+    var getStepIndex = function (step) { var _a; return (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.indexOf(step); };
     var isFirstStep = function (step) { return getStepIndex(step) === 0; };
-    var isLastStep = function (step) {
-        return getStepIndex(step) + 1 === props.steps.length;
-    };
-    var isOnlyStep = function () { return props.steps.length === 1; };
+    var isLastStep = function (step) { var _a; return getStepIndex(step) + 1 === ((_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.length); };
+    var isSingleStep = function () { var _a; return ((_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.length) === 1; };
     var renderMobileStepper = function () {
-        var doingStep = props.steps.find(function (step) { return step.status === StepsStatus.Doing; });
+        var _a, _b, _c;
+        var doingStep = (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.find(function (step) { return step.status === StepStatus.Doing; });
         var doingStepIndex = getStepIndex(doingStep);
-        var steps = !isLastStep(doingStep) && !isFirstStep(doingStep)
+        var steps = (props === null || props === void 0 ? void 0 : props.steps) && !isLastStep(doingStep) && !isFirstStep(doingStep)
             ? props.steps.slice(doingStepIndex - 1, doingStepIndex + 2)
             : isFirstStep(doingStep)
                 ? props.steps.slice(doingStepIndex, doingStepIndex + 3)
                 : isLastStep(doingStep) &&
                     props.steps.slice(doingStepIndex - 2, doingStepIndex + 1);
-        var isMoreThanThreeSteps = props.steps.length > 3;
+        var isMoreThanThreeSteps = ((_b = props === null || props === void 0 ? void 0 : props.steps) === null || _b === void 0 ? void 0 : _b.length) > 3;
         return (React.createElement(React.Fragment, null, isMoreThanThreeSteps
             ? steps.map(function (step, index) {
                 var _a;
-                return (React.createElement("div", { className: "step-container not-in-desktop ".concat(getClassName(step.status)), key: index },
-                    index === 0 && !isFirstStep(step) && React.createElement("hr", { className: "line start-line ".concat(getClassName((_a = props.steps[getStepIndex(step) - 1]) === null || _a === void 0 ? void 0 : _a.status)) }),
+                return (React.createElement("div", { className: "step-container hide-on-desktop ".concat(getClassName(step.status)), key: index },
+                    index === 0 && !isFirstStep(step) && (React.createElement("hr", { className: "line start-line ".concat(getClassName((_a = props === null || props === void 0 ? void 0 : props.steps[getStepIndex(step) - 1]) === null || _a === void 0 ? void 0 : _a.status)) })),
                     React.createElement("div", { className: "step" }, step.title),
-                    !isLastStep(step) && React.createElement("hr", { className: "line ".concat(index === steps.length - 1 && 'end-line') })));
+                    !isLastStep(step) && (React.createElement("hr", { className: "line ".concat(index === steps.length - 1 && 'end-line') }))));
             })
             : !isMoreThanThreeSteps &&
-                props.steps.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container  not-in-desktop ".concat(getClassName(step.status)) },
+                ((_c = props === null || props === void 0 ? void 0 : props.steps) === null || _c === void 0 ? void 0 : _c.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container  hide-on-desktop ".concat(getClassName(step.status)) },
                     React.createElement("div", { className: "step" }, step.title),
-                    !isLastStep(step) && !isOnlyStep() && React.createElement("hr", { className: "line" }))); })));
+                    !isLastStep(step) && !isSingleStep() && React.createElement("hr", { className: "line" }))); }))));
     };
-    return (React.createElement("div", { className: "container " },
-        props.steps.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container ".concat(getClassName(step.status), " not-in-mobile") },
+    return (React.createElement("div", { className: "stepper-container " }, (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 :
+        _a.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container ".concat(getClassName(step.status), " hide-on-mobile") },
             React.createElement("div", { className: "step" }, step.title),
-            !isLastStep(step) && !isOnlyStep() && React.createElement("hr", { className: "line" }))); }),
+            !isLastStep(step) && !isSingleStep() && React.createElement("hr", { className: "line" }))); }),
         renderMobileStepper()));
 };
 exports["default"] = Stepper;

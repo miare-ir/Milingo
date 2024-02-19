@@ -1,75 +1,75 @@
 import * as React from 'react';
 import './styles.scss';
 
-export enum StepsStatus {
-  ToDo = 0,
-  Doing = 1,
-  Done = 2,
+export enum StepStatus {
+  ToDo ,
+  Doing ,
+  Done ,
 }
 
+export interface Step { title: string; status: number }
 export interface StepperProps {
-  steps: { title: string; status: number }[];
+  steps: Step[];
 }
 
 const Stepper = (props: StepperProps): JSX.Element => {
-  const getClassName = (stepStatus: number): string => {
-    switch (stepStatus) {
-      case StepsStatus.ToDo:
-        return 'todo';
-      case StepsStatus.Doing:
-        return 'doing';
-      case StepsStatus.Done:
-        return 'done';
-      default:
-        return '';
-    }
-  };
-
-  const getStepIndex = (step): number => props.steps.indexOf(step);
-  const isFirstStep = (step): boolean => getStepIndex(step) === 0;
-  const isLastStep = (step): boolean =>
-    getStepIndex(step) + 1 === props.steps.length;
-  const isOnlyStep = (): boolean => props.steps.length === 1;
+  const getClassName = (status: StepStatus): string => Object.values(StepStatus)[status].toString().toLowerCase();
+  const getStepIndex = (step:Step): number => props?.steps?.indexOf(step);
+  const isFirstStep = (step:Step): boolean => getStepIndex(step) === 0;
+  const isLastStep = (step:Step): boolean =>
+    getStepIndex(step) + 1 === props?.steps?.length;
+  const isSingleStep = (): boolean => props?.steps?.length === 1;
 
   const renderMobileStepper = (): JSX.Element => {
-    const doingStep = props.steps.find(
-      step => step.status === StepsStatus.Doing,
+    const doingStep = props?.steps?.find(
+      step => step.status === StepStatus.Doing,
     );
     const doingStepIndex = getStepIndex(doingStep);
     const steps =
-      !isLastStep(doingStep) && !isFirstStep(doingStep)
+      props?.steps && !isLastStep(doingStep) && !isFirstStep(doingStep)
         ? props.steps.slice(doingStepIndex - 1, doingStepIndex + 2)
         : isFirstStep(doingStep)
         ? props.steps.slice(doingStepIndex, doingStepIndex + 3)
         : isLastStep(doingStep) &&
           props.steps.slice(doingStepIndex - 2, doingStepIndex + 1);
 
-    const isMoreThanThreeSteps = props.steps.length > 3;
+    const isMoreThanThreeSteps = props?.steps?.length > 3;
 
     return (
       <>
         {isMoreThanThreeSteps
           ? steps.map((step, index) => (
               <div
-                className={`step-container not-in-desktop ${getClassName(
+                className={`step-container hide-on-desktop ${getClassName(
                   step.status,
                 )}`}
                 key={index}>
-
-                {index===0 && !isFirstStep(step) && <hr className={`line start-line ${getClassName(
-                  props.steps[getStepIndex(step)-1]?.status,
-                )}`}/>}
+                {index === 0 && !isFirstStep(step) && (
+                  <hr
+                    className={`line start-line ${getClassName(
+                      props?.steps[getStepIndex(step) - 1]?.status,
+                    )}`}
+                  />
+                )}
                 <div className="step">{step.title}</div>
-                {!isLastStep(step) && <hr className={`line ${index===steps.length -1 && 'end-line'}`} />}
+                {!isLastStep(step) && (
+                  <hr
+                    className={`line ${
+                      index === steps.length - 1 && 'end-line'
+                    }`}
+                  />
+                )}
               </div>
             ))
           : !isMoreThanThreeSteps &&
-            props.steps.map((step, index) => (
+            props?.steps?.map((step, index) => (
               <div
                 key={index}
-                className={`step-container  not-in-desktop ${getClassName(step.status)}`}>
+                className={`step-container  hide-on-desktop ${getClassName(
+                  step.status,
+                )}`}>
                 <div className="step">{step.title}</div>
-                {!isLastStep(step) && !isOnlyStep() && <hr className="line" />}
+                {!isLastStep(step) && !isSingleStep() && <hr className="line" />}
               </div>
             ))}
       </>
@@ -77,13 +77,15 @@ const Stepper = (props: StepperProps): JSX.Element => {
   };
 
   return (
-    <div className="container ">
-      {props.steps.map((step, index) => (
+    <div className="stepper-container ">
+      {props?.steps?.map((step, index) => (
         <div
           key={index}
-          className={`step-container ${getClassName(step.status)} not-in-mobile`}>
+          className={`step-container ${getClassName(
+            step.status,
+          )} hide-on-mobile`}>
           <div className="step">{step.title}</div>
-          {!isLastStep(step) && !isOnlyStep() && <hr className="line" />}
+          {!isLastStep(step) && !isSingleStep() && <hr className="line" />}
         </div>
       ))}
       {renderMobileStepper()}

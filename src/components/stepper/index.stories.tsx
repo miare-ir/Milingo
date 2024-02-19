@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Stepper from '.';
+import Stepper, { StepStatus } from '.';
 
 export default {
   title: 'Stepper',
@@ -9,32 +9,32 @@ export default {
 const steps = [
   {
     title: 'مسیر 1',
-    status: 2,
+    status: StepStatus.Done,
   },
   {
     title: 'مسیر 2',
-    status: 2,
+    status: StepStatus.Done,
   },
   {
     title: 'مسیر 3',
-    status: 2,
+    status: StepStatus.Done,
   },
   {
     title: 'مسیر 4',
-    status: 1,
+    status: StepStatus.Doing,
   },
   {
     title: 'مسیر 5',
-    status: 0,
+    status: StepStatus.ToDo,
   },
   {
     title: 'مسیر 6',
-    status: 0,
+    status: StepStatus.ToDo,
   },
 ];
 
-export const Normal = () => (
+export const Normal = (): JSX.Element => (
   <div>
-   <Stepper steps={steps}></Stepper>
+    <Stepper steps={steps}></Stepper>
   </div>
 );

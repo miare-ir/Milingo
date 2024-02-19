@@ -1,4 +1,4 @@
-.container {
+.stepper-container {
   width: 100% !important;
   display: flex;
   flex-direction: row;
@@ -81,13 +81,13 @@
 }
 
 @media (min-width: 480px) {
-    .not-in-desktop {
+    .hide-on-desktop {
       display: none !important;
     }
   }
 
   @media (max-width: 479px) {
-    .not-in-mobile {
+    .hide-on-mobile {
       display: none !important;
     }
   } 
