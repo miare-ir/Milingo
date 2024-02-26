@@ -2,21 +2,25 @@ import * as React from 'react';
 import './styles.scss';
 
 export enum StepStatus {
-  ToDo ,
-  Doing ,
-  Done ,
+  ToDo,
+  Doing,
+  Done,
 }
 
-export interface Step { title: string; status: number }
+export interface Step {
+  title: string;
+  status: number;
+}
 export interface StepperProps {
   steps: Step[];
 }
 
 const Stepper = (props: StepperProps): JSX.Element => {
-  const getClassName = (status: StepStatus): string => Object.values(StepStatus)[status].toString().toLowerCase();
-  const getStepIndex = (step:Step): number => props?.steps?.indexOf(step);
-  const isFirstStep = (step:Step): boolean => getStepIndex(step) === 0;
-  const isLastStep = (step:Step): boolean =>
+  const getClassName = (status: StepStatus): string =>
+    Object.values(StepStatus)[status].toString().toLowerCase();
+  const getStepIndex = (step: Step): number => props?.steps?.indexOf(step);
+  const isFirstStep = (step: Step): boolean => getStepIndex(step) === 0;
+  const isLastStep = (step: Step): boolean =>
     getStepIndex(step) + 1 === props?.steps?.length;
   const isSingleStep = (): boolean => props?.steps?.length === 1;
 
@@ -69,7 +73,9 @@ const Stepper = (props: StepperProps): JSX.Element => {
                   step.status,
                 )}`}>
                 <div className="step">{step.title}</div>
-                {!isLastStep(step) && !isSingleStep() && <hr className="line" />}
+                {!isLastStep(step) && !isSingleStep() && (
+                  <hr className="line" />
+                )}
               </div>
             ))}
       </>

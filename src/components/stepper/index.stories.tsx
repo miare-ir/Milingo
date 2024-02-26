@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Stepper, { StepStatus } from '.';
+import Stepper, { Step, StepStatus } from '.';
 
 export default {
   title: 'Stepper',
   decorators: [story => <div className="story-container">{story()}</div>],
 };
 
-const steps = [
+const steps: Step[] = [
   {
     title: 'مسیر 1',
     status: StepStatus.Done,

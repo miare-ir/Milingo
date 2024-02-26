@@ -78,16 +78,17 @@
       background: #258613;
     }
   }
+
+
+  @media (min-width: 480px) {
+      .hide-on-desktop {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .hide-on-mobile {
+        display: none !important;
+      }
+    } 
 }
-
-@media (min-width: 480px) {
-    .hide-on-desktop {
-      display: none !important;
-    }
-  }
-
-  @media (max-width: 479px) {
-    .hide-on-mobile {
-      display: none !important;
-    }
-  } 
