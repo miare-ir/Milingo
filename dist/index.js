@@ -4612,7 +4612,7 @@ var Image = function (_a) {
         return event.target.classList.add('image-has-error');
     };
     var onImageClick = function () {
-        if (thumbnailInfo.originalSrc) {
+        if (thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalSrc) {
             return toggleModal(true);
         }
     };
@@ -6441,7 +6441,9 @@ var StepStatus;
 })(StepStatus = exports.StepStatus || (exports.StepStatus = {}));
 var Stepper = function (props) {
     var _a;
-    var getClassName = function (status) { return Object.values(StepStatus)[status].toString().toLowerCase(); };
+    var getClassName = function (status) {
+        return Object.values(StepStatus)[status].toString().toLowerCase();
+    };
     var getStepIndex = function (step) { var _a; return (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.indexOf(step); };
     var isFirstStep = function (step) { return getStepIndex(step) === 0; };
     var isLastStep = function (step) { var _a; return getStepIndex(step) + 1 === ((_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.length); };
@@ -6468,7 +6470,7 @@ var Stepper = function (props) {
             : !isMoreThanThreeSteps &&
                 ((_c = props === null || props === void 0 ? void 0 : props.steps) === null || _c === void 0 ? void 0 : _c.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container  hide-on-desktop ".concat(getClassName(step.status)) },
                     React.createElement("div", { className: "step" }, step.title),
-                    !isLastStep(step) && !isSingleStep() && React.createElement("hr", { className: "line" }))); }))));
+                    !isLastStep(step) && !isSingleStep() && (React.createElement("hr", { className: "line" })))); }))));
     };
     return (React.createElement("div", { className: "stepper-container " }, (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 :
         _a.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container ".concat(getClassName(step.status), " hide-on-mobile") },
