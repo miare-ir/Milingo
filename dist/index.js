@@ -1218,6 +1218,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 6371:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ 7885:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -6414,6 +6424,63 @@ exports["default"] = SelectComponent;
 
 /***/ }),
 
+/***/ 5830:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StepStatus = void 0;
+var React = __webpack_require__(8156);
+__webpack_require__(6371);
+var StepStatus;
+(function (StepStatus) {
+    StepStatus[StepStatus["ToDo"] = 0] = "ToDo";
+    StepStatus[StepStatus["Doing"] = 1] = "Doing";
+    StepStatus[StepStatus["Done"] = 2] = "Done";
+})(StepStatus = exports.StepStatus || (exports.StepStatus = {}));
+var Stepper = function (props) {
+    var _a;
+    var getClassName = function (status) { return Object.values(StepStatus)[status].toString().toLowerCase(); };
+    var getStepIndex = function (step) { var _a; return (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.indexOf(step); };
+    var isFirstStep = function (step) { return getStepIndex(step) === 0; };
+    var isLastStep = function (step) { var _a; return getStepIndex(step) + 1 === ((_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.length); };
+    var isSingleStep = function () { var _a; return ((_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.length) === 1; };
+    var renderMobileStepper = function () {
+        var _a, _b, _c;
+        var doingStep = (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.find(function (step) { return step.status === StepStatus.Doing; });
+        var doingStepIndex = getStepIndex(doingStep);
+        var steps = (props === null || props === void 0 ? void 0 : props.steps) && !isLastStep(doingStep) && !isFirstStep(doingStep)
+            ? props.steps.slice(doingStepIndex - 1, doingStepIndex + 2)
+            : isFirstStep(doingStep)
+                ? props.steps.slice(doingStepIndex, doingStepIndex + 3)
+                : isLastStep(doingStep) &&
+                    props.steps.slice(doingStepIndex - 2, doingStepIndex + 1);
+        var isMoreThanThreeSteps = ((_b = props === null || props === void 0 ? void 0 : props.steps) === null || _b === void 0 ? void 0 : _b.length) > 3;
+        return (React.createElement(React.Fragment, null, isMoreThanThreeSteps
+            ? steps.map(function (step, index) {
+                var _a;
+                return (React.createElement("div", { className: "step-container hide-on-desktop ".concat(getClassName(step.status)), key: index },
+                    index === 0 && !isFirstStep(step) && (React.createElement("hr", { className: "line start-line ".concat(getClassName((_a = props === null || props === void 0 ? void 0 : props.steps[getStepIndex(step) - 1]) === null || _a === void 0 ? void 0 : _a.status)) })),
+                    React.createElement("div", { className: "step" }, step.title),
+                    !isLastStep(step) && (React.createElement("hr", { className: "line ".concat(index === steps.length - 1 && 'end-line') }))));
+            })
+            : !isMoreThanThreeSteps &&
+                ((_c = props === null || props === void 0 ? void 0 : props.steps) === null || _c === void 0 ? void 0 : _c.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container  hide-on-desktop ".concat(getClassName(step.status)) },
+                    React.createElement("div", { className: "step" }, step.title),
+                    !isLastStep(step) && !isSingleStep() && React.createElement("hr", { className: "line" }))); }))));
+    };
+    return (React.createElement("div", { className: "stepper-container " }, (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 :
+        _a.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container ".concat(getClassName(step.status), " hide-on-mobile") },
+            React.createElement("div", { className: "step" }, step.title),
+            !isLastStep(step) && !isSingleStep() && React.createElement("hr", { className: "line" }))); }),
+        renderMobileStepper()));
+};
+exports["default"] = Stepper;
+
+
+/***/ }),
+
 /***/ 5630:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -7151,7 +7218,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CountInput = exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
+exports.Stepper = exports.CountInput = exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
 __exportStar(__webpack_require__(8410), exports);
 __exportStar(__webpack_require__(8877), exports);
 __exportStar(__webpack_require__(5630), exports);
@@ -7239,6 +7306,9 @@ __exportStar(__webpack_require__(1845), exports);
 var count_input_1 = __webpack_require__(39);
 Object.defineProperty(exports, "CountInput", ({ enumerable: true, get: function () { return count_input_1.default; } }));
 __exportStar(__webpack_require__(39), exports);
+var stepper_1 = __webpack_require__(5830);
+Object.defineProperty(exports, "Stepper", ({ enumerable: true, get: function () { return stepper_1.default; } }));
+__exportStar(__webpack_require__(5830), exports);
 
 
 /***/ }),
