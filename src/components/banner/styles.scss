@@ -57,4 +57,70 @@ $warningBannerBackColor: #ffeebf;
     background-color: $success2;
     color: $success1;
   }
+
+  &.dark {
+    background-color: #191924;
+    border: 1px solid #3d3f53;
+    color: #fff;
+    padding: 16px 20px 16px 16px;
+    position: relative;
+
+    &:before {
+      content: ' ';
+      position: absolute;
+      height: 100%;
+      width: 4px;
+      right: 0;
+      top: 0;
+      border-radius: 0 3px 3px 0;      
+    }
+
+    &.error {
+      &:before {
+        background-color: #d73948;
+      }
+    }
+
+    &.warning {
+      &:before {
+        background-color: $warningBannerColor;
+      }
+    }
+
+    &.info {
+      &:before {
+        background-color: #fbba00;
+      }
+    }
+
+    &.success {
+      &:before {
+        background-color: $success1;
+      }
+    }
+  }
+
+
+  &.header {
+    flex-direction: column;
+
+    .icon {
+      width: unset;
+      height: unset;
+      display: flex;
+      gap: 8px;
+      padding-bottom: 8px;
+      margin-left: unset;
+    }
+
+    .dismissal {
+      margin-right: auto;
+    }
+
+    &.dark {
+      .content {
+        color: #8897a8;
+      }
+    }
+  }
 }
