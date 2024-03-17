@@ -32,11 +32,10 @@ const DARK_ICON_SELECTOR = {
 export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   show?: boolean;
-  type?: 'error' | 'warning' | 'info' | 'success';
+  type?: 'error' | 'warning' | 'info' | 'success' | 'default';
   fullWidth?: boolean;
   dark?: boolean;
   header?: string;
-  hideIcon?: boolean;
   onClose?: () => void;
 }
 
@@ -54,7 +53,6 @@ const Banner: React.FC<BannerProps> = ({
   fullWidth,
   dark,
   header,
-  hideIcon,
   ...restOfProps
 }: BannerProps) => {
   if (!show) {
@@ -70,17 +68,19 @@ const Banner: React.FC<BannerProps> = ({
 
   return (
     <div className={componentClassName} {...restOfProps}>
-      <div className="icon">
-        {!hideIcon && (
-          <img src={dark ? DARK_ICON_SELECTOR[type] : ICON_SELECTOR[type]} />
-        )}
-        {header && <p className="banner-header">{header}</p>}
-        {header && onClose && (
-          <div className="dismissal" onClick={() => onClose()}>
-            <CloseSvg type={type} dark={dark} />
-          </div>
-        )}
-      </div>
+      {type === 'default' && !header ? null : (
+        <div className="icon">
+          {type !== 'default' && (
+            <img src={dark ? DARK_ICON_SELECTOR[type] : ICON_SELECTOR[type]} />
+          )}
+          {header && <p className="banner-header">{header}</p>}
+          {header && onClose && (
+            <div className="dismissal" onClick={() => onClose()}>
+              <CloseSvg type={type} dark={dark} />
+            </div>
+          )}
+        </div>
+      )}
       <div className="content">{children}</div>
       {onClose && !header && (
         <div className="dismissal" onClick={() => onClose()}>

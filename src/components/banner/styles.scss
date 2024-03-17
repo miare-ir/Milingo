@@ -58,6 +58,12 @@ $warningBannerBackColor: #ffeebf;
     color: $success1;
   }
 
+  &.default {
+    background-color: #ecedef;
+    border: 1px solid #8897a8;
+    color: #212230;
+  }
+
   &.dark {
     background-color: #191924;
     border: 1px solid #3d3f53;

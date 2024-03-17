@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface CloseGeneratorProps {
-  type: 'error' | 'warning' | 'info' | 'success';
+  type: 'error' | 'warning' | 'info' | 'success' | 'default';
   dark?: boolean;
 }
 
@@ -10,6 +10,7 @@ const FILL_COLORS = {
   warning: '#85660e',
   info: '#1e6dc8',
   success: '#248212',
+  default: '#3d3f53',
 };
 
 const CloseGenerator: React.FC<CloseGeneratorProps> = ({

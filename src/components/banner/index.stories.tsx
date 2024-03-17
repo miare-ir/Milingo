@@ -37,6 +37,10 @@ export const WithDismissIcon = () => (
     <Banner fullWidth onClose={() => {}} type="success">
       درخواست ۴۱۳ با موفقیت انجام شد.
     </Banner>
+    <br />
+    <Banner fullWidth onClose={() => {}} type="default">
+      درخواست ۴۱۳ با موفقیت انجام شد.
+    </Banner>
   </div>
 );
 
@@ -53,6 +57,8 @@ export const WithoutDismissIcon = () => (
     <Banner type="info">از نام‌های کوتاه استفاده کنید.</Banner>
     <br />
     <Banner type="success"> درخواست ۴۱۳ با موفقیت انجام شد.</Banner>
+    <br />
+    <Banner type="default"> درخواست ۴۱۳ با موفقیت انجام شد.</Banner>
   </div>
 );
 
@@ -88,15 +94,11 @@ export const MultipleLine = () => (
       </Button>
     </Banner>
     <br />
-    <Banner
-      type="error"
-      onClose={() => {}}
-      header="با موفقیت انجام شد"
-      hideIcon>
+    <Banner type="default" onClose={() => {}} header="با موفقیت انجام شد">
       درخواست ۴۱۳ با موفقیت انجام شد.درخواست ۴۱۳ با موفقیت انجام شد.درخواست ۴۱۳
       با موفقیت انجام شد.درخواست ۴۱۳ با موفقیت انجام شد.
       <br />
-      <Button danger small>
+      <Button ghost small>
         دکمه‌ی یک
       </Button>
     </Banner>
