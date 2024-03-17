@@ -74,7 +74,7 @@ const Banner: React.FC<BannerProps> = ({
         {!hideIcon && (
           <img src={dark ? DARK_ICON_SELECTOR[type] : ICON_SELECTOR[type]} />
         )}
-        {header && <p>{header}</p>}
+        {header && <p className="banner-header">{header}</p>}
         {header && onClose && (
           <div className="dismissal" onClick={() => onClose()}>
             <CloseSvg type={type} dark={dark} />
