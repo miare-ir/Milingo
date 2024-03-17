@@ -87,6 +87,19 @@ export const MultipleLine = () => (
         دکمه‌ی یک
       </Button>
     </Banner>
+    <br />
+    <Banner
+      type="error"
+      onClose={() => {}}
+      header="با موفقیت انجام شد"
+      hideIcon>
+      درخواست ۴۱۳ با موفقیت انجام شد.درخواست ۴۱۳ با موفقیت انجام شد.درخواست ۴۱۳
+      با موفقیت انجام شد.درخواست ۴۱۳ با موفقیت انجام شد.
+      <br />
+      <Button danger small>
+        دکمه‌ی یک
+      </Button>
+    </Banner>
   </div>
 );
 

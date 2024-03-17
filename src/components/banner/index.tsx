@@ -36,6 +36,7 @@ export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
   fullWidth?: boolean;
   dark?: boolean;
   header?: string;
+  hideIcon?: boolean;
   onClose?: () => void;
 }
 
@@ -53,6 +54,7 @@ const Banner: React.FC<BannerProps> = ({
   fullWidth,
   dark,
   header,
+  hideIcon,
   ...restOfProps
 }: BannerProps) => {
   if (!show) {
@@ -69,7 +71,9 @@ const Banner: React.FC<BannerProps> = ({
   return (
     <div className={componentClassName} {...restOfProps}>
       <div className="icon">
-        <img src={dark ? DARK_ICON_SELECTOR[type] : ICON_SELECTOR[type]} />
+        {!hideIcon && (
+          <img src={dark ? DARK_ICON_SELECTOR[type] : ICON_SELECTOR[type]} />
+        )}
         {header && <p>{header}</p>}
         {header && onClose && (
           <div className="dismissal" onClick={() => onClose()}>
