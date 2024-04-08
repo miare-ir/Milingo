@@ -9,7 +9,7 @@ $warningBannerBackColor: #ffeebf;
   line-height: 24px;
   text-align: center;
   box-sizing: border-box;
-  padding: 12px;
+  padding: 16px;
   border-radius: 4px;
   min-width: 320px;
   max-width: 720px;
@@ -56,5 +56,77 @@ $warningBannerBackColor: #ffeebf;
   &.success {
     background-color: $success2;
     color: $success1;
+  }
+
+  &.default {
+    background-color: #ecedef;
+    border: 1px solid #8897a8;
+    color: #212230;
+  }
+
+  &.dark {
+    background-color: #191924;
+    border: 1px solid #3d3f53;
+    color: #fff;
+    padding: 16px 20px 16px 16px;
+    position: relative;
+
+    &:before {
+      content: ' ';
+      position: absolute;
+      height: 100%;
+      width: 4px;
+      right: 0;
+      top: 0;
+      border-radius: 0 4px 4px 0;      
+    }
+
+    &.error {
+      &:before {
+        background-color: #d73948;
+      }
+    }
+
+    &.warning {
+      &:before {
+        background-color: $warningBannerColor;
+      }
+    }
+
+    &.info {
+      &:before {
+        background-color: #fbba00;
+      }
+    }
+
+    &.success {
+      &:before {
+        background-color: $success1;
+      }
+    }
+  }
+
+
+  &.header {
+    flex-direction: column;
+
+    .icon {
+      width: unset;
+      height: unset;
+      display: flex;
+      gap: 8px;
+      padding-bottom: 8px;
+      margin-left: unset;
+    }
+
+    .dismissal {
+      margin-right: auto;
+    }
+
+    &.dark {
+      .content {
+        color: #8897a8;
+      }
+    }
   }
 }
