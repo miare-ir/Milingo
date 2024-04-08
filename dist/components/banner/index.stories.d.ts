@@ -21,3 +21,21 @@ export declare const MultipleLine: {
         name: string;
     };
 };
+export declare const DarkWithDismissIcon: {
+    (): JSX.Element;
+    story: {
+        name: string;
+    };
+};
+export declare const DarkWithoutDismissIcon: {
+    (): JSX.Element;
+    story: {
+        name: string;
+    };
+};
+export declare const DarkMultipleLine: {
+    (): JSX.Element;
+    story: {
+        name: string;
+    };
+};

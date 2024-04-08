@@ -2594,14 +2594,15 @@ var FILL_COLORS = {
     warning: '#85660e',
     info: '#1e6dc8',
     success: '#248212',
+    default: '#3d3f53',
 };
 var CloseGenerator = function (_a) {
-    var type = _a.type;
+    var type = _a.type, dark = _a.dark;
     return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
         React.createElement("g", { fill: "none", fillRule: "evenodd" },
             React.createElement("path", { d: "M0 0h24v24H0z" }),
-            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: FILL_COLORS[type], rx: "1", transform: "rotate(45 12 12)" }),
-            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: FILL_COLORS[type], rx: "1", transform: "rotate(135 12 12)" }))));
+            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: dark ? '#fff' : FILL_COLORS[type], rx: "1", transform: "rotate(45 12 12)" }),
+            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: dark ? '#fff' : FILL_COLORS[type], rx: "1", transform: "rotate(135 12 12)" }))));
 };
 exports["default"] = CloseGenerator;
 
@@ -2644,11 +2645,21 @@ var notification_warning_svg_1 = __webpack_require__(1242);
 var notification_error_svg_1 = __webpack_require__(803);
 var notification_hint_svg_1 = __webpack_require__(6800);
 var notification_success_svg_1 = __webpack_require__(6313);
+var notification_warning_white_svg_1 = __webpack_require__(5974);
+var notification_error_white_svg_1 = __webpack_require__(6135);
+var notification_hint_white_svg_1 = __webpack_require__(9809);
+var notification_success_white_svg_1 = __webpack_require__(8561);
 var ICON_SELECTOR = {
     info: notification_hint_svg_1.default,
     success: notification_success_svg_1.default,
     error: notification_error_svg_1.default,
     warning: notification_warning_svg_1.default,
+};
+var DARK_ICON_SELECTOR = {
+    info: notification_hint_white_svg_1.default,
+    success: notification_success_white_svg_1.default,
+    error: notification_error_white_svg_1.default,
+    warning: notification_warning_white_svg_1.default,
 };
 var defaultProps = {
     show: true,
@@ -2656,20 +2667,25 @@ var defaultProps = {
 };
 var Banner = function (_a) {
     var _b;
-    var className = _a.className, show = _a.show, type = _a.type, children = _a.children, onClose = _a.onClose, fullWidth = _a.fullWidth, restOfProps = __rest(_a, ["className", "show", "type", "children", "onClose", "fullWidth"]);
+    var className = _a.className, show = _a.show, type = _a.type, children = _a.children, onClose = _a.onClose, fullWidth = _a.fullWidth, dark = _a.dark, header = _a.header, restOfProps = __rest(_a, ["className", "show", "type", "children", "onClose", "fullWidth", "dark", "header"]);
     if (!show) {
         return null;
     }
     var componentClassName = classNames('banner-wrapper', className, (_b = {},
         _b[type] = true,
         _b['full-width'] = fullWidth,
+        _b.dark = dark,
+        _b.header = header,
         _b));
     return (React.createElement("div", __assign({ className: componentClassName }, restOfProps),
-        React.createElement("div", { className: "icon" },
-            React.createElement("img", { src: ICON_SELECTOR[type] })),
+        type === 'default' && !header ? null : (React.createElement("div", { className: "icon" },
+            type !== 'default' && (React.createElement("img", { src: dark ? DARK_ICON_SELECTOR[type] : ICON_SELECTOR[type] })),
+            header && React.createElement("p", { className: "banner-header" }, header),
+            header && onClose && (React.createElement("div", { className: "dismissal", onClick: function () { return onClose(); } },
+                React.createElement(close_generator_1.default, { type: type, dark: dark }))))),
         React.createElement("div", { className: "content" }, children),
-        onClose && (React.createElement("div", { className: "dismissal", onClick: function () { return onClose(); } },
-            React.createElement(close_generator_1.default, { type: type })))));
+        onClose && !header && (React.createElement("div", { className: "dismissal", onClick: function () { return onClose(); } },
+            React.createElement(close_generator_1.default, { type: type, dark: dark })))));
 };
 Banner.defaultProps = defaultProps;
 exports["default"] = Banner;
@@ -7424,12 +7440,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 6135:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTMuODY3IDIyYy0uNDggMC0uOTYyLS4xLTEuNDQyLS4zOTgtMS4zNDYtLjc5Ni0xLjgyNy0yLjY4Ny0xLjA1OC00LjA4TDkuNTQgMy4zOTNhMi4zNiAyLjM2IDAgMCAxIC45NjEtLjk5NSAyLjg1OSAyLjg1OSAwIDAgMSAyLjIxMS0uMjk4Yy43Ny4xOTkgMS4zNDYuNjk2IDEuODI3IDEuMzkzbDguMDc2IDE0LjAzYy4yODkuNDk3LjM4NS45OTQuMzg1IDEuNDkyIDAgLjc5Ni0uMjg4IDEuNTkyLS44NjUgMi4wOS0uNDgxLjU5Ni0xLjE1NC44OTUtMS45MjMuODk1SDMuODY3eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMxOTE5MjQiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEzYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjljMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+
 /***/ 803:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNCQzAwMDciIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTMuODY3IDIyYy0uNDggMC0uOTYyLS4xLTEuNDQyLS4zOTgtMS4zNDYtLjc5Ni0xLjgyNy0yLjY4Ny0xLjA1OC00LjA4TDkuNTQgMy4zOTNhMi4zNiAyLjM2IDAgMCAxIC45NjEtLjk5NSAyLjg1OSAyLjg1OSAwIDAgMSAyLjIxMS0uMjk4Yy43Ny4xOTkgMS4zNDYuNjk2IDEuODI3IDEuMzkzbDguMDc2IDE0LjAzYy4yODkuNDk3LjM4NS45OTQuMzg1IDEuNDkyIDAgLjc5Ni0uMjg4IDEuNTkyLS44NjUgMi4wOS0uNDgxLjU5Ni0xLjE1NC44OTUtMS45MjMuODk1SDMuODY3eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEzYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjljMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+
+/***/ 9809:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgeD0iMiIgeT0iMiIgZmlsbD0iI0ZGRiIgcng9IjEwIi8+CiAgICAgICAgPHBhdGggZmlsbD0iIzE5MTkyNCIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTMgMTJ2NGMwIC42LS40IDEtMSAxcy0xLS40LTEtMXYtNGMwLS42LjQtMSAxLTFzMSAuNCAxIDF6bS0xLTNhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
 
@@ -7442,12 +7476,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 8561:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSIjRkZGIiByeD0iMTAiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiMxOTE5MjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTYuNjA3IDguMTIxbC02LjM2NCA2LjM2NC0yLjgyOS0yLjgyOCIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==");
+
+/***/ }),
+
 /***/ 6313:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSIjMjQ4MjEyIiByeD0iMTAiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTYuNjA3IDguMTIxbC02LjM2NCA2LjM2NC0yLjgyOS0yLjgyOCIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==");
+
+/***/ }),
+
+/***/ 5974:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yMyAxMmwtNSAxMEg2TDEgMTIgNiAyaDEyeiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMxOTE5MjQiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEyYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjhjMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
 
