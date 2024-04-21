@@ -4374,7 +4374,7 @@ var FileInput = /** @class */ (function (_super) {
                     files.map(function (file, index) {
                         return _this.renderFiles(states && states[index], file, index);
                     }),
-                React.createElement(button_1.default, { disabled: disabled, primary: true },
+                React.createElement(button_1.default, { type: props.buttonType, disabled: disabled, primary: true },
                     children ? children : 'افزودن فایل',
                     React.createElement("input", __assign({ disabled: disabled, type: "file", ref: inputRef, onChange: this.handleInput, value: "" }, props))))));
     };
