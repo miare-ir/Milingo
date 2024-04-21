@@ -9,15 +9,17 @@ export interface FormProps
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: string;
+  formProps?: React.ComponentProps<'form'>;
 }
 
 class Form extends React.Component<FormProps, {}> {
   render(): React.ReactNode {
-    const { className, children, title, description, ...props } = this.props;
+    const { className, children, title, description, formProps, ...props } =
+      this.props;
     const componentClassName = classNames('form-container', className);
 
     return (
-      <form>
+      <form {...formProps}>
         <div className={componentClassName} {...props}>
           <h4 className="form-title">{title}</h4>
           <p className="form-description">{description}</p>

@@ -5,6 +5,7 @@ export interface FormProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'
     children?: React.ReactNode;
     title?: React.ReactNode;
     description?: string;
+    formProps?: React.ComponentProps<'form'>;
 }
 declare class Form extends React.Component<FormProps, {}> {
     render(): React.ReactNode;
