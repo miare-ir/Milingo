@@ -31,6 +31,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
   tryAgainText?: string | React.ReactNode;
   inputRef?: React.RefObject<HTMLInputElement>;
   isClear?: boolean;
+  buttonType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }
 
 export interface FileInputState {
@@ -138,7 +139,7 @@ class FileInput extends React.Component<FileInputProps, FileInputState> {
             files.map((file, index) =>
               this.renderFiles(states && states[index], file, index),
             )}
-          <Button disabled={disabled} primary>
+          <Button type={props.buttonType} disabled={disabled} primary>
             {children ? children : 'افزودن فایل'}
             <input
               disabled={disabled}

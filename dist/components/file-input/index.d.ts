@@ -25,6 +25,7 @@ export interface FileInputProps extends React.HTMLProps<HTMLInputElement> {
     tryAgainText?: string | React.ReactNode;
     inputRef?: React.RefObject<HTMLInputElement>;
     isClear?: boolean;
+    buttonType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }
 export interface FileInputState {
     touched: boolean;

@@ -4374,7 +4374,7 @@ var FileInput = /** @class */ (function (_super) {
                     files.map(function (file, index) {
                         return _this.renderFiles(states && states[index], file, index);
                     }),
-                React.createElement(button_1.default, { disabled: disabled, primary: true },
+                React.createElement(button_1.default, { type: props.buttonType, disabled: disabled, primary: true },
                     children ? children : 'افزودن فایل',
                     React.createElement("input", __assign({ disabled: disabled, type: "file", ref: inputRef, onChange: this.handleInput, value: "" }, props))))));
     };
@@ -4558,9 +4558,9 @@ var Form = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Form.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, props = __rest(_a, ["className", "children", "title", "description"]);
+        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, formProps = _a.formProps, props = __rest(_a, ["className", "children", "title", "description", "formProps"]);
         var componentClassName = classNames('form-container', className);
-        return (React.createElement("form", null,
+        return (React.createElement("form", __assign({}, formProps),
             React.createElement("div", __assign({ className: componentClassName }, props),
                 React.createElement("h4", { className: "form-title" }, title),
                 React.createElement("p", { className: "form-description" }, description),
