@@ -1,4 +1,4 @@
-image: node:16.17.1-buster
+image: git.miare.ir:5050/miare/images/node:14.20.1-buster-test
 
 stages:
   - build
