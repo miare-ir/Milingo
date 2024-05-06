@@ -98,3 +98,6 @@ export * from './components/pointer';
 
 export { default as CountInput } from './components/count-input';
 export * from './components/count-input';
+
+export { default as Stepper } from './components/stepper';
+export * from './components/stepper';

@@ -1218,6 +1218,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 6371:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ 7885:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -2584,14 +2594,15 @@ var FILL_COLORS = {
     warning: '#85660e',
     info: '#1e6dc8',
     success: '#248212',
+    default: '#3d3f53',
 };
 var CloseGenerator = function (_a) {
-    var type = _a.type;
+    var type = _a.type, dark = _a.dark;
     return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
         React.createElement("g", { fill: "none", fillRule: "evenodd" },
             React.createElement("path", { d: "M0 0h24v24H0z" }),
-            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: FILL_COLORS[type], rx: "1", transform: "rotate(45 12 12)" }),
-            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: FILL_COLORS[type], rx: "1", transform: "rotate(135 12 12)" }))));
+            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: dark ? '#fff' : FILL_COLORS[type], rx: "1", transform: "rotate(45 12 12)" }),
+            React.createElement("rect", { width: "2", height: "14", x: "11", y: "5", fill: dark ? '#fff' : FILL_COLORS[type], rx: "1", transform: "rotate(135 12 12)" }))));
 };
 exports["default"] = CloseGenerator;
 
@@ -2634,11 +2645,21 @@ var notification_warning_svg_1 = __webpack_require__(1242);
 var notification_error_svg_1 = __webpack_require__(803);
 var notification_hint_svg_1 = __webpack_require__(6800);
 var notification_success_svg_1 = __webpack_require__(6313);
+var notification_warning_white_svg_1 = __webpack_require__(5974);
+var notification_error_white_svg_1 = __webpack_require__(6135);
+var notification_hint_white_svg_1 = __webpack_require__(9809);
+var notification_success_white_svg_1 = __webpack_require__(8561);
 var ICON_SELECTOR = {
     info: notification_hint_svg_1.default,
     success: notification_success_svg_1.default,
     error: notification_error_svg_1.default,
     warning: notification_warning_svg_1.default,
+};
+var DARK_ICON_SELECTOR = {
+    info: notification_hint_white_svg_1.default,
+    success: notification_success_white_svg_1.default,
+    error: notification_error_white_svg_1.default,
+    warning: notification_warning_white_svg_1.default,
 };
 var defaultProps = {
     show: true,
@@ -2646,20 +2667,25 @@ var defaultProps = {
 };
 var Banner = function (_a) {
     var _b;
-    var className = _a.className, show = _a.show, type = _a.type, children = _a.children, onClose = _a.onClose, fullWidth = _a.fullWidth, restOfProps = __rest(_a, ["className", "show", "type", "children", "onClose", "fullWidth"]);
+    var className = _a.className, show = _a.show, type = _a.type, children = _a.children, onClose = _a.onClose, fullWidth = _a.fullWidth, dark = _a.dark, header = _a.header, restOfProps = __rest(_a, ["className", "show", "type", "children", "onClose", "fullWidth", "dark", "header"]);
     if (!show) {
         return null;
     }
     var componentClassName = classNames('banner-wrapper', className, (_b = {},
         _b[type] = true,
         _b['full-width'] = fullWidth,
+        _b.dark = dark,
+        _b.header = header,
         _b));
     return (React.createElement("div", __assign({ className: componentClassName }, restOfProps),
-        React.createElement("div", { className: "icon" },
-            React.createElement("img", { src: ICON_SELECTOR[type] })),
+        type === 'default' && !header ? null : (React.createElement("div", { className: "icon" },
+            type !== 'default' && (React.createElement("img", { src: dark ? DARK_ICON_SELECTOR[type] : ICON_SELECTOR[type] })),
+            header && React.createElement("p", { className: "banner-header" }, header),
+            header && onClose && (React.createElement("div", { className: "dismissal", onClick: function () { return onClose(); } },
+                React.createElement(close_generator_1.default, { type: type, dark: dark }))))),
         React.createElement("div", { className: "content" }, children),
-        onClose && (React.createElement("div", { className: "dismissal", onClick: function () { return onClose(); } },
-            React.createElement(close_generator_1.default, { type: type })))));
+        onClose && !header && (React.createElement("div", { className: "dismissal", onClick: function () { return onClose(); } },
+            React.createElement(close_generator_1.default, { type: type, dark: dark })))));
 };
 Banner.defaultProps = defaultProps;
 exports["default"] = Banner;
@@ -4353,7 +4379,7 @@ var FileInput = /** @class */ (function (_super) {
                     files.map(function (file, index) {
                         return _this.renderFiles(states && states[index], file, index);
                     }),
-                React.createElement(button_1.default, { disabled: disabled, primary: true },
+                React.createElement(button_1.default, { type: props.buttonType, disabled: disabled, primary: true },
                     children ? children : 'افزودن فایل',
                     React.createElement("input", __assign({ disabled: disabled, type: "file", ref: inputRef, onChange: this.handleInput, value: "" }, props))))));
     };
@@ -4537,9 +4563,9 @@ var Form = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Form.prototype.render = function () {
-        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, props = __rest(_a, ["className", "children", "title", "description"]);
+        var _a = this.props, className = _a.className, children = _a.children, title = _a.title, description = _a.description, formProps = _a.formProps, props = __rest(_a, ["className", "children", "title", "description", "formProps"]);
         var componentClassName = classNames('form-container', className);
-        return (React.createElement("form", null,
+        return (React.createElement("form", __assign({}, formProps),
             React.createElement("div", __assign({ className: componentClassName }, props),
                 React.createElement("h4", { className: "form-title" }, title),
                 React.createElement("p", { className: "form-description" }, description),
@@ -4607,7 +4633,7 @@ var Image = function (_a) {
         return event.target.classList.add('image-has-error');
     };
     var onImageClick = function () {
-        if (thumbnailInfo.originalSrc) {
+        if (thumbnailInfo === null || thumbnailInfo === void 0 ? void 0 : thumbnailInfo.originalSrc) {
             return toggleModal(true);
         }
     };
@@ -6419,6 +6445,65 @@ exports["default"] = SelectComponent;
 
 /***/ }),
 
+/***/ 5830:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StepStatus = void 0;
+var React = __webpack_require__(8156);
+__webpack_require__(6371);
+var StepStatus;
+(function (StepStatus) {
+    StepStatus[StepStatus["ToDo"] = 0] = "ToDo";
+    StepStatus[StepStatus["Doing"] = 1] = "Doing";
+    StepStatus[StepStatus["Done"] = 2] = "Done";
+})(StepStatus = exports.StepStatus || (exports.StepStatus = {}));
+var Stepper = function (props) {
+    var _a;
+    var getClassName = function (status) {
+        return Object.values(StepStatus)[status].toString().toLowerCase();
+    };
+    var getStepIndex = function (step) { var _a; return (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.indexOf(step); };
+    var isFirstStep = function (step) { return getStepIndex(step) === 0; };
+    var isLastStep = function (step) { var _a; return getStepIndex(step) + 1 === ((_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.length); };
+    var isSingleStep = function () { var _a; return ((_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.length) === 1; };
+    var renderMobileStepper = function () {
+        var _a, _b, _c;
+        var doingStep = (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 : _a.find(function (step) { return step.status === StepStatus.Doing; });
+        var doingStepIndex = getStepIndex(doingStep);
+        var steps = (props === null || props === void 0 ? void 0 : props.steps) && !isLastStep(doingStep) && !isFirstStep(doingStep)
+            ? props.steps.slice(doingStepIndex - 1, doingStepIndex + 2)
+            : isFirstStep(doingStep)
+                ? props.steps.slice(doingStepIndex, doingStepIndex + 3)
+                : isLastStep(doingStep) &&
+                    props.steps.slice(doingStepIndex - 2, doingStepIndex + 1);
+        var isMoreThanThreeSteps = ((_b = props === null || props === void 0 ? void 0 : props.steps) === null || _b === void 0 ? void 0 : _b.length) > 3;
+        return (React.createElement(React.Fragment, null, isMoreThanThreeSteps
+            ? steps.map(function (step, index) {
+                var _a;
+                return (React.createElement("div", { className: "step-container hide-on-desktop ".concat(getClassName(step.status)), key: index },
+                    index === 0 && !isFirstStep(step) && (React.createElement("hr", { className: "line start-line ".concat(getClassName((_a = props === null || props === void 0 ? void 0 : props.steps[getStepIndex(step) - 1]) === null || _a === void 0 ? void 0 : _a.status)) })),
+                    React.createElement("div", { className: "step" }, step.title),
+                    !isLastStep(step) && (React.createElement("hr", { className: "line ".concat(index === steps.length - 1 && 'end-line') }))));
+            })
+            : !isMoreThanThreeSteps &&
+                ((_c = props === null || props === void 0 ? void 0 : props.steps) === null || _c === void 0 ? void 0 : _c.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container  hide-on-desktop ".concat(getClassName(step.status)) },
+                    React.createElement("div", { className: "step" }, step.title),
+                    !isLastStep(step) && !isSingleStep() && (React.createElement("hr", { className: "line" })))); }))));
+    };
+    return (React.createElement("div", { className: "stepper-container " }, (_a = props === null || props === void 0 ? void 0 : props.steps) === null || _a === void 0 ? void 0 :
+        _a.map(function (step, index) { return (React.createElement("div", { key: index, className: "step-container ".concat(getClassName(step.status), " hide-on-mobile") },
+            React.createElement("div", { className: "step" }, step.title),
+            !isLastStep(step) && !isSingleStep() && React.createElement("hr", { className: "line" }))); }),
+        renderMobileStepper()));
+};
+exports["default"] = Stepper;
+
+
+/***/ }),
+
 /***/ 5630:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -7156,7 +7241,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CountInput = exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
+exports.Stepper = exports.CountInput = exports.Pointer = exports.LicensePlate = exports.ToggleButton = exports.Image = exports.Modal = exports.RangeDatePicker = exports.DatePicker = exports.PersianNumber = exports.Tag = exports.Select = exports.Toolbar = exports.Banner = exports.Textarea = exports.Radio = exports.Notification = exports.Navbar = exports.Input = exports.FileInputWrapper = exports.FileInput = exports.DialogContent = exports.CounterButton = exports.Checkbox = exports.ButtonGroup = exports.Button = void 0;
 __exportStar(__webpack_require__(8410), exports);
 __exportStar(__webpack_require__(8877), exports);
 __exportStar(__webpack_require__(5630), exports);
@@ -7244,6 +7329,9 @@ __exportStar(__webpack_require__(1845), exports);
 var count_input_1 = __webpack_require__(39);
 Object.defineProperty(exports, "CountInput", ({ enumerable: true, get: function () { return count_input_1.default; } }));
 __exportStar(__webpack_require__(39), exports);
+var stepper_1 = __webpack_require__(5830);
+Object.defineProperty(exports, "Stepper", ({ enumerable: true, get: function () { return stepper_1.default; } }));
+__exportStar(__webpack_require__(5830), exports);
 
 
 /***/ }),
@@ -7357,12 +7445,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 6135:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTMuODY3IDIyYy0uNDggMC0uOTYyLS4xLTEuNDQyLS4zOTgtMS4zNDYtLjc5Ni0xLjgyNy0yLjY4Ny0xLjA1OC00LjA4TDkuNTQgMy4zOTNhMi4zNiAyLjM2IDAgMCAxIC45NjEtLjk5NSAyLjg1OSAyLjg1OSAwIDAgMSAyLjIxMS0uMjk4Yy43Ny4xOTkgMS4zNDYuNjk2IDEuODI3IDEuMzkzbDguMDc2IDE0LjAzYy4yODkuNDk3LjM4NS45OTQuMzg1IDEuNDkyIDAgLjc5Ni0uMjg4IDEuNTkyLS44NjUgMi4wOS0uNDgxLjU5Ni0xLjE1NC44OTUtMS45MjMuODk1SDMuODY3eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMxOTE5MjQiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEzYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjljMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+
 /***/ 803:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNCQzAwMDciIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTMuODY3IDIyYy0uNDggMC0uOTYyLS4xLTEuNDQyLS4zOTgtMS4zNDYtLjc5Ni0xLjgyNy0yLjY4Ny0xLjA1OC00LjA4TDkuNTQgMy4zOTNhMi4zNiAyLjM2IDAgMCAxIC45NjEtLjk5NSAyLjg1OSAyLjg1OSAwIDAgMSAyLjIxMS0uMjk4Yy43Ny4xOTkgMS4zNDYuNjk2IDEuODI3IDEuMzkzbDguMDc2IDE0LjAzYy4yODkuNDk3LjM4NS45OTQuMzg1IDEuNDkyIDAgLjc5Ni0uMjg4IDEuNTkyLS44NjUgMi4wOS0uNDgxLjU5Ni0xLjE1NC44OTUtMS45MjMuODk1SDMuODY3eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEzYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjljMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+
+/***/ 9809:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgeD0iMiIgeT0iMiIgZmlsbD0iI0ZGRiIgcng9IjEwIi8+CiAgICAgICAgPHBhdGggZmlsbD0iIzE5MTkyNCIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTMgMTJ2NGMwIC42LS40IDEtMSAxcy0xLS40LTEtMXYtNGMwLS42LjQtMSAxLTFzMSAuNCAxIDF6bS0xLTNhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
 
@@ -7375,12 +7481,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 8561:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSIjRkZGIiByeD0iMTAiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiMxOTE5MjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTYuNjA3IDguMTIxbC02LjM2NCA2LjM2NC0yLjgyOS0yLjgyOCIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==");
+
+/***/ }),
+
 /***/ 6313:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSIjMjQ4MjEyIiByeD0iMTAiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNMTYuNjA3IDguMTIxbC02LjM2NCA2LjM2NC0yLjgyOS0yLjgyOCIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==");
+
+/***/ }),
+
+/***/ 5974:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yMyAxMmwtNSAxMEg2TDEgMTIgNiAyaDEyeiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMxOTE5MjQiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEzIDEyYzAgLjYtLjQgMS0xIDFzLTEtLjQtMS0xVjhjMC0uNi40LTEgMS0xczEgLjQgMSAxdjR6bS0xIDVhMSAxIDAgMSAxIDAtMiAxIDEgMCAwIDEgMCAyeiIvPgogICAgPC9nPgo8L3N2Zz4K");
 
 /***/ }),
 

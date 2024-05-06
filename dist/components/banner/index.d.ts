@@ -3,8 +3,10 @@ import './styles.scss';
 export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
     className?: string;
     show?: boolean;
-    type?: 'error' | 'warning' | 'info' | 'success';
+    type?: 'error' | 'warning' | 'info' | 'success' | 'default';
     fullWidth?: boolean;
+    dark?: boolean;
+    header?: string;
     onClose?: () => void;
 }
 declare const Banner: React.FC<BannerProps>;
