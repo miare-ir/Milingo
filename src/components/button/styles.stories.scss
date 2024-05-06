@@ -2,4 +2,46 @@
   button {
     margin-left: 16px;
   }
+
+  .table-of-loading-buttons {
+    > div {
+      width: 100%;
+      display: flex;
+      gap: 40px;
+
+      > label {
+        display: flex;
+        font-size: 20px;
+        gap: 10px;
+        align-items: flex-start;
+        user-select: none;
+      }
+    }
+
+    > table {
+      $border: 1px solid rgba(128, 128, 128, 0.2);
+
+      border: $border;
+
+      td {
+        padding: 10px;
+
+        &:not(:last-child) {
+          border-right: $border;
+        }
+      }
+
+      th {
+        font-size: 20px;
+        padding: 10px;
+        border-right: $border;
+      }
+
+      tr:not(:last-child) {
+        td, th {
+          border-bottom: $border;
+        }
+      }
+    }
+  }
 }

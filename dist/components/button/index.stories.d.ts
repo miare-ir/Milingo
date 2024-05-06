@@ -14,3 +14,4 @@ export declare const Tiny: () => JSX.Element;
 export declare const Small: () => JSX.Element;
 export declare const Regular: () => JSX.Element;
 export declare const Large: () => JSX.Element;
+export declare const Loading: () => JSX.Element;

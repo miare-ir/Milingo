@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '.';
 
 import './styles.stories.scss';
+import Checkbox from '../checkbox';
 
 export default {
   title: 'Button',
@@ -48,7 +49,9 @@ export const Purple = () => (
     <Button purplePrimary>سلام دنیا</Button>
     <Button purpleGhost>سلام دنیا</Button>
     <Button purpleLink>سلام دنیا</Button>
-    <Button purplePrimary disabled>سلام دنیا</Button>
+    <Button purplePrimary disabled>
+      سلام دنیا
+    </Button>
   </div>
 );
 
@@ -119,3 +122,212 @@ export const Large = () => (
     </Button>
   </div>
 );
+
+export const Loading = () => {
+  const [loading, setLoading] = React.useState(true);
+  const [disabled, setDisabled] = React.useState(false);
+
+  return (
+    <div className="table-of-loading-buttons">
+      <div>
+        <label>
+          <Checkbox
+            checked={loading}
+            onChange={e => setLoading(e.currentTarget.checked)}
+          />
+          <span>حالت لودینگ</span>
+        </label>
+
+        <label>
+          <Checkbox
+            checked={disabled}
+            onChange={e => setDisabled(e.currentTarget.checked)}
+          />
+          <span>غیر فعال</span>
+        </label>
+      </div>
+
+      <br />
+
+      <table>
+        <tbody>
+          <tr>
+            <th>primary</th>
+            <td>
+              <Button loading={loading} primary disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td />
+            <td />
+            <td />
+          </tr>
+
+          <tr>
+            <th>danger</th>
+            <td>
+              <Button danger loading={loading} disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td />
+            <td />
+            <td />
+          </tr>
+
+          <tr>
+            <th>ghost</th>
+            <td>
+              <Button ghost loading={loading} disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td />
+            <td />
+            <td />
+          </tr>
+
+          <tr>
+            <th>link</th>
+            <td>
+              <Button loading={loading} link disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td />
+            <td />
+            <td />
+          </tr>
+
+          <tr>
+            <th>text</th>
+            <td>
+              <Button loading={loading} text disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td />
+            <td />
+            <td />
+          </tr>
+
+          <tr>
+            <th>purple</th>
+            <td>
+              <Button loading={loading} purplePrimary disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button loading={loading} purpleGhost disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button loading={loading} purpleLink disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td />
+          </tr>
+
+          <tr>
+            <th>tiny</th>
+            <td>
+              <Button primary loading={loading} tiny disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button danger loading={loading} tiny disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button ghost loading={loading} tiny disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button link loading={loading} tiny disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+          </tr>
+
+          <tr>
+            <th>small</th>
+            <td>
+              <Button primary loading={loading} small disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button danger loading={loading} small disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button ghost loading={loading} small disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button link loading={loading} small disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+          </tr>
+
+          <tr>
+            <th>regular</th>
+            <td>
+              <Button primary loading={loading} regular disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button danger loading={loading} regular disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button ghost loading={loading} regular disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button link loading={loading} regular disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+          </tr>
+
+          <tr>
+            <th>large</th>
+            <td>
+              <Button primary loading={loading} large disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button danger loading={loading} large disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button ghost loading={loading} large disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+            <td>
+              <Button loading={loading} link large disabled={disabled}>
+                سلام دنیا
+              </Button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
