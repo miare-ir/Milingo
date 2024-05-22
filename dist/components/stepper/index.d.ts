@@ -7,6 +7,7 @@ export declare enum StepStatus {
 export interface Step {
     title: string;
     status: number;
+    onClick?: () => void;
 }
 export interface StepperProps {
     steps: Step[];
