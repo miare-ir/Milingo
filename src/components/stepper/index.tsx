@@ -10,6 +10,7 @@ export enum StepStatus {
 export interface Step {
   title: string;
   status: number;
+  onClick?: () => void;
 }
 export interface StepperProps {
   steps: Step[];
@@ -55,7 +56,7 @@ const Stepper = (props: StepperProps): JSX.Element => {
                     )}`}
                   />
                 )}
-                <div className="step">{step.title}</div>
+                <div className="step" onClick={step.onClick}>{step.title}</div>
                 {!isLastStep(step) && (
                   <hr
                     className={`line ${
@@ -72,7 +73,7 @@ const Stepper = (props: StepperProps): JSX.Element => {
                 className={`step-container  hide-on-desktop ${getClassName(
                   step.status,
                 )}`}>
-                <div className="step">{step.title}</div>
+                <div className="step" onClick={step.onClick}>{step.title}</div>
                 {!isLastStep(step) && !isSingleStep() && (
                   <hr className="line" />
                 )}
@@ -90,7 +91,9 @@ const Stepper = (props: StepperProps): JSX.Element => {
           className={`step-container ${getClassName(
             step.status,
           )} hide-on-mobile`}>
-          <div className="step">{step.title}</div>
+          <div className="step" onClick={step.onClick}>
+            {step.title}
+          </div>
           {!isLastStep(step) && !isSingleStep() && <hr className="line" />}
         </div>
       ))}
